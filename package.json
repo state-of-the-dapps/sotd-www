@@ -1,7 +1,7 @@
 {
   "name": "www-stateofthedapps-com",
   "version": "1.0.0",
-  "description": "State of the DApps Frontend - Nuxt.js",
+  "description": "State of the DApps Frontend Nuxt.js",
   "author": "rob@enginecollaborative.com",
   "private": true,
   "dependencies": {
