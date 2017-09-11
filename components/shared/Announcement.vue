@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="message">{{ message }}<span v-if="url"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: url })" :href="url" class="link" target="_blank">{{ urlText }}</a><a href="#" class="close"><img src="/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a></span></p>
+    <p class="message">{{ message }}<span v-if="url && urlText"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: url })" :href="url" class="link" target="_blank">{{ urlText }}</a><a href="#" class="close"><img src="/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a></span></p>
   </div>
 </template>
 

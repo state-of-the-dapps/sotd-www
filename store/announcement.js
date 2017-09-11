@@ -2,9 +2,7 @@ import axios from '~/plugins/axios'
 
 export const state = () => {
   return {
-    status: false,
-    message: '',
-    link: ''
+    status: false
   }
 }
 
