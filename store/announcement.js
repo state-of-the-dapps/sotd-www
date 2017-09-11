@@ -2,7 +2,10 @@ import axios from '~/plugins/axios'
 
 export const state = () => {
   return {
-    status: false
+    status: false,
+    message: null,
+    url: null,
+    urlText: null
   }
 }
 
