@@ -9,9 +9,15 @@
           <ToolsSection/>
           <RelatedDappsSection/>
         </div>
-        <img @click="$mixpanel.track('DApp popup - Close')" class="close" src="/images/close/large.png" width="20" id="close" />
-        <nuxt-link tag="img" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" src="/images/arrows/back.png" width="20" @click.stop.native="updateIndex('prev')" />
-        <nuxt-link tag="img" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" src="/images/arrows/next.png" width="20" @click.stop.native="updateIndex('next')" />
+        <div @click="$mixpanel.track('DApp popup - Close')" class="close" id="close">
+          <img src="/images/close/large.png" width="20" />
+        </div>
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="updateIndex('prev')">
+          <img src="/images/arrows/back.png" width="20" />
+        </nuxt-link>
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="updateIndex('next')">
+          <img src="/images/arrows/next.png" width="20" />
+        </nuxt-link>
       </div>
     </div>
   </transition>
@@ -94,29 +100,45 @@
   .close {
     z-index: 150;
     position: absolute;
-    top: 15px;
     cursor: pointer;
     left: 50%;
-    margin-left: -10px;
-    padding-top: 15px;
-    top: 0;
+    margin-left: -20px;
+    top: 5px;
+    transition: opacity .2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:active {
-      top: 1px;
+      top: 6px;
+    }
+    &:hover {
+      opacity: .8;
     }
   }
   
   .next {
     z-index: 150;
     position: absolute;
-    top: 15px;
+    top: 5px;
     cursor: pointer;
-    right: 15px;
+    right: 5px;
+    transition: opacity .2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      opacity: .8;
+    }
     @include tweakpoint('min-width', '1300px') {
       position: fixed;
       left: 50%;
       top: 50%;
-      margin-top: -10px;
-      margin-left: 620px;
+      margin-top: -20px;
+      margin-left: 610px;
       &:active {
         margin-top: -9px;
       }
@@ -156,15 +178,24 @@
   .prev {
     z-index: 150;
     position: absolute;
-    top: 15px;
+    top: 5px;
     cursor: pointer;
-    left: 15px;
+    left: 5px;
+    transition: opacity .2s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      opacity: .8;
+    }
     @include tweakpoint('min-width', '1300px') {
       position: fixed;
       left: 50%;
       top: 50%;
-      margin-top: -10px;
-      margin-left: -640px;
+      margin-top: -20px;
+      margin-left: -650px;
       &:active {
         margin-top: -9px;
       }
