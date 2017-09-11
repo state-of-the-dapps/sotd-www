@@ -1,0 +1,25 @@
+.--is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.--is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .3s;
+}
+
+.page-enter, .page-leave-to {
+  opacity: 0;
+}

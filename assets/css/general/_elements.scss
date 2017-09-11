@@ -1,0 +1,68 @@
+html {
+  box-sizing: border-box;
+  background: $color--gallery;
+  font-size: 13px;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, input, textarea {
+  font-family: 'Overpass', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  color: $color--mine-shaft;
+  letter-spacing: -.25px;
+}
+
+body {
+  background: url('/images/bg.jpg') center center;
+  background-size: 100px 100px;
+  height: 100%;
+  &.--has-popup {
+    overflow: hidden;
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+input::placeholder {
+  line-height: 1.7;
+}
+
+h1, h2 {
+  font-weight: 600;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -.5px;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 1;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+a {
+  color: $color--mine-shaft;
+}
+
+strong {
+  font-weight: 700;
+}
+
+#__nuxt {
+  height: 100%;
+}

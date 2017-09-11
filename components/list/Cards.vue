@@ -1,0 +1,294 @@
+<template>
+  <transition name="fade" v-if="itemsCount > 0">
+    <div>
+      <ul class="list">
+        <nuxt-link v-for="(item, key) in items" tag="li" @click.native="updateIndex(key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+          <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
+          <ul class="badge-list" v-if="item.badges">
+            <li v-for="badge in item.badges" class="badge-item"><img :src="'/images/badges/' + badge + '.png'" width="16" class="badge-image" :title="badge | capitalize"></li>
+          </ul>
+          <div class="info">
+            <div class="icon-wrapper" :class="'-' + item.status">
+              <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
+            </div>
+            <div class="description-wrapper">
+              <h3 class="title">{{ item.name | truncate(25) }}</h3>
+              <p class="attribution">by <strong>{{ item.author }}</strong> {{ item.additionalAuthors | additionalAuthorsCount }}</p>
+              <p class="description">{{ item.teaser | truncate(75) }}</p>
+            </div>
+          </div>
+          <p class="status" :class="'-' + item.status">{{ item.status | formatStatus }}</p>
+        </nuxt-link>
+      </ul>
+    </div>
+  </transition>
+</template>
+
+<script>
+  export default {
+    computed: {
+      items () {
+        return this.$store.getters['dapps/items']
+      },
+      itemsCount () {
+        return this.$store.getters['dapps/itemsCount']
+      }
+    },
+    methods: {
+      updateIndex (key) {
+        this.$mixpanel.track('DApps - Detail popup')
+        this.$store.dispatch('dapps/setActiveItemIndex', key)
+      }
+    },
+    mounted () {
+      this.$store.dispatch('dapps/findItems')
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  @import '~assets/css/settings';
+
+  .attribution {
+    margin: 0;
+  }
+  
+  .badge-item {
+    margin-left: 2px;
+  }
+  
+  .badge-list {
+    position: absolute;
+    display: flex;
+    right: 10px;
+    top: -2px;
+    z-index: 5;
+  }
+  
+  .description-wrapper {
+    flex: 1;
+  }
+  
+  .description {
+    margin: 0;
+    @include tweakpoint('min-width', 900px) {
+      margin-top: 10px;
+    }           
+  }
+  
+  .icon-image {
+    max-width: 100%;
+  }
+  
+  .icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    font-size: 1.95rem;
+    margin-right: 10px;
+    &.-live {
+      background: $color--bright-green;
+    }
+    &.-demo {
+      background: $color--gorse;
+    }
+    &.-prototype {
+      background: $color--koromiko;
+    }
+    &.-wip {
+      background: $color--malibu;
+    }
+    &.-concept {
+      background: $color--portage;
+    }
+    @include tweakpoint('min-width', 900px) {
+      margin-right: 0;
+      width: 75px;
+      height: 75px;
+    }
+  }
+  
+  .info {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    margin-top: -10px;
+    @include tweakpoint('min-width', 900px) {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      margin-top: 25px;
+    }
+  }
+  
+  .item {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 125px;
+    margin: 0 10px 10px 10px;
+    background: white;
+    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    transition: transform .4s ease, opacity .4s ease;
+    @include tweakpoint('min-width', 750px) {
+      width: calc(50% - 20px);
+    }
+    @include tweakpoint('min-width', 900px) {
+      width: calc(33.33% - 20px);
+      height: 285px;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    @include tweakpoint('min-width', 1000px) {
+      width: calc(25% - 20px);
+    }
+    @include tweakpoint('min-width', 1150px) {
+      width: calc(20% - 20px);
+    }
+    @include tweakpoint('min-width', 1450px) {
+      width: calc(16.66667% - 20px);
+    }
+    @include tweakpoint('min-width', 1750px) {
+      width: calc(14.2857142857% - 20px);
+    }
+    &:hover {
+      cursor: pointer;
+      transform: scale3d(1.015, 1.015, 1);
+    }
+    &.-live {
+      background: $color--screamin-green;
+    }
+    &.-demo {
+      background: $color--paris-daisy;
+    }
+    &.-prototype {
+      background: $color--golden-tainoi;
+    }
+    &.-wip {
+      background: $color--anakiwa;
+    }
+    &.-concept {
+      background: $color--perfume;
+    }
+    &.-stealth {
+      background: $color--alabaster;
+    }
+    &.-abandoned, &.-unknown {
+      background: $color--alabaster;
+      &:after {
+        content: " ";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(white,.7);
+        pointer-events: none;
+      }
+    }
+    &.-preview {
+      width: 300px;
+      margin: 0 auto;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        margin-left: 0;
+      }
+      &:hover {
+        transform: none;
+        cursor: default;
+      }
+    }
+    &.--unfocused {
+      opacity: .6;
+    }
+  }
+  
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .new-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 47px;
+    height: 47px;
+    background: url('/images/ribbon.png') top left no-repeat;
+    background-size: 47px 47px;
+    margin: 0;
+    z-index: 5;
+  }
+  
+  .new-message {
+    color: $color--gallery;
+    display: inline-block;
+    font-size: .7rem;
+    text-transform: uppercase;
+    margin-top: 6px;
+    margin-left: 6px;
+    &.-live {
+      color: $color--screamin-green;
+    }
+    &.-demo {
+      color: $color--paris-daisy;
+    }
+    &.-prototype {
+      color: $color--golden-tainoi;
+    }
+    &.-wip {
+      color: $color--anakiwa;
+    }
+    &.-concept {
+      color: $color--perfume;
+    }
+    &.-inactive {
+      color: $color--alabaster;
+    }
+  }
+  
+  .status {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 4px solid rgba($color--mine-shaft,.2);
+    margin: 0;
+    padding: 5px;
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    &.-live {
+      border-color: $color--bright-green;
+    }
+    &.-demo {
+      border-color: $color--gorse;
+    }
+    &.-prototype {
+      border-color: $color--koromiko;
+    }
+    &.-wip {
+      border-color: $color--malibu;
+    }
+    &.-concept {
+      border-color: $color--portage;
+    }
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 1.5rem;
+    @include tweakpoint('min-width', 900px) {
+      margin-top: 15px;
+    }
+  }
+</style>

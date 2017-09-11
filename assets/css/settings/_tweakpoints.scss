@@ -1,0 +1,8 @@
+// Handles media queries
+@mixin tweakpoint($type, $size) {
+  @media only screen and ($type: $size) {
+    @content;
+  }
+}
+
+$tweakpoint--default: 1000px;

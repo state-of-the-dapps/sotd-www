@@ -1,0 +1,25 @@
+.paragraph {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  max-width: 600px;
+  &.-intro {
+    font-size: 1.4rem;
+    line-height: 1.275;
+    max-width: 700px;
+  }
+}
+
+.text-container {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 0 15px;
+  @include tweakpoint('min-width', 700px) {
+    margin: 75px auto;            
+  }
+}
+
+.sub-heading {
+  font-size: 1.35rem;
+  margin-bottom: -.5rem;
+  margin-top: 1.65rem;
+}
