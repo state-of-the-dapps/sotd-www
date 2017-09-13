@@ -19,6 +19,7 @@ function initialState () {
       description: [],
       email: [],
       license: [],
+      logo: [],
       mainnet: [],
       name: [],
       ropsten: [],
@@ -32,6 +33,7 @@ function initialState () {
       description: '',
       email: '',
       license: '',
+      logo: '',
       mainnet: '',
       name: '',
       ropsten: '',
@@ -218,6 +220,12 @@ export const getters = {
   },
   licenseErrors: state => {
     return state.errors.license
+  },
+  logo: state => {
+    return state.fields.logo
+  },
+  logoErrors: state => {
+    return state.errors.logo
   },
   mainnet: state => {
     return state.fields.mainnet

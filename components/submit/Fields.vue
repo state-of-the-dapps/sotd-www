@@ -8,6 +8,7 @@
     <Author/>
     <AdditionalAuthors/>
     <License/>
+    <Logo/>
     <Mainnet/>
     <Ropsten/>
     <Status/>
@@ -22,6 +23,7 @@
   import Description from '~/components/submit/fields/Description.vue'
   import Email from '~/components/submit/fields/Email.vue'
   import License from '~/components/submit/fields/License.vue'
+  import Logo from '~/components/submit/fields/Logo.vue'
   import Mainnet from '~/components/submit/fields/Mainnet.vue'
   import Name from '~/components/submit/fields/Name.vue'
   import Ropsten from '~/components/submit/fields/Ropsten.vue'
@@ -38,6 +40,7 @@
       Description,
       Email,
       License,
+      Logo,
       Mainnet,
       Name,
       Ropsten,
