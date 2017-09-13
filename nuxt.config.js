@@ -33,7 +33,7 @@ module.exports = {
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X',
-    mixpanel: process.env.MIXPANEL || ''
+    mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
   },
   head: {
     title: 'State of the ÐApps',
