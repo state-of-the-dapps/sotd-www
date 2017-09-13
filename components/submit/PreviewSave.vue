@@ -15,6 +15,7 @@
           </div>
           <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatStatus }}</p>
       </div>
+      <input type="text" class="yumyum" v-model="honeypot">
       <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'1 field needs your attention'">
       <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
       <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
@@ -49,25 +50,28 @@
     },
     data: () => {
       return {
-        sending: false
+        sending: false,
+        honeypot: null
       }
     },
     methods: {
       submit () {
-        const obj = {}
-        obj.data = this.$store.state.submit.fields
-        this.sending = true
-        axios.post('/dapps.json', obj)
-          .then((response) => {
-            this.sending = false
-            this.$store.dispatch('submit/reset')
-            this.$mixpanel.track('New DApp - Submit', { disabled: false })
-            this.$router.replace({ path: '/confirmation' })
-          })
-          .catch((error) => {
-            console.log(error)
-            alert('There was an error submitting. Please try again.')
-          })
+        if (this.honeypot === null) {
+          const obj = {}
+          obj.data = this.$store.state.submit.fields
+          this.sending = true
+          axios.post('/dapps.json', obj)
+            .then((response) => {
+              this.sending = false
+              this.$store.dispatch('submit/reset')
+              this.$mixpanel.track('New DApp - Submit', { disabled: false })
+              this.$router.replace({ path: '/confirmation' })
+            })
+            .catch((error) => {
+              console.log(error)
+              alert('There was an error submitting. Please try again.')
+            })
+        }
       }
     }
   }
@@ -366,5 +370,9 @@
       margin-left: 0;
       margin-right: 0;
     }
+  }
+  
+  .yumyum {
+    display: none;
   }
 </style>
