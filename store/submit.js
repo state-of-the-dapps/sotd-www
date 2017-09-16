@@ -150,7 +150,7 @@ export const actions = {
   },
   findTags: ({ commit, state }, value) => {
     axios
-      .get('tags.json', { params: { query: value, excluded: state.fields.tags } })
+      .get('tags', { params: { query: value, excluded: state.fields.tags } })
       .then(response => {
         commit('setTagsResults', response.data)
       })

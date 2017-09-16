@@ -23,7 +23,7 @@ export const actions = {
     commit('hide')
   },
   set: ({ commit }) => {
-    axios.get('announcement.json')
+    axios.get('announcement')
     .then(response => {
       commit('set', response.data)
     })

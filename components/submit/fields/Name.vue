@@ -44,7 +44,7 @@
           this.name.length > 25 ? errors.data.push(`Name can't be longer than 25 characters`) : ''
           this.name.length < 2 ? errors.data.push(`Name must be longer than 1 character`) : ''
           axios
-            .get('dapp.json', { params: { name: this.name } })
+            .get('dapps/' + this.name)
             .then(response => {
               if (response.data.hasOwnProperty('name') && this.name.length > 0) {
                 errors.data.push(`Name has already been taken`)
