@@ -31,7 +31,7 @@ module.exports = {
     { src: '~/assets/css/main.scss', lang: 'scss' }
   ],
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    apiUrl: process.env.API_URL || 'http://localhost:3000',
     googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X',
     mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
   },
