@@ -21,7 +21,7 @@ export const mutations = {
 export const actions = {
   findItems: ({ commit, state, rootState }, value) => {
     axios
-      .get('tags.json', { params: { query: value, excluded: rootState.dapps.query.tags } })
+      .get('tags', { params: { query: value, excluded: rootState.dapps.query.tags } })
       .then(response => {
         commit('setItems', response.data)
       })

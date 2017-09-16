@@ -26,7 +26,7 @@
     },
     mounted () {
       axios
-        .get('dapp.json', { params: { slug: this.$route.params.slug } })
+        .get('dapps/' + this.$route.params.slug)
         .then(response => {
           this.$store.dispatch('dapp/setActive', response.data)
         })

@@ -60,7 +60,7 @@
           const obj = {}
           obj.data = this.$store.state.submit.fields
           this.sending = true
-          axios.post('/dapps.json', obj)
+          axios.post('dapps', obj)
             .then((response) => {
               this.sending = false
               this.$store.dispatch('submit/reset')

@@ -43,7 +43,9 @@ export const mutations = {
 export const actions = {
   findItems: ({ commit, state }) => {
     axios
-      .get('dapps.json', { params: state.query })
+      .get('dapps', {
+        params: state.query
+      })
       .then(response => {
         commit('setItems', response.data)
       })
