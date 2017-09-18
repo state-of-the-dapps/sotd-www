@@ -4,11 +4,11 @@
       <li v-if="item.author" class="item -author">
         <h3 class="sub-heading">Author<span v-if="item.additionalAuthors">s</span></h3>
         <p class="sub-body">{{ item.author }}<span v-if="item.additionalAuthors">, {{ item.additionalAuthors }}</span></p>
-      </li>   
+      </li>
       <li class="item -description">
         <p class="body">{{ item.description }}</p>
       </li>
-    </ul>  
+    </ul>
     <ul class="sub-list">
       <li v-if="item.mainnet" class="sub-item">
         <h3 class="sub-heading">Mainnet address</h3>
@@ -50,7 +50,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .body {
     margin: 0;
     font-size: 1.2rem;
@@ -62,13 +62,13 @@
     margin: 0;
     font-size: 1.25rem;
   }
-  
+
   .image {
     max-width: 100%;
     width: 100%;
     display: block;
   }
-  
+
   .item {
     width: 100%;
     background: $color--alabaster;
@@ -91,24 +91,24 @@
       }
     }
   }
-  
+
   .list {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
   }
-  
+
   .sub-body {
     margin: 0;
     word-wrap: break-word;
   }
-  
+
   .sub-heading {
     font-size: 1.2rem;
     margin: 0;
     margin-bottom: .25rem;
   }
-  
+
   .sub-item {
     width: 100%;
     margin: 0 10px;
@@ -121,7 +121,7 @@
       width: calc(33.33% - 20px);
     }
   }
-  
+
   .sub-list {
     display: flex;
     flex-wrap: wrap;
