@@ -2,9 +2,7 @@
 
 Designed by [Engine Collaborative](https://www.enginecollaborative.com)
 
-## Config
-
-### /nuxt.config.js
+## ENV
 
 - Set up environment variables in `nuxt.config.js` under the `env` property. (e.g. in ~/.bashrc, add `export API_URL="https://yourapi.com"`)
 
