@@ -9,6 +9,7 @@
       <li class="item -slack"><input v-model="slack" class="input" type="text" placeholder="your.slack.team" maxlength="100"></li>
       <li class="item -blog"><input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100"></li>
       <li class="item -other"><input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100"></li>
+      <li class="item -wikipedia"><input v-model="wikipedia" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100"></li>
     </ul>
   </div>
 </template>
@@ -99,6 +100,18 @@
           }
           this.$store.dispatch('submit/updateSocial', field)
         }
+      },
+      wikipedia: {
+        get () {
+          return this.$store.getters['submit/socialWikipedia']
+        },
+        set (value) {
+          const field = {
+            name: 'wikipedia',
+            value: value
+          }
+          this.$store.dispatch('submit/updateSocial', field)
+        }
       }
     }
   }
@@ -106,13 +119,13 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .heading {
     text-align: center;
     margin-top: 1.25rem;
     margin-bottom: .75rem;
   }
-  
+
   .input {
     background: none;
     border: none;
@@ -120,13 +133,13 @@
     width: 145px;
     overflow: hidden;
     &::placeholder {
-        color: $color--mine-shaft;
+        color: rgba($color--mine-shaft, .5);
     }
     &:focus::placeholder {
         color: rgba($color--mine-shaft,.5);
     }
   }
-  
+
   .item {
     width: calc(50% - 10px);
     margin: 5px;
@@ -136,7 +149,7 @@
     border: 1px solid transparent;
     position: relative;
     &:before {
-      content: " ";   
+      content: " ";
       position: absolute;
       top: 8px;
       left: 10px;
@@ -175,8 +188,12 @@
       background: url('~/images/social/other2.png') center left no-repeat;
       background-size: 21px 21px;
     }
+    &.-wikipedia:before {
+      background: url('~/images/social/wikipedia.png') center left no-repeat;
+      background-size: 21px 21px;
+    }
   }
-  
+
   .list {
     display: flex;
     flex-wrap: wrap;
