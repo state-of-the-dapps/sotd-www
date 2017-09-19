@@ -32,7 +32,7 @@
       </li>
       <li class="sub-item" v-if="item.tags">
         <h3 class="sub-heading">Tags</h3>
-        <p class="sub-body"><span v-for="tag in item.tags" @click="$mixpanel.track('DApp - Tag')">#{{ tag }} &nbsp;</span></p>
+        <p class="sub-body"><span class="sub-tag" v-for="tag in item.tags" @click="$mixpanel.track('DApp - Tag')">#{{ tag }}</span></p>
       </li>
     </ul>
   </div>
@@ -126,5 +126,10 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
+  }
+
+  .sub-tag {
+    display: inline-block;
+    padding-right: 6px;
   }
 </style>
