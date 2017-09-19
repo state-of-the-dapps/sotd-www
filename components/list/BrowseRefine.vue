@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" :style="{ left: position.xPos + 'px', top: position.yPos + 22 + 'px' }" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option }}</li>
+        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option | formatRefine }}</li>
       </ul>
     </div>
   </transition>
@@ -10,7 +10,7 @@
 
 <script>
   import { directive as onClickaway } from 'vue-clickaway'
-  
+
   export default {
     computed: {
       isActive () {
@@ -31,7 +31,7 @@
         options: [
           'nothing',
           'ponzi',
-          'ICO',
+          'ico',
           'financial'
         ]
       }
@@ -57,7 +57,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .container {
     position: absolute;
     border: 1px solid $color--mine-shaft;
@@ -67,7 +67,7 @@
     z-index: 10;
     box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
   }
-  
+
   .item {
     margin: 4px 0;
     font-size: .95rem;

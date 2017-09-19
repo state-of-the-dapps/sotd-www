@@ -6,7 +6,7 @@
     </ul>
     <div class="info">
       <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p>A</p>
+        <p>{{ item.name | firstLetter }}</p>
       </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}</h3>
@@ -32,7 +32,7 @@
   .badge-item {
     margin-left: 2px;
   }
-  
+
   .badge-list {
     position: absolute;
     display: flex;
@@ -43,7 +43,7 @@
       right: 20px;
     }
   }
-  
+
   .contract {
     margin-top: 1rem;
     margin-bottom: 0;
@@ -58,11 +58,11 @@
       max-width: 350px;
     }
   }
-  
+
   .description-wrapper {
     flex: 1;
   }
-  
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -75,19 +75,19 @@
     border-radius: 50%;
     margin-right: 10px;
     &.-live {
-      background: $color--bright-green;            
+      background: $color--bright-green;
     }
     &.-demo {
-      background: $color--gorse;            
+      background: $color--gorse;
     }
     &.-prototype {
-      background: $color--koromiko;            
+      background: $color--koromiko;
     }
     &.-wip {
-      background: $color--malibu;            
+      background: $color--malibu;
     }
     &.-concept {
-      background: $color--portage;            
+      background: $color--portage;
     }
     @include tweakpoint('min-width', 900px) {
       width: 120px;
@@ -96,12 +96,12 @@
       font-size: 2.75rem;
     }
   }
-  
+
   .icon-image {
     width: 100%;
     max-width: 100%;
   }
-  
+
   .info {
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@
       padding: 10px 0;
     }
   }
-  
+
   .new-banner {
     position: absolute;
     top: 0;
@@ -130,7 +130,7 @@
       margin-left: 0;
     }
   }
-  
+
   .new-message {
     color: $color--gallery;
     display: inline-block;
@@ -143,25 +143,25 @@
       margin-left: 6px;
     }
     &.-live {
-      color: $color--screamin-green;            
+      color: $color--screamin-green;
     }
     &.-demo {
       color: $color--paris-daisy;
     }
     &.-prototype {
-      color: $color--golden-tainoi;            
+      color: $color--golden-tainoi;
     }
     &.-wip {
-      color: $color--anakiwa;           
+      color: $color--anakiwa;
     }
     &.-concept {
-      color: $color--perfume;           
+      color: $color--perfume;
     }
     &.-stealth, &.-abandoned, &.-unknown {
-      color: $color--alabaster;           
+      color: $color--alabaster;
     }
   }
-  
+
   .title {
     margin: 0;
     font-size: 1.5rem;

@@ -44,7 +44,8 @@ function initialState () {
         reddit: { url: '' },
         slack: { url: '' },
         blog: { url: '' },
-        other: { url: '' }
+        other: { url: '' },
+        wikipedia: { url: '' }
       },
       status: '',
       tags: [],
@@ -265,6 +266,9 @@ export const getters = {
   },
   socialTwitter: state => {
     return state.fields.social.twitter.url
+  },
+  socialWikipedia: state => {
+    return state.fields.social.wikipedia.url
   },
   status: state => {
     return state.fields.status

@@ -15,6 +15,9 @@ export const mutations = {
   hidePopup (state) {
     state.popup = false
   },
+  reset (state) {
+    state.active = {}
+  },
   togglePopup (state) {
     state.popup = !state.popup
     if (state.popup === true) {
@@ -34,6 +37,9 @@ export const actions = {
   },
   hidePopup ({ commit }) {
     commit('hidePopup')
+  },
+  reset ({ commit }) {
+    commit('reset')
   },
   togglePopup ({ commit }) {
     commit('togglePopup')

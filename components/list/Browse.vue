@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory }}</span> and hide <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine }}</span></li>
+    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory }}</span> and hide <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine | formatRefine }}</span></li>
   </ul>
 </template>
 
@@ -94,9 +94,9 @@
       bottom: 6px;
     }
     &.--is-active {
-      border-color: $color--mine-shaft;          
+      border-color: $color--mine-shaft;
       &:after {
-        transform: scaleY(1);   
+        transform: scaleY(1);
       }
     }
     &:last-child {

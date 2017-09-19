@@ -15,7 +15,7 @@
   import StatusSocialSection from '~/components/sections/detail/StatusSocial.vue'
   import ToolsSection from '~/components/sections/detail/Tools.vue'
   import axios from '~/plugins/axios'
-  
+
   export default {
     components: {
       MainInfoSection,
@@ -24,12 +24,22 @@
       StatusSocialSection,
       ToolsSection
     },
-    mounted () {
-      axios
-        .get('dapps/' + this.$route.params.slug)
+    computed: {
+      active () {
+        return this.$store.getters['dapp/active']
+      }
+    },
+    fetch ({ store, params }) {
+      return axios
+        .get('dapps/' + params.slug)
         .then(response => {
-          this.$store.dispatch('dapp/setActive', response.data)
+          store.dispatch('dapp/setActive', response.data)
         })
+    },
+    head () {
+      return {
+        title: 'State of the ÐApps - ' + this.active.name
+      }
     }
   }
 </script>

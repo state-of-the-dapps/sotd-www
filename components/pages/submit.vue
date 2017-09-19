@@ -13,6 +13,11 @@
     components: {
       IntroSection,
       SubmitForm
+    },
+    head () {
+      return {
+        title: 'State of the ÐApps - Submit a ÐApp'
+      }
     }
   }
 </script>

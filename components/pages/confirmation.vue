@@ -15,6 +15,11 @@
       content () {
         return this.$store.getters['cms/confirmation']
       }
+    },
+    head () {
+      return {
+        title: 'State of the ÐApps - Confirmation'
+      }
     }
   }
 </script>

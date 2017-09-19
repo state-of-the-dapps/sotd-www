@@ -52,11 +52,11 @@
   .attribution {
     margin: 0;
   }
-  
+
   .badge-item {
     margin-left: 2px;
   }
-  
+
   .badge-list {
     position: absolute;
     display: flex;
@@ -64,22 +64,22 @@
     top: -2px;
     z-index: 5;
   }
-  
+
   .description-wrapper {
     flex: 1;
   }
-  
+
   .description {
     margin: 0;
     @include tweakpoint('min-width', 900px) {
       margin-top: 10px;
-    }           
+    }
   }
-  
+
   .icon-image {
     max-width: 100%;
   }
-  
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -112,7 +112,7 @@
       height: 75px;
     }
   }
-  
+
   .info {
     display: flex;
     align-items: center;
@@ -125,7 +125,7 @@
       margin-top: 25px;
     }
   }
-  
+
   .item {
     position: relative;
     overflow: hidden;
@@ -136,7 +136,7 @@
     margin: 0 10px 10px 10px;
     background: white;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
-    transition: transform .4s ease, opacity .4s ease;
+    transition: transform .3s ease, opacity .3s ease;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
     }
@@ -161,7 +161,7 @@
     }
     &:hover {
       cursor: pointer;
-      transform: scale3d(1.015, 1.015, 1);
+      transform: translateY(-4px);
     }
     &.-live {
       background: $color--screamin-green;
@@ -209,13 +209,13 @@
       opacity: .6;
     }
   }
-  
+
   .list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .new-banner {
     position: absolute;
     top: 0;
@@ -227,7 +227,7 @@
     margin: 0;
     z-index: 5;
   }
-  
+
   .new-message {
     color: $color--gallery;
     display: inline-block;
@@ -254,7 +254,7 @@
       color: $color--alabaster;
     }
   }
-  
+
   .status {
     position: absolute;
     bottom: 0;
@@ -283,7 +283,7 @@
       border-color: $color--portage;
     }
   }
-  
+
   .title {
     margin: 0;
     font-size: 1.5rem;
