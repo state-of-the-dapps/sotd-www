@@ -54,6 +54,7 @@
     destroyed () {
       document.body.classList.remove('--has-popup')
       this.$store.dispatch('dapp/hidePopup')
+      this.$store.dispatch('dapp/reset')
     },
     directives: {
       onClickaway: onClickaway
