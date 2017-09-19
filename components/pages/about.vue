@@ -15,6 +15,11 @@
       content () {
         return this.$store.getters['cms/about']
       }
+    },
+    head () {
+      return {
+        title: 'State of the ÐApps - About'
+      }
     }
   }
 </script>

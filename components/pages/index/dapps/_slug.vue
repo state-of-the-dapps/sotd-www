@@ -41,6 +41,9 @@
       ToolsSection
     },
     computed: {
+      active () {
+        return this.$store.getters['dapp/active']
+      },
       itemIndex () {
         return this.$store.getters['dapps/activeItemIndex']
       },
@@ -58,6 +61,18 @@
     },
     directives: {
       onClickaway: onClickaway
+    },
+    head () {
+      return {
+        title: 'State of the ÐApps - ' + this.active.name
+      }
+    },
+    fetch ({ store, params }) {
+      return axios
+        .get('dapps/' + params.slug)
+        .then(response => {
+          store.dispatch('dapp/setActive', response.data)
+        })
     },
     methods: {
       getData () {
@@ -87,7 +102,6 @@
     mounted () {
       document.body.classList.add('--has-popup')
       this.$store.dispatch('dapp/showPopup')
-      this.getData()
     },
     watch: {
       '$route': 'getData'
