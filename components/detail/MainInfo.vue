@@ -22,15 +22,15 @@
         <h3 class="sub-heading">Software license</h3>
         <p class="sub-body">{{ item.license }}</p>
       </li>
-      <li class="sub-item">
+      <li v-if="item.created" class="sub-item">
         <h3 class="sub-heading">Created</h3>
         <p class="sub-body">{{ item.created }}</p>
       </li>
-      <li class="sub-item">
+      <li v-if="item.lastUpdated" class="sub-item">
         <h3 class="sub-heading">Last updated</h3>
         <p class="sub-body">{{ item.lastUpdated }}</p>
       </li>
-      <li class="sub-item" v-if="item.tags">
+      <li v-if="item.tags && item.tags.length > 0" class="sub-item">
         <h3 class="sub-heading">Tags</h3>
         <p class="sub-body"><span class="sub-tag" v-for="tag in item.tags" @click="$mixpanel.track('DApp - Tag')">#{{ tag }}</span></p>
       </li>
