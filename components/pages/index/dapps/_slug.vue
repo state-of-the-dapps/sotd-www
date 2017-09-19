@@ -31,7 +31,7 @@
   import ToolsSection from '~/components/sections/detail/Tools.vue'
   import { directive as onClickaway } from 'vue-clickaway'
   import axios from '~/plugins/axios'
-  
+
   export default {
     components: {
       MainInfoSection,
@@ -96,7 +96,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .close {
     z-index: 150;
     position: absolute;
@@ -117,7 +117,7 @@
       opacity: .8;
     }
   }
-  
+
   .next {
     z-index: 150;
     position: absolute;
@@ -140,11 +140,11 @@
       margin-top: -20px;
       margin-left: 610px;
       &:active {
-        margin-top: -9px;
+        margin-top: -19px;
       }
     }
   }
-  
+
   .popup-container {
     position: relative;
     max-width: 1200px;
@@ -163,7 +163,7 @@
     z-index: 100;
     overflow: hidden;
   }
-  
+
   .popup-wrap {
     position: absolute;
     width: 100%;
@@ -174,7 +174,7 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .prev {
     z-index: 150;
     position: absolute;
@@ -197,7 +197,7 @@
       margin-top: -20px;
       margin-left: -650px;
       &:active {
-        margin-top: -9px;
+        margin-top: -19px;
       }
     }
   }
