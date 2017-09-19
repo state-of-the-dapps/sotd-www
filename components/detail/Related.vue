@@ -3,7 +3,7 @@
     <nuxt-link :to="{ name: slug, params: { slug: item.slug } }" @click.native="setActive(item.slug)" tag="li" v-for="(item, key) in items" class="item" :class="'-' + item.status" :key="item.slug">
       <h3 class="title">{{ item.name | truncate(25) }}</h3>
       <p class="teaser">{{ item.teaser }}</p>
-      <p class="status" :class="'-' + item.status">{{ item.status }}</p>
+      <p class="status" :class="'-' + item.status"></p>
     </nuxt-link>
   </ul>
 </template>
@@ -39,7 +39,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .item {
     position: relative;
     overflow: hidden;
@@ -82,22 +82,22 @@
       background: $color--screamin-green;
     }
     &.-demo {
-      background: $color--paris-daisy;            
+      background: $color--paris-daisy;
     }
     &.-prototype {
-      background: $color--golden-tainoi;            
+      background: $color--golden-tainoi;
     }
     &.-wip {
-      background: $color--anakiwa;            
+      background: $color--anakiwa;
     }
     &.-concept {
-      background: $color--perfume;            
+      background: $color--perfume;
     }
     &.-stealth {
-      background: $color--alabaster; 
+      background: $color--alabaster;
     }
     &.-abandoned, &.-unknown {
-      background: $color--alabaster;   
+      background: $color--alabaster;
       &:after {
         content: " ";
         position: absolute;
@@ -124,13 +124,13 @@
       opacity: .6;
     }
   }
-  
+
   .list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .status {
     position: absolute;
     bottom: 0;
@@ -150,20 +150,20 @@
       border-color: $color--gorse;
     }
     &.-prototype {
-      border-color: $color--koromiko;            
+      border-color: $color--koromiko;
     }
     &.-wip {
-      border-color: $color--malibu;            
+      border-color: $color--malibu;
     }
     &.-concept {
-      border-color: $color--portage;            
+      border-color: $color--portage;
     }
   }
-  
+
   .teaser {
     margin-top: .5rem;
   }
-  
+
   .title {
     margin: 0;
     padding-top: 2px;
