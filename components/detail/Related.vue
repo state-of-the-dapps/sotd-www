@@ -50,6 +50,7 @@
     padding: 10px;
     text-align: center;
     background: white;
+    word-wrap: break-word;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     transition: transform .4s ease, opacity .4s ease;
     @include tweakpoint('min-width', 750px) {
