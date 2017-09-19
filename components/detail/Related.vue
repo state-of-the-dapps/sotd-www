@@ -30,7 +30,7 @@
         this.$mixpanel.track('DApp - Related')
         if (this.popup) {
           this.$store.dispatch('dapps/setActiveItemIndex', -1)
-          document.getElementById('close').scrollIntoView({ behavior: 'smooth' })
+          document.getElementById('close').scrollIntoView()
         }
       }
     }
