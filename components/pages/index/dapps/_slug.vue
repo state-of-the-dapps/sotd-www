@@ -58,6 +58,7 @@
       document.body.classList.remove('--has-popup')
       this.$store.dispatch('dapp/hidePopup')
       this.$store.dispatch('dapp/reset')
+      window.removeEventListener('keyup', this.escapeToHide)
     },
     directives: {
       onClickaway: onClickaway
@@ -75,6 +76,11 @@
         })
     },
     methods: {
+      escapeToHide (event) {
+        if (event.keyCode === 27) {
+          this.hide()
+        }
+      },
       getData () {
         axios
           .get('dapps/' + this.$route.params.slug)
@@ -102,6 +108,7 @@
     mounted () {
       document.body.classList.add('--has-popup')
       this.$store.dispatch('dapp/showPopup')
+      window.addEventListener('keyup', this.escapeToHide)
     },
     watch: {
       '$route': 'getData'
