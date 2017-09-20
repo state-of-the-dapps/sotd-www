@@ -9,7 +9,7 @@
       <li class="item -slack"><input v-model="slack" class="input" type="text" placeholder="your.slack.team" maxlength="100"></li>
       <li class="item -blog"><input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100"></li>
       <li class="item -other"><input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100"></li>
-      <li class="item -wikipedia"><input v-model="wikipedia" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100"></li>
+      <li class="item -wiki"><input v-model="wiki" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100"></li>
     </ul>
   </div>
 </template>
@@ -101,13 +101,13 @@
           this.$store.dispatch('submit/updateSocial', field)
         }
       },
-      wikipedia: {
+      wiki: {
         get () {
-          return this.$store.getters['submit/socialWikipedia']
+          return this.$store.getters['submit/socialWiki']
         },
         set (value) {
           const field = {
-            name: 'wikipedia',
+            name: 'wiki',
             value: value
           }
           this.$store.dispatch('submit/updateSocial', field)
@@ -188,8 +188,8 @@
       background: url('~/images/social/other2.png') center left no-repeat;
       background-size: 21px 21px;
     }
-    &.-wikipedia:before {
-      background: url('~/images/social/wikipedia.png') center left no-repeat;
+    &.-wiki:before {
+      background: url('~/images/social/wiki.png') center left no-repeat;
       background-size: 21px 21px;
     }
   }
