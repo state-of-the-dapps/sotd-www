@@ -1,8 +1,7 @@
 <template>
   <transition name="fade" v-if="itemsCount > 0">
-    <div>
-      <ul class="list">
-        <nuxt-link v-for="(item, key) in items" tag="li" @click.native="updateIndex(key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+      <div class="list">
+        <nuxt-link v-for="(item, key) in items" @click.native="updateIndex(key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
           <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
           <ul class="badge-list" v-if="item.badges">
             <li v-for="badge in item.badges" class="badge-item"><img :src="'/images/badges/' + badge + '.png'" width="16" class="badge-image" :title="badge | capitalize"></li>
@@ -19,8 +18,7 @@
           </div>
           <p class="status" :class="'-' + item.status">{{ item.status | formatStatus }}</p>
         </nuxt-link>
-      </ul>
-    </div>
+      </div>
   </transition>
 </template>
 
@@ -137,6 +135,7 @@
     background: white;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     transition: transform .3s ease, opacity .3s ease;
+    text-decoration: none;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
     }
