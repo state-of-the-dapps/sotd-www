@@ -8,6 +8,7 @@ export const state = () => {
       tags: [],
       text: ''
     },
+    totalCount: '',
     items: [],
     activeItemIndex: -1
   }
@@ -32,11 +33,14 @@ export const mutations = {
   removeTagsQuery (state, index) {
     state.query.tags.splice(index, 1)
   },
+  setActiveItemIndex (state, index) {
+    state.activeItemIndex = index
+  },
   setTextQuery (state, value) {
     state.query.text = value
   },
-  setActiveItemIndex (state, index) {
-    state.activeItemIndex = index
+  setTotalCount (state, value) {
+    state.totalCount = value
   }
 }
 
@@ -70,6 +74,13 @@ export const actions = {
   },
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
+  },
+  findTotalCount: ({ commit }) => {
+    axios
+      .get('stats')
+      .then(response => {
+        commit('setTotalCount', response.data.dappCount)
+      })
   }
 }
 
@@ -94,5 +105,8 @@ export const getters = {
   },
   textQuery: state => {
     return state.query.text
+  },
+  totalCount: state => {
+    return state.totalCount
   }
 }

@@ -1,10 +1,19 @@
 <template>
   <ul class="list">
     <li class="item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="link -logo"><img src="/images/logo.png" width="172" alt="State of the ÐApps" class="image"></nuxt-link></li>
-    <li class="item -description">The Curated Collection of Decentralized Apps <br>for <strong class="company-name">ethereum</strong></li>
+    <li class="item -description">A Curated Collection of <strong>{{ totalDappCount }}</strong> Decentralized Apps <br>for <strong class="company-name">ethereum</strong></li>
   </ul>
 </template>
 
+<script>
+  export default {
+    computed: {
+      totalDappCount () {
+        return this.$store.getters['dapps/totalCount']
+      }
+    }
+  }
+</script>
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
@@ -43,4 +52,3 @@
     }
   }
 </style>
-

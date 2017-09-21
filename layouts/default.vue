@@ -17,6 +17,9 @@
       AnnouncementSection,
       FootSection,
       MastheadSection
+    },
+    mounted () {
+      this.$store.dispatch('dapps/findTotalCount')
     }
   }
 </script>
