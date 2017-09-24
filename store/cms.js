@@ -33,7 +33,7 @@ export const state = () => {
           <li>Generate tokens</li>
         </ul>
 
-        <img src="/images/dapp-diagram.png">
+        <img src="/images/dapp-diagram.png" width="550">
 
         <p class="paragraph">The development process of a ÐApp often entails a Whitepaper and a working prototype, a token sale, an initial coin offering (ICO), its implementation and launch.</p>
 
