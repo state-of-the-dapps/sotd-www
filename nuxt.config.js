@@ -21,6 +21,15 @@ module.exports = {
       'webfontloader'
     ]
   },
+  generate: {
+    routes: [
+      "/"
+    ]
+  },
+  /*
+  ** mode: 'spa' is the other option: https://nuxtjs.org/api/configuration-mode
+  */
+  mode: process.env.MODE || 'universal',
   modules: [
     '@nuxtjs/router'
   ],
