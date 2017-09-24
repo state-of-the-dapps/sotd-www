@@ -14,7 +14,15 @@
   margin: 25px auto;
   padding: 0 15px;
   @include tweakpoint('min-width', 700px) {
-    margin: 75px auto;            
+    margin: 75px auto;
+  }
+}
+
+.text-list {
+  margin: 1.25rem 2rem;
+  li {
+    margin: .25rem 0;
+    list-style-type: square;
   }
 }
 

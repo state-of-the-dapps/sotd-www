@@ -2,7 +2,7 @@
   <div>
     <section class="section">
       <div class="text-container">
-        <h1 class="heading">What's a ÐApp</h1>
+        <h1 class="heading">What's a ÐApp?</h1>
         <div v-html="content.body"></div>
       </div>
     </section>
