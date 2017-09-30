@@ -7,6 +7,7 @@ import Index from '~/components/pages/index.vue'
 import IndexIndex from '~/components/pages/index/index.vue'
 import IndexDapp from '~/components/pages/index/dapps/_slug.vue'
 import Submit from '~/components/pages/submit.vue'
+import Terms from '~/components/pages/terms.vue'
 import WhatsADapp from '~/components/pages/whats-a-dapp.vue'
 import Dapp from '~/components/pages/dapps/_slug.vue'
 
@@ -78,6 +79,11 @@ export function createRouter () {
 			path: "/about",
 			component: About,
 			name: "about"
+		},
+		{
+			path: "/terms",
+			component: Terms,
+			name: "terms"
 		},
 		{
 			path: "/submit",
