@@ -1,20 +1,20 @@
 <template>
   <ul class="list">
     <li class="item"><nuxt-link @click.native="$mixpanel.track(`Nav - What's a DApp`)" to="/whats-a-dapp" class="link">What's a ÐApp</nuxt-link></li>
-    <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="link">About</nuxt-link></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="#" class="link -twitter" target="_blank">Twitter</a></li>  
-    <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="#" class="link -github" target="_blank">Github</a></li>  
+    <!-- <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="link">About</nuxt-link></li> -->
+    <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank">Twitter</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank">Github</a></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/submit" class="link -submit">Submit a ÐApp</nuxt-link></li>
   </ul>
 </template>
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .item {
     display: inline-block;
   }
-  
+
   .link {
     display: inline-block;
     padding: 8px 6px;
@@ -54,7 +54,7 @@
       }
     }
   }
-  
+
   .list {
     text-align: center;
     @include tweakpoint('min-width', $tweakpoint--default) {

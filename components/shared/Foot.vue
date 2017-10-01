@@ -2,8 +2,8 @@
   <div>
     <p class="logo-wrapper"><img class="logo" src="/images/logo-reverse.png" width="190"></p>
     <ul class="social-list">
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Twitter')" href="#" class="social-link -twitter"><img src="/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Github')" href="#" class="social-link -github"><img src="/images/social/github-reverse.png" width="21" alt="Github"></a></li>
+      <li class="social-item"><a @click="$mixpanel.track('Footer - Twitter')" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
+      <li class="social-item"><a @click="$mixpanel.track('Footer - Github')" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="/images/social/github-reverse.png" width="21" alt="Github"></a></li>
     </ul>
     <h4 class="disclaimer-heading">
       <nuxt-link @click.native="$mixpanel.track('Nav - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
