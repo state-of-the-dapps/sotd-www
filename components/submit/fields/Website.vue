@@ -1,6 +1,6 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-      <input class="text-input" :class="website.length > 0 ? '--is-filled' : ''" type="text" maxlength="25" v-model="website" @input="validate">
+      <input class="text-input" :class="website.length > 0 ? '--is-filled' : ''" type="text" maxlength="500" v-model="website" @input="validate">
       <label class="label">Website url<span class="required">(required)</span></label>
       <span class="remaining-characters">{{ 500 - website.length }}</span>
       <ul v-if="errors && errors.length > 0" class="error-list">
@@ -12,9 +12,9 @@
 
 <script>
   import { dispatchErrors } from '~/plugins/mixins'
-  
+
   var validationTimer
-  
+
   export default {
     computed: {
       errors () {
