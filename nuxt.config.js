@@ -41,6 +41,7 @@ module.exports = {
   ],
   env: {
     apiUrl: process.env.API_URL || 'http://localhost:3000',
+    fullstory: process.env.FULLSTORY || '00000',
     googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X',
     mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
   },
@@ -65,6 +66,7 @@ module.exports = {
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/smoothscroll-polyfill', ssr: false },
-    { src: '~/plugins/ga', ssr: false }
+    { src: '~/plugins/ga', ssr: false },
+    { src: '~/plugins/fullstory', ssr: false }
   ]
 }
