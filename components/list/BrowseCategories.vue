@@ -10,7 +10,7 @@
 
 <script>
   import { directive as onClickaway } from 'vue-clickaway'
-  
+
   export default {
     computed: {
       isActive () {
@@ -30,7 +30,6 @@
       return {
         options: [
           'recently added',
-          'most viewed',
           'recently updated'
         ]
       }
@@ -66,7 +65,7 @@
     z-index: 10;
     box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
   }
-  
+
   .item {
     margin: 4px 0;
     font-size: .95rem;
