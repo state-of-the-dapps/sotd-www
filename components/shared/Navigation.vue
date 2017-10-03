@@ -4,6 +4,8 @@
     <!-- <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="link">About</nuxt-link></li> -->
     <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank">Twitter</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank">Github</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="link -reddit" target="_blank">Reddit</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Medium')" href="https://medium.com/ethercasts" class="link -medium" target="_blank">Medium</a></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/submit" class="link -submit">Submit a ÐApp</nuxt-link></li>
   </ul>
 </template>
@@ -20,23 +22,37 @@
     padding: 8px 6px;
     text-decoration: none;
     transition: opacity .2s ease;
-    &.-github {
-      background: url('/images/social/github.png') center center no-repeat;
-      margin-right: 5px;
-      @include tweakpoint('min-width', $tweakpoint--default) {
-          margin-right: 16px;
-      }
-    }
     &.-twitter {
       background: url('/images/social/twitter.png') center center no-repeat;
       margin-left: 5px;
       margin-right: 5px;
       @include tweakpoint('min-width', $tweakpoint--default) {
-          margin-left: 10px;
+          margin-left: 5px;
           margin-right: 5px;
       }
     }
-    &.-twitter, &.-github {
+    &.-github {
+      background: url('/images/social/github.png') center center no-repeat;
+      margin-right: 5px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+          margin-right: 5px;
+      }
+    }
+    &.-reddit {
+      background: url('/images/social/reddit.png') center center no-repeat;
+      margin-right: 5px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+          margin-right: 5px;
+      }
+    }
+    &.-medium {
+      background: url('/images/social/medium.png') center center no-repeat;
+      margin-right: 5px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+          margin-right: 16px;
+      }
+    }
+    &.-twitter, &.-github, &.-reddit, &.-medium {
       text-align: left;
       text-indent: -99999px;
       width: 21px;
