@@ -52,7 +52,7 @@
               this.dispatchErrors(errors)
             })
             .catch((error) => {
-              return
+              console.log('Name is available')
             })
         }, 750)
       }
