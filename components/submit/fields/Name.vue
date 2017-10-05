@@ -12,9 +12,9 @@
 <script>
   import { dispatchErrors } from '~/plugins/mixins'
   import axios from '~/plugins/axios'
-  
+
   var validationTimer
-  
+
   export default {
     computed: {
       errors () {
@@ -50,6 +50,9 @@
                 errors.data.push(`Name has already been taken`)
               }
               this.dispatchErrors(errors)
+            })
+            .catch((error) => {
+              return
             })
         }, 750)
       }
