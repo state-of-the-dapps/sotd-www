@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <a :href="item.website" @click="$mixpanel.track('DApp - Website', { url: item.website })" class="link" target="_blank">Visit website</a>
+    <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - Website', { url: item.website })" class="link" target="_blank">Visit website</a>
   </div>
 </template>
 
