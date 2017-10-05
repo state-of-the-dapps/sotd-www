@@ -27,7 +27,7 @@
     },
     methods: {
       setActive (slug) {
-        this.$mixpanel.track('DApp - Related')
+        this.$mixpanel.track('DApp - Related', { targetDapp: slug })
         if (this.popup) {
           this.$store.dispatch('dapps/setActiveItemIndex', -1)
           document.getElementById('close').scrollIntoView()

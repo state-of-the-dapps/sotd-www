@@ -1,7 +1,7 @@
 <template>
   <transition name="fade" v-if="itemsCount > 0">
       <div class="list">
-        <nuxt-link v-for="(item, key) in items" @click.native="updateIndex(key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+        <nuxt-link v-for="(item, key) in items" @click.native="updateIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
           <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
           <ul class="badge-list" v-if="item.badges">
             <li v-for="badge in item.badges" class="badge-item"><img :src="'/images/badges/' + badge + '.png'" width="16" class="badge-image" :title="badge | capitalize"></li>
@@ -33,8 +33,8 @@
       }
     },
     methods: {
-      updateIndex (key) {
-        this.$mixpanel.track('DApps - Detail popup')
+      updateIndex (item, key) {
+        this.$mixpanel.track('DApps - Detail popup', { targetDapp: item.slug })
         this.$store.dispatch('dapps/setActiveItemIndex', key)
       }
     },
