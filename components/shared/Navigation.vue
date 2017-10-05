@@ -5,7 +5,7 @@
     <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank">Twitter</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank">Github</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="link -reddit" target="_blank">Reddit</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Medium')" href="https://medium.com/ethercasts" class="link -medium" target="_blank">Medium</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Medium')" href="https://blog.stateofthedapps.com/" class="link -medium" target="_blank">Medium</a></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/submit" class="link -submit">Submit a ÐApp</nuxt-link></li>
   </ul>
 </template>
