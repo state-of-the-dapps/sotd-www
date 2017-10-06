@@ -9,7 +9,7 @@
           <ToolsSection/>
           <RelatedDappsSection/>
         </div>
-        <div @click="$mixpanel.track('DApp popup - Close')" class="close" id="close">
+        <div class="close" id="close">
           <img src="/images/close/large.png" width="20" />
         </div>
         <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="updateIndex('prev')">
