@@ -29,11 +29,11 @@
         return this.$store.getters['dapp/active']
       }
     },
-    fetch ({ store, params }) {
+    mounted () {
       return axios
-        .get('dapps/' + params.slug)
+        .get('dapps/' + this.$route.params.slug)
         .then(response => {
-          store.dispatch('dapp/setActive', response.data)
+          this.$store.dispatch('dapp/setActive', response.data)
         })
     },
     head () {
