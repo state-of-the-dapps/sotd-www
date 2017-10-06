@@ -30,6 +30,9 @@
       return {
         options: [
           'recently added',
+          'most popular',
+          'most viewed',
+          'most clicked',
           'recently updated'
         ]
       }
