@@ -5,6 +5,7 @@
   "author": "rob@enginecollaborative.com",
   "private": true,
   "dependencies": {
+    "@nuxtjs/google-analytics": "^1.0.0",
     "@nuxtjs/router": "^1.0.1",
     "axios": "^0.16.2",
     "mixpanel-browser": "^2.13.0",

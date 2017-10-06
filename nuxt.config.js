@@ -31,7 +31,8 @@ module.exports = {
   */
   mode: process.env.MODE || 'universal',
   modules: [
-    '@nuxtjs/router'
+    '@nuxtjs/router',
+    ['@nuxtjs/google-analytics', { id: process.env.GOOGLE_ANALYTICS }]
   ],
   router: {
     saveScrollPosition: true
@@ -42,7 +43,6 @@ module.exports = {
   env: {
     apiUrl: process.env.API_URL || 'http://localhost:3000',
     fullstory: process.env.FULLSTORY || '00000',
-    googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-XXXXXXXX-X',
     mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
   },
   head: {
@@ -66,7 +66,6 @@ module.exports = {
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/smoothscroll-polyfill', ssr: false },
-    { src: '~/plugins/ga', ssr: false },
     { src: '~/plugins/fullstory', ssr: false }
   ]
 }
