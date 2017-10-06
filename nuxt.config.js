@@ -32,7 +32,7 @@ module.exports = {
   mode: process.env.MODE || 'universal',
   modules: [
     '@nuxtjs/router',
-    ['@nuxtjs/google-analytics', { id: process.env.GOOGLE_ANALYTICS }]
+    ['@nuxtjs/google-analytics', { ua: process.env.GOOGLE_ANALYTICS }]
   ],
   router: {
     saveScrollPosition: true
