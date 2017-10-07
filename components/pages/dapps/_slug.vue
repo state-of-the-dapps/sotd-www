@@ -30,7 +30,8 @@
       }
     },
     mounted () {
-      return axios
+      this.$mixpanel.track('DApp - View', { targetDapp: this.$route.params.slug })
+      axios
         .get('dapps/' + this.$route.params.slug)
         .then(response => {
           this.$store.dispatch('dapp/setActive', response.data)

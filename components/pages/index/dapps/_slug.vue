@@ -106,6 +106,7 @@
       }
     },
     mounted () {
+      this.$mixpanel.track('DApp - View', { targetDapp: this.$route.params.slug })
       document.body.classList.add('--has-popup')
       this.$store.dispatch('dapp/showPopup')
       window.addEventListener('keyup', this.escapeToHide)
