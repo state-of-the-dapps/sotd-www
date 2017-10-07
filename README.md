@@ -1,6 +1,6 @@
 # State of the DApps Frontend - Nuxt.js
 
-Designed by [Engine Collaborative](https://www.enginecollaborative.com)
+- Designed by [Engine Collaborative](https://www.enginecollaborative.com)
 
 ## ENV
 
@@ -27,3 +27,7 @@ $ npm start
 ## More info
 
 For detailed explanation on how Nuxt works, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js)
+
+## Acknowledgements
+
+- v1 design by [Chris Hitchcott](http://hitchcott.com)
