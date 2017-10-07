@@ -82,6 +82,9 @@
       border-radius: 4px;
       padding: 0;
     }
+    &.-description {
+      order: -1;
+    }
     @include tweakpoint('min-width', $tweakpoint--default) {
       &.-author {
         width: calc(33.33% - 20px);
