@@ -3,7 +3,7 @@
     <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="/images/search.png" width="20"></a>
     <ul class="input-wrapper">
       <li v-for="(tag, key) in tags" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="/images/close/small.png" width="9" alt="Close" class="close"></span></li>
-      <li class="input-text"><input class="input" v-model="textQuery" @input="search" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
+      <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="enter" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
     </ul>
   </div>
 </template>
@@ -12,7 +12,7 @@
   import { getCaretPosition } from '~/plugins/mixins'
   var searchTimer
   var trackTimer
-  
+
   export default {
     computed: {
       tags: {
@@ -30,6 +30,9 @@
       }
     },
     methods: {
+      enter () {
+        document.getElementById('search').blur()
+      },
       removeLastTag () {
         if (this.textQuery.length < 1 && this.tags.length > 0) {
           this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
@@ -44,7 +47,7 @@
         this.$store.dispatch('tags/reset')
         this.$store.dispatch('dapps/findItems')
       },
-      search () {
+      search (event) {
         clearTimeout(searchTimer)
         clearTimeout(trackTimer)
         var caret = this.getCaretPosition(this.textQuery)
@@ -67,7 +70,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .close {
     position: relative;
     top: 1px;
@@ -76,7 +79,7 @@
       cursor: pointer;
     }
   }
-  
+
   .icon {
     display: flex;
     align-items: center;
@@ -92,7 +95,7 @@
       height: 60px;
     }
   }
-  
+
   .input {
     height: 100%;
     padding: 0px;
@@ -101,7 +104,7 @@
     border: none;
     width: 100%;
   }
-  
+
   .input-text {
     display: flex;
     flex-grow: 1;
@@ -115,7 +118,7 @@
       padding-left: 5px;
     }
   }
-  
+
   .input-wrapper {
     display: flex;
     flex-grow: 1;
@@ -129,7 +132,7 @@
       padding-right: 15px;
     }
   }
-  
+
   .tag {
     display: flex;
     align-items: center;
@@ -145,7 +148,7 @@
       line-height: 1.52;
     }
   }
-  
+
   .wrapper {
     position: relative;
     z-index: 5;
