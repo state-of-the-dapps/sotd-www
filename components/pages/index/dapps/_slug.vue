@@ -12,10 +12,10 @@
         <div class="close" id="close">
           <img src="/images/close/large.png" width="20" />
         </div>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="updateIndex('prev')">
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="updateDapp('prev', items[itemIndex - 1].slug)">
           <img src="/images/arrows/back.png" width="20" />
         </nuxt-link>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="updateIndex('next')">
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="updateDapp('next', items[itemIndex + 1].slug)">
           <img src="/images/arrows/next.png" width="20" />
         </nuxt-link>
       </div>
@@ -93,14 +93,14 @@
         this.$store.dispatch('dapps/setActiveItemIndex', -1)
         this.$router.push('/')
       },
-      updateIndex (direction) {
+      updateDapp (direction, slug) {
         let num = 0
         if (direction === 'prev') {
           num = -1
         } else if (direction === 'next') {
           num = 1
         }
-        this.$mixpanel.track('DApp popup - ' + direction.charAt(0).toUpperCase() + direction.slice(1))
+        this.$mixpanel.track('DApp popup - ' + direction.charAt(0).toUpperCase() + direction.slice(1), { targetDapp: slug })
         this.$store.dispatch('dapps/setActiveItemIndex', this.itemIndex + num)
         document.getElementById('close').scrollIntoView()
       }
