@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import About from '~/components/pages/about.vue'
-import Confirmation from '~/components/pages/confirmation.vue'
-import Index from '~/components/pages/index.vue'
-import IndexIndex from '~/components/pages/index/index.vue'
-import IndexDapp from '~/components/pages/index/dapps/_slug.vue'
-import Submit from '~/components/pages/submit.vue'
-import Terms from '~/components/pages/terms.vue'
-import WhatsADapp from '~/components/pages/whats-a-dapp.vue'
-import Dapp from '~/components/pages/dapps/_slug.vue'
+const About = () => import('~/components/pages/about.vue').then(m => m.default || m)
+const Confirmation = () => import('~/components/pages/confirmation.vue').then(m => m.default || m)
+const Index = () => import('~/components/pages/index.vue').then(m => m.default || m)
+const IndexIndex = () => import('~/components/pages/index/index.vue').then(m => m.default || m)
+const IndexDapp = () => import('~/components/pages/index/dapps/_slug.vue').then(m => m.default || m)
+const Submit = () => import('~/components/pages/submit.vue').then(m => m.default || m)
+const Terms = () =>  import('~/components/pages/terms.vue').then(m => m.default || m)
+const WhatsADapp = () => import('~/components/pages/whats-a-dapp.vue').then(m => m.default || m)
+const Dapp = () => import('~/components/pages/dapps/_slug.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
