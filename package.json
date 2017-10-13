@@ -10,6 +10,7 @@
     "axios": "^0.16.2",
     "mixpanel-browser": "^2.13.0",
     "nuxt": "1.0.0-rc8",
+    "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.3.6",
     "vue-clickaway": "^2.1.0",
     "webfontloader": "^1.6.28"
