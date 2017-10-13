@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" :style="{ left: position.xPos + 'px', top: position.yPos + 22 + 'px' }" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option | formatRefine }}</li>
+        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option | formatStatus }}</li>
       </ul>
     </div>
   </transition>
@@ -29,10 +29,15 @@
     data () {
       return {
         options: [
-          'nothing',
-          'ponzi',
-          'ico',
-          'financial'
+          'any',
+          'live',
+          'demo',
+          'prototype',
+          'wip',
+          'concept',
+          'stealth',
+          'unknown',
+          'abandoned'
         ]
       }
     },

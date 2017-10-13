@@ -4,7 +4,7 @@ export const state = () => {
   return {
     query: {
       category: 'recently added',
-      refine: 'nothing',
+      refine: 'any',
       tags: [],
       text: ''
     },

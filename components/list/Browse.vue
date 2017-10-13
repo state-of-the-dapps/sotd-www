@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory }}</span> and hide <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine | formatRefine }}</span></li>
+    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory }}</span> with status <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine | formatStatus }}</span></li>
   </ul>
 </template>
 

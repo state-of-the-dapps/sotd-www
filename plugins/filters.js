@@ -48,22 +48,6 @@ Vue.filter('formatStatus',
   }
 )
 
-Vue.filter('formatRefine',
-  value => {
-    if (value) {
-      let option = ''
-      switch (value) {
-        case 'ico':
-          option = 'ICO'
-          break
-        default:
-          option = value
-      }
-      return option
-    }
-  }
-)
-
 Vue.filter('additionalAuthorsCount',
   value => {
     if (value) {

@@ -5,7 +5,7 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
-    selected: 'nothing'
+    selected: 'any'
   }
 }
 
