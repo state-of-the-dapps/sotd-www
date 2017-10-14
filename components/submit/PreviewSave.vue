@@ -5,7 +5,7 @@
           <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
           <div class="info">
               <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
-                  <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>N</span></p>
+                  <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
               </div>
               <div class="description-wrapper">
                   <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>ÐApp preview</span></h3>
@@ -15,11 +15,25 @@
           </div>
           <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatStatus }}</p>
       </div>
+      <div class="checkboxes">
+        <div class="checkbox-field">
+          <input class="checkbox-input" type="checkbox" id="subscribe-newsletter-checkbox" v-model="subscribeNewsletter">
+          <label class="checkbox-label" for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
+        </div>
+        <div class="checkbox-field">
+          <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
+          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SoTÐ slack community</label>
+        </div>
+        <div class="checkbox-field">
+          <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
+          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
+        </div>
+      </div>
       <input type="text" class="yumyum" v-model="honeypot">
       <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'1 field needs your attention'">
       <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
       <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
-      <input v-else="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">      
+      <input v-else="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
     </div>
   </div>
 </template>
@@ -41,11 +55,40 @@
       name () {
         return this.$store.getters['submit/name']
       },
+      subscribeNewsletter: {
+        get () {
+          return this.$store.getters['submit/subscribeNewsletter']
+        },
+        set () {
+          this.$store.dispatch('submit/toggleCheckbox', 'subscribeNewsletter')
+        }
+      },
+      joinSlack: {
+        get () {
+          return this.$store.getters['submit/joinSlack']
+        },
+        set () {
+          this.$store.dispatch('submit/toggleCheckbox', 'joinSlack')
+        }
+      },
       status () {
         return this.$store.getters['submit/status']
       },
       teaser () {
         return this.$store.getters['submit/teaser']
+      },
+      acceptedTerms: {
+        get () {
+          return this.$store.getters['submit/acceptedTerms']
+        },
+        set () {
+          this.$store.dispatch('submit/toggleCheckbox', 'acceptedTerms')
+          if (this.acceptedTerms === false) {
+            this.$store.dispatch('submit/addErrorField', 'acceptedTerms')
+          } else {
+            this.$store.dispatch('submit/removeErrorField', 'acceptedTerms')
+          }
+        }
       }
     },
     data: () => {
@@ -79,15 +122,15 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .attribution {
     margin: 0;
   }
-  
+
   .badge-item {
     margin-left: 2px;
   }
-  
+
   .badge-list {
     position: absolute;
     display: flex;
@@ -95,22 +138,73 @@
     top: -2px;
     z-index: 5;
   }
-  
+
+  .checkboxes {
+    margin: 12px auto 0;
+    width: 300px;
+    @include tweakpoint('min-width', 900px) {
+      margin-left: 0;
+    }
+  }
+
+  .checkbox-field {
+    margin-top: 9px;
+    display: flex;
+  }
+
+  .checkbox-input {
+    display: none;
+    position: relative;
+    &:checked + .checkbox-label:after {
+      transform: scale(1);
+    }
+  }
+
+  .checkbox-label {
+    padding-left: 22px;
+    position: relative;
+    display: flex;
+    &:before {
+      cursor: pointer;
+      content: '';
+      display: block;
+      width: 13px;
+      height: 13px;
+      border: 1px solid $color--mine-shaft;
+      position: absolute;
+      top: 1px;
+      left: 0;
+    }
+    &:after {
+      cursor: pointer;
+      content: '';
+      display: block;
+      background: $color--mine-shaft;
+      transition: transform .1s ease;
+      transform: scale(0);
+      width: 9px;
+      height: 9px;
+      position: absolute;
+      top: 3px;
+      left: 2px;
+    }
+  }
+
   .description {
     margin: 0;
     @include tweakpoint('min-width', 900px) {
       margin-top: 10px;
-    }           
+    }
   }
-  
+
   .description-wrapper {
     flex: 1;
   }
-  
+
   .icon-image {
     max-width: 100%;
   }
-  
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
@@ -144,7 +238,7 @@
       height: 75px;
     }
   }
-  
+
   .info {
     display: flex;
     align-items: center;
@@ -157,7 +251,7 @@
       margin-top: 25px;
     }
   }
-  
+
   .item {
     position: relative;
     overflow: hidden;
@@ -174,7 +268,7 @@
     }
     @include tweakpoint('min-width', 900px) {
       width: calc(33.33% - 20px);
-      height: 285px;
+      height: 240px;
       justify-content: center;
       align-items: flex-start;
       margin-bottom: 20px;
@@ -199,22 +293,22 @@
       background: $color--screamin-green;
     }
     &.-demo {
-      background: $color--paris-daisy;            
+      background: $color--paris-daisy;
     }
     &.-prototype {
-      background: $color--golden-tainoi;            
+      background: $color--golden-tainoi;
     }
     &.-wip {
-      background: $color--anakiwa;            
+      background: $color--anakiwa;
     }
     &.-concept {
-      background: $color--perfume;            
+      background: $color--perfume;
     }
     &.-stealth {
-      background: $color--alabaster; 
+      background: $color--alabaster;
     }
     &.-abandoned, &.-unknown {
-      background: $color--alabaster;   
+      background: $color--alabaster;
       &:after {
         content: " ";
         position: absolute;
@@ -241,7 +335,7 @@
       opacity: .6;
     }
   }
-  
+
   .new-banner {
     position: absolute;
     top: 0;
@@ -253,7 +347,7 @@
     margin: 0;
     z-index: 5;
   }
-  
+
   .new-message {
     color: $color--gallery;
     display: inline-block;
@@ -281,7 +375,13 @@
       color: $color--alabaster;
     }
   }
-  
+
+  .required {
+    display: inline-block;
+    padding-left: 2px;
+    color: $color--tart-orange;
+  }
+
   .status {
     position: absolute;
     bottom: 0;
@@ -302,21 +402,21 @@
       border-color: $color--gorse;
     }
     &.-prototype {
-      border-color: $color--koromiko;            
+      border-color: $color--koromiko;
     }
     &.-wip {
-      border-color: $color--malibu;            
+      border-color: $color--malibu;
     }
     &.-concept {
-      border-color: $color--portage;            
+      border-color: $color--portage;
     }
   }
-  
+
   .sticky {
     position: sticky;
     top: 19px;
   }
-  
+
   .submit {
     display: block;
     margin: 0 auto;
@@ -346,7 +446,7 @@
       }
     }
   }
-  
+
   .title {
     margin: 0;
     font-size: 1.5rem;
@@ -354,11 +454,11 @@
       margin-top: 15px;
     }
   }
-  
+
   .url {
       width: 300px;
   }
-  
+
   .wrapper {
     width: 100%;
     max-width: 400px;
@@ -371,7 +471,7 @@
       margin-right: 0;
     }
   }
-  
+
   .yumyum {
     display: none;
   }
