@@ -11,6 +11,7 @@ function initialState () {
       'status',
       'tags',
       'teaser',
+      'acceptedTerms',
       'website'
     ],
     errors: {
@@ -25,6 +26,7 @@ function initialState () {
       ropsten: [],
       tags: [],
       teaser: [],
+      acceptedTerms: [],
       website: []
     },
     fields: {
@@ -32,6 +34,7 @@ function initialState () {
       author: '',
       description: '',
       email: '',
+      joinSlack: true,
       license: '',
       logo: '',
       mainnet: '',
@@ -48,8 +51,10 @@ function initialState () {
         wiki: { url: '' }
       },
       status: '',
+      subscribeNewsletter: true,
       tags: [],
       teaser: '',
+      acceptedTerms: false,
       website: ''
     },
     tagsQuery: '',
@@ -121,6 +126,9 @@ export const mutations = {
   setTagsResults (state, items) {
     state.tagsResults = items
   },
+  toggleCheckbox (state, field) {
+    state.fields[field] = !state.fields[field]
+  },
   updateErrors (state, errors) {
     state.errors[errors.field] = errors.data
   },
@@ -171,6 +179,9 @@ export const actions = {
   selectTag ({ commit }, index) {
     commit('selectTag', index)
   },
+  toggleCheckbox ({ commit }, field) {
+    commit('toggleCheckbox', field)
+  },
   updateErrors ({ commit }, value) {
     commit('updateErrors', value)
   },
@@ -216,6 +227,9 @@ export const getters = {
   errorFields: state => {
     return state.errorFields
   },
+  joinSlack: state => {
+    return state.fields.joinSlack
+  },
   license: state => {
     return state.fields.license
   },
@@ -246,6 +260,9 @@ export const getters = {
   ropstenErrors: state => {
     return state.errors.ropsten
   },
+  selectedTags: state => {
+    return state.fields.tags
+  },
   socialBlog: state => {
     return state.fields.social.blog.url
   },
@@ -273,8 +290,8 @@ export const getters = {
   status: state => {
     return state.fields.status
   },
-  selectedTags: state => {
-    return state.fields.tags
+  subscribeNewsletter: state => {
+    return state.fields.subscribeNewsletter
   },
   tagsQuery: state => {
     return state.tagsQuery
@@ -287,6 +304,9 @@ export const getters = {
   },
   teaserErrors: state => {
     return state.errors.teaser
+  },
+  acceptedTerms: state => {
+    return state.fields.acceptedTerms
   },
   website: state => {
     return state.fields.website
