@@ -107,7 +107,13 @@
             .then((response) => {
               this.sending = false
               this.$store.dispatch('submit/reset')
-              this.$mixpanel.track('New DApp - Submit', { disabled: false })
+              this.$mixpanel.track('New DApp - Submit', {
+                name: obj.data.name,
+                email: obj.data.email,
+                author: obj.data.author,
+                joinSlack: obj.data.joinSlack,
+                subscribeNewsletter: obj.data.subscribeNewsletter
+              })
               this.$router.replace({ path: '/confirmation' })
             })
             .catch((error) => {
