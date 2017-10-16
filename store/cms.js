@@ -6,10 +6,11 @@ export const state = () => {
       <p class="paragraph">The inspiration for State of the DApps came from FreshMeat now known as <a href="http://freecode.com/" target="_blank">FreeCode</a> which was a site reference for Linux users, which had a big inventory of the open source applications, games and all sources for Linux.</p>
       <p class="paragraph">In State of the DApps there are many projects covering different fields such as health, Ponzi schemes, games, virtual reality, artificial intelligence, education, registries, job markets, tinder for horses and many more. The directory has become one of the biggest reference for the Ethereum ecosystem, we are referred to in talks, workshops, meetups; <a href="https://twitter.com/VitalikButerin" target="_blank">Vitalik Buterin</a> included uses State of the DApps.</p>
       <p class="paragraph">We already have a really wonderful team contributing to the growth of the project, and our goal is to connect DApp creators and users.</p>
+      <p class="paragraph">State of the DApps is a privately funded and independent project. We are open to collaboration with others when it is a good match for both parties, but what makes us successful is our autonomy &amp; objectivity.</p>
       <p class="paragraph">The entire project is open-source and available on github: <a href="https://github.com/state-of-the-dapps" target="_blank">https://github.com/state-of-the-dapps</a></p>
       <p class="paragraph">Watch our video presentation of the project: <a href="https://youtu.be/iqBNPh5IMqM" target="_blank">https://youtu.be/iqBNPh5IMqM</a></p>
 
-      <p class="paragraph">And remember... smart contract: neither smart, nor a contract!</p>
+      <p class="paragraph">And remember... smart contracts are neither smart, nor contracts!</p>
       `
     },
     confirmation: {
