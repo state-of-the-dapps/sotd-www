@@ -27,10 +27,16 @@
     computed: {
       active () {
         return this.$store.getters['dapp/active']
+      },
+      viewMethod () {
+        return this.$store.getters['dapp/viewMethod']
       }
     },
     mounted () {
-      this.$mixpanel.track('DApp - View', { targetDapp: this.$route.params.slug })
+      this.$mixpanel.track('DApp - View', {
+        targetDapp: this.$route.params.slug,
+        method: this.viewMethod
+      }, this.$store.dispatch('dapp/resetViewMethod'))
       axios
         .get('dapps/' + this.$route.params.slug)
         .then(response => {
