@@ -23,14 +23,21 @@
         } else {
           return 'dapps-slug'
         }
+      },
+      viewMethod () {
+        return this.$store.getters['dapp/viewMethod']
       }
     },
     methods: {
       setActive (slug) {
-        this.$mixpanel.track('DApp - Related', { targetDapp: slug })
+        this.$store.dispatch('dapp/setViewMethod', 'related')
         if (this.popup) {
           this.$store.dispatch('dapps/setActiveItemIndex', -1)
           document.getElementById('close').scrollIntoView()
+          this.$mixpanel.track('DApp - View', {
+            targetDapp: slug,
+            method: this.viewMethod
+          }, this.$store.dispatch('dapp/resetViewMethod'))
         }
       }
     }

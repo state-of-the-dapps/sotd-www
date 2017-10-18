@@ -34,7 +34,7 @@
     },
     methods: {
       updateIndex (item, key) {
-        this.$mixpanel.track('DApps - Detail popup', { targetDapp: item.slug })
+        this.$store.dispatch('dapp/setViewMethod', 'popup')
         this.$store.dispatch('dapps/setActiveItemIndex', key)
       }
     },

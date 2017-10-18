@@ -1,7 +1,8 @@
 export const state = () => {
   return {
     popup: false,
-    active: {}
+    active: {},
+    viewMethod: 'direct'
   }
 }
 
@@ -17,6 +18,12 @@ export const mutations = {
   },
   reset (state) {
     state.active = {}
+  },
+  resetViewMethod (state) {
+    state.viewMethod = ''
+  },
+  setViewMethod (state, method) {
+    state.viewMethod = method
   },
   togglePopup (state) {
     state.popup = !state.popup
@@ -41,6 +48,12 @@ export const actions = {
   reset ({ commit }) {
     commit('reset')
   },
+  resetViewMethod ({ commit }) {
+    commit('resetViewMethod')
+  },
+  setViewMethod ({ commit }, method) {
+    commit('setViewMethod', method)
+  },
   togglePopup ({ commit }) {
     commit('togglePopup')
   }
@@ -55,5 +68,8 @@ export const getters = {
   },
   activeRelated: state => {
     return state.active.related
+  },
+  viewMethod: state => {
+    return state.viewMethod
   }
 }

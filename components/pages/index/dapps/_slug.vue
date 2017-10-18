@@ -52,6 +52,9 @@
       },
       popup () {
         return this.$store.getters['dapp/popup']
+      },
+      viewMethod () {
+        return this.$store.getters['dapp/viewMethod']
       }
     },
     destroyed () {
@@ -97,16 +100,24 @@
         let num = 0
         if (direction === 'prev') {
           num = -1
+          this.$store.dispatch('dapp/setViewMethod', 'prev')
         } else if (direction === 'next') {
           num = 1
+          this.$store.dispatch('dapp/setViewMethod', 'next')
         }
-        this.$mixpanel.track('DApp popup - ' + direction.charAt(0).toUpperCase() + direction.slice(1), { targetDapp: slug })
         this.$store.dispatch('dapps/setActiveItemIndex', this.itemIndex + num)
         document.getElementById('close').scrollIntoView()
+        this.$mixpanel.track('DApp - View', {
+          targetDapp: slug,
+          method: this.viewMethod
+        }, this.$store.dispatch('dapp/resetViewMethod'))
       }
     },
     mounted () {
-      this.$mixpanel.track('DApp - View', { targetDapp: this.$route.params.slug })
+      this.$mixpanel.track('DApp - View', {
+        targetDapp: this.$route.params.slug,
+        method: this.viewMethod
+      }, this.$store.dispatch('dapp/resetViewMethod'))
       document.body.classList.add('--has-popup')
       this.$store.dispatch('dapp/showPopup')
       window.addEventListener('keyup', this.escapeToHide)
