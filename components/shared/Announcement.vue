@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="message">{{ message }}<span v-if="url && urlText"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: url })" :href="url" class="link" target="_blank">{{ urlText }}</a><a href="#" class="close"><img src="/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a></span></p>
+    <p class="message">{{ message }}<span v-if="url && urlText"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: url })" :href="url" class="link" target="_blank">{{ urlText }}</a></span><a href="#" class="close"><img src="/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a></p>
   </div>
 </template>
 
@@ -28,7 +28,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .close {
     display: none;
     position: absolute;
@@ -39,11 +39,11 @@
       right: 20px;
     }
   }
-  
+
   .link {
     color: $color--gallery;
   }
-  
+
   .message {
     text-align: center;
     color: $color--gallery;
