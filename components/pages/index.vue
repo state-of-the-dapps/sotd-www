@@ -21,6 +21,11 @@
       ResultsBrowseSection,
       ResultsEndSection
     },
+    head () {
+      return {
+        title: 'State of the ÐApps - The Curated Collection for Ethereum'
+      }
+    },
     scrollToTop: false
   }
 </script>
