@@ -144,6 +144,7 @@
     margin: 2px;
     margin-right: 5px;
     line-height: .75;
+    white-space: nowrap;
     @include tweakpoint('min-width', $tweakpoint--default) {
       line-height: 1.52;
     }
