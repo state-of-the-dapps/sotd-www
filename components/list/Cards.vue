@@ -212,7 +212,6 @@
   .list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
   }
 
   .new-banner {
