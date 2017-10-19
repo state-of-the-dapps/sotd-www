@@ -9,7 +9,7 @@
   export default {
     computed: {
       totalDappCount () {
-        return this.$store.getters['dapps/totalCount']
+        return this.$store.getters['dapps/statsTotalCount']
       }
     }
   }

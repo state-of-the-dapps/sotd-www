@@ -2,21 +2,41 @@ import axios from '~/plugins/axios'
 
 export const state = () => {
   return {
+    pagination: {
+      offset: 0,
+      totalCount: 0
+    },
     query: {
       category: 'recently added',
+      limit: 50,
+      offset: 0,
       refine: 'any',
       tags: [],
       text: ''
     },
-    totalCount: '',
+    loading: false,
     items: [],
-    activeItemIndex: -1
+    activeItemIndex: -1,
+    stats: {
+      totalCount: ''
+    }
   }
 }
 
 export const mutations = {
-  setItems (state, items) {
-    state.items = items
+  setItems (state, response) {
+    state.pagination.totalCount = Number(response.headers['x-pagination-count'])
+    state.pagination.offset = Number(response.headers['x-pagination-offset'])
+    if (state.pagination.offset === 0) {
+      state.items = response.data
+    } else {
+      let items = state.items.concat(response.data)
+      state.items = items
+    }
+    state.query.offset = 0
+  },
+  incrementOffsetQuery (state) {
+    state.query.offset = state.pagination.offset + state.query.limit
   },
   setCategoryQuery (state, value) {
     state.query.category = value
@@ -39,20 +59,28 @@ export const mutations = {
   setTextQuery (state, value) {
     state.query.text = value
   },
-  setTotalCount (state, value) {
-    state.totalCount = value
+  setStatsTotalCount (state, value) {
+    state.stats.totalCount = value
+  },
+  updateLoading (state, value) {
+    state.loading = value
   }
 }
 
 export const actions = {
   findItems: ({ commit, state }) => {
+    commit('updateLoading', true)
     axios
       .get('dapps', {
         params: state.query
       })
       .then(response => {
-        commit('setItems', response.data)
+        commit('setItems', response)
+        commit('updateLoading', false)
       })
+  },
+  incrementOffsetQuery: ({ commit }) => {
+    commit('incrementOffsetQuery')
   },
   updateCategoryQuery: ({ commit }, value) => {
     commit('setCategoryQuery', value)
@@ -75,11 +103,11 @@ export const actions = {
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
   },
-  findTotalCount: ({ commit }) => {
+  findStatsTotalCount: ({ commit }) => {
     axios
       .get('stats')
       .then(response => {
-        commit('setTotalCount', response.data.dappCount)
+        commit('setStatsTotalCount', response.data.dappCount)
       })
   }
 }
@@ -97,8 +125,20 @@ export const getters = {
   categoryQuery: state => {
     return state.query.show
   },
+  limitQuery: state => {
+    return state.query.limit
+  },
+  loading: state => {
+    return state.loading
+  },
   refineQuery: state => {
     return state.query.hide
+  },
+  paginationOffset: state => {
+    return state.pagination.offset
+  },
+  paginationTotalCount: state => {
+    return state.pagination.totalCount
   },
   tagsQuery: state => {
     return state.query.tags
@@ -106,7 +146,7 @@ export const getters = {
   textQuery: state => {
     return state.query.text
   },
-  totalCount: state => {
-    return state.totalCount
+  statsTotalCount: state => {
+    return state.stats.totalCount
   }
 }

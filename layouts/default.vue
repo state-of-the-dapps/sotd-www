@@ -19,7 +19,7 @@
       MastheadSection
     },
     mounted () {
-      this.$store.dispatch('dapps/findTotalCount')
+      this.$store.dispatch('dapps/findStatsTotalCount')
     }
   }
 </script>
