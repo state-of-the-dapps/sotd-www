@@ -16,6 +16,9 @@
       isActive () {
         return this.$store.getters['dapps/browseCategories/isActive']
       },
+      options () {
+        return this.$store.getters['dapps/browseCategories/options']
+      },
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/browseCategories/selected']
         const options = this.options.slice()
@@ -24,17 +27,6 @@
       },
       position () {
         return this.$store.getters['dapps/browseCategories/position']
-      }
-    },
-    data () {
-      return {
-        options: [
-          'recently added',
-          'most popular',
-          'most viewed',
-          'most clicked',
-          'recently updated'
-        ]
       }
     },
     directives: {

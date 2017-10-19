@@ -5,6 +5,13 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
+    options: [
+      'recently added',
+      'most popular',
+      'most viewed',
+      'most clicked',
+      'recently updated'
+    ],
     selected: 'recently added'
   }
 }
@@ -38,6 +45,9 @@ export const actions = {
 export const getters = {
   isActive: state => {
     return state.isActive
+  },
+  options: state => {
+    return state.options
   },
   position: state => {
     return state.position

@@ -19,26 +19,14 @@
       position () {
         return this.$store.getters['dapps/browseRefine/position']
       },
+      options () {
+        return this.$store.getters['dapps/browseRefine/options']
+      },
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/browseRefine/selected']
         const options = this.options.slice()
         options.splice(options.indexOf(selected), 1)
         return options
-      }
-    },
-    data () {
-      return {
-        options: [
-          'any',
-          'live',
-          'demo',
-          'prototype',
-          'wip',
-          'concept',
-          'stealth',
-          'unknown',
-          'abandoned'
-        ]
       }
     },
     directives: {

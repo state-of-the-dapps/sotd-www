@@ -5,6 +5,17 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
+    options: [
+      'any',
+      'live',
+      'demo',
+      'prototype',
+      'wip',
+      'concept',
+      'stealth',
+      'unknown',
+      'abandoned'
+    ],
     selected: 'any'
   }
 }
@@ -38,6 +49,9 @@ export const actions = {
 export const getters = {
   isActive: state => {
     return state.isActive
+  },
+  options: state => {
+    return state.options
   },
   position: state => {
     return state.position

@@ -53,6 +53,16 @@ export const mutations = {
   removeTagsQuery (state, index) {
     state.query.tags.splice(index, 1)
   },
+  resetQuery (state) {
+    state.query = {
+      category: 'recently added',
+      limit: 50,
+      offset: 0,
+      refine: 'any',
+      tags: [],
+      text: ''
+    }
+  },
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
   },
@@ -96,6 +106,9 @@ export const actions = {
   },
   removeTagsQuery: ({ commit }, index) => {
     commit('removeTagsQuery', index)
+  },
+  resetQuery ({ commit }) {
+    commit('resetQuery')
   },
   updateTextQuery: ({ commit }, value) => {
     commit('setTextQuery', value)
