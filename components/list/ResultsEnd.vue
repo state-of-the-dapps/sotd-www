@@ -2,7 +2,7 @@
   <div>
     <p v-if="itemsCount < paginationTotalCount" class="button-wrapper">
       <button v-if="!loading" class="button" @click="loadMore">
-        Load the <span v-if="paginationTotalCount - itemsCount > 1"> <span v-if="paginationTotalCount - itemsCount > 50">next 50</span><span v-else>last {{ paginationTotalCount - itemsCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
+        Load the <span v-if="paginationTotalCount - itemsCount > 1"> <span v-if="paginationTotalCount - itemsCount > limitQuery">next {{ limitQuery }}</span><span v-else>last {{ paginationTotalCount - itemsCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
       </button>
       <button v-else class="spinner"></button>
     </p>
@@ -15,6 +15,9 @@
     computed: {
       itemsCount () {
         return this.$store.getters['dapps/itemsCount']
+      },
+      limitQuery () {
+        return this.$store.getters['dapps/limitQuery']
       },
       paginationOffset () {
         return this.$store.getters['dapps/paginationOffset']
