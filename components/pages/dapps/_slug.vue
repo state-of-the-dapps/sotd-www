@@ -32,16 +32,30 @@
         return this.$store.getters['dapp/viewMethod']
       }
     },
+    destroyed () {
+      this.$store.dispatch('dapp/reset')
+    },
+    fetch ({ store, params, isServer }) {
+      if (isServer) {
+        return axios
+          .get('dapps/' + params.slug)
+          .then(response => {
+            store.dispatch('dapp/setActive', response.data)
+          })
+      }
+    },
     mounted () {
       this.$mixpanel.track('DApp - View', {
         targetDapp: this.$route.params.slug,
         method: this.viewMethod
       }, this.$store.dispatch('dapp/resetViewMethod'))
-      axios
-        .get('dapps/' + this.$route.params.slug)
-        .then(response => {
-          this.$store.dispatch('dapp/setActive', response.data)
-        })
+      if (!Object.keys(this.active).length > 0) {
+        axios
+          .get('dapps/' + this.$route.params.slug)
+          .then(response => {
+            this.$store.dispatch('dapp/setActive', response.data)
+          })
+      }
     },
     head () {
       return {
