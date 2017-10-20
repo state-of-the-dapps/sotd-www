@@ -59,7 +59,7 @@
     background: white;
     word-wrap: break-word;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
-    transition: transform .4s ease, opacity .4s ease;
+    transition: transform .3s ease, opacity .3s ease;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
     }
@@ -84,7 +84,7 @@
     }
     &:hover {
       cursor: pointer;
-      transform: scale3d(1.015, 1.015, 1);
+      transform: translateY(-4px);
     }
     &.-live {
       background: $color--screamin-green;
