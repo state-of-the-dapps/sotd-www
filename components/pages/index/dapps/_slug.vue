@@ -84,13 +84,6 @@
           this.hide()
         }
       },
-      getData () {
-        axios
-          .get('dapps/' + this.$route.params.slug)
-          .then(response => {
-            this.$store.dispatch('dapp/setActive', response.data)
-          })
-      },
       hide () {
         this.$mixpanel.track('DApp popup - Hide')
         this.$store.dispatch('dapps/setActiveItemIndex', -1)
@@ -121,9 +114,6 @@
       document.body.classList.add('--has-popup')
       this.$store.dispatch('dapp/showPopup')
       window.addEventListener('keyup', this.escapeToHide)
-    },
-    watch: {
-      '$route': 'getData'
     }
   }
 </script>
