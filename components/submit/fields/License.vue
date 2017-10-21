@@ -6,15 +6,15 @@
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="error in errors" class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">(e.g. MIT, GNU)</p>
+    <p class="help">(e.g. MIT, GPL)</p>
   </div>
 </template>
 
 <script>
   import { dispatchErrors } from '~/plugins/mixins'
-  
+
   var validationTimer
-  
+
   export default {
     computed: {
       errors () {
