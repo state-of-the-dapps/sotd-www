@@ -11,7 +11,7 @@
 <script>
   import { directive as onClickaway } from 'vue-clickaway'
   import { getCaretPosition } from '~/plugins/mixins'
-  
+
   export default {
     computed: {
       items () {
@@ -69,7 +69,7 @@
       width: 500px;
     }
   }
-  
+
   .item {
     display: block;
     padding: 7px 28px 7px 10px;
@@ -92,12 +92,11 @@
       height: 9px;
       transform: rotate(45deg);
     }
-  } 
-  
+  }
+
   .list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
 </style>
-

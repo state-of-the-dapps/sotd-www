@@ -3,7 +3,7 @@
     <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="/images/search.png" width="20"></a>
     <ul class="input-wrapper">
       <li v-for="(tag, key) in tags" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="/images/close/small.png" width="9" alt="Close" class="close"></span></li>
-      <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="enter" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
+      <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="enter" @click="findSuggestedTags" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
     </ul>
   </div>
 </template>
@@ -33,11 +33,17 @@
       enter () {
         document.getElementById('search').blur()
       },
+      findSuggestedTags () {
+        if (this.textQuery.length === 0 && this.tags.length === 0) {
+          this.$store.dispatch('tags/findItems', '')
+        }
+      },
       removeLastTag () {
         if (this.textQuery.length < 1 && this.tags.length > 0) {
           this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
           this.$store.dispatch('dapps/removeLastTag')
           this.$store.dispatch('dapps/findItems')
+          this.findSuggestedTags()
         }
       },
       removeTag (tag, key) {
@@ -46,6 +52,7 @@
         this.$store.dispatch('dapps/removeTagsQuery', key)
         this.$store.dispatch('tags/reset')
         this.$store.dispatch('dapps/findItems')
+        this.findSuggestedTags()
       },
       search (event) {
         clearTimeout(searchTimer)
@@ -54,8 +61,11 @@
         var result = /\S+$/.exec(this.textQuery.slice(0, caret.end))
         var lastWord = result ? result[0] : null
         searchTimer = setTimeout(() => {
-          if (this.tags.length < 3) {
+          if (this.tags.length < 3 && this.textQuery.length > 1) {
             this.$store.dispatch('tags/findItems', lastWord)
+          }
+          if (this.textQuery.length === 0) {
+            this.findSuggestedTags()
           }
           this.$store.dispatch('dapps/findItems')
         }, 200)

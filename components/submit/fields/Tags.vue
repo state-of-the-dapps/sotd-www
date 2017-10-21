@@ -3,7 +3,7 @@
     <p class="heading">Tags <span class="required">(at least 1 required)</span></p>
     <ul class="list">
       <li class="item -input">
-        <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true"> 
+        <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
         <span v-if="selected.length < 5" class="add" :class="query.length > 2 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
         <transition name="fade">
           <div class="dropdown" v-if="results.length > 0 && selected.length < 5">
@@ -20,7 +20,7 @@
 
 <script>
   import { directive as onClickaway } from 'vue-clickaway'
-  
+
   var searchTimer
   var trackTimer
 
@@ -50,6 +50,11 @@
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
           this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
+        }
+      },
+      findSuggestedTags () {
+        if (this.query.length === 0 && this.selected.length === 0) {
+          this.$store.dispatch('submit/findTags')
         }
       },
       remove (tag, key) {
@@ -82,7 +87,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .add {
     background: $color--mine-shaft;
     color: $color--gallery;
@@ -101,7 +106,7 @@
       opacity: 1;
     }
   }
-  
+
   .dropdown {
     position: absolute;
     background: rgba($color--gallery,.9);
@@ -113,7 +118,7 @@
     overflow: hidden;
     z-index: 10;
   }
-  
+
   .dropdown-item {
     display: block;
     padding: 7px 28px 7px 10px;
@@ -137,19 +142,19 @@
       transform: rotate(45deg);
     }
   }
-  
+
   .dropdown-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
-  
+
   .heading {
     text-align: center;
     margin-top: 1.25rem;
     margin-bottom: .75rem;
   }
-  
+
   .input {
     border: none;
     background: none;
@@ -162,7 +167,7 @@
       color: rgba($color--mine-shaft,.5);
     }
   }
-  
+
   .item {
     display: flex;
     align-items: center;
@@ -177,14 +182,14 @@
       width: 200px;
     }
   }
-  
+
   .list {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
     margin: -5px -5px 10px -5px;
   }
-  
+
   .remove {
     cursor: pointer;
     margin-left: 8px;
