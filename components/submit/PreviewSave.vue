@@ -26,7 +26,7 @@
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
-          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
+          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New DApp - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
         </div>
       </div>
       <input type="text" class="yumyum" v-model="honeypot">
@@ -108,6 +108,7 @@
               this.sending = false
               this.$store.dispatch('submit/reset')
               this.$mixpanel.track('New DApp - Submit', {
+                disabled: false,
                 name: obj.data.name,
                 email: obj.data.email,
                 author: obj.data.author,
