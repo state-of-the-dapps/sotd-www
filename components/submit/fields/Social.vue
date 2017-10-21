@@ -4,8 +4,8 @@
     <ul class="list">
       <li class="item -facebook"><input v-model="facebook" class="input" type="text" placeholder="/facebookpage" maxlength="100"></li>
       <li class="item -twitter"><input v-model="twitter" class="input" type="text" placeholder="@twitterhandle" maxlength="100"></li>
-      <li class="item -github"><input v-model="github" class="input" type="text" placeholder="/github/project" maxlength="100"></li>
-      <li class="item -reddit"><input v-model="reddit" class="input" type="text" placeholder="/u/reddit" maxlength="100"></li>
+      <li class="item -github"><input v-model="github" class="input" type="text" placeholder="/githubproject" maxlength="100"></li>
+      <li class="item -reddit"><input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100"></li>
       <li class="item -slack"><input v-model="slack" class="input" type="text" placeholder="your.slack.team" maxlength="100"></li>
       <li class="item -blog"><input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100"></li>
       <li class="item -other"><input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100"></li>
