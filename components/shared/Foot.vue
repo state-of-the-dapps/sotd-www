@@ -4,9 +4,9 @@
     <ul class="social-list">
       <li class="social-item"><a @click="$mixpanel.track('Footer - Twitter')" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
       <li class="social-item"><a @click="$mixpanel.track('Footer - Github')" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="/images/social/github-reverse.png" width="21" alt="Github"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="/images/social/reddit.png" width="21" alt="Reddit"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Medium')" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="/images/social/medium.png" width="21" alt="Medium"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Slack')" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="/images/social/slack.png" width="21" alt="Slack"></a></li>
+      <li class="social-item"><a @click="$mixpanel.track('Footer - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="/images/social/reddit-reverse.png" width="21" alt="Reddit"></a></li>
+      <li class="social-item"><a @click="$mixpanel.track('Footer - Medium')" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="/images/social/medium-reverse.png" width="21" alt="Medium"></a></li>
+      <li class="social-item"><a @click="$mixpanel.track('Footer - Slack')" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="/images/social/slack-reverse.png" width="21" alt="Slack"></a></li>
 
     </ul>
     <h4 class="disclaimer-heading">
