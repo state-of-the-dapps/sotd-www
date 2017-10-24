@@ -14,7 +14,7 @@ export const state = () => {
       tags: [],
       text: ''
     },
-    loading: false,
+    loading: true,
     items: [],
     activeItemIndex: -1,
     stats: {
