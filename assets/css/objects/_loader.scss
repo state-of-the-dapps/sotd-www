@@ -1,4 +1,10 @@
-.spinner {
+.loader-wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.loader {
   width: 20px;
   height: 20px;
   background-color: $color--mine-shaft;

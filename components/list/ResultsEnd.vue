@@ -1,12 +1,12 @@
 <template>
   <div>
-    <p v-if="itemsCount < paginationTotalCount" class="button-wrapper">
-      <button v-if="!loading" class="button" @click="loadMore">
+    <p v-if="itemsCount < paginationTotalCount && !loading" class="button-wrapper">
+      <button class="button" @click="loadMore">
         Load the <span v-if="paginationTotalCount - itemsCount > 1"> <span v-if="paginationTotalCount - itemsCount > limitQuery">next {{ limitQuery }}</span><span v-else>last {{ paginationTotalCount - itemsCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
       </button>
-      <button v-else class="spinner"></button>
     </p>
-    <p v-else class="message">No {{ itemsCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" to="/submit" class="link">submit one!</nuxt-link></p>
+    <p v-if="itemsCount >= paginationTotalCount && !loading" class="message">No {{ itemsCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" to="/submit" class="link">submit one!</nuxt-link></p>
+    <p v-if="loading" class="loader-wrapper"><button v-if="loading" class="loader"></button></p>
   </div>
 </template>
 
@@ -56,11 +56,17 @@
 
   .button-wrapper {
     text-align: center;
+    height: 65px;
     margin: .5rem auto 10rem;
   }
 
   .link {
     text-decoration: none;
+  }
+
+  .loader-wrapper {
+    height: 65px;
+    margin: .5rem auto 10rem;
   }
 
   .message {
