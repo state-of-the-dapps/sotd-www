@@ -53,13 +53,28 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-      { hid: 'description', name: 'description', content: 'State of the ÐApps is the curated collection of Decentralized Apps' }
+      { hid: 'description', name: 'description', content: 'State of the ÐApps is the curated collection of Decentralized Apps' },
+      { name: 'theme-color', content: '#222' }
     ],
     link: [
       {
+        rel: 'apple-touch-icon',
+        href: '/apple-touch-icon.png',
+        sizes: '180x180'
+      },
+      {
         rel: 'icon',
-        type: 'image/png',
-        href: '/favicon.png'
+        href: '/favicon-32x32.png',
+        sizes: '32x32'
+      },
+      {
+        rel: 'icon',
+        href: '/favicon-16x16.png',
+        sizes: '16x16'
+      },
+      {
+        rel: 'manifest',
+        href: '/manifest.json',
       }
     ]
   },
