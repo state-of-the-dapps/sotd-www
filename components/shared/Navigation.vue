@@ -2,6 +2,7 @@
   <ul class="list">
     <li class="item"><nuxt-link @click.native="$mixpanel.track(`Nav - What's a DApp`)" to="/whats-a-dapp" class="link">What's a ÐApp</nuxt-link></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="link">About</nuxt-link></li>
+    <li class="item"><a @click.native="$mixpanel.track('Nav - Newsletter')" href="https://landing.mailerlite.com/webforms/landing/t2o2r1" class="link" target="_blank">Get updates</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank">Twitter</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank">Github</a></li>
     <li class="item"><a @click="$mixpanel.track('Nav - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="link -reddit" target="_blank">Reddit</a></li>
@@ -28,7 +29,7 @@
       margin-left: 5px;
       margin-right: 5px;
       @include tweakpoint('min-width', $tweakpoint--default) {
-          margin-left: 5px;
+          margin-left: 7px;
           margin-right: 5px;
       }
     }
