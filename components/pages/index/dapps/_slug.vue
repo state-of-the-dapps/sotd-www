@@ -176,7 +176,6 @@
     position: relative;
     max-width: 1200px;
     margin: 50px auto;
-    overflow: auto;
     z-index: 120;
   }
 
