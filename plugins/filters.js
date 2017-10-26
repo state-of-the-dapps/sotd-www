@@ -48,6 +48,31 @@ Vue.filter('formatStatus',
   }
 )
 
+Vue.filter('formatBadge',
+  value => {
+    if (value) {
+      let badge = ''
+      switch (value) {
+        case 'complete':
+          badge = 'complete profile'
+          break
+        case 'metamask':
+          badge = 'supports Metamask'
+          break
+        case 'status-im':
+          badge = 'supports Status IM'
+          break
+        case 'token':
+          badge = 'has token'
+          break
+        default:
+          badge = value
+      }
+      return badge
+    }
+  }
+)
+
 Vue.filter('additionalAuthorsCount',
   value => {
     if (value) {

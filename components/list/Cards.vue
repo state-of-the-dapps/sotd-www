@@ -4,7 +4,7 @@
         <nuxt-link v-for="(item, key) in items" @click.native="updateIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
           <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
           <ul class="badge-list" v-if="item.badges">
-            <li v-for="badge in item.badges" class="badge-item"><img :src="'/images/badges/' + badge + '.png'" width="16" class="badge-image" :title="badge | capitalize"></li>
+            <li v-for="badge in item.badges" class="badge-item"><img :src="'/images/badges/' + badge + '.png'" width="16" class="badge-image" :title="badge | formatBadge | capitalize"><div class="badge-info">{{ badge | formatBadge | capitalize }}</div></li>
           </ul>
           <div class="info">
             <div class="icon-wrapper" :class="'-' + item.status">
@@ -52,7 +52,38 @@
   }
 
   .badge-item {
+    position: relative;
     margin-left: 2px;
+    &:hover .badge-info {
+      opacity: 1;
+    }
+  }
+
+  .badge-info {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    z-index: 5;
+    font-weight: 600;
+    text-align: center;
+    background: $color--gallery;
+    border: 1px solid $color--mine-shaft;
+    padding: 3px 8px 2px;
+    text-transform: uppercase;
+    font-size: .7rem;
+    opacity: 0;
+    transition: opacity .5s ease;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    &:after {
+      position: absolute;
+      bottom: -7px;
+      right: 6px;
+      content: '';
+      width: 1px;
+      height: 7px;
+      background: $color--mine-shaft;
+    }
   }
 
   .badge-list {
@@ -126,7 +157,6 @@
 
   .item {
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
     width: 100%;
