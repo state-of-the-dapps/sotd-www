@@ -23,7 +23,7 @@ module.exports = {
   },
   generate: {
     routes: [
-      "/"
+      '/'
     ]
   },
   /*
@@ -31,6 +31,7 @@ module.exports = {
   */
   mode: process.env.MODE || 'universal',
   modules: [
+    '@nuxtjs/sentry',
     '@nuxtjs/router',
     ['@nuxtjs/google-analytics', { ua: process.env.GOOGLE_ANALYTICS }]
   ],
