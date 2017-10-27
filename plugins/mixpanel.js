@@ -4,14 +4,14 @@ import mixpanel from 'mixpanel-browser'
 const mp = function (Vue) {
   mixpanel.init(process.env.mixpanel)
 
-  let hasWeb3 = false
-
-  if (typeof web3 !== 'undefined') {
-    hasWeb3 = true
-  }
-
-  mixpanel.register({
-    'hasWeb3': hasWeb3
+  window.addEventListener('load', function () {
+    let hasWeb3 = false
+    if (typeof web3 !== 'undefined') {
+      hasWeb3 = true
+    }
+    mixpanel.register({
+      'hasWeb3': hasWeb3
+    })
   })
 
   Vue.prototype.$mixpanel = {
