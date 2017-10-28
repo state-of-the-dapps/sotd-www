@@ -109,12 +109,21 @@
     max-width: 100%;
   }
 
+  .icon-placeholder {
+    margin: 0;
+    line-height: 60px;
+    height: 60px;
+    @include tweakpoint('min-width', 900px) {
+      line-height: 75px;
+      height: 75px;
+    }
+  }
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
     background: rgba(0,0,0,.1);
     display: flex;
-    align-items: center;
     justify-content: center;
     overflow: hidden;
     border-radius: 50%;

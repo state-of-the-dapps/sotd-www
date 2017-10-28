@@ -8,7 +8,7 @@
     </ul>
     <div class="info">
       <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p>{{ item.name | firstLetter }}</p>
+        <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
       </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}</h3>
@@ -96,12 +96,26 @@
     flex: 1;
   }
 
+  .icon-image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .icon-placeholder {
+    margin: 0;
+    line-height: 60px;
+    height: 60px;
+    @include tweakpoint('min-width', 900px) {
+      line-height: 75px;
+      height: 75px;
+    }
+  }
+
   .icon-wrapper {
     width: 60px;
     height: 60px;
     background: rgba(0,0,0,.1);
     display: flex;
-    align-items: center;
     justify-content: center;
     overflow: hidden;
     font-size: 2rem;
@@ -128,11 +142,6 @@
       margin-right: 20px;
       font-size: 2.75rem;
     }
-  }
-
-  .icon-image {
-    width: 100%;
-    max-width: 100%;
   }
 
   .info {
