@@ -4,9 +4,13 @@
   "description": "State of the DApps Frontend Nuxt.js",
   "author": "rob@enginecollaborative.com",
   "private": true,
+  "engines": {
+    "node": "8.8.1"
+  },
   "dependencies": {
     "@nuxtjs/google-analytics": "^1.0.0",
     "@nuxtjs/router": "^1.0.1",
+    "@nuxtjs/sentry": "^0.1.0",
     "axios": "^0.16.2",
     "mixpanel-browser": "^2.13.0",
     "nuxt": "1.0.0-rc8",
