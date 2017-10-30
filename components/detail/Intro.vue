@@ -103,12 +103,7 @@
 
   .icon-placeholder {
     margin: 0;
-    line-height: 60px;
-    height: 60px;
-    @include tweakpoint('min-width', 900px) {
-      line-height: 75px;
-      height: 75px;
-    }
+    font-family: Arial, sans-serif;
   }
 
   .icon-wrapper {
@@ -117,8 +112,9 @@
     background: rgba(0,0,0,.1);
     display: flex;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
-    font-size: 2rem;
+    font-size: 1.7rem;
     border-radius: 50%;
     margin-right: 10px;
     &.-live {
@@ -140,7 +136,7 @@
       width: 120px;
       height: 120px;
       margin-right: 20px;
-      font-size: 2.75rem;
+      font-size: 2.25rem;
     }
   }
 

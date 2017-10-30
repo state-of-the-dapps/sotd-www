@@ -110,13 +110,7 @@
   }
 
   .icon-placeholder {
-    margin: 0;
-    line-height: 60px;
-    height: 60px;
-    @include tweakpoint('min-width', 900px) {
-      line-height: 75px;
-      height: 75px;
-    }
+    font-family: Arial, sans-serif;
   }
 
   .icon-wrapper {
@@ -125,9 +119,11 @@
     background: rgba(0,0,0,.1);
     display: flex;
     justify-content: center;
+    align-items: center;
     overflow: hidden;
     border-radius: 50%;
-    font-size: 1.95rem;
+    font-size: 1.7rem;
+    font-weight: 300;
     margin-right: 10px;
     &.-live {
       background: $color--bright-green;
