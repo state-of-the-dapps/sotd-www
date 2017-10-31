@@ -21,9 +21,14 @@
       ResultsBrowseSection,
       ResultsEndSection
     },
+    computed: {
+      dappCount () {
+        return this.$store.getters['dappCount']
+      }
+    },
     head () {
       return {
-        title: 'State of the ÐApps - The Curated Collection for Ethereum'
+        title: 'State of the ÐApps — ' + this.dappCount + ' Projects Built on Ethereum'
       }
     },
     scrollToTop: false

@@ -16,10 +16,7 @@ export const state = () => {
     },
     loading: true,
     items: [],
-    activeItemIndex: -1,
-    stats: {
-      totalCount: ''
-    }
+    activeItemIndex: -1
   }
 }
 
@@ -69,9 +66,6 @@ export const mutations = {
   setTextQuery (state, value) {
     state.query.text = value
   },
-  setStatsTotalCount (state, value) {
-    state.stats.totalCount = value
-  },
   updateLoading (state, value) {
     state.loading = value
   }
@@ -115,13 +109,6 @@ export const actions = {
   },
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
-  },
-  findStatsTotalCount: ({ commit }) => {
-    axios
-      .get('stats')
-      .then(response => {
-        commit('setStatsTotalCount', response.data.dappCount)
-      })
   }
 }
 
@@ -158,8 +145,5 @@ export const getters = {
   },
   textQuery: state => {
     return state.query.text
-  },
-  statsTotalCount: state => {
-    return state.stats.totalCount
   }
 }

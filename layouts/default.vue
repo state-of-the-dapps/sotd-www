@@ -33,7 +33,6 @@
       }
     },
     mounted () {
-      this.$store.dispatch('dapps/findStatsTotalCount')
       window.addEventListener('scroll', this.handleScroll)
     },
     methods: {

@@ -50,7 +50,7 @@ module.exports = {
     mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
   },
   head: {
-    title: 'The Curated Collection for Ethereum',
+    title: 'State of the ÐApps — Projects Built on Ethereum',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
