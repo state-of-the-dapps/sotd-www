@@ -112,11 +112,14 @@
     background: rgba($color--gallery,.9);
     padding: 10px;
     box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
-    width: 200px;
+    width: 320px;
     top: 38px;
     left: -1px;
     overflow: hidden;
     z-index: 10;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      width: 350px;
+    }
   }
 
   .dropdown-item {
