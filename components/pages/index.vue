@@ -35,17 +35,12 @@
         return this.$store.getters['dapps/tagsQuery']
       }
     },
-    methods: {
-      setFriendlyUrl () {
-        this.$store.dispatch('dapps/setFriendlyUrl')
-      }
-    },
     watch: {
       'tagsQuery': function () {
-        this.setFriendlyUrl()
+        this.$store.dispatch('dapps/setFriendlyUrl')
       },
       'categoryQuery': function () {
-        this.setFriendlyUrl()
+        this.$store.dispatch('dapps/setFriendlyUrl')
       }
     },
     head () {

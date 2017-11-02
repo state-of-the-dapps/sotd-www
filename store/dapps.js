@@ -64,9 +64,9 @@ export const mutations = {
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
   },
-  setFriendlyUrl (state, url) {
+  setFriendlyUrl (state) {
     // console.log('Friendly url mutation')
-    state.friendlyUrl = url
+    // state.friendlyUrl = 'todo'
     // window.history.replaceState({}, '', 'todo')
   },
   setTextQuery (state, value) {
@@ -116,7 +116,7 @@ export const actions = {
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
   },
-  setFriendlyUrl: ({ commit }, url) => {
+  setFriendlyUrl: ({ commit }) => {
     commit('setFriendlyUrl')
   }
 }
