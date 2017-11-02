@@ -123,7 +123,7 @@ export const getters = {
     return state.items.length
   },
   categoryQuery: state => {
-    return state.query.show
+    return state.query.category
   },
   limitQuery: state => {
     return state.query.limit
