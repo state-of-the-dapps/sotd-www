@@ -14,6 +14,7 @@ export const state = () => {
       tags: [],
       text: ''
     },
+    friendlyUrl: '',
     loading: true,
     items: [],
     activeItemIndex: -1
@@ -63,6 +64,11 @@ export const mutations = {
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
   },
+  setFriendlyUrl (state, url) {
+    // console.log('Friendly url mutation')
+    state.friendlyUrl = url
+    // window.history.replaceState({}, '', 'todo')
+  },
   setTextQuery (state, value) {
     state.query.text = value
   },
@@ -109,6 +115,9 @@ export const actions = {
   },
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
+  },
+  setFriendlyUrl: ({ commit }, url) => {
+    commit('setFriendlyUrl')
   }
 }
 
@@ -116,14 +125,17 @@ export const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
+  categoryQuery: state => {
+    return state.query.category
+  },
+  friendlyUrl: state => {
+    return state.friendlyUrl
+  },
   items: state => {
     return state.items
   },
   itemsCount: state => {
     return state.items.length
-  },
-  categoryQuery: state => {
-    return state.query.category
   },
   limitQuery: state => {
     return state.query.limit

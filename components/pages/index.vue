@@ -21,16 +21,6 @@
       ResultsBrowseSection,
       ResultsEndSection
     },
-    mounted () {
-      this.$store.watch(() => this.tagsQuery, tagsQuery => {
-        // console.log('Tags watch ran')
-        // window.history.replaceState({}, '', 'todo')
-      })
-      this.$store.watch(() => this.categoryQuery, categoryQuery => {
-        // console.log('Category watch ran')
-        // window.history.replaceState({}, '', 'todo')
-      })
-    },
     computed: {
       categoryQuery () {
         return this.$store.getters['dapps/categoryQuery']
@@ -38,8 +28,24 @@
       dappCount () {
         return this.$store.getters['dappCount']
       },
+      friendlyUrl () {
+        return this.$store.getters['dapps/friendlyUrl']
+      },
       tagsQuery () {
         return this.$store.getters['dapps/tagsQuery']
+      }
+    },
+    methods: {
+      setFriendlyUrl () {
+        this.$store.dispatch('dapps/setFriendlyUrl')
+      }
+    },
+    watch: {
+      'tagsQuery': function () {
+        this.setFriendlyUrl()
+      },
+      'categoryQuery': function () {
+        this.setFriendlyUrl()
       }
     },
     head () {
