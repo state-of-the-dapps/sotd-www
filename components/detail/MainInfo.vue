@@ -41,6 +41,9 @@
 <script>
   export default {
     computed: {
+      friendlyUrl () {
+        return this.$store.getters['dapps/friendlyUrl']
+      },
       item () {
         return this.$store.getters['dapp/active']
       }
@@ -54,7 +57,8 @@
         this.$store.dispatch('tags/select', tag)
         this.$store.dispatch('dapps/addTagsQuery', tag)
         this.$store.dispatch('dapps/findItems')
-        this.$router.push('/', function () {
+        this.$store.dispatch('dapps/setFriendlyUrl')
+        this.$router.push(this.friendlyUrl, function () {
           document.getElementById('__nuxt').scrollIntoView()
         })
         this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })
