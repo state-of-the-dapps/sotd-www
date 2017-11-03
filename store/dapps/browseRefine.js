@@ -15,8 +15,7 @@ export const state = () => {
       'stealth',
       'unknown',
       'abandoned'
-    ],
-    selected: 'any'
+    ]
   }
 }
 
@@ -38,9 +37,6 @@ export const actions = {
   setPosition: ({ commit }, position) => {
     commit('setPosition', position)
   },
-  select: ({ commit }, selected) => {
-    commit('select', selected)
-  },
   toggle ({ commit }) {
     commit('toggle')
   }
@@ -55,8 +51,5 @@ export const getters = {
   },
   position: state => {
     return state.position
-  },
-  selected: state => {
-    return state.selected
   }
 }

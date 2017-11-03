@@ -22,10 +22,10 @@
         return this.$store.getters['dapps/browseRefine/isActive']
       },
       selectedBrowseCategory () {
-        return this.$store.getters['dapps/browseCategories/selected']
+        return this.$store.getters['dapps/categoryQuery']
       },
       selectedBrowseRefine () {
-        return this.$store.getters['dapps/browseRefine/selected']
+        return this.$store.getters['dapps/refineQuery']
       }
     },
     methods: {

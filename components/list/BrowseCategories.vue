@@ -20,7 +20,7 @@
         return this.$store.getters['dapps/browseCategories/options']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/browseCategories/selected']
+        const selected = this.$store.getters['dapps/categoryQuery']
         const options = this.options.slice()
         options.splice(options.indexOf(selected), 1)
         return options
@@ -40,7 +40,6 @@
       select (option) {
         this.$mixpanel.track('DApps - Select category', { option: option })
         this.$store.dispatch('dapps/updateCategoryQuery', option)
-        this.$store.dispatch('dapps/browseCategories/select', option)
         this.$store.dispatch('dapps/browseCategories/toggle')
         this.$store.dispatch('dapps/findItems')
       }

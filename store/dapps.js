@@ -64,6 +64,17 @@ export const mutations = {
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
   },
+  setFriendlyQuery (state, params) {
+    var tags = params.tags
+    var category = params.category
+    if (tags !== undefined) {
+      tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
+      state.query.tags = tags
+    }
+    if (category !== undefined) {
+      state.query.category = category
+    }
+  },
   setFriendlyUrl (state) {
     var tags = state.query.tags || []
     var category = state.query.category
@@ -126,6 +137,9 @@ export const actions = {
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
   },
+  setFriendlyQuery: ({ commit }, params) => {
+    commit('setFriendlyQuery', params)
+  },
   setFriendlyUrl: ({ commit }) => {
     commit('setFriendlyUrl')
   }
@@ -154,7 +168,7 @@ export const getters = {
     return state.loading
   },
   refineQuery: state => {
-    return state.query.hide
+    return state.query.refine
   },
   paginationOffset: state => {
     return state.pagination.offset

@@ -11,8 +11,7 @@ export const state = () => {
       'most viewed',
       'most clicked',
       'recently updated'
-    ],
-    selected: 'recently added'
+    ]
   }
 }
 
@@ -34,9 +33,6 @@ export const actions = {
   setPosition: ({ commit }, position) => {
     commit('setPosition', position)
   },
-  select: ({ commit }, selected) => {
-    commit('select', selected)
-  },
   toggle ({ commit }) {
     commit('toggle')
   }
@@ -51,8 +47,5 @@ export const getters = {
   },
   position: state => {
     return state.position
-  },
-  selected: state => {
-    return state.selected
   }
 }
