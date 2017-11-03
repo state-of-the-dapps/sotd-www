@@ -14,7 +14,7 @@ export const state = () => {
       tags: [],
       text: ''
     },
-    friendlyUrl: '',
+    friendlyUrl: '/',
     loading: true,
     items: [],
     activeItemIndex: -1
@@ -65,9 +65,19 @@ export const mutations = {
     state.activeItemIndex = index
   },
   setFriendlyUrl (state) {
-    // console.log('Friendly url mutation')
-    // state.friendlyUrl = 'todo'
-    // window.history.replaceState({}, '', 'todo')
+    var tags = state.query.tags || []
+    var category = state.query.category
+    var url = '/'
+    if (tags.length > 0) {
+      tags = tags.map(encodeURIComponent)
+      tags = tags.join('+')
+      url = url + 'tagged/' + tags + '/'
+    }
+    if (category !== 'recently added') {
+      url = url + encodeURIComponent(category)
+    }
+    state.friendlyUrl = url
+    window.history.replaceState({}, '', url)
   },
   setTextQuery (state, value) {
     state.query.text = value

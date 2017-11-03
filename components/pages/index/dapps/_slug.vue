@@ -44,6 +44,9 @@
       active () {
         return this.$store.getters['dapp/active']
       },
+      friendlyUrl () {
+        return this.$store.getters['dapps/friendlyUrl']
+      },
       itemIndex () {
         return this.$store.getters['dapps/activeItemIndex']
       },
@@ -90,7 +93,7 @@
       hide () {
         this.$mixpanel.track('DApp popup - Hide')
         this.$store.dispatch('dapps/setActiveItemIndex', -1)
-        this.$router.push('/')
+        this.$router.push(this.friendlyUrl)
       },
       updateDapp (direction, slug) {
         let num = 0

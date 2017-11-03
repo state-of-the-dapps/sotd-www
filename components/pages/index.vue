@@ -28,12 +28,12 @@
       dappCount () {
         return this.$store.getters['dappCount']
       },
-      friendlyUrl () {
-        return this.$store.getters['dapps/friendlyUrl']
-      },
       tagsQuery () {
         return this.$store.getters['dapps/tagsQuery']
       }
+    },
+    mounted () {
+      this.$store.dispatch('dapps/setFriendlyUrl')
     },
     watch: {
       'tagsQuery': function () {
