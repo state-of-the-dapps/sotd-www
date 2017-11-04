@@ -25,6 +25,9 @@
       FootSection,
       MastheadSection
     },
+    mounted () {
+      this.$mixpanel.track('Error page', { type: '404' })
+    },
     props: ['error']
   }
 </script>
