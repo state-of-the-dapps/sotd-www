@@ -83,7 +83,7 @@ export const mutations = {
   },
   setFriendlyUrl (state) {
     var browseCategoryOptions = constants.browseCategoryOptions || []
-    var tags = state.query.tags || []
+    var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var category = state.query.category
     var url = '/'
     if (tags.length > 0) {

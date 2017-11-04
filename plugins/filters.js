@@ -25,6 +25,13 @@ Vue.filter('truncate',
   }
 )
 
+Vue.filter('removeEmptyItems',
+  (value) => {
+    var items = value || []
+    return items.filter(entry => entry.trim() !== '')
+  }
+)
+
 Vue.filter('formatBrowseCategoryOptions',
   value => {
     var category = ''

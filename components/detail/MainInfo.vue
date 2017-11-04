@@ -30,9 +30,9 @@
         <h3 class="sub-heading">Last updated</h3>
         <p class="sub-body">{{ item.lastUpdated }}</p>
       </li>
-      <li v-if="item.tags && item.tags.length > 0" class="sub-item">
+      <li v-if="tags && tags.length > 0" class="sub-item">
         <h3 class="sub-heading">Tags</h3>
-        <p class="sub-body"><a class="sub-tag" v-for="tag in item.tags" @click="findDappsByTag(tag)">#{{ tag }}</a></p>
+        <p class="sub-body"><a class="sub-tag" v-for="tag in tags" @click="findDappsByTag(tag)">#{{ tag }}</a></p>
       </li>
     </ul>
   </div>
@@ -46,19 +46,22 @@
       },
       item () {
         return this.$store.getters['dapp/active']
+      },
+      tags () {
+        var tags
+        tags = this.item.tags || []
+        return this.$options.filters.removeEmptyItems(tags)
       }
     },
     methods: {
       findDappsByTag (tag) {
         this.$store.dispatch('dapps/setActiveItemIndex', -1)
         this.$store.dispatch('dapps/resetQuery')
-        this.$store.dispatch('dapps/browseCategories/select', 'recently-added')
-        this.$store.dispatch('dapps/browseRefine/select', 'any')
         this.$store.dispatch('tags/select', tag)
         this.$store.dispatch('dapps/addTagsQuery', tag)
         this.$store.dispatch('dapps/findItems')
         this.$store.dispatch('dapps/setFriendlyUrl')
-        this.$router.push(this.friendlyUrl, function () {
+        this.$router.push('/', function () {
           document.getElementById('__nuxt').scrollIntoView()
         })
         this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })

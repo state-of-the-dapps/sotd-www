@@ -83,11 +83,6 @@ export function createRouter () {
             name: 'index'
           },
           {
-            path: 'tagged',
-            component: IndexIndex,
-            name: 'index-tagged'
-          },
-          {
             path: 'tagged/:tags',
             component: IndexIndex,
             name: 'index-tagged-tags',
