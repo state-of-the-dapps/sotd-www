@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - Website', { url: item.website })" class="link" target="_blank">Visit website</a>
+    <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - Website', { url: item.website })" class="link" target="_blank">Visit website<span v-if="item.isNsfw"> (NSFW)</span></a>
   </div>
 </template>
 
@@ -18,6 +18,7 @@
   @import '~assets/css/settings';
 
   .link {
+    position: relative;
     display: inline-block;
     margin: 10px 0;
     text-decoration: none;
@@ -26,8 +27,7 @@
     background: $color--mine-shaft;
     box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: 20px 0;
-      width: 140px;
+      padding: 20px 40px;
       font-size: 1.1rem;
     }
   }
