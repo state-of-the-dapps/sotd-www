@@ -11,7 +11,7 @@
               <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
             </div>
             <div class="description-wrapper">
-              <h3 class="title">{{ item.name | truncate(25) }}</h3>
+              <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="label -nsfw" :class="'-' + item.status">NSFW</span></h3>
               <p class="attribution">by <strong>{{ item.author }}</strong> {{ item.additionalAuthors | additionalAuthorsCount }}</p>
               <p class="description">{{ item.teaser | truncate(75) }}</p>
             </div>
