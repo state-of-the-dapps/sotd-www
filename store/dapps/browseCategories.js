@@ -1,3 +1,5 @@
+import { browseCategoryOptions as options } from '~/plugins/constants'
+
 export const state = () => {
   return {
     isActive: false,
@@ -5,14 +7,7 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
-    options: [
-      'recently added',
-      'most popular',
-      'most viewed',
-      'most clicked',
-      'recently updated'
-    ],
-    selected: 'recently added'
+    options: options
   }
 }
 
@@ -34,9 +29,6 @@ export const actions = {
   setPosition: ({ commit }, position) => {
     commit('setPosition', position)
   },
-  select: ({ commit }, selected) => {
-    commit('select', selected)
-  },
   toggle ({ commit }) {
     commit('toggle')
   }
@@ -51,8 +43,5 @@ export const getters = {
   },
   position: state => {
     return state.position
-  },
-  selected: state => {
-    return state.selected
   }
 }

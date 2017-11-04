@@ -1,3 +1,4 @@
+import * as constants from '~/plugins/constants'
 import axios from '~/plugins/axios'
 
 export const state = () => {
@@ -7,13 +8,14 @@ export const state = () => {
       totalCount: 0
     },
     query: {
-      category: 'recently added',
+      category: constants.browseCategoryOptions[0],
       limit: 50,
       offset: 0,
-      refine: 'any',
+      refine: constants.browseRefineOptions[0],
       tags: [],
       text: ''
     },
+    friendlyUrl: '/',
     loading: true,
     items: [],
     activeItemIndex: -1
@@ -36,7 +38,12 @@ export const mutations = {
     state.query.offset = state.pagination.offset + state.query.limit
   },
   setCategoryQuery (state, value) {
-    state.query.category = value
+    var options = constants.browseCategoryOptions || []
+    if (options.includes(value)) {
+      state.query.category = value
+    } else {
+      state.query.category = options[0]
+    }
   },
   setRefineQuery (state, value) {
     state.query.refine = value
@@ -52,16 +59,43 @@ export const mutations = {
   },
   resetQuery (state) {
     state.query = {
-      category: 'recently added',
+      category: constants.browseCategoryOptions[0],
       limit: 50,
       offset: 0,
-      refine: 'any',
+      refine: constants.browseRefineOptions[0],
       tags: [],
       text: ''
     }
   },
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
+  },
+  setFriendlyQuery (state, params) {
+    var tags = params.tags
+    var category = params.category
+    if (tags !== undefined) {
+      tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
+      state.query.tags = tags
+    }
+    if (category !== undefined) {
+      state.query.category = category
+    }
+  },
+  setFriendlyUrl (state) {
+    var browseCategoryOptions = constants.browseCategoryOptions || []
+    var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
+    var category = state.query.category
+    var url = '/'
+    if (tags.length > 0) {
+      tags = tags.map(encodeURIComponent)
+      tags = tags.join('+')
+      url = url + 'tagged/' + tags + '/'
+    }
+    if (category !== browseCategoryOptions[0]) {
+      url = url + 'tab/' + encodeURIComponent(category)
+    }
+    state.friendlyUrl = url
+    window.history.replaceState({}, '', url)
   },
   setTextQuery (state, value) {
     state.query.text = value
@@ -109,6 +143,12 @@ export const actions = {
   },
   setActiveItemIndex: ({ commit }, index) => {
     commit('setActiveItemIndex', index)
+  },
+  setFriendlyQuery: ({ commit }, params) => {
+    commit('setFriendlyQuery', params)
+  },
+  setFriendlyUrl: ({ commit }) => {
+    commit('setFriendlyUrl')
   }
 }
 
@@ -116,14 +156,17 @@ export const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
+  categoryQuery: state => {
+    return state.query.category
+  },
+  friendlyUrl: state => {
+    return state.friendlyUrl
+  },
   items: state => {
     return state.items
   },
   itemsCount: state => {
     return state.items.length
-  },
-  categoryQuery: state => {
-    return state.query.show
   },
   limitQuery: state => {
     return state.query.limit
@@ -132,7 +175,7 @@ export const getters = {
     return state.loading
   },
   refineQuery: state => {
-    return state.query.hide
+    return state.query.refine
   },
   paginationOffset: state => {
     return state.pagination.offset

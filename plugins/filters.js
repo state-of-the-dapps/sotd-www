@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import * as constants from '~/plugins/constants'
 
 Vue.filter('capitalize',
   value => {
@@ -21,6 +22,26 @@ Vue.filter('truncate',
     if (value) {
       return (value.length > length) ? value.substr(0, length - 1) + '...' : value
     }
+  }
+)
+
+Vue.filter('removeEmptyItems',
+  (value) => {
+    var items = value || []
+    return items.filter(entry => entry.trim() !== '')
+  }
+)
+
+Vue.filter('formatBrowseCategoryOptions',
+  value => {
+    var category = ''
+    var options = constants.browseCategoryOptions || []
+    if (options.includes(value)) {
+      category = value.toString().replace('-', ' ')
+    } else {
+      category = options[0]
+    }
+    return category
   }
 )
 

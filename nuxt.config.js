@@ -81,6 +81,7 @@ module.exports = {
   },
   loading: { color: '#333' },
   plugins: [
+    { src: '~/plugins/constants' },
     { src: '~/plugins/filters' },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },

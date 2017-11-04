@@ -22,8 +22,27 @@
       ResultsEndSection
     },
     computed: {
+      categoryQuery () {
+        return this.$store.getters['dapps/categoryQuery']
+      },
       dappCount () {
         return this.$store.getters['dappCount']
+      },
+      tagsQuery () {
+        return this.$store.getters['dapps/tagsQuery']
+      }
+    },
+    mounted () {
+      this.$store.dispatch('dapps/setFriendlyQuery', this.$route.params)
+      this.$store.dispatch('dapps/setFriendlyUrl')
+      this.$store.dispatch('dapps/findItems')
+    },
+    watch: {
+      'tagsQuery': function () {
+        this.$store.dispatch('dapps/setFriendlyUrl')
+      },
+      'categoryQuery': function () {
+        this.$store.dispatch('dapps/setFriendlyUrl')
       }
     },
     head () {

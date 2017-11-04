@@ -23,7 +23,7 @@
         return this.$store.getters['dapps/browseRefine/options']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/browseRefine/selected']
+        const selected = this.$store.getters['dapps/refineQuery']
         const options = this.options.slice()
         options.splice(options.indexOf(selected), 1)
         return options
@@ -40,7 +40,6 @@
       select (option) {
         this.$mixpanel.track('DApps - Select refine', { option: option })
         this.$store.dispatch('dapps/updateRefineQuery', option)
-        this.$store.dispatch('dapps/browseRefine/select', option)
         this.$store.dispatch('dapps/browseRefine/toggle')
         this.$store.dispatch('dapps/findItems')
       }

@@ -37,9 +37,6 @@
         this.$store.dispatch('dapp/setViewMethod', 'popup')
         this.$store.dispatch('dapps/setActiveItemIndex', key)
       }
-    },
-    mounted () {
-      this.$store.dispatch('dapps/findItems')
     }
   }
 </script>

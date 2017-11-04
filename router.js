@@ -44,27 +44,6 @@ export function createRouter () {
     scrollBehavior,
     routes: [
       {
-        path: '/dapps/:slug?',
-        component: Dapp,
-        name: 'dapps-slug'
-      },
-      {
-        path: '/',
-        component: Index,
-        children: [
-          {
-            path: '',
-            component: IndexIndex,
-            name: 'index'
-          },
-          {
-            path: 'dapps/:slug?',
-            component: IndexDapp,
-            name: 'index-dapps-slug'
-          }
-        ]
-      },
-      {
         path: '/whats-a-dapp',
         component: WhatsADapp,
         name: 'whats-a-dapp'
@@ -88,6 +67,44 @@ export function createRouter () {
         path: '/submit',
         component: Submit,
         name: 'submit'
+      },
+      {
+        path: '/dapps/:slug?',
+        component: Dapp,
+        name: 'dapps-slug'
+      },
+      {
+        path: '/',
+        component: Index,
+        children: [
+          {
+            path: '',
+            component: IndexIndex,
+            name: 'index'
+          },
+          {
+            path: 'tagged/:tags',
+            component: IndexIndex,
+            name: 'index-tagged-tags',
+            children: [
+              {
+                path: 'tab/:category',
+                component: IndexIndex,
+                name: 'index-tagged-tags-show-category'
+              }
+            ]
+          },
+          {
+            path: 'tab/:category',
+            component: IndexIndex,
+            name: 'index-tab-category'
+          },
+          {
+            path: 'dapps/:slug?',
+            component: IndexDapp,
+            name: 'index-dapps-slug'
+          }
+        ]
       }
     ],
     fallback: false

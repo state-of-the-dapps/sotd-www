@@ -1,6 +1,6 @@
 <template>
   <ul class="list">
-    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory }}</span> with status <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine }}</span></li>
+    <li class="item">Show <span class="dropdown" ref="browseCategories" :class="{ '--is-active': browseCategoriesIsActive }" @click="toggleBrowseCategories">{{ selectedBrowseCategory | formatBrowseCategoryOptions }}</span> with status <span class="dropdown"  :class="{ '--is-active': browseRefineIsActive }" ref="browseRefine" @click="toggleBrowseRefine">{{ selectedBrowseRefine }}</span></li>
   </ul>
 </template>
 
@@ -22,10 +22,10 @@
         return this.$store.getters['dapps/browseRefine/isActive']
       },
       selectedBrowseCategory () {
-        return this.$store.getters['dapps/browseCategories/selected']
+        return this.$store.getters['dapps/categoryQuery']
       },
       selectedBrowseRefine () {
-        return this.$store.getters['dapps/browseRefine/selected']
+        return this.$store.getters['dapps/refineQuery']
       }
     },
     methods: {

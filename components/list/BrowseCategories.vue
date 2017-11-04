@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" :style="{ left: position.xPos + 'px', top: position.yPos + 22 + 'px' }" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option }}</li>
+        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option | formatBrowseCategoryOptions }}</li>
       </ul>
     </div>
   </transition>
@@ -20,9 +20,13 @@
         return this.$store.getters['dapps/browseCategories/options']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/browseCategories/selected']
-        const options = this.options.slice()
-        options.splice(options.indexOf(selected), 1)
+        const selected = this.$store.getters['dapps/categoryQuery']
+        const options = this.options.slice() || []
+        if (options.includes(selected)) {
+          options.splice(options.indexOf(selected), 1)
+        } else {
+          options.shift()
+        }
         return options
       },
       position () {
@@ -40,7 +44,6 @@
       select (option) {
         this.$mixpanel.track('DApps - Select category', { option: option })
         this.$store.dispatch('dapps/updateCategoryQuery', option)
-        this.$store.dispatch('dapps/browseCategories/select', option)
         this.$store.dispatch('dapps/browseCategories/toggle')
         this.$store.dispatch('dapps/findItems')
       }
