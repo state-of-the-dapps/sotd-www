@@ -61,7 +61,7 @@
         this.$store.dispatch('dapps/addTagsQuery', tag)
         this.$store.dispatch('dapps/findItems')
         this.$store.dispatch('dapps/setFriendlyUrl')
-        this.$router.push('/', function () {
+        this.$router.push(this.friendlyUrl, function () {
           document.getElementById('__nuxt').scrollIntoView()
         })
         this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })

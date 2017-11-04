@@ -33,10 +33,9 @@
       }
     },
     mounted () {
-      window.addEventListener('load', (e) => {
-        this.$store.dispatch('dapps/setFriendlyQuery', this.$route.params)
-      })
+      this.$store.dispatch('dapps/setFriendlyQuery', this.$route.params)
       this.$store.dispatch('dapps/setFriendlyUrl')
+      this.$store.dispatch('dapps/findItems')
     },
     watch: {
       'tagsQuery': function () {
