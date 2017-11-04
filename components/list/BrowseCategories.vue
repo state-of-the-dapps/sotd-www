@@ -22,7 +22,7 @@
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/categoryQuery']
         const options = this.options.slice() || []
-        if (options.includes(selected)) {
+        if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
         } else {
           options.shift()

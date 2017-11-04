@@ -36,7 +36,7 @@ Vue.filter('formatBrowseCategoryOptions',
   value => {
     var category = ''
     var options = constants.browseCategoryOptions || []
-    if (options.includes(value)) {
+    if (options.indexOf(value) !== -1) {
       category = value.toString().replace('-', ' ')
     } else {
       category = options[0]
