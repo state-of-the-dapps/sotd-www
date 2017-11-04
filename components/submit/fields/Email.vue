@@ -12,9 +12,9 @@
 
 <script>
   import { dispatchErrors } from '~/plugins/mixins'
-  
+
   var validationTimer
-  
+
   export default {
     computed: {
       email: {
@@ -41,7 +41,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          !this.email.includes('@') ? errors.data.push(`Please enter a valid email address`) : ''
+          this.email.indexOf('@') === -1 ? errors.data.push(`Please enter a valid email address`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }
