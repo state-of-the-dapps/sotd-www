@@ -39,7 +39,7 @@ export const mutations = {
   },
   setCategoryQuery (state, value) {
     var options = constants.browseCategoryOptions || []
-    if (options.includes(value)) {
+    if (options.indexOf(value) !== -1) {
       state.query.category = value
     } else {
       state.query.category = options[0]
