@@ -1,3 +1,5 @@
+import { browseRefineOptions as options } from '~/plugins/constants'
+
 export const state = () => {
   return {
     isActive: false,
@@ -5,17 +7,7 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
-    options: [
-      'any',
-      'live',
-      'demo',
-      'prototype',
-      'wip',
-      'concept',
-      'stealth',
-      'unknown',
-      'abandoned'
-    ]
+    options: options
   }
 }
 

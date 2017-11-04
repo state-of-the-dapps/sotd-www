@@ -52,7 +52,7 @@
       findDappsByTag (tag) {
         this.$store.dispatch('dapps/setActiveItemIndex', -1)
         this.$store.dispatch('dapps/resetQuery')
-        this.$store.dispatch('dapps/browseCategories/select', 'recently added')
+        this.$store.dispatch('dapps/browseCategories/select', 'recently-added')
         this.$store.dispatch('dapps/browseRefine/select', 'any')
         this.$store.dispatch('tags/select', tag)
         this.$store.dispatch('dapps/addTagsQuery', tag)

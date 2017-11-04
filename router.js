@@ -83,21 +83,26 @@ export function createRouter () {
             name: 'index'
           },
           {
+            path: 'tagged',
+            component: IndexIndex,
+            name: 'index-tagged'
+          },
+          {
             path: 'tagged/:tags',
             component: IndexIndex,
             name: 'index-tagged-tags',
             children: [
               {
-                path: ':category',
+                path: 'tab/:category',
                 component: IndexIndex,
-                name: 'index-tagged-tags-category'
+                name: 'index-tagged-tags-show-category'
               }
             ]
           },
           {
-            path: ':category',
+            path: 'tab/:category',
             component: IndexIndex,
-            name: 'index-category'
+            name: 'index-tab-category'
           },
           {
             path: 'dapps/:slug?',

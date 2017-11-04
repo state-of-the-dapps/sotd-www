@@ -1,3 +1,4 @@
+import * as constants from '~/plugins/constants'
 import axios from '~/plugins/axios'
 
 export const state = () => {
@@ -7,10 +8,10 @@ export const state = () => {
       totalCount: 0
     },
     query: {
-      category: 'recently added',
+      category: constants.browseCategoryOptions[0],
       limit: 50,
       offset: 0,
-      refine: 'any',
+      refine: constants.browseRefineOptions[0],
       tags: [],
       text: ''
     },
@@ -37,7 +38,12 @@ export const mutations = {
     state.query.offset = state.pagination.offset + state.query.limit
   },
   setCategoryQuery (state, value) {
-    state.query.category = value
+    var options = constants.browseCategoryOptions || []
+    if (options.includes(value)) {
+      state.query.category = value
+    } else {
+      state.query.category = options[0]
+    }
   },
   setRefineQuery (state, value) {
     state.query.refine = value
@@ -53,10 +59,10 @@ export const mutations = {
   },
   resetQuery (state) {
     state.query = {
-      category: 'recently added',
+      category: constants.browseCategoryOptions[0],
       limit: 50,
       offset: 0,
-      refine: 'any',
+      refine: constants.browseRefineOptions[0],
       tags: [],
       text: ''
     }
@@ -76,6 +82,7 @@ export const mutations = {
     }
   },
   setFriendlyUrl (state) {
+    var browseCategoryOptions = constants.browseCategoryOptions || []
     var tags = state.query.tags || []
     var category = state.query.category
     var url = '/'
@@ -84,8 +91,8 @@ export const mutations = {
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== 'recently added') {
-      url = url + encodeURIComponent(category)
+    if (category !== browseCategoryOptions[0]) {
+      url = url + 'tab/' + encodeURIComponent(category)
     }
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)

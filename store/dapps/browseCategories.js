@@ -1,3 +1,5 @@
+import { browseCategoryOptions as options } from '~/plugins/constants'
+
 export const state = () => {
   return {
     isActive: false,
@@ -5,13 +7,7 @@ export const state = () => {
       xPos: 0,
       yPos: 0
     },
-    options: [
-      'recently added',
-      'most popular',
-      'most viewed',
-      'most clicked',
-      'recently updated'
-    ]
+    options: options
   }
 }
 
