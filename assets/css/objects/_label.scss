@@ -1,0 +1,26 @@
+.label {
+  display: inline-block;
+  font-size: .8rem;
+  background: rgba($color--mine-shaft, .1);
+  padding: 4px 5px 2px;
+  vertical-align: top;
+  font-weight: 600;
+  margin-left: 5px;
+  &.-live {
+    background: $color--bright-green;
+  }
+  &.-demo {
+    background: $color--gorse;
+  }
+  &.-prototype {
+    background: $color--koromiko;
+  }
+  &.-wip {
+    background: $color--malibu;
+  }
+  &.-concept {
+    background: $color--portage;
+  }
+  &.-nsfw {
+  }
+}
