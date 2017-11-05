@@ -11,7 +11,7 @@
         <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
       </div>
       <div class="description-wrapper">
-        <h3 class="title">{{ item.name }}<span v-if="item.isNsfw" class="label -nsfw" :class="'-' + item.status">NSFW</span></h3>
+        <h3 class="title">{{ item.name }}<span v-if="item.isNsfw" class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
         <p class="description">{{ item.teaser }}</p>
       </div>
     </div>
