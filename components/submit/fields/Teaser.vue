@@ -6,15 +6,15 @@
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="error in errors" class="error-item">{{ error }}</li>
       </ul>
-      <p class="help">A short sentence that will be displayed on the ÐApp card</p>
+      <p class="help">A short teaser that is simple and descriptive. Please don't include self-promotion or obvious words like "blockchain", "decentralized", or "Ethereum"</p>
     </div>
 </template>
 
 <script>
   import { dispatchErrors } from '~/plugins/mixins'
-  
+
   var validationTimer
-  
+
   export default {
     computed: {
       errors () {
