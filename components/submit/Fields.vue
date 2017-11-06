@@ -5,6 +5,7 @@
     <Teaser/>
     <Description/>
     <Website/>
+    <DappUrl/>
     <Author/>
     <AdditionalAuthors/>
     <License/>
@@ -20,6 +21,7 @@
 <script>
   import AdditionalAuthors from '~/components/submit/fields/AdditionalAuthors.vue'
   import Author from '~/components/submit/fields/Author.vue'
+  import DappUrl from '~/components/submit/fields/DappUrl.vue'
   import Description from '~/components/submit/fields/Description.vue'
   import Email from '~/components/submit/fields/Email.vue'
   import License from '~/components/submit/fields/License.vue'
@@ -32,11 +34,12 @@
   import Tags from '~/components/submit/fields/Tags.vue'
   import Teaser from '~/components/submit/fields/Teaser.vue'
   import Website from '~/components/submit/fields/Website.vue'
-  
+
   export default {
     components: {
       AdditionalAuthors,
       Author,
+      DappUrl,
       Description,
       Email,
       License,
@@ -65,7 +68,7 @@
       margin-right: 20px;
       margin-left: 0;
     }
-    
+
     .item {
       width: 100%;
       margin-bottom: 15px;
@@ -97,13 +100,13 @@
         border-color: $color--tart-orange;
       }
     }
-    
+
     /deep/ .required {
       display: inline-block;
       padding-left: 2px;
       color: $color--tart-orange;
     }
-    
+
     /deep/ .label {
       position: absolute;
       left: 0;
@@ -113,7 +116,7 @@
       font-size: .95rem;
       transition: top .2s ease;
     }
-    
+
     /deep/ .text-input, /deep/ .text-area {
       border: none;
       padding: 30px 50px 30px 20px;
@@ -130,20 +133,20 @@
         opacity: .65;
       }
     }
-    
+
     /deep/ .text-area {
       vertical-align: top;
       min-height: 75px;
       resize: none;
     }
-    
+
     /deep/ .remaining-characters {
       position: absolute;
       display: block;
       right: 20px;
       top: 30px;
     }
-    
+
     /deep/ .help {
       padding: 10px 20px;
       margin: 0;
@@ -151,13 +154,13 @@
       background: rgba(250, 250, 250, 0.7);
       font-size: .9rem;
     }
-    
+
     /deep/ .error-list {
       padding: 10px 20px;
       background: $color--tart-orange;
       color: lighten($color--alabaster, 100%);
     }
-    
+
     /deep/ .error-item {
       margin: .2rem 0;
     }
