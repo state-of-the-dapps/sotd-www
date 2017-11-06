@@ -2,7 +2,8 @@ import * as constants from '~/plugins/constants'
 import axios from '~/plugins/axios'
 
 function randomSeed () {
-  return Math.floor(Math.random() * 4294967295) + 1
+  const UINT_MAX = 4294967295
+  return Math.floor(Math.random() * (UINT_MAX + 1))
 }
 
 function query () {
