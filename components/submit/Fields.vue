@@ -153,13 +153,20 @@
       line-height: 1.45;
     }
 
-    /deep/ .error-list {
+    /deep/ .error-list, /deep/ .warning-list {
       padding: 10px 20px;
-      background: $color--tart-orange;
       color: lighten($color--alabaster, 100%);
     }
 
-    /deep/ .error-item {
+    /deep/ .error-list {
+      background: $color--tart-orange;
+    }
+
+    /deep/ .warning-list {
+      background: $color--burning-orange;
+    }
+
+    /deep/ .error-item, /deep/ .warning-item {
       margin: .2rem 0;
     }
   }

@@ -3,6 +3,9 @@
       <textarea class="text-area" maxlength="75" :class="teaser.length > 0 ? '--is-filled' : ''" type="text" v-model="teaser" @input="validate"></textarea>
       <label class="label">Teaser description<span class="required">(required)</span></label>
       <span class="remaining-characters">{{ 75 - teaser.length }}</span>
+      <ul v-if="warnings && warnings.length > 0" class="warning-list">
+        <li v-for="warning in warnings" class="warning-item">{{ warning }}</li>
+      </ul>
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="error in errors" class="error-item">{{ error }}</li>
       </ul>
@@ -11,7 +14,7 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/plugins/mixins'
+  import { dispatchErrors, dispatchWarnings } from '~/plugins/mixins'
 
   var validationTimer
 
@@ -31,6 +34,9 @@
           }
           this.$store.dispatch('submit/updateField', field)
         }
+      },
+      warnings () {
+        return this.$store.getters['submit/teaserWarnings']
       }
     },
     methods: {
@@ -40,13 +46,29 @@
           field: 'teaser',
           data: []
         }
+        const warnings = {
+          field: 'teaser',
+          data: []
+        }
+        const warningWords = [
+          'blockchain',
+          'decentralized',
+          'ethereum'
+        ]
         validationTimer = setTimeout(() => {
           this.teaser.length > 75 ? errors.data.push(`Teaser can't be longer than 75 characters`) : ''
           this.teaser.length < 4 ? errors.data.push(`Teaser must be longer than 3 characters`) : ''
+          var hasWarningWords = warningWords.some((word) => {
+            return this.teaser.toLowerCase().indexOf(word) !== -1
+          })
+          if (hasWarningWords === true) {
+            warnings.data.push(`Please don't use obvious words like "blockchain", "decentralized", or "Ethereum"`)
+          }
           this.dispatchErrors(errors)
+          this.dispatchWarnings(warnings)
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
+    mixins: [dispatchErrors, dispatchWarnings]
   }
 </script>
