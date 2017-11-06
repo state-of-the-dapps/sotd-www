@@ -9,7 +9,7 @@
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="error in errors" class="error-item">{{ error }}</li>
       </ul>
-      <p class="help">A short teaser that is simple and descriptive. Please don't include self-promotion or obvious words like "blockchain", "decentralized", or "Ethereum"</p>
+      <p class="help">A short teaser that is simple and descriptive. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
     </div>
 </template>
 
@@ -62,7 +62,15 @@
             return this.teaser.toLowerCase().indexOf(word) !== -1
           })
           if (hasWarningWords === true) {
-            warnings.data.push(`Please don't use obvious words like "blockchain", "decentralized", or "Ethereum"`)
+            let rowLength = warningWords.length
+            let warningWordString = warningWords.map((value, i) => {
+              value = '"' + value + '"'
+              if (rowLength === i + 1) {
+                value = 'or ' + value
+              }
+              return value
+            }).join(', ')
+            warnings.data.push(`Please don't use obvious words such as ` + warningWordString)
           }
           this.dispatchErrors(errors)
           this.dispatchWarnings(warnings)
