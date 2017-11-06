@@ -60,7 +60,10 @@ function initialState () {
       website: ''
     },
     tagsQuery: '',
-    tagsResults: []
+    tagsResults: [],
+    warnings: {
+      teaser: []
+    }
   }
 }
 
@@ -149,6 +152,9 @@ export const mutations = {
   },
   updateTagsQuery (state, value) {
     state.tagsQuery = value
+  },
+  updateWarnings (state, warnings) {
+    state.warnings[warnings.field] = warnings.data
   }
 }
 
@@ -184,8 +190,8 @@ export const actions = {
   toggleCheckbox ({ commit }, field) {
     commit('toggleCheckbox', field)
   },
-  updateErrors ({ commit }, value) {
-    commit('updateErrors', value)
+  updateErrors ({ commit }, errors) {
+    commit('updateErrors', errors)
   },
   updateField ({ commit }, field) {
     commit('updateField', field)
@@ -198,6 +204,9 @@ export const actions = {
   },
   updateTagsQuery ({ commit }, value) {
     commit('updateTagsQuery', value)
+  },
+  updateWarnings ({ commit }, warnings) {
+    commit('updateWarnings', warnings)
   }
 }
 
@@ -312,6 +321,9 @@ export const getters = {
   },
   teaserErrors: state => {
     return state.errors.teaser
+  },
+  teaserWarnings: state => {
+    return state.warnings.teaser
   },
   acceptedTerms: state => {
     return state.fields.acceptedTerms

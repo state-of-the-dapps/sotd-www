@@ -30,3 +30,11 @@ export const dispatchErrors = {
     }
   }
 }
+
+export const dispatchWarnings = {
+  methods: {
+    dispatchWarnings (warnings) {
+      this.$store.dispatch('submit/updateWarnings', warnings)
+    }
+  }
+}
