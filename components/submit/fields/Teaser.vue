@@ -51,24 +51,28 @@
           data: []
         }
         const warningWords = [
-          'blockchain',
-          'decentralized',
-          'ethereum'
+          { value: 'blockchain' },
+          { value: 'decentralised', isHidden: true },
+          { value: 'decentralized' },
+          { value: 'ethereum' }
         ]
         validationTimer = setTimeout(() => {
           this.teaser.length > 75 ? errors.data.push(`Teaser can't be longer than 75 characters`) : ''
           this.teaser.length < 4 ? errors.data.push(`Teaser must be longer than 3 characters`) : ''
           var hasWarningWords = warningWords.some((word) => {
-            return this.teaser.toLowerCase().indexOf(word) !== -1
+            return this.teaser.toLowerCase().indexOf(word.value) !== -1
           })
           if (hasWarningWords === true) {
-            let rowLength = warningWords.length
-            let warningWordString = warningWords.map((value, i) => {
-              value = '"' + value + '"'
+            let filteredWarningWords = warningWords.filter((word) => {
+              return word.isHidden !== true
+            })
+            let rowLength = filteredWarningWords.length
+            let warningWordString = filteredWarningWords.map((word, i) => {
+              let string = '"' + word.value + '"'
               if (rowLength === i + 1) {
-                value = 'or ' + value
+                string = 'or "' + word.value + '"'
               }
-              return value
+              return string
             }).join(', ')
             warnings.data.push(`Please don't use obvious words such as ` + warningWordString)
           }
