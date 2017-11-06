@@ -1,20 +1,30 @@
 import * as constants from '~/plugins/constants'
 import axios from '~/plugins/axios'
 
+function randomSeed () {
+  const UINT_MAX = 4294967295
+  return Math.floor(Math.random() * (UINT_MAX + 1))
+}
+
+function query () {
+  return {
+    category: constants.browseCategoryOptions[0],
+    limit: 50,
+    offset: 0,
+    refine: constants.browseRefineOptions[0],
+    seed: randomSeed(),
+    tags: [],
+    text: ''
+  }
+}
+
 export const state = () => {
   return {
     pagination: {
       offset: 0,
       totalCount: 0
     },
-    query: {
-      category: constants.browseCategoryOptions[0],
-      limit: 50,
-      offset: 0,
-      refine: constants.browseRefineOptions[0],
-      tags: [],
-      text: ''
-    },
+    query: query(),
     friendlyUrl: '/',
     loading: true,
     items: [],
@@ -58,14 +68,7 @@ export const mutations = {
     state.query.tags.splice(index, 1)
   },
   resetQuery (state) {
-    state.query = {
-      category: constants.browseCategoryOptions[0],
-      limit: 50,
-      offset: 0,
-      refine: constants.browseRefineOptions[0],
-      tags: [],
-      text: ''
-    }
+    state.query = query()
   },
   setActiveItemIndex (state, index) {
     state.activeItemIndex = index
