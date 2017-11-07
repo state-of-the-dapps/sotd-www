@@ -34,10 +34,10 @@ function initialState () {
       author: '',
       description: '',
       contracts: {
-        kovan: { address: '' },
         mainnet: { address: '' },
-        rinkeby: { address: '' },
-        ropsten: { address: '' }
+        ropsten: { address: '' },
+        kovan: { address: '' },
+        rinkeby: { address: '' }
       },
       email: '',
       joinSlack: true,
@@ -231,6 +231,9 @@ export const getters = {
   authorErrors: state => {
     return state.errors.author
   },
+  contracts: state => {
+    return state.fields.contracts
+  },
   description: state => {
     return state.fields.description
   },
@@ -261,9 +264,6 @@ export const getters = {
   logoErrors: state => {
     return state.errors.logo
   },
-  mainnet: state => {
-    return state.fields.contracts.mainnet.address
-  },
   mainnetErrors: state => {
     return state.errors.mainnet
   },
@@ -272,9 +272,6 @@ export const getters = {
   },
   nameErrors: state => {
     return state.errors.name
-  },
-  ropsten: state => {
-    return state.fields.contracts.ropsten.address
   },
   ropstenErrors: state => {
     return state.errors.ropsten
