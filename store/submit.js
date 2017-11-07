@@ -36,7 +36,7 @@ function initialState () {
       contracts: {
         kovan: { address: '' },
         mainnet: { address: '' },
-        rinkby: { address: '' },
+        rinkeby: { address: '' },
         ropsten: { address: '' }
       },
       email: '',
