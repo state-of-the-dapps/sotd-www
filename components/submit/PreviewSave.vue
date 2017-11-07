@@ -118,8 +118,8 @@
               this.$router.replace({ path: '/confirmation' })
             })
             .catch((error) => {
-              console.log(error)
-              alert('There was an error submitting. Please try again.')
+              alert(error.response.data.message)
+              this.sending = false
             })
         }
       }
