@@ -14,7 +14,7 @@
   import { dispatchErrors } from '~/plugins/mixins'
 
   var validationTimer
-  
+
   export default {
     computed: {
       errors () {
@@ -29,7 +29,7 @@
             name: 'mainnet',
             value: value
           }
-          this.$store.dispatch('submit/updateField', field)
+          this.$store.dispatch('submit/updateContract', field)
         }
       }
     },
