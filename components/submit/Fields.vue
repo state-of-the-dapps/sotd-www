@@ -20,11 +20,8 @@
 <script>
   import AdditionalAuthors from '~/components/submit/fields/AdditionalAuthors.vue'
   import Author from '~/components/submit/fields/Author.vue'
-<<<<<<< HEAD
   import Contracts from '~/components/submit/fields/Contracts.vue'
-=======
   import DappUrl from '~/components/submit/fields/DappUrl.vue'
->>>>>>> c257b8ee1c2ededb7bae7e59c2781645e6c9fa12
   import Description from '~/components/submit/fields/Description.vue'
   import Email from '~/components/submit/fields/Email.vue'
   import License from '~/components/submit/fields/License.vue'
@@ -40,11 +37,8 @@
     components: {
       AdditionalAuthors,
       Author,
-<<<<<<< HEAD
       Contracts,
-=======
       DappUrl,
->>>>>>> c257b8ee1c2ededb7bae7e59c2781645e6c9fa12
       Description,
       Email,
       License,
