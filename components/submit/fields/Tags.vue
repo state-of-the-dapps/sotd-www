@@ -4,7 +4,7 @@
     <ul class="list">
       <li class="item -input">
         <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
-        <span v-if="selected.length < 5" class="add" :class="query.length > 2 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
+        <span v-if="selected.length < 5" class="add" :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
         <transition name="fade">
           <div class="dropdown" v-if="results.length > 0 && selected.length < 5">
              <ul class="dropdown-list">
@@ -46,7 +46,7 @@
     },
     methods: {
       add () {
-        if (this.query.length > 2) {
+        if (this.query.length > 1) {
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
           this.$mixpanel.track('New DApp - Add tag', { tag: this.query })

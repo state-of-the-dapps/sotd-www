@@ -17,6 +17,7 @@ function initialState () {
     errors: {
       additionalAuthors: [],
       author: [],
+      dappUrl: [],
       description: [],
       email: [],
       license: [],
@@ -32,6 +33,7 @@ function initialState () {
     fields: {
       additionalAuthors: '',
       author: '',
+      dappUrl: '',
       description: '',
       contracts: {
         mainnet: { address: '' },
@@ -233,6 +235,12 @@ export const getters = {
   },
   contracts: state => {
     return state.fields.contracts
+  },
+  dappUrl: state => {
+    return state.fields.dappUrl
+  },
+  dappUrlErrors: state => {
+    return state.errors.dappUrl
   },
   description: state => {
     return state.fields.description
