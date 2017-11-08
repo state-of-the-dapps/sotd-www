@@ -5,6 +5,7 @@
     <Teaser/>
     <Description/>
     <Website/>
+    <DappUrl/>
     <Author/>
     <AdditionalAuthors/>
     <License/>
@@ -20,6 +21,7 @@
 <script>
   import AdditionalAuthors from '~/components/submit/fields/AdditionalAuthors.vue'
   import Author from '~/components/submit/fields/Author.vue'
+  import DappUrl from '~/components/submit/fields/DappUrl.vue'
   import Description from '~/components/submit/fields/Description.vue'
   import Email from '~/components/submit/fields/Email.vue'
   import License from '~/components/submit/fields/License.vue'
@@ -37,6 +39,7 @@
     components: {
       AdditionalAuthors,
       Author,
+      DappUrl,
       Description,
       Email,
       License,
