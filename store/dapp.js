@@ -1,7 +1,14 @@
+function active () {
+  return {
+    contracts: [],
+    tags: []
+  }
+}
+
 export const state = () => {
   return {
     popup: false,
-    active: {},
+    active: active(),
     viewMethod: 'direct'
   }
 }
@@ -17,7 +24,7 @@ export const mutations = {
     state.popup = false
   },
   reset (state) {
-    state.active = {}
+    state.active = active()
   },
   resetViewMethod (state) {
     state.viewMethod = ''
