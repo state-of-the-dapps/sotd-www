@@ -12,12 +12,10 @@
     <ul class="sub-list">
       <li v-if="item.contracts.length > 0" class="sub-item">
         <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
-        <p>
-          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
+        <p><span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
             + (contract.network === 'mainnet' ? '' : contract.network + '.')
             + 'etherscan.io/address/'
-            + contract.address" target="_blank">{{ contract.network | capitalize }}</a><span v-if="index !== item.contracts.length - 1">, </span></span>
-        </p>
+            + contract.address" target="_blank">{{ contract.network | capitalize }}</a><span v-if="index !== item.contracts.length - 1">, </span></span></p>
       </li>
       <li v-if="item.license" class="sub-item">
         <h3 class="sub-heading">Software license</h3>
