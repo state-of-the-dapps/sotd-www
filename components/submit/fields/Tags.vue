@@ -1,19 +1,22 @@
 <template>
   <div v-on-clickaway="reset">
     <p class="heading">Tags <span class="required">(at least 1 required)</span></p>
+    <div class="input-wrapper">
+      <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @keyup.enter="add" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
+      <span v-if="selected.length < 5" class="add" :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
+      <transition name="fade">
+        <div class="dropdown" v-if="results.length > 0 && selected.length < 5">
+           <ul class="dropdown-list">
+              <li v-for="(result, key) in results" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
+           </ul>
+        </div>
+      </transition>
+    </div>
+    <ul v-if="hasObviousTags" class="warning-list -tags">
+      <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
+    </ul>
     <ul class="list">
-      <li class="item -input">
-        <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
-        <span v-if="selected.length < 5" class="add" :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
-        <transition name="fade">
-          <div class="dropdown" v-if="results.length > 0 && selected.length < 5">
-             <ul class="dropdown-list">
-                <li v-for="(result, key) in results" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
-             </ul>
-          </div>
-        </transition>
-      </li>
-      <li v-for="(tag, key) in selected" class="item -tag">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="/images/close/small.png" width="9" alt="Close"></span></li>
+      <li v-for="(tag, key) in selected" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="/images/close/small.png" width="9" alt="Close"></span></li>
     </ul>
   </div>
 </template>
@@ -26,6 +29,23 @@
 
   export default {
     computed: {
+      hasObviousTags () {
+        return this.obviousTags.some((value) => {
+          return this.selected.indexOf(value) >= 0
+        })
+      },
+      name () {
+        return this.$store.getters['submit/name']
+      },
+      obviousTags () {
+        return [
+          'blockchain',
+          'decentralized',
+          'ethereum',
+          this.name,
+          this.name.toLowerCase()
+        ]
+      },
       query: {
         get () {
           return this.$store.getters['submit/tagsQuery']
@@ -46,11 +66,14 @@
     },
     methods: {
       add () {
-        if (this.query.length > 1) {
+        if (this.query.length > 1 && this.selected.length < 5) {
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
           this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
         }
+      },
+      hasWarning (tag) {
+        return this.obviousTags.indexOf(tag) >= 0
       },
       findSuggestedTags () {
         if (this.query.length === 0 && this.selected.length === 0) {
@@ -113,8 +136,8 @@
     padding: 10px;
     box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
     width: 320px;
-    top: 38px;
-    left: -1px;
+    top: 37px;
+    left: 0;
     overflow: hidden;
     z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
@@ -161,14 +184,23 @@
   .input {
     border: none;
     background: none;
-    padding: 0 30px 0 0;
-    width: 149px;
+    width: 100%;
     &::placeholder {
       color: $color--mine-shaft;
     }
     &:focus::placeholder {
       color: rgba($color--mine-shaft,.5);
     }
+  }
+
+  .input-wrapper {
+    background: rgba(lighten($color--gallery, 100%),.9);
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    margin-bottom: 10px;
+    position: relative;
   }
 
   .item {
@@ -180,11 +212,11 @@
     box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
     border: 1px solid transparent;
     position: relative;
-    &.-input {
-      background: rgba(lighten($color--gallery, 100%),.9);
-      width: 200px;
+    &.--has-warning {
+      border-color: $color--burning-orange;
     }
   }
+
 
   .list {
     display: flex;
@@ -198,5 +230,12 @@
     margin-left: 8px;
     position: relative;
     top: 1px;
+  }
+
+  .warning-list {
+    &.-tags {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
   }
 </style>
