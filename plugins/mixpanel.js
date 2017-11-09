@@ -4,6 +4,10 @@ import mixpanel from 'mixpanel-browser'
 const mp = function (Vue) {
   mixpanel.init(process.env.mixpanel)
 
+  if (process.env.NODE_ENV !== 'production') {
+    mixpanel.set_config({ debug: true })
+  }
+
   window.addEventListener('load', function () {
     let hasWeb3 = false
     if (typeof web3 !== 'undefined') {
