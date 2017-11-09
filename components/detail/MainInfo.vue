@@ -16,8 +16,7 @@
           <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
             + (contract.network === 'mainnet' ? '' : contract.network + '.')
             + 'etherscan.io/address/'
-            + contract.address"
-          target="_blank">{{ contract.network | capitalize }}</a><span v-if="index !== item.contracts.length - 1">, </span></span>
+            + contract.address" target="_blank">{{ contract.network | capitalize }}</a><span v-if="index !== item.contracts.length - 1">, </span></span>
         </p>
       </li>
       <li v-if="item.license" class="sub-item">
