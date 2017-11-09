@@ -65,7 +65,6 @@
     },
     methods: {
       add () {
-        clearTimeout(searchTimer)
         if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
