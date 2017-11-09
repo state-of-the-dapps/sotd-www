@@ -47,7 +47,7 @@ module.exports = {
   env: {
     apiUrl: process.env.API_URL || 'http://localhost:3000',
     fullstory: process.env.FULLSTORY || '00000',
-    mixpanel: process.env.MIXPANEL || '00000000000000000000000000000000'
+    mixpanel: process.env.MIXPANEL
   },
   head: {
     title: 'State of the ÐApps — Projects Built on Ethereum',
