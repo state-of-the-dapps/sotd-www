@@ -52,7 +52,7 @@
         targetDapp: this.$route.params.slug,
         method: this.viewMethod
       }, this.$store.dispatch('dapp/resetViewMethod'))
-      if (!Object.keys(this.active).length > 0) {
+      if (!Object.hasOwnProperty('slug')) {
         axios
           .get('dapps/' + this.$route.params.slug)
           .then(response => {
