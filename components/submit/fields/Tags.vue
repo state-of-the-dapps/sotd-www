@@ -31,7 +31,7 @@
     computed: {
       hasObviousTags () {
         return this.obviousTags.some((value) => {
-          return this.selected.indexOf(value) >= 0
+          return this.selected.map(item => item.toLowerCase()).indexOf(value) >= 0
         })
       },
       name () {
@@ -42,9 +42,8 @@
           'blockchain',
           'decentralized',
           'ethereum',
-          this.name,
-          this.name.toLowerCase()
-        ]
+          this.name
+        ].map(item => item.toLowerCase())
       },
       query: {
         get () {
@@ -66,6 +65,7 @@
     },
     methods: {
       add () {
+        clearTimeout(searchTimer)
         if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
@@ -73,7 +73,7 @@
         }
       },
       hasWarning (tag) {
-        return this.obviousTags.indexOf(tag) >= 0
+        return this.obviousTags.indexOf(tag.toLowerCase()) >= 0
       },
       findSuggestedTags () {
         if (this.query.length === 0 && this.selected.length === 0) {
