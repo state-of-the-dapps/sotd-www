@@ -10,13 +10,15 @@
       </li>
     </ul>
     <ul class="sub-list">
-      <li v-if="item.mainnet" class="sub-item">
-        <h3 class="sub-heading">Mainnet address</h3>
-        <p class="sub-body"><a @click="$mixpanel.track('DApp - Mainnet', { address: item.mainnet })" :href="'https://etherscan.io/address/' + item.mainnet " target="_blank">{{ item.mainnet }}</a></p>
-      </li>
-      <li v-if="item.ropsten" class="sub-item">
-        <h3 class="sub-heading">Ropsten address</h3>
-        <p class="sub-body"><a @click="$mixpanel.track('DApp - Ropsten', { address: item.ropsten })" :href="'https://ropsten.etherscan.io/address/' + item.ropsten " target="_blank">{{ item.ropsten }}</a></p>
+      <li v-if="item.contracts.length > 0" class="sub-item">
+        <h3 class="sub-heading">Contract address<span v-if="this.contracts.length > 1">es</span></h3>
+        <p>
+          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { address: contract.address, network: contract.name })" :href="'https://'
+            + (key === 'mainnet' ? '' : key + '.')
+            + 'etherscan.io/address/'
+            + contract.address"
+          target="_blank">{{ contract.name | capitalize }}</a><span v-if="index !== items.length - 1">, </span></span>
+        </p>
       </li>
       <li v-if="item.license" class="sub-item">
         <h3 class="sub-heading">Software license</h3>
