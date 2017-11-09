@@ -1,7 +1,5 @@
 # State of the DApps Frontend - Nuxt.js
 
-- Designed by [Engine Collaborative](https://www.enginecollaborative.com)
-
 ## ENV
 
 - Set up environment variables in `nuxt.config.js` under the `env` and `mode` properties. (e.g. in ~/.bashrc, add `export API_URL="https://yourapi.com"`)
@@ -30,4 +28,5 @@ For detailed explanation on how Nuxt works, checkout the [Nuxt.js docs](https://
 
 ## Acknowledgements
 
+- Current design by [Engine Collaborative](https://www.enginecollaborative.com)
 - v1 design by [Chris Hitchcott](http://hitchcott.com)
