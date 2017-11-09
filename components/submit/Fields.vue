@@ -10,8 +10,7 @@
     <AdditionalAuthors/>
     <License/>
     <Logo/>
-    <Mainnet/>
-    <Ropsten/>
+    <Contracts/>
     <Status/>
     <Social/>
     <Tags/>
@@ -21,14 +20,13 @@
 <script>
   import AdditionalAuthors from '~/components/submit/fields/AdditionalAuthors.vue'
   import Author from '~/components/submit/fields/Author.vue'
+  import Contracts from '~/components/submit/fields/Contracts.vue'
   import DappUrl from '~/components/submit/fields/DappUrl.vue'
   import Description from '~/components/submit/fields/Description.vue'
   import Email from '~/components/submit/fields/Email.vue'
   import License from '~/components/submit/fields/License.vue'
   import Logo from '~/components/submit/fields/Logo.vue'
-  import Mainnet from '~/components/submit/fields/Mainnet.vue'
   import Name from '~/components/submit/fields/Name.vue'
-  import Ropsten from '~/components/submit/fields/Ropsten.vue'
   import Social from '~/components/submit/fields/Social.vue'
   import Status from '~/components/submit/fields/Status.vue'
   import Tags from '~/components/submit/fields/Tags.vue'
@@ -39,14 +37,13 @@
     components: {
       AdditionalAuthors,
       Author,
+      Contracts,
       DappUrl,
       Description,
       Email,
       License,
       Logo,
-      Mainnet,
       Name,
-      Ropsten,
       Social,
       Status,
       Tags,

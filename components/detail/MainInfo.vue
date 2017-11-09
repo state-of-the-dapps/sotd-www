@@ -10,13 +10,11 @@
       </li>
     </ul>
     <ul class="sub-list">
-      <li v-if="item.mainnet" class="sub-item">
-        <h3 class="sub-heading">Mainnet address</h3>
-        <p class="sub-body"><a @click="$mixpanel.track('DApp - Mainnet', { address: item.mainnet })" :href="'https://etherscan.io/address/' + item.mainnet " target="_blank">{{ item.mainnet }}</a></p>
-      </li>
-      <li v-if="item.ropsten" class="sub-item">
-        <h3 class="sub-heading">Ropsten address</h3>
-        <p class="sub-body"><a @click="$mixpanel.track('DApp - Ropsten', { address: item.ropsten })" :href="'https://ropsten.etherscan.io/address/' + item.ropsten " target="_blank">{{ item.ropsten }}</a></p>
+      <li v-if="item.contracts.length > 0" class="sub-item">
+        <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
+        <ul class="sub-body">
+          <Contract v-for="(contract, index) in item.contracts" :contract="contract" :key="index" />
+        </ul>
       </li>
       <li v-if="item.license" class="sub-item">
         <h3 class="sub-heading">Software license</h3>
@@ -39,6 +37,8 @@
 </template>
 
 <script>
+  import Contract from '~/components/detail/MainInfo/Contract.vue'
+
   export default {
     computed: {
       friendlyUrl () {
@@ -52,6 +52,9 @@
         tags = this.item.tags || []
         return this.$options.filters.removeEmptyItems(tags)
       }
+    },
+    components: {
+      Contract
     },
     methods: {
       findDappsByTag (tag) {

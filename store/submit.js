@@ -35,13 +35,17 @@ function initialState () {
       author: '',
       dappUrl: '',
       description: '',
+      contracts: {
+        mainnet: { address: '' },
+        ropsten: { address: '' },
+        kovan: { address: '' },
+        rinkeby: { address: '' }
+      },
       email: '',
       joinSlack: true,
       license: '',
       logo: '',
-      mainnet: '',
       name: '',
-      ropsten: '',
       social: {
         facebook: { url: '' },
         twitter: { url: '' },
@@ -134,6 +138,9 @@ export const mutations = {
   toggleCheckbox (state, field) {
     state.fields[field] = !state.fields[field]
   },
+  updateContract (state, field) {
+    state.fields.contracts[field.name]['address'] = field.value
+  },
   updateErrors (state, errors) {
     state.errors[errors.field] = errors.data
   },
@@ -190,6 +197,9 @@ export const actions = {
   toggleCheckbox ({ commit }, field) {
     commit('toggleCheckbox', field)
   },
+  updateContract ({ commit }, field) {
+    commit('updateContract', field)
+  },
   updateErrors ({ commit }, errors) {
     commit('updateErrors', errors)
   },
@@ -222,6 +232,9 @@ export const getters = {
   },
   authorErrors: state => {
     return state.errors.author
+  },
+  contracts: state => {
+    return state.fields.contracts
   },
   dappUrl: state => {
     return state.fields.dappUrl
@@ -259,9 +272,6 @@ export const getters = {
   logoErrors: state => {
     return state.errors.logo
   },
-  mainnet: state => {
-    return state.fields.mainnet
-  },
   mainnetErrors: state => {
     return state.errors.mainnet
   },
@@ -270,9 +280,6 @@ export const getters = {
   },
   nameErrors: state => {
     return state.errors.name
-  },
-  ropsten: state => {
-    return state.fields.ropsten
   },
   ropstenErrors: state => {
     return state.errors.ropsten

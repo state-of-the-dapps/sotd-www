@@ -85,6 +85,7 @@ module.exports = {
     { src: '~/plugins/filters' },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
-    { src: '~/plugins/smoothscroll-polyfill', ssr: false }
+    { src: '~/plugins/smoothscroll-polyfill', ssr: false },
+    { src: '~/plugins/clipboard', ssr: false }
   ]
 }
