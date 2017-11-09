@@ -20,7 +20,7 @@ Vue.filter('firstLetter',
 Vue.filter('truncate',
   (value, length) => {
     if (value) {
-      return (value.length > length) ? value.substr(0, length - 1) + '...' : value
+      return (value.length > length) ? value.substr(0, length - 1) + '…' : value
     }
   }
 )

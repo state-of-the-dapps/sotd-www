@@ -17,6 +17,7 @@
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.3.6",
     "vue-clickaway": "^2.1.0",
+    "vue-clipboard2": "0.0.7",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
