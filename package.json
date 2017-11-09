@@ -2,7 +2,7 @@
   "name": "www-stateofthedapps-com",
   "version": "1.0.0",
   "description": "State of the DApps Frontend Nuxt.js",
-  "author": "rob@enginecollaborative.com",
+  "author": "support@stateofthedapps.com",
   "private": true,
   "engines": {
     "node": "8.8.1"
@@ -12,12 +12,12 @@
     "@nuxtjs/router": "^1.0.1",
     "@nuxtjs/sentry": "^0.1.0",
     "axios": "^0.16.2",
+    "clipboard": "^1.5.16",
     "mixpanel-browser": "^2.13.0",
     "nuxt": "1.0.0-rc8",
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.3.6",
     "vue-clickaway": "^2.1.0",
-    "vue-clipboard2": "0.0.7",
     "webfontloader": "^1.6.28"
   },
   "scripts": {
