@@ -66,7 +66,7 @@
     },
     methods: {
       add () {
-        if (this.query.length > 1 && this.selected.length < 5) {
+        if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
           this.$store.dispatch('submit/addTag', this.query)
           this.$store.dispatch('submit/resetTagsResults')
           this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
