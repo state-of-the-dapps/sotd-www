@@ -13,7 +13,7 @@
       <li v-if="item.contracts.length > 0" class="sub-item">
         <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
         <p>
-          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { address: contract.address, network: contract.network })" :href="'https://'
+          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
             + (contract.network === 'mainnet' ? '' : contract.network + '.')
             + 'etherscan.io/address/'
             + contract.address"
