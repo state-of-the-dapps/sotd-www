@@ -11,13 +11,13 @@
     </ul>
     <ul class="sub-list">
       <li v-if="item.contracts.length > 0" class="sub-item">
-        <h3 class="sub-heading">Contract address<span v-if="this.contracts.length > 1">es</span></h3>
+        <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
         <p>
-          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { address: contract.address, network: contract.name })" :href="'https://'
-            + (key === 'mainnet' ? '' : key + '.')
+          <span v-for="(contract, index) in item.contracts" class="sub-body"><a @click="$mixpanel.track('DApp - Contract', { address: contract.address, network: contract.network })" :href="'https://'
+            + (contract.network === 'mainnet' ? '' : contract.network + '.')
             + 'etherscan.io/address/'
             + contract.address"
-          target="_blank">{{ contract.name | capitalize }}</a><span v-if="index !== items.length - 1">, </span></span>
+          target="_blank">{{ contract.network | capitalize }}</a><span v-if="index !== item.contracts.length - 1">, </span></span>
         </p>
       </li>
       <li v-if="item.license" class="sub-item">
