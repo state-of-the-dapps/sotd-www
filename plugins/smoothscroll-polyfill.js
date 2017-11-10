@@ -1,1 +1,0 @@
-require('smoothscroll-polyfill').polyfill()
