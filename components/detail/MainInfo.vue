@@ -6,7 +6,7 @@
         <p class="sub-body">{{ item.author }}<span v-if="item.additionalAuthors">, {{ item.additionalAuthors }}</span></p>
       </li>
       <li class="item -description">
-        <p class="body">{{ item.description }}</p>
+        <p class="body"><img v-if="item.logoUrl" class="logo" :src="item.logoUrl">{{ item.description }}</p>
       </li>
     </ul>
     <ul class="sub-list">
@@ -124,6 +124,16 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
+  }
+
+  .logo {
+    max-width: 160px;
+    max-height: 160px;
+    background: darken($color--alabaster, 6%);
+    padding: 15px;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 20px;
   }
 
   .sub-body {
