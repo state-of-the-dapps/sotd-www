@@ -54,9 +54,9 @@
     margin-left: 10px;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: .7rem;
+    font-size: .65rem;
     background: $color--mine-shaft;
-    padding: 2px 3px;
+    padding: 2px 5px;
     color: $color--gallery;
   }
 
