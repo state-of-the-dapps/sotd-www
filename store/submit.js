@@ -20,10 +20,12 @@ function initialState () {
       dappUrl: [],
       description: [],
       email: [],
+      kovan: [],
       license: [],
       logo: [],
       mainnet: [],
       name: [],
+      rinkeby: [],
       ropsten: [],
       tags: [],
       teaser: [],
@@ -260,6 +262,9 @@ export const getters = {
   joinSlack: state => {
     return state.fields.joinSlack
   },
+  kovanErrors: state => {
+    return state.errors.kovan
+  },
   license: state => {
     return state.fields.license
   },
@@ -280,6 +285,9 @@ export const getters = {
   },
   nameErrors: state => {
     return state.errors.name
+  },
+  rinkebyErrors: state => {
+    return state.errors.rinkeby
   },
   ropstenErrors: state => {
     return state.errors.ropsten
