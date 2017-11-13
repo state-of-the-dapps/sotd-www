@@ -6,7 +6,7 @@
     <div class="contract-address"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
       + (contract.network === 'mainnet' ? '' : contract.network + '.')
       + 'etherscan.io/address/'
-      + contract.address" target="_blank">{{ contract.address | truncate(20) }}</a>
+      + contract.address" target="_blank" rel="noopener noreferrer">{{ contract.address | truncate(20) }}</a>
     </div>
     <div class="contract-copy">
       <span v-clipboard:copy="contract.address" v-clipboard:success="copy">{{ copyStatus }}</span>

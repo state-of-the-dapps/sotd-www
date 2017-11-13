@@ -2,13 +2,13 @@ export const state = () => {
   return {
     about: {
       body: `
-      <p class="paragraph"><strong>State of the DApps</strong> is a not-for-profit curated directory of Decentralized Applications, also called DApps (pronounced D-Apps) on the <a href="https://ethereum.org/" target="_blank">Ethereum Blockchain</a>. State of DApps was created to categorize and showcase developed projects built on the Ethereum Blockchain.</p>
-      <p class="paragraph">The inspiration for State of the DApps came from FreshMeat now known as <a href="http://freecode.com/" target="_blank">FreeCode</a> which was a site reference for Linux users, which had a big inventory of the open source applications, games and all sources for Linux.</p>
-      <p class="paragraph">In State of the DApps there are many projects covering different fields such as health, Ponzi schemes, games, virtual reality, artificial intelligence, education, registries, job markets, tinder for horses and many more. The directory has become one of the biggest reference for the Ethereum ecosystem, we are referred to in talks, workshops, meetups; <a href="https://twitter.com/VitalikButerin" target="_blank">Vitalik Buterin</a> included uses State of the DApps.</p>
+      <p class="paragraph"><strong>State of the DApps</strong> is a not-for-profit curated directory of Decentralized Applications, also called DApps (pronounced D-Apps) on the <a href="https://ethereum.org/" target="_blank" rel="noopener noreferrer">Ethereum Blockchain</a>. State of DApps was created to categorize and showcase developed projects built on the Ethereum Blockchain.</p>
+      <p class="paragraph">The inspiration for State of the DApps came from FreshMeat now known as <a href="http://freecode.com/" target="_blank" rel="noopener noreferrer">FreeCode</a> which was a site reference for Linux users, which had a big inventory of the open source applications, games and all sources for Linux.</p>
+      <p class="paragraph">In State of the DApps there are many projects covering different fields such as health, Ponzi schemes, games, virtual reality, artificial intelligence, education, registries, job markets, tinder for horses and many more. The directory has become one of the biggest reference for the Ethereum ecosystem, we are referred to in talks, workshops, meetups; <a href="https://twitter.com/VitalikButerin" target="_blank" rel="noopener noreferrer">Vitalik Buterin</a> included uses State of the DApps.</p>
       <p class="paragraph">We already have a really wonderful team contributing to the growth of the project, and our goal is to connect DApp creators and users.</p>
       <p class="paragraph">State of the DApps is a privately funded and independent project. We are open to collaboration with others when it is a good match for both parties, but what makes us successful is our autonomy &amp; objectivity.</p>
-      <p class="paragraph">The entire project is open-source and available on github: <a href="https://github.com/state-of-the-dapps" target="_blank">https://github.com/state-of-the-dapps</a></p>
-      <p class="paragraph">Watch our video presentation of the project: <a href="https://youtu.be/iqBNPh5IMqM" target="_blank">https://youtu.be/iqBNPh5IMqM</a></p>
+      <p class="paragraph">The entire project is open-source and available on github: <a href="https://github.com/state-of-the-dapps" target="_blank" rel="noopener noreferrer">https://github.com/state-of-the-dapps</a></p>
+      <p class="paragraph">Watch our video presentation of the project: <a href="https://youtu.be/iqBNPh5IMqM" target="_blank" rel="noopener noreferrer">https://youtu.be/iqBNPh5IMqM</a></p>
 
       <p class="paragraph">And remember... smart contracts are neither smart, nor contracts!</p>
       `
@@ -101,10 +101,10 @@ export const state = () => {
         <h2 class="sub-heading">Further Reading</h2>
 
         <ul class="text-list">
-          <li><a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank">Ethereum Whitepaper</a></li>
-          <li><a href="http://gavwood.com/Paper.pdf" target="_blank">Ethereum Yellow paper for technical specifications</a></li>
-          <li><a href="https://medium.com/technologymadeeasy/develop-dapps-on-ethereum-tutorial-series-for-beginners-part-1-basic-terminology-866d2ce4cf34" target="_blank">ÐApp terminology</a></li>
-          <li><a href="https://dappdaily.com/ethereum-reading-list-for-prospective-dapp-developers-15d515383b23" target="_blank">Ethereum reading list for prospective ÐApp developers</a></li>
+          <li><a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank" rel="noopener noreferrer">Ethereum Whitepaper</a></li>
+          <li><a href="http://gavwood.com/Paper.pdf" target="_blank" rel="noopener noreferrer">Ethereum Yellow paper for technical specifications</a></li>
+          <li><a href="https://medium.com/technologymadeeasy/develop-dapps-on-ethereum-tutorial-series-for-beginners-part-1-basic-terminology-866d2ce4cf34" target="_blank" rel="noopener noreferrer">ÐApp terminology</a></li>
+          <li><a href="https://dappdaily.com/ethereum-reading-list-for-prospective-dapp-developers-15d515383b23" target="_blank" rel="noopener noreferrer">Ethereum reading list for prospective ÐApp developers</a></li>
         </ul>
       `
     }
