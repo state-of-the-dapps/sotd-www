@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" :style="{ left: position.xPos + 'px', top: position.yPos + 22 + 'px' }" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option | formatBrowseCategoryOptions }}</li>
+        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click="select(option)">{{ option | formatBrowseCategoryOptions }}</li>
       </ul>
     </div>
   </transition>
@@ -37,6 +37,14 @@
       onClickaway: onClickaway
     },
     methods: {
+      hasRelevance (option) {
+        if (option === 'most-relevant') {
+          var textQuery = this.$store.getters['dapps/textQuery']
+          return textQuery.length > 0
+        } else {
+          return true
+        }
+      },
       hide () {
         this.$mixpanel.track('DApps - Click away from categories')
         this.$store.dispatch('dapps/browseCategories/toggle')
