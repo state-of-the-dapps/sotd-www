@@ -13,7 +13,7 @@
       <nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
     </h4>
     <p class="disclaimer-message">{{ content.disclaimer }}</p>
-    <p class="attribution">Designed by <a @click="$mixpanel.track('SoTD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank">Engine Collaborative</a></p>
+    <p class="attribution">Designed by <a @click="$mixpanel.track('SoTD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></p>
   </div>
 </template>
 

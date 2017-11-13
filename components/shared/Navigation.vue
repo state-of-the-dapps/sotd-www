@@ -2,12 +2,12 @@
   <ul class="list">
     <li class="item"><nuxt-link @click.native="$mixpanel.track(`Nav - What's a DApp`)" to="/whats-a-dapp" class="link">What's a ÐApp</nuxt-link></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="link">About</nuxt-link></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Newsletter')" href="https://landing.mailerlite.com/webforms/landing/t2o2r1" class="link" target="_blank">Get updates</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank">Twitter</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank">Github</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="link -reddit" target="_blank">Reddit</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Medium')" href="https://blog.stateofthedapps.com/" class="link -medium" target="_blank">Medium</a></li>
-    <li class="item"><a @click="$mixpanel.track('Nav - Slack')" href="https://slack.stateofthedapps.com/" class="link -slack" target="_blank">Slack</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Newsletter')" href="https://landing.mailerlite.com/webforms/landing/t2o2r1" class="link" target="_blank" rel="noopener noreferrer">Get updates</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Twitter')" href="https://twitter.com/StateOfTheDApps" class="link -twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Github')" href="https://github.com/state-of-the-dapps" class="link -github" target="_blank" rel="noopener noreferrer">Github</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="link -reddit" target="_blank" rel="noopener noreferrer">Reddit</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Medium')" href="https://blog.stateofthedapps.com/" class="link -medium" target="_blank" rel="noopener noreferrer">Medium</a></li>
+    <li class="item"><a @click="$mixpanel.track('Nav - Slack')" href="https://slack.stateofthedapps.com/" class="link -slack" target="_blank" rel="noopener noreferrer">Slack</a></li>
     <li class="item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/submit" class="link -submit">Submit a ÐApp</nuxt-link></li>
   </ul>
 </template>
