@@ -68,6 +68,7 @@ function initialState () {
     tagsQuery: '',
     tagsResults: [],
     warnings: {
+      name: [],
       teaser: []
     }
   }
