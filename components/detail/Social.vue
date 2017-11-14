@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul class="list" v-if="item.socials">
-      <li v-for="(social, key) in item.socials" class="item -icon"><a @click="$mixpanel.track('DApp - Social', { platform: social, url: social.url })" :href="social.url" class="link" target="_blank" rel="noopener noreferrer"><img :src="'/images/social/' + key + '.png'" class="image" width="32" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')" :alt="key"></a></li>
+      <li v-for="(social, key) in item.socials" class="item -icon"><a @click="$mixpanel.track('DApp - Social', { platform: social, url: social.url })" :href="social.url" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')"><img :src="'/images/social/' + key + '.png'" class="image" width="32" :alt="key"></a></li>
     </ul>
   </div>
 </template>
