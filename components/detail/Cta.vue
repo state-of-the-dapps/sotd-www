@@ -1,11 +1,11 @@
 <template>
   <div v-if="item.dappUrl || item.website" class="wrapper">
     <span v-if="item.dappUrl === item.website">
-      <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - CTA', { websiteDapp: item.website })" class="link" target="_blank" rel="noopener noreferrer">Launch ÐApp/Website<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - CTA', { websiteDapp: item.website })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp/Website<span v-if="item.isNsfw"> (NSFW)</span></a>
     </span>
     <span v-else>
-      <a v-if="item.dappUrl" :href="item.dappUrl" @click="$mixpanel.track('DApp - CTA', { dapp: item.dappUrl })" class="link" target="_blank" rel="noopener noreferrer">Launch ÐApp<span v-if="item.isNsfw"> (NSFW)</span></a>
-      <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - CTA', { website: item.website })" class="link" target="_blank" rel="noopener noreferrer">Visit website<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.dappUrl" :href="item.dappUrl" @click="$mixpanel.track('DApp - CTA', { dapp: item.dappUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.website" :href="item.website" @click="$mixpanel.track('DApp - CTA', { website: item.website })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Visit website<span v-if="item.isNsfw"> (NSFW)</span></a>
     </span>
   </div>
 </template>
