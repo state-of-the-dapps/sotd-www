@@ -1,7 +1,8 @@
 export const browseCategoryOptions = [
   'hot',
   'new',
-  'most-viewed'
+  'most-viewed',
+  'most-relevant'
 ]
 
 export const browseRefineOptions = [

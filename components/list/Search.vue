@@ -9,6 +9,7 @@
 </template>
 
 <script>
+  import { browseCategoryOptions } from '~/plugins/constants'
   import { getCaretPosition } from '~/plugins/mixins'
   var searchTimer
   var trackTimer
@@ -62,9 +63,11 @@
         var lastWord = result ? result[0] : null
         searchTimer = setTimeout(() => {
           if (this.tags.length < 3 && this.textQuery.length > 1) {
+            this.$store.dispatch('dapps/updateCategoryQuery', 'most-relevant')
             this.$store.dispatch('tags/findItems', lastWord)
           }
           if (this.textQuery.length === 0) {
+            this.$store.dispatch('dapps/updateCategoryQuery', browseCategoryOptions[0])
             this.findSuggestedTags()
           }
           this.$store.dispatch('dapps/findItems')
