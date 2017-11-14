@@ -51,14 +51,13 @@
           data: []
         }
         const warningWords = [
-          'http',
-          'www'
+          '.'
         ]
         validationTimer = setTimeout(() => {
           this.name.length > 25 ? errors.data.push(`Name can't be longer than 25 characters`) : ''
           this.name.length < 2 ? errors.data.push(`Name must be longer than 1 character`) : ''
           var hasWarningWords = warningWords.some((word) => {
-            return this.name.toLowerCase().startsWith(word)
+            return this.name.toLowerCase().includes(word)
           })
           hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a url`) : null
           axios
