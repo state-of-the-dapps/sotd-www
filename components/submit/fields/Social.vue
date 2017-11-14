@@ -164,7 +164,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.slack.includes('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
+          this.slack.endsWith('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
           this.slack.length > 0 && !this.slack.includes('.') ? errors.data.push(`Slack invitation should be a url`) : ''
           this.dispatchErrors(errors)
         }, 750)
