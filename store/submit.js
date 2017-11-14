@@ -68,6 +68,7 @@ function initialState () {
     tagsQuery: '',
     tagsResults: [],
     warnings: {
+      name: [],
       teaser: []
     }
   }
@@ -285,6 +286,9 @@ export const getters = {
   },
   nameErrors: state => {
     return state.errors.name
+  },
+  nameWarnings: state => {
+    return state.warnings.name
   },
   rinkebyErrors: state => {
     return state.errors.rinkeby
