@@ -6,7 +6,7 @@
       <span @click="toggleNewsletterDropdown" class="link -newsletter" :class="{ '--is-active': newsletterDropdown }" target="_blank">Newsletter</span>
       <transition name="fade">
         <div v-if="newsletterDropdown" v-on-clickaway="toggleNewsletterDropdown" class="dropdown -newsletter">
-          
+
         </div>
       </transition>
     </li>
@@ -44,7 +44,7 @@
   .dropdown {
     position: absolute;
     right: 50%;
-    top: 45px;
+    top: 50px;
     margin-right: -150px;
     border: 1px solid $color--mine-shaft;
     background: rgba(lighten($color--gallery, 100%),.95);
