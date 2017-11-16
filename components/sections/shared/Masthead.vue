@@ -10,7 +10,7 @@
 <script>
   import Nameplate from '~/components/shared/Nameplate.vue'
   import Navigation from '~/components/shared/Navigation.vue'
-  
+
   export default {
     components: {
       Nameplate,
@@ -21,7 +21,7 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-  
+
   .container {
     @include tweakpoint('min-width', $tweakpoint--default) {
       display: flex;
@@ -34,14 +34,13 @@
       }
     }
   }
-  
+
   .section {
     position: relative;
-    z-index: 5;
+    z-index: 10;
     background: rgba(255,255,255,.4);
     &.-secondary {
       background: none;
     }
   }
 </style>
-
