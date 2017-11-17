@@ -16,6 +16,7 @@ module.exports = {
     vendor: [
       'axios',
       'mixpanel-browser',
+      'moment',
       'smoothscroll-polyfill',
       'vue-clickaway',
       'webfontloader'
