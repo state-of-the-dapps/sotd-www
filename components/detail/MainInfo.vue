@@ -10,7 +10,7 @@
       </li>
     </ul>
     <ul class="sub-list">
-      <li v-if="item.contracts.length > 0" class="sub-item">
+      <li v-if="item.contracts && item.contracts.length > 0" class="sub-item">
         <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
         <ul class="sub-body">
           <Contract v-for="(contract, index) in item.contracts" :contract="contract" :key="index" />
