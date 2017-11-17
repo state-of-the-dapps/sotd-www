@@ -46,7 +46,7 @@ export const mutations = {
 export const actions = {
   subscribe ({ commit }, email) {
     commit('isLoading', true)
-    axios.post('newsletter/subscribe', email)
+    axios.post('newsletter/subscribe', { email: email })
       .then((response) => {
         commit('subscribe')
       })
