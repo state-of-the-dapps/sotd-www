@@ -21,12 +21,12 @@
         <p class="sub-body">{{ item.license }}</p>
       </li>
       <li v-if="item.created" class="sub-item">
-        <h3 class="sub-heading">Created</h3>
-        <p class="sub-body">{{ item.created }}</p>
+        <h3 class="sub-heading">Submitted</h3>
+        <p class="sub-body">{{ item.created | moment("MMM Do, YYYY") }}</p>
       </li>
       <li v-if="item.lastUpdated" class="sub-item">
         <h3 class="sub-heading">Last updated</h3>
-        <p class="sub-body">{{ item.lastUpdated }}</p>
+        <p class="sub-body">{{ item.lastUpdated | moment("MMM Do, YYYY") }}</p>
       </li>
       <li v-if="tags && tags.length > 0" class="sub-item">
         <h3 class="sub-heading">Tags</h3>
