@@ -128,13 +128,11 @@
     position: relative;
     cursor: pointer;
     &.-submit {
-      @include tweakpoint('min-width', $tweakpoint--default) {
-        margin-left: 7px;
-        padding: 8px 15px;
-        color: $color--gallery;
-        background: $color--mine-shaft;
-        box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
-      }
+      padding-left: 15px;
+      padding-right: 15px;
+      color: $color--gallery;
+      background: $color--mine-shaft;
+      box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
     }
     &.--is-active {
       border-color: $color--mine-shaft;
