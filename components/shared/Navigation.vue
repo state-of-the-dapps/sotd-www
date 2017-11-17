@@ -70,13 +70,11 @@
       background-size: 21px 21px;
     }
     &.-submit {
-      @include tweakpoint('min-width', $tweakpoint--default) {
-        padding-left: 15px;
-        padding-right: 15px;
-        color: $color--gallery;
-        background: $color--mine-shaft;
-        box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
-      }
+      padding-left: 15px;
+      padding-right: 15px;
+      color: $color--gallery;
+      background: $color--mine-shaft;
+      box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
     }
   }
 
