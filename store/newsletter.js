@@ -28,6 +28,12 @@ export const mutations = {
       emailIsValid: false
     }
     Object.assign(state, newState)
+  },
+  updateEmail (state, value) {
+    state.email = value
+  },
+  updateEmailIsValid (state, status) {
+    state.emailIsValid = status
   }
 }
 
@@ -40,6 +46,12 @@ export const actions = {
   },
   toggleDropdown ({ commit }) {
     commit('toggleDropdown')
+  },
+  updateEmail ({ commit }, value) {
+    commit('updateEmail', value)
+  },
+  updateEmailIsValid ({ commit }, status) {
+    commit('updateEmailIsValid', status)
   }
 }
 
@@ -50,7 +62,7 @@ export const getters = {
   email: state => {
     return state.email
   },
-  isValid: state => {
+  emailIsValid: state => {
     return state.emailIsValid
   },
   dropdown: state => {

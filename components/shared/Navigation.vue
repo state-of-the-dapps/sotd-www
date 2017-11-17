@@ -13,7 +13,7 @@
             </div>
             <div v-else key="subscribe">
               <p>Sign up for updates from State of the ÐApps</p>
-              <input class="text-input" type="text" placeholder="Email address">
+              <input v-model="newsletterEmail" @input="validateNewsletterEmail" class="text-input" type="text" placeholder="Email address">
               <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid }">Subscribe</button>
             </div>
           </transition>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import { validateEmail } from '~/plugins/validators'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
@@ -35,8 +36,13 @@
       newsletterDropdown () {
         return this.$store.getters['newsletter/dropdown']
       },
-      newsletterEmail () {
-        return this.$store.getters['newsletter/email']
+      newsletterEmail: {
+        get () {
+          return this.$store.getters['newsletter/email']
+        },
+        set (value) {
+          this.$store.dispatch('newsletter/updateEmail', value)
+        }
       },
       newsletterEmailIsValid () {
         return this.$store.getters['newsletter/emailIsValid']
@@ -44,7 +50,9 @@
     },
     methods: {
       newsletterSubscribe () {
-        this.$store.dispatch('newsletter/confirm')
+        if (this.newsletterEmailIsValid) {
+          this.$store.dispatch('newsletter/confirm')
+        }
       },
       resetNewsletterDropdown () {
         this.$mixpanel.track('Nav - Newsletter reset')
@@ -56,7 +64,16 @@
         }
         this.$store.dispatch('newsletter/toggleDropdown')
       },
-      validateEmail () {
+      validateNewsletterEmail () {
+        var hasErrors
+        var isValid
+        if (this.newsletterEmail.length > 0) {
+          hasErrors = validateEmail(this.newsletterEmail)
+        } else {
+          hasErrors = true
+        }
+        isValid = !hasErrors
+        this.$store.dispatch('newsletter/updateEmailIsValid', isValid)
       }
     },
     directives: {
