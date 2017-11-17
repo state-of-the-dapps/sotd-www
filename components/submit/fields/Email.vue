@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import { validateEmail } from '~/plugins/validators'
   import { dispatchErrors } from '~/plugins/mixins'
 
   var validationTimer
@@ -41,7 +42,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.email.indexOf('@') === -1 ? errors.data.push(`Please enter a valid email address`) : ''
+          validateEmail(this.email) ? errors.data.push(`Please enter a valid email address`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }
