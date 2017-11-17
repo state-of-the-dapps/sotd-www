@@ -6,7 +6,17 @@
       <span @click="toggleNewsletterDropdown" class="link -newsletter" :class="{ '--is-active': newsletterDropdown }" target="_blank">Newsletter</span>
       <transition name="fade">
         <div v-if="newsletterDropdown" v-on-clickaway="toggleNewsletterDropdown" class="dropdown -newsletter">
-
+          <transition name="fade" mode="out-in">
+            <div v-if="newsletterConfirmation" key="confirmation">
+              <p>Thanks for signing up. We'll be in touch!</p>
+              <p>You can <a @click="toggleNewsletterDropdown">close this window</a> or <a @click.stop="resetNewsletterDropdown">add another email</a>.</p>
+            </div>
+            <div v-else key="subscribe">
+              <p>Sign up for updates from State of the ÐApps</p>
+              <input class="text-input" type="text" placeholder="Email address">
+              <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid }">Subscribe</button>
+            </div>
+          </transition>
         </div>
       </transition>
     </li>
@@ -19,17 +29,34 @@
 
   export default {
     computed: {
+      newsletterConfirmation () {
+        return this.$store.getters['newsletter/confirmation']
+      },
       newsletterDropdown () {
         return this.$store.getters['newsletter/dropdown']
+      },
+      newsletterEmail () {
+        return this.$store.getters['newsletter/email']
+      },
+      newsletterEmailIsValid () {
+        return this.$store.getters['newsletter/emailIsValid']
       }
     },
     methods: {
+      newsletterSubscribe () {
+        this.$store.dispatch('newsletter/confirm')
+      },
+      resetNewsletterDropdown () {
+        this.$mixpanel.track('Nav - Newsletter reset')
+        this.$store.dispatch('newsletter/reset')
+      },
       toggleNewsletterDropdown () {
         if (!this.newsletterDropdown) {
-          console.log('Newsletter dropdown', this.newsletterDropdown)
           this.$mixpanel.track('Nav - Newsletter')
         }
         this.$store.dispatch('newsletter/toggleDropdown')
+      },
+      validateEmail () {
       }
     },
     directives: {
@@ -48,15 +75,26 @@
     margin-right: -150px;
     border: 1px solid $color--mine-shaft;
     background: rgba(lighten($color--gallery, 100%),.95);
-    padding: 10px;
+    padding: 15px;
     width: 300px;
     z-index: 10;
     box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
+    text-align: left;
     @include tweakpoint('min-width', $tweakpoint--default) {
       right: 0;
       top: 35px;
       margin-right: 0;
     }
+    p:first-child {
+      margin-top: 0;
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .input-field {
+    position: relative;
   }
 
   .item {
@@ -103,6 +141,49 @@
     text-align: center;
     @include tweakpoint('min-width', $tweakpoint--default) {
       text-align: right;
+    }
+  }
+
+  .subscribe {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    background: rgba($color--mine-shaft, .1);
+    color: rgba($color--mine-shaft, .4);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 6px;
+    position: relative;
+    transition: all .5s ease;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    &.--is-ready {
+      background: rgba($color--mine-shaft, 1);
+      box-shadow: 0 17px 70px rgba($color--mine-shaft, 0.3);
+      color: $color--gallery;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        top: 1px;
+      }
+    }
+  }
+
+  .text-input {
+    border: 1px solid rgba($color--mine-shaft, .2);
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    background: lighten($color--gallery,100%);
+    transition: background .2s ease;
+    &:focus + .label,  &.--is-filled + .label {
+      top: -11px;
+      opacity: .65;
     }
   }
 </style>

@@ -57,6 +57,8 @@ ul, li {
 
 a {
   color: $color--mine-shaft;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 strong {
