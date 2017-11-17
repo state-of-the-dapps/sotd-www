@@ -8,8 +8,7 @@
         <div v-if="newsletterDropdown" v-on-clickaway="toggleNewsletterDropdown" class="dropdown -newsletter">
           <transition name="fade" mode="out-in">
             <div v-if="newsletterConfirmation" key="confirmation">
-              <p>Thanks for signing up. We'll be in touch!</p>
-              <p>You can <a @click="toggleNewsletterDropdown">close this window</a> or <a @click.stop="resetNewsletterDropdown">add another email</a>.</p>
+              <p>Thanks for signing up. We'll be in touch! <a @click="toggleNewsletterDropdown">Close this window</a></p>
             </div>
             <div v-else key="subscribe">
               <p>Sign up to receive our newsletter</p>
@@ -56,10 +55,6 @@
         if (this.newsletterEmailIsValid && !this.newsletterIsLoading) {
           this.$store.dispatch('newsletter/subscribe')
         }
-      },
-      resetNewsletterDropdown () {
-        this.$mixpanel.track('Nav - Newsletter reset')
-        this.$store.dispatch('newsletter/reset')
       },
       toggleNewsletterDropdown () {
         if (!this.newsletterDropdown) {
