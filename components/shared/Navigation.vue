@@ -165,7 +165,7 @@
     display: block;
     margin: 0 auto;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
     border: none;
     background: rgba($color--mine-shaft, .1);
     color: rgba($color--mine-shaft, .4);
