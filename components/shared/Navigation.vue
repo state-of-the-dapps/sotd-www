@@ -12,9 +12,9 @@
               <p>You can <a @click="toggleNewsletterDropdown">close this window</a> or <a @click.stop="resetNewsletterDropdown">add another email</a>.</p>
             </div>
             <div v-else key="subscribe">
-              <p>Sign up for updates from State of the ÐApps</p>
-              <input v-model="newsletterEmail" @input="validateNewsletterEmail" class="text-input" type="text" placeholder="Email address">
-              <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid }">Subscribe</button>
+              <p>Sign up to receive our newsletter</p>
+              <input v-model="newsletterEmail" @input="validateNewsletterEmail" class="text-input" type="text" placeholder="Enter your email address">
+              <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid && !newsletterIsLoading }">Subscribe</button>
             </div>
           </transition>
         </div>
@@ -46,12 +46,15 @@
       },
       newsletterEmailIsValid () {
         return this.$store.getters['newsletter/emailIsValid']
+      },
+      newsletterIsLoading () {
+        return this.$store.getters['newsletter/isLoading']
       }
     },
     methods: {
       newsletterSubscribe () {
-        if (this.newsletterEmailIsValid) {
-          this.$store.dispatch('newsletter/confirm')
+        if (this.newsletterEmailIsValid && !this.newsletterIsLoading) {
+          this.$store.dispatch('newsletter/subscribe')
         }
       },
       resetNewsletterDropdown () {

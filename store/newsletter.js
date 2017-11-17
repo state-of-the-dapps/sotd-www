@@ -1,14 +1,20 @@
+import axios from '~/plugins/axios'
+
 export const state = () => {
   return {
     dropdown: false,
     confirmation: false,
     email: '',
-    emailIsValid: false
+    emailIsValid: false,
+    isLoading: false
   }
 }
 
 export const mutations = {
-  confirm (state) {
+  isLoading (state, status) {
+    state.isLoading = status
+  },
+  subscribe (state) {
     state.confirmation = true
   },
   reset (state) {
@@ -38,8 +44,18 @@ export const mutations = {
 }
 
 export const actions = {
-  confirm ({ commit }) {
-    commit('confirm')
+  subscribe ({ commit }, email) {
+    commit('isLoading', true)
+    axios.post('newsletter/subscribe', email)
+      .then((response) => {
+        commit('subscribe')
+      })
+      .catch(() => {
+        alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
+      })
+      .finally(() => {
+        commit('isLoading', false)
+      })
   },
   reset ({ commit }) {
     commit('reset')
@@ -58,6 +74,9 @@ export const actions = {
 export const getters = {
   confirmation: state => {
     return state.confirmation
+  },
+  isLoading: state => {
+    return state.isLoading
   },
   email: state => {
     return state.email
