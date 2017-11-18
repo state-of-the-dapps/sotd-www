@@ -10,5 +10,8 @@ npm-debug.log
 # Nuxt generate
 dist
 
+# Test coverage folder
+coverage
+
 # Mac .DS_Store
 .DS_Store
