@@ -21,6 +21,17 @@
     "vue-moment": "^3.0.0",
     "webfontloader": "^1.6.28"
   },
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+    }
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -28,9 +39,11 @@
     "scalingo-postbuild": "npm run build",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "test": "ava --serial --verbose"
   },
   "devDependencies": {
+    "ava": "^0.19.1",
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",
@@ -38,6 +51,7 @@
     "eslint-plugin-html": "^2.0.0",
     "eslint-plugin-promise": "^3.4.1",
     "eslint-plugin-standard": "^2.0.1",
+    "jsdom": "^11.0.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6"
   }
