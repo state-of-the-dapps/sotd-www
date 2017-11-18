@@ -16,6 +16,7 @@ module.exports = {
     vendor: [
       'axios',
       'mixpanel-browser',
+      'vue-moment',
       'smoothscroll-polyfill',
       'vue-clickaway',
       'webfontloader'
@@ -81,10 +82,11 @@ module.exports = {
   },
   loading: { color: '#333' },
   plugins: [
+    { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/filters' },
+    { src: '~/plugins/vue-moment', ssr: false },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
-    { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/clipboard', ssr: false }
   ]
 }
