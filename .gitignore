@@ -11,7 +11,7 @@ npm-debug.log
 dist
 
 # Test coverage folder
-# coverage
+coverage
 
 # Mac .DS_Store
 .DS_Store
