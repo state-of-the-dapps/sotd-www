@@ -59,7 +59,7 @@
           var hasWarningWords = warningWords.some((word) => {
             return this.name.toLowerCase().includes(word)
           })
-          hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a url`) : null
+          hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a URL`) : null
           axios
             .get('dapps/' + this.name)
             .then(response => {
