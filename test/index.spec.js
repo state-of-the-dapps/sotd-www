@@ -15,9 +15,7 @@ test.before('Init Nuxt.js', async t => {
   config.dev = false // production build
   nuxt = new Nuxt(config)
   await new Builder(nuxt).build()
-  console.log('Nuxt built')
   await nuxt.listen(3000, '127.0.0.1')
-  console.log('Nuxt server started')
 })
 
 // Example of testing only generated html
