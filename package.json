@@ -7,6 +7,16 @@
   "engines": {
     "node": "8.9.1"
   },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "@nuxtjs/google-analytics": "^1.0.0",
     "@nuxtjs/router": "^1.0.1",
@@ -29,7 +39,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "ava --serial --verbose"
+    "test": "ava"
   },
   "devDependencies": {
     "ava": "^0.19.1",
