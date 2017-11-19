@@ -22,7 +22,7 @@ test.before('Init Nuxt.js', async t => {
 test('Route / exits and render HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
-  t.true(html.includes('A Curated Collection'))
+  t.true(html.includes('823 Projects Built on Ethereum'))
 })
 
 // Close server and ask nuxt to stop listening to file changes
