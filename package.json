@@ -38,7 +38,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "test": "ava"
+    "test": "NUXT_TEST=true ava"
   },
   "devDependencies": {
     "ava": "^0.19.1",
