@@ -2,19 +2,58 @@
   <div>
     <p class="heading">Social media links</p>
     <ul class="list">
-      <li class="item -facebook"><input v-model="facebook" class="input" type="text" placeholder="/facebookpage" maxlength="100"></li>
-      <li class="item -twitter"><input v-model="twitter" class="input" type="text" placeholder="@twitterhandle" maxlength="100"></li>
-      <li class="item -github"><input v-model="github" class="input" type="text" placeholder="/githubproject" maxlength="100"></li>
-      <li class="item -reddit"><input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100"></li>
-      <li class="item -slack"><input v-model="slack" class="input" type="text" placeholder="your.slack.team" maxlength="100"></li>
-      <li class="item -blog"><input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100"></li>
-      <li class="item -other"><input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100"></li>
-      <li class="item -wiki"><input v-model="wiki" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100"></li>
+      <li class="item">
+        <div class="input-wrapper -facebook">
+          <input v-model="facebook" class="input" type="text" placeholder="/facebookpage" maxlength="100">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -twitter">
+          <input v-model="twitter" class="input" type="text" placeholder="@twitterhandle" maxlength="100">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -github">
+          <input v-model="github" class="input" type="text" placeholder="/githubproject" maxlength="100">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -reddit">
+          <input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100">
+        </div>
+      </li>
+      <li class="item" :class="slackErrors && slackErrors.length > 0 ? '--has-errors' : ''">
+        <div class="input-wrapper -slack">
+          <input v-model="slack" class="input" type="text" placeholder="slack invitation url" maxlength="100" @input="validate">
+        </div>
+        <ul v-if="slackErrors && slackErrors.length > 0" class="error-list -social">
+          <li v-for="error in slackErrors" class="error-item -social">{{ error }}</li>
+        </ul>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -blog">
+          <input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -other">
+          <input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -wiki">
+          <input v-model="wiki" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100">
+        </div>
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import { dispatchErrors } from '~/plugins/mixins'
+
+  var validationTimer
+
   export default {
     computed: {
       blog: {
@@ -89,6 +128,9 @@
           this.$store.dispatch('submit/updateSocial', field)
         }
       },
+      slackErrors () {
+        return this.$store.getters['submit/socialSlackErrors']
+      },
       twitter: {
         get () {
           return this.$store.getters['submit/socialTwitter']
@@ -113,12 +155,37 @@
           this.$store.dispatch('submit/updateSocial', field)
         }
       }
-    }
+    },
+    methods: {
+      validate () {
+        clearTimeout(validationTimer)
+        const errors = {
+          field: 'socialSlack',
+          data: []
+        }
+        validationTimer = setTimeout(() => {
+          this.slack.endsWith('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
+          this.slack.length > 0 && !this.slack.includes('.') ? errors.data.push(`Slack invitation should be a url`) : ''
+          this.dispatchErrors(errors)
+        }, 750)
+      }
+    },
+    mixins: [dispatchErrors]
   }
 </script>
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .error-list {
+    &.-social {
+      padding: 5px 10px;
+    }
+  }
+
+  .error-item {
+    text-align: left;
+  }
 
   .heading {
     text-align: center;
@@ -143,10 +210,16 @@
   .item {
     width: calc(50% - 10px);
     margin: 5px;
+    border: 1px solid transparent;
+    &.--has-errors {
+      border-color: $color--tart-orange;
+    }
+  }
+
+  .input-wrapper {
     background: rgba(lighten($color--gallery, 100%),.9);
     padding: 10px;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-    border: 1px solid transparent;
     position: relative;
     &:before {
       content: " ";

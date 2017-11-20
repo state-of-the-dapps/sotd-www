@@ -27,6 +27,7 @@ function initialState () {
       name: [],
       rinkeby: [],
       ropsten: [],
+      socialSlack: [],
       tags: [],
       teaser: [],
       acceptedTerms: [],
@@ -316,6 +317,9 @@ export const getters = {
   },
   socialSlack: state => {
     return state.fields.social.slack.url
+  },
+  socialSlackErrors: state => {
+    return state.errors.socialSlack
   },
   socialTwitter: state => {
     return state.fields.social.twitter.url
