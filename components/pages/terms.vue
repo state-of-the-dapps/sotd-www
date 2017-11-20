@@ -18,7 +18,7 @@
     },
     head () {
       return {
-        title: 'State of the ÐApps - Terms of Use'
+        title: 'State of the ÐApps — Terms of Use'
       }
     }
   }

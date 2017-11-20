@@ -71,7 +71,10 @@
     },
     head () {
       return {
-        title: 'State of the ÐApps - ' + this.active.name
+        title: this.active.name + ' — State of the ÐApps',
+        meta: [
+          { hid: 'description', name: 'description', content: this.active.teaser }
+        ]
       }
     },
     fetch ({ store, params, redirect }) {
