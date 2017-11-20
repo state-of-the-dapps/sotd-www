@@ -35,14 +35,14 @@
     destroyed () {
       this.$store.dispatch('dapp/reset')
     },
-    fetch ({ store, params, redirect, isServer }) {
+    fetch ({ store, params, redirect, isServer, error }) {
       if (isServer) {
         return axios
           .get('dapps/' + params.slug)
           .then(response => {
             store.dispatch('dapp/setActive', response.data)
             if (!Object.keys(response.data).length > 0) {
-              redirect('/404')
+              error({ statusCode: 404 })
             }
           })
       }

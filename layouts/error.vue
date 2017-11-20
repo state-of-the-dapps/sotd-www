@@ -23,7 +23,7 @@
       MastheadSection
     },
     mounted () {
-      this.$mixpanel.track('Error page', { type: '404' })
+      this.$mixpanel.track('Error page', { type: '404', resource: this.$route.fullPath })
     },
     props: ['error']
   }
