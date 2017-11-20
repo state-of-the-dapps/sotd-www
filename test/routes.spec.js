@@ -18,14 +18,31 @@ test.before('Init Nuxt.js', async t => {
   await nuxt.listen(4000, 'localhost')
 })
 
-// Example of testing only generated html
-test('Route / exits and render HTML', async t => {
+test('Homepage exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
   t.true(html.includes('823 Projects Built on Ethereum'))
 })
 
+test('DApp exists and renders HTML', async t => {
+  let context = {}
+  const { html } = await nuxt.renderRoute('/dapps/aragon', context)
+  t.true(html.includes('Create and manage DAOs'))
+})
+
+test('DApp submit exists and renders HTML', async t => {
+  let context = {}
+  const { html } = await nuxt.renderRoute('/submit', context)
+  t.true(html.includes('Submit a ÐApp'))
+})
+
+test('Static page exists and renders HTML', async t => {
+  let context = {}
+  const { html } = await nuxt.renderRoute('/whats-a-dapp', context)
+  t.true(html.includes('Bitcoin laid the first stone'))
+})
+
 // Close server and ask nuxt to stop listening to file changes
-test.after('Closing server and nuxt.js', t => {
+test.after('Close server and nuxt.js', t => {
   nuxt.close()
 })
