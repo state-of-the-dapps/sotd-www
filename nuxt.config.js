@@ -83,7 +83,6 @@ module.exports = {
   loading: { color: '#333' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
-    { src: '~/plugins/constants' },
     { src: '~/plugins/filters' },
     { src: '~/plugins/vue-moment', ssr: false },
     { src: '~/plugins/mixpanel', ssr: false },
