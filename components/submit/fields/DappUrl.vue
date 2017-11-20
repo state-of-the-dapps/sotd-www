@@ -1,12 +1,12 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
       <input class="text-input" :class="dappUrl.length > 0 ? '--is-filled' : ''" type="text" maxlength="500" v-model="dappUrl" @input="validate">
-      <label class="label">ÐApp url<span class="required"></span></label>
+      <label class="label">ÐApp URL<span class="required"></span></label>
       <span class="remaining-characters">{{ 500 - dappUrl.length }}</span>
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="error in errors" class="error-item">{{ error }}</li>
       </ul>
-      <p class="help">A url that will launch this ÐApp directly</p>
+      <p class="help">A URL that will launch this ÐApp directly</p>
     </div>
 </template>
 
@@ -41,7 +41,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.dappUrl.length > 0 && this.dappUrl.length < 3 ? errors.data.push(`ÐApp url must be longer than 2 characters`) : ''
+          this.dappUrl.length > 0 && this.dappUrl.length < 3 ? errors.data.push(`ÐApp URL must be longer than 2 characters`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }
