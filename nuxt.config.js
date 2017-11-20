@@ -1,11 +1,3 @@
-var apiUrl
-if (process.env.NUXT_TEST) {
-  apiUrl = 'http://localhost:4000/test/api/'
-} else {
-  apiUrl = process.env.API_URL
-}
-apiUrl = 'http://localhost:4000/test/api/'
-
 module.exports = {
   build: {
     /*
@@ -54,10 +46,9 @@ module.exports = {
     { src: '~/assets/css/main.scss', lang: 'scss' }
   ],
   env: {
-    apiUrl: apiUrl || 'https://api.stateofthedapps.com/v1/',
+    apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
     fullstory: process.env.FULLSTORY || '00000',
-    mixpanel: process.env.MIXPANEL,
-    test: process.env.NUXT_TEST || false
+    mixpanel: process.env.MIXPANEL
   },
   head: {
     title: 'State of the ÐApps — Projects Built on Ethereum',
