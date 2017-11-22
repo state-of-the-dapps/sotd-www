@@ -55,7 +55,7 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-      { hid: 'description', name: 'description', content: 'State of the ÐApps is the curated collection of Decentralized Apps' },
+      { hid: 'description', name: 'description', content: 'The curated list of decentralized applications' },
       { name: 'theme-color', content: '#222' }
     ],
     link: [

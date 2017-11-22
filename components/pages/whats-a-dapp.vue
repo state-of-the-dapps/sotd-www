@@ -18,7 +18,7 @@
     },
     head () {
       return {
-        title: `State of the ÐApps - What's a ÐApp`
+        title: `State of the ÐApps — What's a ÐApp`
       }
     }
   }
