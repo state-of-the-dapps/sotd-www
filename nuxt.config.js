@@ -15,8 +15,8 @@ module.exports = {
     },
     vendor: [
       'axios',
+      'date-fns/format',
       'mixpanel-browser',
-      'vue-moment',
       'smoothscroll-polyfill',
       'vue-clickaway',
       'webfontloader'
@@ -84,7 +84,6 @@ module.exports = {
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/filters' },
-    { src: '~/plugins/vue-moment', ssr: false },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false }
