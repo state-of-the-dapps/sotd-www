@@ -1,5 +1,14 @@
 import Vue from 'vue'
+import dateFormat from 'date-fns/format'
 import * as constants from '~/plugins/constants'
+
+Vue.filter('dateFormat',
+  (value, format) => {
+    if (value) {
+      return dateFormat(value, format)
+    }
+  }
+)
 
 Vue.filter('capitalize',
   value => {
