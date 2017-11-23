@@ -21,7 +21,7 @@ test.before('Init Nuxt.js', async t => {
 test('Homepage exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
-  t.true(html.includes('823 Projects Built on Ethereum'))
+  t.regex(html, /\d+ Projects Built on Ethereum/)
 })
 
 test('DApp exists and renders HTML', async t => {
