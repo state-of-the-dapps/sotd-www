@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const About = () => import('~/components/pages/about.vue').then(m => m.default || m)
-const Confirmation = () => import('~/components/pages/confirmation.vue').then(m => m.default || m)
-const Index = () => import('~/components/pages/index.vue').then(m => m.default || m)
-const IndexIndex = () => import('~/components/pages/index/index.vue').then(m => m.default || m)
-const IndexDapp = () => import('~/components/pages/index/dapps/_slug.vue').then(m => m.default || m)
-const Submit = () => import('~/components/pages/submit.vue').then(m => m.default || m)
-const Terms = () => import('~/components/pages/terms.vue').then(m => m.default || m)
-const WhatsADapp = () => import('~/components/pages/whats-a-dapp.vue').then(m => m.default || m)
-const Dapp = () => import('~/components/pages/dapps/_slug.vue').then(m => m.default || m)
+const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const Confirmation = () => import('~/pages/confirmation.vue').then(m => m.default || m)
+const Index = () => import('~/pages/index.vue').then(m => m.default || m)
+const IndexIndex = () => import('~/pages/index/index.vue').then(m => m.default || m)
+const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
+const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
+const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
+const WhatsADapp = () => import('~/pages/whats-a-dapp.vue').then(m => m.default || m)
+const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
