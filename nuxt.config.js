@@ -46,7 +46,7 @@ module.exports = {
     { src: '~/assets/css/main.scss', lang: 'scss' }
   ],
   env: {
-    apiUrl: process.env.API_URL || 'http://localhost:3000',
+    apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
     fullstory: process.env.FULLSTORY || '00000',
     mixpanel: process.env.MIXPANEL
   },
