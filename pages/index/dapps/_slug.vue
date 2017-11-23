@@ -77,13 +77,13 @@
         ]
       }
     },
-    fetch ({ store, params, redirect }) {
+    fetch ({ store, params, redirect, error }) {
       return axios
         .get('dapps/' + params.slug)
         .then(response => {
           store.dispatch('dapp/setActive', response.data)
           if (!Object.keys(response.data).length > 0) {
-            redirect('/404')
+            error({ statusCode: 404 })
           }
         })
     },
