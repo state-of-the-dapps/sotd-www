@@ -1,11 +1,10 @@
 import Vuex from 'vuex'
-import axios from '~/plugins/axios'
+import axios from '~/helpers/axios'
 import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
 import announcementsModule from './modules/announcements'
 import dappsModule from './modules/dapps'
-import pagesModule from './modules/pages'
 import tagsModule from './modules/tags'
 
 const actions = {

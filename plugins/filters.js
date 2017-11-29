@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import dateFormat from 'date-fns/format'
-import * as constants from '~/plugins/constants'
+import * as constants from '~/helpers/constants'
 
 Vue.filter('dateFormat',
   (value, format) => {

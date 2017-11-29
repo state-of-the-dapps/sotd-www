@@ -24,6 +24,7 @@
     "axios": "^0.16.2",
     "clipboard": "^1.5.16",
     "date-fns": "^1.29.0",
+    "marked": "^0.3.6",
     "mixpanel-browser": "^2.13.0",
     "nuxt": "1.0.0-rc8",
     "redirect-ssl": "^1.2.1",
