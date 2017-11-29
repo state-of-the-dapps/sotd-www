@@ -1,9 +1,34 @@
 import Vuex from 'vuex'
+import axios from '~/plugins/axios'
 import actions from './actions'
 import mutations from './mutations'
 import getters from './getters'
-import announcementModule from './modules/announcement'
+import announcementsModule from './modules/announcements'
+import dappsModule from './modules/dapps'
+import pagesModule from './modules/pages'
 import tagsModule from './modules/tags'
+
+const actions = {
+  nuxtServerInit ({ commit }) {
+    return axios
+      .get('stats')
+      .then(response => {
+        commit('SET_DAPP_COUNT', response.data.dappCount)
+      })
+  }
+}
+
+const getters = {
+  statDappCount: state => {
+    return state.stats.dappCount
+  }
+}
+
+const mutations = {
+  SET_DAPP_COUNT (state, value) {
+    state.stats.dappCount = value
+  }
+}
 
 const state = {
   stats: {
@@ -16,6 +41,8 @@ const createStore = () => {
     actions,
     getters,
     modules: {
+      announcements: announcementsModule,
+      dapps: dappsModule,
       tags: tagsModule
     },
     mutations,
