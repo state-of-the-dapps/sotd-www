@@ -1,3 +1,10 @@
+const env = {
+  apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
+  googleAnalytics: process.env.GOOGLE_ANALYTICS,
+  mixpanel: process.env.MIXPANEL,
+  mode: process.env.MODE || 'universal'
+}
+
 module.exports = {
   build: {
     /*
@@ -30,11 +37,11 @@ module.exports = {
   /*
   ** mode: 'spa' is the other option: https://nuxtjs.org/api/configuration-mode
   */
-  mode: process.env.MODE || 'universal',
+  mode: env.mode,
   modules: [
     '@nuxtjs/sentry',
     '@nuxtjs/router',
-    ['@nuxtjs/google-analytics', { ua: process.env.GOOGLE_ANALYTICS }]
+    ['@nuxtjs/google-analytics', { ua: env.googleAnalytics }]
   ],
   router: {
     saveScrollPosition: true
@@ -46,9 +53,8 @@ module.exports = {
     { src: '~/assets/css/main.scss', lang: 'scss' }
   ],
   env: {
-    apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
-    fullstory: process.env.FULLSTORY || '00000',
-    mixpanel: process.env.MIXPANEL
+    apiUrl: env.apiUrl,
+    mixpanel: env.mixpanel
   },
   head: {
     title: 'State of the ÐApps — Projects Built on Ethereum',
