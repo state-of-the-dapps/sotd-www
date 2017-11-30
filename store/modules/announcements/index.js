@@ -36,6 +36,7 @@ const mutations = {
 
 const state = {
   message: '',
+  status: false,
   url: '',
   urlText: ''
 }

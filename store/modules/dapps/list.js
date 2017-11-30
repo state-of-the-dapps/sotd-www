@@ -5,16 +5,14 @@ import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
-function initialQuery () {
-  return {
-    category: browseCategoryOptions[0],
-    limit: 50,
-    offset: 0,
-    refine: browseRefineOptions[0],
-    seed: randomSeed,
-    tags: [],
-    text: ''
-  }
+const initialQuery = {
+  category: browseCategoryOptions[0],
+  limit: 50,
+  offset: 0,
+  refine: browseRefineOptions[0],
+  seed: randomSeed,
+  tags: [],
+  text: ''
 }
 
 const actions = {
