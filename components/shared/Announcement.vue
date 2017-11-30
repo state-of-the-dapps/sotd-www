@@ -39,28 +39,6 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
-  .container {
-    padding-top: 0;
-    padding-bottom: 0;
-    overflow: hidden;
-    position: relative;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
-  }
-
-  .section {
-    background: $color--mine-shaft;
-    transition: visibility .4s ease, opacity .3s ease;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      z-index: 20;
-    }
-  }
-
   .close {
     display: none;
     position: absolute;
@@ -69,6 +47,17 @@
     @include tweakpoint('min-width', $tweakpoint--default) {
       display: inline-block;
       right: 20px;
+    }
+  }
+
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+    position: relative;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
   }
 
@@ -83,5 +72,16 @@
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .section {
+    background: $color--mine-shaft;
+    transition: visibility .4s ease, opacity .3s ease;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      z-index: 20;
+    }
   }
 </style>

@@ -1,3 +1,5 @@
+import axios from '~/helpers/axios'
+
 const actions = {
   fetch: ({ commit }) => {
     axios.get('announcement')

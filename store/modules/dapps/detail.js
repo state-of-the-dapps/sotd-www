@@ -78,5 +78,9 @@ const state = {
 }
 
 export default {
-  namespaced: true
+  actions,
+  getters,
+  mutations,
+  namespaced: true,
+  state
 }
