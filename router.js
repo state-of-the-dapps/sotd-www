@@ -4,7 +4,7 @@ import Router from 'vue-router'
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
 const CreateConfirmation = () => import('~/pages/createConfirmation.vue').then(m => m.default || m)
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const IndexPlaceholder = () => import('~/pages/index/index.vue').then(m => m.default || m)
+const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
 const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
@@ -79,24 +79,24 @@ export function createRouter () {
         children: [
           {
             path: '',
-            component: IndexPlaceholder,
+            component: Placeholder,
             name: 'index'
           },
           {
             path: 'tagged/:tags',
-            component: IndexPlaceholder,
+            component: Placeholder,
             name: 'index-tagged-tags',
             children: [
               {
                 path: 'tab/:category',
-                component: IndexPlaceholder,
+                component: Placeholder,
                 name: 'index-tagged-tags-show-category'
               }
             ]
           },
           {
             path: 'tab/:category',
-            component: IndexPlaceholder,
+            component: Placeholder,
             name: 'index-tab-category'
           },
           {
