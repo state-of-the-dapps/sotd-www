@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { browseCategoryOptions as options } from '~/helpers/constants'
+  import { browseCategoryOptions as categoryOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
@@ -19,7 +19,7 @@
       },
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/list/categoryQuery']
-        const options = this.options.slice() || []
+        const options = categoryOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
         } else {
@@ -42,7 +42,7 @@
       },
       hide () {
         this.$mixpanel.track('DApps - Click away from categories')
-        this.$store.dispatch('dapps/browseCategories/toggle')
+        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'categories')
       },
       select (option) {
         this.$mixpanel.track('DApps - Select category', { option: option })
@@ -53,34 +53,3 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import '~assets/css/settings';
-
-  .container {
-    position: absolute;
-    border: 1px solid $color--mine-shaft;
-    background: rgba(lighten($color--gallery, 100%),.95);
-    padding: 10px;
-    width: 145px;
-    z-index: 10;
-    box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
-  }
-
-  .item {
-    margin: 4px 0;
-    font-size: .95rem;
-    &:first-child {
-      margin-top: 0;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &:hover {
-      border-left: 1px solid $color--mine-shaft;
-      padding-left: 3px;
-      margin-left: -4px;
-      cursor: pointer;
-    }
-  }
-</style>
