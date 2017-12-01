@@ -10,16 +10,16 @@
 
 <script>
   import Cards from '~/components/dapps/list/Cards.vue'
-  import Search from '~/components/dapps/list/Search.vue'
   import Browse from '~/components/dapps/list/Browse.vue'
   import Pager from '~/components/dapps/list/Pager.vue'
+  import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
       Cards,
-      Search,
       Browse,
-      Pager
+      Pager,
+      Search
     },
     computed: {
       categoryQuery () {

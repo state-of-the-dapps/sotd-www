@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-const Confirmation = () => import('~/pages/confirmation.vue').then(m => m.default || m)
+const CreateConfirmation = () => import('~/pages/createConfirmation.vue').then(m => m.default || m)
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const IndexIndex = () => import('~/pages/index/index.vue').then(m => m.default || m)
+const IndexPlaceholder = () => import('~/pages/index/index.vue').then(m => m.default || m)
 const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
 const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
@@ -46,12 +46,12 @@ export function createRouter () {
       {
         path: '/whats-a-dapp',
         component: WhatsADapp,
-        name: 'whats-a-dapp'
+        name: 'whatsadapp'
       },
       {
-        path: '/confirmation',
-        component: Confirmation,
-        name: 'confirmation'
+        path: '/confirmation/create',
+        component: CreateConfirmation,
+        name: 'confirmation-create'
       },
       {
         path: '/about',
@@ -79,24 +79,24 @@ export function createRouter () {
         children: [
           {
             path: '',
-            component: IndexIndex,
+            component: IndexPlaceholder,
             name: 'index'
           },
           {
             path: 'tagged/:tags',
-            component: IndexIndex,
+            component: IndexPlaceholder,
             name: 'index-tagged-tags',
             children: [
               {
                 path: 'tab/:category',
-                component: IndexIndex,
+                component: IndexPlaceholder,
                 name: 'index-tagged-tags-show-category'
               }
             ]
           },
           {
             path: 'tab/:category',
-            component: IndexIndex,
+            component: IndexPlaceholder,
             name: 'index-tab-category'
           },
           {
