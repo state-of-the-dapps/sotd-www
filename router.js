@@ -6,7 +6,7 @@ const CreateConfirmation = () => import('~/pages/createConfirmation.vue').then(m
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
-const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
+const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
 const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
@@ -49,9 +49,9 @@ export function createRouter () {
         name: 'whatsadapp'
       },
       {
-        path: '/confirmation/create',
+        path: '/confirmation/new',
         component: CreateConfirmation,
-        name: 'confirmation-create'
+        name: 'confirmation-new'
       },
       {
         path: '/about',
@@ -64,9 +64,9 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/submit',
-        component: Submit,
-        name: 'submit'
+        path: '/dapps/new/',
+        component: DappNew,
+        name: 'dappNew'
       },
       {
         path: '/dapps/:slug?',

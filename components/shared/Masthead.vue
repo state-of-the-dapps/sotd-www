@@ -4,7 +4,7 @@
       <ul class="nav-list">
         <li class="nav-item"><nuxt-link @click.native="$mixpanel.track(`Nav - What's a DApp`)" to="/whats-a-dapp" class="nav-link">What's a ÐApp</nuxt-link></li>
         <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - About')" to="/about" class="nav-link">About</nuxt-link></li>
-        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/submit" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
+        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" to="/dapps/new/" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
       </ul>
       <ul class="nameplate-list">
         <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>

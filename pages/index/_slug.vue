@@ -78,7 +78,7 @@
       return axios
         .get('dapps/' + params.slug)
         .then(response => {
-          store.dispatch('dapp/setActive', response.data)
+          store.dispatch('dapps/detail/setItem', response.data)
           if (!Object.keys(response.data).length > 0) {
             error({ statusCode: 404 })
           }
