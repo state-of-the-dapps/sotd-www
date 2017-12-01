@@ -41,7 +41,7 @@ const actions = {
   removeLastTagFromQuery: ({ commit }) => {
     commit('REMOVE_LAST_TAG_FROM_QUERY')
   },
-  removeTagsQuery: ({ commit }, index) => {
+  removeTagFromQuery: ({ commit }, index) => {
     commit('REMOVE_TAG_FROM_QUERY', index)
   },
   resetQuery ({ commit }) {

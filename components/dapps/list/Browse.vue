@@ -12,8 +12,8 @@
 </template>
 
 <script>
-  import CategoriesDropdown from '~/components/dapps/list/CategoriesDropdown.vue'
-  import RefineDropdown from '~/components/dapps/list/RefineDropdown.vue'
+  import CategoriesDropdown from '~/components/dapps/list/browse/CategoriesDropdown.vue'
+  import RefineDropdown from '~/components/dapps/list/browse/RefineDropdown.vue'
 
   export default {
     beforeDestroy () {
