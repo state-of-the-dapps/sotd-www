@@ -68,8 +68,8 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
-  categoryDropdownIsActive: state => {
-    return state.browse.category.isActive
+  categoriesDropdownIsActive: state => {
+    return state.browse.categories.isActive
   },
   categoryQuery: state => {
     return state.query.category
@@ -191,7 +191,7 @@ const mutations = {
 const state = {
   activeItemIndex: -1,
   browse: {
-    category: {
+    categories: {
       isActive: false
     },
     refine: {
