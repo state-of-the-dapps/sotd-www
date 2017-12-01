@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" v-if="itemsCount > 0">
+  <transition name="fade" v-if="itemCount > 0">
       <div class="list">
         <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
           <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
@@ -28,8 +28,8 @@
       items () {
         return this.$store.getters['dapps/list/items']
       },
-      itemsCount () {
-        return this.$store.getters['dapps/list/itemsCount']
+      itemCount () {
+        return this.$store.getters['dapps/list/itemCount']
       }
     },
     methods: {

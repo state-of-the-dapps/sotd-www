@@ -80,14 +80,14 @@ const getters = {
   items: state => {
     return state.items
   },
-  itemsCount: state => {
+  itemCount: state => {
     return state.items.length
   },
-  limitQuery: state => {
+  itemQueryLimit: state => {
     return state.query.limit
   },
-  loading: state => {
-    return state.loading
+  isLoading: state => {
+    return state.isLoading
   },
   refineDropdownIsActive: state => {
     return state.browse.refine.isActive
@@ -200,7 +200,7 @@ const state = {
   },
   friendlyUrl: '/',
   items: [],
-  loading: true,
+  isLoading: true,
   pagination: {
     offset: 0,
     totalCount: 0
