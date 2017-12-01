@@ -5,8 +5,7 @@ export const browseCategoryOptions = [
   'most-relevant'
 ]
 
-export const browseRefineOptions = [
-  'any',
+export const dappStatusList = [
   'live',
   'demo',
   'prototype',
@@ -16,3 +15,9 @@ export const browseRefineOptions = [
   'unknown',
   'abandoned'
 ]
+
+export const browseRefineOptions = function () {
+  let options = dappStatusList
+  options.unshift('any')
+  return options
+}

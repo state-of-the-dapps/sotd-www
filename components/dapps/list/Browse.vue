@@ -1,10 +1,10 @@
 <template>
   <ul>
     <li>Show
-      <span class="dropdown" :class="{ '--is-active': categoriesIsActive }" @click="toggle('categories')">{{ selectedCategory | formatBrowseCategoryOptions }}
+      <span class="dropdown" :class="{ '--is-active': categoriesDropdownIsActive }" @click="toggle('categories')">{{ selectedCategory | formatBrowseCategoryOptions }}
         <CategoriesDropdown/>
       </span> with status
-      <span class="dropdown" :class="{ '--is-active': refineIsActive }" @click="toggle('refine')">{{ selectedRefine }}
+      <span class="dropdown" :class="{ '--is-active': refineDropdownIsActive }" @click="toggle('refine')">{{ selectedRefine }}
         <RefineDropdown/>
       </span>
     </li>
@@ -17,10 +17,10 @@
 
   export default {
     beforeDestroy () {
-      if (this.categoriesIsActive === true) {
+      if (this.categoriesDropdownIsActive === true) {
         this.toggleBrowseCategories()
       }
-      if (this.refineIsActive === true) {
+      if (this.refineDropdownIsActive === true) {
         this.toggleBrowseRefine()
       }
     },

@@ -1,4 +1,4 @@
-import generateRandomSeed from '~/helpers/functions'
+import { generateRandomSeed } from '~/helpers/functions'
 import { browseCategoryOptions, browseRefineOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
@@ -16,14 +16,14 @@ const initialQuery = {
 
 const actions = {
   fetchItems: ({ commit, state }) => {
-    commit('UPDATE_LOADING_STATUS', true)
+    commit('SET_LOADING_STATUS', true)
     axios
       .get('dapps', {
         params: state.query
       })
       .then(response => {
         commit('SET_ITEMS', response)
-        commit('UPDATE_LOADING_STATUS', false)
+        commit('SET_LOADING_STATUS', false)
       })
   },
   incrementOffsetQuery: ({ commit }) => {

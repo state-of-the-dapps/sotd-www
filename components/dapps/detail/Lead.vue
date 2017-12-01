@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import Cta from '~/components/detail/lead/Cta.vue'
-  import Intro from '~/components/detail/lead/Intro.vue'
+  import Cta from '~/components/dapps/detail/lead/Cta.vue'
+  import Intro from '~/components/dapps/detail/lead/Intro.vue'
 
   export default {
     components: {

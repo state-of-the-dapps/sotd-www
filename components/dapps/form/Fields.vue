@@ -18,20 +18,20 @@
 </template>
 
 <script>
-  import AdditionalAuthors from '~/components/dapps/new/fields/AdditionalAuthors.vue'
-  import Author from '~/components/dapps/new/fields/Author.vue'
-  import Contracts from '~/components/dapps/new/fields/Contracts.vue'
-  import DappUrl from '~/components/dapps/new/fields/DappUrl.vue'
-  import Description from '~/components/dapps/new/fields/Description.vue'
-  import Email from '~/components/dapps/new/fields/Email.vue'
-  import License from '~/components/dapps/new/fields/License.vue'
-  import Logo from '~/components/dapps/new/fields/Logo.vue'
-  import Name from '~/components/dapps/new/fields/Name.vue'
-  import Social from '~/components/dapps/new/fields/Social.vue'
-  import Status from '~/components/dapps/new/fields/Status.vue'
-  import Tags from '~/components/dapps/new/fields/Tags.vue'
-  import Teaser from '~/components/dapps/new/fields/Teaser.vue'
-  import Website from '~/components/dapps/new/fields/Website.vue'
+  import AdditionalAuthors from '~/components/dapps/form/fields/AdditionalAuthors.vue'
+  import Author from '~/components/dapps/form/fields/Author.vue'
+  import Contracts from '~/components/dapps/form/fields/Contracts.vue'
+  import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
+  import Description from '~/components/dapps/form/fields/Description.vue'
+  import Email from '~/components/dapps/form/fields/Email.vue'
+  import License from '~/components/dapps/form/fields/License.vue'
+  import Logo from '~/components/dapps/form/fields/Logo.vue'
+  import Name from '~/components/dapps/form/fields/Name.vue'
+  import Social from '~/components/dapps/form/fields/Social.vue'
+  import Status from '~/components/dapps/form/fields/Status.vue'
+  import Tags from '~/components/dapps/form/fields/Tags.vue'
+  import Teaser from '~/components/dapps/form/fields/Teaser.vue'
+  import Website from '~/components/dapps/form/fields/Website.vue'
 
   export default {
     components: {

@@ -30,7 +30,7 @@
   import Lead from '~/components/dapps/detail/Lead.vue'
   import Related from '~/components/dapps/detail/Related.vue'
   import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
-  import Tools from '~/components/sections/detail/Tools.vue'
+  import Tools from '~/components/dapps/detail/Tools.vue'
 
   export default {
     components: {

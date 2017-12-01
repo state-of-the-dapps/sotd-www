@@ -16,8 +16,8 @@
 </template>
 
 <script>
-  import Fields from '~/components/dapps/new/Fields'
-  import PreviewSave from '~/components/dapps/new/PreviewSave'
+  import Fields from '~/components/dapps/form/Fields'
+  import PreviewSave from '~/components/dapps/form/PreviewSave'
 
   export default {
     components: {
@@ -28,7 +28,7 @@
       content () {
         return // TODO
       }
-    }
+    },
     head () {
       return {
         title: 'State of the ÐApps — Submit a ÐApp'

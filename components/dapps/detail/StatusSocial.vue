@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import Social from '~/components/detail/statusSocial/Social.vue'
-  import Status from '~/components/detail/statusSocial/Status.vue'
+  import Social from '~/components/dapps/detail/statusSocial/Social.vue'
+  import Status from '~/components/dapps/detail/statusSocial/Status.vue'
 
   export default {
     components: {

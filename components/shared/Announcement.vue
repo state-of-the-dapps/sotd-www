@@ -31,7 +31,7 @@
       }
     },
     mounted () {
-      this.$store.dispatch('announcement/fetch')
+      this.$store.dispatch('announcements/fetch')
     }
   }
 </script>

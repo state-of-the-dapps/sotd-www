@@ -1,12 +1,12 @@
 import detailModule from './detail'
 import listModule from './list'
-import newModule from './new'
+import formModule from './form'
 
 export default {
   modules: {
     detail: detailModule,
     list: listModule,
-    new: newModule
+    form: formModule
   },
   namespaced: true
 }

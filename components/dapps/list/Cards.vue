@@ -4,7 +4,7 @@
         <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
           <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
           <ul class="badge-list" v-if="item.badges">
-            <li v-for="badge in item.badges" class="badge-item"><img :src="'~/assets/images/badges/' + badge + '.png'" width="16" class="badge-image"><div class="badge-info">{{ badge | formatBadge | capitalize }}</div></li>
+            <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatBadge | capitalize }}</div></li>
           </ul>
           <div class="info">
             <div class="icon-wrapper" :class="'-' + item.status">

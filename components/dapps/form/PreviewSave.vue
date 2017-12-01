@@ -44,49 +44,49 @@
   export default {
     computed: {
       author () {
-        return this.$store.getters['dapps/new/author']
+        return this.$store.getters['dapps/form/author']
       },
       additionalAuthors () {
-        return this.$store.getters['dapps/new/additionalAuthors']
+        return this.$store.getters['dapps/form/additionalAuthors']
       },
       errorFields () {
-        return this.$store.getters['dapps/new/errorFields']
+        return this.$store.getters['dapps/form/errorFields']
       },
       name () {
-        return this.$store.getters['dapps/new/name']
+        return this.$store.getters['dapps/form/name']
       },
       subscribeNewsletter: {
         get () {
-          return this.$store.getters['dapps/new/subscribeNewsletter']
+          return this.$store.getters['dapps/form/subscribeNewsletter']
         },
         set () {
-          this.$store.dispatch('dapps/new/toggleCheckbox', 'subscribeNewsletter')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'subscribeNewsletter')
         }
       },
       joinSlack: {
         get () {
-          return this.$store.getters['dapps/new/joinSlack']
+          return this.$store.getters['dapps/form/joinSlack']
         },
         set () {
-          this.$store.dispatch('dapps/new/toggleCheckbox', 'joinSlack')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'joinSlack')
         }
       },
       status () {
-        return this.$store.getters['dapps/new/status']
+        return this.$store.getters['dapps/form/status']
       },
       teaser () {
-        return this.$store.getters['dapps/new/teaser']
+        return this.$store.getters['dapps/form/teaser']
       },
       acceptedTerms: {
         get () {
-          return this.$store.getters['dapps/new/acceptedTerms']
+          return this.$store.getters['dapps/form/acceptedTerms']
         },
         set () {
-          this.$store.dispatch('dapps/new/toggleCheckbox', 'acceptedTerms')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'acceptedTerms')
           if (this.acceptedTerms === false) {
-            this.$store.dispatch('dapps/new/addErrorField', 'acceptedTerms')
+            this.$store.dispatch('dapps/form/addErrorField', 'acceptedTerms')
           } else {
-            this.$store.dispatch('dapps/new/removeErrorField', 'acceptedTerms')
+            this.$store.dispatch('dapps/form/removeErrorField', 'acceptedTerms')
           }
         }
       }
@@ -106,7 +106,7 @@
           axios.post('dapps', obj)
             .then((response) => {
               this.sending = false
-              this.$store.dispatch('dapps/new/resetForm')
+              this.$store.dispatch('dapps/form/resetForm')
               this.$mixpanel.track('New DApp - Submit', {
                 disabled: false,
                 name: obj.data.name,
