@@ -1,11 +1,11 @@
-export const browseCategoryOptions = [
+export const dappsCategoryOptions = [
   'hot',
   'new',
   'most-viewed',
   'most-relevant'
 ]
 
-export const dappStatusList = [
+export const dappsStatusList = [
   'live',
   'demo',
   'prototype',
@@ -16,8 +16,4 @@ export const dappStatusList = [
   'abandoned'
 ]
 
-export const browseRefineOptions = function () {
-  let options = dappStatusList
-  options.unshift('any')
-  return options
-}
+export const dappsRefineOptions = dappsStatusList.unshift('any')

@@ -1,19 +1,26 @@
 <template>
-  <ul>
-    <li>Show
-      <span class="dropdown" :class="{ '--is-active': categoriesDropdownIsActive }" @click="toggle('categories')">{{ selectedCategory | formatBrowseCategoryOptions }}
-        <CategoriesDropdown/>
-      </span> with status
-      <span class="dropdown" :class="{ '--is-active': refineDropdownIsActive }" @click="toggle('refine')">{{ selectedRefine }}
-        <RefineDropdown/>
-      </span>
-    </li>
-  </ul>
+  <section class="section">
+    <div class="container">
+      <ul class="count-list">
+        <li class="count-item">Showing <strong @click="$mixpanel.track('DApps - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('DApps - Results count')">{{ paginationTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
+      </ul>
+      <ul>
+        <li>Show
+          <span class="dropdown" :class="{ '--is-active': categoriesDropdownIsActive }" @click="toggle('categories')">{{ selectedCategory | formatDappsCategoryOptions }}
+            <CategoriesDropdown/>
+          </span> with status
+          <span class="dropdown" :class="{ '--is-active': refineDropdownIsActive }" @click="toggle('refine')">{{ selectedRefine }}
+            <RefineDropdown/>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
-  import CategoriesDropdown from '~/components/dapps/list/browse/CategoriesDropdown.vue'
-  import RefineDropdown from '~/components/dapps/list/browse/RefineDropdown.vue'
+  import CategoriesDropdown from '~/components/dapps/list/countBrowse/CategoriesDropdown.vue'
+  import RefineDropdown from '~/components/dapps/list/countBrowse/RefineDropdown.vue'
 
   export default {
     beforeDestroy () {
@@ -40,6 +47,12 @@
       },
       selectedRefine () {
         return this.$store.getters['dapps/list/refineQuery']
+      },
+      itemCount () {
+        return this.$store.getters['dapps/list/itemCount']
+      },
+      paginationTotalCount () {
+        return this.$store.getters['dapps/list/paginationTotalCount']
       }
     },
     methods: {
@@ -53,6 +66,19 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      padding: 25px 20px;
+      flex-direction: row;
+      align-items: center;
+      > :nth-child(1) {
+        flex-grow: 1;
+      }
+    }
+  }
 
   .dropdown {
     display: inline-block;
@@ -112,6 +138,13 @@
         margin-left: -4px;
         cursor: pointer;
       }
+    }
+  }
+
+  .count-list {
+    margin-top: 10px;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-top: 0;
     }
   }
 </style>

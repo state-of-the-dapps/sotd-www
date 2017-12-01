@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { browseRefineOptions as refineOptions } from '~/helpers/constants'
+  import { dappsRefineOptions as refineOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
@@ -19,7 +19,8 @@
       },
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/list/refineQuery']
-        const options = refineOptions.slice() || []
+        const options = refineOptions || []
+        options.slice()
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
         } else {

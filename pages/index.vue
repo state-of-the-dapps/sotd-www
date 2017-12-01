@@ -1,7 +1,7 @@
 <template>
   <div>
     <Search/>
-    <Browse/>
+    <CountBrowse/>
     <Cards/>
     <Pager/>
     <nuxt-child/>
@@ -10,14 +10,14 @@
 
 <script>
   import Cards from '~/components/dapps/list/Cards.vue'
-  import Browse from '~/components/dapps/list/Browse.vue'
+  import CountBrowse from '~/components/dapps/list/CountBrowse.vue'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
       Cards,
-      Browse,
+      CountBrowse,
       Pager,
       Search
     },

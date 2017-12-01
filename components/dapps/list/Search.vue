@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { browseCategoryOptions } from '~/helpers/constants'
+  import { dappsCategoryOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
   import SuggestedTags from '~/components/dapps/list/search/SuggestedTags.vue'
 
@@ -75,7 +75,7 @@
             this.$store.dispatch('tags/fetchItems', lastWord)
           }
           if (this.textQuery.length === 0) {
-            this.$store.dispatch('dapps/list/setCategoryQuery', browseCategoryOptions[0])
+            this.$store.dispatch('dapps/list/setCategoryQuery', dappsCategoryOptions[0])
             this.fetchSuggestedTagsWithNoQuery()
           }
           this.$store.dispatch('dapps/list/fetchItems')

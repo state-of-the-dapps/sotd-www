@@ -1,14 +1,14 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { browseCategoryOptions, browseRefineOptions } from '~/helpers/constants'
+import { dappsCategoryOptions, dappsRefineOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
 const initialQuery = {
-  category: browseCategoryOptions[0],
+  category: dappsCategoryOptions[0],
   limit: 50,
   offset: 0,
-  refine: browseRefineOptions[0],
+  refine: dappsRefineOptions[0],
   seed: randomSeed,
   tags: [],
   text: ''
@@ -129,7 +129,7 @@ const mutations = {
     state.activeItemIndex = index
   },
   SET_CATEGORY_QUERY (state, value) {
-    var options = browseCategoryOptions || []
+    var options = dappsCategoryOptions || []
     if (options.indexOf(value) !== -1) {
       state.query.category = value
     } else {
@@ -148,7 +148,7 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var browseCategoryOptions = browseCategoryOptions || []
+    var dappsCategoryOptions = dappsCategoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var category = state.query.category
     var url = '/'
@@ -157,7 +157,7 @@ const mutations = {
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== browseCategoryOptions[0] && category !== 'most-relevant') {
+    if (category !== dappsCategoryOptions[0] && category !== 'most-relevant') {
       url = url + 'tab/' + encodeURIComponent(category)
     }
     state.friendlyUrl = url

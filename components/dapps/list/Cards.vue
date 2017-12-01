@@ -1,25 +1,29 @@
 <template>
-  <transition name="fade" v-if="itemCount > 0">
-      <div class="list">
-        <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
-          <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
-          <ul class="badge-list" v-if="item.badges">
-            <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatBadge | capitalize }}</div></li>
-          </ul>
-          <div class="info">
-            <div class="icon-wrapper" :class="'-' + item.status">
-              <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
+  <section class="section -cards">
+    <div class="container">
+      <transition name="fade" v-if="itemCount > 0">
+        <div class="list">
+          <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+            <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
+            <ul class="badge-list" v-if="item.badges">
+              <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatDappsBadge | capitalize }}</div></li>
+            </ul>
+            <div class="info">
+              <div class="icon-wrapper" :class="'-' + item.status">
+                <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
+              </div>
+              <div class="description-wrapper">
+                <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
+                <p class="attribution">by <strong>{{ item.author }}</strong> {{ item.additionalAuthors | additionalAuthorsCount }}</p>
+                <p class="description">{{ item.teaser | truncate(75) }}</p>
+              </div>
             </div>
-            <div class="description-wrapper">
-              <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
-              <p class="attribution">by <strong>{{ item.author }}</strong> {{ item.additionalAuthors | additionalAuthorsCount }}</p>
-              <p class="description">{{ item.teaser | truncate(75) }}</p>
-            </div>
-          </div>
-          <p class="status" :class="'-' + item.status">{{ item.status | formatStatus }}</p>
-        </nuxt-link>
-      </div>
-  </transition>
+            <p class="status" :class="'-' + item.status">{{ item.status | formatDappsStatus }}</p>
+          </nuxt-link>
+        </div>
+      </transition>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -43,6 +47,13 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .container {
+    padding: 0px;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      padding: 0 10px;
+    }
+  }
 
   .attribution {
     margin: 0;

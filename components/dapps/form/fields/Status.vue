@@ -2,13 +2,13 @@
   <div>
     <p class="heading">Project status <span class="required">(required)</span></p>
     <ul class="list">
-      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatStatus | capitalize }}</li>
+      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatDappsStatus | capitalize }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-  import { dappStatusList as statusList } from '~/helpers/constants'
+  import { dappsStatusList as statusList } from '~/helpers/constants'
 
   export default {
     computed: {
