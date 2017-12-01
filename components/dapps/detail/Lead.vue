@@ -1,5 +1,5 @@
 <template>
-  <section class="section" :class="'-' + item.status">
+  <section class="section -lead" :class="'-' + item.status">
     <div class="container">
       <Intro/>
       <Cta/>

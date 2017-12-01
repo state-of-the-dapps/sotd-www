@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section -status-social">
     <div class="container">
       <Status/>
       <Social/>

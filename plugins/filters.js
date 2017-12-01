@@ -34,7 +34,7 @@ Vue.filter('truncate',
   }
 )
 
-Vue.filter('removeEmptyItems',
+Vue.filter('removeEmptyArrayItems',
   (value) => {
     var items = value || []
     return items.filter(entry => entry.trim() !== '')

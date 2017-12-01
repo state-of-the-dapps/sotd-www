@@ -8,7 +8,7 @@ const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m =
 const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
 const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
-const WhatsADapp = () => import('~/pages/whats-a-dapp.vue').then(m => m.default || m)
+const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
 const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
 
 Vue.use(Router)
