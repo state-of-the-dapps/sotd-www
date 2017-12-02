@@ -157,7 +157,6 @@ const mutations = {
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    console.log(options[0])
     if (category !== options[0] && category !== 'most-relevant') {
       url = url + 'tab/' + encodeURIComponent(category)
     }

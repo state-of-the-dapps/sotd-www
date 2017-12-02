@@ -16,7 +16,7 @@
       <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
     </ul>
     <ul class="list">
-      <li v-for="(tag, key) in selected" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="/images/close/small.png" width="9" alt="Close"></span></li>
+      <li v-for="(tag, key) in selected" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close"></span></li>
     </ul>
   </div>
 </template>
@@ -76,7 +76,7 @@
       },
       findSuggestedTags () {
         if (this.query.length === 0 && this.selected.length === 0) {
-          this.$store.dispatch('dapps/form/findTags')
+          this.$store.dispatch('dapps/form/fetchTags')
         }
       },
       remove (tag, key) {
@@ -91,7 +91,7 @@
         clearTimeout(trackTimer)
         searchTimer = setTimeout(() => {
           if (this.selected.length < 6) {
-            this.$store.dispatch('dapps/form/findTags', this.query)
+            this.$store.dispatch('dapps/form/fetchTags', this.query)
           }
         }, 100)
         trackTimer = setTimeout(() => {
@@ -160,7 +160,7 @@
       position: absolute;
       right: 10px;
       bottom: 9px;
-      background: url('/images/close/small.png') center center no-repeat;
+      background: url('~/assets/images/close/small.png') center center no-repeat;
       background-size: 9px 9px;
       width: 9px;
       height: 9px;

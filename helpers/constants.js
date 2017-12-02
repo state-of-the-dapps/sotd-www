@@ -9,7 +9,7 @@ const initialDappsStatusList = [
   'abandoned'
 ]
 
-let refineDappsStatusList = initialDappsStatusList
+let refineDappsStatusList = initialDappsStatusList.slice()
 refineDappsStatusList.unshift('any')
 
 export const dappsStatusList = initialDappsStatusList
