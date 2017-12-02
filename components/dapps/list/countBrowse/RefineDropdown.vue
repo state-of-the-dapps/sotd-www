@@ -39,7 +39,7 @@
       },
       select (option) {
         this.$mixpanel.track('DApps - Select refine', { option: option })
-        this.$store.dispatch('dapps/list/updateRefineQuery', option)
+        this.$store.dispatch('dapps/list/setRefineQuery', option)
         this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'refine')
         this.$store.dispatch('dapps/list/fetchItems')
       }

@@ -58,7 +58,7 @@
     methods: {
       toggle (type) {
         this.$mixpanel.track('DApps - Toggle ' + type)
-        this.$store.dispatch('dapps/list/toggleCategoriesDropdown')
+        this.$store.dispatch('dapps/list/toggleBrowseDropdown', type)
       }
     }
   }
@@ -118,9 +118,11 @@
       border: 1px solid $color--mine-shaft;
       background: rgba(lighten($color--gallery, 100%),.95);
       padding: 10px;
-      width: 145px;
+      width: calc(100% + 2px);
       z-index: 10;
       box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
+      top: 21px;
+      left: -1px;
     }
 
     /deep/ .item {

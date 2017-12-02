@@ -1,11 +1,4 @@
-export const dappsCategoryOptions = [
-  'hot',
-  'new',
-  'most-viewed',
-  'most-relevant'
-]
-
-export const dappsStatusList = [
+const initialDappsStatusList = [
   'live',
   'demo',
   'prototype',
@@ -16,4 +9,16 @@ export const dappsStatusList = [
   'abandoned'
 ]
 
-export const dappsRefineOptions = dappsStatusList.unshift('any')
+let refineDappsStatusList = initialDappsStatusList
+refineDappsStatusList.unshift('any')
+
+export const dappsStatusList = initialDappsStatusList
+
+export const dappsRefineOptions = refineDappsStatusList
+
+export const dappsCategoryOptions = [
+  'hot',
+  'new',
+  'most-viewed',
+  'most-relevant'
+]

@@ -47,7 +47,7 @@
       select (option) {
         this.$mixpanel.track('DApps - Select category', { option: option })
         this.$store.dispatch('dapps/list/setCategoryQuery', option)
-        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'categories')
+        // this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'categories')
         this.$store.dispatch('dapps/list/fetchItems')
       }
     }

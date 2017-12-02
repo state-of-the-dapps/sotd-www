@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import dateFormat from 'date-fns/format'
+import formatDate from 'date-fns/format'
 import * as constants from '~/helpers/constants'
 
 Vue.filter('formatDate',
   (value, format) => {
     if (value) {
-      return dateFormat(value, format)
+      return formatDate(value, format)
     }
   }
 )

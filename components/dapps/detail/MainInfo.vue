@@ -23,11 +23,11 @@
         </li>
         <li v-if="item.created" class="sub-item">
           <h3 class="sub-heading">Submitted</h3>
-          <p class="sub-body">{{ item.created | dateFormat('MMM Do, YYYY') }}</p>
+          <p class="sub-body">{{ item.created | formatDate('MMM Do, YYYY') }}</p>
         </li>
         <li v-if="item.lastUpdated" class="sub-item">
           <h3 class="sub-heading">Last updated</h3>
-          <p class="sub-body">{{ item.lastUpdated | dateFormat('MMM Do, YYYY') }}</p>
+          <p class="sub-body">{{ item.lastUpdated | formatDate('MMM Do, YYYY') }}</p>
         </li>
         <li v-if="tags && tags.length > 0" class="sub-item">
           <h3 class="sub-heading">Tags</h3>
