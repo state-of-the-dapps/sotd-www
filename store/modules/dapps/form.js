@@ -167,7 +167,7 @@ const mutations = {
     }
   },
   RESET_FORM (state) {
-    Object.assign(state, initialState())
+    Object.assign(state, initialState)
   },
   RESET_TAG_RESULTS (state) {
     state.tagsResults = []
