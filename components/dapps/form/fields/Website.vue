@@ -29,7 +29,7 @@
             name: 'website',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       }
     },

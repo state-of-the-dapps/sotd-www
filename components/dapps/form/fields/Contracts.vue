@@ -61,7 +61,7 @@
             name: 'mainnet',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       mainnetErrors () {
@@ -76,7 +76,7 @@
             name: 'ropsten',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       ropstenErrors () {
@@ -91,7 +91,7 @@
             name: 'kovan',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       kovanErrors () {
@@ -106,7 +106,7 @@
             name: 'rinkeby',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       rinkebyErrors () {

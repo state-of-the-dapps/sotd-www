@@ -63,6 +63,10 @@ strong {
   font-weight: 700;
 }
 
+input[type=submit] {
+  border-radius: 0;
+}
+
 button {
     background: none;
     border: 0;

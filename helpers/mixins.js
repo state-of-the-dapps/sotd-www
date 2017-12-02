@@ -22,11 +22,11 @@ export const dispatchErrors = {
   methods: {
     dispatchErrors (errors) {
       if (errors.data.length > 0) {
-        this.$store.dispatch('submit/addErrorField', errors.field)
+        this.$store.dispatch('dapps/form/addErrorField', errors.field)
       } else {
-        this.$store.dispatch('submit/removeErrorField', errors.field)
+        this.$store.dispatch('dapps/form/removeErrorField', errors.field)
       }
-      this.$store.dispatch('submit/updateErrors', errors)
+      this.$store.dispatch('dapps/form/setErrors', errors)
     }
   }
 }
@@ -34,7 +34,7 @@ export const dispatchErrors = {
 export const dispatchWarnings = {
   methods: {
     dispatchWarnings (warnings) {
-      this.$store.dispatch('submit/updateWarnings', warnings)
+      this.$store.dispatch('dapps/form/setWarnings', warnings)
     }
   }
 }

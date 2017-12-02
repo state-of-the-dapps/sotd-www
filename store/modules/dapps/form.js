@@ -255,6 +255,9 @@ const getters = {
   errorFields: state => {
     return state.errorFields
   },
+  fields: state => {
+    return state.fields
+  },
   joinSlack: state => {
     return state.fields.joinSlack
   },
@@ -357,6 +360,6 @@ export default {
   actions,
   getters,
   mutations,
-  namspaced: true,
+  namespaced: true,
   state: initialState
 }

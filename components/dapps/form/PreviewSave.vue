@@ -52,6 +52,9 @@
       errorFields () {
         return this.$store.getters['dapps/form/errorFields']
       },
+      fields () {
+        return this.$store.getters['dapps/form/fields']
+      },
       name () {
         return this.$store.getters['dapps/form/name']
       },
@@ -101,7 +104,7 @@
       submit () {
         if (this.honeypot === null) {
           const obj = {}
-          obj.data = this.$store.state.submit.fields
+          obj.data = this.fields
           this.sending = true
           axios.post('dapps', obj)
             .then((response) => {

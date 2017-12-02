@@ -23,7 +23,7 @@
     },
     methods: {
       select (value) {
-        this.$store.dispatch('dapps/form/updateStatus', value)
+        this.$store.dispatch('dapps/form/setStatus', value)
       }
     }
   }

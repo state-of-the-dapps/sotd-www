@@ -64,7 +64,7 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/dapps/new/',
+        path: '/dapps/new/form',
         component: DappNew,
         name: 'dappNew'
       },

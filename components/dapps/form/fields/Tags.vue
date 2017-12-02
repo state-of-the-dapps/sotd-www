@@ -50,7 +50,7 @@
           return this.$store.getters['dapps/form/tagsQuery']
         },
         set (value) {
-          this.$store.dispatch('dapps/form/updateTagsQuery', value)
+          this.$store.dispatch('dapps/form/setTagsQuery', value)
         }
       },
       results () {
@@ -67,7 +67,7 @@
       add () {
         if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
           this.$store.dispatch('dapps/form/addTag', this.query)
-          this.$store.dispatch('dapps/form/resetTagsResults')
+          this.$store.dispatch('dapps/form/resetTagResults')
           this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
         }
       },
@@ -84,7 +84,7 @@
         this.$mixpanel.track('New DApp - Remove tag', { tag: tag })
       },
       reset () {
-        this.$store.dispatch('dapps/form/resetTagsResults')
+        this.$store.dispatch('dapps/form/resetTagResults')
       },
       search () {
         clearTimeout(searchTimer)
@@ -100,7 +100,7 @@
       },
       select (item, key) {
         this.$store.dispatch('dapps/form/selectTag', key)
-        this.$store.dispatch('dapps/form/resetTagsResults')
+        this.$store.dispatch('dapps/form/resetTagResults')
         this.$mixpanel.track('New DApp - Select tag', { tag: item })
       }
     }

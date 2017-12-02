@@ -26,7 +26,9 @@
     },
     computed: {
       content () {
-        return // TODO
+        return {
+          body: ''
+        }
       }
     },
     head () {

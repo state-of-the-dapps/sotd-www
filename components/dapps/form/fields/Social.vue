@@ -65,7 +65,7 @@
             name: 'blog',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       github: {
@@ -77,7 +77,7 @@
             name: 'github',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       facebook: {
@@ -89,7 +89,7 @@
             name: 'facebook',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       other: {
@@ -101,7 +101,7 @@
             name: 'other',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       reddit: {
@@ -113,7 +113,7 @@
             name: 'reddit',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       slack: {
@@ -125,7 +125,7 @@
             name: 'slack',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       slackErrors () {
@@ -140,7 +140,7 @@
             name: 'twitter',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       wiki: {
@@ -152,7 +152,7 @@
             name: 'wiki',
             value: value
           }
-          this.$store.dispatch('dapps/form/updateSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       }
     },
@@ -230,39 +230,39 @@
       height: 21px;
     }
     &.-facebook:before {
-      background: url('~/images/social/facebook.png') center left no-repeat;
+      background: url('~/assets/images/social/facebook.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-twitter:before {
-      background: url('~/images/social/twitter.png') center left no-repeat;
+      background: url('~/assets/images/social/twitter.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-github:before {
-      background: url('~/images/social/github.png') center left no-repeat;
+      background: url('~/assets/images/social/github.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-slack:before {
-      background: url('~/images/social/slack.png') center left no-repeat;
+      background: url('~/assets/images/social/slack.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-reddit:before {
-      background: url('~/images/social/reddit.png') center left no-repeat;
+      background: url('~/assets/images/social/reddit.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-blog:before {
-      background: url('~/images/social/blog.png') center left no-repeat;
+      background: url('~/assets/images/social/blog.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-etherian:before {
-      background: url('~/images/social/etherian.png') center left no-repeat;
+      background: url('~/assets/images/social/etherian.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-other:before {
-      background: url('~/images/social/other2.png') center left no-repeat;
+      background: url('~/assets/images/social/other2.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-wiki:before {
-      background: url('~/images/social/wiki.png') center left no-repeat;
+      background: url('~/assets/images/social/wiki.png') center left no-repeat;
       background-size: 21px 21px;
     }
   }
