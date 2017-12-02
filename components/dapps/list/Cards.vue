@@ -68,6 +68,7 @@
   }
 
   .badge-info {
+    pointer-events: none;
     position: absolute;
     top: -25px;
     right: 0;

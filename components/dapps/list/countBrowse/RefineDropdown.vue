@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" class="item" @click="select(option)">{{ option }}</li>
+        <li v-for="option in optionsWithoutSelected" class="item" @click.stop="select(option)">{{ option }}</li>
       </ul>
     </div>
   </transition>
@@ -19,8 +19,7 @@
       },
       optionsWithoutSelected () {
         const selected = this.$store.getters['dapps/list/refineQuery']
-        const options = refineOptions || []
-        options.slice()
+        const options = refineOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
         } else {

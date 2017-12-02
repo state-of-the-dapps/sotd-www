@@ -62,9 +62,9 @@
     },
     head () {
       return {
-        title: this.active.name + ' — State of the ÐApps',
+        title: this.item.name + ' — State of the ÐApps',
         meta: [
-          { hid: 'description', name: 'description', content: this.active.teaser }
+          { hid: 'description', name: 'description', content: this.item.teaser }
         ]
       }
     }

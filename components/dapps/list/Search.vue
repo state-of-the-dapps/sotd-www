@@ -50,7 +50,7 @@
       removeLastTag () {
         if (this.textQuery.length < 1 && this.tags.length > 0) {
           this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-          this.$store.dispatch('dapps/list/removeLastTag')
+          this.$store.dispatch('dapps/list/removeLastTagFromQuery')
           this.$store.dispatch('dapps/list/fetchItems')
           this.fetchSuggestedTagsWithNoQuery()
         }
@@ -58,7 +58,7 @@
       removeTag (tag, key) {
         document.getElementById('search').focus()
         this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
-        this.$store.dispatch('dapps/list/removeTagsQuery', key)
+        this.$store.dispatch('dapps/list/removeTagFromQuery', key)
         this.$store.dispatch('tags/resetItems')
         this.$store.dispatch('dapps/list/fetchItems')
         this.fetchSuggestedTagsWithNoQuery()

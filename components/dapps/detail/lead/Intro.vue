@@ -40,6 +40,7 @@
   }
 
   .badge-info {
+    pointer-events: none;
     position: absolute;
     top: 31px;
     right: 0;

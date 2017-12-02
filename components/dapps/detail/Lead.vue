@@ -18,7 +18,7 @@
     },
     computed: {
       item () {
-        return this.$store.getters['dapp/active']
+        return this.$store.getters['dapps/detail/item']
       }
     }
   }

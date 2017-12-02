@@ -148,7 +148,7 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var dappsCategoryOptions = dappsCategoryOptions || []
+    var options = dappsCategoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var category = state.query.category
     var url = '/'
@@ -157,7 +157,8 @@ const mutations = {
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== dappsCategoryOptions[0] && category !== 'most-relevant') {
+    console.log(options[0])
+    if (category !== options[0] && category !== 'most-relevant') {
       url = url + 'tab/' + encodeURIComponent(category)
     }
     state.friendlyUrl = url
@@ -175,7 +176,7 @@ const mutations = {
     state.query.offset = 0
   },
   SET_LOADING_STATUS (state, value) {
-    state.loading = value
+    state.isLoading = value
   },
   SET_REFINE_QUERY (state, value) {
     state.query.refine = value

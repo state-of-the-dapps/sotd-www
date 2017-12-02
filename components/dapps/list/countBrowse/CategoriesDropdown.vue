@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click="select(option)">{{ option | formatDappsCategoryOptions }}</li>
+        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatDappsCategoryOptions }}</li>
       </ul>
     </div>
   </transition>
@@ -47,7 +47,7 @@
       select (option) {
         this.$mixpanel.track('DApps - Select category', { option: option })
         this.$store.dispatch('dapps/list/setCategoryQuery', option)
-        // this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'categories')
+        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'categories')
         this.$store.dispatch('dapps/list/fetchItems')
       }
     }
