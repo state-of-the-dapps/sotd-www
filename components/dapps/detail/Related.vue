@@ -36,7 +36,7 @@
     methods: {
       setActive (slug) {
         this.$store.dispatch('dapps/detail/setViewMethod', 'related')
-        if (this.popup) {
+        if (this.popupIsActive) {
           this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
           document.getElementById('close').scrollIntoView()
           this.$mixpanel.track('DApp - View', {

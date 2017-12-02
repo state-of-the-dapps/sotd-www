@@ -72,7 +72,7 @@ const mutations = {
 }
 
 const state = {
-  popup: false,
+  popupIsActive: false,
   item: item,
   viewMethod: 'direct'
 }
