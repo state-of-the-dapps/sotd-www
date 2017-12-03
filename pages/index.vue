@@ -1,48 +1,48 @@
 <template>
   <div>
-    <FindSection/>
-    <ResultsBrowseSection/>
-    <CardsSection/>
-    <ResultsEndSection/>
+    <Search/>
+    <CountBrowse/>
+    <Cards/>
+    <Pager/>
     <nuxt-child/>
   </div>
 </template>
 
 <script>
-  import CardsSection from '~/components/sections/list/Cards.vue'
-  import FindSection from '~/components/sections/list/Find.vue'
-  import ResultsBrowseSection from '~/components/sections/list/ResultsBrowse.vue'
-  import ResultsEndSection from '~/components/sections/list/ResultsEnd.vue'
+  import Cards from '~/components/dapps/list/Cards.vue'
+  import CountBrowse from '~/components/dapps/list/CountBrowse.vue'
+  import Pager from '~/components/dapps/list/Pager.vue'
+  import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
-      CardsSection,
-      FindSection,
-      ResultsBrowseSection,
-      ResultsEndSection
+      Cards,
+      CountBrowse,
+      Pager,
+      Search
     },
     computed: {
       categoryQuery () {
-        return this.$store.getters['dapps/categoryQuery']
+        return this.$store.getters['dapps/list/categoryQuery']
       },
       dappCount () {
-        return this.$store.getters['dappCount']
+        return this.$store.getters['statDappCount']
       },
       tagsQuery () {
-        return this.$store.getters['dapps/tagsQuery']
+        return this.$store.getters['dapps/list/tagsQuery']
       }
     },
     mounted () {
-      this.$store.dispatch('dapps/setFriendlyQuery', this.$route.params)
-      this.$store.dispatch('dapps/setFriendlyUrl')
-      this.$store.dispatch('dapps/findItems')
+      this.$store.dispatch('dapps/list/setFriendlyQuery', this.$route.params)
+      this.$store.dispatch('dapps/list/setFriendlyUrl')
+      this.$store.dispatch('dapps/list/fetchItems')
     },
     watch: {
       'tagsQuery': function () {
-        this.$store.dispatch('dapps/setFriendlyUrl')
+        this.$store.dispatch('dapps/list/setFriendlyUrl')
       },
       'categoryQuery': function () {
-        this.$store.dispatch('dapps/setFriendlyUrl')
+        this.$store.dispatch('dapps/list/setFriendlyUrl')
       }
     },
     head () {

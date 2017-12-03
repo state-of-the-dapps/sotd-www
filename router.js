@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-const Confirmation = () => import('~/pages/confirmation.vue').then(m => m.default || m)
+const CreateConfirmation = () => import('~/pages/confirmation/create.vue').then(m => m.default || m)
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const IndexIndex = () => import('~/pages/index/index.vue').then(m => m.default || m)
+const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
-const Submit = () => import('~/pages/submit.vue').then(m => m.default || m)
+const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
-const WhatsADapp = () => import('~/pages/whats-a-dapp.vue').then(m => m.default || m)
+const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
 const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
 
 Vue.use(Router)
@@ -46,12 +46,12 @@ export function createRouter () {
       {
         path: '/whats-a-dapp',
         component: WhatsADapp,
-        name: 'whats-a-dapp'
+        name: 'whatsadapp'
       },
       {
-        path: '/confirmation',
-        component: Confirmation,
-        name: 'confirmation'
+        path: '/confirmation/new',
+        component: CreateConfirmation,
+        name: 'confirmation-new'
       },
       {
         path: '/about',
@@ -64,9 +64,9 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/submit',
-        component: Submit,
-        name: 'submit'
+        path: '/dapps/new/form',
+        component: DappNew,
+        name: 'dappNew'
       },
       {
         path: '/dapps/:slug?',
@@ -79,24 +79,24 @@ export function createRouter () {
         children: [
           {
             path: '',
-            component: IndexIndex,
+            component: Placeholder,
             name: 'index'
           },
           {
             path: 'tagged/:tags',
-            component: IndexIndex,
+            component: Placeholder,
             name: 'index-tagged-tags',
             children: [
               {
                 path: 'tab/:category',
-                component: IndexIndex,
+                component: Placeholder,
                 name: 'index-tagged-tags-show-category'
               }
             ]
           },
           {
             path: 'tab/:category',
-            component: IndexIndex,
+            component: Placeholder,
             name: 'index-tab-category'
           },
           {

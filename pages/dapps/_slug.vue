@@ -1,46 +1,46 @@
 <template>
   <div>
-    <IntroCtaSection/>
-    <StatusSocialSection/>
-    <MainInfoSection/>
-    <ToolsSection/>
-    <RelatedDappsSection/>
+    <Lead/>
+    <StatusSocial/>
+    <MainInfo/>
+    <Tools/>
+    <Related/>
   </div>
 </template>
 
 <script>
-  import MainInfoSection from '~/components/sections/detail/MainInfo.vue'
-  import IntroCtaSection from '~/components/sections/detail/IntroCta.vue'
-  import RelatedDappsSection from '~/components/sections/detail/RelatedDapps.vue'
-  import StatusSocialSection from '~/components/sections/detail/StatusSocial.vue'
-  import ToolsSection from '~/components/sections/detail/Tools.vue'
-  import axios from '~/plugins/axios'
+  import axios from '~/helpers/axios'
+  import MainInfo from '~/components/dapps/detail/MainInfo.vue'
+  import Lead from '~/components/dapps/detail/Lead.vue'
+  import Related from '~/components/dapps/detail/Related.vue'
+  import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
+  import Tools from '~/components/dapps/detail/Tools.vue'
 
   export default {
     components: {
-      MainInfoSection,
-      IntroCtaSection,
-      RelatedDappsSection,
-      StatusSocialSection,
-      ToolsSection
+      MainInfo,
+      Lead,
+      Related,
+      StatusSocial,
+      Tools
     },
     computed: {
-      active () {
-        return this.$store.getters['dapp/active']
+      item () {
+        return this.$store.getters['dapps/detail/item']
       },
       viewMethod () {
-        return this.$store.getters['dapp/viewMethod']
+        return this.$store.getters['dapps/detail/viewMethod']
       }
     },
     destroyed () {
-      this.$store.dispatch('dapp/reset')
+      this.$store.dispatch('dapps/detail/resetItem')
     },
     fetch ({ store, params, redirect, isServer, error }) {
       if (isServer) {
         return axios
           .get('dapps/' + params.slug)
           .then(response => {
-            store.dispatch('dapp/setActive', response.data)
+            store.dispatch('dapps/detail/setItem', response.data)
             if (!Object.keys(response.data).length > 0) {
               error({ statusCode: 404 })
             }
@@ -51,20 +51,20 @@
       this.$mixpanel.track('DApp - View', {
         targetDapp: this.$route.params.slug,
         method: this.viewMethod
-      }, this.$store.dispatch('dapp/resetViewMethod'))
+      }, this.$store.dispatch('dapps/detail/resetViewMethod'))
       if (!Object.hasOwnProperty('slug')) {
         axios
           .get('dapps/' + this.$route.params.slug)
           .then(response => {
-            this.$store.dispatch('dapp/setActive', response.data)
+            this.$store.dispatch('dapps/detail/setItem', response.data)
           })
       }
     },
     head () {
       return {
-        title: this.active.name + ' — State of the ÐApps',
+        title: this.item.name + ' — State of the ÐApps',
         meta: [
-          { hid: 'description', name: 'description', content: this.active.teaser }
+          { hid: 'description', name: 'description', content: this.item.teaser }
         ]
       }
     }
