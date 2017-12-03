@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import axios from '~/helpers/axios'
 import announcementsModule from './modules/announcements'
 import dappsModule from './modules/dapps'
+import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
 const actions = {
@@ -39,6 +40,7 @@ const createStore = () => {
     modules: {
       announcements: announcementsModule,
       dapps: dappsModule,
+      newsletter: newsletterModule,
       tags: tagsModule
     },
     mutations,
