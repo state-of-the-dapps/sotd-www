@@ -17,7 +17,6 @@ const initialQuery = {
 const actions = {
   fetchItems: ({ commit, state }) => {
     commit('SET_LOADING_STATUS', true)
-    commit('CLEAR_ITEMS', true)
     axios
       .get('dapps', {
         params: state.query
@@ -113,9 +112,6 @@ const getters = {
 const mutations = {
   ADD_TAG_TO_QUERY (state, value) {
     state.query.tags.push(value)
-  },
-  CLEAR_ITEMS (state) {
-    state.items = []
   },
   INCREMENT_OFFSET_QUERY (state) {
     state.query.offset = state.pagination.offset + state.query.limit
