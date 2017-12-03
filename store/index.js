@@ -1,29 +1,49 @@
-import axios from '~/plugins/axios'
+import Vuex from 'vuex'
+import axios from '~/helpers/axios'
+import announcementsModule from './modules/announcements'
+import dappsModule from './modules/dapps'
+import tagsModule from './modules/tags'
 
-export const state = () => {
-  return {
-    dappCount: 0
-  }
-}
-
-export const mutations = {
-  setDappCount (state, value) {
-    state.dappCount = value
-  }
-}
-
-export const actions = {
+const actions = {
   nuxtServerInit ({ commit }) {
     return axios
       .get('stats')
       .then(response => {
-        commit('setDappCount', response.data.dappCount)
+        commit('SET_DAPP_COUNT', response.data.dappCount)
       })
   }
 }
 
-export const getters = {
-  dappCount: state => {
-    return state.dappCount
+const getters = {
+  statDappCount: state => {
+    return state.stats.dappCount
   }
 }
+
+const mutations = {
+  SET_DAPP_COUNT (state, value) {
+    state.stats.dappCount = value
+  }
+}
+
+const state = {
+  stats: {
+    dappCount: 0
+  }
+}
+
+const createStore = () => {
+  return new Vuex.Store({
+    actions,
+    getters,
+    modules: {
+      announcements: announcementsModule,
+      dapps: dappsModule,
+      tags: tagsModule
+    },
+    mutations,
+    state
+  })
+}
+
+export default createStore

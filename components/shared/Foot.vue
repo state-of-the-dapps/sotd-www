@@ -1,27 +1,28 @@
 <template>
-  <div>
-    <p class="logo-wrapper"><img class="logo" src="/images/logo-reverse.png" width="190"></p>
-    <ul class="social-list">
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Twitter')" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Github')" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="/images/social/github-reverse.png" width="21" alt="Github"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="/images/social/reddit-reverse.png" width="21" alt="Reddit"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Medium')" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="/images/social/medium-reverse.png" width="21" alt="Medium"></a></li>
-      <li class="social-item"><a @click="$mixpanel.track('Footer - Slack')" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="/images/social/slack-reverse.png" width="21" alt="Slack"></a></li>
-
-    </ul>
-    <h4 class="disclaimer-heading">
-      <nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
-    </h4>
-    <p class="disclaimer-message">{{ content.disclaimer }}</p>
-    <p class="attribution">Designed by <a @click="$mixpanel.track('SoTD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></p>
-  </div>
+  <section class="section -footer">
+    <div class="container">
+      <p class="logo-wrapper"><img class="logo" src="~/assets/images/logo-reverse.png" width="190"></p>
+      <ul class="social-list">
+        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Twitter' })" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="~/assets/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
+        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Github' })" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="~/assets/images/social/github-reverse.png" width="21" alt="Github"></a></li>
+        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Reddit' })" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="~/assets/images/social/reddit-reverse.png" width="21" alt="Reddit"></a></li>
+        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Medium' })" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="~/assets/images/social/medium-reverse.png" width="21" alt="Medium"></a></li>
+        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Slack' })" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="~/assets/images/social/slack-reverse.png" width="21" alt="Slack"></a></li>
+      </ul>
+      <h4 class="disclaimer-heading">
+        <nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
+      </h4>
+      <p class="disclaimer-message">{{ disclaimer }}</p>
+      <p class="attribution">Designed by <a @click="$mixpanel.track('SotD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></p>
+    </div>
+  </section>
 </template>
 
 <script>
   export default {
     computed: {
-      content () {
-        return this.$store.getters['cms/footer']
+      disclaimer () {
+        return // TODO
       }
     }
   }
@@ -29,6 +30,15 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .container {
+    padding: 30px 20px 75px 20px;
+  }
+
+  .section {
+    background: $color--mine-shaft;
+    color: $color--gallery;
+  }
 
   .attribution {
     text-align: center;

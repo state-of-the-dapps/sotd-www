@@ -1,20 +1,21 @@
 <template>
   <div class="main-container">
-    <AnnouncementSection/>
-    <MastheadSection/>
+    <Announcement/>
+    <Masthead/>
     <nuxt/>
-    <FootSection/>
+    <Foot/>
     <transition name="fade">
-      <img @click="scrollUp" class="scroll-up" :class="{ '--has-announcement': announcement, '--is-active': scrollNeeded }" src="/images/scroll-up.png" width="36" height="36">
+      <img @click="scrollUp" class="scroll-up" :class="{ '--has-announcement': announcement, '--is-active': scrollNeeded }" src="~/assets/images/scroll-up.png" width="36" height="36">
     </transition>
   </div>
 </template>
 
 <script>
-  import AnnouncementSection from '~/components/sections/shared/Announcement.vue'
-  import FootSection from '~/components/sections/shared/Foot.vue'
-  import MastheadSection from '~/components/sections/shared/Masthead.vue'
-  var scrollTimer
+  import Announcement from '~/components/shared/Announcement.vue'
+  import Foot from '~/components/shared/Foot.vue'
+  import Masthead from '~/components/shared/Masthead.vue'
+  
+  let scrollTimer
 
   export default {
     data: () => {
@@ -23,9 +24,9 @@
       }
     },
     components: {
-      AnnouncementSection,
-      FootSection,
-      MastheadSection
+      Announcement,
+      Foot,
+      Masthead
     },
     computed: {
       announcement () {
