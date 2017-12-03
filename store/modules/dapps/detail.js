@@ -1,6 +1,8 @@
-const item = {
-  contracts: [],
-  tags: []
+function item () {
+  return {
+    contracts: [],
+    tags: []
+  }
 }
 
 const actions = {
@@ -73,7 +75,7 @@ const mutations = {
 
 const state = {
   popupIsActive: false,
-  item: item,
+  item: item(),
   viewMethod: 'direct'
 }
 

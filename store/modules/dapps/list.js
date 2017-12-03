@@ -4,14 +4,16 @@ import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
-const initialQuery = {
-  category: dappsCategoryOptions[0],
-  limit: 50,
-  offset: 0,
-  refine: dappsRefineOptions[0],
-  seed: randomSeed,
-  tags: [],
-  text: ''
+function initialQuery () {
+  return {
+    category: dappsCategoryOptions[0],
+    limit: 50,
+    offset: 0,
+    refine: dappsRefineOptions[0],
+    seed: randomSeed,
+    tags: [],
+    text: ''
+  }
 }
 
 const actions = {
@@ -205,7 +207,7 @@ const state = {
     offset: 0,
     totalCount: 0
   },
-  query: initialQuery
+  query: initialQuery()
 }
 
 export default {

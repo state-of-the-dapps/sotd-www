@@ -1,75 +1,77 @@
 import axios from '~/helpers/axios'
 
-const initialState = {
-  errorFields: [
-    'author',
-    'description',
-    'email',
-    'license',
-    'name',
-    'status',
-    'tags',
-    'teaser',
-    'acceptedTerms',
-    'website'
-  ],
-  errors: {
-    additionalAuthors: [],
-    author: [],
-    dappUrl: [],
-    description: [],
-    email: [],
-    kovan: [],
-    license: [],
-    logo: [],
-    mainnet: [],
-    name: [],
-    rinkeby: [],
-    ropsten: [],
-    socialSlack: [],
-    tags: [],
-    teaser: [],
-    acceptedTerms: [],
-    website: []
-  },
-  fields: {
-    additionalAuthors: '',
-    author: '',
-    dappUrl: '',
-    description: '',
-    contracts: {
-      mainnet: { address: '' },
-      ropsten: { address: '' },
-      kovan: { address: '' },
-      rinkeby: { address: '' }
+function initialState () {
+  return {
+    errorFields: [
+      'author',
+      'description',
+      'email',
+      'license',
+      'name',
+      'status',
+      'tags',
+      'teaser',
+      'acceptedTerms',
+      'website'
+    ],
+    errors: {
+      additionalAuthors: [],
+      author: [],
+      dappUrl: [],
+      description: [],
+      email: [],
+      kovan: [],
+      license: [],
+      logo: [],
+      mainnet: [],
+      name: [],
+      rinkeby: [],
+      ropsten: [],
+      socialSlack: [],
+      tags: [],
+      teaser: [],
+      acceptedTerms: [],
+      website: []
     },
-    email: '',
-    joinSlack: true,
-    license: '',
-    logo: '',
-    name: '',
-    social: {
-      facebook: { url: '' },
-      twitter: { url: '' },
-      github: { url: '' },
-      reddit: { url: '' },
-      slack: { url: '' },
-      blog: { url: '' },
-      other: { url: '' },
-      wiki: { url: '' }
+    fields: {
+      additionalAuthors: '',
+      author: '',
+      dappUrl: '',
+      description: '',
+      contracts: {
+        mainnet: { address: '' },
+        ropsten: { address: '' },
+        kovan: { address: '' },
+        rinkeby: { address: '' }
+      },
+      email: '',
+      joinSlack: true,
+      license: '',
+      logo: '',
+      name: '',
+      social: {
+        facebook: { url: '' },
+        twitter: { url: '' },
+        github: { url: '' },
+        reddit: { url: '' },
+        slack: { url: '' },
+        blog: { url: '' },
+        other: { url: '' },
+        wiki: { url: '' }
+      },
+      status: '',
+      subscribeNewsletter: true,
+      tags: [],
+      teaser: '',
+      acceptedTerms: false,
+      website: ''
     },
-    status: '',
-    subscribeNewsletter: true,
-    tags: [],
-    teaser: '',
-    acceptedTerms: false,
-    website: ''
-  },
-  tagsQuery: '',
-  tagsResults: [],
-  warnings: {
-    name: [],
-    teaser: []
+    tagsQuery: '',
+    tagsResults: [],
+    warnings: {
+      name: [],
+      teaser: []
+    }
   }
 }
 
@@ -167,7 +169,7 @@ const mutations = {
     }
   },
   RESET_FORM (state) {
-    Object.assign(state, initialState)
+    Object.assign(state, initialState())
   },
   RESET_TAG_RESULTS (state) {
     state.tagsResults = []
@@ -361,5 +363,5 @@ export default {
   getters,
   mutations,
   namespaced: true,
-  state: initialState
+  state: initialState()
 }
