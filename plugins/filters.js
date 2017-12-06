@@ -1,11 +1,11 @@
 import Vue from 'vue'
-import dateFormat from 'date-fns/format'
-import * as constants from '~/plugins/constants'
+import formatDate from 'date-fns/format'
+import * as constants from '~/helpers/constants'
 
-Vue.filter('dateFormat',
+Vue.filter('formatDate',
   (value, format) => {
     if (value) {
-      return dateFormat(value, format)
+      return formatDate(value, format)
     }
   }
 )
@@ -34,17 +34,17 @@ Vue.filter('truncate',
   }
 )
 
-Vue.filter('removeEmptyItems',
+Vue.filter('removeEmptyArrayItems',
   (value) => {
     var items = value || []
     return items.filter(entry => entry.trim() !== '')
   }
 )
 
-Vue.filter('formatBrowseCategoryOptions',
+Vue.filter('formatDappsCategoryOptions',
   value => {
     var category = ''
-    var options = constants.browseCategoryOptions || []
+    var options = constants.dappsCategoryOptions || []
     if (options.indexOf(value) !== -1) {
       category = value.toString().replace('-', ' ')
     } else {
@@ -62,7 +62,7 @@ Vue.filter('uppercase',
   }
 )
 
-Vue.filter('formatStatus',
+Vue.filter('formatDappsStatus',
   value => {
     if (value) {
       let status = ''
@@ -78,7 +78,7 @@ Vue.filter('formatStatus',
   }
 )
 
-Vue.filter('formatBadge',
+Vue.filter('formatDappsBadge',
   value => {
     if (value) {
       let badge = ''

@@ -20,7 +20,7 @@ body, input, textarea {
 }
 
 body {
-  background: url('/images/bg.jpg') center center;
+  background: url('~/assets/images/bg.jpg') center center;
   background-size: 100px 100px;
   height: 100%;
   &.--has-popup {
@@ -57,10 +57,16 @@ ul, li {
 
 a {
   color: $color--mine-shaft;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 strong {
   font-weight: 700;
+}
+
+input[type=submit] {
+  border-radius: 0;
 }
 
 button {

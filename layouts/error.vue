@@ -1,26 +1,26 @@
 <template>
   <div class="main-container">
-    <AnnouncementSection/>
-    <MastheadSection/>
+    <Announcement/>
+    <Masthead/>
     <div class="content">
       <h1 v-if="error.statusCode === 404">Whoops, we couldn't find that page</h1>
       <h1 v-else>Whoops, an error occurred.</h1>
       <p>You can always <nuxt-link to="/">start over</nuxt-link>. Also, feel free to <a :href="'mailto:support@stateofthedapps.com?subject=Error on State of the ÐApps website&body=There is an error on this page: https://www.stateofthedapps.com' + $route.fullPath">let us know</a> about this error.</p>
     </div>
-    <FootSection/>
+    <Foot/>
   </div>
 </template>
 
 <script>
-  import AnnouncementSection from '~/components/sections/shared/Announcement.vue'
-  import FootSection from '~/components/sections/shared/Foot.vue'
-  import MastheadSection from '~/components/sections/shared/Masthead.vue'
+  import Announcement from '~/components/shared/Announcement.vue'
+  import Foot from '~/components/shared/Foot.vue'
+  import Masthead from '~/components/shared/Masthead.vue'
 
   export default {
     components: {
-      AnnouncementSection,
-      FootSection,
-      MastheadSection
+      Announcement,
+      Foot,
+      Masthead
     },
     mounted () {
       this.$mixpanel.track('Error page', { type: '404', resource: this.$route.fullPath })
@@ -32,6 +32,7 @@
 <style lang="scss" scoped>
   .main-container {
     height: 100%;
+    position: relative;
   }
 
   .content {

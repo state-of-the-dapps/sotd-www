@@ -3,20 +3,20 @@
     <div class="popup-outer">
       <div class="popup-wrap">
         <div class="popup-container" id="top" v-on-clickaway="hide">
-          <IntroCtaSection/>
-          <StatusSocialSection/>
-          <MainInfoSection/>
-          <ToolsSection/>
-          <RelatedDappsSection/>
+          <Lead/>
+          <StatusSocial/>
+          <MainInfo/>
+          <Tools/>
+          <Related/>
         </div>
         <div class="close" id="close">
-          <img src="/images/close/large.png" width="20" />
+          <img src="~/assets/images/close/large.png" width="20" />
         </div>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="updateDapp('prev', items[itemIndex - 1].slug)">
-          <img src="/images/arrows/back.png" width="20" />
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="setDapp('prev', items[itemIndex - 1].slug)">
+          <img src="~/assets/images/arrows/back.png" width="20" />
         </nuxt-link>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="updateDapp('next', items[itemIndex + 1].slug)">
-          <img src="/images/arrows/next.png" width="20" />
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="setDapp('next', items[itemIndex + 1].slug)">
+          <img src="~/assets/images/arrows/next.png" width="20" />
         </nuxt-link>
       </div>
     </div>
@@ -24,46 +24,43 @@
 </template>
 
 <script>
-  import MainInfoSection from '~/components/sections/detail/MainInfo.vue'
-  import IntroCtaSection from '~/components/sections/detail/IntroCta.vue'
-  import RelatedDappsSection from '~/components/sections/detail/RelatedDapps.vue'
-  import StatusSocialSection from '~/components/sections/detail/StatusSocial.vue'
-  import ToolsSection from '~/components/sections/detail/Tools.vue'
   import { directive as onClickaway } from 'vue-clickaway'
-  import axios from '~/plugins/axios'
+  import axios from '~/helpers/axios'
+  import MainInfo from '~/components/dapps/detail/MainInfo.vue'
+  import Lead from '~/components/dapps/detail/Lead.vue'
+  import Related from '~/components/dapps/detail/Related.vue'
+  import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
+  import Tools from '~/components/dapps/detail/Tools.vue'
 
   export default {
     components: {
-      MainInfoSection,
-      IntroCtaSection,
-      RelatedDappsSection,
-      StatusSocialSection,
-      ToolsSection
+      MainInfo,
+      Lead,
+      Related,
+      StatusSocial,
+      Tools
     },
     computed: {
-      active () {
-        return this.$store.getters['dapp/active']
+      item () {
+        return this.$store.getters['dapps/detail/item']
       },
       friendlyUrl () {
-        return this.$store.getters['dapps/friendlyUrl']
+        return this.$store.getters['dapps/list/friendlyUrl']
       },
       itemIndex () {
-        return this.$store.getters['dapps/activeItemIndex']
+        return this.$store.getters['dapps/list/activeItemIndex']
       },
       items () {
-        return this.$store.getters['dapps/items']
-      },
-      popup () {
-        return this.$store.getters['dapp/popup']
+        return this.$store.getters['dapps/list/items']
       },
       viewMethod () {
-        return this.$store.getters['dapp/viewMethod']
+        return this.$store.getters['dapps/list/viewMethod']
       }
     },
     destroyed () {
       document.body.classList.remove('--has-popup')
-      this.$store.dispatch('dapp/hidePopup')
-      this.$store.dispatch('dapp/reset')
+      this.$store.dispatch('dapps/detail/hidePopup')
+      this.$store.dispatch('dapps/detail/resetItem')
       window.removeEventListener('keyup', this.escapeToHide)
     },
     directives: {
@@ -71,9 +68,9 @@
     },
     head () {
       return {
-        title: this.active.name + ' — State of the ÐApps',
+        title: this.item.name + ' — State of the ÐApps',
         meta: [
-          { hid: 'description', name: 'description', content: this.active.teaser }
+          { hid: 'description', name: 'description', content: this.item.teaser }
         ]
       }
     },
@@ -81,7 +78,7 @@
       return axios
         .get('dapps/' + params.slug)
         .then(response => {
-          store.dispatch('dapp/setActive', response.data)
+          store.dispatch('dapps/detail/setItem', response.data)
           if (!Object.keys(response.data).length > 0) {
             error({ statusCode: 404 })
           }
@@ -95,33 +92,33 @@
       },
       hide () {
         this.$mixpanel.track('DApp popup - Hide')
-        this.$store.dispatch('dapps/setActiveItemIndex', -1)
+        this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
         this.$router.push(this.friendlyUrl)
       },
-      updateDapp (direction, slug) {
+      setDapp (direction, slug) {
         let num = 0
         if (direction === 'prev') {
           num = -1
-          this.$store.dispatch('dapp/setViewMethod', 'prev')
+          this.$store.dispatch('dapps/detail/setViewMethod', 'prev')
         } else if (direction === 'next') {
           num = 1
-          this.$store.dispatch('dapp/setViewMethod', 'next')
+          this.$store.dispatch('dapps/detail/setViewMethod', 'next')
         }
-        this.$store.dispatch('dapps/setActiveItemIndex', this.itemIndex + num)
+        this.$store.dispatch('dapps/list/setActiveItemIndex', this.itemIndex + num)
         document.getElementById('close').scrollIntoView()
         this.$mixpanel.track('DApp - View', {
           targetDapp: slug,
           method: this.viewMethod
-        }, this.$store.dispatch('dapp/resetViewMethod'))
+        }, this.$store.dispatch('dapps/detail/resetViewMethod'))
       }
     },
     mounted () {
       this.$mixpanel.track('DApp - View', {
         targetDapp: this.$route.params.slug,
         method: this.viewMethod
-      }, this.$store.dispatch('dapp/resetViewMethod'))
+      }, this.$store.dispatch('dapps/detail/resetViewMethod'))
       document.body.classList.add('--has-popup')
-      this.$store.dispatch('dapp/showPopup')
+      this.$store.dispatch('dapps/detail/showPopup')
       window.addEventListener('keyup', this.escapeToHide)
     }
   }
