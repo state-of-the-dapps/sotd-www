@@ -22,9 +22,12 @@ function initialState () {
       ],
       description: '',
       email: '',
+      isFree: false,
+      language: '',
       organizer: '',
       location: {
         address: '', // e.g. '123 Address Lane, New Place MN, 34098'
+        country: '',
         lat: '',
         lon: ''
       },

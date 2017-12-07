@@ -1,5 +1,5 @@
 <template>
-  <section class="section -find">
+  <section class="section -search">
     <div class="container">
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="~/assets/images/search.png" width="20"></a>

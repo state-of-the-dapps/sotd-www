@@ -2,22 +2,22 @@
   <div>
     <Search/>
     <CountBrowse/>
-    <Cards/>
+    <Items/>
     <Pager/>
     <nuxt-child/>
   </div>
 </template>
 
 <script>
-  import Cards from '~/components/dapps/list/Cards.vue'
   import CountBrowse from '~/components/dapps/list/CountBrowse.vue'
+  import Items from '~/components/dapps/list/Items.vue'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
-      Cards,
       CountBrowse,
+      Items,
       Pager,
       Search
     },

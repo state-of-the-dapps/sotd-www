@@ -1,5 +1,5 @@
 <template>
-  <section class="section -cards">
+  <section class="section -items">
     <div class="container">
       <transition name="fade" v-if="itemCount > 0">
         <div class="list">

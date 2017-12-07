@@ -3,13 +3,14 @@ import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
 const CreateConfirmation = () => import('~/pages/confirmation/create.vue').then(m => m.default || m)
-const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
-const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
+const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
 const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
+const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
+const Index = () => import('~/pages/index.vue').then(m => m.default || m)
+const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
+const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
-const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
@@ -72,6 +73,11 @@ export function createRouter () {
         path: '/dapps/:slug?',
         component: Dapp,
         name: 'dapps-slug'
+      },
+      {
+        path: '/events',
+        component: Events,
+        name: 'events'
       },
       {
         path: '/',

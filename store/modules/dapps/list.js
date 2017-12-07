@@ -1,15 +1,15 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { dappsCategoryOptions, dappsRefineOptions } from '~/helpers/constants'
+import { dappsCategoryOptions as categoryOptions, dappsRefineOptions as refineOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
 function initialQuery () {
   return {
-    category: dappsCategoryOptions[0],
+    category: categoryOptions[0],
     limit: 50,
     offset: 0,
-    refine: dappsRefineOptions[0],
+    refine: refineOptions[0],
     seed: randomSeed,
     tags: [],
     text: ''
@@ -131,7 +131,7 @@ const mutations = {
     state.activeItemIndex = index
   },
   SET_CATEGORY_QUERY (state, value) {
-    var options = dappsCategoryOptions || []
+    var options = categoryOptions || []
     if (options.indexOf(value) !== -1) {
       state.query.category = value
     } else {
@@ -150,7 +150,7 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = dappsCategoryOptions || []
+    var options = categoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var category = state.query.category
     var url = '/'

@@ -22,3 +22,8 @@ export const dappsCategoryOptions = Object.freeze([
   'most-viewed',
   'most-relevant'
 ])
+
+export const eventsCategoryOptions = Object.freeze([
+  'ico',
+  'hackathon'
+])

@@ -11,7 +11,7 @@ const actions = {
     return axios
       .get('stats')
       .then(response => {
-        commit('SET_DAPP_COUNT', response.data.dappCount)
+        commit('SET_STATS', response.data)
       })
   }
 }
@@ -19,18 +19,23 @@ const actions = {
 const getters = {
   statDappCount: state => {
     return state.stats.dappCount
+  },
+  statEventCount: state => {
+    return state.stats.eventCount
   }
 }
 
 const mutations = {
-  SET_DAPP_COUNT (state, value) {
-    state.stats.dappCount = value
+  SET_STATS (state, data) {
+    state.stats.dappCount = data.dappCount
+    state.stats.eventCount = data.eventCount
   }
 }
 
 const state = {
   stats: {
-    dappCount: 0
+    dappCount: 0,
+    eventCount: 0
   }
 }
 
