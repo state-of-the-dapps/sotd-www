@@ -84,7 +84,7 @@ const actions = {
   },
   fetchTags: ({ commit, state }, value) => {
     axios
-      .get('tags', { params: { query: value, excluded: state.fields.tags } })
+      .get('tags', { params: { query: value, exclude: state.fields.tags } })
       .then(response => {
         commit('SET_TAG_RESULTS', response.data)
       })
