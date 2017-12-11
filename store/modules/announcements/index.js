@@ -2,7 +2,7 @@ import axios from '~/helpers/axios'
 
 const actions = {
   fetch: ({ commit }) => {
-    axios.get('announcement')
+    axios.get('announcements')
     .then(response => {
       const payload = response.data.payload
       const items = payload.items
