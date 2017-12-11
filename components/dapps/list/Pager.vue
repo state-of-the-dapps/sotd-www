@@ -6,7 +6,7 @@
           Load the <span v-if="paginationTotalCount - itemCount > 1"> <span v-if="paginationTotalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ paginationTotalCount - itemCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="itemCount >= paginationTotalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dappNew' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="itemCount >= paginationTotalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-submit-new' }" class="link">submit one!</nuxt-link></p>
       <p v-if="isLoading" class="loader-wrapper"><button v-if="isLoading" class="loader"></button></p>
     </div>
   </section>

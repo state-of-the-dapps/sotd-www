@@ -21,7 +21,7 @@
             </div>
           </transition>
         </li>
-        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" :to="{ name: 'dappNew' }" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
+        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" :to="{ name: 'dapps-submit-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
       </ul>
       <ul class="nameplate-list">
         <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
