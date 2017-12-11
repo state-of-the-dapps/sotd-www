@@ -9,28 +9,22 @@ function initialState () {
       // name: []
     },
     fields: {
-      name: '', // e.g. CryptoConference
       categories: [],
       dates: [
-       /*
-        {
-          date: 'YYYY-MM-DD',
-          startTime: '07:06:05',
-          endTime: '10:06:05',
-        }
-       */
+        // 'YYYY-MM-DD'
       ],
       description: '',
       email: '',
       isFree: false,
       language: '',
-      organizer: '',
       location: {
         address: '', // e.g. '123 Address Lane, New Place MN, 34098'
         country: '',
         lat: '',
         lon: ''
       },
+      name: '', // e.g. CryptoConference
+      organizer: '',
       registrationInfo: '',
       relatedDapps: [], // e.g. 'dapp-slug', 'another-dapp-slug'
       schedule: [
