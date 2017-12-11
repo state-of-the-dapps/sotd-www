@@ -1,9 +1,12 @@
 <template>
   <transition name="fade">
-    <section v-if="status" class="section -announcement">
-      <div class="container">
-        <p class="message">{{ message }}<span v-if="url && urlText"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: url })" :href="url" class="link" target="_blank" rel="noopener noreferrer">{{ urlText }}</a></span><a href="#" class="close"><img src="~/assets/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a></p>
-      </div>
+    <section v-if="items.length > 0 && isActive" class="section -announcement">
+      <ul class="container">
+        <li v-for="item in items" class="message">
+          {{ item.text }}<span v-if="item.link.url && item.link.text"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: item.link.url })" :href="item.link.url" class="link" target="_blank" rel="noopener noreferrer">{{ item.link.text }}</a></span>
+        </li>
+      </ul>
+      <a href="#" class="close"><img src="~/assets/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a>
     </section>
   </transition>
 </template>
@@ -11,17 +14,11 @@
 <script>
   export default {
     computed: {
-      message () {
-        return this.$store.getters['announcement/message']
+      isActive () {
+        return this.$store.getters['announcement/isActive']
       },
-      status () {
-        return this.$store.getters['announcement/status']
-      },
-      url () {
-        return this.$store.getters['announcement/url']
-      },
-      urlText () {
-        return this.$store.getters['announcement/urlText']
+      items () {
+        return this.$store.getters['announcement/items']
       }
     },
     methods: {

@@ -2,16 +2,22 @@ import axios from '~/helpers/axios'
 
 const actions = {
   submit ({ commit }, email) {
+    const payload = {
+      payload: {
+        fields: {
+          email: email
+        }
+      }
+    }
     commit('SET_LOADING_IS_ACTIVE', true)
-    axios.post('newsletter/subscribe', { email: email })
+    axios.post('newsletter/subscribe', payload)
       .then((response) => {
         commit('SUBMIT')
+        commit('SET_LOADING_IS_ACTIVE', false)
       })
       .catch(() => {
-        alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
-      })
-      .finally(() => {
         commit('SET_LOADING_IS_ACTIVE', false)
+        alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
       })
   },
   toggleDropdown ({ commit }) {

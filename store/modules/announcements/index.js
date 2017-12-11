@@ -4,7 +4,9 @@ const actions = {
   fetch: ({ commit }) => {
     axios.get('announcement')
     .then(response => {
-      commit('SET', response.data)
+      const payload = response.data.payload
+      const items = payload.items
+      commit('SET', items)
     })
   },
   hide: ({ commit }) => {
@@ -13,34 +15,23 @@ const actions = {
 }
 
 const getters = {
-  status: state => {
-    return state.status
-  },
-  message: state => {
-    return state.message
-  },
-  url: state => {
-    return state.url
-  },
-  urlText: state => {
-    return state.urlText
+  items: state => {
+    return state.items
   }
 }
 
 const mutations = {
   HIDE (state) {
-    state.status = false
+    state.isActive = false
   },
-  SET (state, announcement) {
-    Object.assign(state, announcement)
+  SET (state, items) {
+    state.items = items
   }
 }
 
 const state = {
-  message: '',
-  status: false,
-  url: '',
-  urlText: ''
+  items: [],
+  isActive: true
 }
 
 export default {
