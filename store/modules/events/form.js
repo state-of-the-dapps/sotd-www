@@ -26,16 +26,22 @@ function initialState () {
       name: '', // e.g. CryptoConference
       organizer: '',
       registrationInfo: '',
-      relatedDapps: [], // e.g. 'dapp-slug', 'another-dapp-slug'
+      relatedProjects: [
+        /*
+        {
+          name: '',
+          slug: ''
+        }
+        */
+      ], // e.g. 'dapp-slug', 'another-dapp-slug'
       schedule: [
        /*
         {
-          title: '',
           description: ''
         }
        */
       ],
-      social: {
+      socials: {
         facebook: { url: '' },
         twitter: { url: '' }
       },
