@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-const CreateConfirmation = () => import('~/pages/confirmation/create.vue').then(m => m.default || m)
 const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
+const DappConfirmation = () => import('~/pages/dapps/confirmation.vue').then(m => m.default || m)
 const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
@@ -50,11 +50,6 @@ export function createRouter () {
         name: 'whatsadapp'
       },
       {
-        path: '/confirmation/new',
-        component: CreateConfirmation,
-        name: 'confirmation-new'
-      },
-      {
         path: '/about',
         component: About,
         name: 'about'
@@ -65,9 +60,14 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/dapps/new/form',
+        path: '/dapps/submit/confirmation',
+        component: DappConfirmation,
+        name: 'dapps-submit-confirmation'
+      },
+      {
+        path: '/dapps/submit/new',
         component: DappNew,
-        name: 'dappNew'
+        name: 'dapps-submit-new'
       },
       {
         path: '/dapps/:slug?',

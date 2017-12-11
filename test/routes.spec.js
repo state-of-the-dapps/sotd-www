@@ -32,7 +32,7 @@ test('DApp detail exists and renders HTML', async t => {
 
 test('DApp new exists and renders HTML', async t => {
   let context = {}
-  const { html } = await nuxt.renderRoute('/submit', context)
+  const { html } = await nuxt.renderRoute('/dapps/submit/new', context)
   t.true(html.includes('Submit a ÐApp'))
 })
 
