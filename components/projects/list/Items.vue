@@ -18,7 +18,7 @@
                 <p class="description">{{ item.teaser | truncate(75) }}</p>
               </div>
             </div>
-            <p class="status" :class="'-' + item.status">{{ item.status | formatDappsStatus }}</p>
+            <p class="status" :class="'-' + item.status">{{ item.status | formatProjectStatus }}</p>
           </nuxt-link>
         </div>
       </transition>

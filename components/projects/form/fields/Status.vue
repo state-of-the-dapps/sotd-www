@@ -2,7 +2,7 @@
   <div>
     <p class="heading">Project status <span class="required">(required)</span></p>
     <ul class="list">
-      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatDappsStatus | capitalize }}</li>
+      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatProjectStatus | capitalize }}</li>
     </ul>
   </div>
 </template>

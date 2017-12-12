@@ -61,12 +61,15 @@
           })
           hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a URL`) : null
           axios
-            .get('dapps/' + this.name)
+            .get('projects/lookup', {
+              params: this.name
+            })
             .then(response => {
-              if (response.data.hasOwnProperty('name') && this.name.length > 0) {
+              const payload = response.data.payload
+              const item = payload.item
+              if (item.exists) {
                 errors.data.push(`Name has already been taken`)
               }
-
               this.dispatchErrors(errors)
               this.dispatchWarnings(warnings)
             })

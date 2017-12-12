@@ -13,7 +13,7 @@
                   <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatDappsStatus }}</p>
+          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatProjectStatus }}</p>
       </div>
       <div class="checkboxes">
         <div class="checkbox-field">

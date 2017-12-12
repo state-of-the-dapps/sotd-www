@@ -62,7 +62,7 @@ Vue.filter('uppercase',
   }
 )
 
-Vue.filter('formatDappsStatus',
+Vue.filter('formatProjectStatus',
   value => {
     if (value) {
       let status = ''
@@ -78,7 +78,7 @@ Vue.filter('formatDappsStatus',
   }
 )
 
-Vue.filter('formatDappsBadge',
+Vue.filter('formatProjectsBadge',
   value => {
     if (value) {
       let badge = ''
