@@ -1,7 +1,7 @@
 <template>
   <div>
     <Search/>
-    <CountBrowse/>
+    <CountRefine/>
     <Items/>
     <Pager/>
     <nuxt-child/>
@@ -9,24 +9,24 @@
 </template>
 
 <script>
-  import CountBrowse from '~/components/dapps/list/CountBrowse.vue'
+  import CountRefine from '~/components/dapps/list/CountRefine.vue'
   import Items from '~/components/dapps/list/Items.vue'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
-      CountBrowse,
+      CountRefine,
       Items,
       Pager,
       Search
     },
     computed: {
-      categoryQuery () {
-        return this.$store.getters['dapps/list/categoryQuery']
+      tabQuery () {
+        return this.$store.getters['dapps/list/tabQuery']
       },
-      dappCount () {
-        return this.$store.getters['statDappCount']
+      statProjectCount () {
+        return this.$store.getters['statProjectCount']
       },
       tagsQuery () {
         return this.$store.getters['dapps/list/tagsQuery']
@@ -41,13 +41,13 @@
       'tagsQuery': function () {
         this.$store.dispatch('dapps/list/setFriendlyUrl')
       },
-      'categoryQuery': function () {
+      'tabQuery': function () {
         this.$store.dispatch('dapps/list/setFriendlyUrl')
       }
     },
     head () {
       return {
-        title: 'State of the ÐApps — ' + this.dappCount + ' Projects Built on Ethereum'
+        title: 'State of the ÐApps — ' + this.statProjectCount + ' Projects Built on Ethereum'
       }
     },
     scrollToTop: false

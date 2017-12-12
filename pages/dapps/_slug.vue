@@ -38,10 +38,12 @@
     fetch ({ store, params, redirect, isServer, error }) {
       if (isServer) {
         return axios
-          .get('dapps/' + params.slug)
+          .get('projects/' + params.slug)
           .then(response => {
-            store.dispatch('dapps/detail/setItem', response.data)
-            if (!Object.keys(response.data).length > 0) {
+            const payload = response.data.payload
+            const item = payload.item
+            store.dispatch('projects/detail/setItem', item)
+            if (!Object.keys(item).length > 0) {
               error({ statusCode: 404 })
             }
           })

@@ -9,17 +9,17 @@
 </template>
 
 <script>
-  import { dappsRefineOptions as refineOptions } from '~/helpers/constants'
+  import { dappsStatusOptions as statusOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['dapps/list/refineDropdownIsActive']
+        return this.$store.getters['dapps/list/statusDropdownIsActive']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/list/refineQuery']
-        const options = refineOptions.slice() || []
+        const selected = this.$store.getters['dapps/list/statusQuery']
+        const options = statusOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
         } else {
@@ -33,13 +33,13 @@
     },
     methods: {
       hide () {
-        this.$mixpanel.track('DApps - Click away from refine')
-        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'refine')
+        this.$mixpanel.track('DApps - Click away from status')
+        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'status')
       },
       select (option) {
-        this.$mixpanel.track('DApps - Select refine', { option: option })
-        this.$store.dispatch('dapps/list/setRefineQuery', option)
-        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'refine')
+        this.$mixpanel.track('DApps - Select status', { option: option })
+        this.$store.dispatch('dapps/list/setStatusQuery', option)
+        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'status')
         this.$store.dispatch('dapps/list/fetchItems')
       }
     }

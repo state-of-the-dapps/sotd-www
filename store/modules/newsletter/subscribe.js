@@ -2,7 +2,7 @@ import axios from '~/helpers/axios'
 
 const actions = {
   submit ({ commit }, email) {
-    const payload = {
+    const data = {
       payload: {
         fields: {
           email: email
@@ -10,7 +10,7 @@ const actions = {
       }
     }
     commit('SET_LOADING_IS_ACTIVE', true)
-    axios.post('newsletter/subscribe', payload)
+    axios.post('newsletter/subscribe', data)
       .then((response) => {
         commit('SUBMIT')
         commit('SET_LOADING_IS_ACTIVE', false)

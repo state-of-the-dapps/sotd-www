@@ -41,16 +41,16 @@ Vue.filter('removeEmptyArrayItems',
   }
 )
 
-Vue.filter('formatDappsCategoryOptions',
+Vue.filter('formatDappsTabOptions',
   value => {
-    var category = ''
-    var options = constants.dappsCategoryOptions || []
+    var tab = ''
+    var options = constants.dappsTabOptions || []
     if (options.indexOf(value) !== -1) {
-      category = value.toString().replace('-', ' ')
+      tab = value.toString().replace('-', ' ')
     } else {
-      category = options[0]
+      tab = options[0]
     }
-    return category
+    return tab
   }
 )
 

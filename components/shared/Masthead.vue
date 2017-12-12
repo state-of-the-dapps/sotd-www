@@ -25,7 +25,7 @@
       </ul>
       <ul class="nameplate-list">
         <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
-        <li class="nameplate-item -description">A curated list of <strong>{{ dappCount }}</strong> decentralized apps <br>built on <strong class="nameplate-company-name">ethereum</strong></li>
+        <li class="nameplate-item -description">A curated list of <strong>{{ statProjectCount }}</strong> decentralized apps <br>built on <strong class="nameplate-company-name">ethereum</strong></li>
       </ul>
     </div>
   </nav>
@@ -37,8 +37,8 @@
 
   export default {
     computed: {
-      dappCount () {
-        return this.$store.getters['statDappCount']
+      statProjectCount () {
+        return this.$store.getters['statProjectCount']
       },
       newsletterConfirmation () {
         return this.$store.getters['newsletter/subscribe/confirmation']

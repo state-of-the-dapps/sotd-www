@@ -6,11 +6,11 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': categoriesDropdownIsActive }" @click="toggle('categories')">{{ selectedCategory | formatDappsCategoryOptions }}
-            <CategoriesDropdown/>
+          <span class="dropdown" :class="{ '--is-active': tabsDropdownIsActive }" @click="toggle('tabs')">{{ selectedTab | formatDappsTabOptions }}
+            <TabsDropdown/>
           </span> with status
-          <span class="dropdown" :class="{ '--is-active': refineDropdownIsActive }" @click="toggle('refine')">{{ selectedRefine }}
-            <RefineDropdown/>
+          <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
+            <StatusDropdown/>
           </span>
         </li>
       </ul>
@@ -19,34 +19,34 @@
 </template>
 
 <script>
-  import CategoriesDropdown from '~/components/dapps/list/countBrowse/CategoriesDropdown.vue'
-  import RefineDropdown from '~/components/dapps/list/countBrowse/RefineDropdown.vue'
+  import TabsDropdown from '~/components/dapps/list/countRefine/TabsDropdown.vue'
+  import StatusDropdown from '~/components/dapps/list/countRefine/StatusDropdown.vue'
 
   export default {
     beforeDestroy () {
-      if (this.categoriesDropdownIsActive === true) {
-        this.toggleBrowseCategories()
+      if (this.tabsDropdownIsActive === true) {
+        this.toggleBrowseTabs()
       }
-      if (this.refineDropdownIsActive === true) {
-        this.toggleBrowseRefine()
+      if (this.statusDropdownIsActive === true) {
+        this.toggleBrowseStatus()
       }
     },
     components: {
-      CategoriesDropdown,
-      RefineDropdown
+      TabsDropdown,
+      StatusDropdown
     },
     computed: {
-      categoriesDropdownIsActive () {
-        return this.$store.getters['dapps/list/categoriesDropdownIsActive']
+      tabsDropdownIsActive () {
+        return this.$store.getters['dapps/list/tabsDropdownIsActive']
       },
-      refineDropdownIsActive () {
-        return this.$store.getters['dapps/list/refineDropdownIsActive']
+      statusDropdownIsActive () {
+        return this.$store.getters['dapps/list/statusDropdownIsActive']
       },
-      selectedCategory () {
-        return this.$store.getters['dapps/list/categoryQuery']
+      selectedTab () {
+        return this.$store.getters['dapps/list/tabQuery']
       },
-      selectedRefine () {
-        return this.$store.getters['dapps/list/refineQuery']
+      selectedStatus () {
+        return this.$store.getters['dapps/list/statusQuery']
       },
       itemCount () {
         return this.$store.getters['dapps/list/itemCount']

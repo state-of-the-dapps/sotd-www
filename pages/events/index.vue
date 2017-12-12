@@ -3,7 +3,7 @@
     <Search/>
     <div class="results-filters">
       <div class="results">
-        <CountBrowse/>
+        <CountRefine/>
         <Items/>
       </div>
       <div class="filters">
@@ -17,7 +17,7 @@
 
 <script>
   import Calendar from '~/components/events/list/Calendar.vue'
-  import CountBrowse from '~/components/events/list/CountBrowse.vue'
+  import CountRefine from '~/components/events/list/CountRefine.vue'
   import Items from '~/components/events/list/Items.vue'
   import Pager from '~/components/events/list/Pager.vue'
   import Search from '~/components/events/list/Search.vue'
@@ -25,14 +25,14 @@
   export default {
     components: {
       Calendar,
-      CountBrowse,
+      CountRefine,
       Items,
       Pager,
       Search
     },
     computed: {
-      categoryQuery () {
-        return this.$store.getters['events/list/categoryQuery']
+      tabQuery () {
+        return this.$store.getters['events/list/tabQuery']
       },
       eventCount () {
         return this.$store.getters['statEventsCount']
@@ -50,7 +50,7 @@
       'tagsQuery': function () {
         this.$store.dispatch('events/list/setFriendlyUrl')
       },
-      'categoryQuery': function () {
+      'tabQuery': function () {
         this.$store.dispatch('events/list/setFriendlyUrl')
       }
     },

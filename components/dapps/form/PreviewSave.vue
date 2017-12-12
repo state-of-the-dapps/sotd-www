@@ -103,10 +103,13 @@
     methods: {
       submit () {
         if (this.honeypot === null) {
-          const obj = {}
-          obj.data = this.fields
+          const data = {
+            payload: {
+              fields: this.fields
+            }
+          }
           this.sending = true
-          axios.post('dapps', obj)
+          axios.post('projects', data)
             .then((response) => {
               this.sending = false
               this.$store.dispatch('dapps/form/resetForm')

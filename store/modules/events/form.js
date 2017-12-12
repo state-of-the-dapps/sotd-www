@@ -9,7 +9,7 @@ function initialState () {
       // name: []
     },
     fields: {
-      categories: [],
+      tabs: [],
       dates: [
         // 'YYYY-MM-DD'
       ],

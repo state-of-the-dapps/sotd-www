@@ -94,16 +94,16 @@ export function createRouter () {
             name: 'index-tagged-tags',
             children: [
               {
-                path: 'tab/:category',
+                path: 'tab/:tab',
                 component: Placeholder,
-                name: 'index-tagged-tags-show-category'
+                name: 'index-tagged-tags-show-tab'
               }
             ]
           },
           {
-            path: 'tab/:category',
+            path: 'tab/:tab',
             component: Placeholder,
-            name: 'index-tab-category'
+            name: 'index-tab-tab'
           },
           {
             path: 'dapps/:slug?',

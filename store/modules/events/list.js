@@ -1,9 +1,9 @@
-import { eventsCategoryOptions as categoryOptions } from '~/helpers/constants'
+import { eventsTabOptions as tabOptions } from '~/helpers/constants'
 // import axios from '~/helpers/axios'
 
 function initialQuery () {
   return {
-    category: categoryOptions[0],
+    tab: tabOptions[0],
     limit: 50,
     offset: 0,
     tags: [],
@@ -19,8 +19,8 @@ const mutations = {}
 
 const state = {
   activeItemIndex: -1,
-  browse: {
-    categories: {
+  refine: {
+    tabs: {
       isActive: false
     }
   },

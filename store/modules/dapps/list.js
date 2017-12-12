@@ -1,15 +1,15 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { dappsCategoryOptions as categoryOptions, dappsRefineOptions as refineOptions } from '~/helpers/constants'
+import { dappsTabOptions as tabOptions, dappsStatusOptions as statusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
 function initialQuery () {
   return {
-    category: categoryOptions[0],
+    tab: tabOptions[0],
     limit: 50,
     offset: 0,
-    refine: refineOptions[0],
+    status: statusOptions[0],
     seed: randomSeed,
     tags: [],
     text: ''
@@ -31,10 +31,10 @@ const actions = {
   incrementOffsetQuery: ({ commit }) => {
     commit('INCREMENT_OFFSET_QUERY')
   },
-  setCategoryQuery: ({ commit }, value) => {
+  setTabQuery: ({ commit }, value) => {
     commit('SET_CATEGORY_QUERY', value)
   },
-  setRefineQuery: ({ commit }, value) => {
+  setStatusQuery: ({ commit }, value) => {
     commit('SET_REFINE_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
@@ -61,8 +61,8 @@ const actions = {
   setFriendlyUrl: ({ commit }) => {
     commit('SET_FRIENDLY_URL')
   },
-  toggleBrowseDropdown: ({ commit }, type) => {
-    commit('TOGGLE_BROWSE_DROPDOWN', type)
+  toggleRefineDropdown: ({ commit }, type) => {
+    commit('TOGGLE_REFINE_DROPDOWN', type)
   }
 }
 
@@ -70,11 +70,11 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
-  categoriesDropdownIsActive: state => {
-    return state.browse.categories.isActive
+  tabsDropdownIsActive: state => {
+    return state.refine.tabs.isActive
   },
-  categoryQuery: state => {
-    return state.query.category
+  tabQuery: state => {
+    return state.query.tab
   },
   friendlyUrl: state => {
     return state.friendlyUrl
@@ -91,11 +91,11 @@ const getters = {
   isLoading: state => {
     return state.isLoading
   },
-  refineDropdownIsActive: state => {
-    return state.browse.refine.isActive
+  statusDropdownIsActive: state => {
+    return state.refine.status.isActive
   },
-  refineQuery: state => {
-    return state.query.refine
+  statusQuery: state => {
+    return state.query.status
   },
   paginationOffset: state => {
     return state.pagination.offset
@@ -131,36 +131,36 @@ const mutations = {
     state.activeItemIndex = index
   },
   SET_CATEGORY_QUERY (state, value) {
-    var options = categoryOptions || []
+    var options = tabOptions || []
     if (options.indexOf(value) !== -1) {
-      state.query.category = value
+      state.query.tab = value
     } else {
-      state.query.category = options[0]
+      state.query.tab = options[0]
     }
   },
   SET_FRIENDLY_QUERY (state, params) {
     var tags = params.tags
-    var category = params.category
+    var tab = params.tab
     if (tags !== undefined) {
       tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
       state.query.tags = tags
     }
-    if (category !== undefined) {
-      state.query.category = category
+    if (tab !== undefined) {
+      state.query.tab = tab
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = categoryOptions || []
+    var options = tabOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
-    var category = state.query.category
+    var tab = state.query.tab
     var url = '/'
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== options[0] && category !== 'most-relevant') {
-      url = url + 'tab/' + encodeURIComponent(category)
+    if (tab !== options[0] && tab !== 'most-relevant') {
+      url = url + 'tab/' + encodeURIComponent(tab)
     }
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
@@ -180,23 +180,23 @@ const mutations = {
     state.isLoading = value
   },
   SET_REFINE_QUERY (state, value) {
-    state.query.refine = value
+    state.query.status = value
   },
   SET_TEXT_QUERY (state, value) {
     state.query.text = value
   },
-  TOGGLE_BROWSE_DROPDOWN (state, type) {
-    state.browse[type].isActive = !state.browse[type].isActive
+  TOGGLE_REFINE_DROPDOWN (state, type) {
+    state.refine[type].isActive = !state.refine[type].isActive
   }
 }
 
 const state = {
   activeItemIndex: -1,
-  browse: {
-    categories: {
+  refine: {
+    tabs: {
       isActive: false
     },
-    refine: {
+    status: {
       isActive: false
     }
   },

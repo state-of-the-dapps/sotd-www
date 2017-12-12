@@ -86,7 +86,9 @@ const actions = {
     axios
       .get('tags', { params: { query: value, excluded: state.fields.tags } })
       .then(response => {
-        commit('SET_TAG_RESULTS', response.data)
+        var payload = response.data.payload
+        var items = payload.items
+        commit('SET_TAG_RESULTS', items)
       })
   },
   removeErrorField ({ commit }, field) {

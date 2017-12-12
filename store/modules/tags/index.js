@@ -5,7 +5,9 @@ const actions = {
     axios
       .get('tags', { params: { query: value, excluded: rootState.dapps.list.query.tags } })
       .then(response => {
-        commit('SET_ITEMS', response.data)
+        const payload = response.data.payload
+        const items = payload.items
+        commit('SET_ITEMS', items)
       })
   },
   resetItems: ({ commit }) => {

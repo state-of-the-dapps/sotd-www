@@ -11,14 +11,16 @@ const actions = {
     return axios
       .get('stats')
       .then(response => {
-        commit('SET_STATS', response.data)
+        const payload = response.data.payload
+        const items = payload.items
+        commit('SET_STATS', items)
       })
   }
 }
 
 const getters = {
-  statDappCount: state => {
-    return state.stats.dappCount
+  statProjectCount: state => {
+    return state.stats.projectCount
   },
   statEventCount: state => {
     return state.stats.eventCount
@@ -26,15 +28,15 @@ const getters = {
 }
 
 const mutations = {
-  SET_STATS (state, data) {
-    state.stats.dappCount = data.dappCount
-    state.stats.eventCount = data.eventCount
+  SET_STATS (state, items) {
+    state.stats.projectCount = items.projectCount
+    state.stats.eventCount = items.eventCount
   }
 }
 
 const state = {
   stats: {
-    dappCount: 0,
+    projectCount: 0,
     eventCount: 0
   }
 }
