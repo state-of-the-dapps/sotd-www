@@ -24,7 +24,10 @@ const actions = {
         params: state.query
       })
       .then(response => {
-        commit('SET_ITEMS', response)
+        const payload = response.data.payload
+        const items = payload.items
+        const pager = payload.pager
+        commit('SET_ITEMS', items, pager)
         commit('SET_LOADING_STATUS', false)
       })
   },
@@ -165,15 +168,13 @@ const mutations = {
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
   },
-  SET_ITEMS (state, response) {
-    state.pagination.totalCount = Number(response.headers['x-pagination-count'])
-    state.pagination.offset = Number(response.headers['x-pagination-offset'])
-    if (state.pagination.offset === 0) {
-      state.items = response.data
-    } else {
-      let items = state.items.concat(response.data)
-      state.items = items
+  SET_ITEMS (state, items, pager) {
+    state.pager.totalCount = Number(pager['x-pagination-count'])
+    state.pager.offset = Number(pager['x-pagination-offset'])
+    if (state.pagination.offset !== 0) {
+      items = state.items.concat(items)
     }
+    state.items = items
     state.query.offset = 0
   },
   SET_LOADING_STATUS (state, value) {
@@ -203,7 +204,7 @@ const state = {
   friendlyUrl: '/',
   items: [],
   isLoading: true,
-  pagination: {
+  pager: {
     offset: 0,
     totalCount: 0
   },
