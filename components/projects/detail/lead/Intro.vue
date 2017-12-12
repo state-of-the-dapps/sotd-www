@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <div class="new-banner" @click="$mixpanel.track('DApp - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
+    <div class="new-banner" @click="$mixpanel.track('Project - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
-      <li v-for="badge in item.badges" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
+      <li v-for="badge in item.badges" @click="$mixpanel.track('Project - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
         <div class="badge-info">{{ badge | formatProjectBadge | capitalize }}</div>
       </li>
     </ul>
     <div class="info">
-      <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
+      <div @click="$mixpanel.track('Project - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
         <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
       </div>
       <div class="description-wrapper">
@@ -22,7 +22,7 @@
   export default {
     computed: {
       item () {
-        return this.$store.getters['dapps/detail/item']
+        return this.$store.getters['projects/detail/item']
       }
     }
   }
