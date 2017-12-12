@@ -3,7 +3,7 @@
     <div class="contract-network">
       {{ contract.network | capitalize }}
     </div>
-    <div class="contract-address"><a @click="$mixpanel.track('DApp - Contract', { network: contract.network, address: contract.address })" :href="'https://'
+    <div class="contract-address"><a @click="$mixpanel.track('Project - Contract', { network: contract.network, address: contract.address })" :href="'https://'
       + (contract.network === 'mainnet' ? '' : contract.network + '.')
       + 'etherscan.io/address/'
       + contract.address" target="_blank" rel="noopener noreferrer">{{ contract.address | truncate(20) }}</a>

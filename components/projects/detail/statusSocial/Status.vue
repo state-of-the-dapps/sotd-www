@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <span @click="$mixpanel.track('DApp - Status')" class="message" :class="'-' + item.status">Status: <strong>{{ item.status | formatProjectStatus | capitalize }}</strong></span>
+    <span @click="$mixpanel.track('Project - Status')" class="message" :class="'-' + item.status">Status: <strong>{{ item.status | formatProjectStatus | capitalize }}</strong></span>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
   export default {
     computed: {
       item () {
-        return this.$store.getters['dapps/detail/item']
+        return this.$store.getters['projects/detail/item']
       }
     }
   }

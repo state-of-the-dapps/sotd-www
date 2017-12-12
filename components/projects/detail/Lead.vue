@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import Cta from '~/components/dapps/detail/lead/Cta.vue'
-  import Intro from '~/components/dapps/detail/lead/Intro.vue'
+  import Cta from '~/components/projects/detail/lead/Cta.vue'
+  import Intro from '~/components/projects/detail/lead/Intro.vue'
 
   export default {
     components: {
@@ -18,7 +18,7 @@
     },
     computed: {
       item () {
-        return this.$store.getters['dapps/detail/item']
+        return this.$store.getters['projects/detail/item']
       }
     }
   }
