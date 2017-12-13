@@ -84,7 +84,7 @@ const actions = {
   },
   fetchTags: ({ commit, state }, value) => {
     axios
-      .get('tags', { params: { query: value, excluded: state.fields.tags } })
+      .get('tags', { params: { text: value, excluded: state.fields.tags } })
       .then(response => {
         var payload = response.data.payload
         var items = payload.items
