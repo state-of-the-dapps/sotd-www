@@ -19,21 +19,21 @@ test.before('Init Nuxt.js', async t => {
   await nuxt.listen(4000, 'localhost')
 })
 
-test('DApp list exists and renders HTML', async t => {
+test('Project list exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
   t.regex(html, /\d+ Projects Built on Ethereum/)
 })
 
-test('DApp detail exists and renders HTML', async t => {
+test('Project detail exists and renders HTML', async t => {
   let context = {}
-  const { html } = await nuxt.renderRoute('/dapps/aragon', context)
+  const { html } = await nuxt.renderRoute('/projects/aragon', context)
   t.true(html.includes('Create and manage DAOs'))
 })
 
-test('DApp new exists and renders HTML', async t => {
+test('Project new exists and renders HTML', async t => {
   let context = {}
-  const { html } = await nuxt.renderRoute('/dapps/submit/new', context)
+  const { html } = await nuxt.renderRoute('/projects/submit/new', context)
   t.true(html.includes('Submit a ÐApp'))
 })
 
