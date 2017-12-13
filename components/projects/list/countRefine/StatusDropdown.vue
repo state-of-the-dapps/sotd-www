@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { projectsStatusOptions as statusOptions } from '~/helpers/constants'
+  import { projectRefineStatusOptions as statusOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {

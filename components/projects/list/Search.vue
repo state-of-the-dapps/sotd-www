@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { projectsTabOptions } from '~/helpers/constants'
+  import { projectRefineTabOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
   import SuggestedTags from '~/components/projects/list/search/SuggestedTags.vue'
 
@@ -75,7 +75,7 @@
             this.$store.dispatch('tags/fetchItems', lastWord)
           }
           if (this.textQuery.length === 0) {
-            this.$store.dispatch('projects/list/setTabQuery', projectsTabOptions[0])
+            this.$store.dispatch('projects/list/setTabQuery', projectRefineTabOptions[0])
             this.fetchSuggestedTagsWithNoQuery()
           }
           this.$store.dispatch('projects/list/fetchItems')

@@ -6,8 +6,8 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': tabsDropdownIsActive }" @click="toggle('tabs')">{{ selectedTab | formatprojectsTabOptions }}
-            <TabsDropdown/>
+          <span class="dropdown" :class="{ '--is-active': tabsDropdownIsActive }" @click="toggle('tabs')">{{ selectedTab | formatProjectTabOptions }}
+            <TabDropdown/>
           </span> with status
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
             <StatusDropdown/>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import TabsDropdown from '~/components/projects/list/countRefine/TabsDropdown.vue'
+  import TabDropdown from '~/components/projects/list/countRefine/TabDropdown.vue'
   import StatusDropdown from '~/components/projects/list/countRefine/StatusDropdown.vue'
 
   export default {
@@ -32,7 +32,7 @@
       }
     },
     components: {
-      TabsDropdown,
+      TabDropdown,
       StatusDropdown
     },
     computed: {

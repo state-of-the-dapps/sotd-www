@@ -41,10 +41,10 @@ Vue.filter('removeEmptyArrayItems',
   }
 )
 
-Vue.filter('formatProjectsTabOptions',
+Vue.filter('formatProjectTabOptions',
   value => {
     var tab = ''
-    var options = constants.projectsTabOptions || []
+    var options = constants.projectRefineTabOptions || []
     if (options.indexOf(value) !== -1) {
       tab = value.toString().replace('-', ' ')
     } else {

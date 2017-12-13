@@ -1,4 +1,4 @@
-const initialProjectsStatusList = Object.freeze([
+const projectStatuses = Object.freeze([
   'live',
   'demo',
   'prototype',
@@ -9,26 +9,24 @@ const initialProjectsStatusList = Object.freeze([
   'abandoned'
 ])
 
-const projectsStatusList = initialProjectsStatusList
+const projectRefineStatusOptions = projectStatuses.slice()
+projectRefineStatusOptions.unshift('any')
 
-const projectsStatusRefineOptions = initialProjectsStatusList.slice()
-projectsStatusRefineOptions.unshift('any')
-
-const projectsTabOptions = Object.freeze([
+const projectRefineTabOptions = Object.freeze([
   'hot',
   'new',
   'most-viewed',
   'most-relevant'
 ])
 
-const eventsTabOptions = Object.freeze([
+const eventRefineTabOptions = Object.freeze([
   'ico',
   'hackathon'
 ])
 
 export {
-  eventsTabOptions,
-  projectsStatusList,
-  projectsStatusRefineOptions,
-  projectsTabOptions
+  eventRefineTabOptions,
+  projectStatuses,
+  projectRefineStatusOptions,
+  projectRefineTabOptions
 }

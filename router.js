@@ -2,12 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
-const DappConfirmation = () => import('~/pages/dapps/confirmation.vue').then(m => m.default || m)
-const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
+const Project = () => import('~/pages/projects/_slug.vue').then(m => m.default || m)
+const ProjectConfirmation = () => import('~/pages/projects/confirmation.vue').then(m => m.default || m)
+const ProjectNew = () => import('~/pages/projects/new.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
+const IndexProject = () => import('~/pages/index/projects/_slug.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
@@ -60,19 +60,19 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/dapps/submit/confirmation',
-        component: DappConfirmation,
-        name: 'dapps-submit-confirmation'
+        path: '/projects/submit/confirmation',
+        component: ProjectConfirmation,
+        name: 'projects-submit-confirmation'
       },
       {
-        path: '/dapps/submit/new',
-        component: DappNew,
-        name: 'dapps-submit-new'
+        path: '/projects/submit/new',
+        component: ProjectNew,
+        name: 'projects-submit-new'
       },
       {
-        path: '/dapps/:slug?',
-        component: Dapp,
-        name: 'dapps-slug'
+        path: '/projects/:slug?',
+        component: Project,
+        name: 'projects-slug'
       },
       {
         path: '/events',
@@ -106,9 +106,9 @@ export function createRouter () {
             name: 'index-tab-tab'
           },
           {
-            path: 'dapps/:slug?',
-            component: IndexDapp,
-            name: 'index-dapps-slug'
+            path: 'projects/:slug?',
+            component: IndexProject,
+            name: 'index-projects-slug'
           }
         ]
       }

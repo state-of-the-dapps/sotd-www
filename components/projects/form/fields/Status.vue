@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import { projectsStatusList as statusList } from '~/helpers/constants'
+  import { projectStatuses as statusList } from '~/helpers/constants'
 
   export default {
     computed: {

@@ -2,14 +2,14 @@
   <transition name="fade">
     <div class="container" v-if="isActive" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatprojectsTabOptions }}</li>
+        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatProjectTabOptions }}</li>
       </ul>
     </div>
   </transition>
 </template>
 
 <script>
-  import { projectsTabOptions as tabOptions } from '~/helpers/constants'
+  import { projectRefineTabOptions as tabOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {

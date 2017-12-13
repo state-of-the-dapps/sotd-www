@@ -1,4 +1,4 @@
-import { eventsTabOptions as tabOptions } from '~/helpers/constants'
+import { eventRefineTabOptions as tabOptions } from '~/helpers/constants'
 // import axios from '~/helpers/axios'
 
 function initialQuery () {
