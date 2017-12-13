@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 import axios from '~/helpers/axios'
 import announcementsModule from './modules/announcements'
-import dappsModule from './modules/dapps'
+import projectsModule from './modules/projects'
 import eventsModule from './modules/events'
 import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
@@ -47,7 +47,7 @@ const createStore = () => {
     getters,
     modules: {
       announcements: announcementsModule,
-      dapps: dappsModule,
+      projects: projectsModule,
       events: eventsModule,
       newsletter: newsletterModule,
       tags: tagsModule
