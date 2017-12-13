@@ -25,10 +25,10 @@
   export default {
     beforeDestroy () {
       if (this.categoriesDropdownIsActive === true) {
-        this.toggleBrowseCategories()
+        this.toggle('categories')
       }
       if (this.refineDropdownIsActive === true) {
-        this.toggleBrowseRefine()
+        this.toggle('refine')
       }
     },
     components: {
