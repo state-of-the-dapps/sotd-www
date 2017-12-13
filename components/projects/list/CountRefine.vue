@@ -24,11 +24,11 @@
 
   export default {
     beforeDestroy () {
-      if (this.tabsDropdownIsActive === true) {
-        this.toggleBrowseTabs()
+      if (this.categoriesDropdownIsActive === true) {
+        this.toggle('categories')
       }
-      if (this.statusDropdownIsActive === true) {
-        this.toggleBrowseStatus()
+      if (this.refineDropdownIsActive === true) {
+        this.toggle('refine')
       }
     },
     components: {
