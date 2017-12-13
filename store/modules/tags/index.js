@@ -3,11 +3,17 @@ import axios from '~/helpers/axios'
 const actions = {
   fetchItems: ({ commit, state, rootState }, value) => {
     axios
+<<<<<<< HEAD
       .get('tags', { params: { query: value, excluded: rootState.dapps.list.query.tags } })
       .then(response => {
         const payload = response.data.payload
         const items = payload.items
         commit('SET_ITEMS', items)
+=======
+      .get('tags', { params: { query: value, exclude: rootState.dapps.list.query.tags } })
+      .then(response => {
+        commit('SET_ITEMS', response.data)
+>>>>>>> master
       })
   },
   resetItems: ({ commit }) => {

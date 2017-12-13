@@ -26,11 +26,19 @@
 <script>
   import { directive as onClickaway } from 'vue-clickaway'
   import axios from '~/helpers/axios'
+<<<<<<< HEAD:pages/index/projects/_slug.vue
   import MainInfo from '~/components/projects/detail/MainInfo.vue'
   import Lead from '~/components/projects/detail/Lead.vue'
   import Related from '~/components/projects/detail/Related.vue'
   import StatusSocial from '~/components/projects/detail/StatusSocial.vue'
   import Tools from '~/components/projects/detail/Tools.vue'
+=======
+  import MainInfo from '~/components/dapps/detail/MainInfo.vue'
+  import Lead from '~/components/dapps/detail/Lead.vue'
+  import Related from '~/components/dapps/detail/Related.vue'
+  import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
+  import Tools from '~/components/dapps/detail/Tools.vue'
+>>>>>>> master:pages/index/dapps/_slug.vue
 
   export default {
     components: {
@@ -42,6 +50,7 @@
     },
     computed: {
       item () {
+<<<<<<< HEAD:pages/index/projects/_slug.vue
         return this.$store.getters['projects/detail/item']
       },
       friendlyUrl () {
@@ -55,12 +64,32 @@
       },
       viewMethod () {
         return this.$store.getters['projects/list/viewMethod']
+=======
+        return this.$store.getters['dapps/detail/item']
+      },
+      friendlyUrl () {
+        return this.$store.getters['dapps/list/friendlyUrl']
+      },
+      itemIndex () {
+        return this.$store.getters['dapps/list/activeItemIndex']
+      },
+      items () {
+        return this.$store.getters['dapps/list/items']
+      },
+      viewMethod () {
+        return this.$store.getters['dapps/list/viewMethod']
+>>>>>>> master:pages/index/dapps/_slug.vue
       }
     },
     destroyed () {
       document.body.classList.remove('--has-popup')
+<<<<<<< HEAD:pages/index/projects/_slug.vue
       this.$store.dispatch('projects/detail/hidePopup')
       this.$store.dispatch('projects/detail/resetItem')
+=======
+      this.$store.dispatch('dapps/detail/hidePopup')
+      this.$store.dispatch('dapps/detail/resetItem')
+>>>>>>> master:pages/index/dapps/_slug.vue
       window.removeEventListener('keyup', this.escapeToHide)
     },
     directives: {
@@ -78,10 +107,15 @@
       return axios
         .get('projects/' + params.slug)
         .then(response => {
+<<<<<<< HEAD:pages/index/projects/_slug.vue
           const payload = response.data.payload
           const item = payload.item
           store.dispatch('projects/detail/setItem', item)
           if (!Object.keys(item).length > 0) {
+=======
+          store.dispatch('dapps/detail/setItem', response.data)
+          if (!Object.keys(response.data).length > 0) {
+>>>>>>> master:pages/index/dapps/_slug.vue
             error({ statusCode: 404 })
           }
         })
@@ -93,34 +127,58 @@
         }
       },
       hide () {
+<<<<<<< HEAD:pages/index/projects/_slug.vue
         this.$mixpanel.track('Project popup - Hide')
         this.$store.dispatch('projects/list/setActiveItemIndex', -1)
+=======
+        this.$mixpanel.track('DApp popup - Hide')
+        this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
+>>>>>>> master:pages/index/dapps/_slug.vue
         this.$router.push(this.friendlyUrl)
       },
       setDapp (direction, slug) {
         let num = 0
         if (direction === 'prev') {
           num = -1
+<<<<<<< HEAD:pages/index/projects/_slug.vue
           this.$store.dispatch('projects/detail/setViewMethod', 'prev')
         } else if (direction === 'next') {
           num = 1
           this.$store.dispatch('projects/detail/setViewMethod', 'next')
         }
         this.$store.dispatch('projects/list/setActiveItemIndex', this.itemIndex + num)
+=======
+          this.$store.dispatch('dapps/detail/setViewMethod', 'prev')
+        } else if (direction === 'next') {
+          num = 1
+          this.$store.dispatch('dapps/detail/setViewMethod', 'next')
+        }
+        this.$store.dispatch('dapps/list/setActiveItemIndex', this.itemIndex + num)
+>>>>>>> master:pages/index/dapps/_slug.vue
         document.getElementById('close').scrollIntoView()
         this.$mixpanel.track('Project - View', {
           targetDapp: slug,
           method: this.viewMethod
+<<<<<<< HEAD:pages/index/projects/_slug.vue
         }, this.$store.dispatch('projects/detail/resetViewMethod'))
+=======
+        }, this.$store.dispatch('dapps/detail/resetViewMethod'))
+>>>>>>> master:pages/index/dapps/_slug.vue
       }
     },
     mounted () {
       this.$mixpanel.track('Project - View', {
         targetDapp: this.$route.params.slug,
         method: this.viewMethod
+<<<<<<< HEAD:pages/index/projects/_slug.vue
       }, this.$store.dispatch('projects/detail/resetViewMethod'))
       document.body.classList.add('--has-popup')
       this.$store.dispatch('projects/detail/showPopup')
+=======
+      }, this.$store.dispatch('dapps/detail/resetViewMethod'))
+      document.body.classList.add('--has-popup')
+      this.$store.dispatch('dapps/detail/showPopup')
+>>>>>>> master:pages/index/dapps/_slug.vue
       window.addEventListener('keyup', this.escapeToHide)
     }
   }

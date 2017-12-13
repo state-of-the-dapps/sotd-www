@@ -12,7 +12,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
   import Announcement from '~/components/shared/Announcements.vue'
+=======
+  import Announcement from '~/components/shared/Announcement.vue'
+>>>>>>> master
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
 

@@ -2,11 +2,9 @@ import axios from '~/helpers/axios'
 
 const actions = {
   fetch: ({ commit }) => {
-    axios.get('announcements')
+    axios.get('announcement')
     .then(response => {
-      const payload = response.data.payload
-      const items = payload.items
-      commit('SET', items)
+      commit('SET', response.data)
     })
   },
   hide: ({ commit }) => {
@@ -15,23 +13,34 @@ const actions = {
 }
 
 const getters = {
-  items: state => {
-    return state.items
+  status: state => {
+    return state.status
+  },
+  message: state => {
+    return state.message
+  },
+  url: state => {
+    return state.url
+  },
+  urlText: state => {
+    return state.urlText
   }
 }
 
 const mutations = {
   HIDE (state) {
-    state.isActive = false
+    state.status = false
   },
-  SET (state, items) {
-    state.items = items
+  SET (state, announcement) {
+    Object.assign(state, announcement)
   }
 }
 
 const state = {
-  items: [],
-  isActive: true
+  message: '',
+  status: false,
+  url: '',
+  urlText: ''
 }
 
 export default {

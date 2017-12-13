@@ -41,10 +41,17 @@ Vue.filter('removeEmptyArrayItems',
   }
 )
 
+<<<<<<< HEAD
 Vue.filter('formatProjectTabOptions',
   value => {
     var tab = ''
     var options = constants.projectRefineTabOptions || []
+=======
+Vue.filter('formatDappsCategoryOptions',
+  value => {
+    var category = ''
+    var options = constants.dappsCategoryOptions || []
+>>>>>>> master
     if (options.indexOf(value) !== -1) {
       tab = value.toString().replace('-', ' ')
     } else {
@@ -62,7 +69,11 @@ Vue.filter('uppercase',
   }
 )
 
+<<<<<<< HEAD
 Vue.filter('formatProjectStatus',
+=======
+Vue.filter('formatDappsStatus',
+>>>>>>> master
   value => {
     if (value) {
       let status = ''
@@ -78,7 +89,11 @@ Vue.filter('formatProjectStatus',
   }
 )
 
+<<<<<<< HEAD
 Vue.filter('formatProjectsBadge',
+=======
+Vue.filter('formatDappsBadge',
+>>>>>>> master
   value => {
     if (value) {
       let badge = ''

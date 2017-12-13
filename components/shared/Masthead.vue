@@ -21,11 +21,19 @@
             </div>
           </transition>
         </li>
+<<<<<<< HEAD
         <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New project')" :to="{ name: 'projects-submit-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
       </ul>
       <ul class="nameplate-list">
         <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
         <li class="nameplate-item -description">A curated list of <strong>{{ statProjectCount }}</strong> decentralized apps <br>built on <strong class="nameplate-company-name">ethereum</strong></li>
+=======
+        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New DApp')" :to="{ name: 'dappNew' }" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
+      </ul>
+      <ul class="nameplate-list">
+        <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
+        <li class="nameplate-item -description">A curated list of <strong>{{ dappCount }}</strong> decentralized apps <br>built on <strong class="nameplate-company-name">ethereum</strong></li>
+>>>>>>> master
       </ul>
     </div>
   </nav>
@@ -37,8 +45,13 @@
 
   export default {
     computed: {
+<<<<<<< HEAD
       statProjectCount () {
         return this.$store.getters['statProjectCount']
+=======
+      dappCount () {
+        return this.$store.getters['statDappCount']
+>>>>>>> master
       },
       newsletterConfirmation () {
         return this.$store.getters['newsletter/subscribe/confirmation']

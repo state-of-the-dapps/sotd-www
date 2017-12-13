@@ -12,11 +12,28 @@
       <h4 class="disclaimer-heading">
         <nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
       </h4>
+<<<<<<< HEAD
+=======
+      <p class="disclaimer-message">{{ disclaimer }}</p>
+>>>>>>> master
       <p class="attribution">Designed by <a @click="$mixpanel.track('SotD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></p>
     </div>
   </section>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+  export default {
+    computed: {
+      disclaimer () {
+        return // TODO
+      }
+    }
+  }
+</script>
+
+>>>>>>> master
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
