@@ -3,7 +3,7 @@ import axios from '~/helpers/axios'
 const actions = {
   fetchItems: ({ commit, state, rootState }, value) => {
     axios
-      .get('tags', { params: { query: value, excluded: rootState.dapps.list.query.tags } })
+      .get('tags', { params: { text: value, excluded: rootState.projects.list.query.tags } })
       .then(response => {
         const payload = response.data.payload
         const items = payload.items

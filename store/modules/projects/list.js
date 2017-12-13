@@ -20,7 +20,7 @@ const actions = {
   fetchItems: ({ commit, state }) => {
     commit('SET_LOADING_STATUS', true)
     axios
-      .get('dapps', {
+      .get('projects', {
         params: state.query
       })
       .then(response => {

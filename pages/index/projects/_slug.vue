@@ -12,10 +12,10 @@
         <div class="close" id="close">
           <img src="~/assets/images/close/large.png" width="20" />
         </div>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="setDapp('prev', items[itemIndex - 1].slug)">
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex > 0" class="prev" :to="{ name: 'index-projects-slug', params: { slug: items[itemIndex - 1].slug } }" @click.stop.native="setDapp('prev', items[itemIndex - 1].slug)">
           <img src="~/assets/images/arrows/back.png" width="20" />
         </nuxt-link>
-        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-dapps-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="setDapp('next', items[itemIndex + 1].slug)">
+        <nuxt-link tag="div" v-if="itemIndex !== -1 && itemIndex < items.length - 1" :to="{ name: 'index-projects-slug', params: { slug: items[itemIndex + 1].slug } }" class="next" @click.stop.native="setDapp('next', items[itemIndex + 1].slug)">
           <img src="~/assets/images/arrows/next.png" width="20" />
         </nuxt-link>
       </div>
