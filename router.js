@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-<<<<<<< HEAD
 const Project = () => import('~/pages/projects/_slug.vue').then(m => m.default || m)
 const ProjectConfirmation = () => import('~/pages/projects/confirmation.vue').then(m => m.default || m)
 const ProjectNew = () => import('~/pages/projects/new.vue').then(m => m.default || m)
@@ -12,16 +11,6 @@ const IndexProject = () => import('~/pages/index/projects/_slug.vue').then(m => 
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
-=======
-const CreateConfirmation = () => import('~/pages/confirmation/create.vue').then(m => m.default || m)
-const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
-const IndexDapp = () => import('~/pages/index/dapps/_slug.vue').then(m => m.default || m)
-const DappNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
-const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
-const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
-const Dapp = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
->>>>>>> master
 
 Vue.use(Router)
 
@@ -59,14 +48,6 @@ export function createRouter () {
         path: '/whats-a-dapp',
         component: WhatsADapp,
         name: 'whatsadapp'
-<<<<<<< HEAD
-=======
-      },
-      {
-        path: '/confirmation/new',
-        component: CreateConfirmation,
-        name: 'confirmation-new'
->>>>>>> master
       },
       {
         path: '/about',
@@ -79,7 +60,6 @@ export function createRouter () {
         name: 'terms'
       },
       {
-<<<<<<< HEAD
         path: '/projects/submit/confirmation',
         component: ProjectConfirmation,
         name: 'projects-submit-confirmation'
@@ -93,11 +73,6 @@ export function createRouter () {
         path: '/projects/:slug?',
         component: Project,
         name: 'projects-slug'
-=======
-        path: '/dapps/new/form',
-        component: DappNew,
-        name: 'dappNew'
->>>>>>> master
       },
       {
         path: '/events',
@@ -119,28 +94,16 @@ export function createRouter () {
             name: 'index-tagged-tags',
             children: [
               {
-<<<<<<< HEAD
                 path: 'tab/:tab',
                 component: Placeholder,
                 name: 'index-tagged-tags-show-tab'
-=======
-                path: 'tab/:category',
-                component: Placeholder,
-                name: 'index-tagged-tags-show-category'
->>>>>>> master
               }
             ]
           },
           {
-<<<<<<< HEAD
             path: 'tab/:tab',
             component: Placeholder,
             name: 'index-tab-tab'
-=======
-            path: 'tab/:category',
-            component: Placeholder,
-            name: 'index-tab-category'
->>>>>>> master
           },
           {
             path: 'projects/:slug?',

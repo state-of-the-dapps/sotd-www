@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Announcement/>
+    <Announcements/>
     <Masthead/>
     <div class="content">
       <h1 v-if="error.statusCode === 404">Whoops, we couldn't find that page</h1>
@@ -12,17 +12,13 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-  import Announcement from '~/components/shared/Announcements.vue'
-=======
-  import Announcement from '~/components/shared/Announcement.vue'
->>>>>>> master
+  import Announcements from '~/components/shared/Announcements.vue'
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
 
   export default {
     components: {
-      Announcement,
+      Announcements,
       Foot,
       Masthead
     },

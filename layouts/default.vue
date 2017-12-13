@@ -11,17 +11,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
   import Announcement from '~/components/shared/Announcements.vue'
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
 
-=======
-  import Announcement from '~/components/shared/Announcement.vue'
-  import Foot from '~/components/shared/Foot.vue'
-  import Masthead from '~/components/shared/Masthead.vue'
-  
->>>>>>> master
   let scrollTimer
 
   export default {
