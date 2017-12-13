@@ -8,7 +8,7 @@
 </template>
 
 <script>
-  import { dappsStatusList as statusList } from '~/helpers/constants'
+  import { projectsStatusList as statusList } from '~/helpers/constants'
 
   export default {
     computed: {

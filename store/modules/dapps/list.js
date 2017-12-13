@@ -1,5 +1,5 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { dappsTabOptions as tabOptions, dappsStatusOptions as statusOptions } from '~/helpers/constants'
+import { projectsTabOptions as tabOptions, dappsStatusOptions as statusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()

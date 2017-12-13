@@ -2,7 +2,7 @@
   <section class="section -search">
     <div class="container">
       <div class="wrapper">
-        <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="~/assets/images/search.png" width="20"></a>
+        <a @click.prevent="$mixpanel.track('Projects - Search icon')" class="icon" href="#"><img src="~/assets/images/search.png" width="20"></a>
         <ul class="input-wrapper">
           <li v-for="(tag, key) in tags" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-  import { dappsTabOptions } from '~/helpers/constants'
+  import { projectsTabOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
-  import SuggestedTags from '~/components/dapps/list/search/SuggestedTags.vue'
+  import SuggestedTags from '~/components/projects/list/search/SuggestedTags.vue'
 
   var searchTimer
   var trackTimer
@@ -27,14 +27,14 @@
     },
     computed: {
       tags () {
-        return this.$store.getters['dapps/list/tagsQuery']
+        return this.$store.getters['projects/list/tagsQuery']
       },
       textQuery: {
         get () {
-          return this.$store.getters['dapps/list/textQuery']
+          return this.$store.getters['projects/list/textQuery']
         },
         set (value) {
-          this.$store.dispatch('dapps/list/setTextQuery', value)
+          this.$store.dispatch('projects/list/setTextQuery', value)
         }
       }
     },
@@ -49,18 +49,18 @@
       },
       removeLastTag () {
         if (this.textQuery.length < 1 && this.tags.length > 0) {
-          this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-          this.$store.dispatch('dapps/list/removeLastTagFromQuery')
-          this.$store.dispatch('dapps/list/fetchItems')
+          this.$mixpanel.track('Projects - Remove tag', { method: 'delete' })
+          this.$store.dispatch('projects/list/removeLastTagFromQuery')
+          this.$store.dispatch('projects/list/fetchItems')
           this.fetchSuggestedTagsWithNoQuery()
         }
       },
       removeTag (tag, key) {
         document.getElementById('search').focus()
-        this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
-        this.$store.dispatch('dapps/list/removeTagFromQuery', key)
+        this.$mixpanel.track('Projects - Remove tag', { method: 'click' })
+        this.$store.dispatch('projects/list/removeTagFromQuery', key)
         this.$store.dispatch('tags/resetItems')
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('projects/list/fetchItems')
         this.fetchSuggestedTagsWithNoQuery()
       },
       search (event) {
@@ -71,17 +71,17 @@
         var lastWord = result ? result[0] : null
         searchTimer = setTimeout(() => {
           if (this.tags.length < 3 && this.textQuery.length > 1) {
-            this.$store.dispatch('dapps/list/setTabQuery', 'most-relevant')
+            this.$store.dispatch('projects/list/setTabQuery', 'most-relevant')
             this.$store.dispatch('tags/fetchItems', lastWord)
           }
           if (this.textQuery.length === 0) {
-            this.$store.dispatch('dapps/list/setTabQuery', dappsTabOptions[0])
+            this.$store.dispatch('projects/list/setTabQuery', projectsTabOptions[0])
             this.fetchSuggestedTagsWithNoQuery()
           }
-          this.$store.dispatch('dapps/list/fetchItems')
+          this.$store.dispatch('projects/list/fetchItems')
         }, 200)
         trackTimer = setTimeout(() => {
-          this.$mixpanel.track('DApps - Search', { query: this.textQuery })
+          this.$mixpanel.track('Projects - Search', { query: this.textQuery })
         }, 10000)
       }
     },

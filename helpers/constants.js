@@ -1,4 +1,4 @@
-const initialDappsStatusList = Object.freeze([
+const initialProjectsStatusList = Object.freeze([
   'live',
   'demo',
   'prototype',
@@ -9,14 +9,14 @@ const initialDappsStatusList = Object.freeze([
   'abandoned'
 ])
 
-let statusDappsStatusList = initialDappsStatusList.slice()
-statusDappsStatusList.unshift('any')
+let projectsStatusList = initialProjectsStatusList.slice()
+projectsStatusList.unshift('any')
 
-export const dappsStatusList = initialDappsStatusList
+export const projectsStatusList = initialProjectsStatusList
 
-export const dappsStatusOptions = statusDappsStatusList
+export const projectsStatusOptions = projectsStatusList
 
-export const dappsTabOptions = Object.freeze([
+export const projectsTabOptions = Object.freeze([
   'hot',
   'new',
   'most-viewed',

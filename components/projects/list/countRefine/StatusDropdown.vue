@@ -9,16 +9,16 @@
 </template>
 
 <script>
-  import { dappsStatusOptions as statusOptions } from '~/helpers/constants'
+  import { projectsStatusOptions as statusOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['dapps/list/statusDropdownIsActive']
+        return this.$store.getters['projects/list/statusDropdownIsActive']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/list/statusQuery']
+        const selected = this.$store.getters['projects/list/statusQuery']
         const options = statusOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
@@ -33,14 +33,14 @@
     },
     methods: {
       hide () {
-        this.$mixpanel.track('DApps - Click away from status')
-        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'status')
+        this.$mixpanel.track('Projects - Click away from status')
+        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'status')
       },
       select (option) {
-        this.$mixpanel.track('DApps - Select status', { option: option })
-        this.$store.dispatch('dapps/list/setStatusQuery', option)
-        this.$store.dispatch('dapps/list/toggleBrowseDropdown', 'status')
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$mixpanel.track('Projects - Select status', { option: option })
+        this.$store.dispatch('projects/list/setStatusQuery', option)
+        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'status')
+        this.$store.dispatch('projects/list/fetchItems')
       }
     }
   }

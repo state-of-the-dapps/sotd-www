@@ -19,10 +19,10 @@
       },
       textQuery: {
         get () {
-          return this.$store.getters['dapps/list/textQuery']
+          return this.$store.getters['projects/list/textQuery']
         },
         set (value) {
-          this.$store.dispatch('dapps/list/setTextQuery', value)
+          this.$store.dispatch('projects/list/setTextQuery', value)
         }
       }
     },
@@ -41,9 +41,9 @@
         document.getElementById('search').focus()
         this.$store.dispatch('tags/selectItem', key)
         this.$store.dispatch('tags/resetItems')
-        this.$store.dispatch('dapps/list/addTagToQuery', item)
-        this.$store.dispatch('dapps/list/fetchItems')
-        this.$mixpanel.track('DApps - Select tag', { tag: item })
+        this.$store.dispatch('projects/list/addTagToQuery', item)
+        this.$store.dispatch('projects/list/fetchItems')
+        this.$mixpanel.track('Projects - Select tag', { tag: item })
       }
     },
     mixins: [getCaretPosition]
