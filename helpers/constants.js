@@ -9,21 +9,26 @@ const initialProjectsStatusList = Object.freeze([
   'abandoned'
 ])
 
-let projectsStatusList = initialProjectsStatusList.slice()
-projectsStatusList.unshift('any')
+const projectsStatusList = initialProjectsStatusList
 
-export const projectsStatusList = initialProjectsStatusList
+const projectsStatusRefineOptions = initialProjectsStatusList.slice()
+projectsStatusRefineOptions.unshift('any')
 
-export const projectsStatusOptions = projectsStatusList
-
-export const projectsTabOptions = Object.freeze([
+const projectsTabOptions = Object.freeze([
   'hot',
   'new',
   'most-viewed',
   'most-relevant'
 ])
 
-export const eventsTabOptions = Object.freeze([
+const eventsTabOptions = Object.freeze([
   'ico',
   'hackathon'
 ])
+
+export {
+  eventsTabOptions,
+  projectsStatusList,
+  projectsStatusRefineOptions,
+  projectsTabOptions
+}

@@ -9,10 +9,10 @@
 </template>
 
 <script>
-  import CountRefine from '~/components/dapps/list/CountRefine.vue'
-  import Items from '~/components/dapps/list/Items.vue'
-  import Pager from '~/components/dapps/list/Pager.vue'
-  import Search from '~/components/dapps/list/Search.vue'
+  import CountRefine from '~/components/projects/list/CountRefine.vue'
+  import Items from '~/components/projects/list/Items.vue'
+  import Pager from '~/components/projects/list/Pager.vue'
+  import Search from '~/components/projects/list/Search.vue'
 
   export default {
     components: {
@@ -23,26 +23,26 @@
     },
     computed: {
       tabQuery () {
-        return this.$store.getters['dapps/list/tabQuery']
+        return this.$store.getters['projects/list/tabQuery']
       },
       statProjectCount () {
         return this.$store.getters['statProjectCount']
       },
       tagsQuery () {
-        return this.$store.getters['dapps/list/tagsQuery']
+        return this.$store.getters['projects/list/tagsQuery']
       }
     },
     mounted () {
-      this.$store.dispatch('dapps/list/setFriendlyQuery', this.$route.params)
-      this.$store.dispatch('dapps/list/setFriendlyUrl')
-      this.$store.dispatch('dapps/list/fetchItems')
+      this.$store.dispatch('projects/list/setFriendlyQuery', this.$route.params)
+      this.$store.dispatch('projects/list/setFriendlyUrl')
+      this.$store.dispatch('projects/list/fetchItems')
     },
     watch: {
       'tagsQuery': function () {
-        this.$store.dispatch('dapps/list/setFriendlyUrl')
+        this.$store.dispatch('projects/list/setFriendlyUrl')
       },
       'tabQuery': function () {
-        this.$store.dispatch('dapps/list/setFriendlyUrl')
+        this.$store.dispatch('projects/list/setFriendlyUrl')
       }
     },
     head () {

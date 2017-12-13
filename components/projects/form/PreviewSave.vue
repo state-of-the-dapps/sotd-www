@@ -115,11 +115,11 @@
               this.$store.dispatch('projects/form/resetForm')
               this.$mixpanel.track('New project - Submit', {
                 disabled: false,
-                name: obj.data.name,
-                email: obj.data.email,
-                author: obj.data.author,
-                joinSlack: obj.data.joinSlack,
-                subscribeNewsletter: obj.data.subscribeNewsletter
+                name: this.fields.name,
+                email: this.fields.email,
+                author: this.fields.author,
+                joinSlack: this.fields.joinSlack,
+                subscribeNewsletter: this.fields.subscribeNewsletter
               })
               this.$router.replace({ path: '/projects/submit/confirmation' })
             })

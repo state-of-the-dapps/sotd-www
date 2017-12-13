@@ -10,11 +10,11 @@
 
 <script>
   import axios from '~/helpers/axios'
-  import MainInfo from '~/components/dapps/detail/MainInfo.vue'
-  import Lead from '~/components/dapps/detail/Lead.vue'
-  import Related from '~/components/dapps/detail/Related.vue'
-  import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
-  import Tools from '~/components/dapps/detail/Tools.vue'
+  import MainInfo from '~/components/projects/detail/MainInfo.vue'
+  import Lead from '~/components/projects/detail/Lead.vue'
+  import Related from '~/components/projects/detail/Related.vue'
+  import StatusSocial from '~/components/projects/detail/StatusSocial.vue'
+  import Tools from '~/components/projects/detail/Tools.vue'
 
   export default {
     components: {
@@ -26,14 +26,14 @@
     },
     computed: {
       item () {
-        return this.$store.getters['dapps/detail/item']
+        return this.$store.getters['projects/detail/item']
       },
       viewMethod () {
-        return this.$store.getters['dapps/detail/viewMethod']
+        return this.$store.getters['projects/detail/viewMethod']
       }
     },
     destroyed () {
-      this.$store.dispatch('dapps/detail/resetItem')
+      this.$store.dispatch('projects/detail/resetItem')
     },
     fetch ({ store, params, redirect, isServer, error }) {
       if (isServer) {
@@ -50,17 +50,18 @@
       }
     },
     mounted () {
-      this.$mixpanel.track('DApp - View', {
-        targetDapp: this.$route.params.slug,
-        method: this.viewMethod
-      }, this.$store.dispatch('dapps/detail/resetViewMethod'))
-      if (!Object.hasOwnProperty('slug')) {
+      if (this.viewMethod === 'popup') {
         axios
-          .get('dapps/' + this.$route.params.slug)
+          .get('projects/' + this.$route.params.slug)
           .then(response => {
-            this.$store.dispatch('dapps/detail/setItem', response.data)
+            this.$store.dispatch('projects/detail/setItem', response.data)
           })
       }
+      this.$mixpanel.track('Project - View', {
+        targetProject: this.$route.params.slug,
+        method: this.viewMethod
+      })
+      this.$store.dispatch('projects/detail/resetViewMethod')
     },
     head () {
       return {

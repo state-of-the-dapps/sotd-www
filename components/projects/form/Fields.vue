@@ -33,8 +33,7 @@
 
   export default {
     components: {
-      AdditionalAuthors,
-      Author,
+      Authors,
       Contracts,
       DappUrl,
       Description,
