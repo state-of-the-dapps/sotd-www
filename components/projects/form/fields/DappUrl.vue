@@ -18,18 +18,18 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['dapps/form/dappUrlErrors']
+        return this.$store.getters['projects/form/dappUrlErrors']
       },
       dappUrl: {
         get () {
-          return this.$store.getters['dapps/form/dappUrl']
+          return this.$store.getters['projects/form/dappUrl']
         },
         set (value) {
           const field = {
             name: 'dappUrl',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('projects/form/setSiteUrl', field)
         }
       }
     },

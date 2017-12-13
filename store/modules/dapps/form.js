@@ -115,6 +115,9 @@ const actions = {
   setField ({ commit }, field) {
     commit('SET_FIELD', field)
   },
+  setSiteUrl ({ commit }, field) {
+    commit('SET_SITE_URL', field)
+  },
   setSocial ({ commit }, field) {
     commit('SET_SOCIAL', field)
   },
@@ -203,6 +206,9 @@ const mutations = {
   },
   SET_FIELD (state, field) {
     state.fields[field.name] = field.value
+  },
+  SET_SITE_URL (state, field) {
+    state.fields.siteUrl[field.name] = field.value
   },
   SET_SOCIAL (state, field) {
     state.fields.social[field.name]['url'] = field.value

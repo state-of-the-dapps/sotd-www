@@ -19,18 +19,18 @@
     computed: {
       logo: {
         get () {
-          return this.$store.getters['dapps/form/logo']
+          return this.$store.getters['projects/form/logo']
         },
         set (value) {
           const field = {
             name: 'logo',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('projects/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['dapps/form/logoErrors']
+        return this.$store.getters['projects/form/logoErrors']
       }
     },
     methods: {

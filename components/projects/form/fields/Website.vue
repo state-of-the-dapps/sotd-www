@@ -18,18 +18,18 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['dapps/form/websiteErrors']
+        return this.$store.getters['projects/form/websiteErrors']
       },
       website: {
         get () {
-          return this.$store.getters['dapps/form/website']
+          return this.$store.getters['projects/form/website']
         },
         set (value) {
           const field = {
             name: 'website',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('projects/form/setField', field)
         }
       }
     },

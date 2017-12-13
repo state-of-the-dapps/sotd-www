@@ -13,7 +13,7 @@
   export default {
     computed: {
       status () {
-        return this.$store.getters['dapps/form/status']
+        return this.$store.getters['projects/form/status']
       }
     },
     data: () => {
@@ -23,7 +23,7 @@
     },
     methods: {
       select (value) {
-        this.$store.dispatch('dapps/form/setStatus', value)
+        this.$store.dispatch('projects/form/setStatus', value)
       }
     }
   }

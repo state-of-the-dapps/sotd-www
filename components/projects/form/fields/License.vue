@@ -18,18 +18,18 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['dapps/form/licenseErrors']
+        return this.$store.getters['projects/form/licenseErrors']
       },
       license: {
         get () {
-          return this.$store.getters['dapps/form/license']
+          return this.$store.getters['projects/form/license']
         },
         set (value) {
           const field = {
             name: 'license',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('projects/form/setField', field)
         }
       }
     },

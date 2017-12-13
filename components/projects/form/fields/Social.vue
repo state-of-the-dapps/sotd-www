@@ -58,101 +58,101 @@
     computed: {
       blog: {
         get () {
-          return this.$store.getters['dapps/form/socialBlog']
+          return this.$store.getters['projects/form/socialBlog']
         },
         set (value) {
           const field = {
             name: 'blog',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       github: {
         get () {
-          return this.$store.getters['dapps/form/socialGithub']
+          return this.$store.getters['projects/form/socialGithub']
         },
         set (value) {
           const field = {
             name: 'github',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       facebook: {
         get () {
-          return this.$store.getters['dapps/form/socialFacebook']
+          return this.$store.getters['projects/form/socialFacebook']
         },
         set (value) {
           const field = {
             name: 'facebook',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       other: {
         get () {
-          return this.$store.getters['dapps/form/socialOther']
+          return this.$store.getters['projects/form/socialOther']
         },
         set (value) {
           const field = {
             name: 'other',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       reddit: {
         get () {
-          return this.$store.getters['dapps/form/socialReddit']
+          return this.$store.getters['projects/form/socialReddit']
         },
         set (value) {
           const field = {
             name: 'reddit',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       slack: {
         get () {
-          return this.$store.getters['dapps/form/socialSlack']
+          return this.$store.getters['projects/form/socialSlack']
         },
         set (value) {
           const field = {
             name: 'slack',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       slackErrors () {
-        return this.$store.getters['dapps/form/socialSlackErrors']
+        return this.$store.getters['projects/form/socialSlackErrors']
       },
       twitter: {
         get () {
-          return this.$store.getters['dapps/form/socialTwitter']
+          return this.$store.getters['projects/form/socialTwitter']
         },
         set (value) {
           const field = {
             name: 'twitter',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       },
       wiki: {
         get () {
-          return this.$store.getters['dapps/form/socialWiki']
+          return this.$store.getters['projects/form/socialWiki']
         },
         set (value) {
           const field = {
             name: 'wiki',
             value: value
           }
-          this.$store.dispatch('dapps/form/setSocial', field)
+          this.$store.dispatch('projects/form/setSocial', field)
         }
       }
     },

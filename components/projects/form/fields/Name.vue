@@ -21,22 +21,22 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['dapps/form/nameErrors']
+        return this.$store.getters['projects/form/nameErrors']
       },
       name: {
         get () {
-          return this.$store.getters['dapps/form/name']
+          return this.$store.getters['projects/form/name']
         },
         set (value) {
           const field = {
             name: 'name',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('projects/form/setField', field)
         }
       },
       warnings () {
-        return this.$store.getters['dapps/form/nameWarnings']
+        return this.$store.getters['projects/form/nameWarnings']
       }
     },
     methods: {

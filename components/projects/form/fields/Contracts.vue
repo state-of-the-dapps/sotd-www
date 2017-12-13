@@ -50,67 +50,67 @@
   export default {
     computed: {
       contracts () {
-        return this.$store.getters['dapps/form/contracts']
+        return this.$store.getters['projects/form/contracts']
       },
       mainnet: {
         get () {
-          return this.$store.getters['dapps/form/contracts'].mainnet.address
+          return this.$store.getters['projects/form/contracts'].mainnet.address
         },
         set (value) {
           const field = {
             name: 'mainnet',
             value: value
           }
-          this.$store.dispatch('dapps/form/setContract', field)
+          this.$store.dispatch('projects/form/setContract', field)
         }
       },
       mainnetErrors () {
-        return this.$store.getters['dapps/form/mainnetErrors']
+        return this.$store.getters['projects/form/mainnetErrors']
       },
       ropsten: {
         get () {
-          return this.$store.getters['dapps/form/contracts'].ropsten.address
+          return this.$store.getters['projects/form/contracts'].ropsten.address
         },
         set (value) {
           const field = {
             name: 'ropsten',
             value: value
           }
-          this.$store.dispatch('dapps/form/setContract', field)
+          this.$store.dispatch('projects/form/setContract', field)
         }
       },
       ropstenErrors () {
-        return this.$store.getters['dapps/form/ropstenErrors']
+        return this.$store.getters['projects/form/ropstenErrors']
       },
       kovan: {
         get () {
-          return this.$store.getters['dapps/form/contracts'].kovan.address
+          return this.$store.getters['projects/form/contracts'].kovan.address
         },
         set (value) {
           const field = {
             name: 'kovan',
             value: value
           }
-          this.$store.dispatch('dapps/form/setContract', field)
+          this.$store.dispatch('projects/form/setContract', field)
         }
       },
       kovanErrors () {
-        return this.$store.getters['dapps/form/kovanErrors']
+        return this.$store.getters['projects/form/kovanErrors']
       },
       rinkeby: {
         get () {
-          return this.$store.getters['dapps/form/contracts'].rinkeby.address
+          return this.$store.getters['projects/form/contracts'].rinkeby.address
         },
         set (value) {
           const field = {
             name: 'rinkeby',
             value: value
           }
-          this.$store.dispatch('dapps/form/setContract', field)
+          this.$store.dispatch('projects/form/setContract', field)
         }
       },
       rinkebyErrors () {
-        return this.$store.getters['dapps/form/rinkebyErrors']
+        return this.$store.getters['projects/form/rinkebyErrors']
       }
     },
     methods: {

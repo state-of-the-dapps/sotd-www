@@ -35,11 +35,12 @@
         })
       },
       name () {
-        return this.$store.getters['dapps/form/name']
+        return this.$store.getters['projects/form/name']
       },
       obviousTags () {
         return [
           'blockchain',
+          'decentralised',
           'decentralized',
           'ethereum',
           this.name
@@ -47,17 +48,17 @@
       },
       query: {
         get () {
-          return this.$store.getters['dapps/form/tagsQuery']
+          return this.$store.getters['projects/form/tagsQuery']
         },
         set (value) {
-          this.$store.dispatch('dapps/form/setTagsQuery', value)
+          this.$store.dispatch('projects/form/setTagsQuery', value)
         }
       },
       results () {
-        return this.$store.getters['dapps/form/tagsResults']
+        return this.$store.getters['projects/form/tagsResults']
       },
       selected () {
-        return this.$store.getters['dapps/form/selectedTags']
+        return this.$store.getters['projects/form/selectedTags']
       }
     },
     directives: {
@@ -66,9 +67,9 @@
     methods: {
       add () {
         if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
-          this.$store.dispatch('dapps/form/addTag', this.query)
-          this.$store.dispatch('dapps/form/resetTagResults')
-          this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
+          this.$store.dispatch('projects/form/addTag', this.query)
+          this.$store.dispatch('projects/form/resetTagResults')
+          this.$mixpanel.track('New project - Add tag', { tag: this.query })
         }
       },
       hasWarning (tag) {
@@ -76,32 +77,32 @@
       },
       findSuggestedTags () {
         if (this.query.length === 0 && this.selected.length === 0) {
-          this.$store.dispatch('dapps/form/fetchTags')
+          this.$store.dispatch('projects/form/fetchTags')
         }
       },
       remove (tag, key) {
-        this.$store.dispatch('dapps/form/removeTag', key)
-        this.$mixpanel.track('New DApp - Remove tag', { tag: tag })
+        this.$store.dispatch('projects/form/removeTag', key)
+        this.$mixpanel.track('New project - Remove tag', { tag: tag })
       },
       reset () {
-        this.$store.dispatch('dapps/form/resetTagResults')
+        this.$store.dispatch('projects/form/resetTagResults')
       },
       search () {
         clearTimeout(searchTimer)
         clearTimeout(trackTimer)
         searchTimer = setTimeout(() => {
           if (this.selected.length < 6) {
-            this.$store.dispatch('dapps/form/fetchTags', this.query)
+            this.$store.dispatch('projects/form/fetchTags', this.query)
           }
         }, 100)
         trackTimer = setTimeout(() => {
-          this.$mixpanel.track('New DApp - Search tags', { query: this.query })
+          this.$mixpanel.track('New project - Search tags', { query: this.query })
         }, 5000)
       },
       select (item, key) {
-        this.$store.dispatch('dapps/form/selectTag', key)
-        this.$store.dispatch('dapps/form/resetTagResults')
-        this.$mixpanel.track('New DApp - Select tag', { tag: item })
+        this.$store.dispatch('projects/form/selectTag', key)
+        this.$store.dispatch('projects/form/resetTagResults')
+        this.$mixpanel.track('New project - Select tag', { tag: item })
       }
     }
   }
