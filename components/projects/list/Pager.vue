@@ -1,12 +1,12 @@
 <template>
   <section class="section">
     <div class="container">
-      <p v-if="itemCount < paginationTotalCount && !isLoading" class="button-wrapper">
+      <p v-if="itemCount < totalCount && !isLoading" class="button-wrapper">
         <button class="button" @click="loadMore">
-          Load the <span v-if="paginationTotalCount - itemCount > 1"> <span v-if="paginationTotalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ paginationTotalCount - itemCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
+          Load the <span v-if="totalCount - itemCount > 1"> <span v-if="totalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ totalCount - itemCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="itemCount >= paginationTotalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('Projects - New project')" :to="{ name: 'projects-submit-new' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('Projects - New project')" :to="{ name: 'projects-submit-new' }" class="link">submit one!</nuxt-link></p>
       <p v-if="isLoading" class="loader-wrapper"><button v-if="isLoading" class="loader"></button></p>
     </div>
   </section>
@@ -21,11 +21,11 @@
       itemQueryLimit () {
         return this.$store.getters['projects/list/itemQueryLimit']
       },
-      paginationOffset () {
-        return this.$store.getters['projects/list/paginationOffset']
+      offset () {
+        return this.$store.getters['projects/list/pagerOffset']
       },
-      paginationTotalCount () {
-        return this.$store.getters['projects/list/paginationTotalCount']
+      totalCount () {
+        return this.$store.getters['projects/list/totalCount']
       },
       isLoading () {
         return this.$store.getters['projects/list/isLoading']

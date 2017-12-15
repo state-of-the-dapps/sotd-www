@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <ul class="count-list">
-        <li class="count-item">Showing <strong @click="$mixpanel.track('Projects - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('Projects - Results count')">{{ paginationTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
+        <li class="count-item">Showing <strong @click="$mixpanel.track('Projects - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('Projects - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
       </ul>
       <ul>
         <li>Show
@@ -51,8 +51,8 @@
       itemCount () {
         return this.$store.getters['projects/list/itemCount']
       },
-      paginationTotalCount () {
-        return this.$store.getters['projects/list/paginationTotalCount']
+      pagerTotalCount () {
+        return this.$store.getters['projects/list/pagerTotalCount']
       }
     },
     methods: {

@@ -2,7 +2,7 @@
   <transition name="fade">
     <section v-if="items.length > 0 && isActive" class="section -announcement">
       <ul class="container">
-        <li v-for="item in items" class="message">
+        <li v-for="(item, index) in items" :key="index" class="message">
           {{ item.text }}<span v-if="item.link.url && item.link.text"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: item.link.url })" :href="item.link.url" class="link" target="_blank" rel="noopener noreferrer">{{ item.link.text }}</a></span>
         </li>
       </ul>
@@ -15,20 +15,20 @@
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['announcement/isActive']
+        return this.$store.getters['announcements/isActive']
       },
       items () {
-        return this.$store.getters['announcement/items']
+        return this.$store.getters['announcements/items']
       }
     },
     methods: {
       hide () {
-        this.$mixpanel.track('Announcement - Hide')
-        this.$store.dispatch('announcement/hide')
+        this.$mixpanel.track('Announcements - Hide')
+        this.$store.dispatch('announcements/hide')
       }
     },
     mounted () {
-      this.$store.dispatch('announcements/fetch')
+      this.$store.dispatch('announcements/fetchItems')
     }
   }
 </script>

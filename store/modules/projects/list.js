@@ -25,9 +25,7 @@ const actions = {
       })
       .then(response => {
         const payload = response.data.payload
-        const items = payload.items
-        const pager = payload.pager
-        commit('SET_ITEMS', items, pager)
+        commit('SET_ITEMS', payload)
         commit('SET_LOADING_STATUS', false)
       })
   },
@@ -100,11 +98,11 @@ const getters = {
   statusQuery: state => {
     return state.query.status
   },
-  paginationOffset: state => {
-    return state.pagination.offset
+  pagerOffset: state => {
+    return state.pager.offset
   },
-  paginationTotalCount: state => {
-    return state.pagination.totalCount
+  pagerTotalCount: state => {
+    return state.pager.totalCount
   },
   tagsQuery: state => {
     return state.query.tags
@@ -119,7 +117,7 @@ const mutations = {
     state.query.tags.push(value)
   },
   INCREMENT_OFFSET_QUERY (state) {
-    state.query.offset = state.pagination.offset + state.query.limit
+    state.query.offset = state.pager.offset + state.query.limit
   },
   REMOVE_LAST_TAG_FROM_QUERY (state) {
     state.query.tags.pop()
@@ -168,13 +166,16 @@ const mutations = {
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
   },
-  SET_ITEMS (state, items, pager) {
-    state.pager.totalCount = Number(pager['x-pagination-count'])
-    state.pager.offset = Number(pager['x-pagination-offset'])
-    if (state.pagination.offset !== 0) {
-      items = state.items.concat(items)
+  SET_ITEMS (state, payload) {
+    const items = payload.items
+    const pager = payload.pager
+    state.pager.totalCount = pager.totalCount
+    state.pager.offset = pager.offset
+    if (state.pager.offset !== 0) {
+      state.items = state.items.concat(items)
+    } else {
+      state.items = items
     }
-    state.items = items
     state.query.offset = 0
   },
   SET_LOADING_STATUS (state, value) {

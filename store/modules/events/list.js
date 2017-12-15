@@ -27,7 +27,7 @@ const state = {
   friendlyUrl: '/',
   items: [],
   isLoading: true,
-  pagination: {
+  pager: {
     offset: 0,
     totalCount: 0
   },
