@@ -14,6 +14,9 @@
       return {
         title: 'State of the ÐApps — Confirmation'
       }
+    },
+    mounted () {
+      this.$store.dispatch('setSiteSection', 'projects')
     }
   }
 </script>

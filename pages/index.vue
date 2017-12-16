@@ -33,6 +33,7 @@
       }
     },
     mounted () {
+      this.$store.dispatch('setSiteSection', 'projects')
       this.$store.dispatch('projects/list/setFriendlyQuery', this.$route.params)
       this.$store.dispatch('projects/list/setFriendlyUrl')
       this.$store.dispatch('projects/list/fetchItems')

@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
     <Announcements/>
+    <Utilities/>
     <Masthead/>
     <div class="content">
       <h1 v-if="error.statusCode === 404">Whoops, we couldn't find that page</h1>
@@ -15,12 +16,14 @@
   import Announcements from '~/components/shared/Announcements.vue'
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
+  import Utilities from '~/components/shared/Utilities.vue'
 
   export default {
     components: {
       Announcements,
       Foot,
-      Masthead
+      Masthead,
+      Utilities
     },
     mounted () {
       this.$mixpanel.track('Error page', { type: '404', resource: this.$route.fullPath })

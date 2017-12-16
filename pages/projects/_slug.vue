@@ -50,6 +50,7 @@
       }
     },
     mounted () {
+      this.$store.dispatch('setSiteSection', 'projects')
       if (this.viewMethod === 'popup') {
         axios
           .get('projects/' + this.$route.params.slug)

@@ -115,6 +115,7 @@
       }
     },
     mounted () {
+      this.$store.dispatch('setSiteSection', 'projects')
       this.$mixpanel.track('Project - View', {
         targetDapp: this.$route.params.slug,
         method: this.viewMethod

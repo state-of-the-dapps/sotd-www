@@ -42,6 +42,7 @@
       }
     },
     mounted () {
+      this.$store.dispatch('setSiteSection', 'events')
       // this.$store.dispatch('events/list/setFriendlyQuery', this.$route.params)
       // this.$store.dispatch('events/list/setFriendlyUrl')
       // this.$store.dispatch('events/list/fetchItems')

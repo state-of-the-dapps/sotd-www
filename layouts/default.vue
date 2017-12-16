@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
     <Announcement/>
+    <Utilities/>
     <Masthead/>
     <nuxt/>
     <Foot/>
@@ -14,6 +15,7 @@
   import Announcement from '~/components/shared/Announcements.vue'
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
+  import Utilities from '~/components/shared/Utilities.vue'
 
   let scrollTimer
 
@@ -26,7 +28,8 @@
     components: {
       Announcement,
       Foot,
-      Masthead
+      Masthead,
+      Utilities
     },
     computed: {
       announcement () {

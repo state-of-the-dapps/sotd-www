@@ -27,6 +27,9 @@
       return {
         title: 'State of the ÐApps — Submit a Project'
       }
+    },
+    mounted () {
+      this.$store.dispatch('setSiteSection', 'projects')
     }
   }
 </script>
