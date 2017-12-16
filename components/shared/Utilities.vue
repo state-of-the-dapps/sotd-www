@@ -2,7 +2,7 @@
   <section class="section -utilities">
     <div class="container">
       <ul class="list">
-        <li class="item -description">A curated list of <strong>{{ statProjectCount }}</strong> decentralized apps and <strong>{{ statEventCount }}</strong> upcoming events for ethereum</li>
+        <li class="item -description">A curated list of {{ statProjectCount }} projects and {{ statEventCount }} upcoming events for ethereum's decentralized apps</li>
         <li class="item"><nuxt-link to="/whats-a-dapp" class="link">What's a ÐApp</nuxt-link></li>
         <li class="item"><nuxt-link to="/about" class="link">About</nuxt-link></li>
         <li class="item">         
