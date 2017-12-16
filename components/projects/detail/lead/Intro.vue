@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="new-banner" @click="$mixpanel.track('Project - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
-      <li v-for="badge in item.badges" @click="$mixpanel.track('Project - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
+      <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('Project - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
         <div class="badge-info">{{ badge | formatProjectBadge | capitalize }}</div>
       </li>
     </ul>

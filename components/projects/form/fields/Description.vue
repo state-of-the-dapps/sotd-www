@@ -4,7 +4,7 @@
     <label class="label">Full description <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 500 - description.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">The full description of your ÐApp</p>
   </div>
@@ -42,7 +42,7 @@
         }
         validationTimer = setTimeout(() => {
           this.description.length > 500 ? errors.data.push(`Description can't be longer than 500 characters`) : ''
-          this.description.length < 21 ? errors.data.push(`Description must be longer than 20 characters`) : ''
+          this.description.length < 50 ? errors.data.push(`Description must be longer than 20 characters`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }

@@ -6,7 +6,7 @@
           <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-projects-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
-              <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatProjectsBadge | capitalize }}</div></li>
+              <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatProjectBadge | capitalize }}</div></li>
             </ul>
             <div class="info">
               <div class="icon-wrapper" :class="'-' + item.status">
@@ -14,7 +14,7 @@
               </div>
               <div class="description-wrapper">
                 <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
-                <p class="attribution">by <strong>{{ item.author }}</strong> {{ item.additionalAuthors | additionalAuthorsCount }}</p>
+                <p class="attribution">by <span v-if="item.authors.length > 0"><strong>{{ item.authors[0] | truncate(20) }}</strong></span><span v-if="item.authors.length > 1"> +{{ item.authors.length - 1 }}</span></p>
                 <p class="description">{{ item.teaser | truncate(75) }}</p>
               </div>
             </div>

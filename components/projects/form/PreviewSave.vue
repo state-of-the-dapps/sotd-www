@@ -9,7 +9,7 @@
               </div>
               <div class="description-wrapper">
                   <h3 class="title" @click="$mixpanel.track('New project - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your project</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New project - Preview author')">by <strong><span v-if="author">{{ author }}</span><span v-else>the founder</span></strong> {{ additionalAuthors | additionalAuthorsCount }}</p>
+                  <p class="attribution" @click="$mixpanel.track('New project - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
                   <p class="description" @click="$mixpanel.track('New project - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>
@@ -43,11 +43,8 @@
 
   export default {
     computed: {
-      author () {
-        return this.$store.getters['projects/form/author']
-      },
-      additionalAuthors () {
-        return this.$store.getters['projects/form/additionalAuthors']
+      authors () {
+        return this.$store.getters['projects/form/authors']
       },
       errorFields () {
         return this.$store.getters['projects/form/errorFields']

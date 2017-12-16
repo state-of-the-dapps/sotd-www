@@ -41,44 +41,7 @@ Vue.filter('removeEmptyArrayItems',
   }
 )
 
-Vue.filter('formatProjectTabOptions',
-  value => {
-    var tab = ''
-    var options = constants.projectRefineTabOptions || []
-    if (options.indexOf(value) !== -1) {
-      tab = value.toString().replace('-', ' ')
-    } else {
-      tab = options[0]
-    }
-    return tab
-  }
-)
-
-Vue.filter('uppercase',
-  value => {
-    if (value) {
-      return value.toUpperCase()
-    }
-  }
-)
-
-Vue.filter('formatProjectStatus',
-  value => {
-    if (value) {
-      let status = ''
-      switch (value) {
-        case 'wip':
-          status = 'Work in progress'
-          break
-        default:
-          status = value
-      }
-      return status
-    }
-  }
-)
-
-Vue.filter('formatProjectsBadge',
+Vue.filter('formatProjectBadge',
   value => {
     if (value) {
       let badge = ''
@@ -103,16 +66,39 @@ Vue.filter('formatProjectsBadge',
   }
 )
 
-Vue.filter('additionalAuthorsCount',
+Vue.filter('formatProjectStatus',
   value => {
     if (value) {
-      let count = value.split(',').length
-      if (count > 0) {
-        count = '+' + count
-      } else {
-        count = ''
+      let status = ''
+      switch (value) {
+        case 'wip':
+          status = 'Work in progress'
+          break
+        default:
+          status = value
       }
-      return count
+      return status
+    }
+  }
+)
+
+Vue.filter('formatProjectTabOptions',
+  value => {
+    var tab = ''
+    var options = constants.projectRefineTabOptions || []
+    if (options.indexOf(value) !== -1) {
+      tab = value.toString().replace('-', ' ')
+    } else {
+      tab = options[0]
+    }
+    return tab
+  }
+)
+
+Vue.filter('uppercase',
+  value => {
+    if (value) {
+      return value.toUpperCase()
     }
   }
 )
