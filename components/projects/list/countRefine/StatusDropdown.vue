@@ -34,12 +34,12 @@
     methods: {
       hide () {
         this.$mixpanel.track('Projects - Click away from status')
-        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'status')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'status')
       },
       select (option) {
         this.$mixpanel.track('Projects - Select status', { option: option })
         this.$store.dispatch('projects/list/setStatusQuery', option)
-        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'status')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'status')
         this.$store.dispatch('projects/list/fetchItems')
       }
     }

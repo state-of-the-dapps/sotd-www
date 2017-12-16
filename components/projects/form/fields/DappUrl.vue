@@ -1,8 +1,8 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-      <input class="text-input" :class="dappUrl.length > 0 ? '--is-filled' : ''" type="text" maxlength="500" v-model="dappUrl" @input="validate">
+      <input class="text-input" :class="url.length > 0 ? '--is-filled' : ''" type="text" maxlength="500" v-model="url" @input="validate">
       <label class="label">ÐApp URL<span class="required"></span></label>
-      <span class="remaining-characters">{{ 500 - dappUrl.length }}</span>
+      <span class="remaining-characters">{{ 500 - url.length }}</span>
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="error in errors" class="error-item">{{ error }}</li>
       </ul>
@@ -20,13 +20,13 @@
       errors () {
         return this.$store.getters['projects/form/dappUrlErrors']
       },
-      dappUrl: {
+      url: {
         get () {
           return this.$store.getters['projects/form/dappUrl']
         },
         set (value) {
           const field = {
-            name: 'dappUrl',
+            name: 'dapp',
             value: value
           }
           this.$store.dispatch('projects/form/setSiteUrl', field)
@@ -41,7 +41,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.dappUrl.length > 0 && this.dappUrl.length < 3 ? errors.data.push(`ÐApp URL must be longer than 2 characters`) : ''
+          this.url.length > 0 && this.url.length < 3 ? errors.data.push(`ÐApp URL must be longer than 2 characters`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }

@@ -21,7 +21,7 @@
             </div>
           </transition>
         </li>
-        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New project')" :to="{ name: 'projects-submit-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link></li>
+        <li class="nav-item"><nuxt-link @click.native="$mixpanel.track('Nav - New project')" :to="{ name: 'projects-submit-new' }" class="nav-link -submit">Submit a Project</nuxt-link></li>
       </ul>
       <ul class="nameplate-list">
         <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import { validateEmail } from '~/helpers/validators'
+  import { isValidEmail } from '~/helpers/validators'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
@@ -75,15 +75,13 @@
         this.$store.dispatch('newsletter/subscribe/toggleDropdown')
       },
       validateNewsletterEmail () {
-        var hasErrors
-        var isValid
+        let hasErrors
         if (this.newsletterEmail.length > 0) {
-          hasErrors = validateEmail(this.newsletterEmail)
+          hasErrors = isValidEmail(this.newsletterEmail)
         } else {
           hasErrors = true
         }
-        isValid = !hasErrors
-        this.$store.dispatch('newsletter/subscribe/setEmailIsValid', isValid)
+        this.$store.dispatch('newsletter/subscribe/setEmailIsValid', hasErrors)
       }
     },
     directives: {

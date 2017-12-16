@@ -2,8 +2,7 @@
   <div>
     <section class="section -intro">
       <div class="container">
-        <h1 class="heading">Submit a ÐApp</h1>
-        <p class="message">{{ content.message }}</p>
+        <h1 class="heading">Submit a Project</h1>
       </div>
     </section>
     <section class="section -form">
@@ -24,16 +23,9 @@
       Fields,
       PreviewSave
     },
-    computed: {
-      content () {
-        return {
-          body: ''
-        }
-      }
-    },
     head () {
       return {
-        title: 'State of the ÐApps — Submit a ÐApp'
+        title: 'State of the ÐApps — Submit a Project'
       }
     }
   }
@@ -44,7 +36,7 @@
 
   .heading {
     text-align: center;
-    margin: 0 0 .5rem 0;
+    margin: 0;
     font-size: 1.75rem;
     font-weight: 700;
   }

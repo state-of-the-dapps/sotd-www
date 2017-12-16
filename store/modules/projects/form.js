@@ -3,7 +3,7 @@ import axios from '~/helpers/axios'
 function initialState () {
   return {
     errorFields: [
-      'author',
+      'authors',
       'description',
       'email',
       'license',
@@ -12,11 +12,11 @@ function initialState () {
       'tags',
       'teaser',
       'acceptedTerms',
-      'website'
+      'websiteUrl'
     ],
     errors: {
       additionalAuthors: [],
-      author: [],
+      authors: [],
       dappUrl: [],
       description: [],
       email: [],
@@ -31,12 +31,11 @@ function initialState () {
       tags: [],
       teaser: [],
       acceptedTerms: [],
-      website: []
+      websiteUrl: []
     },
     fields: {
       additionalAuthors: '',
-      author: '',
-      dappUrl: '',
+      authors: [],
       description: '',
       contracts: {
         mainnet: { address: '' },
@@ -64,7 +63,10 @@ function initialState () {
       tags: [],
       teaser: '',
       acceptedTerms: false,
-      website: ''
+      siteUrls: {
+        dapp: '',
+        website: ''
+      }
     },
     tagsQuery: '',
     tagsResults: [],
@@ -195,9 +197,6 @@ const mutations = {
   SET_TAG_RESULTS (state, items) {
     state.tagsResults = items
   },
-  TOGGLE_CHECKBOX (state, field) {
-    state.fields[field] = !state.fields[field]
-  },
   SET_CONTRACT (state, field) {
     state.fields.contracts[field.name]['address'] = field.value
   },
@@ -208,7 +207,7 @@ const mutations = {
     state.fields[field.name] = field.value
   },
   SET_SITE_URL (state, field) {
-    state.fields.siteUrl[field.name] = field.value
+    state.fields.siteUrls[field.name] = field.value
   },
   SET_SOCIAL (state, field) {
     state.fields.social[field.name]['url'] = field.value
@@ -225,6 +224,9 @@ const mutations = {
   },
   SET_WARNINGS (state, warnings) {
     state.warnings[warnings.field] = warnings.data
+  },
+  TOGGLE_CHECKBOX (state, field) {
+    state.fields[field] = !state.fields[field]
   }
 }
 
@@ -235,17 +237,17 @@ const getters = {
   additionalAuthorsErrors: state => {
     return state.errors.additionalAuthors
   },
-  author: state => {
-    return state.fields.author
+  authors: state => {
+    return state.fields.authors
   },
-  authorErrors: state => {
-    return state.errors.author
+  authorsErrors: state => {
+    return state.errors.authors
   },
   contracts: state => {
     return state.fields.contracts
   },
   dappUrl: state => {
-    return state.fields.dappUrl
+    return state.fields.siteUrls.dapp
   },
   dappUrlErrors: state => {
     return state.errors.dappUrl
@@ -358,10 +360,10 @@ const getters = {
   acceptedTerms: state => {
     return state.fields.acceptedTerms
   },
-  website: state => {
-    return state.fields.website
+  websiteUrl: state => {
+    return state.fields.siteUrls.website
   },
-  websiteErrors: state => {
+  websiteUrlErrors: state => {
     return state.errors.website
   }
 }

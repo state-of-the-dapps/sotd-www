@@ -42,12 +42,12 @@
       },
       hide () {
         this.$mixpanel.track('Projects - Click away from tabs')
-        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'tabs')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tabs')
       },
       select (option) {
         this.$mixpanel.track('Projects - Select tab', { option: option })
         this.$store.dispatch('projects/list/setTabQuery', option)
-        this.$store.dispatch('projects/list/toggleBrowseDropdown', 'tabs')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tabs')
         this.$store.dispatch('projects/list/fetchItems')
       }
     }

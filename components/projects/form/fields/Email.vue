@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { validateEmail } from '~/helpers/validators'
+  import { isValidEmail } from '~/helpers/validators'
   import { dispatchErrors } from '~/helpers/mixins'
 
   var validationTimer
@@ -42,7 +42,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          validateEmail(this.email) ? errors.data.push(`Please enter a valid email address`) : ''
+          isValidEmail(this.email) ? '' : errors.data.push(`Please enter a valid email address`)
           this.dispatchErrors(errors)
         }, 750)
       }

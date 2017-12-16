@@ -8,8 +8,8 @@
                   <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
               </div>
               <div class="description-wrapper">
-                  <h3 class="title" @click="$mixpanel.track('New project - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>ÐApp preview</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New project - Preview author')">by <strong><span v-if="author">{{ author }}</span><span v-else>Founder</span></strong> {{ additionalAuthors | additionalAuthorsCount }}</p>
+                  <h3 class="title" @click="$mixpanel.track('New project - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your project</span></h3>
+                  <p class="attribution" @click="$mixpanel.track('New project - Preview author')">by <strong><span v-if="author">{{ author }}</span><span v-else>the founder</span></strong> {{ additionalAuthors | additionalAuthorsCount }}</p>
                   <p class="description" @click="$mixpanel.track('New project - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>

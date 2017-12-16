@@ -34,7 +34,7 @@ test('Project detail exists and renders HTML', async t => {
 test('Project new exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/projects/submit/new', context)
-  t.true(html.includes('Submit a ÐApp'))
+  t.true(html.includes('Submit a Project'))
 })
 
 test('Event list exists and renders HTML', async t => {

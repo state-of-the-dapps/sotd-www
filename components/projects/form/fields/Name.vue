@@ -62,7 +62,9 @@
           hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a URL`) : null
           axios
             .get('projects/lookup', {
-              params: this.name
+              params: {
+                name: this.name
+              }
             })
             .then(response => {
               const payload = response.data.payload

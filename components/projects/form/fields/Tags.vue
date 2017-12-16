@@ -1,11 +1,11 @@
 <template>
-  <div v-on-clickaway="reset">
+  <div>
     <p class="heading">Tags <span class="required">(at least 1 required)</span></p>
     <div class="input-wrapper">
       <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @keyup.enter="add" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
       <span v-if="selected.length < 5" class="add" :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
       <transition name="fade">
-        <div class="dropdown" v-if="results.length > 0 && selected.length < 5">
+        <div class="dropdown" v-if="results.length > 0 && selected.length < 5" v-on-clickaway="resetResults">
            <ul class="dropdown-list">
               <li v-for="(result, key) in results" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
            </ul>
@@ -84,7 +84,7 @@
         this.$store.dispatch('projects/form/removeTag', key)
         this.$mixpanel.track('New project - Remove tag', { tag: tag })
       },
-      reset () {
+      resetResults () {
         this.$store.dispatch('projects/form/resetTagResults')
       },
       search () {

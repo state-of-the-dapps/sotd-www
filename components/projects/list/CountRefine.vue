@@ -58,7 +58,7 @@
     methods: {
       toggle (type) {
         this.$mixpanel.track('Projects - Toggle ' + type)
-        this.$store.dispatch('projects/list/toggleBrowseDropdown', type)
+        this.$store.dispatch('projects/list/toggleRefineDropdown', type)
       }
     }
   }
