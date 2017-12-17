@@ -8,7 +8,12 @@
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by event name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
         </ul>
       </div>
-      <SuggestedTags/>
+      <SuggestedTags
+        :items="suggestedTags"
+        :model="'events'"
+        :textQuery="textQuery"
+        @updateTextQuery="updateTextQuery"
+      />
     </div>
   </section>
 </template>
@@ -16,7 +21,7 @@
 <script>
   import { eventRefineTabOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
-  import SuggestedTags from '~/components/events/list/search/SuggestedTags.vue'
+  import SuggestedTags from '~/components/shared/SuggestedTags.vue'
 
   var searchTimer
   var trackTimer
@@ -26,6 +31,9 @@
       SuggestedTags
     },
     computed: {
+      suggestedTags () {
+        return this.$store.getters['tags/items']
+      },
       tags () {
         return this.$store.getters['events/list/tagsQuery']
       },
@@ -83,6 +91,9 @@
         trackTimer = setTimeout(() => {
           this.$mixpanel.track('Events - Search', { query: this.textQuery })
         }, 10000)
+      },
+      updateTextQuery (value) {
+        this.textQuery = value
       }
     },
     mixins: [getCaretPosition]
