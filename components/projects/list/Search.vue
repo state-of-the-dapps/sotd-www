@@ -4,11 +4,16 @@
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('Projects - Search icon')" class="icon" href="#"><img src="~/assets/images/search.png" width="20"></a>
         <ul class="input-wrapper">
-          <li v-for="(tag, key) in tags" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
+          <li v-for="(tag, key) in tags" :key="key" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
         </ul>
       </div>
-      <SuggestedTags/>
+      <SuggestedTags
+        :items="suggestedTags"
+        :model="'projects'"
+        :textQuery="textQuery"
+        @updateTextQuery="updateTextQuery"
+      />
     </div>
   </section>
 </template>
@@ -16,7 +21,7 @@
 <script>
   import { projectRefineTabOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
-  import SuggestedTags from '~/components/projects/list/search/SuggestedTags.vue'
+  import SuggestedTags from '~/components/shared/SuggestedTags.vue'
 
   var searchTimer
   var trackTimer
@@ -26,6 +31,9 @@
       SuggestedTags
     },
     computed: {
+      suggestedTags () {
+        return this.$store.getters['tags/items']
+      },
       tags () {
         return this.$store.getters['projects/list/tagsQuery']
       },
@@ -83,6 +91,9 @@
         trackTimer = setTimeout(() => {
           this.$mixpanel.track('Projects - Search', { query: this.textQuery })
         }, 10000)
+      },
+      updateTextQuery (value) {
+        this.textQuery = value
       }
     },
     mixins: [getCaretPosition]

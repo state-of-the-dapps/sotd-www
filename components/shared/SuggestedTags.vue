@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="items && items.length > 0" v-on-clickaway="reset">
       <ul class="list">
-        <li v-for="(item, key) in items" class="item" @click="select(item, key)">{{ item }}</li>
+        <li v-for="(item, key) in items" :key="key" class="item" @click="select(item, key)">{{ item }}</li>
       </ul>
     </div>
   </transition>
@@ -13,16 +13,26 @@
   import { getCaretPosition } from '~/helpers/mixins'
 
   export default {
-    computed: {
-      items () {
-        return this.$store.getters['tags/items']
+    props: {
+      items: {
+        type: Array,
+        required: true,
+        default: []
       },
       textQuery: {
-        get () {
-          return this.$store.getters['projects/list/textQuery']
-        },
-        set (value) {
-          this.$store.dispatch('projects/list/setTextQuery', value)
+        type: String,
+        required: true,
+        default: ''
+      },
+      model: {
+        type: String,
+        required: true,
+        validator: function (value) {
+          const allowedValues = [
+            'events',
+            'projects'
+          ]
+          return allowedValues.includes(value)
         }
       }
     },
@@ -37,13 +47,16 @@
         var caret = this.getCaretPosition(this.textQuery)
         var result = /\S+$/.exec(this.textQuery.slice(0, caret.end))
         var lastWord = result ? result[0] : null
-        this.textQuery = this.textQuery.replace(lastWord, '')
+        this.$emit('updateTextQuery', this.textQuery.replace(lastWord, ''))
         document.getElementById('search').focus()
         this.$store.dispatch('tags/selectItem', key)
         this.$store.dispatch('tags/resetItems')
-        this.$store.dispatch('projects/list/addTagToQuery', item)
-        this.$store.dispatch('projects/list/fetchItems')
-        this.$mixpanel.track('Projects - Select tag', { tag: item })
+        // contextually dispatch actions based on the model
+        if (this.model === 'projects' || this.model === 'events') {
+          this.$store.dispatch(this.model + '/list/addTagToQuery', item)
+          this.$store.dispatch(this.model + '/list/fetchItems')
+        }
+        this.$mixpanel.track(this.$options.filters.capitalize(this.model) + ' - Select tag', { tag: item })
       }
     },
     mixins: [getCaretPosition]
