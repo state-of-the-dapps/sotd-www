@@ -138,7 +138,7 @@
     position: relative;
     border: 1px solid transparent;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: .5rem .8rem;
+      padding: .5rem .4rem;
     }
     &.-newsletter {
       cursor: pointer;
