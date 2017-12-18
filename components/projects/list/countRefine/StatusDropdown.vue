@@ -33,7 +33,7 @@
     },
     methods: {
       hide () {
-        this.$mixpanel.track('Projects - Click away from status')
+        this.$mixpanel.track('Projects - Hide status dropdown')
         this.$store.dispatch('projects/list/toggleRefineDropdown', 'status')
       },
       select (option) {

@@ -37,8 +37,8 @@
       eventCount () {
         return this.$store.getters['statEventsCount']
       },
-      tagsQuery () {
-        return this.$store.getters['events/list/tagsQuery']
+      tagQuery () {
+        return this.$store.getters['events/list/tagQuery']
       }
     },
     mounted () {
@@ -48,7 +48,7 @@
       // this.$store.dispatch('events/list/fetchItems')
     },
     watch: {
-      'tagsQuery': function () {
+      'tagQuery': function () {
         this.$store.dispatch('events/list/setFriendlyUrl')
       },
       'tabQuery': function () {

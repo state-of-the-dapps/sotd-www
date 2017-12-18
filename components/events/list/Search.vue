@@ -35,7 +35,7 @@
         return this.$store.getters['tags/items']
       },
       tags () {
-        return this.$store.getters['events/list/tagsQuery']
+        return this.$store.getters['events/list/tagQuery']
       },
       textQuery: {
         get () {

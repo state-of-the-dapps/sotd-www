@@ -52,7 +52,7 @@ function initialState () {
       twitterHashtag: '', // e.g #cryptopunks
       website: ''
     },
-    tagsQuery: '',
+    tagQuery: '',
     tagsResults: [],
     warnings: {
       // name: []

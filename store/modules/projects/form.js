@@ -68,7 +68,7 @@ function initialState () {
         website: ''
       }
     },
-    tagsQuery: '',
+    tagQuery: '',
     tagsResults: [],
     warnings: {
       name: [],
@@ -126,7 +126,7 @@ const actions = {
   setStatus ({ commit }, value) {
     commit('SET_STATUS', value)
   },
-  setTagsQuery ({ commit }, value) {
+  setTagQuery ({ commit }, value) {
     commit('SET_TAG_QUERY', value)
   },
   setWarnings ({ commit }, warnings) {
@@ -180,7 +180,7 @@ const mutations = {
   },
   RESET_TAG_RESULTS (state) {
     state.tagsResults = []
-    state.tagsQuery = ''
+    state.tagQuery = ''
   },
   SELECT_TAG (state, index) {
     if (state.fields.tags.indexOf(state.tagsResults[index]) === -1) {
@@ -220,7 +220,7 @@ const mutations = {
     state.fields.status = value
   },
   SET_TAG_QUERY (state, value) {
-    state.tagsQuery = value
+    state.tagQuery = value
   },
   SET_WARNINGS (state, warnings) {
     state.warnings[warnings.field] = warnings.data
@@ -342,8 +342,8 @@ const getters = {
   subscribeNewsletter: state => {
     return state.fields.subscribeNewsletter
   },
-  tagsQuery: state => {
-    return state.tagsQuery
+  tagQuery: state => {
+    return state.tagQuery
   },
   tagsResults: state => {
     return state.tagsResults

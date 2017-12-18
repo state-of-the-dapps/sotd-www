@@ -71,8 +71,8 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
-  tabsDropdownIsActive: state => {
-    return state.refine.tabs.isActive
+  tabDropdownIsActive: state => {
+    return state.refine.tab.isActive
   },
   tabQuery: state => {
     return state.query.tab
@@ -104,7 +104,7 @@ const getters = {
   pagerTotalCount: state => {
     return state.pager.totalCount
   },
-  tagsQuery: state => {
+  tagQuery: state => {
     return state.query.tags
   },
   textQuery: state => {
@@ -195,7 +195,7 @@ const mutations = {
 const state = {
   activeItemIndex: -1,
   refine: {
-    tabs: {
+    tab: {
       isActive: false
     },
     status: {

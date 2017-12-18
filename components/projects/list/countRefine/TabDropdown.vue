@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="container" v-if="isActive" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="option in optionsWithoutSelected" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatProjectTabOptions }}</li>
+        <li v-for="(option, index) in optionsWithoutSelected" :key="index" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatProjectTabOptions }}</li>
       </ul>
     </div>
   </transition>
@@ -15,7 +15,7 @@
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['projects/list/tabsDropdownIsActive']
+        return this.$store.getters['projects/list/tabDropdownIsActive']
       },
       optionsWithoutSelected () {
         const selected = this.$store.getters['projects/list/tabQuery']
@@ -41,13 +41,13 @@
         }
       },
       hide () {
-        this.$mixpanel.track('Projects - Click away from tabs')
-        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tabs')
+        this.$mixpanel.track('Projects - Hide tab dropdown')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tab')
       },
       select (option) {
         this.$mixpanel.track('Projects - Select tab', { option: option })
         this.$store.dispatch('projects/list/setTabQuery', option)
-        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tabs')
+        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tab')
         this.$store.dispatch('projects/list/fetchItems')
       }
     }

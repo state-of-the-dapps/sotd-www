@@ -48,10 +48,10 @@
       },
       query: {
         get () {
-          return this.$store.getters['projects/form/tagsQuery']
+          return this.$store.getters['projects/form/tagQuery']
         },
         set (value) {
-          this.$store.dispatch('projects/form/setTagsQuery', value)
+          this.$store.dispatch('projects/form/setTagQuery', value)
         }
       },
       results () {

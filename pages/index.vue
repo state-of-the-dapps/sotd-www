@@ -28,8 +28,8 @@
       statProjectCount () {
         return this.$store.getters['statProjectCount']
       },
-      tagsQuery () {
-        return this.$store.getters['projects/list/tagsQuery']
+      tagQuery () {
+        return this.$store.getters['projects/list/tagQuery']
       }
     },
     mounted () {
@@ -39,7 +39,7 @@
       this.$store.dispatch('projects/list/fetchItems')
     },
     watch: {
-      'tagsQuery': function () {
+      'tagQuery': function () {
         this.$store.dispatch('projects/list/setFriendlyUrl')
       },
       'tabQuery': function () {

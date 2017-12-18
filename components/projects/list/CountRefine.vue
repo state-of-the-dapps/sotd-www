@@ -6,7 +6,7 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': tabsDropdownIsActive }" @click="toggle('tabs')">{{ selectedTab | formatProjectTabOptions }}
+          <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatProjectTabOptions }}
             <TabDropdown/>
           </span> with status
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
@@ -36,8 +36,8 @@
       StatusDropdown
     },
     computed: {
-      tabsDropdownIsActive () {
-        return this.$store.getters['projects/list/tabsDropdownIsActive']
+      tabDropdownIsActive () {
+        return this.$store.getters['projects/list/tabDropdownIsActive']
       },
       statusDropdownIsActive () {
         return this.$store.getters['projects/list/statusDropdownIsActive']
