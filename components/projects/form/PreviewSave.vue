@@ -146,7 +146,7 @@
     display: flex;
     right: 10px;
     top: -2px;
-    z-index: 5;
+    z-index: 10;
   }
 
   .checkboxes {

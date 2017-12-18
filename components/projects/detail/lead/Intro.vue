@@ -72,7 +72,7 @@
     display: flex;
     right: 10px;
     top: -2px;
-    z-index: 5;
+    z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
       right: 20px;
     }
