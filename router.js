@@ -2,15 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
-const Project = () => import('~/pages/projects/_slug.vue').then(m => m.default || m)
-const ProjectConfirmation = () => import('~/pages/projects/confirmation.vue').then(m => m.default || m)
-const ProjectNew = () => import('~/pages/projects/new.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
-const Index = () => import('~/pages/index.vue').then(m => m.default || m)
-const IndexProject = () => import('~/pages/index/projects/_slug.vue').then(m => m.default || m)
+const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
+const EventsNewConfirmation = () => import('~/pages/events/new.vue').then(m => m.default || m)
+const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
+const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
+const Projects = () => import('~/pages/projects/index.vue').then(m => m.default || m)
+const ProjectsNew = () => import('~/pages/projects/new.vue').then(m => m.default || m)
+const ProjectsNewConfirmation = () => import('~/pages/projects/new/confirmation.vue').then(m => m.default || m)
+const ProjectsSlug = () => import('~/pages/projects/_slug.vue').then(m => m.default || m)
+const ProjectsSlugPopup = () => import('~/pages/projects/_slug/popup.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
-const WhatsADapp = () => import('~/pages/whatsADapp.vue').then(m => m.default || m)
+const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
@@ -45,14 +49,107 @@ export function createRouter () {
     scrollBehavior,
     routes: [
       {
-        path: '/whats-a-dapp',
-        component: WhatsADapp,
-        name: 'whatsadapp'
-      },
-      {
         path: '/about',
         component: About,
         name: 'about'
+      },
+      {
+        path: '/events/submit/new',
+        component: EventsNew,
+        name: 'events-new'
+      },
+      {
+        path: '/events/submit/new/confirmation',
+        component: EventsNewConfirmation,
+        name: 'events-new-confirmation'
+      },
+      {
+        path: '/events/:slug',
+        component: EventsSlug,
+        name: 'events-slug'
+      },
+      // the root /events route goes after other /events/{params} routes, so that a direct GET to any other /events/{params} will render before /events child routes
+      {
+        path: '/events',
+        component: Events,
+        children: [
+          {
+            path: '',
+            component: Placeholder,
+            name: 'events'
+          },
+          {
+            path: 'tagged/:tags',
+            component: Placeholder,
+            name: 'events-tagged-tags',
+            children: [
+              {
+                path: 'tab/:tab',
+                component: Placeholder,
+                name: 'events-tagged-tags-tab-tab'
+              }
+            ]
+          },
+          {
+            path: 'tab/:tab',
+            component: Placeholder,
+            name: 'events-tab-tab'
+          },
+          {
+            path: ':slug',
+            component: EventsSlugPopup,
+            name: 'events-slug-popup'
+          }
+        ]
+      },
+      {
+        path: '/projects/submit/new',
+        component: ProjectsNew,
+        name: 'projects-new'
+      },
+      {
+        path: '/projects/submit/new/confirmation',
+        component: ProjectsNewConfirmation,
+        name: 'projects-new-confirmation'
+      },
+      {
+        path: '/projects/:slug',
+        component: ProjectsSlug,
+        name: 'projects-slug'
+      },
+      // the root /projects route goes after other /projects/{params} routes, so that a direct GET to any other /projects/{params} will render before /projects child routes
+      {
+        path: '/',
+        component: Projects,
+        children: [
+          {
+            path: '',
+            component: Placeholder,
+            name: 'projects'
+          },
+          {
+            path: 'tagged/:tags',
+            component: Placeholder,
+            name: 'projects-tagged-tags',
+            children: [
+              {
+                path: 'tab/:tab',
+                component: Placeholder,
+                name: 'projects-tagged-tags-tab-tab'
+              }
+            ]
+          },
+          {
+            path: 'tab/:tab',
+            component: Placeholder,
+            name: 'projects-tab-tab'
+          },
+          {
+            path: 'projects/:slug',
+            component: ProjectsSlugPopup,
+            name: 'projects-slug-popup'
+          }
+        ]
       },
       {
         path: '/terms',
@@ -60,57 +157,9 @@ export function createRouter () {
         name: 'terms'
       },
       {
-        path: '/projects/submit/confirmation',
-        component: ProjectConfirmation,
-        name: 'projects-submit-confirmation'
-      },
-      {
-        path: '/projects/submit/new',
-        component: ProjectNew,
-        name: 'projects-submit-new'
-      },
-      {
-        path: '/projects/:slug?',
-        component: Project,
-        name: 'projects-slug'
-      },
-      {
-        path: '/events',
-        component: Events,
-        name: 'events'
-      },
-      {
-        path: '/',
-        component: Index,
-        children: [
-          {
-            path: '',
-            component: Placeholder,
-            name: 'index'
-          },
-          {
-            path: 'tagged/:tags',
-            component: Placeholder,
-            name: 'index-tagged-tags',
-            children: [
-              {
-                path: 'tab/:tab',
-                component: Placeholder,
-                name: 'index-tagged-tags-show-tab'
-              }
-            ]
-          },
-          {
-            path: 'tab/:tab',
-            component: Placeholder,
-            name: 'index-tab-tab'
-          },
-          {
-            path: 'projects/:slug?',
-            component: IndexProject,
-            name: 'index-projects-slug'
-          }
-        ]
+        path: '/whats-a-dapp',
+        component: What,
+        name: 'what'
       }
     ],
     fallback: false

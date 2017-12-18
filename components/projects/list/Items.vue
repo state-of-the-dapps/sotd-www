@@ -3,10 +3,10 @@
     <div class="container">
       <transition name="fade" v-if="itemCount > 0">
         <div class="list">
-          <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'index-projects-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+          <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'projects-slug-popup', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
-              <li v-for="badge in item.badges" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatProjectBadge | capitalize }}</div></li>
+              <li v-for="(badge, index) in item.badges" :key="index" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatProjectBadge | capitalize }}</div></li>
             </ul>
             <div class="info">
               <div class="icon-wrapper" :class="'-' + item.status">

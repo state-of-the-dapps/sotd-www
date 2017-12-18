@@ -5,8 +5,8 @@
         <li class="nav-item" :class="siteSection === 'projects' ? '--is-active' : ''"><nuxt-link @click.native="$mixpanel.track(`Nav - Projects`)" to="/" class="nav-link">Projects</nuxt-link></li>
         <li class="nav-item" :class="siteSection === 'events' ? '--is-active' : ''"><nuxt-link @click.native="$mixpanel.track('Nav - Events')" to="/events" class="nav-link">Events</nuxt-link></li>
         <li v-if="siteSection !== ''" class="nav-item">
-          <nuxt-link v-if="siteSection === 'projects'" @click.native="$mixpanel.track('Nav - New project')" :to="{ name: 'projects-submit-new' }" class="nav-link -submit">Submit a Project</nuxt-link>
-          <nuxt-link v-if="siteSection === 'events'" @click.native="$mixpanel.track('Nav - New event')" :to="{ name: 'events-submit-new' }" class="nav-link -submit">Submit an Event</nuxt-link>
+          <nuxt-link v-if="siteSection === 'projects'" @click.native="$mixpanel.track('Nav - New project')" :to="{ name: 'projects-new' }" class="nav-link -submit">Submit a Project</nuxt-link>
+          <nuxt-link v-if="siteSection === 'events'" @click.native="$mixpanel.track('Nav - New event')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an Event</nuxt-link>
         </li>
       </ul>
       <ul class="nameplate-list">

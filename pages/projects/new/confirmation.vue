@@ -2,7 +2,8 @@
   <div>
     <section class="section">
       <div class="text-container">
-        <h1 class="heading">Thanks for submitting! Your submission will be reviewed shortly by our digital cats, check your email for the status of your request.</h1>
+        <h1 class="heading">Thanks for submitting!</h1>
+        <p>Your post will be reviewed shortly by our digital cats. Stay tuned for status updates via email.</p>
       </div>
     </section>
   </div>

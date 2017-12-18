@@ -24,7 +24,7 @@
       },
       slug () {
         if (this.popupIsActive === true) {
-          return 'index-projects-slug'
+          return 'projects-slug-popup'
         } else {
           return 'projects-slug'
         }

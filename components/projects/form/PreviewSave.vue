@@ -118,7 +118,7 @@
                 joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              this.$router.replace({ path: '/projects/submit/confirmation' })
+              this.$router.replace({ path: '/projects/submit/new/confirmation' })
             })
             .catch((error) => {
               alert(error.response.data.message)

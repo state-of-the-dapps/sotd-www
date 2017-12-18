@@ -3,8 +3,8 @@
     <div class="container">
       <ul class="list">
         <li class="item -description">A curated list of {{ statProjectCount }} projects and {{ statEventCount }} upcoming events for ethereum's decentralized apps</li>
-        <li class="item"><nuxt-link to="/whats-a-dapp" class="link">What's a ÐApp</nuxt-link></li>
-        <li class="item"><nuxt-link to="/about" class="link">About</nuxt-link></li>
+        <li class="item"><nuxt-link :to="{ name: 'what' }" class="link">What's a ÐApp</nuxt-link></li>
+        <li class="item"><nuxt-link :to="{ name: 'about' }" class="link">About</nuxt-link></li>
         <li class="item">         
           <span @click="toggleNewsletterDropdown" class="link -newsletter" :class="{ '--is-active': newsletterDropdownIsActive }" target="_blank">Newsletter</span>
           <transition name="fade">
