@@ -118,7 +118,7 @@
                 joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              this.$router.replace({ path: '/dapps/submit/new/confirmation' })
+              this.$router.replace({ name: 'dapps-new-confirmation' })
             })
             .catch((error) => {
               alert(error.response.data.message)
