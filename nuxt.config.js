@@ -22,7 +22,6 @@ module.exports = {
     },
     vendor: [
       'axios',
-      'date-fns/format',
       'mixpanel-browser',
       'smoothscroll-polyfill',
       'vue-clickaway',
