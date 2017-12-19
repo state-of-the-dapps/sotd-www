@@ -9,7 +9,7 @@ const DappsSlug = () => import('~/pages/dapps/_slug.vue').then(m => m.default ||
 const DappsSlugPopup = () => import('~/pages/dapps/_slug/popup.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
-const EventsNewConfirmation = () => import('~/pages/events/new.vue').then(m => m.default || m)
+const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
