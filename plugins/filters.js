@@ -41,7 +41,7 @@ Vue.filter('removeEmptyArrayItems',
   }
 )
 
-Vue.filter('formatProjectBadge',
+Vue.filter('formatDappBadge',
   value => {
     if (value) {
       let badge = ''
@@ -66,7 +66,7 @@ Vue.filter('formatProjectBadge',
   }
 )
 
-Vue.filter('formatProjectStatus',
+Vue.filter('formatDappStatus',
   value => {
     if (value) {
       let status = ''
@@ -82,10 +82,10 @@ Vue.filter('formatProjectStatus',
   }
 )
 
-Vue.filter('formatProjectTabOptions',
+Vue.filter('formatDappTabOptions',
   value => {
     var tab = ''
-    var options = constants.projectRefineTabOptions || []
+    var options = constants.dappRefineTabOptions || []
     if (options.indexOf(value) !== -1) {
       tab = value.toString().replace('-', ' ')
     } else {

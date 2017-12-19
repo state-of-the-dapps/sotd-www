@@ -2,17 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
+const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
+const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
+const DappsSlug = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
+const DappsSlugPopup = () => import('~/pages/dapps/_slug/popup.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
 const EventsNewConfirmation = () => import('~/pages/events/new.vue').then(m => m.default || m)
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
-const Projects = () => import('~/pages/projects/index.vue').then(m => m.default || m)
-const ProjectsNew = () => import('~/pages/projects/new.vue').then(m => m.default || m)
-const ProjectsNewConfirmation = () => import('~/pages/projects/new/confirmation.vue').then(m => m.default || m)
-const ProjectsSlug = () => import('~/pages/projects/_slug.vue').then(m => m.default || m)
-const ProjectsSlugPopup = () => import('~/pages/projects/_slug/popup.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
@@ -103,51 +103,51 @@ export function createRouter () {
         ]
       },
       {
-        path: '/projects/submit/new',
-        component: ProjectsNew,
-        name: 'projects-new'
+        path: '/dapps/submit/new',
+        component: DappsNew,
+        name: 'dapps-new'
       },
       {
-        path: '/projects/submit/new/confirmation',
-        component: ProjectsNewConfirmation,
-        name: 'projects-new-confirmation'
+        path: '/dapps/submit/new/confirmation',
+        component: DappsNewConfirmation,
+        name: 'dapps-new-confirmation'
       },
       {
-        path: '/projects/:slug',
-        component: ProjectsSlug,
-        name: 'projects-slug'
+        path: '/dapps/:slug',
+        component: DappsSlug,
+        name: 'dapps-slug'
       },
-      // the root /projects route goes after other /projects/{params} routes, so that a direct GET to any other /projects/{params} will render before /projects child routes
+      // the root /dapps route goes after other /dapps/{params} routes, so that a direct GET to any other /dapps/{params} will render before /dapps child routes
       {
         path: '/',
-        component: Projects,
+        component: Dapps,
         children: [
           {
             path: '',
             component: Placeholder,
-            name: 'projects'
+            name: 'dapps'
           },
           {
             path: 'tagged/:tags',
             component: Placeholder,
-            name: 'projects-tagged-tags',
+            name: 'dapps-tagged-tags',
             children: [
               {
                 path: 'tab/:tab',
                 component: Placeholder,
-                name: 'projects-tagged-tags-tab-tab'
+                name: 'dapps-tagged-tags-tab-tab'
               }
             ]
           },
           {
             path: 'tab/:tab',
             component: Placeholder,
-            name: 'projects-tab-tab'
+            name: 'dapps-tab-tab'
           },
           {
-            path: 'projects/:slug',
-            component: ProjectsSlugPopup,
-            name: 'projects-slug-popup'
+            path: 'dapps/:slug',
+            component: DappsSlugPopup,
+            name: 'dapps-slug-popup'
           }
         ]
       },

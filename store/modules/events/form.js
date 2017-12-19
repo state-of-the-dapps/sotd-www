@@ -26,7 +26,7 @@ function initialState () {
       name: '', // e.g. CryptoConference
       organizer: '',
       registrationInfo: '',
-      relatedProjects: [
+      relatedDapps: [
         /*
         {
           name: '',

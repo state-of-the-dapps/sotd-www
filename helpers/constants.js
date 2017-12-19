@@ -1,4 +1,4 @@
-const projectStatuses = Object.freeze([
+const dappStatuses = Object.freeze([
   'live',
   'demo',
   'prototype',
@@ -9,10 +9,10 @@ const projectStatuses = Object.freeze([
   'abandoned'
 ])
 
-const projectRefineStatusOptions = projectStatuses.slice()
-projectRefineStatusOptions.unshift('any')
+const dappRefineStatusOptions = dappStatuses.slice()
+dappRefineStatusOptions.unshift('any')
 
-const projectRefineTabOptions = Object.freeze([
+const dappRefineTabOptions = Object.freeze([
   'hot',
   'new',
   'most-viewed',
@@ -26,7 +26,7 @@ const eventRefineTabOptions = Object.freeze([
 
 export {
   eventRefineTabOptions,
-  projectStatuses,
-  projectRefineStatusOptions,
-  projectRefineTabOptions
+  dappStatuses,
+  dappRefineStatusOptions,
+  dappRefineTabOptions
 }

@@ -1,5 +1,5 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { projectRefineTabOptions as tabOptions, projectRefineStatusOptions as statusOptions } from '~/helpers/constants'
+import { dappRefineTabOptions as tabOptions, dappRefineStatusOptions as statusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
@@ -20,7 +20,7 @@ const actions = {
   fetchItems: ({ commit, state }) => {
     commit('SET_LOADING_STATUS', true)
     axios
-      .get('projects', {
+      .get('dapps', {
         params: state.query
       })
       .then(response => {

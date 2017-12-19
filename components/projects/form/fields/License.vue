@@ -4,7 +4,7 @@
     <label class="label">Software license <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - license.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">(e.g. MIT, GPL)</p>
   </div>
@@ -18,18 +18,18 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['projects/form/licenseErrors']
+        return this.$store.getters['dapps/form/licenseErrors']
       },
       license: {
         get () {
-          return this.$store.getters['projects/form/license']
+          return this.$store.getters['dapps/form/license']
         },
         set (value) {
           const field = {
             name: 'license',
             value: value
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       }
     },

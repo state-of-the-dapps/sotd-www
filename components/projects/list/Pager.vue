@@ -6,7 +6,7 @@
           Load the <span v-if="totalCount - itemCount > 1"> <span v-if="totalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ totalCount - itemCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('Projects - New project')" :to="{ name: 'projects-new' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one!</nuxt-link></p>
       <p v-if="isLoading" class="loader-wrapper"><button v-if="isLoading" class="loader"></button></p>
     </div>
   </section>
@@ -16,26 +16,26 @@
   export default {
     computed: {
       itemCount () {
-        return this.$store.getters['projects/list/itemCount']
+        return this.$store.getters['dapps/list/itemCount']
       },
       itemQueryLimit () {
-        return this.$store.getters['projects/list/itemQueryLimit']
+        return this.$store.getters['dapps/list/itemQueryLimit']
       },
       offset () {
-        return this.$store.getters['projects/list/pagerOffset']
+        return this.$store.getters['dapps/list/pagerOffset']
       },
       totalCount () {
-        return this.$store.getters['projects/list/totalCount']
+        return this.$store.getters['dapps/list/totalCount']
       },
       isLoading () {
-        return this.$store.getters['projects/list/isLoading']
+        return this.$store.getters['dapps/list/isLoading']
       }
     },
     methods: {
       loadMore () {
-        this.$store.dispatch('projects/list/incrementOffsetQuery')
-        this.$store.dispatch('projects/list/fetchItems')
-        this.$mixpanel.track('Projects - Load more')
+        this.$store.dispatch('dapps/list/incrementOffsetQuery')
+        this.$store.dispatch('dapps/list/fetchItems')
+        this.$mixpanel.track('DApps - Load more')
       }
     }
   }

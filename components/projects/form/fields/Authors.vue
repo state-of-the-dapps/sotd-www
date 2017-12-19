@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
     <input class="text-input" :class="authors.length > 0 ? '--is-filled' : ''" type="text" maxlength="100" v-model="authors" @input="validate">
-    <label class="label">Project author(s) <span class="required">(required)</span></label>
+    <label class="label">ÐApp author(s) <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 100 - authors.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="error in errors" class="error-item">{{ error }}</li>
@@ -19,7 +19,7 @@
     computed: {
       authors: {
         get () {
-          const values = this.$store.getters['projects/form/authors'].slice()
+          const values = this.$store.getters['dapps/form/authors'].slice()
           return values.join(',')
         },
         set (value) {
@@ -28,11 +28,11 @@
             name: 'authors',
             value: values
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['projects/form/authorsErrors']
+        return this.$store.getters['dapps/form/authorsErrors']
       }
     },
     methods: {

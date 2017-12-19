@@ -1,7 +1,7 @@
 import Vuex from 'vuex'
 import axios from '~/helpers/axios'
 import announcementsModule from './modules/announcements'
-import projectsModule from './modules/projects'
+import dappsModule from './modules/dapps'
 import eventsModule from './modules/events'
 import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
@@ -25,8 +25,8 @@ const getters = {
   siteSection: state => {
     return state.site.section
   },
-  statProjectCount: state => {
-    return state.stats.projectCount
+  statDappCount: state => {
+    return state.stats.dappCount
   },
   statEventCount: state => {
     return state.stats.eventCount
@@ -38,7 +38,7 @@ const mutations = {
     state.site.section = section
   },
   SET_STATS (state, items) {
-    state.stats.projectCount = items.projectCount
+    state.stats.dappCount = items.dappCount
     state.stats.eventCount = items.eventCount
   }
 }
@@ -48,7 +48,7 @@ const state = {
     section: ''
   },
   stats: {
-    projectCount: 0,
+    dappCount: 0,
     eventCount: 0
   }
 }
@@ -59,7 +59,7 @@ const createStore = () => {
     getters,
     modules: {
       announcements: announcementsModule,
-      projects: projectsModule,
+      dapps: dappsModule,
       events: eventsModule,
       newsletter: newsletterModule,
       tags: tagsModule

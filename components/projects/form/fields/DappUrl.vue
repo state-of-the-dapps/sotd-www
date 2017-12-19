@@ -4,7 +4,7 @@
       <label class="label">ÐApp URL<span class="required"></span></label>
       <span class="remaining-characters">{{ 500 - url.length }}</span>
       <ul v-if="errors && errors.length > 0" class="error-list">
-        <li v-for="error in errors" class="error-item">{{ error }}</li>
+        <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
       </ul>
       <p class="help">A URL that will launch this ÐApp directly</p>
     </div>
@@ -18,18 +18,18 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['projects/form/dappUrlErrors']
+        return this.$store.getters['dapps/form/dappUrlErrors']
       },
       url: {
         get () {
-          return this.$store.getters['projects/form/dappUrl']
+          return this.$store.getters['dapps/form/dappUrl']
         },
         set (value) {
           const field = {
             name: 'dapp',
             value: value
           }
-          this.$store.dispatch('projects/form/setSiteUrl', field)
+          this.$store.dispatch('dapps/form/setSiteUrl', field)
         }
       }
     },

@@ -7,7 +7,7 @@
         <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('mainnet')" v-model="mainnet" placeholder="0x..." maxlength="42">
           <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in mainnetErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -16,7 +16,7 @@
         <div class="input-wrapper" :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('ropsten')" v-model="ropsten" placeholder="0x..." maxlength="42">
           <ul v-if="ropstenErrors && ropstenErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in ropstenErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in ropstenErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -25,7 +25,7 @@
         <div class="input-wrapper" :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('kovan')" v-model="kovan" placeholder="0x..." maxlength="42">
           <ul v-if="kovanErrors && kovanErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in kovanErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in kovanErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -34,7 +34,7 @@
         <div class="input-wrapper" :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('rinkeby')" v-model="rinkeby" placeholder="0x..." maxlength="42">
           <ul v-if="rinkebyErrors && rinkebyErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in rinkebyErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in rinkebyErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -50,67 +50,67 @@
   export default {
     computed: {
       contracts () {
-        return this.$store.getters['projects/form/contracts']
+        return this.$store.getters['dapps/form/contracts']
       },
       mainnet: {
         get () {
-          return this.$store.getters['projects/form/contracts'].mainnet.address
+          return this.$store.getters['dapps/form/contracts'].mainnet.address
         },
         set (value) {
           const field = {
             name: 'mainnet',
             value: value
           }
-          this.$store.dispatch('projects/form/setContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       mainnetErrors () {
-        return this.$store.getters['projects/form/mainnetErrors']
+        return this.$store.getters['dapps/form/mainnetErrors']
       },
       ropsten: {
         get () {
-          return this.$store.getters['projects/form/contracts'].ropsten.address
+          return this.$store.getters['dapps/form/contracts'].ropsten.address
         },
         set (value) {
           const field = {
             name: 'ropsten',
             value: value
           }
-          this.$store.dispatch('projects/form/setContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       ropstenErrors () {
-        return this.$store.getters['projects/form/ropstenErrors']
+        return this.$store.getters['dapps/form/ropstenErrors']
       },
       kovan: {
         get () {
-          return this.$store.getters['projects/form/contracts'].kovan.address
+          return this.$store.getters['dapps/form/contracts'].kovan.address
         },
         set (value) {
           const field = {
             name: 'kovan',
             value: value
           }
-          this.$store.dispatch('projects/form/setContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       kovanErrors () {
-        return this.$store.getters['projects/form/kovanErrors']
+        return this.$store.getters['dapps/form/kovanErrors']
       },
       rinkeby: {
         get () {
-          return this.$store.getters['projects/form/contracts'].rinkeby.address
+          return this.$store.getters['dapps/form/contracts'].rinkeby.address
         },
         set (value) {
           const field = {
             name: 'rinkeby',
             value: value
           }
-          this.$store.dispatch('projects/form/setContract', field)
+          this.$store.dispatch('dapps/form/setContract', field)
         }
       },
       rinkebyErrors () {
-        return this.$store.getters['projects/form/rinkebyErrors']
+        return this.$store.getters['dapps/form/rinkebyErrors']
       }
     },
     methods: {

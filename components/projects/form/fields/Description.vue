@@ -19,18 +19,18 @@
     computed: {
       description: {
         get () {
-          return this.$store.getters['projects/form/description']
+          return this.$store.getters['dapps/form/description']
         },
         set (value) {
           const field = {
             name: 'description',
             value: value
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['projects/form/descriptionErrors']
+        return this.$store.getters['dapps/form/descriptionErrors']
       }
     },
     methods: {

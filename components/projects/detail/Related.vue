@@ -1,7 +1,7 @@
 <template>
   <section class="section -related" v-if="items && items.length > 0">
     <div class="container">
-      <h2 class="heading">Related Projects</h2>
+      <h2 class="heading">Related ÐApps</h2>
       <ul class="list">
         <nuxt-link :to="{ name: slug, params: { slug: item.slug } }" @click.native="setActive(item.slug)" tag="li" v-for="(item, key) in items" class="item" :class="'-' + item.status" :key="item.slug">
           <h3 class="title">{{ item.name | truncate(25) }}</h3>
@@ -17,32 +17,32 @@
   export default {
     computed: {
       items () {
-        return this.$store.getters['projects/detail/relatedItems']
+        return this.$store.getters['dapps/detail/relatedItems']
       },
       popupIsActive () {
-        return this.$store.getters['projects/detail/popupIsActive']
+        return this.$store.getters['dapps/detail/popupIsActive']
       },
       slug () {
         if (this.popupIsActive === true) {
-          return 'projects-slug-popup'
+          return 'dapps-slug-popup'
         } else {
-          return 'projects-slug'
+          return 'dapps-slug'
         }
       },
       viewMethod () {
-        return this.$store.getters['projects/list/viewMethod']
+        return this.$store.getters['dapps/list/viewMethod']
       }
     },
     methods: {
       setActive (slug) {
-        this.$store.dispatch('projects/detail/setViewMethod', 'related')
+        this.$store.dispatch('dapps/detail/setViewMethod', 'related')
         if (this.popupIsActive) {
-          this.$store.dispatch('projects/list/setActiveItemIndex', -1)
+          this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
           document.getElementById('close').scrollIntoView()
-          this.$mixpanel.track('Project - View', {
+          this.$mixpanel.track('DApp - View', {
             targetDapp: slug,
             method: this.viewMethod
-          }, this.$store.dispatch('projects/detail/resetViewMethod'))
+          }, this.$store.dispatch('dapps/detail/resetViewMethod'))
         }
       }
     }

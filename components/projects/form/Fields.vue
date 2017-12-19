@@ -17,19 +17,19 @@
 </template>
 
 <script>
-  import Authors from '~/components/projects/form/fields/Authors.vue'
-  import Contracts from '~/components/projects/form/fields/Contracts.vue'
-  import DappUrl from '~/components/projects/form/fields/DappUrl.vue'
-  import Description from '~/components/projects/form/fields/Description.vue'
-  import Email from '~/components/projects/form/fields/Email.vue'
-  import License from '~/components/projects/form/fields/License.vue'
-  import Logo from '~/components/projects/form/fields/Logo.vue'
-  import Name from '~/components/projects/form/fields/Name.vue'
-  import Social from '~/components/projects/form/fields/Social.vue'
-  import Status from '~/components/projects/form/fields/Status.vue'
-  import Tags from '~/components/projects/form/fields/Tags.vue'
-  import Teaser from '~/components/projects/form/fields/Teaser.vue'
-  import Website from '~/components/projects/form/fields/Website.vue'
+  import Authors from '~/components/dapps/form/fields/Authors.vue'
+  import Contracts from '~/components/dapps/form/fields/Contracts.vue'
+  import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
+  import Description from '~/components/dapps/form/fields/Description.vue'
+  import Email from '~/components/dapps/form/fields/Email.vue'
+  import License from '~/components/dapps/form/fields/License.vue'
+  import Logo from '~/components/dapps/form/fields/Logo.vue'
+  import Name from '~/components/dapps/form/fields/Name.vue'
+  import Social from '~/components/dapps/form/fields/Social.vue'
+  import Status from '~/components/dapps/form/fields/Status.vue'
+  import Tags from '~/components/dapps/form/fields/Tags.vue'
+  import Teaser from '~/components/dapps/form/fields/Teaser.vue'
+  import Website from '~/components/dapps/form/fields/Website.vue'
 
   export default {
     components: {

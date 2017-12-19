@@ -27,7 +27,7 @@
           <input v-model="slack" class="input" type="text" placeholder="slack invitation url" maxlength="100" @input="validate">
         </div>
         <ul v-if="slackErrors && slackErrors.length > 0" class="error-list -social">
-          <li v-for="error in slackErrors" class="error-item -social">{{ error }}</li>
+          <li v-for="(error, index) in slackErrors" :key="index" class="error-item -social">{{ error }}</li>
         </ul>
       </li>
       <li class="item">
@@ -58,101 +58,101 @@
     computed: {
       blog: {
         get () {
-          return this.$store.getters['projects/form/socialBlog']
+          return this.$store.getters['dapps/form/socialBlog']
         },
         set (value) {
           const field = {
             name: 'blog',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       github: {
         get () {
-          return this.$store.getters['projects/form/socialGithub']
+          return this.$store.getters['dapps/form/socialGithub']
         },
         set (value) {
           const field = {
             name: 'github',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       facebook: {
         get () {
-          return this.$store.getters['projects/form/socialFacebook']
+          return this.$store.getters['dapps/form/socialFacebook']
         },
         set (value) {
           const field = {
             name: 'facebook',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       other: {
         get () {
-          return this.$store.getters['projects/form/socialOther']
+          return this.$store.getters['dapps/form/socialOther']
         },
         set (value) {
           const field = {
             name: 'other',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       reddit: {
         get () {
-          return this.$store.getters['projects/form/socialReddit']
+          return this.$store.getters['dapps/form/socialReddit']
         },
         set (value) {
           const field = {
             name: 'reddit',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       slack: {
         get () {
-          return this.$store.getters['projects/form/socialSlack']
+          return this.$store.getters['dapps/form/socialSlack']
         },
         set (value) {
           const field = {
             name: 'slack',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       slackErrors () {
-        return this.$store.getters['projects/form/socialSlackErrors']
+        return this.$store.getters['dapps/form/socialSlackErrors']
       },
       twitter: {
         get () {
-          return this.$store.getters['projects/form/socialTwitter']
+          return this.$store.getters['dapps/form/socialTwitter']
         },
         set (value) {
           const field = {
             name: 'twitter',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
       wiki: {
         get () {
-          return this.$store.getters['projects/form/socialWiki']
+          return this.$store.getters['dapps/form/socialWiki']
         },
         set (value) {
           const field = {
             name: 'wiki',
             value: value
           }
-          this.$store.dispatch('projects/form/setSocial', field)
+          this.$store.dispatch('dapps/form/setSocial', field)
         }
       }
     },

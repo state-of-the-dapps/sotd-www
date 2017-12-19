@@ -7,7 +7,7 @@
       <transition name="fade">
         <div class="dropdown" v-if="results.length > 0 && selected.length < 5" v-on-clickaway="resetResults">
            <ul class="dropdown-list">
-              <li v-for="(result, key) in results" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
+              <li v-for="(result, key) in results" :key="key" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
            </ul>
         </div>
       </transition>
@@ -16,7 +16,7 @@
       <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
     </ul>
     <ul class="list">
-      <li v-for="(tag, key) in selected" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close"></span></li>
+      <li v-for="(tag, key) in selected" :key="key" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close"></span></li>
     </ul>
   </div>
 </template>
@@ -35,7 +35,7 @@
         })
       },
       name () {
-        return this.$store.getters['projects/form/name']
+        return this.$store.getters['dapps/form/name']
       },
       obviousTags () {
         return [
@@ -48,17 +48,17 @@
       },
       query: {
         get () {
-          return this.$store.getters['projects/form/tagQuery']
+          return this.$store.getters['dapps/form/tagQuery']
         },
         set (value) {
-          this.$store.dispatch('projects/form/setTagQuery', value)
+          this.$store.dispatch('dapps/form/setTagQuery', value)
         }
       },
       results () {
-        return this.$store.getters['projects/form/tagsResults']
+        return this.$store.getters['dapps/form/tagsResults']
       },
       selected () {
-        return this.$store.getters['projects/form/selectedTags']
+        return this.$store.getters['dapps/form/selectedTags']
       }
     },
     directives: {
@@ -67,9 +67,9 @@
     methods: {
       add () {
         if (this.query.length > 1 && this.selected.length < 5 && this.selected.indexOf(this.query) === -1) {
-          this.$store.dispatch('projects/form/addTag', this.query)
-          this.$store.dispatch('projects/form/resetTagResults')
-          this.$mixpanel.track('New project - Add tag', { tag: this.query })
+          this.$store.dispatch('dapps/form/addTag', this.query)
+          this.$store.dispatch('dapps/form/resetTagResults')
+          this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
         }
       },
       hasWarning (tag) {
@@ -77,32 +77,32 @@
       },
       findSuggestedTags () {
         if (this.query.length === 0 && this.selected.length === 0) {
-          this.$store.dispatch('projects/form/fetchTags')
+          this.$store.dispatch('dapps/form/fetchTags')
         }
       },
       remove (tag, key) {
-        this.$store.dispatch('projects/form/removeTag', key)
-        this.$mixpanel.track('New project - Remove tag', { tag: tag })
+        this.$store.dispatch('dapps/form/removeTag', key)
+        this.$mixpanel.track('New DApp - Remove tag', { tag: tag })
       },
       resetResults () {
-        this.$store.dispatch('projects/form/resetTagResults')
+        this.$store.dispatch('dapps/form/resetTagResults')
       },
       search () {
         clearTimeout(searchTimer)
         clearTimeout(trackTimer)
         searchTimer = setTimeout(() => {
           if (this.selected.length < 6) {
-            this.$store.dispatch('projects/form/fetchTags', this.query)
+            this.$store.dispatch('dapps/form/fetchTags', this.query)
           }
         }, 100)
         trackTimer = setTimeout(() => {
-          this.$mixpanel.track('New project - Search tags', { query: this.query })
+          this.$mixpanel.track('New DApp - Search tags', { query: this.query })
         }, 5000)
       },
       select (item, key) {
-        this.$store.dispatch('projects/form/selectTag', key)
-        this.$store.dispatch('projects/form/resetTagResults')
-        this.$mixpanel.track('New project - Select tag', { tag: item })
+        this.$store.dispatch('dapps/form/selectTag', key)
+        this.$store.dispatch('dapps/form/resetTagResults')
+        this.$mixpanel.track('New DApp - Select tag', { tag: item })
       }
     }
   }

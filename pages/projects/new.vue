@@ -2,7 +2,7 @@
   <div>
     <section class="section -intro">
       <div class="container">
-        <h1 class="heading">Submit a Project</h1>
+        <h1 class="heading">Submit a ÐApp</h1>
       </div>
     </section>
     <section class="section -form">
@@ -15,8 +15,8 @@
 </template>
 
 <script>
-  import Fields from '~/components/projects/form/Fields'
-  import PreviewSave from '~/components/projects/form/PreviewSave'
+  import Fields from '~/components/dapps/form/Fields'
+  import PreviewSave from '~/components/dapps/form/PreviewSave'
 
   export default {
     components: {
@@ -25,11 +25,11 @@
     },
     head () {
       return {
-        title: 'State of the ÐApps — Submit a Project'
+        title: 'State of the ÐApps — Submit a ÐApp'
       }
     },
     mounted () {
-      this.$store.dispatch('setSiteSection', 'projects')
+      this.$store.dispatch('setSiteSection', 'dapps')
     }
   }
 </script>

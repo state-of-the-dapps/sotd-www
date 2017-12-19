@@ -2,23 +2,23 @@
   <transition name="fade">
     <div class="container" v-if="isActive" v-on-clickaway="hide">
       <ul class="list">
-        <li v-for="(option, index) in optionsWithoutSelected" :key="index" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatProjectTabOptions }}</li>
+        <li v-for="(option, index) in optionsWithoutSelected" :key="index" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatDappTabOptions }}</li>
       </ul>
     </div>
   </transition>
 </template>
 
 <script>
-  import { projectRefineTabOptions as tabOptions } from '~/helpers/constants'
+  import { dappRefineTabOptions as tabOptions } from '~/helpers/constants'
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['projects/list/tabDropdownIsActive']
+        return this.$store.getters['dapps/list/tabDropdownIsActive']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['projects/list/tabQuery']
+        const selected = this.$store.getters['dapps/list/tabQuery']
         const options = tabOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
@@ -34,21 +34,21 @@
     methods: {
       hasRelevance (option) {
         if (option === 'most-relevant') {
-          var textQuery = this.$store.getters['projects/list/textQuery']
+          var textQuery = this.$store.getters['dapps/list/textQuery']
           return textQuery.length > 0
         } else {
           return true
         }
       },
       hide () {
-        this.$mixpanel.track('Projects - Hide tab dropdown')
-        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tab')
+        this.$mixpanel.track('DApps - Hide tab dropdown')
+        this.$store.dispatch('dapps/list/toggleRefineDropdown', 'tab')
       },
       select (option) {
-        this.$mixpanel.track('Projects - Select tab', { option: option })
-        this.$store.dispatch('projects/list/setTabQuery', option)
-        this.$store.dispatch('projects/list/toggleRefineDropdown', 'tab')
-        this.$store.dispatch('projects/list/fetchItems')
+        this.$mixpanel.track('DApps - Select tab', { option: option })
+        this.$store.dispatch('dapps/list/setTabQuery', option)
+        this.$store.dispatch('dapps/list/toggleRefineDropdown', 'tab')
+        this.$store.dispatch('dapps/list/fetchItems')
       }
     }
   }

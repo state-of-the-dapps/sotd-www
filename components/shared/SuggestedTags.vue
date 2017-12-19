@@ -30,7 +30,7 @@
         validator: function (value) {
           const allowedValues = [
             'events',
-            'projects'
+            'dapps'
           ]
           return allowedValues.includes(value)
         }
@@ -56,7 +56,7 @@
         this.$store.dispatch('tags/selectItem', key)
         this.$store.dispatch('tags/resetItems')
         // contextually dispatch actions based on the model
-        if (this.model === 'projects' || this.model === 'events') {
+        if (this.model === 'dapps' || this.model === 'events') {
           this.$store.dispatch(this.model + '/list/addTagToQuery', item)
           this.$store.dispatch(this.model + '/list/fetchItems')
         }

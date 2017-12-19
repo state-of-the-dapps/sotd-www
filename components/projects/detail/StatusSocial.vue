@@ -8,8 +8,8 @@
 </template>
 
 <script>
-  import Social from '~/components/projects/detail/statusSocial/Social.vue'
-  import Status from '~/components/projects/detail/statusSocial/Status.vue'
+  import Social from '~/components/dapps/detail/statusSocial/Social.vue'
+  import Status from '~/components/dapps/detail/statusSocial/Status.vue'
 
   export default {
     components: {
@@ -18,7 +18,7 @@
     },
     computed: {
       item () {
-        return this.$store.getters['projects/detail/item']
+        return this.$store.getters['dapps/detail/item']
       }
     }
   }

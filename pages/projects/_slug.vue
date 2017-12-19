@@ -10,11 +10,11 @@
 
 <script>
   import axios from '~/helpers/axios'
-  import MainInfo from '~/components/projects/detail/MainInfo.vue'
-  import Lead from '~/components/projects/detail/Lead.vue'
-  import Related from '~/components/projects/detail/Related.vue'
-  import StatusSocial from '~/components/projects/detail/StatusSocial.vue'
-  import Tools from '~/components/projects/detail/Tools.vue'
+  import MainInfo from '~/components/dapps/detail/MainInfo.vue'
+  import Lead from '~/components/dapps/detail/Lead.vue'
+  import Related from '~/components/dapps/detail/Related.vue'
+  import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
+  import Tools from '~/components/dapps/detail/Tools.vue'
 
   export default {
     components: {
@@ -26,23 +26,23 @@
     },
     computed: {
       item () {
-        return this.$store.getters['projects/detail/item']
+        return this.$store.getters['dapps/detail/item']
       },
       viewMethod () {
-        return this.$store.getters['projects/detail/viewMethod']
+        return this.$store.getters['dapps/detail/viewMethod']
       }
     },
     destroyed () {
-      this.$store.dispatch('projects/detail/resetItem')
+      this.$store.dispatch('dapps/detail/resetItem')
     },
     fetch ({ store, params, redirect, isServer, error }) {
       if (isServer) {
         return axios
-          .get('projects/' + params.slug)
+          .get('dapps/' + params.slug)
           .then(response => {
             const payload = response.data.payload
             const item = payload.item
-            store.dispatch('projects/detail/setItem', item)
+            store.dispatch('dapps/detail/setItem', item)
             if (!Object.keys(item).length > 0) {
               error({ statusCode: 404 })
             }
@@ -50,19 +50,19 @@
       }
     },
     mounted () {
-      this.$store.dispatch('setSiteSection', 'projects')
+      this.$store.dispatch('setSiteSection', 'dapps')
       if (this.viewMethod === 'popup') {
         axios
-          .get('projects/' + this.$route.params.slug)
+          .get('dapps/' + this.$route.params.slug)
           .then(response => {
-            this.$store.dispatch('projects/detail/setItem', response.data)
+            this.$store.dispatch('dapps/detail/setItem', response.data)
           })
       }
-      this.$mixpanel.track('Project - View', {
-        targetProject: this.$route.params.slug,
+      this.$mixpanel.track('DApp - View', {
+        targetDapp: this.$route.params.slug,
         method: this.viewMethod
       })
-      this.$store.dispatch('projects/detail/resetViewMethod')
+      this.$store.dispatch('dapps/detail/resetViewMethod')
     },
     head () {
       return {

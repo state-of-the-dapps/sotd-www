@@ -20,18 +20,18 @@
     computed: {
       email: {
         get () {
-          return this.$store.getters['projects/form/email']
+          return this.$store.getters['dapps/form/email']
         },
         set (value) {
           const field = {
             name: 'email',
             value: value
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['projects/form/emailErrors']
+        return this.$store.getters['dapps/form/emailErrors']
       }
     },
     methods: {

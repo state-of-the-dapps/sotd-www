@@ -2,11 +2,11 @@
   <section class="section">
     <div class="container">
       <ul class="count-list">
-        <li class="count-item">Showing <strong @click="$mixpanel.track('Projects - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('Projects - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
+        <li class="count-item">Showing <strong @click="$mixpanel.track('DApps - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('DApps - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatProjectTabOptions }}
+          <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatDappTabOptions }}
             <TabDropdown/>
           </span> with status
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import TabDropdown from '~/components/projects/list/countRefine/TabDropdown.vue'
-  import StatusDropdown from '~/components/projects/list/countRefine/StatusDropdown.vue'
+  import TabDropdown from '~/components/dapps/list/countRefine/TabDropdown.vue'
+  import StatusDropdown from '~/components/dapps/list/countRefine/StatusDropdown.vue'
 
   export default {
     beforeDestroy () {
@@ -37,28 +37,28 @@
     },
     computed: {
       tabDropdownIsActive () {
-        return this.$store.getters['projects/list/tabDropdownIsActive']
+        return this.$store.getters['dapps/list/tabDropdownIsActive']
       },
       statusDropdownIsActive () {
-        return this.$store.getters['projects/list/statusDropdownIsActive']
+        return this.$store.getters['dapps/list/statusDropdownIsActive']
       },
       selectedTab () {
-        return this.$store.getters['projects/list/tabQuery']
+        return this.$store.getters['dapps/list/tabQuery']
       },
       selectedStatus () {
-        return this.$store.getters['projects/list/statusQuery']
+        return this.$store.getters['dapps/list/statusQuery']
       },
       itemCount () {
-        return this.$store.getters['projects/list/itemCount']
+        return this.$store.getters['dapps/list/itemCount']
       },
       pagerTotalCount () {
-        return this.$store.getters['projects/list/pagerTotalCount']
+        return this.$store.getters['dapps/list/pagerTotalCount']
       }
     },
     methods: {
       toggle (type) {
-        this.$mixpanel.track('Projects - Toggle ' + type)
-        this.$store.dispatch('projects/list/toggleRefineDropdown', type)
+        this.$mixpanel.track('DApps - Toggle ' + type)
+        this.$store.dispatch('dapps/list/toggleRefineDropdown', type)
       }
     }
   }

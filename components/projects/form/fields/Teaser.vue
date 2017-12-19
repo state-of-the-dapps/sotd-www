@@ -4,10 +4,10 @@
       <label class="label">Teaser description<span class="required">(required)</span></label>
       <span class="remaining-characters">{{ 75 - teaser.length }}</span>
       <ul v-if="warnings && warnings.length > 0" class="warning-list">
-        <li v-for="warning in warnings" class="warning-item">{{ warning }}</li>
+        <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
       </ul>
       <ul v-if="errors && errors.length > 0" class="error-list">
-        <li v-for="error in errors" class="error-item">{{ error }}</li>
+        <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
       </ul>
       <p class="help">A short teaser that is simple and descriptive. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
     </div>
@@ -21,22 +21,22 @@
   export default {
     computed: {
       errors () {
-        return this.$store.getters['projects/form/teaserErrors']
+        return this.$store.getters['dapps/form/teaserErrors']
       },
       teaser: {
         get () {
-          return this.$store.getters['projects/form/teaser']
+          return this.$store.getters['dapps/form/teaser']
         },
         set (value) {
           const field = {
             name: 'teaser',
             value: value
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       },
       warnings () {
-        return this.$store.getters['projects/form/teaserWarnings']
+        return this.$store.getters['dapps/form/teaserWarnings']
       }
     },
     methods: {

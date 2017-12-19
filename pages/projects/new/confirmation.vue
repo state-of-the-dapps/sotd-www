@@ -17,7 +17,7 @@
       }
     },
     mounted () {
-      this.$store.dispatch('setSiteSection', 'projects')
+      this.$store.dispatch('setSiteSection', 'dapps')
     }
   }
 </script>

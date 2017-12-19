@@ -31,7 +31,7 @@
         </li>
         <li v-if="tags && tags.length > 0" class="sub-item">
           <h3 class="sub-heading">Tags</h3>
-          <p class="sub-body"><a class="sub-tag" v-for="tag in tags" @click="findProjectsByTag(tag)">#{{ tag }}</a></p>
+          <p class="sub-body"><a class="sub-tag" v-for="(tag, index) in tags" :key="index" @click="findDappsByTag(tag)">#{{ tag }}</a></p>
         </li>
       </ul>
     </div>
@@ -39,15 +39,15 @@
 </template>
 
 <script>
-  import Contract from '~/components/projects/detail/mainInfo/Contract.vue'
+  import Contract from '~/components/dapps/detail/mainInfo/Contract.vue'
 
   export default {
     computed: {
       friendlyUrl () {
-        return this.$store.getters['projects/list/friendlyUrl']
+        return this.$store.getters['dapps/list/friendlyUrl']
       },
       item () {
-        return this.$store.getters['projects/detail/item']
+        return this.$store.getters['dapps/detail/item']
       },
       tags () {
         var tags
@@ -59,17 +59,17 @@
       Contract
     },
     methods: {
-      findProjectsByTag (tag) {
-        this.$store.dispatch('projects/list/setActiveItemIndex', -1)
-        this.$store.dispatch('projects/list/resetQuery')
+      findDappsByTag (tag) {
+        this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
+        this.$store.dispatch('dapps/list/resetQuery')
         this.$store.dispatch('tags/selectItem', tag)
-        this.$store.dispatch('projects/list/addTagToQuery', tag)
-        this.$store.dispatch('projects/list/fetchItems')
-        this.$store.dispatch('projects/list/setFriendlyUrl')
+        this.$store.dispatch('dapps/list/addTagToQuery', tag)
+        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('dapps/list/setFriendlyUrl')
         this.$router.push(this.friendlyUrl, function () {
           document.getElementById('__nuxt').scrollIntoView()
         })
-        this.$mixpanel.track('Project - Tag', { name: tag, slug: this.item.slug })
+        this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })
       }
     }
   }

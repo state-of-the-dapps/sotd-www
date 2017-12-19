@@ -1,19 +1,19 @@
 <template>
   <div>
-    <p class="heading">Project status <span class="required">(required)</span></p>
+    <p class="heading">ÐApp status <span class="required">(required)</span></p>
     <ul class="list">
-      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatProjectStatus | capitalize }}</li>
+      <li v-for="(item, index) in items" :key="index" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatDappStatus | capitalize }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-  import { projectStatuses as statusList } from '~/helpers/constants'
+  import { dappStatuses as statusList } from '~/helpers/constants'
 
   export default {
     computed: {
       status () {
-        return this.$store.getters['projects/form/status']
+        return this.$store.getters['dapps/form/status']
       }
     },
     data: () => {
@@ -23,7 +23,7 @@
     },
     methods: {
       select (value) {
-        this.$store.dispatch('projects/form/setStatus', value)
+        this.$store.dispatch('dapps/form/setStatus', value)
       }
     }
   }

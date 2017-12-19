@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <ul class="list" v-if="item.socials">
-      <li v-for="(social, index) in item.socials" :key="index" class="item -icon"><a @click="$mixpanel.track('Project - Social', { platform: social.platform, url: social.url })" :href="social.url" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')"><img :src="require('~/assets/images/social/' + social.platform + '.png')" class="image" width="32" :alt="social.platform"></a></li>
+      <li v-for="(social, index) in item.socials" :key="index" class="item -icon"><a @click="$mixpanel.track('DApp - Social', { platform: social.platform, url: social.url })" :href="social.url" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')"><img :src="require('~/assets/images/social/' + social.platform + '.png')" class="image" width="32" :alt="social.platform"></a></li>
     </ul>
   </div>
 </template>
@@ -10,7 +10,7 @@
   export default {
     computed: {
       item () {
-        return this.$store.getters['projects/detail/item']
+        return this.$store.getters['dapps/detail/item']
       }
     }
   }

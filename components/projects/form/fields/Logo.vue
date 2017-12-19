@@ -4,7 +4,7 @@
     <label class="label">Logo URL</label>
     <span class="remaining-characters">{{ 255 - logo.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Provide a URL to your logo</p>
   </div>
@@ -19,18 +19,18 @@
     computed: {
       logo: {
         get () {
-          return this.$store.getters['projects/form/logo']
+          return this.$store.getters['dapps/form/logo']
         },
         set (value) {
           const field = {
             name: 'logo',
             value: value
           }
-          this.$store.dispatch('projects/form/setField', field)
+          this.$store.dispatch('dapps/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['projects/form/logoErrors']
+        return this.$store.getters['dapps/form/logoErrors']
       }
     },
     methods: {

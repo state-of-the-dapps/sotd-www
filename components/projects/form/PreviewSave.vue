@@ -2,18 +2,18 @@
   <div class="wrapper">
     <div class="sticky">
       <div class="item -preview" :class="'-' + status">
-          <div class="new-banner" @click="$mixpanel.track('New project - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
+          <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
           <div class="info">
-              <div @click="$mixpanel.track('New project - Preview icon')" class="icon-wrapper" :class="'-' + status">
+              <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
                   <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
               </div>
               <div class="description-wrapper">
-                  <h3 class="title" @click="$mixpanel.track('New project - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your project</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New project - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
-                  <p class="description" @click="$mixpanel.track('New project - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
+                  <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
+                  <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
+                  <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New project - Preview status')">{{ status | formatProjectStatus }}</p>
+          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatDappStatus }}</p>
       </div>
       <div class="checkboxes">
         <div class="checkbox-field">
@@ -26,13 +26,13 @@
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
-          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New project - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
+          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New DApp - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
         </div>
       </div>
       <input type="text" class="yumyum" v-model="honeypot">
-      <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New project - Submit', { disabled: true })" class="submit" type="submit" :value="'1 field needs your attention'">
-      <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New project - Submit', { disabled: true })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
-      <input v-else-if="sending" @click.prevent="$mixpanel.track('New project - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
+      <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'1 field needs your attention'">
+      <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
+      <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
       <input v-else="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
     </div>
   </div>
@@ -44,49 +44,49 @@
   export default {
     computed: {
       authors () {
-        return this.$store.getters['projects/form/authors']
+        return this.$store.getters['dapps/form/authors']
       },
       errorFields () {
-        return this.$store.getters['projects/form/errorFields']
+        return this.$store.getters['dapps/form/errorFields']
       },
       fields () {
-        return this.$store.getters['projects/form/fields']
+        return this.$store.getters['dapps/form/fields']
       },
       name () {
-        return this.$store.getters['projects/form/name']
+        return this.$store.getters['dapps/form/name']
       },
       subscribeNewsletter: {
         get () {
-          return this.$store.getters['projects/form/subscribeNewsletter']
+          return this.$store.getters['dapps/form/subscribeNewsletter']
         },
         set () {
-          this.$store.dispatch('projects/form/toggleCheckbox', 'subscribeNewsletter')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'subscribeNewsletter')
         }
       },
       joinSlack: {
         get () {
-          return this.$store.getters['projects/form/joinSlack']
+          return this.$store.getters['dapps/form/joinSlack']
         },
         set () {
-          this.$store.dispatch('projects/form/toggleCheckbox', 'joinSlack')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'joinSlack')
         }
       },
       status () {
-        return this.$store.getters['projects/form/status']
+        return this.$store.getters['dapps/form/status']
       },
       teaser () {
-        return this.$store.getters['projects/form/teaser']
+        return this.$store.getters['dapps/form/teaser']
       },
       acceptedTerms: {
         get () {
-          return this.$store.getters['projects/form/acceptedTerms']
+          return this.$store.getters['dapps/form/acceptedTerms']
         },
         set () {
-          this.$store.dispatch('projects/form/toggleCheckbox', 'acceptedTerms')
+          this.$store.dispatch('dapps/form/toggleCheckbox', 'acceptedTerms')
           if (this.acceptedTerms === false) {
-            this.$store.dispatch('projects/form/addErrorField', 'acceptedTerms')
+            this.$store.dispatch('dapps/form/addErrorField', 'acceptedTerms')
           } else {
-            this.$store.dispatch('projects/form/removeErrorField', 'acceptedTerms')
+            this.$store.dispatch('dapps/form/removeErrorField', 'acceptedTerms')
           }
         }
       }
@@ -106,11 +106,11 @@
             }
           }
           this.sending = true
-          axios.post('projects', data)
+          axios.post('dapps', data)
             .then((response) => {
               this.sending = false
-              this.$store.dispatch('projects/form/resetForm')
-              this.$mixpanel.track('New project - Submit', {
+              this.$store.dispatch('dapps/form/resetForm')
+              this.$mixpanel.track('New ÐApp - Submit', {
                 disabled: false,
                 name: this.fields.name,
                 email: this.fields.email,
@@ -118,7 +118,7 @@
                 joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              this.$router.replace({ path: '/projects/submit/new/confirmation' })
+              this.$router.replace({ path: '/dapps/submit/new/confirmation' })
             })
             .catch((error) => {
               alert(error.response.data.message)
