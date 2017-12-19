@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="container" v-if="items && items.length > 0" v-on-clickaway="reset">
+    <div class="container -suggested-tags" v-if="items && items.length > 0" v-on-clickaway="reset">
       <ul class="list">
         <li v-for="(item, key) in items" :key="key" class="item" @click="select(item, key)">{{ item }}</li>
       </ul>
@@ -36,6 +36,10 @@
         }
       }
     },
+    destroyed () {
+      // reset tags and hide when a new route is activated (v-on-clickaway doesn't fire on route change)
+      this.reset()
+    },
     directives: {
       onClickaway: onClickaway
     },
@@ -67,19 +71,21 @@
   @import '~assets/css/settings';
 
   .container {
-    position: absolute;
-    background: rgba($color--gallery,.9);
-    padding: 10px;
-    box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
-    width: 250px;
-    top: 65px;
-    left: 10px;
-    overflow: hidden;
-    z-index: 10;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      top: 85px;
-      left: 75px;
-      width: 500px;
+    &.-suggested-tags {
+      position: absolute;
+      background: rgba($color--gallery,.9);
+      padding: 10px;
+      box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
+      width: 250px;
+      top: 65px;
+      left: 10px;
+      overflow: hidden;
+      z-index: 10;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        top: 85px;
+        left: 75px;
+        width: 500px;
+      }
     }
   }
 
