@@ -8,10 +8,11 @@
         <li>Show
           <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatDappTabOptions }}
             <TabDropdown/>
-          </span> with status
+          </span> with
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
             <StatusDropdown/>
           </span>
+          status
         </li>
       </ul>
     </div>
@@ -108,10 +109,6 @@
       &:after {
         transform: scaleY(1);
       }
-    }
-    &:last-child {
-      margin-right: 0;
-      width: 100px;
     }
     /deep/ .container {
       position: absolute;
