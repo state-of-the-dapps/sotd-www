@@ -2,7 +2,7 @@
   <section class="section -search">
     <div class="container">
       <div class="wrapper">
-        <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="~/assets/images/search.png" width="20"></a>
+        <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="icon" href="#"><img src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
           <li v-for="(tag, key) in tags" :key="key" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
