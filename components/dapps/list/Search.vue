@@ -143,6 +143,7 @@
     background: none;
     border: none;
     width: 100%;
+    padding-right: 5px;
   }
 
   .input-text {
@@ -161,6 +162,7 @@
 
   .input-wrapper {
     display: flex;
+    align-items: center;
     flex-grow: 1;
     height: 100%;
     padding: 10px;

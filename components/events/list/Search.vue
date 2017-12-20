@@ -7,6 +7,7 @@
           <li v-for="(tag, key) in tags" :key="key" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by event name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
         </ul>
+        <div class="location-filter"><span>within <span class="selection">50 miles</span> of <span class="selection">Princeton NJ, USA</span></span></div>
       </div>
       <SuggestedTags
         :items="suggestedTags"
@@ -143,6 +144,7 @@
     background: none;
     border: none;
     width: 100%;
+    padding-right: 5px;
   }
 
   .input-text {
@@ -161,6 +163,7 @@
 
   .input-wrapper {
     display: flex;
+    align-items: center;
     flex-grow: 1;
     height: 100%;
     padding: 10px;
@@ -171,6 +174,12 @@
       padding-left: 15px;
       padding-right: 15px;
     }
+  }
+
+  .location-filter {
+    line-height: 0;
+    font-size: 1.1rem;
+    padding-right: 15px;
   }
 
   .section {
@@ -192,6 +201,15 @@
     @include tweakpoint('min-width', $tweakpoint--default) {
       line-height: 1.52;
     }
+  }
+
+  .selection {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin: 0 1px;
+    text-decoration: underline;
+    font-weight: 600;
   }
 
   .wrapper {
