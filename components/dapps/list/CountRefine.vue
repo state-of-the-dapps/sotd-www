@@ -84,7 +84,7 @@
     display: inline-block;
     padding: 3px 16px 3px 6px;
     margin: 0 5px;
-    width: 145px;
+    width: 100px;
     white-space: nowrap;
     border: 1px solid rgba($color--mine-shaft,.15);
     position: relative;
