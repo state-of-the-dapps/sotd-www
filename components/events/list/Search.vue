@@ -2,12 +2,16 @@
   <section class="section -search">
     <div class="container">
       <div class="wrapper">
-        <a @click.prevent="$mixpanel.track('Events - Search icon')" class="icon" href="#"><img src="~/assets/images/icons/search.png" width="20"></a>
+        <a @click.prevent="$mixpanel.track('Events - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
           <li v-for="(tag, key) in tags" :key="key" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by event name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
         </ul>
-        <div class="location-filter"><span>within <span class="selection">50 miles</span> of <span class="selection">Princeton NJ, USA</span></span></div>
+        <div class="location-filter">
+          <img class="location-pin" src="~/assets/images/icons/pin.png" width="18">
+          <span class="location-text">
+            within <span class="location-selection">50 miles</span> of <span class="location-selection">Princeton NJ, USA</span></span></div>
+          </span>
       </div>
       <SuggestedTags
         :items="suggestedTags"
@@ -15,6 +19,7 @@
         :textQuery="textQuery"
         @updateTextQuery="updateTextQuery"
       />
+      <LocationSelection/>
     </div>
   </section>
 </template>
@@ -22,6 +27,7 @@
 <script>
   import { eventRefineTabOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
+  import LocationSelection from '~/components/events/list/LocationSelection.vue'
   import SuggestedTags from '~/components/shared/SuggestedTags.vue'
 
   var searchTimer
@@ -29,6 +35,7 @@
 
   export default {
     components: {
+      LocationSelection,
       SuggestedTags
     },
     computed: {
@@ -121,7 +128,7 @@
     }
   }
 
-  .icon {
+  .search-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,6 +142,10 @@
       width: 55px;
       height: 60px;
     }
+  }
+
+  .search-image {
+    margin: 0 10px;
   }
 
   .input {
@@ -180,6 +191,31 @@
     line-height: 0;
     font-size: 1.1rem;
     padding-right: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  .location-pin {
+    margin-right: 0;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-right: 7px;;
+    }
+  }
+
+  .location-selection {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    margin: 0 1px;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .location-text {
+    display: none;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      display: inline;
+    }
   }
 
   .section {
@@ -201,15 +237,6 @@
     @include tweakpoint('min-width', $tweakpoint--default) {
       line-height: 1.52;
     }
-  }
-
-  .selection {
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-    margin: 0 1px;
-    text-decoration: underline;
-    font-weight: 600;
   }
 
   .wrapper {

@@ -50,7 +50,10 @@
 
   .nameplate-image {
     display: block;
-    margin: 0 auto;
+    margin: 40px auto 10px;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin: 0 auto;
+    }
   }
 
   .nameplate-item {

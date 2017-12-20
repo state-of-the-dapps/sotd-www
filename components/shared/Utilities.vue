@@ -6,21 +6,23 @@
         <li class="item"><nuxt-link :to="{ name: 'what' }" class="link">What's a ÐApp</nuxt-link></li>
         <li class="item"><nuxt-link :to="{ name: 'about' }" class="link">About</nuxt-link></li>
         <li class="item">         
-          <span @click="toggleNewsletterDropdown" class="link -newsletter" :class="{ '--is-active': newsletterDropdownIsActive }" target="_blank">Newsletter</span>
-          <transition name="fade">
-            <div v-if="newsletterDropdownIsActive" v-on-clickaway="toggleNewsletterDropdown" class="dropdown -newsletter">
-              <transition name="fade" mode="out-in">
-                <div v-if="newsletterConfirmation" key="confirmation">
-                  <p>Thanks for signing up. We'll be in touch!</p><p class="close-dropdown"><a @click="toggleNewsletterDropdown">Close</a></p>
-                </div>
-                <div v-else key="subscribe">
-                  <p>Sign up to receive our newsletter</p>
-                  <input v-model="newsletterEmail" @input="validateNewsletterEmail" class="text-input" type="text" placeholder="Enter your email address">
-                  <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid && !newsletterIsLoading }">Subscribe</button>
-                </div>
-              </transition>
-            </div>
-          </transition>
+          <span @click="toggleNewsletterDropdown" class="link -newsletter" :class="{ '--is-active': newsletterDropdownIsActive }" target="_blank">
+            Newsletter
+            <transition name="fade">
+              <div v-if="newsletterDropdownIsActive" v-on-clickaway="toggleNewsletterDropdown" class="dropdown -newsletter">
+                <transition name="fade" mode="out-in">
+                  <div v-if="newsletterConfirmation" key="confirmation">
+                    <p>Thanks for signing up. We'll be in touch!</p><p class="close-dropdown"><a @click="toggleNewsletterDropdown">Close</a></p>
+                  </div>
+                  <div v-else key="subscribe">
+                    <p>Sign up to receive our newsletter</p>
+                    <input v-model="newsletterEmail" @input="validateNewsletterEmail" class="text-input" type="text" placeholder="Enter your email address">
+                    <button @click.stop="newsletterSubscribe" class="subscribe" :class="{ '--is-ready': newsletterEmailIsValid && !newsletterIsLoading }">Subscribe</button>
+                  </div>
+                </transition>
+              </div>
+            </transition>
+          </span>
         </li>
         <li class="item"><a href="mailto:support@stateofthedapps.com" class="link -getintouch">Get in touch</a></li>
       </ul>
@@ -175,7 +177,7 @@
     color: $color--mine-shaft;
     position: absolute;
     right: 50%;
-    top: 135px;
+    top: 25px;
     z-index: 20;
     margin-right: -150px;
     border: 1px solid $color--mine-shaft;
@@ -185,8 +187,8 @@
     box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
     text-align: left;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      right: 10px;
-      top: 45px;
+      right: 0;
+      top: 42px;
       margin-right: 0;
     }
     p:first-child {
