@@ -54,7 +54,7 @@
   .section {
     &.-intro {
       background: rgba(lighten($color--gallery, 100%), 1);
-      border-top: 1px solid darken($color--gallery, 5%);
+      border-top: 2px solid darken($color--gallery, 5%);
       border-bottom: 8px solid darken($color--gallery, 5%);
       .container {
         padding-top: 50px;

@@ -19,7 +19,12 @@
         :textQuery="textQuery"
         @updateTextQuery="updateTextQuery"
       />
-      <LocationSelection/>
+      <LocationSelection
+        :items="suggestedTags"
+        :model="'events'"
+        :textQuery="textQuery"
+        @updateTextQuery="updateTextQuery"
+      />
     </div>
   </section>
 </template>
