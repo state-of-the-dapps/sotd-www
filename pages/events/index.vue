@@ -35,7 +35,7 @@
         return this.$store.getters['events/list/tabQuery']
       },
       eventCount () {
-        return this.$store.getters['statEventsCount']
+        return this.$store.getters['statEventCount']
       },
       tagQuery () {
         return this.$store.getters['events/list/tagQuery']
