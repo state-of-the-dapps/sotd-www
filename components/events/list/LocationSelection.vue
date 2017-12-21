@@ -9,14 +9,14 @@
           </ul>
         </div>
         <div class="distance">
-          <h4 class="distance-heading">Within</h4>
+          <h4 class="distance-heading">Within <span class="distance-units"><span class="distance-unit --is-selected" @click="selectDistanceUnit('miles')">Mi</span> <span class="distance-unit" @click="selectDistanceUnit('km')">Km</span></span></h4>
           <ul class="distance-list">
-            <li v-for="(option, index) in distanceOptions" :key="index" class="distance-item" @click="selectDistance(option)">{{ option }} mi</li>
+            <li v-for="(option, index) in distanceOptions" :key="index" class="distance-item" @click="selectDistance(option)">{{ option }} miles</li>
+            <li class="distance-item" @click="selectDistance(0)">Any distance</li>
           </ul>
-          <div><span class="distance-unit --is-selected" @click="selectDistanceUnit('miles')">Miles</span> <span class="distance-unit" @click="selectDistanceUnit('km')">Km</span></div>
         </div>
       </div>
-      <div>
+      <div class="actions">
         <button class="done">Done</button>
       </div>
     </div>
@@ -30,14 +30,12 @@
     data () {
       return {
         distanceOptions: [
-          'Any',
           50,
           100,
           200,
           500
         ],
         locationOptions: [
-          'Anywhere',
           'London, UK',
           'London NJ, USA',
           'London MN, USA',
@@ -63,6 +61,10 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
+  .actions {
+    text-align: center;
+  }
+
   .container {
     &.-location-selection {
       position: absolute;
@@ -79,12 +81,6 @@
         right: 20px;
       }
     }
-  }
-
-  .distance-heading {
-    padding-left: 3px;
-    margin-top: 0;
-    margin-bottom: .25rem;
   }
 
   .done {
@@ -113,17 +109,26 @@
 
   .distance {
     border-left: 1px solid $color--mine-shaft;
-    padding-left: 7px;
+    padding-left: 10px;
     margin-left: 10px;
+  }
+
+  .distance-heading {
+    margin-top: 0;
+    margin-bottom: .35rem;
+    font-size: .8rem;
+    text-transform: uppercase;
+  }
+
+  .distance-units {
+    margin-left: 5px;
   }
 
   .distance-unit {
     font-weight: 600;
     display: inline-block;
-    padding: 3px;
-    font-size: .7rem;
-    text-transform: uppercase;
-    margin-bottom: .25rem;
+    padding: 2px 3px;
+    font-size: .8rem;
     cursor: pointer;
     &.--is-selected {
       background: $color--mine-shaft;
@@ -132,10 +137,13 @@
   }
 
   .distance-item {
-    font-size: .9rem;
-    padding: 3px;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 4px 3px 4px 0;
     cursor: pointer;
     &.--is-selected {
+      padding: 4px 3px;
+      margin-left: -3px;
       background: $color--mine-shaft;
       color: $color--gallery;
     }
