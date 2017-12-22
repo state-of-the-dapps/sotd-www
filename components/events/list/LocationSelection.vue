@@ -12,7 +12,7 @@
           <h4 class="distance-heading">Within <span class="distance-units"><span class="distance-unit --is-selected" @click="selectDistanceUnit('miles')">Mi</span> <span class="distance-unit" @click="selectDistanceUnit('km')">Km</span></span></h4>
           <ul class="distance-list">
             <li v-for="(option, index) in distanceOptions" :key="index" class="distance-item" @click="selectDistance(option)">{{ option }} miles</li>
-            <li class="distance-item" @click="selectDistance(0)">Any distance</li>
+            <li class="distance-item" @click="selectDistance(null)">Any distance</li>
           </ul>
         </div>
       </div>
