@@ -1,58 +1,117 @@
 <template>
   <transition name="fade">
-    <div class="container -location-selection" v-on-clickaway="hide">
+    <div class="container -location-selection" v-if="isActive" v-on-clickaway="hide">
       <div class="selection">
         <div class="location">
-          <input class="text-input" type="text" placeholder="Type in your city">
+          <input class="text-input" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
+          <p v-if="locationSearchQuery.length < 3" class="location-instructions">Enter at least 3 letters to search</p>
           <ul class="location-list">
-            <li v-for="(option, index) in locationOptions" :key="index" class="location-item" @click="selectDistance(option)">{{ option }}</li>
+            <li v-for="(option, index) in locations" :key="index" class="location-item" :class="selectedLocation === option ? '--is-selected' : ''" @click="selectLocation(option)">{{ option | truncate(30) }}</li>
           </ul>
+          <p v-if="locationsAreLoading" class="loader-wrapper">
+            <button class="loader"></button>
+          </p>
         </div>
-        <div class="distance">
-          <h4 class="distance-heading">Within <span class="distance-units"><span class="distance-unit --is-selected" @click="selectDistanceUnit('miles')">Mi</span> <span class="distance-unit" @click="selectDistanceUnit('km')">Km</span></span></h4>
-          <ul class="distance-list">
-            <li v-for="(option, index) in distanceOptions" :key="index" class="distance-item" @click="selectDistance(option)">{{ option }} miles</li>
-            <li class="distance-item" @click="selectDistance(null)">Any distance</li>
+        <div class="radius">
+          <h4 class="radius-heading">Within 
+            <span class="radius-units">
+              <span class="radius-unit" :class="selectedRadiusUnit === 'miles' ? '--is-selected' : ''" @click="selectRadiusUnit('miles')">Mi</span> 
+              <span class="radius-unit" :class="selectedRadiusUnit === 'km' ? '--is-selected' : ''" @click="selectRadiusUnit('km')">Km</span>
+            </span>
+          </h4>
+          <ul class="radius-list">
+            <li v-for="(option, index) in radiusOptions" :key="index" class="radius-item" :class="selectedRadius === option ? '--is-selected' : ''" @click="selectRadius(option)">{{ option }} miles</li>
+            <li class="radius-item" @click="selectRadius(0)" :class="selectedRadius === 0 ? '--is-selected' : ''">Any distance</li>
           </ul>
         </div>
       </div>
       <div class="actions">
-        <button class="done">Done</button>
+        <button class="done" @click="hide">Done</button>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+  import axios from '~/helpers/axios'
   import { directive as onClickaway } from 'vue-clickaway'
 
+  let searchTimer
+
   export default {
+    props: {
+      isActive: {
+        type: Boolean,
+        required: true,
+        default: false
+      }
+    },
+    computed: {
+      selectedRadius () {
+        return this.$store.getters['events/list/locationRadiusQuery']
+      },
+      selectedRadiusUnit () {
+        return this.$store.getters['events/list/locationRadiusUnitQuery']
+      },
+      selectedLocation () {
+        return this.$store.getters['events/list/locationQuery']
+      }
+    },
     data () {
       return {
-        distanceOptions: [
+        radiusOptions: [
           50,
           100,
           200,
           500
         ],
-        locationOptions: [
-          'London, UK',
-          'London NJ, USA',
-          'London MN, USA',
-          'London AZ, USA'
-        ]
+        locations: [],
+        locationsAreLoading: false,
+        locationSearchQuery: ''
       }
-    },
-    destroyed () {
-      // reset tags and hide when a new route is activated (v-on-clickaway doesn't fire on route change)
-      this.hide()
     },
     directives: {
       onClickaway: onClickaway
     },
     methods: {
+      fetchLocations () {
+        clearTimeout(searchTimer)
+        if (this.locationSearchQuery.length > 2) {
+          this.locations = []
+          this.locationsAreLoading = true
+          searchTimer = setTimeout(() => {
+            axios
+              .get('locations/lookup', {
+                params: {
+                  text: this.locationSearchQuery
+                }
+              })
+              .then(response => {
+                const payload = response.data.payload
+                const items = payload.items
+                this.locations = items
+                this.locationsAreLoading = false
+              })
+          }, 750)
+        } else {
+          this.locations = []
+          this.locationsAreLoading = false
+        }
+      },
       hide () {
-        this.$store.dispatch('events/hideLocationSelection')
+        this.$emit('hide')
+      },
+      selectRadius (value) {
+        this.$store.dispatch('events/list/setLocationRadiusQuery', value)
+        this.$store.dispatch('events/list/fetchItems')
+      },
+      selectRadiusUnit (value) {
+        this.$store.dispatch('events/list/setLocationRadiusUnitQuery', value)
+        this.$store.dispatch('events/list/fetchItems')
+      },
+      selectLocation (value) {
+        this.$store.dispatch('events/list/setLocationQuery', value)
+        this.$store.dispatch('events/list/fetchItems')
       }
     }
   }
@@ -107,24 +166,22 @@
     }
   }
 
-  .distance {
-    border-left: 1px solid $color--mine-shaft;
+  .radius {
     padding-left: 10px;
-    margin-left: 10px;
   }
 
-  .distance-heading {
+  .radius-heading {
     margin-top: 0;
     margin-bottom: .35rem;
     font-size: .8rem;
     text-transform: uppercase;
   }
 
-  .distance-units {
+  .radius-units {
     margin-left: 5px;
   }
 
-  .distance-unit {
+  .radius-unit {
     font-weight: 600;
     display: inline-block;
     padding: 2px 3px;
@@ -134,13 +191,19 @@
       background: $color--mine-shaft;
       color: $color--gallery;
     }
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
-  .distance-item {
+  .radius-item {
     font-size: .8rem;
     font-weight: 600;
     padding: 4px 3px 4px 0;
     cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
     &.--is-selected {
       padding: 4px 3px;
       margin-left: -3px;
@@ -153,8 +216,20 @@
     display: flex;
   }
 
+  .loader {
+    width: 15px;
+    height: 15px;
+  }
+
   .location {
     flex: 1;
+    padding-right: 10px;
+    border-right: 1px solid $color--mine-shaft;
+  }
+
+  .location-instructions {
+    font-size: .85rem;
+    padding: 0 5px;
   }
 
   .location-list {
@@ -164,13 +239,21 @@
   .location-item {
     padding: 5px;
     font-size: .9rem;
+    cursor: pointer;
     &:nth-child(odd) {
-      background: rgba($color--mine-shaft,.075)
+      background: rgba($color--mine-shaft,.075);
     }
     &.--is-selected {
       background: $color--mine-shaft;
       color: $color--gallery;
     }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .loader-wrapper {
+    margin-top: 1.25rem;
   }
 
   .text-input {

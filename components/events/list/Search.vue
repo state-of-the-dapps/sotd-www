@@ -8,9 +8,20 @@
           <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by event name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
         </ul>
         <div class="location-filter">
-          <img class="location-pin" src="~/assets/images/icons/pin.png" width="18">
+          <img class="location-pin" src="~/assets/images/icons/pin.png" width="18" @click="toggleLocationDropdown">
           <span class="location-text">
-            within <span class="location-selection">50 miles</span> of <span class="location-selection">Princeton NJ, USA</span></span></div>
+            <span v-if="locationQuery">
+              within 
+              <span class="location-selection" @click="toggleLocationDropdown">
+                <span v-if="locationRadiusQuery">{{ locationRadiusQuery }} {{ locationRadiusUnitQuery }}</span><span v-else>any distance</span>
+                </span> of <span class="location-selection" @click="toggleLocationDropdown">{{ locationQuery || 'any location' }}
+              </span>
+            </span>
+            <span v-else="locationQuery">
+              <span class="location-selection" @click="toggleLocationDropdown">search by location</span>
+            </span>
+          </span>   
+        </div>
           </span>
       </div>
       <SuggestedTags
@@ -20,10 +31,8 @@
         @updateTextQuery="updateTextQuery"
       />
       <LocationSelection
-        :items="suggestedTags"
-        :model="'events'"
-        :textQuery="textQuery"
-        @updateTextQuery="updateTextQuery"
+        :isActive="locationDropdownIsActive"
+        @hide="toggleLocationDropdown"
       />
     </div>
   </section>
@@ -39,11 +48,25 @@
   var trackTimer
 
   export default {
+    data () {
+      return {
+        locationDropdownIsActive: false
+      }
+    },
     components: {
       LocationSelection,
       SuggestedTags
     },
     computed: {
+      locationRadiusQuery () {
+        return this.$store.getters['events/list/locationRadiusQuery']
+      },
+      locationRadiusUnitQuery () {
+        return this.$store.getters['events/list/locationRadiusUnitQuery']
+      },
+      locationQuery () {
+        return this.$store.getters['events/list/locationQuery']
+      },
       suggestedTags () {
         return this.$store.getters['tags/items']
       },
@@ -104,6 +127,9 @@
         trackTimer = setTimeout(() => {
           this.$mixpanel.track('Events - Search', { query: this.textQuery })
         }, 10000)
+      },
+      toggleLocationDropdown () {
+        this.locationDropdownIsActive = !this.locationDropdownIsActive
       },
       updateTextQuery (value) {
         this.textQuery = value
@@ -201,6 +227,7 @@
   }
 
   .location-pin {
+    cursor: pointer;
     margin-right: 0;
     @include tweakpoint('min-width', $tweakpoint--default) {
       margin-right: 7px;;

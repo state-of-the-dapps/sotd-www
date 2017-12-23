@@ -9,6 +9,9 @@ function initialQuery () {
   return {
     dateStart: formatDate(Date.now(), 'YYYY-MM-DD'),
     limit: 50,
+    location: '',
+    locationRadius: 50,
+    locationRadiusUnit: 'miles',
     offset: 0,
     seed: randomSeed,
     tab: tabOptions[0],
@@ -60,6 +63,15 @@ const actions = {
   setFriendlyUrl: ({ commit }) => {
     commit('SET_FRIENDLY_URL')
   },
+  setLocationRadiusQuery: ({ commit }, value) => {
+    commit('SET_LOCATION_RADIUS_QUERY', value)
+  },
+  setLocationRadiusUnitQuery: ({ commit }, value) => {
+    commit('SET_LOCATION_RADIUS_UNIT_QUERY', value)
+  },
+  setLocationQuery: ({ commit }, value) => {
+    commit('SET_LOCATION_QUERY', value)
+  },
   toggleRefineDropdown: ({ commit }, type) => {
     commit('TOGGLE_REFINE_DROPDOWN', type)
   }
@@ -89,6 +101,15 @@ const getters = {
   },
   isLoading: state => {
     return state.isLoading
+  },
+  locationRadiusQuery: state => {
+    return state.query.locationRadius
+  },
+  locationRadiusUnitQuery: state => {
+    return state.query.locationRadiusUnit
+  },
+  locationQuery: state => {
+    return state.query.location
   },
   pagerOffset: state => {
     return state.pager.offset
@@ -172,6 +193,15 @@ const mutations = {
   },
   SET_LOADING_STATUS (state, value) {
     state.isLoading = value
+  },
+  SET_LOCATION_RADIUS_QUERY (state, value) {
+    state.query.locationRadius = value
+  },
+  SET_LOCATION_RADIUS_UNIT_QUERY (state, value) {
+    state.query.locationRadiusUnit = value
+  },
+  SET_LOCATION_QUERY (state, value) {
+    state.query.location = value
   },
   SET_REFINE_QUERY (state, value) {
     state.query.status = value
