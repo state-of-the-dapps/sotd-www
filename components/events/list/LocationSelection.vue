@@ -5,6 +5,7 @@
         <div class="location">
           <input class="text-input" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
           <p v-if="locationSearchQuery.length < 3" class="location-instructions">Enter at least 3 letters to search</p>
+          <p v-if="locationSearchQuery.length >= 3 && locations.length === 0 && locationsAreLoading === false" class="location-instructions">No locations were found. Check your city spelling, or try adding a state, province, or country.</p>
           <ul class="location-list">
             <li v-for="(option, index) in locations" :key="index" class="location-item" :class="selectedLocation === option ? '--is-selected' : ''" @click="selectLocation(option)">{{ option | truncate(30) }}</li>
           </ul>
@@ -20,7 +21,7 @@
             </span>
           </h4>
           <ul class="radius-list">
-            <li v-for="(option, index) in radiusOptions" :key="index" class="radius-item" :class="selectedRadius === option ? '--is-selected' : ''" @click="selectRadius(option)">{{ option }} miles</li>
+            <li v-for="(option, index) in radiusOptions" :key="index" class="radius-item" :class="selectedRadius === option ? '--is-selected' : ''" @click="selectRadius(option)">{{ option }} {{ selectedRadiusUnit }}</li>
             <li class="radius-item" @click="selectRadius(0)" :class="selectedRadius === 0 ? '--is-selected' : ''">Any distance</li>
           </ul>
         </div>
@@ -91,6 +92,7 @@
                 const items = payload.items
                 this.locations = items
                 this.locationsAreLoading = false
+                this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length })
               })
           }, 750)
         } else {
