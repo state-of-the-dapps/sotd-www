@@ -59,9 +59,18 @@ export default {
       align-items: center;
     }
     &.item {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
       width: 14.28571429%;
+      height: 47px;
       background: lighten($color--gallery, 20%);
+      border-right: 1px solid rgba($color--mine-shaft, .1);
+      border-bottom: 1px solid rgba($color--mine-shaft, .1);
+      &:last-child {
+        border-right: none;
+      }
     }
   }
 
@@ -74,7 +83,7 @@ export default {
     &.item {
       width: 14.28571429%;
       text-align: center;
-      font-size: .8rem;
+      font-size: .75rem;
       text-transform: uppercase;
     }
   }
