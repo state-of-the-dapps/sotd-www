@@ -20,15 +20,27 @@
         <li class="item -day-label"><span>Sat</span></li>
       </ul>
       <ul class="list -day">
+        <li class="item -day is-not-active"></li>
+        <li class="item -day is-not-active"></li>
+        <li class="item -day is-not-active"></li>        
         <li class="item -day"><span>1</span></li>
         <li class="item -day"><span>2</span></li>
         <li class="item -day"><span>3</span></li>
-        <li class="item -day"><span>4</span></li>
+        <li class="item -day is-today"><span>4</span></li>
         <li class="item -day"><span>5</span></li>
         <li class="item -day"><span>6</span></li>
         <li class="item -day"><span>7</span></li>
         <li class="item -day"><span>8</span></li>
         <li class="item -day"><span>9</span></li>
+        <li class="item -day"><span>10</span></li>
+        <li class="item -day"><span>11</span></li>
+        <li class="item -day"><span>12</span></li>
+        <li class="item -day"><span>13</span></li>
+        <li class="item -day"><span>14</span></li>
+        <li class="item -day"><span>15</span></li>
+        <li class="item -day"><span>16</span></li>
+        <li class="item -day"><span>17</span></li>
+        <li class="item -day"><span>18</span></li>
       </ul>
     </div>
   </section>
@@ -45,7 +57,7 @@ export default {
   .-calendar {
     &.component {
       max-width: 350px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
     }
     &.wrapper {
       padding: 0 10px;
@@ -57,19 +69,38 @@ export default {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      filter: drop-shadow(0 0 10px rgba($color--mine-shaft,.05));
     }
     &.item {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
-      width: 14.28571429%;
+      width: calc(14.28571429% - 1px);
+      box-sizing: content-box;
       height: 47px;
       background: lighten($color--gallery, 20%);
       border-right: 1px solid rgba($color--mine-shaft, .1);
-      border-bottom: 1px solid rgba($color--mine-shaft, .1);
+      border-top: 1px solid rgba($color--mine-shaft, .1);
+      cursor: pointer;
+      &:nth-child(-n+7) {
+        border-top: none;
+      }
       &:last-child {
         border-right: none;
+      }
+      &:nth-child(7n + 7) {
+        border-right: none;
+      }
+      &.is-not-active {
+        background: none;
+        border-color: transparent;
+      }
+      &.is-today {
+        font-weight: 700;
+      }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
@@ -78,7 +109,7 @@ export default {
     &.list {
       display: flex;
       align-items: center;
-      padding: 10px 0;
+      padding: 15px 0 5px;
     }
     &.item {
       width: 14.28571429%;
