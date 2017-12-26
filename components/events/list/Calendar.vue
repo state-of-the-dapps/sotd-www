@@ -47,17 +47,16 @@
 </template>
 
 <script>
-  // import formatDate from 'date-fns/format'
+  import formatDate from 'date-fns/format'
   // import startOfMonth from 'date-fns/start_of_month'
 
   export default {
     data () {
       return {
-        selectedMonth: '',
-        selectedMonthNext: '',
-        selectedMonthPrev: '',
-        selectedMonthYear: '',
-        selectedMonthDays: '',
+        days: [],
+        month: '',
+        year: '',
+        selectedDay: '',
         today: ''
       }
     },
@@ -67,9 +66,12 @@
       }
     },
     methods: {
-      setCalendar (month, year) {
+      initializeCalendar () {
         const dateStartQuery = this.dateStartQuery
-        console.log(dateStartQuery)
+        this.month = formatDate(dateStartQuery, 'M')
+        this.year = formatDate(dateStartQuery, 'YYYY')
+        this.selectedDay = formatDate(dateStartQuery, 'YYYY-MM-DD')
+        this.today = formatDate(dateStartQuery, 'YYYY-MM-DD')
         // selected month
         // selected next month
         // selected prev month
@@ -78,7 +80,7 @@
       }
     },
     mounted () {
-      this.setCalendar()
+      this.initializeCalendar()
     }
   }
 </script>
