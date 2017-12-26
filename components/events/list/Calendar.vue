@@ -20,43 +20,29 @@
         <li class="item -day-label"><span>Sat</span></li>
       </ul>
       <ul class="list -day">
-        <li class="item -day is-not-active"></li>
-        <li class="item -day is-not-active"></li>
-        <li class="item -day is-not-active"></li>        
-        <li class="item -day"><span>1</span></li>
-        <li class="item -day"><span>2</span></li>
-        <li class="item -day"><span>3</span></li>
-        <li class="item -day is-today"><span>4</span></li>
-        <li class="item -day"><span>5</span></li>
-        <li class="item -day"><span>6</span></li>
-        <li class="item -day"><span>7</span></li>
-        <li class="item -day"><span>8</span></li>
-        <li class="item -day"><span>9</span></li>
-        <li class="item -day"><span>10</span></li>
-        <li class="item -day"><span>11</span></li>
-        <li class="item -day"><span>12</span></li>
-        <li class="item -day"><span>13</span></li>
-        <li class="item -day"><span>14</span></li>
-        <li class="item -day"><span>15</span></li>
-        <li class="item -day"><span>16</span></li>
-        <li class="item -day"><span>17</span></li>
-        <li class="item -day"><span>18</span></li>
+        <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
+        <li v-for="(day, index) in days" :key="index" class="item -day" :class="{ 'is-today': day.isToday, 'is-selected': day.isSelected }"><span>{{ index + 1 }}</span></li>
       </ul>
     </div>
   </section>
 </template>
 
 <script>
+  import addDays from 'date-fns/add_days'
   import formatDate from 'date-fns/format'
-  // import startOfMonth from 'date-fns/start_of_month'
+  import getDay from 'date-fns/get_day'
+  import getDaysInMonth from 'date-fns/get_days_in_month'
+  import startOfMonth from 'date-fns/start_of_month'
+
+  let categoriesTimer
 
   export default {
     data () {
       return {
         days: [],
-        month: '',
-        year: '',
-        selectedDay: '',
+        daysBeforeFirstDay: '',
+        startOfMonthDate: '',
+        selectedDate: '',
         today: ''
       }
     },
@@ -67,16 +53,31 @@
     },
     methods: {
       initializeCalendar () {
-        const dateStartQuery = this.dateStartQuery
-        this.month = formatDate(dateStartQuery, 'M')
-        this.year = formatDate(dateStartQuery, 'YYYY')
-        this.selectedDay = formatDate(dateStartQuery, 'YYYY-MM-DD')
-        this.today = formatDate(dateStartQuery, 'YYYY-MM-DD')
-        // selected month
-        // selected next month
-        // selected prev month
-        // selected year
-        // today
+        this.selectedDate = formatDate(this.dateStartQuery, 'YYYY-MM-DD')
+        this.today = formatDate(this.dateStartQuery, 'YYYY-MM-DD')
+        this.startOfMonthDate = formatDate(startOfMonth(this.today), 'YYYY-MM-DD')
+        this.setupMonth()
+      },
+      setupMonth () {
+        clearTimeout(categoriesTimer)
+        this.daysBeforeFirstDay = getDay(this.startOfMonthDate)
+        const daysInMonth = getDaysInMonth(this.startOfMonthDate)
+        let days = []
+        let i = 0
+        while (i < daysInMonth) {
+          let currentDate = formatDate(addDays(this.startOfMonthDate, i), 'YYYY-MM-DD')
+          let isToday = currentDate === this.today
+          let isSelected = currentDate === this.selectedDate
+          days.push(
+            {
+              date: currentDate,
+              isSelected,
+              isToday
+            }
+          )
+          i++
+        }
+        this.days = days
       }
     },
     mounted () {
@@ -133,6 +134,16 @@
       &.is-today {
         font-weight: 700;
       }
+      &.is-selected {
+        background: $color--mine-shaft;
+        color: $color--gallery;
+        margin-left: -1px;
+        padding-right: 1px;
+        &:nth-child(7n + 1) {
+          margin-left: 0;
+          padding-right: 0;
+        }
+      }
       &:hover {
         text-decoration: underline;
       }
@@ -160,7 +171,8 @@
     }
     &.item {
       line-height: 1;
-      padding: 10px 11px;
+      padding: 10px 0;
+      width: 14.28571429%;
       font-size: 1.05rem;
       text-align: center;
       background: $color--mine-shaft;
@@ -174,6 +186,8 @@
         &:hover {
           text-decoration: none;
         }
+      }
+      &.--next {
       }
       &:hover {
         text-decoration: underline;
