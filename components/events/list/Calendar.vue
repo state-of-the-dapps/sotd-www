@@ -11,13 +11,7 @@
         <li class="item -month --next"><span>Jan</span></li>
       </ul>
       <ul class="list -day-label">
-        <li class="item -day-label"><span>Sun</span></li>
-        <li class="item -day-label"><span>Mon</span></li>
-        <li class="item -day-label"><span>Tue</span></li>
-        <li class="item -day-label"><span>Wed</span></li>
-        <li class="item -day-label"><span>Thu</span></li>
-        <li class="item -day-label"><span>Fri</span></li>
-        <li class="item -day-label"><span>Sat</span></li>
+        <li v-for="(day, index) in daysOfTheWeek" :key="index" class="item -day-label"><span>{{ day }}</span></li>
       </ul>
       <ul class="list -day">
         <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
@@ -33,6 +27,7 @@
   import getDay from 'date-fns/get_day'
   import getDaysInMonth from 'date-fns/get_days_in_month'
   import startOfMonth from 'date-fns/start_of_month'
+  import { daysOfTheWeek } from '~/helpers/constants'
 
   let categoriesTimer
 
@@ -40,6 +35,7 @@
     data () {
       return {
         days: [],
+        daysOfTheWeek,
         daysBeforeFirstDay: '',
         startOfMonthDate: '',
         selectedDate: '',

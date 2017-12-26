@@ -19,14 +19,25 @@ const dappRefineTabOptions = Object.freeze([
   'most-relevant'
 ])
 
+const daysOfTheWeek = Object.freeze([
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+])
+
 const eventRefineTabOptions = Object.freeze([
   'ico',
   'hackathon'
 ])
 
 export {
-  eventRefineTabOptions,
   dappStatuses,
   dappRefineStatusOptions,
-  dappRefineTabOptions
+  dappRefineTabOptions,
+  daysOfTheWeek,
+  eventRefineTabOptions
 }
