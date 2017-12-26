@@ -81,6 +81,9 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
+  dateStartQuery: state => {
+    return state.query.dateStart
+  },
   tabDropdownIsActive: state => {
     return state.refine.tab.isActive
   },

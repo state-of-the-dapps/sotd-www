@@ -47,8 +47,40 @@
 </template>
 
 <script>
-export default {
-}
+  // import formatDate from 'date-fns/format'
+  // import startOfMonth from 'date-fns/start_of_month'
+
+  export default {
+    data () {
+      return {
+        selectedMonth: '',
+        selectedMonthNext: '',
+        selectedMonthPrev: '',
+        selectedMonthYear: '',
+        selectedMonthDays: '',
+        today: ''
+      }
+    },
+    computed: {
+      dateStartQuery () {
+        return this.$store.getters['events/list/dateStartQuery']
+      }
+    },
+    methods: {
+      setCalendar (month, year) {
+        const dateStartQuery = this.dateStartQuery
+        console.log(dateStartQuery)
+        // selected month
+        // selected next month
+        // selected prev month
+        // selected year
+        // today
+      }
+    },
+    mounted () {
+      this.setCalendar()
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
