@@ -16,6 +16,10 @@
   opacity: 0
 }
 
+.fade-in-enter, .fade-in-leave-to {
+  opacity: 0
+}
+
 .page-enter-active, .page-leave-active {
   transition: opacity .3s;
 }

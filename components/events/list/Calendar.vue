@@ -12,7 +12,12 @@
       <ul class="list -day">
         <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
         <li v-for="(day, index) in days" :key="day | formatDate('YYYY-MM-DD')" @click="selectDate(day.date)" class="item -day" :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }">
-          <span>{{ index + 1 }}</span>
+          <span class="num -day">{{ index + 1 }}</span>
+          <transition name="fade">
+            <ul class="list -categories" v-if="day.categories && day.categories.length > 0">
+              <li v-for="(category, index) in day.categories" :key="index" class="item -categories" :class="'--' + category"></li>
+            </ul>
+          </transition>
         </li>
       </ul>
     </div>
@@ -67,6 +72,7 @@
       },
       selectDate (date) {
         this.$store.dispatch('events/list/setDateStartQuery', date)
+        this.$store.dispatch('events/list/fetchItems')
       },
       setDayCategories () {
         axios
@@ -82,6 +88,8 @@
                 let itemWithCategories = items.find(function (obj) { return obj.date === day.date })
                 if (itemWithCategories !== undefined) {
                   day.categories = itemWithCategories.categories
+                } else {
+                  day.categories = []
                 }
                 return day
               })
@@ -142,6 +150,41 @@
     }
   }
 
+  .-categories {
+    &.list {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      display: flex;
+    }
+    &.item {
+      flex: 1;
+      height: 100%;
+      &.--ico {
+        background: $color--event-red;
+      }
+      &.--hackathon {
+        background: $color--event-light-blue;
+      }
+      &.--summit {
+        background: $color--event-aquamarine;
+      }
+      &.--crowdsale {
+        background: $color--event-green;
+      }
+      &.--conference {
+        background: $color--event-blue;
+      }
+      &.--meetup {
+        background: $color--event-orange;
+      }
+      &.--release {
+        background: $color--event-red;
+      }
+    }
+  }
+
   .-day {
     &.list {
       display: flex;
@@ -150,6 +193,7 @@
       filter: drop-shadow(0 0 10px rgba($color--mine-shaft,.05));
     }
     &.item {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -181,18 +225,23 @@
         font-weight: 700;
       }
       &.is-selected {
-        background: $color--mine-shaft;
+        position: relative;
         color: $color--gallery;
-        margin-left: -1px;
-        padding-right: 1px;
-        &:nth-child(7n + 1) {
-          margin-left: 0;
-          padding-right: 0;
+        &:before {
+          content: '';
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          background: $color--mine-shaft;
         }
         &:hover {
           text-decoration: none;
         }
       }
+    }
+    &.num {
+      position: relative;
+      z-index: 2;
     }
   }
 
