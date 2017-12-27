@@ -96,6 +96,9 @@ const getters = {
   friendlyUrl: state => {
     return state.friendlyUrl
   },
+  fullQuery: state => {
+    return state.query
+  },
   items: state => {
     return state.items
   },

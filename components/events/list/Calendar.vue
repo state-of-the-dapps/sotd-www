@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import axios from '~/helpers/axios'
   import addDays from 'date-fns/add_days'
   import addMonths from 'date-fns/add_months'
   import formatDate from 'date-fns/format'
@@ -27,6 +28,8 @@
   import getDaysInMonth from 'date-fns/get_days_in_month'
   import startOfMonth from 'date-fns/start_of_month'
   import { daysOfTheWeek } from '~/helpers/constants'
+
+  let setDayCategoriesTimer
 
   export default {
     data () {
@@ -39,6 +42,9 @@
       }
     },
     computed: {
+      eventsFullQuery () {
+        return this.$store.getters['events/list/fullQuery']
+      },
       selectedDate () {
         return this.$store.getters['events/list/dateStartQuery']
       }
@@ -62,7 +68,32 @@
       selectDate (date) {
         this.$store.dispatch('events/list/setDateStartQuery', date)
       },
+      setDayCategories () {
+        axios
+          .get('events/calendar', {
+            params: this.eventsFullQuery
+          })
+          .then(response => {
+            const payload = response.data.payload
+            const items = payload.items
+            const days = this.days
+            if (items.length > 0) {
+              const daysWithCategories = days.map(day => {
+                let itemWithCategories = items.find(function (obj) { return obj.date === day.date })
+                if (itemWithCategories !== undefined) {
+                  day.categories = itemWithCategories.categories
+                }
+                return day
+              })
+              this.days = daysWithCategories
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
       setupMonth () {
+        clearTimeout(setDayCategoriesTimer)
         this.days = []
         this.daysBeforeFirstDay = getDay(this.startOfMonthDate)
         const daysInMonth = getDaysInMonth(this.startOfMonthDate)
@@ -78,10 +109,21 @@
           i++
         }
         this.days = days
+        setDayCategoriesTimer = setTimeout(() => {
+          this.setDayCategories()
+        }, 1000)
       }
     },
     mounted () {
       this.initializeCalendar()
+    },
+    watch: {
+      eventsFullQuery: {
+        handler: function () {
+          this.setDayCategories()
+        },
+        deep: true
+      }
     }
   }
 </script>
