@@ -1,21 +1,19 @@
 <template>
   <section class="component -calendar">
     <div class="wrapper -calendar">
-      <ul class="list -toolbar">
-        <li class="item -toolbar"><span>Select today</span></li>
-        <li class="item -toolbar"><span>Clear selection</span></li>
-      </ul>
       <ul class="list -month">
-        <li class="item -month --prev"><span>Nov</span></li>
-        <li class="item -month --current"><span>December 2017</span></li>
-        <li class="item -month --next"><span>Jan</span></li>
+        <li class="item -month --prev" @click="changeMonth(-1)"><span>{{ startOfMonthDate | addMonths(-1) | formatDate('MMM') }}</span></li>
+        <li class="item -month --current"><span>{{ startOfMonthDate | formatDate('MMMM YYYY') }}</span></li>
+        <li class="item -month --next" @click="changeMonth(1)"><span>{{ startOfMonthDate | addMonths(1) | formatDate('MMM') }}</span></li>
       </ul>
       <ul class="list -day-label">
         <li v-for="(day, index) in daysOfTheWeek" :key="index" class="item -day-label"><span>{{ day }}</span></li>
       </ul>
       <ul class="list -day">
         <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
-        <li v-for="(day, index) in days" :key="index" class="item -day" :class="{ 'is-today': day.isToday, 'is-selected': day.isSelected }"><span>{{ index + 1 }}</span></li>
+        <li v-for="(day, index) in days" :key="day | formatDate('YYYY-MM-DD')" @click="selectDate(day.date)" class="item -day" :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }">
+          <span>{{ index + 1 }}</span>
+        </li>
       </ul>
     </div>
   </section>
@@ -23,13 +21,12 @@
 
 <script>
   import addDays from 'date-fns/add_days'
+  import addMonths from 'date-fns/add_months'
   import formatDate from 'date-fns/format'
   import getDay from 'date-fns/get_day'
   import getDaysInMonth from 'date-fns/get_days_in_month'
   import startOfMonth from 'date-fns/start_of_month'
   import { daysOfTheWeek } from '~/helpers/constants'
-
-  let categoriesTimer
 
   export default {
     data () {
@@ -38,37 +35,44 @@
         daysOfTheWeek,
         daysBeforeFirstDay: '',
         startOfMonthDate: '',
-        selectedDate: '',
         today: ''
       }
     },
     computed: {
-      dateStartQuery () {
+      selectedDate () {
         return this.$store.getters['events/list/dateStartQuery']
       }
     },
     methods: {
-      initializeCalendar () {
-        this.selectedDate = formatDate(this.dateStartQuery, 'YYYY-MM-DD')
-        this.today = formatDate(this.dateStartQuery, 'YYYY-MM-DD')
-        this.startOfMonthDate = formatDate(startOfMonth(this.today), 'YYYY-MM-DD')
+      changeMonth (num) {
+        this.startOfMonthDate = addMonths(this.startOfMonthDate, num)
         this.setupMonth()
       },
+      initializeCalendar () {
+        this.today = formatDate(Date.now(), 'YYYY-MM-DD')
+        this.startOfMonthDate = formatDate(startOfMonth(this.selectedDate), 'YYYY-MM-DD')
+        this.setupMonth()
+      },
+      isSelected (date) {
+        return this.selectedDate === date
+      },
+      isToday (date) {
+        return this.today === date
+      },
+      selectDate (date) {
+        this.$store.dispatch('events/list/setDateStartQuery', date)
+      },
       setupMonth () {
-        clearTimeout(categoriesTimer)
+        this.days = []
         this.daysBeforeFirstDay = getDay(this.startOfMonthDate)
         const daysInMonth = getDaysInMonth(this.startOfMonthDate)
         let days = []
         let i = 0
         while (i < daysInMonth) {
           let currentDate = formatDate(addDays(this.startOfMonthDate, i), 'YYYY-MM-DD')
-          let isToday = currentDate === this.today
-          let isSelected = currentDate === this.selectedDate
           days.push(
             {
-              date: currentDate,
-              isSelected,
-              isToday
+              date: currentDate
             }
           )
           i++
@@ -92,6 +96,7 @@
     }
     &.wrapper {
       padding: 0 10px;
+      user-select: none;
     }
   }
 
@@ -123,6 +128,9 @@
       &:nth-child(7n + 7) {
         border-right: none;
       }
+      &:hover {
+        text-decoration: underline;
+      }
       &.is-not-active {
         background: none;
         border-color: transparent;
@@ -139,9 +147,9 @@
           margin-left: 0;
           padding-right: 0;
         }
-      }
-      &:hover {
-        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }
@@ -150,7 +158,7 @@
     &.list {
       display: flex;
       align-items: center;
-      padding: 15px 0 5px;
+      padding: 10px 0;
     }
     &.item {
       width: 14.28571429%;
@@ -179,29 +187,10 @@
         color: $color--mine-shaft;
         background: lighten($color--gallery, 20%);
         flex: 1;
+        cursor: initial;
         &:hover {
           text-decoration: none;
         }
-      }
-      &.--next {
-      }
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .-toolbar {
-    &.list {
-      display: flex;
-      margin-bottom: 10px;
-    }
-    &.item {
-      font-size: .9rem;
-      width: 50%;
-      cursor: pointer;
-      &:last-child {
-        text-align: right;
       }
       &:hover {
         text-decoration: underline;

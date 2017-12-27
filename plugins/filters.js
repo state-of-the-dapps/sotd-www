@@ -1,11 +1,20 @@
 import Vue from 'vue'
 import formatDate from 'date-fns/format'
+import addMonths from 'date-fns/add_months'
 import * as constants from '~/helpers/constants'
 
 Vue.filter('formatDate',
   (value, format) => {
     if (value) {
       return formatDate(value, format)
+    }
+  }
+)
+
+Vue.filter('addMonths',
+  (value, num) => {
+    if (value) {
+      return addMonths(value, num)
     }
   }
 )

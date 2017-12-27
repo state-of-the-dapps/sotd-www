@@ -51,6 +51,9 @@ const actions = {
   resetQuery ({ commit }) {
     commit('RESET_QUERY')
   },
+  setDateStartQuery ({ commit }, date) {
+    commit('SET_DATE_START_QUERY', date)
+  },
   setTextQuery: ({ commit }, value) => {
     commit('SET_TEXT_QUERY', value)
   },
@@ -146,6 +149,9 @@ const mutations = {
   },
   SET_ACTIVE_ITEM_INDEX (state, index) {
     state.activeItemIndex = index
+  },
+  SET_DATE_START_QUERY (state, date) {
+    state.query.dateStart = date
   },
   SET_CATEGORY_QUERY (state, value) {
     var options = tabOptions || []
