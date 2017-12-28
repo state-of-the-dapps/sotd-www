@@ -25,10 +25,10 @@
 
   export default {
     beforeDestroy () {
-      if (this.categoriesDropdownIsActive === true) {
+      if (this.tabDropdownIsActive === true) {
         this.toggle('categories')
       }
-      if (this.refineDropdownIsActive === true) {
+      if (this.statusDropdownIsActive === true) {
         this.toggle('refine')
       }
     },
@@ -85,7 +85,7 @@
     display: inline-block;
     padding: 3px 16px 3px 6px;
     margin: 0 5px;
-    width: 100px;
+    width: 112px;
     white-space: nowrap;
     border: 1px solid rgba($color--mine-shaft,.15);
     position: relative;

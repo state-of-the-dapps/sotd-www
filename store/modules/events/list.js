@@ -1,6 +1,6 @@
 import formatDate from 'date-fns/format'
 import { generateRandomSeed } from '~/helpers/functions'
-import { eventRefineTabOptions as tabOptions } from '~/helpers/constants'
+import { eventRefineCategoryOptions as categoryOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
@@ -14,7 +14,7 @@ function initialQuery () {
     locationRadiusUnit: 'miles',
     offset: 0,
     seed: randomSeed,
-    tab: tabOptions[0],
+    category: categoryOptions[0],
     tags: [],
     text: ''
   }
@@ -87,8 +87,8 @@ const getters = {
   dateStartQuery: state => {
     return state.query.dateStart
   },
-  tabDropdownIsActive: state => {
-    return state.refine.tab.isActive
+  categoryDropdownIsActive: state => {
+    return state.refine.category.isActive
   },
   tabQuery: state => {
     return state.query.tab
@@ -157,7 +157,7 @@ const mutations = {
     state.query.dateStart = date
   },
   SET_CATEGORY_QUERY (state, value) {
-    var options = tabOptions || []
+    var options = categoryOptions || []
     if (options.indexOf(value) !== -1) {
       state.query.tab = value
     } else {
@@ -176,7 +176,7 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = tabOptions || []
+    var options = categoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var tab = state.query.tab
     var url = '/'
@@ -229,7 +229,7 @@ const mutations = {
 const state = {
   activeItemIndex: -1,
   refine: {
-    tab: {
+    category: {
       isActive: false
     }
   },

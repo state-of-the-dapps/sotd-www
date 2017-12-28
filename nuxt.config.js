@@ -85,7 +85,7 @@ module.exports = {
       }
     ]
   },
-  loading: { color: '#333' },
+  loading: { color: '#eee' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/filters' },

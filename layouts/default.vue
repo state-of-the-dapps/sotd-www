@@ -1,9 +1,11 @@
 <template>
   <div class="main-container">
-    <Announcement/>
-    <Utilities/>
-    <Masthead/>
-    <nuxt/>
+    <div class="content-container">
+      <Announcement/>
+      <Utilities/>
+      <Masthead/>
+      <nuxt/>
+    </div>
     <Foot/>
     <transition name="fade">
       <img @click="scrollUp" class="scroll-up" :class="{ '--has-announcement': announcement, '--is-active': scrollNeeded }" src="~/assets/images/scroll-up.png" width="36" height="36">
@@ -67,6 +69,12 @@
     height: 100%;
     position: relative;
   }
+
+  .content-container {
+    min-height: 98%;
+    overflow: hidden;
+  }
+
   .scroll-up {
     position: fixed;
     bottom: 12px;

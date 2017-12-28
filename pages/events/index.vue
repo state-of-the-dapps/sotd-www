@@ -1,13 +1,13 @@
 <template>
   <div>
     <Search/>
-    <div class="results-filters">
-      <div class="results">
+    <div class="wrapper -results-filters">
+      <div class="wrapper -filters">
+        <Calendar/>
+      </div>
+      <div class="wrapper -results">
         <CountRefine/>
         <Items/>
-      </div>
-      <div class="filters">
-        <Calendar/>
       </div>
     </div>
     <Pager/>
@@ -45,7 +45,7 @@
       this.$store.dispatch('setSiteSection', 'events')
       // this.$store.dispatch('events/list/setFriendlyQuery', this.$route.params)
       // this.$store.dispatch('events/list/setFriendlyUrl')
-      // this.$store.dispatch('events/list/fetchItems')
+      this.$store.dispatch('events/list/fetchItems')
     },
     watch: {
       'tagQuery': function () {
@@ -63,3 +63,35 @@
     scrollToTop: false
   }
 </script>
+
+<style lang="scss" scoped>
+  @import '~assets/css/settings';
+
+  .-results-filters {
+    &.wrapper {
+      display: flex;
+      flex-direction: column;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 25px 20px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        flex-direction: row-reverse;
+        max-width: 1100px;
+      }
+    }
+  }
+
+  .-results {
+    &.wrapper {
+      flex: 1;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        margin-right: 10px;
+      }
+    }
+  }  
+
+  .-filters {
+    &.wrapper {
+    }
+  }
+</style>

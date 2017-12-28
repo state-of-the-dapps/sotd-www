@@ -39,7 +39,7 @@
 </template>
 
 <script>
-  import { eventRefineTabOptions } from '~/helpers/constants'
+  import { eventRefineCategoryOptions } from '~/helpers/constants'
   import { getCaretPosition } from '~/helpers/mixins'
   import LocationSelection from '~/components/events/list/LocationSelection.vue'
   import SuggestedTags from '~/components/shared/SuggestedTags.vue'
@@ -119,7 +119,7 @@
             this.$store.dispatch('tags/fetchItems', lastWord)
           }
           if (this.textQuery.length === 0) {
-            this.$store.dispatch('events/list/setTabQuery', eventRefineTabOptions[0])
+            this.$store.dispatch('events/list/setTabQuery', eventRefineCategoryOptions[0])
             this.fetchSuggestedTagsWithNoQuery()
           }
           this.$store.dispatch('events/list/fetchItems')

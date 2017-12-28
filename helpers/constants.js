@@ -29,15 +29,25 @@ const daysOfTheWeek = Object.freeze([
   'Sat'
 ])
 
-const eventRefineTabOptions = Object.freeze([
+const eventCategories = Object.freeze([
+  'conference',
+  'crowdsale',
   'ico',
-  'hackathon'
+  'hackathon',
+  'meetup',
+  'release',
+  'summit',
+  'workshop'
 ])
+
+const eventRefineCategoryOptions = eventCategories.slice()
+eventRefineCategoryOptions.unshift('any')
 
 export {
   dappStatuses,
   dappRefineStatusOptions,
   dappRefineTabOptions,
   daysOfTheWeek,
-  eventRefineTabOptions
+  eventCategories,
+  eventRefineCategoryOptions
 }
