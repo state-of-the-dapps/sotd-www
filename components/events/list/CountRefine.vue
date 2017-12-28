@@ -6,9 +6,10 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': categoryDropdownIsActive }" @click="toggle('tab')">{{ selectedCategory }}
+          <span class="dropdown" :class="{ '--is-active': categoryDropdownIsActive }" @click="toggle('category')">{{ selectedCategory }}
             <CategoryDropdown/>
           </span>
+          events
         </li>
       </ul>
     </div>
@@ -69,7 +70,7 @@
   .dropdown {
     display: inline-block;
     padding: 3px 16px 3px 6px;
-    margin-left: 5px;
+    margin: 0 5px;
     width: 112px;
     white-space: nowrap;
     border: 1px solid rgba($color--mine-shaft,.15);

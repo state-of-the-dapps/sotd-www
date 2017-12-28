@@ -33,7 +33,7 @@
     },
     methods: {
       hide () {
-        this.$mixpanel.track('Events - Hide categories dropdown')
+        this.$mixpanel.track('Events - Hide category dropdown')
         this.$store.dispatch('events/list/toggleRefineDropdown', 'category')
       },
       select (option) {

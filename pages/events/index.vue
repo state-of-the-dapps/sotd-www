@@ -31,8 +31,8 @@
       Search
     },
     computed: {
-      tabQuery () {
-        return this.$store.getters['events/list/tabQuery']
+      categoryQuery () {
+        return this.$store.getters['events/list/categoryQuery']
       },
       eventCount () {
         return this.$store.getters['statEventCount']
@@ -57,7 +57,7 @@
     },
     head () {
       return {
-        title: 'State of the ÐApps — ' + this.eventCount + ' upcoming events'
+        title: 'State of the ÐApps — ' + this.eventCount + ' Upcoming Events'
       }
     },
     scrollToTop: false

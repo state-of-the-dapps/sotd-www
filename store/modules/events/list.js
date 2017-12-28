@@ -36,7 +36,7 @@ const actions = {
   incrementOffsetQuery: ({ commit }) => {
     commit('INCREMENT_OFFSET_QUERY')
   },
-  setTabQuery: ({ commit }, value) => {
+  setCategoryQuery: ({ commit }, value) => {
     commit('SET_CATEGORY_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
@@ -84,14 +84,14 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
+  categoryQuery: state => {
+    return state.query.category
+  },
   dateStartQuery: state => {
     return state.query.dateStart
   },
   categoryDropdownIsActive: state => {
     return state.refine.category.isActive
-  },
-  tabQuery: state => {
-    return state.query.tab
   },
   friendlyUrl: state => {
     return state.friendlyUrl
@@ -126,9 +126,6 @@ const getters = {
   pagerTotalCount: state => {
     return state.pager.totalCount
   },
-  tagQuery: state => {
-    return state.query.tags
-  },
   textQuery: state => {
     return state.query.text
   }
@@ -159,34 +156,34 @@ const mutations = {
   SET_CATEGORY_QUERY (state, value) {
     var options = categoryOptions || []
     if (options.indexOf(value) !== -1) {
-      state.query.tab = value
+      state.query.category = value
     } else {
-      state.query.tab = options[0]
+      state.query.category = options[0]
     }
   },
   SET_FRIENDLY_QUERY (state, params) {
     var tags = params.tags
-    var tab = params.tab
+    var category = params.category
     if (tags !== undefined) {
       tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
       state.query.tags = tags
     }
-    if (tab !== undefined) {
-      state.query.tab = tab
+    if (category !== undefined) {
+      state.query.category = category
     }
   },
   SET_FRIENDLY_URL (state) {
     var options = categoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
-    var tab = state.query.tab
+    var category = state.query.category
     var url = '/'
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (tab !== options[0] && tab !== 'most-relevant') {
-      url = url + 'tab/' + encodeURIComponent(tab)
+    if (category !== options[0] && category !== 'most-relevant') {
+      url = url + 'category/' + encodeURIComponent(category)
     }
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
