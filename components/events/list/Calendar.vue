@@ -2,12 +2,20 @@
   <section class="component -calendar">
     <div class="wrapper -calendar">
       <ul class="list -month">
-        <li class="item -month --prev" @click="changeMonth(-1)"><span>{{ startOfMonthDate | addMonths(-1) | formatDate('MMM') }}</span></li>
-        <li class="item -month --current"><span>{{ startOfMonthDate | formatDate('MMMM YYYY') }}</span></li>
-        <li class="item -month --next" @click="changeMonth(1)"><span>{{ startOfMonthDate | addMonths(1) | formatDate('MMM') }}</span></li>
+        <li class="item -month --prev" @click="changeMonth(-1)">
+          <img class="image -month --prev" src="~/assets/images/arrows/back.png" width="12" />
+        </li>
+        <li class="item -month --current">
+          <span class="date -month">{{ startOfMonthDate | formatDate('MMMM YYYY') }}</span>
+        </li>
+        <li class="item -month --next" @click="changeMonth(1)">
+          <img class="image -month --next" src="~/assets/images/arrows/next.png" width="12" />
+        </li>
       </ul>
       <ul class="list -day-label">
-        <li v-for="(day, index) in daysOfTheWeek" :key="index" class="item -day-label"><span>{{ day }}</span></li>
+        <li v-for="(day, index) in daysOfTheWeek" :key="index" class="item -day-label">
+          <span>{{ day }}</span>
+        </li>
       </ul>
       <ul class="list -day">
         <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
@@ -260,9 +268,24 @@
   }
 
   .-month {
+    &.date {
+      display: inline-block;
+      position: relative;
+      top: 1px;
+    }
     &.list {
       display: flex;
       box-shadow: 0 0 5px rgba($color--mine-shaft,.02);
+    }
+    &.image {
+      position: relative;
+      top: 1px;
+      &.--next {
+        left: 0px;
+      }
+      &.--prev {
+        right: 1px;
+      }
     }
     &.item {
       line-height: 1;
