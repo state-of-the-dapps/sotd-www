@@ -224,7 +224,7 @@
   }
 
   .location {
-    flex: 1;
+    flex-grow: 1;
     padding-right: 10px;
     border-right: 1px solid $color--mine-shaft;
   }

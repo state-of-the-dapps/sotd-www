@@ -104,7 +104,7 @@
   }
 
   .description-wrapper {
-    flex: 1;
+    flex-grow: 1;
   }
 
   .description {

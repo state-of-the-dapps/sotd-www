@@ -104,6 +104,22 @@ Vue.filter('formatDappTabOptions',
   }
 )
 
+Vue.filter('formatEventCategory',
+  value => {
+    if (value) {
+      let category = ''
+      switch (value) {
+        case 'ico':
+          category = 'ICO'
+          break
+        default:
+          category = value
+      }
+      return category
+    }
+  }
+)
+
 Vue.filter('uppercase',
   value => {
     if (value) {

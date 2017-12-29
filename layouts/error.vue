@@ -11,6 +11,7 @@
       </div>
     </div>
     <Foot/>
+    <Utilities/>
   </div>
 </template>
 

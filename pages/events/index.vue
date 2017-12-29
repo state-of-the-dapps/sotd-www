@@ -83,7 +83,7 @@
 
   .-results {
     &.wrapper {
-      flex: 1;
+      flex-grow: 1;
       @include tweakpoint('min-width', $tweakpoint--default) {
         margin-right: 10px;
       }

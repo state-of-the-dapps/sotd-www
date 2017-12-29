@@ -1,5 +1,5 @@
 <template>
-  <section class="section -utilities">
+  <section class="section -utilities" :class="'--' + type">
     <div class="container">
       <ul class="list">
         <li class="item -description">A curated list of {{ statDappCount }} projects and {{ statEventCount }} upcoming events for ethereum's decentralized apps</li>
@@ -35,6 +35,7 @@
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
+    props: ['type'],
     computed: {
       statEventCount () {
         return this.$store.getters['statEventCount']
@@ -105,6 +106,15 @@
   .section {
     background: $color--mine-shaft;
     color: $color--gallery;
+    &.--foot {
+      padding: 10px 40px;
+    }
+    &.--head {
+      display: none;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        display: block;
+      }
+    }
   }
 
   .item {
@@ -117,7 +127,7 @@
       margin-bottom: 1.25rem;
       @include tweakpoint('min-width', $tweakpoint--default) {
         margin: 0;
-        flex: 1;
+        flex-grow: 1;
       }
     }
   }

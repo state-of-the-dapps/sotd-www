@@ -168,7 +168,7 @@
   }
 
   .input-wrapper {
-    flex: 1;
+    flex-grow: 1;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
     border: 1px solid transparent;
   }

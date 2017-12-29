@@ -1,6 +1,6 @@
 <template>
-  <section class="component -calendar">
-    <div class="wrapper -calendar">
+  <section id="events-list-calendar" class="wrapper -calendar">
+    <div class="wrapper-inner -calendar">
       <ul class="list -month">
         <li class="item -month --prev" @click="changeMonth(-1)">
           <img class="image -month --prev" src="~/assets/images/arrows/back.png" width="12" />
@@ -148,11 +148,11 @@
   @import '~assets/css/settings';
 
   .-calendar {
-    &.component {
+    &.wrapper {
       max-width: 350px;
       margin: 0 auto 20px;
     }
-    &.wrapper {
+    &.wrapper-inner {
       padding: 0 10px;
       user-select: none;
     }
@@ -163,32 +163,35 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 5px;
+      height: 4px;
       display: flex;
     }
     &.item {
-      flex: 1;
+      flex-grow: 1;
       height: 100%;
       &.--ico {
-        background: $color--event-red;
+        background: $color--event-crimson;
       }
       &.--hackathon {
-        background: $color--event-light-blue;
+        background: $color--event-orange;
       }
       &.--summit {
-        background: $color--event-aquamarine;
+        background: $color--event-yellow;
       }
       &.--crowdsale {
         background: $color--event-green;
       }
       &.--conference {
-        background: $color--event-blue;
+        background: $color--event-aquamarine;
       }
       &.--meetup {
-        background: $color--event-orange;
+        background: $color--event-blue;
       }
       &.--release {
-        background: $color--event-red;
+        background: $color--event-burple;
+      },
+      &.--workshop {
+        background: $color--event-purple;
       }
     }
   }
@@ -300,7 +303,7 @@
       &.--current {
         color: $color--mine-shaft;
         background: lighten($color--gallery, 20%);
-        flex: 1;
+        flex-grow: 1;
         cursor: initial;
         &:hover {
           text-decoration: none;

@@ -67,7 +67,7 @@
     margin: 5px 0 10px 0;
     @include tweakpoint('min-width', 600px) {
       margin: 0;
-      flex: 1;
+      flex-grow: 1;
     }
   }
 </style>

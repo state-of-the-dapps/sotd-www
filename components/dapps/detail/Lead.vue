@@ -33,7 +33,7 @@
       display: flex;
       align-items: center;
       > :nth-child(1) {
-        flex: 1;
+        flex-grow: 1;
       }
       > :nth-child(2) {
         margin-right: 10px;

@@ -2,11 +2,12 @@
   <div class="main-container">
     <div class="content-container">
       <Announcement/>
-      <Utilities/>
+      <Utilities type="head" />
       <Masthead/>
       <nuxt/>
     </div>
     <Foot/>
+    <Utilities type="foot" />
     <transition name="fade">
       <img @click="scrollUp" class="scroll-up" :class="{ '--has-announcement': announcement, '--is-active': scrollNeeded }" src="~/assets/images/scroll-up.png" width="36" height="36">
     </transition>
