@@ -1,5 +1,5 @@
 <template>
-  <section id="events-list-calendar" class="wrapper -calendar">
+  <section class="wrapper -calendar">
     <div class="wrapper-inner -calendar">
       <ul class="list -month">
         <li class="item -month --prev" @click="changeMonth(-1)">
@@ -127,7 +127,7 @@
         this.days = days
         setDayCategoriesTimer = setTimeout(() => {
           this.setDayCategories()
-        }, 1000)
+        }, 750)
       }
     },
     mounted () {
@@ -136,7 +136,10 @@
     watch: {
       eventsFullQuery: {
         handler: function () {
-          this.setDayCategories()
+          clearTimeout(setDayCategoriesTimer)
+          setDayCategoriesTimer = setTimeout(() => {
+            this.setDayCategories()
+          }, 200)
         },
         deep: true
       }
@@ -149,8 +152,10 @@
 
   .-calendar {
     &.wrapper {
-      max-width: 350px;
+      width: 350px;
       margin: 0 auto 20px;
+      position: sticky;
+      top: 19px;
     }
     &.wrapper-inner {
       padding: 0 10px;
@@ -167,7 +172,7 @@
       display: flex;
     }
     &.item {
-      flex-grow: 1;
+      flex: 1;
       height: 100%;
       &.--ico {
         background: $color--event-crimson;

@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="content-container">
       <Announcements/>
-      <Utilities/>
+      <Utilities type="head" />
       <Masthead/>
       <div class="content">
         <h1 v-if="error.statusCode === 404">Whoops, we couldn't find that page</h1>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <Foot/>
-    <Utilities/>
+    <Utilities type="foot" />
   </div>
 </template>
 
@@ -43,7 +43,6 @@
 
   .content-container {
     min-height: 98%;
-    overflow: hidden;
   }
 
   .content {

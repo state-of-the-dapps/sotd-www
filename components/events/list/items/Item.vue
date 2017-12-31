@@ -1,9 +1,6 @@
 <template>
   <transition name="fade">
     <li class="item -events">
-      <ul class="list -badges">
-        Badges
-      </ul>
       <div class="wrapper -main">
         <div class="wrapper -date">
           <div class="day -date">{{ item.date | formatDate('D') }}</div>
@@ -45,6 +42,26 @@
     &.wrapper {
       padding: 0 20px;
       text-align: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        flex-grow: 1;
+        text-align: left;
+        padding-left: 30px;
+      }     
+    }
+    &.heading {
+      margin: 0;
+    }
+    &.location {
+      font-weight: 600;
+    }
+    &.name {
+      font-weight: 600;
+    }
+    &.sub-heading {
+      font-weight: 300;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.3;
     }
   }
 
@@ -53,12 +70,13 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
+      margin: 20px -20px -20px -20px;
       @include tweakpoint('min-width', $tweakpoint--default) {
         flex-direction: row;
       }
     }
     &.item {
-      flex-grow: 1;
+      flex: 1;
       height: 100%;
       text-align: center;
       padding: 8px;
@@ -112,8 +130,13 @@
     &.wrapper {
       width: 75px;
       height: 75px;
-      margin: 20px auto;
+      margin: 0 auto 20px;
       background: $color--gallery;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+      }
     }
   }
 

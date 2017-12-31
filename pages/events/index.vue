@@ -8,9 +8,9 @@
       <div class="wrapper -results">
         <CountRefine/>
         <Items/>
+        <Pager/>
       </div>
     </div>
-    <Pager/>
     <nuxt-child/>
   </div>
 </template>
@@ -43,15 +43,15 @@
     },
     mounted () {
       this.$store.dispatch('setSiteSection', 'events')
-      // this.$store.dispatch('events/list/setFriendlyQuery', this.$route.params)
-      // this.$store.dispatch('events/list/setFriendlyUrl')
+      this.$store.dispatch('events/list/setFriendlyQuery', this.$route.params)
+      this.$store.dispatch('events/list/setFriendlyUrl')
       this.$store.dispatch('events/list/fetchItems')
     },
     watch: {
       'tagQuery': function () {
         this.$store.dispatch('events/list/setFriendlyUrl')
       },
-      'tabQuery': function () {
+      'categoryQuery': function () {
         this.$store.dispatch('events/list/setFriendlyUrl')
       }
     },
@@ -76,7 +76,7 @@
       padding: 25px 20px;
       @include tweakpoint('min-width', $tweakpoint--default) {
         flex-direction: row-reverse;
-        max-width: 1100px;
+        max-width: 1000px;
       }
     }
   }
@@ -88,10 +88,12 @@
         margin-right: 10px;
       }
     }
-  }  
+  } 
 
   .-filters {
     &.wrapper {
+      margin: 0 auto;
+      width: 350px;
     }
-  }
+  } 
 </style>

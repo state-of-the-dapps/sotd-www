@@ -8,7 +8,7 @@ const randomSeed = generateRandomSeed()
 function initialQuery () {
   return {
     dateStart: formatDate(Date.now(), 'YYYY-MM-DD'),
-    limit: 50,
+    limit: 1,
     location: '',
     locationRadius: 50,
     locationRadiusUnit: 'miles',
@@ -126,6 +126,9 @@ const getters = {
   pagerTotalCount: state => {
     return state.pager.totalCount
   },
+  tagQuery: state => {
+    return state.query.tags
+  },
   textQuery: state => {
     return state.query.text
   }
@@ -176,13 +179,16 @@ const mutations = {
     var options = categoryOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
     var category = state.query.category
-    var url = '/'
+    var url = '/events'
+    if (tags.length > 0 || category !== options[0]) {
+      url = url + '/'
+    }
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== options[0] && category !== 'most-relevant') {
+    if (category !== options[0]) {
       url = url + 'category/' + encodeURIComponent(category)
     }
     state.friendlyUrl = url

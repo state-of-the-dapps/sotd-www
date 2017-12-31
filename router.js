@@ -84,16 +84,16 @@ export function createRouter () {
             name: 'events-tagged-tags',
             children: [
               {
-                path: 'tab/:tab',
+                path: 'category/:category',
                 component: Placeholder,
-                name: 'events-tagged-tags-tab-tab'
+                name: 'events-tagged-tags-category-category'
               }
             ]
           },
           {
-            path: 'tab/:tab',
+            path: 'category/:category',
             component: Placeholder,
-            name: 'events-tab-tab'
+            name: 'events-category-category'
           },
           {
             path: ':slug',

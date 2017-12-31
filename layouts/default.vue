@@ -73,7 +73,6 @@
 
   .content-container {
     min-height: 98%;
-    overflow: hidden;
   }
 
   .scroll-up {
