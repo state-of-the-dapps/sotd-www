@@ -1,5 +1,5 @@
 <template>
-  <section id="events-list-items" class="wrapper -events">
+  <section class="wrapper -events">
     <div class="wrapper -events">
       <ul class="list -events">
         <Item v-for="(item, index) in items" :key="index" :item="item" />

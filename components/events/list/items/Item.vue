@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <li class="item -events">
+    <nuxt-link @click.native="setIndex(item, key)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -events" :key="item.slug">
       <div class="wrapper -main">
         <div class="wrapper -date">
           <div class="day -date">{{ item.date | formatDate('D') }}</div>
@@ -18,6 +18,7 @@
         <li v-for="(category, index) in item.categories" :key="index" class="item -categories" :class="'--' + category">{{ category | formatEventCategory | capitalize }}</li>
       </ul>
     </li>
+    </nuxt-link>
   </transition>
 </template>
 
@@ -148,6 +149,11 @@
       padding: 20px;
       position: relative;
       overflow: auto;
+      transition: transform .3s ease, opacity .3s ease;
+      cursor: pointer;
+      &:hover {
+        transform: translateX(-4px);
+      }
     }
   }
 
