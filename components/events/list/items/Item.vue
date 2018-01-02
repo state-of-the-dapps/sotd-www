@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <nuxt-link @click.native="setIndex(item, key)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -events" :key="item.slug">
+    <nuxt-link @click.native="setIndex(item, index)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -events" :key="item.slug">
       <div class="wrapper -main">
         <div class="wrapper -date">
           <div class="day -date">{{ item.date | formatDate('D') }}</div>
@@ -24,7 +24,13 @@
 
 <script>
   export default {
-    props: ['item']
+    props: ['item', 'index'],
+    methods: {
+      setIndex (item, index) {
+        this.$store.dispatch('events/detail/setViewMethod', 'popup')
+        this.$store.dispatch('events/list/setActiveItemIndex', index)
+      }
+    }
   }
 </script>
 

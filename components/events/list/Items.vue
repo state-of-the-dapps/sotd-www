@@ -2,7 +2,7 @@
   <section class="wrapper -events">
     <div class="wrapper -events">
       <ul class="list -events">
-        <Item v-for="(item, index) in items" :key="index" :item="item" />
+        <Item v-for="(item, index) in items" :key="index" :index="index" :item="item" />
       </ul>
     </div>
   </section>
