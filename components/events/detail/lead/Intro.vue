@@ -1,17 +1,16 @@
 <template>
   <div class="wrapper">
-    <div class="new-banner" @click="$mixpanel.track('DApp - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
-      <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
-        <div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div>
+      <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('Event - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
+        <div class="badge-info">{{ badge | capitalize }}</div>
       </li>
     </ul>
     <div class="info">
-      <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
+      <div @click="$mixpanel.track('Event - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
+        <p class="date">Date</p>
       </div>
       <div class="description-wrapper">
-        <h3 class="title">{{ item.name }}<span v-if="item.isNsfw" class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
+        <h3 class="title">{{ item.name }}</h3>
         <p class="description">{{ item.teaser }}</p>
       </div>
     </div>
@@ -78,6 +77,10 @@
     }
   }
 
+  .date {
+    font-size: 1.5rem;
+  }
+
   .contract {
     margin-top: 1rem;
     margin-bottom: 0;
@@ -110,34 +113,17 @@
   .icon-wrapper {
     width: 60px;
     height: 60px;
-    background: rgba(0,0,0,.1);
+    background: $color--gallery;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     font-size: 1.7rem;
-    border-radius: 50%;
     margin-right: 10px;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-demo {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
     @include tweakpoint('min-width', 900px) {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       margin-right: 20px;
-      font-size: 2.25rem;
     }
   }
 
@@ -147,57 +133,6 @@
     padding: 10px 0;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding: 10px 0;
-    }
-  }
-
-  .new-banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    background: $color--mine-shaft;
-    padding-right: 20px;
-    padding-bottom: 3px;
-    margin-left: 10px;
-    @include tweakpoint('min-width', 900px) {
-      background: url('~/assets/images/ribbon.png') top left no-repeat;
-      background-size: 47px 47px;
-      width: 47px;
-      height: 47px;
-      padding-right: 0;
-      padding-bottom: 0;
-      margin-left: 0;
-    }
-  }
-
-  .new-message {
-    color: $color--gallery;
-    display: inline-block;
-    font-size: .7rem;
-    text-transform: uppercase;
-    margin-top: 2px;
-    margin-left: 20px;
-    @include tweakpoint('min-width', 900px) {
-      margin-top: 6px;
-      margin-left: 6px;
-    }
-    &.-live {
-      color: $color--screamin-green;
-    }
-    &.-demo {
-      color: $color--paris-daisy;
-    }
-    &.-prototype {
-      color: $color--golden-tainoi;
-    }
-    &.-wip {
-      color: $color--anakiwa;
-    }
-    &.-concept {
-      color: $color--perfume;
-    }
-    &.-stealth, &.-abandoned, &.-unknown {
-      color: $color--alabaster;
     }
   }
 

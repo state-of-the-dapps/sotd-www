@@ -29,6 +29,7 @@
 
   .container {
     position: relative;
+    background: lighten($color--gallery, 100%);
     @include tweakpoint('min-width', 600px) {
       display: flex;
       align-items: center;
