@@ -6,8 +6,16 @@
       </li>
     </ul>
     <div class="info">
-      <div @click="$mixpanel.track('Event - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p class="date">Date</p>
+      <div class="wrapper -dates">
+        <div @click="$mixpanel.track('Event - Date', { detail: true })" class="wrapper -date --start">
+          <div class="month-year -date">Dec 2018</div>
+          <div class="day -date">21</div>
+        </div>
+        <div v-if="item.dates.start !== item.dates.end" class="wrapper -date --to">to</div>
+        <div v-if="item.dates.start !== item.dates.end" @click="$mixpanel.track('Event - Date', { detail: true })" class="wrapper -date --end">
+          <div class="month-year -date">Dec 2018</div> 
+          <div class="day -date">31</div>         
+        </div>
       </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}</h3>
@@ -77,8 +85,62 @@
     }
   }
 
-  .date {
-    font-size: 1.5rem;
+  .-dates {
+    &.wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .-date {
+    &.day {
+      display: flex;
+      width: 100%;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        height: 80px;
+      }
+    }
+    &.wrapper {
+      width: 60px;
+      height: 60px;
+      background: $color--gallery;
+      overflow: hidden;
+      font-size: 1.25rem;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        width: 100px;
+        height: 100px;
+        font-size: 1.75rem;
+      }
+      &.--to {
+        background: none;
+        font-size: 1.25rem;
+        width: 40px;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 20px;
+      }
+    }
+    &.month-year {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 100%;
+      font-size: .75rem;
+      font-weight: 600;
+      background: darken($color--gallery, 10%);
+      text-transform: uppercase;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        font-size: .9rem;
+      }
+    }
   }
 
   .contract {
@@ -98,6 +160,7 @@
 
   .description-wrapper {
     flex-grow: 1;
+    margin-left: 20px;
   }
 
   .icon-image {
@@ -108,23 +171,6 @@
   .icon-placeholder {
     margin: 0;
     font-family: Arial, sans-serif;
-  }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: $color--gallery;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-size: 1.7rem;
-    margin-right: 10px;
-    @include tweakpoint('min-width', 900px) {
-      width: 100px;
-      height: 100px;
-      margin-right: 20px;
-    }
   }
 
   .info {

@@ -1,6 +1,6 @@
 <template>
   <div v-if="item.sites.websiteUrl" class="wrapper">
-    <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('Event - Site', { type: ['website'], url: item.sites.websiteUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch Website</a>
+    <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('Event - Site', { type: ['website'], url: item.sites.websiteUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">View Event Website</a>
   </div>
 </template>
 

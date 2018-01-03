@@ -1,10 +1,10 @@
 <template>
   <transition name="fade">
-    <nuxt-link @click.native="setIndex(item, index)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -events" :key="item.slug">
+    <nuxt-link @click.native="setIndex(item, index)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -component-events-list-items-item" :key="item.slug">
       <div class="wrapper -main">
         <div class="wrapper -date">
-          <div class="day -date">{{ item.date | formatDate('D') }}</div>
           <div class="month-year -date">{{ item.date | formatDate('MMM YYYY') }}</div>
+          <div class="day -date">{{ item.date | formatDate('D') }}</div>
         </div>
         <div class="wrapper -body">
           <h2 class="heading -body">{{ item.name }}</h2>
@@ -129,9 +129,9 @@
       justify-content: center;
       height: 17px;
       width: 100%;
-      font-size: .75rem;
+      font-size: .775rem;
       font-weight: 600;
-      background: darken($color--gallery, 5%);
+      background: darken($color--gallery, 10%);
       text-transform: uppercase;
     }
     &.wrapper {
@@ -147,7 +147,7 @@
     }
   }
 
-  .-events {
+  .-component-events-list-items-item {
     &.item {
       background: lighten($color--gallery, 100%);
       box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
