@@ -107,7 +107,7 @@
       }
       &.--release {
         background: $color--event-burple;
-      },
+      }
       &.--workshop {
         background: $color--event-purple;
       }
