@@ -180,6 +180,8 @@
     max-width: 1200px;
     margin: 50px auto;
     z-index: 120;
+    background: url('~/assets/images/bg.jpg') center center;
+    background-size: 100px 100px;
   }
 
   .popup-outer {
