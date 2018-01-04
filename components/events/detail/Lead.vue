@@ -32,6 +32,8 @@
 
   .-intro-cta {
     &.wrapper {
+      max-width: 2000px;
+      margin: 0 auto;
       padding: 30px 20px;
       position: relative;
       background: lighten($color--gallery, 100%);
@@ -89,6 +91,12 @@
       &.--workshop {
         background: $color--event-purple;
       }
+    }
+  }
+
+  .-component-events-detail-lead {
+    &.wrapper {
+      background: lighten($color--gallery, 100%);
     }
   }
 </style>
