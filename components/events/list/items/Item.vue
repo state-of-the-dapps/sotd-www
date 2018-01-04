@@ -9,7 +9,7 @@
         <div class="wrapper -body">
           <h2 class="heading -body">{{ item.name }}</h2>
           <h3 class="sub-heading -body">
-            in <span class="location -body">{{ item.location }}</span> <br/>added by <span class="name -body">{{ item.organizer }}</span>
+            in <span class="location -body">{{ item.location }}</span> <br/>organized by <span class="name -body">{{ item.organizer }}</span>
           </h3>
           <p class="teaser -body">{{ item.teaser }}</p>
         </div>

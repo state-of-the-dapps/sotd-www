@@ -153,7 +153,7 @@
     position: relative;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding-top: 25px;
-      padding-bottom: 50px;
+      padding-bottom: 25px;
     }
   }
 
@@ -246,10 +246,6 @@
     @include tweakpoint('min-width', $tweakpoint--default) {
       display: inline;
     }
-  }
-
-  .section {
-    background: rgba(255,255,255,.35);
   }
 
   .tag {

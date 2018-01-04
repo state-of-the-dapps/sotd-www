@@ -45,7 +45,6 @@
   .section {
     position: relative;
     z-index: 10;
-    background: rgba(255,255,255,.4);
   }
 
   .nameplate-image {

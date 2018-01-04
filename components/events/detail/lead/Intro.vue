@@ -19,7 +19,7 @@
       </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}</h3>
-        <p class="description">{{ item.teaser }}</p>
+        <p class="description">in {{ item.location.text }}<br> organized by {{ item.organizer }}</p>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
       justify-content: center;
       align-items: center;
       @include tweakpoint('min-width', $tweakpoint--default) {
-        height: 80px;
+        height: 65px;
       }
     }
     &.wrapper {
@@ -114,17 +114,20 @@
       flex-direction: column;
       align-items: center;
       @include tweakpoint('min-width', $tweakpoint--default) {
-        width: 100px;
-        height: 100px;
+        width: 85px;
+        height: 85px;
         font-size: 1.75rem;
       }
       &.--to {
         background: none;
-        font-size: 1.25rem;
-        width: 40px;
+        font-size: 1rem;
+        width: 30px;
         flex-direction: row;
         justify-content: center;
-        padding-top: 20px;
+        padding-top: 18px;
+        @include tweakpoint('min-width', $tweakpoint--default) {
+          font-size: 1.25rem;
+        }        
       }
     }
     &.month-year {
@@ -152,7 +155,7 @@
   .description {
     margin: 0;
     padding-right: 10px;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     @include tweakpoint('min-width', 900px) {
       max-width: 350px;
     }

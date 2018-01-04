@@ -32,7 +32,7 @@
 
   .-intro-cta {
     &.wrapper {
-      padding: 20px;
+      padding: 30px 20px;
       position: relative;
       background: lighten($color--gallery, 100%);
       @include tweakpoint('min-width', 600px) {
