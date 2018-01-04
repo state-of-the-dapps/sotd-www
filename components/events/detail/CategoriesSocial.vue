@@ -1,7 +1,9 @@
 <template>
   <div class="wrapper -component-events-detail-categoriessocial">
-    <Categories/>
-    <Social/>
+    <div class="wrapper-inner -component-events-detail-categoriessocial">   
+      <Categories/>
+      <Social/>
+    </div>
   </div>
 </template>
 
@@ -28,6 +30,10 @@
   .-component-events-detail-categoriessocial {
     &.wrapper {
       background: lighten($color--gallery, 100%);
+    }
+    &.wrapper-inner {
+      max-width: 2000px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
