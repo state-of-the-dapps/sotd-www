@@ -42,7 +42,7 @@
         }
         validationTimer = setTimeout(() => {
           this.logo.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

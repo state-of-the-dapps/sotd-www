@@ -126,7 +126,7 @@
             this[field].length !== 42 ? errors.data.push(`Address must be exactly 42 characters`) : ''
             !this[field].startsWith('0x') ? errors.data.push(`Address must start with 0x`) : ''
           }
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

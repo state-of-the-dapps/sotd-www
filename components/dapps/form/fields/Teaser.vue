@@ -76,8 +76,8 @@
             }).join(', ')
             warnings.data.push(`Please don't use obvious words such as ` + warningWordString)
           }
-          this.dispatchErrors(errors)
-          this.dispatchWarnings(warnings)
+          this.dispatchErrors(errors, 'dapps')
+          this.dispatchWarnings(warnings, 'dapps')
         }, 750)
       }
     },

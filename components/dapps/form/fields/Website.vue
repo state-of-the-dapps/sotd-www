@@ -42,7 +42,7 @@
         }
         validationTimer = setTimeout(() => {
           this.url.length < 3 ? errors.data.push(`Website URL must be longer than 2 characters`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

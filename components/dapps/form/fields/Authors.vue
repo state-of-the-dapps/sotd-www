@@ -45,7 +45,7 @@
         validationTimer = setTimeout(() => {
           this.authors.length > 100 ? errors.data.push(`Authors can't be longer than 100 characters`) : ''
           this.authors.length < 2 ? errors.data.push(`Authors must be longer than 1 character`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

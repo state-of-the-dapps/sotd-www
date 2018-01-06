@@ -43,7 +43,7 @@
         }
         validationTimer = setTimeout(() => {
           isValidEmail(this.email) ? '' : errors.data.push(`Please enter a valid email address`)
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

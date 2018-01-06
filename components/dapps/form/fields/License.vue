@@ -43,7 +43,7 @@
         validationTimer = setTimeout(() => {
           this.license.length > 50 ? errors.data.push(`License can't be longer than 50 characters`) : ''
           this.license.length < 2 ? errors.data.push(`License must be longer than 1 character`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

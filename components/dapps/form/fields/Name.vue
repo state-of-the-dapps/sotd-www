@@ -72,8 +72,8 @@
               if (item.exists) {
                 errors.data.push(`Name has already been taken`)
               }
-              this.dispatchErrors(errors)
-              this.dispatchWarnings(warnings)
+              this.dispatchErrors(errors, 'dapps')
+              this.dispatchWarnings(warnings, 'dapps')
             })
             .catch((error) => {
               console.log(error)
