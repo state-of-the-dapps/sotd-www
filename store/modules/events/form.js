@@ -9,38 +9,21 @@ function initialState () {
       // name: []
     },
     fields: {
-      tabs: [],
-      dates: [
-        // 'YYYY-MM-DD'
-      ],
+      categories: [],
+      dates: {
+        end: '',
+        start: ''
+      },
       description: '',
       email: '',
       isFree: false,
-      language: '',
-      location: {
-        address: '', // e.g. '123 Address Lane, New Place MN, 34098'
-        country: '',
-        lat: '',
-        lon: ''
-      },
-      name: '', // e.g. CryptoConference
+      languages: [],
+      location: '',
+      name: '',
       organizer: '',
       registrationInfo: '',
-      relatedDapps: [
-        /*
-        {
-          name: '',
-          slug: ''
-        }
-        */
-      ], // e.g. 'dapp-slug', 'another-dapp-slug'
-      schedule: [
-       /*
-        {
-          description: ''
-        }
-       */
-      ],
+      relatedDapps: [],
+      highlights: [],
       socials: {
         facebook: { url: '' },
         twitter: { url: '' }
@@ -48,9 +31,10 @@ function initialState () {
       sponsors: [],
       tags: [],
       teaser: '',
-      timezone: '', // e.g. should autofill based on location
-      twitterHashtag: '', // e.g #cryptopunks
-      website: ''
+      hashtag: '',
+      siteUrls: {
+        website: ''
+      }
     },
     tagQuery: '',
     tagsResults: [],

@@ -40,7 +40,7 @@ test('DApp new exists and renders HTML', async t => {
 test('Event list exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/events', context)
-  t.true(html.includes('Submit an Event'))
+  t.true(html.includes('Submit an event'))
 })
 
 test('Static page exists and renders HTML', async t => {

@@ -6,7 +6,7 @@
         <li class="nav-item" :class="siteSection === 'events' ? '--is-active' : ''"><nuxt-link @click.native="$mixpanel.track('Nav - Events')" to="/events" class="nav-link">Events</nuxt-link></li>
         <li v-if="siteSection !== ''" class="nav-item">
           <nuxt-link v-if="siteSection === 'dapps'" @click.native="$mixpanel.track('Nav - New DApp')" :to="{ name: 'dapps-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link>
-          <nuxt-link v-if="siteSection === 'events'" @click.native="$mixpanel.track('Nav - New event')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an Event</nuxt-link>
+          <nuxt-link v-if="siteSection === 'events'" @click.native="$mixpanel.track('Nav - New event')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an event</nuxt-link>
         </li>
       </ul>
       <ul class="nameplate-list">
