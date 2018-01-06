@@ -15,13 +15,13 @@
 </template>
 
 <script>
-  // import Fields from '~/components/events/form/Fields'
-  // import PreviewSave from '~/components/events/form/PreviewSave'
+  import Fields from '~/components/events/form/Fields'
+  import PreviewSave from '~/components/events/form/PreviewSave'
 
   export default {
     components: {
-      // Fields,
-      // PreviewSave
+      Fields,
+      PreviewSave
     },
     head () {
       return {
@@ -54,7 +54,7 @@
   .section {
     &.-intro {
       background: rgba(lighten($color--gallery, 100%), 1);
-      box-shadow: 0 0 50px rgba($color--mine-shaft,.15);
+      box-shadow: 0 0 50px rgba($color--mine-shaft, .15);
       position: relative;
       z-index: 15;
       .container {

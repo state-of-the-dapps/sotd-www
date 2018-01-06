@@ -2,7 +2,6 @@
   <div class="wrapper">
     <div class="sticky">
       <div class="item -preview" :class="'-' + status">
-          <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
           <div class="info">
               <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
                   <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
@@ -343,46 +342,6 @@
     }
     &.--unfocused {
       opacity: .6;
-    }
-  }
-
-  .new-banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 47px;
-    height: 47px;
-    background: url('~/assets/images/ribbon.png') top left no-repeat;
-    background-size: 47px 47px;
-    margin: 0;
-    z-index: 5;
-  }
-
-  .new-message {
-    color: $color--gallery;
-    display: inline-block;
-    font-size: .7rem;
-    text-transform: uppercase;
-    margin-top: 6px;
-    margin-left: 6px;
-    transition: color .2s ease;
-    &.-live {
-      color: $color--screamin-green;
-    }
-    &.-demo {
-      color: $color--paris-daisy;
-    }
-    &.-prototype {
-      color: $color--golden-tainoi;
-    }
-    &.-wip {
-      color: $color--anakiwa;
-    }
-    &.-concept {
-      color: $color--perfume;
-    }
-    &.-inactive {
-      color: $color--alabaster;
     }
   }
 

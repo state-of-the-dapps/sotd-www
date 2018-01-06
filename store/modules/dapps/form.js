@@ -364,7 +364,7 @@ const getters = {
     return state.fields.siteUrls.website
   },
   websiteUrlErrors: state => {
-    return state.errors.website
+    return state.errors.websiteUrl
   }
 }
 

@@ -42,7 +42,7 @@
         }
         validationTimer = setTimeout(() => {
           this.description.length > 500 ? errors.data.push(`Description can't be longer than 500 characters`) : ''
-          this.description.length < 50 ? errors.data.push(`Description must be longer than 20 characters`) : ''
+          this.description.length < 50 ? errors.data.push(`Description must be longer than 50 characters`) : ''
           this.dispatchErrors(errors)
         }, 750)
       }
