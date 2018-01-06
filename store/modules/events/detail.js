@@ -1,5 +1,8 @@
 function item () {
   return {
+    highlights: [],
+    relatedDapps: [],
+    sponsors: [],
     tags: []
   }
 }

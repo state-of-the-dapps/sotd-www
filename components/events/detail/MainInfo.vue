@@ -2,37 +2,80 @@
   <div class="wrapper -component-events-detail-maininfo">
     <ul class="list -main">
       <li class="item -main --description">
-        <p>Description</p>
+        <p>{{ item.description }}</p>
       </li>
-      <li class="item -main --schedule">
+      <li class="item -main --schedule" v-if="item.highlights.length">
         <h2 class="heading -main">Schedule highlights</h2>
+        <ul class="list -schedule">
+          <li v-for="(highlight, index) in item.highlights" :key="index" class="item -schedule">{{ highlight }}</li>
+        </ul>
       </li>
-      <li class="item -main">
-        <h3 class="sub-heading -main">DApps featured in this event</h3>
-      </li>
-      <li class="item -main">
-        <h3 class="sub-heading -main">Tags</h3>
+      <li v-if="item.sponsors.length" class="item -main">
+        <h3 class="sub-heading -main">Sponsored by</h3>
+        <span v-for="(sponsor, index) in item.sponsors" :key="index">{{ sponsor }} <span v-if="index + 1 < item.sponsors.length"> / </span></span>
       </li>
     </ul>
     <ul class="list -sidebar">
       <li class="item -sidebar">
-        <h3 class="sub-heading -sidebar">Location</h3>
+        <div class="wrapper -map">
+          <img class="image -map" :src="'https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/' + item.location.lon + ',' + item.location.lat + ',5.67,0.00,0.00/440x400@2x?access_token=' + mapboxKey">
+          <img class="pin -map" src="~/assets/images/icons/pin.png" width="20">
+        </div>
+        <span>{{ item.location.text }}</span>
       </li>
       <li class="item -sidebar">
-        <h3 class="sub-heading -sidebar">Organizer</h3>
+        <h3 class="sub-heading -sidebar">Organized by</h3>
+        <span>{{ item.organizer }}</span>
       </li>
       <li class="item -sidebar">
-        <h3 class="sub-heading -sidebar">Registration</h3>
+        <h3 class="sub-heading -sidebar">Registration info</h3>
+        <span>{{ item.registrationInfo }}</span>
       </li>
-      <li class="item -sidebar">
-        <h3 class="sub-heading -sidebar">Sponsors</h3>
+      <li v-if="tags && tags.length > 0" class="item -sidebar">
+        <h3 class="sub-heading -sidebar">Tags</h3>
+        <ul class="list -tags">
+          <li v-for="(tag, index) in tags" :key="index" class="item -tags"><a class="sub-tag" @click="findEventsByTag(tag)">#{{ tag }}</a></li>
+        </ul>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-
+  export default {
+    data () {
+      return {
+        mapboxKey: process.env.mapboxKey
+      }
+    },
+    computed: {
+      friendlyUrl () {
+        return this.$store.getters['events/list/friendlyUrl']
+      },
+      item () {
+        return this.$store.getters['events/detail/item']
+      },
+      tags () {
+        var tags
+        tags = this.item.tags || []
+        return this.$options.filters.removeEmptyArrayItems(tags)
+      }
+    },
+    methods: {
+      findEventsByTag (tag) {
+        this.$store.dispatch('events/list/setActiveItemIndex', -1)
+        this.$store.dispatch('events/list/resetQuery')
+        this.$store.dispatch('tags/selectItem', tag)
+        this.$store.dispatch('events/list/addTagToQuery', tag)
+        this.$store.dispatch('events/list/fetchItems')
+        this.$store.dispatch('events/list/setFriendlyUrl')
+        this.$router.push(this.friendlyUrl, function () {
+          document.getElementById('__nuxt').scrollIntoView()
+        })
+        this.$mixpanel.track('Event - Tag', { name: tag, slug: this.item.slug })
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -82,8 +125,35 @@
       }
     }
     &.sub-heading {
-      margin: 0;
+      margin-top: 0;
+      margin-bottom: .25rem;
       font-size: 1.15rem;
+    }
+  }
+
+  .-schedule {
+    &.list {
+      margin-top: .5rem;
+    }
+    &.item {
+      padding: .75rem 0;
+      border-bottom: 1px solid rgba($color--mine-shaft, .1);
+      position: relative;
+      padding-left: 15px;
+      &:last-child {
+        border-bottom: none;
+      }
+      &:before {
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        left: 0;
+        content: '';
+        width: 5px;
+        height: 5px;
+        background: $color--mine-shaft;
+        border-radius: 50%;
+      }
     }
   }
 
@@ -104,6 +174,30 @@
       font-size: 1.15rem;
       margin: 0;
       margin-bottom: .25rem;
+    }
+  }
+
+  .-map {
+    &.image {
+      max-width: 100%;
+    }
+    &.wrapper {
+      position: relative;
+      margin-bottom: 5px;
+    }
+    &.pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -10px;
+      margin-top: -20px;
+    }
+  }
+
+  .-tags {
+    &.item {
+      display: inline-block;
+      padding: 1px 6px 1px 0;
     }
   }
 </style>

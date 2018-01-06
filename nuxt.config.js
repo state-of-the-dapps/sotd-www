@@ -1,6 +1,7 @@
 const env = {
   apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v2/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS,
+  mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
   mode: process.env.MODE || 'universal'
 }
@@ -53,6 +54,7 @@ module.exports = {
   ],
   env: {
     apiUrl: env.apiUrl,
+    mapboxKey: env.mapboxKey,
     mixpanel: env.mixpanel
   },
   head: {
