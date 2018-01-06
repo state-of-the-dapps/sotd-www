@@ -174,7 +174,7 @@
           width: 1px;
           height: 12px;
           background: $color--mine-shaft;
-          z-index: 1;
+          z-index: 15;
         }
       }
     }

@@ -54,8 +54,9 @@
   .section {
     &.-intro {
       background: rgba(lighten($color--gallery, 100%), 1);
-      border-top: 2px solid darken($color--gallery, 5%);
-      border-bottom: 8px solid darken($color--gallery, 5%);
+      box-shadow: 0 0 50px rgba($color--mine-shaft,.15);
+      position: relative;
+      z-index: 15;
       .container {
         padding-top: 50px;
         padding-bottom: 50px;
