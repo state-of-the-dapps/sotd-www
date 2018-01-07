@@ -8,7 +8,6 @@
     <section class="section -form">
       <div class="container">
         <Fields/>
-        <PreviewSave/>
       </div>
     </section>
   </div>
@@ -16,12 +15,12 @@
 
 <script>
   import Fields from '~/components/events/form/Fields'
-  import PreviewSave from '~/components/events/form/PreviewSave'
+  // import PreviewSave from '~/components/events/form/PreviewSave'
 
   export default {
     components: {
-      Fields,
-      PreviewSave
+      Fields
+      // PreviewSave
     },
     head () {
       return {

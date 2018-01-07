@@ -5,45 +5,27 @@
     <Teaser/>
     <Description/>
     <Website/>
-    <DappUrl/>
-    <Authors/>
-    <License/>
-    <Logo/>
-    <Contracts/>
-    <Status/>
-    <Social/>
-    <Tags/>
+    <Organizer/>
+    <RegistrationInfo/>
   </div>
 </template>
 
 <script>
-  import Authors from '~/components/dapps/form/fields/Authors.vue'
-  import Contracts from '~/components/dapps/form/fields/Contracts.vue'
-  import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
-  import Description from '~/components/dapps/form/fields/Description.vue'
-  import Email from '~/components/dapps/form/fields/Email.vue'
-  import License from '~/components/dapps/form/fields/License.vue'
-  import Logo from '~/components/dapps/form/fields/Logo.vue'
-  import Name from '~/components/dapps/form/fields/Name.vue'
-  import Social from '~/components/dapps/form/fields/Social.vue'
-  import Status from '~/components/dapps/form/fields/Status.vue'
-  import Tags from '~/components/dapps/form/fields/Tags.vue'
-  import Teaser from '~/components/dapps/form/fields/Teaser.vue'
-  import Website from '~/components/dapps/form/fields/Website.vue'
+  import Description from '~/components/events/form/fields/Description.vue'
+  import Email from '~/components/events/form/fields/Email.vue'
+  import Name from '~/components/events/form/fields/Name.vue'
+  import Organizer from '~/components/events/form/fields/Organizer.vue'
+  import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
+  import Teaser from '~/components/events/form/fields/Teaser.vue'
+  import Website from '~/components/events/form/fields/Website.vue'
 
   export default {
     components: {
-      Authors,
-      Contracts,
-      DappUrl,
       Description,
       Email,
-      License,
-      Logo,
       Name,
-      Social,
-      Status,
-      Tags,
+      Organizer,
+      RegistrationInfo,
       Teaser,
       Website
     }

@@ -30,6 +30,8 @@
   .container {
     position: relative;
     @include tweakpoint('min-width', 600px) {
+      padding-left: 40px;
+      padding-right: 40px;
       display: flex;
       align-items: center;
       > :nth-child(1) {

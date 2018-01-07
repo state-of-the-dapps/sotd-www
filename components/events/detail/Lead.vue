@@ -34,7 +34,7 @@
     &.wrapper {
       max-width: 2000px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 30px 40px;
       position: relative;
       background: lighten($color--gallery, 100%);
       @include tweakpoint('min-width', 600px) {

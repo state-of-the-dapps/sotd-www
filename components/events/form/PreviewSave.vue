@@ -2,17 +2,24 @@
   <div class="wrapper">
     <div class="sticky">
       <div class="item -preview" :class="'-' + status">
-          <div class="info">
-              <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
-                  <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
-              </div>
-              <div class="description-wrapper">
-                  <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
-                  <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
-              </div>
+        <div class="info">
+          <div class="wrapper -dates">
+            <div @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --start">
+              <div class="month-year -date">Dec 2018</div>
+              <div class="day -date">21</div>
+            </div>
+            <div class="wrapper -date --to">to</div>
+            <div @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --end">
+              <div class="month-year -date">Dec 2018</div> 
+              <div class="day -date">31</div>         
+            </div>
           </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatDappStatus }}</p>
+          <div class="description-wrapper">
+              <h3 class="title" @click="$mixpanel.track('New event - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Event name</span></h3>
+              <p class="attribution" @click="$mixpanel.track('New event - Preview organizer')">by <strong><span v-if="authors.length > 0">{{ organizer }}</span><span v-else>the organizer</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
+              <p class="description" @click="$mixpanel.track('New event - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
+          </div>
+        </div>
       </div>
       <div class="checkboxes">
         <div class="checkbox-field">
@@ -42,50 +49,47 @@
 
   export default {
     computed: {
-      authors () {
-        return this.$store.getters['dapps/form/authors']
+      organizer () {
+        return this.$store.getters['events/form/organizer']
       },
       errorFields () {
-        return this.$store.getters['dapps/form/errorFields']
+        return this.$store.getters['events/form/errorFields']
       },
       fields () {
-        return this.$store.getters['dapps/form/fields']
+        return this.$store.getters['events/form/fields']
       },
-      name () {
-        return this.$store.getters['dapps/form/name']
+      dates () {
+        return this.$store.getters['events/form/name']
       },
       subscribeNewsletter: {
         get () {
-          return this.$store.getters['dapps/form/subscribeNewsletter']
+          return this.$store.getters['events/form/subscribeNewsletter']
         },
         set () {
-          this.$store.dispatch('dapps/form/toggleCheckbox', 'subscribeNewsletter')
+          this.$store.dispatch('events/form/toggleCheckbox', 'subscribeNewsletter')
         }
       },
       joinSlack: {
         get () {
-          return this.$store.getters['dapps/form/joinSlack']
+          return this.$store.getters['events/form/joinSlack']
         },
         set () {
-          this.$store.dispatch('dapps/form/toggleCheckbox', 'joinSlack')
+          this.$store.dispatch('events/form/toggleCheckbox', 'joinSlack')
         }
       },
-      status () {
-        return this.$store.getters['dapps/form/status']
-      },
       teaser () {
-        return this.$store.getters['dapps/form/teaser']
+        return this.$store.getters['events/form/teaser']
       },
       acceptedTerms: {
         get () {
-          return this.$store.getters['dapps/form/acceptedTerms']
+          return this.$store.getters['events/form/acceptedTerms']
         },
         set () {
-          this.$store.dispatch('dapps/form/toggleCheckbox', 'acceptedTerms')
+          this.$store.dispatch('events/form/toggleCheckbox', 'acceptedTerms')
           if (this.acceptedTerms === false) {
-            this.$store.dispatch('dapps/form/addErrorField', 'acceptedTerms')
+            this.$store.dispatch('events/form/addErrorField', 'acceptedTerms')
           } else {
-            this.$store.dispatch('dapps/form/removeErrorField', 'acceptedTerms')
+            this.$store.dispatch('events/form/removeErrorField', 'acceptedTerms')
           }
         }
       }
@@ -105,11 +109,11 @@
             }
           }
           this.sending = true
-          axios.post('dapps', data)
+          axios.post('events', data)
             .then((response) => {
               this.sending = false
-              this.$store.dispatch('dapps/form/resetForm')
-              this.$mixpanel.track('New ÐApp - Submit', {
+              this.$store.dispatch('events/form/resetForm')
+              this.$mixpanel.track('New event - Submit', {
                 disabled: false,
                 name: this.fields.name,
                 email: this.fields.email,
@@ -117,7 +121,7 @@
                 joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              this.$router.replace({ name: 'dapps-new-confirmation' })
+              this.$router.replace({ name: 'events-new-confirmation' })
             })
             .catch((error) => {
               alert(error.response.data.message)
@@ -199,6 +203,71 @@
     }
   }
 
+  .-dates {
+    &.wrapper {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .-date {
+    &.day {
+      display: flex;
+      width: 100%;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        height: 55px;
+      }
+    }
+    &.wrapper {
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      background: $color--gallery;
+      overflow: hidden;
+      font-size: 1.25rem;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        width: 75px;
+        height: 75px;
+        font-size: 1.5rem;
+      }
+      &.--to {
+        background: none;
+        font-size: .9rem;
+        width: 30px;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 18px;
+        @include tweakpoint('min-width', $tweakpoint--default) {
+          font-size: 1.1rem;
+        }        
+      }
+    }
+    &.month-year {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 100%;
+      font-size: .75rem;
+      font-weight: 600;
+      background: darken($color--gallery, 10%);
+      text-transform: uppercase;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        font-size: .9rem;
+      }
+    }
+  }
+
   .description {
     margin: 0;
     @include tweakpoint('min-width', 900px) {
@@ -214,47 +283,13 @@
     max-width: 100%;
   }
 
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: rgba(0,0,0,.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 50%;
-    font-size: 1.95rem;
-    margin-right: 10px;
-    transition: background .2s ease;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-demo {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
-    @include tweakpoint('min-width', 900px) {
-      margin-right: 0;
-      width: 75px;
-      height: 75px;
-    }
-  }
-
   .info {
     display: flex;
+    flex-direction: column;
     align-items: center;
     padding: 10px 20px;
     margin-top: -10px;
     @include tweakpoint('min-width', 900px) {
-      flex-direction: column;
       justify-content: center;
       text-align: center;
       margin-top: 25px;
@@ -349,36 +384,6 @@
     display: inline-block;
     padding-left: 2px;
     color: $color--tart-orange;
-  }
-
-  .status {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    border-bottom: 4px solid rgba($color--mine-shaft,.2);
-    margin: 0;
-    padding: 5px;
-    font-size: .8rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: border .2s ease;
-    &.-live {
-      border-color: $color--bright-green;
-    }
-    &.-demo {
-      border-color: $color--gorse;
-    }
-    &.-prototype {
-      border-color: $color--koromiko;
-    }
-    &.-wip {
-      border-color: $color--malibu;
-    }
-    &.-concept {
-      border-color: $color--portage;
-    }
   }
 
   .sticky {

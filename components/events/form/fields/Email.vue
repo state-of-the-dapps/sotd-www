@@ -20,18 +20,18 @@
     computed: {
       email: {
         get () {
-          return this.$store.getters['dapps/form/email']
+          return this.$store.getters['events/form/email']
         },
         set (value) {
           const field = {
             name: 'email',
             value: value
           }
-          this.$store.dispatch('dapps/form/setField', field)
+          this.$store.dispatch('events/form/setField', field)
         }
       },
       errors () {
-        return this.$store.getters['dapps/form/emailErrors']
+        return this.$store.getters['events/form/emailErrors']
       }
     },
     methods: {
@@ -43,7 +43,7 @@
         }
         validationTimer = setTimeout(() => {
           isValidEmail(this.email) ? '' : errors.data.push(`Please enter a valid email address`)
-          this.dispatchErrors(errors, 'dapps')
+          this.dispatchErrors(errors, 'events')
         }, 750)
       }
     },
