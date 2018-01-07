@@ -210,6 +210,12 @@ const getters = {
   fields: state => {
     return state.fields
   },
+  languages: state => {
+    return state.fields.languages
+  },
+  languagesErrors: state => {
+    return state.errors.languages
+  },
   name: state => {
     return state.fields.name
   },

@@ -7,6 +7,7 @@
     <Website/>
     <Organizer/>
     <RegistrationInfo/>
+    <Languages/> 
     <Social/>
     <Tags/>
   </div>
@@ -15,6 +16,7 @@
 <script>
   import Description from '~/components/events/form/fields/Description.vue'
   import Email from '~/components/events/form/fields/Email.vue'
+  import Languages from '~/components/events/form/fields/Languages.vue'
   import Name from '~/components/events/form/fields/Name.vue'
   import Organizer from '~/components/events/form/fields/Organizer.vue'
   import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
@@ -27,6 +29,7 @@
     components: {
       Description,
       Email,
+      Languages,
       Name,
       Organizer,
       RegistrationInfo,
