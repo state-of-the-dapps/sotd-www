@@ -5,27 +5,41 @@ function initialState () {
     errorFields: [
       'description',
       'email',
+      'languages',
       'name',
       'organizer',
       'registrationInfo',
+      'tags',
       'teaser',
       'websiteUrl'
     ],
     errors: {
       description: [],
       email: [],
+      languages: [],
       name: [],
       organizer: [],
       registrationInfo: [],
+      tags: [],
       teaser: [],
       websiteUrl: []
     },
     fields: {
       description: '',
       email: '',
+      languages: [],
       name: '',
       organizer: '',
       registrationInfo: '',
+      socials: {
+        facebook: {
+          path: ''
+        },
+        twitter: {
+          path: ''
+        }
+      },
+      tags: [],
       teaser: '',
       siteUrls: {
         website: ''
@@ -164,7 +178,7 @@ const mutations = {
     state.fields.siteUrls[field.name] = field.value
   },
   SET_SOCIAL (state, field) {
-    state.fields.social[field.name]['url'] = field.value
+    state.fields.socials[field.name]['path'] = field.value
   },
   SET_TAG_QUERY (state, value) {
     state.tagQuery = value
@@ -216,6 +230,21 @@ const getters = {
   },
   registrationInfoErrors: state => {
     return state.errors.registrationInfo
+  },
+  selectedTags: state => {
+    return state.fields.tags
+  },
+  socialFacebook: state => {
+    return state.fields.socials.facebook.path
+  },
+  socialTwitter: state => {
+    return state.fields.socials.twitter.path
+  },
+  tagQuery: state => {
+    return state.tagQuery
+  },
+  tagsResults: state => {
+    return state.tagsResults
   },
   teaser: state => {
     return state.fields.teaser

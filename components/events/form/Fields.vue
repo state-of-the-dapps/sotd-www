@@ -7,6 +7,8 @@
     <Website/>
     <Organizer/>
     <RegistrationInfo/>
+    <Social/>
+    <Tags/>
   </div>
 </template>
 
@@ -16,6 +18,8 @@
   import Name from '~/components/events/form/fields/Name.vue'
   import Organizer from '~/components/events/form/fields/Organizer.vue'
   import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
+  import Social from '~/components/events/form/fields/Social.vue'
+  import Tags from '~/components/events/form/fields/Tags.vue'
   import Teaser from '~/components/events/form/fields/Teaser.vue'
   import Website from '~/components/events/form/fields/Website.vue'
 
@@ -26,6 +30,8 @@
       Name,
       Organizer,
       RegistrationInfo,
+      Social,
+      Tags,
       Teaser,
       Website
     }

@@ -210,7 +210,7 @@ const mutations = {
     state.fields.siteUrls[field.name] = field.value
   },
   SET_SOCIAL (state, field) {
-    state.fields.social[field.name]['url'] = field.value
+    state.fields.socials[field.name]['path'] = field.value
   },
   SET_STATUS (state, value) {
     const index = state.errorFields.indexOf('status')
