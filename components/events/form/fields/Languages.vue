@@ -43,8 +43,8 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.languages.length > 75 ? errors.data.push(`languages can't be longer than 75 characters`) : ''
-          this.languages.length < 2 ? errors.data.push(`languages must be longer than 2 characters`) : ''
+          this.languages.length > 75 ? errors.data.push(`Languages can't be longer than 75 characters`) : ''
+          this.languages.length < 2 ? errors.data.push(`Languages must be longer than 2 characters`) : ''
           this.dispatchErrors(errors, 'events')
         }, 750)
       }

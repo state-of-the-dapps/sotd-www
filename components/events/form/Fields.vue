@@ -11,8 +11,9 @@
     <Sponsors/>
     <Social/>
     <Hashtag/>
-    <Tags/>
     <Categories/>
+    <Location/>
+    <Tags/>
   </div>
 </template>
 
@@ -22,6 +23,7 @@
   import Email from '~/components/events/form/fields/Email.vue'
   import Hashtag from '~/components/events/form/fields/Hashtag.vue'
   import Languages from '~/components/events/form/fields/Languages.vue'
+  import Location from '~/components/events/form/fields/Location.vue'
   import Name from '~/components/events/form/fields/Name.vue'
   import Organizer from '~/components/events/form/fields/Organizer.vue'
   import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
@@ -37,6 +39,7 @@
       Description,
       Email,
       Hashtag,
+      Location,
       Languages,
       Name,
       Organizer,

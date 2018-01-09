@@ -7,6 +7,7 @@ function initialState () {
       'description',
       'email',
       'languages',
+      'location',
       'name',
       'organizer',
       'registrationInfo',
@@ -15,6 +16,7 @@ function initialState () {
       'websiteUrl'
     ],
     errors: {
+      categories: [],
       description: [],
       email: [],
       hashtag: [],
@@ -33,6 +35,7 @@ function initialState () {
       email: '',
       hashtag: '',
       languages: [],
+      location: '',
       name: '',
       organizer: '',
       registrationInfo: '',
@@ -242,6 +245,9 @@ const getters = {
   },
   languagesErrors: state => {
     return state.errors.languages
+  },
+  location: state => {
+    return state.fields.location
   },
   name: state => {
     return state.fields.name
