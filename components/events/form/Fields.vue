@@ -7,7 +7,8 @@
     <Website/>
     <Organizer/>
     <RegistrationInfo/>
-    <Languages/> 
+    <Languages/>
+    <Sponsors/>
     <Social/>
     <Tags/>
   </div>
@@ -21,6 +22,7 @@
   import Organizer from '~/components/events/form/fields/Organizer.vue'
   import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
   import Social from '~/components/events/form/fields/Social.vue'
+  import Sponsors from '~/components/events/form/fields/Sponsors.vue'
   import Tags from '~/components/events/form/fields/Tags.vue'
   import Teaser from '~/components/events/form/fields/Teaser.vue'
   import Website from '~/components/events/form/fields/Website.vue'
@@ -34,6 +36,7 @@
       Organizer,
       RegistrationInfo,
       Social,
+      Sponsors,
       Tags,
       Teaser,
       Website

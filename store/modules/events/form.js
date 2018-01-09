@@ -20,6 +20,7 @@ function initialState () {
       name: [],
       organizer: [],
       registrationInfo: [],
+      sponsors: [],
       tags: [],
       teaser: [],
       websiteUrl: []
@@ -39,6 +40,7 @@ function initialState () {
           path: ''
         }
       },
+      sponsors: [],
       tags: [],
       teaser: '',
       siteUrls: {
@@ -245,6 +247,12 @@ const getters = {
   },
   socialTwitter: state => {
     return state.fields.socials.twitter.path
+  },
+  sponsors: state => {
+    return state.fields.sponsors
+  },
+  sponsorsErrors: state => {
+    return state.errors.sponsors
   },
   tagQuery: state => {
     return state.tagQuery
