@@ -10,6 +10,7 @@
     <Languages/>
     <Sponsors/>
     <Social/>
+    <Hashtag/>
     <Tags/>
   </div>
 </template>
@@ -17,6 +18,7 @@
 <script>
   import Description from '~/components/events/form/fields/Description.vue'
   import Email from '~/components/events/form/fields/Email.vue'
+  import Hashtag from '~/components/events/form/fields/Hashtag.vue'
   import Languages from '~/components/events/form/fields/Languages.vue'
   import Name from '~/components/events/form/fields/Name.vue'
   import Organizer from '~/components/events/form/fields/Organizer.vue'
@@ -31,6 +33,7 @@
     components: {
       Description,
       Email,
+      Hashtag,
       Languages,
       Name,
       Organizer,

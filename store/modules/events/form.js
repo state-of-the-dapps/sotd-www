@@ -16,6 +16,7 @@ function initialState () {
     errors: {
       description: [],
       email: [],
+      hashtag: [],
       languages: [],
       name: [],
       organizer: [],
@@ -28,6 +29,7 @@ function initialState () {
     fields: {
       description: '',
       email: '',
+      hashtag: '',
       languages: [],
       name: '',
       organizer: '',
@@ -211,6 +213,12 @@ const getters = {
   },
   fields: state => {
     return state.fields
+  },
+  hashtag: state => {
+    return state.fields.hashtag
+  },
+  hashtagErrors: state => {
+    return state.errors.hashtag
   },
   languages: state => {
     return state.fields.languages
