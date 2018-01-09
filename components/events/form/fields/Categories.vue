@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">Event categories <span class="required">(required, 4 maximum)</span></p>
+    <p class="heading">What this event will contain (select up to 4)</p>
     <ul class="list">
       <li v-for="(item, index) in items" :key="index" @click="toggle(item)" :class="categories.includes(item) ? 'item --' + item + ' --is-selected' : 'item --' + item">{{ item | formatEventCategory | capitalize }}</li>
     </ul>
@@ -22,8 +22,8 @@
       }
     },
     methods: {
-      toggle (value) {
-        this.$store.dispatch('events/form/toggleCategory', value)
+      toggle (category) {
+        this.$store.dispatch('events/form/toggleCategory', category)
       }
     }
   }

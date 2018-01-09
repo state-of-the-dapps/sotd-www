@@ -196,7 +196,13 @@ const mutations = {
     state.warnings[warnings.field] = warnings.data
   },
   TOGGLE_CATEGORY (state, category) {
-    // TODO
+    const selectedCategories = state.fields.categories.slice() || []
+    const categoryIndex = selectedCategories.indexOf(category)
+    if (categoryIndex !== -1) {
+      state.fields.categories.splice(categoryIndex, 1)
+    } else if (selectedCategories.length < 4) {
+      state.fields.categories.push(category)
+    }
   },
   TOGGLE_CHECKBOX (state, field) {
     state.fields[field] = !state.fields[field]
