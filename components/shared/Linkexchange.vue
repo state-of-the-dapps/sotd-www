@@ -1,6 +1,7 @@
 <template>
   <div class="linkexchange-wrapper">
     <linkexchange-link
+      id="linkexchange"
       api-url="https://api-staging.userfeeds.io"
       size="rectangle"
       type="text"
@@ -41,26 +42,26 @@ export default {
     color: $color--mine-shaft !important;
   }
 
-  #linkexchange [class*="banner__self"] {
+  #linkexchange .LX__banner__self {
     border: none !important;
   }
 
-  #linkexchange [class*="banner__info"] {
+  #linkexchange .LX__banner__info {
     margin-top: 5px !important;
     font-size: .8rem !important;
   }
 
-  #linkexchange [class*="banner__arrows"] {
+  #linkexchange .LX__banner__arrows {
     position: absolute !important;
     left: 50% !important;
     margin-left: -10px !important;
   }
 
-  #linkexchange [class*="banner__arrow"] {
+  #linkexchange .LX__banner__arrow {
     font-size: 1rem !important;
   }
 
-  #linkexchange [class*="banner__container"] {
+  #linkexchange .LX__banner__container {
     height: 100% !important;
     background: url('~/assets/images/bg.jpg') center center !important;
     background-size: 100px 100px !important;
@@ -68,7 +69,11 @@ export default {
     padding-right: 15px !important;
   }
 
-  #linkexchange [class*="banner__options"] {
+  #linkexchange .LX__link__summary:after,   #linkexchange .LX__link__summary:before {
+    display: none;
+  }
+
+  #linkexchange .LX__banner__options {
     background: url('~/assets/images/bg.jpg') center center !important;
     background-size: 100px 100px !important;
     box-shadow: none !important;
@@ -77,20 +82,24 @@ export default {
     width: calc(100% - 20px) !important;
   }
 
-  #linkexchange [class*="banner__probability"] {
-    font-size: .8rem !important;
+  #linkexchange .LX__banner__probability {
+    font-size: .7rem !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
     position: relative !important;
     top: -2px !important;
   }
 
-  #linkexchange [class*="banner__rectangle"] {
+  #linkexchange .LX__banner__rectangle {
     width: 100% !important;
     height: 100% !important;
   }
 
-  #linkexchange [class*="menu__self"] {
+  #linkexchange .LX__modal__self {
+    background-color: rgba($color--mine-shaft,.85) !important;
+  }
+
+  #linkexchange .LX__menu__self {
     position: absolute !important;
     right: 0 !important;
     margin-right: 10px !important;
