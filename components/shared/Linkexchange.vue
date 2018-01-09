@@ -1,9 +1,10 @@
 <template>
   <div class="linkexchange-wrapper">
     <linkexchange-link
-      size="leaderboard"
+      api-url="https://api-staging.userfeeds.io"
+      size="rectangle"
       type="text"
-      recipient-address="0x65bCF0A60B3974931a4459c32ef4043262bc370c" 
+      recipient-address="0x65bCF0A60B3974931a4459c32ef4043262bc370c"
       whitelist="0x65bCF0A60B3974931a4459c32ef4043262bc370c"
       asset="ethereum"
       widget-title="State of the DApps"
@@ -13,7 +14,7 @@
       contact-method="support@stateofthedapps.com"
       algorithm="links">
     </linkexchange-link>
-    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@latest"></script>
   </div>
 </template>
 
