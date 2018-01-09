@@ -1,15 +1,16 @@
 <template>
   <div class="linkexchange-wrapper">
-    <linkexchange-link id="linkexchange"
-      size="rectangle"
+    <linkexchange-link
+      size="leaderboard"
       type="text"
-      recipient-address="0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B"
+      recipient-address="0x65bCF0A60B3974931a4459c32ef4043262bc370c" 
+      whitelist="0x65bCF0A60B3974931a4459c32ef4043262bc370c"
       asset="ethereum"
-      widget-title="SotD"
-      till-date="6/2/2018"
-      description="I accept only links that are about science and technology."
+      widget-title="State of the DApps"
+      till-date="3/31/2018"
+      description="I accept only links for projects listed on State of the DApps"
       impression="N/A"
-      contact-method="email"
+      contact-method="support@stateofthedapps.com"
       algorithm="links">
     </linkexchange-link>
     <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"></script>
