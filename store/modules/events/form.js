@@ -3,6 +3,7 @@ import axios from '~/helpers/axios'
 function initialState () {
   return {
     errorFields: [
+      'categories',
       'description',
       'email',
       'languages',
@@ -27,6 +28,7 @@ function initialState () {
       websiteUrl: []
     },
     fields: {
+      categories: [],
       description: '',
       email: '',
       hashtag: '',
@@ -106,6 +108,9 @@ const actions = {
   },
   setWarnings ({ commit }, warnings) {
     commit('SET_WARNINGS', warnings)
+  },
+  toggleCategory ({ commit }, category) {
+    commit('TOGGLE_CATEGORY', category)
   },
   toggleCheckbox ({ commit }, field) {
     commit('TOGGLE_CHECKBOX', field)
@@ -190,12 +195,18 @@ const mutations = {
   SET_WARNINGS (state, warnings) {
     state.warnings[warnings.field] = warnings.data
   },
+  TOGGLE_CATEGORY (state, category) {
+    // TODO
+  },
   TOGGLE_CHECKBOX (state, field) {
     state.fields[field] = !state.fields[field]
   }
 }
 
 const getters = {
+  categories: state => {
+    return state.fields.categories
+  },
   description: state => {
     return state.fields.description
   },

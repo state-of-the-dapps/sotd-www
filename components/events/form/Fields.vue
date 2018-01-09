@@ -12,10 +12,12 @@
     <Social/>
     <Hashtag/>
     <Tags/>
+    <Categories/>
   </div>
 </template>
 
 <script>
+  import Categories from '~/components/events/form/fields/Categories.vue'
   import Description from '~/components/events/form/fields/Description.vue'
   import Email from '~/components/events/form/fields/Email.vue'
   import Hashtag from '~/components/events/form/fields/Hashtag.vue'
@@ -31,6 +33,7 @@
 
   export default {
     components: {
+      Categories,
       Description,
       Email,
       Hashtag,
