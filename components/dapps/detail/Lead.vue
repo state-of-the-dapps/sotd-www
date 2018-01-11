@@ -57,7 +57,7 @@
       background: $color--screamin-green;
       border-color: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--paris-daisy;
       border-color: $color--gorse;
     }

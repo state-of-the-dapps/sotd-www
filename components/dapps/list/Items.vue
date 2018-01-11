@@ -137,7 +137,7 @@
     &.-live {
       background: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--gorse;
     }
     &.-prototype {
@@ -209,7 +209,7 @@
     &.-live {
       background: $color--screamin-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--paris-daisy;
     }
     &.-prototype {
@@ -280,7 +280,7 @@
     &.-live {
       color: $color--screamin-green;
     }
-    &.-demo {
+    &.-beta {
       color: $color--paris-daisy;
     }
     &.-prototype {
@@ -312,7 +312,7 @@
     &.-live {
       border-color: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       border-color: $color--gorse;
     }
     &.-prototype {

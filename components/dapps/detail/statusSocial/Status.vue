@@ -41,7 +41,7 @@
         background-color: $color--golden-tainoi;
       }
     }
-    &.-demo {
+    &.-beta {
       &:before {
         background-color: $color--paris-daisy;
       }

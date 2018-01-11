@@ -121,7 +121,7 @@
     &.-live {
       background: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--gorse;
     }
     &.-prototype {
@@ -184,7 +184,7 @@
     &.-live {
       color: $color--screamin-green;
     }
-    &.-demo {
+    &.-beta {
       color: $color--paris-daisy;
     }
     &.-prototype {

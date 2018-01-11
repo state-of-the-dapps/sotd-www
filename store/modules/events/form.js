@@ -24,6 +24,7 @@ function initialState () {
       description: [],
       email: [],
       hashtag: [],
+      highlights: [],
       languages: [],
       name: [],
       organizer: [],
@@ -38,6 +39,7 @@ function initialState () {
       description: '',
       email: '',
       hashtag: '',
+      highlights: [],
       languages: [],
       location: '',
       name: '',
@@ -301,6 +303,12 @@ const getters = {
   },
   hashtagErrors: state => {
     return state.errors.hashtag
+  },
+  highlights: state => {
+    return state.fields.highlights
+  },
+  highlightsErrors: state => {
+    return state.errors.highlights
   },
   languages: state => {
     return state.fields.languages

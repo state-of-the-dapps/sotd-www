@@ -4,6 +4,8 @@
     <Email/>
     <Teaser/>
     <Description/>
+    <Highlights/>
+    <Dates/>
     <Website/>
     <Organizer/>
     <RegistrationInfo/>
@@ -20,9 +22,11 @@
 
 <script>
   import Categories from '~/components/events/form/fields/Categories.vue'
+  import Dates from '~/components/events/form/fields/Dates.vue'
   import Description from '~/components/events/form/fields/Description.vue'
   import Email from '~/components/events/form/fields/Email.vue'
   import Hashtag from '~/components/events/form/fields/Hashtag.vue'
+  import Highlights from '~/components/events/form/fields/Highlights.vue'
   import Languages from '~/components/events/form/fields/Languages.vue'
   import Location from '~/components/events/form/fields/Location.vue'
   import Name from '~/components/events/form/fields/Name.vue'
@@ -38,9 +42,11 @@
   export default {
     components: {
       Categories,
+      Dates,
       Description,
       Email,
       Hashtag,
+      Highlights,
       Location,
       Languages,
       Name,

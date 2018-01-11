@@ -336,7 +336,7 @@
     &.-live {
       background: $color--screamin-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--paris-daisy;
     }
     &.-prototype {
