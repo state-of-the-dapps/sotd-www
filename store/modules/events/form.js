@@ -1,4 +1,8 @@
+import { generateRandomSeed } from '~/helpers/functions'
+import { dappRefineStatusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
+
+const randomSeed = generateRandomSeed()
 
 function initialState () {
   return {
@@ -38,6 +42,7 @@ function initialState () {
       location: '',
       name: '',
       organizer: '',
+      relatedDapps: [],
       registrationInfo: '',
       socials: {
         facebook: {
@@ -54,6 +59,8 @@ function initialState () {
         website: ''
       }
     },
+    relatedDappQuery: '',
+    relatedDappsResults: [],
     tagQuery: '',
     tagsResults: [],
     warnings: {
@@ -70,6 +77,26 @@ const actions = {
   addTag ({ commit }, value) {
     commit('ADD_TAG', value)
   },
+  fetchRelatedDapps: ({ commit, state }, value) => {
+    axios
+      .get('dapps', {
+        params: {
+          excluded: state.fields.relatedDapps,
+          tab: 'most-relevant',
+          limit: 50,
+          offset: 0,
+          status: dappRefineStatusOptions[0],
+          seed: randomSeed,
+          tags: [],
+          text: state.relatedDappQuery
+        }
+      })
+      .then(response => {
+        const payload = response.data.payload
+        const items = payload.items
+        commit('SET_RELATED_DAPPS_RESULTS', items)
+      })
+  },
   fetchTags: ({ commit, state }, value) => {
     axios
       .get('tags', { params: { text: value, excluded: state.fields.tags } })
@@ -82,14 +109,23 @@ const actions = {
   removeErrorField ({ commit }, field) {
     commit('REMOVE_ERROR_FIELD', field)
   },
+  removeRelatedDapp ({ commit }, index) {
+    commit('REMOVE_RELATED_DAPP', index)
+  },
   removeTag ({ commit }, index) {
     commit('REMOVE_TAG', index)
   },
   resetForm ({ commit }) {
     commit('RESET_FORM')
   },
+  resetRelatedDappsResults ({ commit }) {
+    commit('RESET_RELATED_DAPPS_RESULTS')
+  },
   resetTagResults ({ commit }) {
     commit('RESET_TAG_RESULTS')
+  },
+  selectRelatedDapp ({ commit }, index) {
+    commit('SELECT_RELATED_DAPP', index)
   },
   selectTag ({ commit }, index) {
     commit('SELECT_TAG', index)
@@ -105,6 +141,9 @@ const actions = {
   },
   setSocial ({ commit }, field) {
     commit('SET_SOCIAL', field)
+  },
+  setRelatedDappQuery ({ commit }, value) {
+    commit('SET_RELATED_DAPP_QUERY', value)
   },
   setTagQuery ({ commit }, value) {
     commit('SET_TAG_QUERY', value)
@@ -145,6 +184,9 @@ const mutations = {
       state.errorFields.splice(index, 1)
     }
   },
+  REMOVE_RELATED_DAPP (state, index) {
+    state.fields.relatedDapps.splice(index, 1)
+  },
   REMOVE_TAG (state, index) {
     state.fields.tags.splice(index, 1)
     let errorIndex = state.errorFields.indexOf('tags')
@@ -161,9 +203,23 @@ const mutations = {
   RESET_FORM (state) {
     Object.assign(state, initialState())
   },
+  RESET_RELATED_DAPPS_RESULTS (state) {
+    state.relatedDappsResults = []
+    state.relatedDappQuery = ''
+  },
   RESET_TAG_RESULTS (state) {
     state.tagsResults = []
     state.tagQuery = ''
+  },
+  SELECT_RELATED_DAPP (state, index) {
+    if (state.fields.relatedDapps.indexOf(state.relatedDappsResults[index]) === -1) {
+      const relatedDapp = {
+        name: state.relatedDappsResults[index].name,
+        slug: state.relatedDappsResults[index].slug
+      }
+      state.fields.relatedDapps.push(relatedDapp)
+    }
+    state.relatedDappsResults.splice(index, 1)
   },
   SELECT_TAG (state, index) {
     if (state.fields.tags.indexOf(state.tagsResults[index]) === -1) {
@@ -176,6 +232,9 @@ const mutations = {
       }
     }
     state.tagsResults.splice(index, 1)
+  },
+  SET_RELATED_DAPPS_RESULTS (state, items) {
+    state.relatedDappsResults = items
   },
   SET_TAG_RESULTS (state, items) {
     state.tagsResults = items
@@ -191,6 +250,9 @@ const mutations = {
   },
   SET_SOCIAL (state, field) {
     state.fields.socials[field.name]['path'] = field.value
+  },
+  SET_RELATED_DAPP_QUERY (state, value) {
+    state.relatedDappQuery = value
   },
   SET_TAG_QUERY (state, value) {
     state.tagQuery = value
@@ -264,11 +326,20 @@ const getters = {
   organizerErrors: state => {
     return state.errors.organizer
   },
+  relatedDappQuery: state => {
+    return state.relatedDappQuery
+  },
+  relatedDappsResults: state => {
+    return state.relatedDappsResults
+  },
   registrationInfo: state => {
     return state.fields.registrationInfo
   },
   registrationInfoErrors: state => {
     return state.errors.registrationInfo
+  },
+  selectedRelatedDapps: state => {
+    return state.fields.relatedDapps
   },
   selectedTags: state => {
     return state.fields.tags

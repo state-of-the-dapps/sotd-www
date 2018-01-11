@@ -11,6 +11,7 @@
     <Sponsors/>
     <Social/>
     <Hashtag/>
+    <RelatedDapps/>
     <Categories/>
     <Location/>
     <Tags/>
@@ -27,6 +28,7 @@
   import Name from '~/components/events/form/fields/Name.vue'
   import Organizer from '~/components/events/form/fields/Organizer.vue'
   import RegistrationInfo from '~/components/events/form/fields/RegistrationInfo.vue'
+  import RelatedDapps from '~/components/events/form/fields/RelatedDapps.vue'
   import Social from '~/components/events/form/fields/Social.vue'
   import Sponsors from '~/components/events/form/fields/Sponsors.vue'
   import Tags from '~/components/events/form/fields/Tags.vue'
@@ -43,6 +45,7 @@
       Languages,
       Name,
       Organizer,
+      RelatedDapps,
       RegistrationInfo,
       Social,
       Sponsors,
