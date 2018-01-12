@@ -8,6 +8,7 @@ function initialState () {
   return {
     errorFields: [
       'categories',
+      'dates',
       'description',
       'email',
       'languages',
@@ -21,6 +22,7 @@ function initialState () {
     ],
     errors: {
       categories: [],
+      dates: [],
       description: [],
       email: [],
       hashtag: [],
@@ -36,6 +38,10 @@ function initialState () {
     },
     fields: {
       categories: [],
+      dates: {
+        end: '',
+        start: ''
+      },
       description: '',
       email: '',
       hashtag: '',
@@ -279,6 +285,12 @@ const mutations = {
 const getters = {
   categories: state => {
     return state.fields.categories
+  },
+  dateEnd: state => {
+    return state.fields.dates.end
+  },
+  dateStart: state => {
+    return state.fields.dates.start
   },
   description: state => {
     return state.fields.description

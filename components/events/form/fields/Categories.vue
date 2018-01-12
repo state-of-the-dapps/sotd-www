@@ -58,6 +58,7 @@
     border: 1px solid transparent;
     transition: all .2s ease;
     user-select: none;
+    font-size: .95rem;
     &:hover {
       cursor: pointer;
       border: 1px solid $color--mine-shaft;

@@ -86,7 +86,7 @@
     padding: 10px;
     box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
     width: 320px;
-    top: 37px;
+    top: 36px;
     left: 0;
     overflow: hidden;
     z-index: 10;
@@ -135,6 +135,7 @@
     border: none;
     background: none;
     width: 100%;
+    font-size: .95rem;
     &::placeholder {
       color: $color--mine-shaft;
     }

@@ -1,21 +1,21 @@
 <template>
   <div class="list">
     <Name/>
+    <Location/>
+    <Dates/>
     <Email/>
     <Teaser/>
     <Description/>
     <Highlights/>
-    <Dates/>
-    <Website/>
     <Organizer/>
+    <Website/>
     <RegistrationInfo/>
     <Languages/>
     <Sponsors/>
     <Social/>
     <Hashtag/>
-    <RelatedDapps/>
     <Categories/>
-    <Location/>
+    <RelatedDapps/>
     <Tags/>
   </div>
 </template>

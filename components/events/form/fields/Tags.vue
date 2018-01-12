@@ -185,6 +185,7 @@
     border: none;
     background: none;
     width: 100%;
+    font-size: .95rem;
     &::placeholder {
       color: $color--mine-shaft;
     }
