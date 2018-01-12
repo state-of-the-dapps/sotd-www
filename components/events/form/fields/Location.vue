@@ -91,7 +91,7 @@
 
   .-component-events-form-fields-location {
     &.item {
-      border: none;
+      border: 1px solid transparent;
       position: relative;
     }
   }

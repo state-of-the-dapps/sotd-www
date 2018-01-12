@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper -component-events-form-fields-dates">
-    <div class="wrapper -dates">
+    <div class="wrapper -dates" @click="toggleDatePicker('start')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
         <span v-if="start" class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span>
         <span v-else>Event date <span class="required">(required)</span></span>
       </span>
-      <DatePicker/>
+      <DatePicker type="start" :isActive="startIsActive" @hide="toggleDatePicker('start')" />
     </div>
-    <div class="wrapper -dates" :class="!start ? '--is-inactive' : ''">
+    <div class="wrapper -dates" :class="!start ? '--is-inactive' : ''" @click="toggleDatePicker('end')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
         <span v-if="end" class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span>
         <span v-else>End date</span>
       </span>
-      <DatePicker/>
+      <DatePicker type="end" :isActive="endIsActive" @hide="toggleDatePicker('end')" />
     </div>
   </div>
 </template>
@@ -23,6 +23,12 @@
   import DatePicker from '~/components/shared/DatePicker.vue'
 
   export default {
+    data () {
+      return {
+        endIsActive: false,
+        startIsActive: false
+      }
+    },
     components: {
       DatePicker
     },
@@ -32,6 +38,16 @@
       },
       start () {
         return this.$store.getters['events/form/dateStart']
+      }
+    },
+    methods: {
+      toggleDatePicker (picker) {
+        if (picker === 'start') {
+          this.startIsActive = !this.startIsActive
+        }
+        if (this.start && picker === 'end') {
+          this.endIsActive = !this.endIsActive
+        }
       }
     }
   }
@@ -46,6 +62,17 @@
       align-items: center;
       margin-bottom: 15px;
       border: 1px solid transparent;
+    }
+    .-component-shared-datepicker {
+      &.wrapper {
+        bottom: 60px;
+        left: 0;
+        z-index: 15;
+        &.-end {
+          left: auto;
+          right: 0;
+        }
+      }
     }
   }
 
