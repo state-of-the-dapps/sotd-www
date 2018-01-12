@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
       <textarea class="text-area" maxlength="75" :class="teaser.length > 0 ? '--is-filled' : ''" type="text" v-model="teaser" @input="validate"></textarea>
-      <label class="label">Teaser description<span class="required">(required)</span></label>
+      <label class="label">Teaser description <span class="required">(required)</span></label>
       <span class="remaining-characters">{{ 75 - teaser.length }}</span>
       <ul v-if="warnings && warnings.length > 0" class="warning-list">
         <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>

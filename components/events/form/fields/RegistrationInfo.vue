@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
       <textarea class="text-area" maxlength="100" :class="registrationInfo.length > 0 ? '--is-filled' : ''" type="text" v-model="registrationInfo" @input="validate"></textarea>
-      <label class="label">Registration info<span class="required">(required)</span></label>
+      <label class="label">Registration info <span class="required">(required)</span></label>
       <span class="remaining-characters">{{ 100 - registrationInfo.length }}</span>
       <ul v-if="errors && errors.length > 0" class="error-list">
         <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
