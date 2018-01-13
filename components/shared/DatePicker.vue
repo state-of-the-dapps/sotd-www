@@ -3,13 +3,13 @@
     <div v-if="isActive" class="wrapper -component-shared-datepicker" :class="'-' + type" v-on-clickaway="hide" @click.stop="">
       <ul class="list -month">
         <li class="item -month --prev" @click="changeMonth(-1)">
-          <img class="image -month --prev" src="~/assets/images/arrows/back.png" width="12" />
+          <img class="image -month --prev" src="~/assets/images/arrows/back.png" width="10" />
         </li>
         <li class="item -month --current">
           <span class="date -month">{{ startOfMonthDate | formatDate('MMMM YYYY') }}</span>
         </li>
         <li class="item -month --next" @click="changeMonth(1)">
-          <img class="image -month --next" src="~/assets/images/arrows/next.png" width="12" />
+          <img class="image -month --next" src="~/assets/images/arrows/next.png" width="10" />
         </li>
       </ul>
       <ul class="list -day-label">
@@ -122,7 +122,7 @@
       box-shadow: 0 0 20px rgba($color--mine-shaft, .1);
       padding: 20px;
       cursor: initial;
-      width: 350px;
+      width: 275px;
     }
   }
 
@@ -141,7 +141,7 @@
       font-size: 1.1rem;
       width: calc(14.28571429% - 1px);
       box-sizing: content-box;
-      height: 44px;
+      height: 33px;
       background: lighten($color--gallery, 20%);
       border-right: 1px solid rgba($color--mine-shaft, .1);
       border-top: 1px solid rgba($color--mine-shaft, .1);
@@ -183,6 +183,7 @@
     &.num {
       position: relative;
       z-index: 2;
+      font-size: .9rem;
     }
   }
 
@@ -221,10 +222,10 @@
       }
     }
     &.item {
-      line-height: 1;
-      padding: 10px 0;
+      line-height: 1.1;
+      padding: 8px 0;
       width: 14.28571429%;
-      font-size: 1.05rem;
+      font-size: .9rem;
       text-align: center;
       background: $color--mine-shaft;
       color: $color--gallery;
