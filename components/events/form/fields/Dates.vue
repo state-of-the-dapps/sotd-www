@@ -6,7 +6,13 @@
         <span v-if="start" class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span>
         <span v-else>Event date <span class="required">(required)</span></span>
       </span>
-      <DatePicker type="start" :isActive="startIsActive" @hide="toggleDatePicker('start')" />
+      <DatePicker 
+        type="start"
+        :isActive="startIsActive" 
+        :selectedDate="start"
+        @hide="toggleDatePicker('start')" 
+        @selectDate="selectStartDate"
+      />
     </div>
     <div class="wrapper -dates" :class="!start ? '--is-inactive' : ''" @click="toggleDatePicker('end')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
@@ -14,7 +20,13 @@
         <span v-if="end" class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span>
         <span v-else>End date</span>
       </span>
-      <DatePicker type="end" :isActive="endIsActive" @hide="toggleDatePicker('end')" />
+      <DatePicker 
+        type="end"
+        :isActive="endIsActive" 
+        :selectedDate="end"
+        @hide="toggleDatePicker('end')" 
+        @selectDate="selectEndDate" 
+      />
     </div>
   </div>
 </template>
@@ -41,6 +53,20 @@
       }
     },
     methods: {
+      selectStartDate (value) {
+        const field = {
+          name: 'start',
+          value: value
+        }
+        this.$store.dispatch('events/form/setDate', field)
+      },
+      selectEndDate (value) {
+        const field = {
+          name: 'end',
+          value: value
+        }
+        this.$store.dispatch('events/form/setDate', field)
+      },
       toggleDatePicker (picker) {
         if (picker === 'start') {
           this.startIsActive = !this.startIsActive

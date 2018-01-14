@@ -54,8 +54,7 @@
         default: false
       },
       selectedDate: {
-        type: String,
-        default: formatDate(Date.now(), 'YYYY-MM-DD')
+        type: String
       },
       type: {
         type: String,
@@ -75,7 +74,7 @@
       },
       initializeCalendar () {
         this.today = formatDate(Date.now(), 'YYYY-MM-DD')
-        this.startOfMonthDate = formatDate(startOfMonth(this.selectedDate), 'YYYY-MM-DD')
+        this.startOfMonthDate = this.selectedDate ? formatDate(startOfMonth(this.selectedDate), 'YYYY-MM-DD') : formatDate(startOfMonth(Date.now()), 'YYYY-MM-DD')
         this.setupMonth()
       },
       isSelected (date) {
@@ -145,6 +144,7 @@
       background: lighten($color--gallery, 20%);
       border-right: 1px solid rgba($color--mine-shaft, .1);
       border-top: 1px solid rgba($color--mine-shaft, .1);
+      user-select: none;
       cursor: pointer;
       &:nth-child(-n+7) {
         border-top: none;
@@ -230,6 +230,7 @@
       background: $color--mine-shaft;
       color: $color--gallery;
       text-transform: uppercase;
+      user-select: none;
       cursor: pointer;
       &.--current {
         color: $color--mine-shaft;

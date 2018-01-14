@@ -138,6 +138,9 @@ const actions = {
   selectTag ({ commit }, index) {
     commit('SELECT_TAG', index)
   },
+  setDate ({ commit }, field) {
+    commit('SET_DATE', field)
+  },
   setErrors ({ commit }, errors) {
     commit('SET_ERRORS', errors)
   },
@@ -240,6 +243,9 @@ const mutations = {
       }
     }
     state.tagsResults.splice(index, 1)
+  },
+  SET_DATE (state, field) {
+    state.fields.dates[field.name] = field.value
   },
   SET_RELATED_DAPPS_RESULTS (state, items) {
     state.relatedDappsResults = items
