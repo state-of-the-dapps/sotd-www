@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
     <input class="text-input" :class="hashtag.length > 0 ? '--is-filled' : ''" type="text" maxlength="20" v-model="hashtag" @input="validate">
-    <label class="label">Event hashtag</label>
+    <label class="label">Hashtag</label>
     <span class="remaining-characters">{{ 20 - hashtag.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>

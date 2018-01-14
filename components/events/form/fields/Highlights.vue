@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
     <textarea class="text-area" maxlength="500" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="highlights.length > 0 ? '--is-filled' : ''" type="text" v-model="highlights" @input="validate"></textarea>
-    <label class="label">Event highlights</label>
+    <label class="label">Highlights</label>
     <span class="remaining-characters">{{ 500 - highlights.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>

@@ -1,7 +1,7 @@
 <template>
   <div class="item -component-events-form-fields-location">
     <div class="wrapper -location" @click="toggleDropdown">
-      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location.length" class="link -location">{{ location }}</span><span v-else>Event location <span class="required">(required)</span></span>
+      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location.length" class="link -location">{{ location }}</span><span v-else>Location <span class="required">(required)</span></span>
     </div>
     <transition name="fade">
       <div v-if="dropdownIsActive" v-on-clickaway="toggleDropdown" class="wrapper -dropdown">

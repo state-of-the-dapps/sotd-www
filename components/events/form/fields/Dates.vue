@@ -3,8 +3,8 @@
     <div class="wrapper -dates" @click="toggleDatePicker('start')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
-        <span v-if="start" class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span>
-        <span v-else>Event date <span class="required">(required)</span></span>
+        <span v-if="start"><span v-if="end">Starts: </span> <span class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span></span>
+        <span v-else>Date <span class="required">(required)</span></span>
       </span>
       <DatePicker 
         type="start"
@@ -17,7 +17,7 @@
     <div class="wrapper -dates" :class="!start ? '--is-inactive' : ''" @click="toggleDatePicker('end')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
-        <span v-if="end" class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span>
+        <span v-if="end"><span>Ends: </span> <span class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span></span>
         <span v-else>End date</span>
       </span>
       <DatePicker 
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+  import differenceInDays from 'date-fns/difference_in_days'
   import DatePicker from '~/components/shared/DatePicker.vue'
 
   export default {
@@ -54,18 +55,24 @@
     },
     methods: {
       selectStartDate (value) {
-        const field = {
-          name: 'start',
-          value: value
+        const daysBetweenStartEnd = differenceInDays(this.end, value)
+        if (!(daysBetweenStartEnd < 0)) {
+          const field = {
+            name: 'start',
+            value: value
+          }
+          this.$store.dispatch('events/form/setDate', field)
         }
-        this.$store.dispatch('events/form/setDate', field)
       },
       selectEndDate (value) {
-        const field = {
-          name: 'end',
-          value: value
+        const daysBetweenStartEnd = differenceInDays(value, this.start)
+        if (!(daysBetweenStartEnd < 0)) {
+          const field = {
+            name: 'end',
+            value: value
+          }
+          this.$store.dispatch('events/form/setDate', field)
         }
-        this.$store.dispatch('events/form/setDate', field)
       },
       toggleDatePicker (picker) {
         if (picker === 'start') {
@@ -129,6 +136,9 @@
       margin-right: 10px;
       position: relative;
       top: -1px;
+    }
+    &.date-text {
+      text-decoration: none;
     }
   }
 </style>

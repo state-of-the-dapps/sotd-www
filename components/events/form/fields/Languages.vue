@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
     <input class="text-input" :class="languages.length > 0 ? '--is-filled' : ''" type="text" maxlength="75" v-model="languages" @input="validate">
-    <label class="label">Languages <span class="required">(required)</span></label>
+    <label class="label">Languages spoken <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 75 - languages.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>

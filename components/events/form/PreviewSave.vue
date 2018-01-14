@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="sticky">
-      <div class="item -preview" :class="'-' + status">
+      <div class="item -preview">
         <div class="info">
           <div class="wrapper -dates">
             <div @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --start">
@@ -16,7 +16,7 @@
           </div>
           <div class="description-wrapper">
               <h3 class="title" @click="$mixpanel.track('New event - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Event name</span></h3>
-              <p class="attribution" @click="$mixpanel.track('New event - Preview organizer')">by <strong><span v-if="authors.length > 0">{{ organizer }}</span><span v-else>the organizer</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
+              <p class="attribution" @click="$mixpanel.track('New event - Preview organizer')">by <strong><span v-if="organizer">{{ organizer }}</span><span v-else>the organizer</span></strong><span v-if="organizer.length > 1"> +{{ organizer.length - 1 }}</span></p>
               <p class="description" @click="$mixpanel.track('New event - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
           </div>
         </div>
@@ -58,7 +58,7 @@
       fields () {
         return this.$store.getters['events/form/fields']
       },
-      dates () {
+      name () {
         return this.$store.getters['events/form/name']
       },
       subscribeNewsletter: {
