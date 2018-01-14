@@ -7,7 +7,7 @@ const randomSeed = generateRandomSeed()
 function initialState () {
   return {
     errorFields: [
-      'categories',
+      'acceptedTerms',
       'dates',
       'description',
       'email',
@@ -37,6 +37,7 @@ function initialState () {
       websiteUrl: []
     },
     fields: {
+      acceptedTerms: false,
       categories: [],
       dates: {
         end: '',
@@ -46,6 +47,7 @@ function initialState () {
       email: '',
       hashtag: '',
       highlights: [],
+      joinSlack: true,
       languages: [],
       location: '',
       name: '',
@@ -61,6 +63,7 @@ function initialState () {
         }
       },
       sponsors: [],
+      subscribeNewsletter: true,
       tags: [],
       teaser: '',
       siteUrls: {
@@ -289,6 +292,9 @@ const mutations = {
 }
 
 const getters = {
+  acceptedTerms: state => {
+    return state.fields.acceptedTerms
+  },
   categories: state => {
     return state.fields.categories
   },
@@ -327,6 +333,9 @@ const getters = {
   },
   highlightsErrors: state => {
     return state.errors.highlights
+  },
+  joinSlack: state => {
+    return state.fields.joinSlack
   },
   languages: state => {
     return state.fields.languages
@@ -381,6 +390,9 @@ const getters = {
   },
   sponsorsErrors: state => {
     return state.errors.sponsors
+  },
+  subscribeNewsletter: state => {
+    return state.fields.subscribeNewsletter
   },
   tagQuery: state => {
     return state.tagQuery

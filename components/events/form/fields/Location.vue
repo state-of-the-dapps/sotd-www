@@ -22,6 +22,7 @@
 <script>
   import axios from '~/helpers/axios'
   import { directive as onClickaway } from 'vue-clickaway'
+  import { dispatchErrors } from '~/helpers/mixins'
 
   let searchTimer
 
@@ -70,7 +71,12 @@
           name: 'location',
           value: value
         }
+        const errors = {
+          field: 'location',
+          data: []
+        }
         this.$store.dispatch('events/form/setField', field)
+        this.dispatchErrors(errors, 'events')
         this.toggleDropdown()
       },
       toggleDropdown () {
@@ -82,7 +88,8 @@
     },
     directives: {
       onClickaway: onClickaway
-    }
+    },
+    mixins: [dispatchErrors]
   }
 </script>
 

@@ -5,19 +5,19 @@
         <div class="info">
           <div class="wrapper -dates">
             <div @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --start">
-              <div class="month-year -date">Dec 2018</div>
-              <div class="day -date">21</div>
+              <div class="month-year -date"><span v-if="fields.dates.start">{{ fields.dates.start | formatDate('MMM YYYY') }}</span><span v-else>MM / YYYY</span></div>
+              <div class="day -date"><span v-if="fields.dates.start">{{ fields.dates.start | formatDate('D') }}</span><span v-else>Day</span></div>
             </div>
-            <div class="wrapper -date --to">to</div>
-            <div @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --end">
-              <div class="month-year -date">Dec 2018</div> 
-              <div class="day -date">31</div>         
+            <div v-if="fields.dates.end" class="wrapper -date --to">to</div>
+            <div v-if="fields.dates.end" @click="$mixpanel.track('New event - Preview date', { detail: true })" class="wrapper -date --end">
+              <div class="month-year -date">{{ fields.dates.end | formatDate('MMM YYYY') }}</div> 
+              <div class="day -date">{{ fields.dates.end | formatDate('D') }}</div>         
             </div>
           </div>
           <div class="description-wrapper">
-              <h3 class="title" @click="$mixpanel.track('New event - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Event name</span></h3>
-              <p class="attribution" @click="$mixpanel.track('New event - Preview organizer')">by <strong><span v-if="organizer">{{ organizer }}</span><span v-else>the organizer</span></strong><span v-if="organizer.length > 1"> +{{ organizer.length - 1 }}</span></p>
-              <p class="description" @click="$mixpanel.track('New event - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
+              <h3 class="title" @click="$mixpanel.track('New event - Preview title')"><span v-if="fields.name">{{ fields.name | truncate(25) }}</span><span v-else>Event name</span></h3>
+              <p class="attribution" @click="$mixpanel.track('New event - Preview organizer')">by <strong><span v-if="fields.organizer">{{ fields.organizer }}</span><span v-else>the organizer</span></strong></p>
+              <p class="description" @click="$mixpanel.track('New event - Preview teaser')"><span v-if="fields.teaser">{{ fields.teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
-          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SoTÐ slack community</label>
+          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
@@ -49,17 +49,11 @@
 
   export default {
     computed: {
-      organizer () {
-        return this.$store.getters['events/form/organizer']
-      },
       errorFields () {
         return this.$store.getters['events/form/errorFields']
       },
       fields () {
         return this.$store.getters['events/form/fields']
-      },
-      name () {
-        return this.$store.getters['events/form/name']
       },
       subscribeNewsletter: {
         get () {
@@ -76,9 +70,6 @@
         set () {
           this.$store.dispatch('events/form/toggleCheckbox', 'joinSlack')
         }
-      },
-      teaser () {
-        return this.$store.getters['events/form/teaser']
       },
       acceptedTerms: {
         get () {

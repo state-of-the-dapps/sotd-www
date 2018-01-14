@@ -22,7 +22,7 @@
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
-          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SoTÐ slack community</label>
+          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">

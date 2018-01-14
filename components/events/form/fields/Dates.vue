@@ -34,6 +34,7 @@
 <script>
   import differenceInDays from 'date-fns/difference_in_days'
   import DatePicker from '~/components/shared/DatePicker.vue'
+  import { dispatchErrors } from '~/helpers/mixins'
 
   export default {
     data () {
@@ -61,7 +62,12 @@
             name: 'start',
             value: value
           }
+          const errors = {
+            field: 'dates',
+            data: []
+          }
           this.$store.dispatch('events/form/setDate', field)
+          this.dispatchErrors(errors, 'events')
         }
       },
       selectEndDate (value) {
@@ -82,7 +88,8 @@
           this.endIsActive = !this.endIsActive
         }
       }
-    }
+    },
+    mixins: [dispatchErrors]
   }
 </script>
 
