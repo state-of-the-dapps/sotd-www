@@ -3,7 +3,7 @@
     <div class="wrapper -dates" @click="toggleDatePicker('start')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
-        <span v-if="start"><span v-if="end">Starts: </span> <span class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span></span>
+        <span v-if="start"><span v-if="end">Start </span> <span class="date -dates">{{ start | formatDate('MMM D, YYYY') }}</span></span>
         <span v-else>Date <span class="required">(required)</span></span>
       </span>
       <DatePicker 
@@ -17,7 +17,7 @@
     <div class="wrapper -dates" :class="!start ? '--is-inactive' : ''" @click="toggleDatePicker('end')">
       <img class="icon -dates" src="~/assets/images/icons/calendar.png" width="16">
       <span class="text -dates">
-        <span v-if="end"><span>Ends: </span> <span class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span></span>
+        <span v-if="end"><span>End </span> <span class="date -dates">{{ end | formatDate('MMM D, YYYY') }}</span></span>
         <span v-else>End date</span>
       </span>
       <DatePicker 
