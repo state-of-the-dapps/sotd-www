@@ -280,12 +280,10 @@
     align-items: center;
     padding: 10px 20px;
     margin: 0 auto;
-    margin-top: -10px;
     text-align: center;
     @include tweakpoint('min-width', 900px) {
       justify-content: center;
       text-align: center;
-      margin-top: 25px;
     }
   }
 
