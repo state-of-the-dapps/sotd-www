@@ -279,7 +279,9 @@
     flex-direction: column;
     align-items: center;
     padding: 10px 20px;
+    margin: 0 auto;
     margin-top: -10px;
+    text-align: center;
     @include tweakpoint('min-width', 900px) {
       justify-content: center;
       text-align: center;
@@ -293,7 +295,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 125px;
+    height: 180px;
     margin: 0 10px 10px 10px;
     background: white;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
@@ -358,6 +360,7 @@
     &.-preview {
       width: 300px;
       margin: 0 auto;
+      align-items: center;
       @include tweakpoint('min-width', $tweakpoint--default) {
         margin-left: 0;
       }

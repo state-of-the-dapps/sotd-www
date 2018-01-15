@@ -108,6 +108,9 @@
     color: $color--gallery;
     &.--foot {
       padding: 10px 40px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        display: none;
+      }
     }
     &.--head {
       display: none;
