@@ -30,8 +30,7 @@
   .container {
     position: relative;
     @include tweakpoint('min-width', 600px) {
-      padding-left: 40px;
-      padding-right: 40px;
+      padding: 35px 40px;
       display: flex;
       align-items: center;
       > :nth-child(1) {
@@ -54,28 +53,32 @@
       border-width: 8px;
     }
     &.-live {
-      background: $color--screamin-green;
-      border-color: $color--bright-green;
+      background: $color--dapp-live-light;
+      border-color: $color--dapp-live;
     }
     &.-beta {
-      background: $color--paris-daisy;
-      border-color: $color--gorse;
+      background: $color--dapp-beta-light;
+      border-color: $color--dapp-beta;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
-      border-color: $color--koromiko;
+      background: $color--dapp-prototype-light;
+      border-color: $color--dapp-prototype;
     }
     &.-wip {
-      background: $color--anakiwa;
-      border-color: $color--malibu;
+      background: $color--dapp-wip-light;
+      border-color: $color--dapp-wip;
     }
     &.-concept {
-      background: $color--perfume;
-      border-color: $color--portage;
+      background: $color--dapp-concept-light;
+      border-color: $color--dapp-concept;
     }
-    &.-stealth, &.-abandoned, &.-unknown {
-      background: $color--alabaster;
-      border-color: rgba($color--mine-shaft,.2);
+    &.-stealth {
+      background: $color--dapp-stealth-light;
+      border-color: $color--dapp-stealth;
+    }
+    &.-abandoned, &.-unknown {
+      background: $color--dapp-abandoned-light;
+      border-color: $color--dapp-abandoned;
     }
   }
 </style>

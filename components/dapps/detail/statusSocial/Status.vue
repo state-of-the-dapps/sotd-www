@@ -33,32 +33,37 @@
     }
     &.-live {
       &:before {
-        background-color: $color--screamin-green;
+        background-color: $color--dapp-live;
       }
     }
     &.-prototype {
       &:before {
-        background-color: $color--golden-tainoi;
+        background-color: $color--dapp-prototype;
       }
     }
     &.-beta {
       &:before {
-        background-color: $color--paris-daisy;
+        background-color: $color--dapp-beta;
       }
     }
     &.-concept {
       &:before {
-        background-color: $color--perfume;
+        background-color: $color--dapp-concept;
       }
     }
     &.-wip {
       &:before {
-        background-color: $color--anakiwa;
+        background-color: $color--dapp-wip;
       }
     }
-    &.-stealth, &.-abandoned, &.-unknown {
+    &.-stealth {
       &:before {
-        background-color: $color--alabaster;
+        background-color: $color--dapp-stealth;
+      }
+    }    
+    &.-abandoned, &.-unknown {
+      &:before {
+        background-color: $color--dapp-abandoned;
       }
     }
   }

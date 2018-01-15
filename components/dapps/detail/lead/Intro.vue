@@ -7,9 +7,6 @@
       </li>
     </ul>
     <div class="info">
-      <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
-      </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}<span v-if="item.isNsfw" class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
         <p class="description">{{ item.teaser }}</p>
@@ -97,50 +94,6 @@
     flex-grow: 1;
   }
 
-  .icon-image {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .icon-placeholder {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: rgba(0,0,0,.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-size: 1.7rem;
-    border-radius: 50%;
-    margin-right: 10px;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-beta {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
-    @include tweakpoint('min-width', 900px) {
-      width: 120px;
-      height: 120px;
-      margin-right: 20px;
-      font-size: 2.25rem;
-    }
-  }
-
   .info {
     display: flex;
     align-items: center;
@@ -182,22 +135,25 @@
       margin-left: 6px;
     }
     &.-live {
-      color: $color--screamin-green;
+      color: $color--dapp-live-light;
     }
     &.-beta {
-      color: $color--paris-daisy;
+      color: $color--dapp-beta-light;
     }
     &.-prototype {
-      color: $color--golden-tainoi;
+      color: $color--dapp-prototype-light;
     }
     &.-wip {
-      color: $color--anakiwa;
+      color: $color--dapp-wip-light;
     }
     &.-concept {
-      color: $color--perfume;
+      color: $color--dapp-concept-light;
     }
-    &.-stealth, &.-abandoned, &.-unknown {
-      color: $color--alabaster;
+    &.-stealth {
+      color: $color--dapp-stealth-light;
+    }
+    &.-abandoned, &.-unknown {
+      color: $color--dapp-abandoned-light;
     }
   }
 

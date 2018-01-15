@@ -52,28 +52,28 @@
       border-color:$color--mine-shaft;
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live;
     }
     &.-beta {
-      background: $color--paris-daisy;
+      background: $color--dapp-beta;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
+      background: $color--dapp-prototype;
     }
     &.-wip {
-      background: $color--anakiwa;
+      background: $color--dapp-wip;
     }
     &.-concept {
-      background: $color--perfume;
+      background: $color--dapp-concept;
     }
     &.-stealth {
-      background: rgba($color--mine-shaft,.5);
+      background: $color--dapp-stealth;
     }
     &.-unknown {
-      background: rgba($color--mine-shaft,.2);
+      background: $color--dapp-unknown;
     }
     &.-abandoned {
-      background: $color--alabaster;
+      background: $color--dapp-abandoned;
     }
   }
 

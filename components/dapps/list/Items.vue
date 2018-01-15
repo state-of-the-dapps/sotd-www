@@ -9,12 +9,13 @@
               <li v-for="(badge, index) in item.badges" :key="index" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div></li>
             </ul>
             <div class="info">
-              <div class="icon-wrapper" :class="'-' + item.status">
-                <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
+              <div class="title-attribution-wrapper">
+                <div>
+                  <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
+                  <p class="attribution">by <span v-if="item.authors.length > 0"><strong>{{ item.authors[0] | truncate(20) }}</strong></span><span v-if="item.authors.length > 1"> +{{ item.authors.length - 1 }}</span></p>
+                </div>
               </div>
               <div class="description-wrapper">
-                <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
-                <p class="attribution">by <span v-if="item.authors.length > 0"><strong>{{ item.authors[0] | truncate(20) }}</strong></span><span v-if="item.authors.length > 1"> +{{ item.authors.length - 1 }}</span></p>
                 <p class="description">{{ item.teaser | truncate(75) }}</p>
               </div>
             </div>
@@ -99,73 +100,33 @@
     position: absolute;
     display: flex;
     right: 10px;
-    top: -2px;
+    top: -7px;
     z-index: 8;
   }
 
   .description-wrapper {
     flex-grow: 1;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      height: 75px;
+      display: flex;
+      align-items: center;
+    }
   }
 
   .description {
     margin: 0;
-    @include tweakpoint('min-width', 900px) {
-      margin-top: 10px;
-    }
-  }
-
-  .icon-image {
-    max-width: 100%;
-  }
-
-  .icon-placeholder {
-    font-family: Arial, sans-serif;
-  }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: rgba(0,0,0,.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    border-radius: 50%;
-    font-size: 1.7rem;
-    font-weight: 300;
-    margin-right: 10px;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-beta {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
-    @include tweakpoint('min-width', 900px) {
-      margin-right: 0;
-      width: 75px;
-      height: 75px;
-    }
   }
 
   .info {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    margin-top: -10px;
-    @include tweakpoint('min-width', 900px) {
+    padding: 0 20px;
+    margin-top: -25px;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-top: 0;
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      margin-top: 25px;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -174,16 +135,17 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 125px;
+    height: 200px;
     margin: 0 10px 10px 10px;
     background: white;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     transition: transform .3s ease, opacity .3s ease;
+    border: 5px solid transparent;
     text-decoration: none;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
     }
-    @include tweakpoint('min-width', 900px) {
+    @include tweakpoint('min-width', $tweakpoint--default) {
       width: calc(33.33% - 20px);
       height: 285px;
       justify-content: center;
@@ -207,25 +169,32 @@
       transform: translateY(-4px);
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live-light;
+      border-color: $color--dapp-live;
     }
     &.-beta {
-      background: $color--paris-daisy;
+      background: $color--dapp-beta-light;
+      border-color: $color--dapp-beta;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
+      background: $color--dapp-prototype-light;
+      border-color: $color--dapp-prototype;
     }
     &.-wip {
-      background: $color--anakiwa;
+      background: $color--dapp-wip-light;
+      border-color: $color--dapp-wip;
     }
     &.-concept {
-      background: $color--perfume;
+      background: $color--dapp-concept-light;
+      border-color: $color--dapp-concept;
     }
     &.-stealth {
-      background: $color--alabaster;
+      background: $color--dapp-stealth-light;
+      border-color: $color--dapp-stealth;
     }
     &.-abandoned, &.-unknown {
-      background: $color--alabaster;
+      background: $color--dapp-abandoned-light;
+      border-color: $color--dapp-abandoned;
       &:after {
         content: " ";
         position: absolute;
@@ -278,22 +247,22 @@
     margin-top: 6px;
     margin-left: 6px;
     &.-live {
-      color: $color--screamin-green;
+      color: $color--dapp-live-light;
     }
     &.-beta {
-      color: $color--paris-daisy;
+      color: $color--dapp-beta-light;
     }
     &.-prototype {
-      color: $color--golden-tainoi;
+      color: $color--dapp-prototype-light;
     }
     &.-wip {
-      color: $color--anakiwa;
+      color: $color--dapp-wip-light;
     }
     &.-concept {
-      color: $color--perfume;
+      color: $color--dapp-concept-light;
     }
     &.-inactive {
-      color: $color--alabaster;
+      color: $color--dapp-abandoned-light;
     }
   }
 
@@ -303,34 +272,43 @@
     left: 0;
     width: 100%;
     text-align: center;
-    border-bottom: 4px solid rgba($color--mine-shaft,.2);
     margin: 0;
-    padding: 5px;
+    padding: 12px 5px 5px;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 700;
     &.-live {
-      border-color: $color--bright-green;
+      background: $color--dapp-live;
     }
     &.-beta {
-      border-color: $color--gorse;
+      background: $color--dapp-beta;
     }
     &.-prototype {
-      border-color: $color--koromiko;
+      background: $color--dapp-prototype;
     }
     &.-wip {
-      border-color: $color--malibu;
+      background: $color--dapp-wip;
     }
     &.-concept {
-      border-color: $color--portage;
+      background: $color--dapp-concept;
+    }
+    &.-stealth {
+      background: $color--dapp-stealth;
     }
   }
 
   .title {
     margin: 0;
-    font-size: 1.5rem;
-    @include tweakpoint('min-width', 900px) {
-      margin-top: 15px;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .title-attribution-wrapper {
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-top: 25px;
+      height: 100px;
+      display: flex;
+      align-items: center;
     }
   }
 </style>
