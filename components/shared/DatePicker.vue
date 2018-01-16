@@ -19,7 +19,7 @@
       </ul>
       <ul class="list -day">
         <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
-        <li v-for="(day, index) in days" :key="day | formatDate('YYYY-MM-DD')" @click="selectDate(day.date)" class="item -day" :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }">
+        <li v-for="(day, index) in days" :key="day.date" @click="selectDate(day.date)" class="item -day" :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }">
           <span class="num -day">{{ index + 1 }}</span>
         </li>
       </ul>
