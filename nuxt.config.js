@@ -90,7 +90,8 @@ module.exports = {
   loading: { color: '#eee' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
-    { src: '~/plugins/filters' },
+    { src: '~/plugins/vue-config' },
+    { src: '~/plugins/vue-filters' },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false }
