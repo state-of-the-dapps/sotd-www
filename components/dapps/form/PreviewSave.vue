@@ -101,9 +101,7 @@
       submit () {
         if (this.honeypot === null) {
           const data = {
-            payload: {
-              fields: this.fields
-            }
+            fields: this.fields
           }
           this.sending = true
           axios.post('dapps', data)

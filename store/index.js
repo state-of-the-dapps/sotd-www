@@ -11,9 +11,8 @@ const actions = {
     return axios
       .get('stats')
       .then(response => {
-        const payload = response.data.payload
-        const items = payload.items
-        commit('SET_STATS', items)
+        const data = response.data
+        commit('SET_STATS', data)
       })
   },
   setSiteSection ({ commit }, section) {
@@ -37,9 +36,9 @@ const mutations = {
   SET_SITE_SECTION (state, section) {
     state.site.section = section
   },
-  SET_STATS (state, items) {
-    state.stats.dappCount = items.dappCount
-    state.stats.eventCount = items.eventCount
+  SET_STATS (state, data) {
+    state.stats.dappCount = data.dappCount
+    state.stats.eventCount = data.eventCount
   }
 }
 

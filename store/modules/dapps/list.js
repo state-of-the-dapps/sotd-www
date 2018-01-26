@@ -24,8 +24,8 @@ const actions = {
         params: state.query
       })
       .then(response => {
-        const payload = response.data.payload
-        commit('SET_ITEMS', payload)
+        const data = response.data
+        commit('SET_ITEMS', data)
         commit('SET_LOADING_STATUS', false)
       })
   },
@@ -166,9 +166,9 @@ const mutations = {
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
   },
-  SET_ITEMS (state, payload) {
-    const items = payload.items
-    const pager = payload.pager
+  SET_ITEMS (state, data) {
+    const items = data.items
+    const pager = data.pager
     state.pager.totalCount = pager.totalCount
     state.pager.offset = pager.offset
     if (state.pager.offset !== 0) {

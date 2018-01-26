@@ -88,8 +88,8 @@
                 }
               })
               .then(response => {
-                const payload = response.data.payload
-                const items = payload.items
+                const data = response.data
+                const items = data.items
                 this.locations = items
                 this.locationsAreLoading = false
                 this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length })

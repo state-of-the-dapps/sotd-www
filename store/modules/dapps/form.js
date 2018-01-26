@@ -88,8 +88,8 @@ const actions = {
     axios
       .get('tags', { params: { text: value, excluded: state.fields.tags } })
       .then(response => {
-        var payload = response.data.payload
-        var items = payload.items
+        var data = response.data
+        var items = data.items
         commit('SET_TAG_RESULTS', items)
       })
   },

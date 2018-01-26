@@ -88,8 +88,8 @@
             params: this.eventsFullQuery
           })
           .then(response => {
-            const payload = response.data.payload
-            const items = payload.items
+            const data = response.data
+            const items = data.items
             const days = this.days
             if (items.length > 0) {
               const daysWithCategories = days.map(day => {

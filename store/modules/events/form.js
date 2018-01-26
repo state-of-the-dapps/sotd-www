@@ -103,8 +103,8 @@ const actions = {
         }
       })
       .then(response => {
-        const payload = response.data.payload
-        const items = payload.items
+        const data = response.data
+        const items = data.items
         commit('SET_RELATED_DAPPS_RESULTS', items)
       })
   },
@@ -112,8 +112,8 @@ const actions = {
     axios
       .get('tags', { params: { text: value, excluded: state.fields.tags } })
       .then(response => {
-        var payload = response.data.payload
-        var items = payload.items
+        var data = response.data
+        var items = data.items
         commit('SET_TAG_RESULTS', items)
       })
   },

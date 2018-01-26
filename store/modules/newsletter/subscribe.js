@@ -3,10 +3,8 @@ import axios from '~/helpers/axios'
 const actions = {
   submit ({ commit }, email) {
     const data = {
-      payload: {
-        fields: {
-          email: email
-        }
+      fields: {
+        email: email
       }
     }
     commit('SET_LOADING_IS_ACTIVE', true)
