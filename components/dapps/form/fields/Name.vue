@@ -67,8 +67,8 @@
               }
             })
             .then(response => {
-              const payload = response.data.payload
-              const item = payload.item
+              const data = response.data
+              const item = data.item
               if (item.exists) {
                 errors.data.push(`Name has already been taken`)
               }
