@@ -15,3 +15,6 @@ coverage
 
 # Mac .DS_Store
 .DS_Store
+
+# Ignore .vscode files
+.vscode
