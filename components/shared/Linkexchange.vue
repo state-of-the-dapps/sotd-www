@@ -5,11 +5,11 @@
       api-url="https://api-staging.userfeeds.io"
       size="rectangle"
       type="text"
-      recipient-address="0x65bCF0A60B3974931a4459c32ef4043262bc370c"
-      whitelist="0x65bCF0A60B3974931a4459c32ef4043262bc370c"
+      :recipient-address="recipientAddress"
+      :whitelist="whitelist"
       asset="ethereum"
       widget-title="State of the DApps"
-      till-date="3/31/2018"
+      :till-date="tillDate"
       description="I accept only links for projects listed on State of the DApps"
       impression="N/A"
       contact-method="support@stateofthedapps.com"
@@ -21,6 +21,13 @@
 
 <script>
 export default {
+  data () {
+    return {
+      recipientAddress: process.env.linkexchangeRecipientAddress,
+      whitelist: process.env.linkexchangeWhitelistAddress,
+      tillDate: process.env.linkexchangeTillDate
+    }
+  }
 }
 </script>
 
