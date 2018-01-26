@@ -1,11 +1,11 @@
 <template>
   <transition name="fade">
-    <section v-if="items.length > 0 && isActive" class="section -announcement">
-      <ul class="container">
-        <li v-for="(item, index) in items" :key="index" class="message">
+    <section v-if="Object.keys(item).length > 0 && isActive" class="section -announcement">
+      <div class="container">
+        <span class="message">
           {{ item.text }}<span v-if="item.link.url && item.link.text"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: item.link.url })" :href="item.link.url" class="link" target="_blank" rel="noopener noreferrer">{{ item.link.text }}</a></span>
-        </li>
-      </ul>
+        </span>
+      </div>
       <a href="#" class="close"><img src="~/assets/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a>
     </section>
   </transition>
@@ -17,8 +17,8 @@
       isActive () {
         return this.$store.getters['announcements/isActive']
       },
-      items () {
-        return this.$store.getters['announcements/items']
+      item () {
+        return this.$store.getters['announcements/item']
       }
     },
     methods: {
@@ -28,7 +28,7 @@
       }
     },
     mounted () {
-      this.$store.dispatch('announcements/fetchItems')
+      this.$store.dispatch('announcements/fetchItem')
     }
   }
 </script>

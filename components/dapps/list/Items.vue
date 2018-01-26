@@ -95,7 +95,7 @@
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     &:after {
       position: absolute;
-      bottom: -7px;
+      bottom: -2px;
       right: 6px;
       content: '';
       width: 1px;
@@ -108,7 +108,7 @@
     position: absolute;
     display: flex;
     right: 10px;
-    top: -7px;
+    top: -2px;
     z-index: 8;
   }
 
@@ -148,7 +148,6 @@
     background: white;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     transition: transform .3s ease, opacity .3s ease;
-    border: 5px solid transparent;
     text-decoration: none;
     order: 10;
     &:nth-child(1) {
@@ -380,10 +379,12 @@
     width: 100%;
     text-align: center;
     margin: 0;
-    padding: 12px 5px 5px;
+    padding: 9px 10px;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 700;
+    color: rgba($color--mine-shaft, .75);
+    line-height: 1.5;
     &.-live {
       background: $color--dapp-live;
     }
