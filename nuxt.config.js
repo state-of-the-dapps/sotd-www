@@ -2,7 +2,10 @@ const env = {
   apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS,
   mixpanel: process.env.MIXPANEL,
-  mode: process.env.MODE || 'universal'
+  mode: process.env.MODE || 'universal',
+  linkexchangeRecipientAddress: process.env.LINKEXCHANGE_RECIPIENT_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
+  linkexchangeTillDate: process.env.LINKEXCHANGE_TILL_DATE || '3/31/2018',
+  linkexchangeWhitelistAddress: process.env.LINKEXCHANGE_WHITELIST_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
 }
 
 module.exports = {
@@ -54,6 +57,9 @@ module.exports = {
   ],
   env: {
     apiUrl: env.apiUrl,
+    linkexchangeRecipientAddress: env.linkexchangeRecipientAddress,
+    linkexchangeTillDate: env.linkexchangeTillDate,
+    linkexchangeWhitelistAddress: env.linkexchangeWhitelistAddress,
     mixpanel: env.mixpanel
   },
   head: {
@@ -89,7 +95,8 @@ module.exports = {
   loading: { color: '#333' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
-    { src: '~/plugins/filters' },
+    { src: '~/plugins/vue-config' },
+    { src: '~/plugins/vue-filters' },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false }
