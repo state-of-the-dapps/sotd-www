@@ -3,7 +3,10 @@ const env = {
   googleAnalytics: process.env.GOOGLE_ANALYTICS,
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
-  mode: process.env.MODE || 'universal'
+  mode: process.env.MODE || 'universal',
+  linkexchangeRecipientAddress: process.env.LINKEXCHANGE_RECIPIENT_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
+  linkexchangeTillDate: process.env.LINKEXCHANGE_TILL_DATE || '3/31/2018',
+  linkexchangeWhitelistAddress: process.env.LINKEXCHANGE_WHITELIST_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
 }
 
 module.exports = {
@@ -55,6 +58,9 @@ module.exports = {
   env: {
     apiUrl: env.apiUrl,
     mapboxKey: env.mapboxKey,
+    linkexchangeRecipientAddress: env.linkexchangeRecipientAddress,
+    linkexchangeTillDate: env.linkexchangeTillDate,
+    linkexchangeWhitelistAddress: env.linkexchangeWhitelistAddress,
     mixpanel: env.mixpanel
   },
   head: {
