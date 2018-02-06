@@ -15,7 +15,7 @@
       contact-method="support@stateofthedapps.com"
       algorithm="links">
     </linkexchange-link>
-    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"></script>
   </div>
 </template>
 
