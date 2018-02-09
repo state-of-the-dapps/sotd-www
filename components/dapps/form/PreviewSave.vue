@@ -4,16 +4,13 @@
       <div class="item -preview" :class="'-' + status">
           <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
           <div class="info">
-              <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
-                  <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
-              </div>
               <div class="description-wrapper">
                   <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
                   <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
                   <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatDappStatus }}</p>
+          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')"><span v-if="status">{{ status | formatDappStatus }}</span></p>
       </div>
       <div class="checkboxes">
         <div class="checkbox-field">
@@ -298,7 +295,7 @@
       transform: scale3d(1.015, 1.015, 1);
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live-light;
     }
     &.-beta {
       background: $color--paris-daisy;
@@ -365,22 +362,22 @@
     margin-left: 6px;
     transition: color .2s ease;
     &.-live {
-      color: $color--screamin-green;
+      color: $color--dapp-live-light;
     }
     &.-beta {
-      color: $color--paris-daisy;
+      color: $color--dapp-beta-light;
     }
     &.-prototype {
-      color: $color--golden-tainoi;
+      color: $color--dapp-prototype-light;
     }
     &.-wip {
-      color: $color--anakiwa;
+      color: $color--dapp-wip-light;
     }
     &.-concept {
-      color: $color--perfume;
+      color: $color--dapp-concept-light;
     }
     &.-inactive {
-      color: $color--alabaster;
+      color: $color--dapp-unknown-light;
     }
   }
 
@@ -396,27 +393,27 @@
     left: 0;
     width: 100%;
     text-align: center;
-    border-bottom: 4px solid rgba($color--mine-shaft,.2);
     margin: 0;
-    padding: 5px;
+    padding: 10px 5px;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 700;
     transition: border .2s ease;
+    color: rgba($color--mine-shaft,.75);
     &.-live {
-      border-color: $color--bright-green;
+      background: $color--dapp-live;
     }
     &.-beta {
-      border-color: $color--gorse;
+      background: $color--dapp-beta;
     }
     &.-prototype {
-      border-color: $color--koromiko;
+      background: $color--dapp-prototype;
     }
     &.-wip {
-      border-color: $color--malibu;
+      background: $color--dapp-wip;
     }
     &.-concept {
-      border-color: $color--portage;
+      background: $color--dapp-concept;
     }
   }
 

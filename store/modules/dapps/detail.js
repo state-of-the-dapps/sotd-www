@@ -1,6 +1,7 @@
 function item () {
   return {
     contracts: [],
+    socials: [],
     tags: []
   }
 }

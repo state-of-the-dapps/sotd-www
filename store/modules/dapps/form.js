@@ -48,15 +48,15 @@ function initialState () {
       license: '',
       logo: '',
       name: '',
-      social: {
-        facebook: { url: '' },
-        twitter: { url: '' },
-        github: { url: '' },
-        reddit: { url: '' },
-        slack: { url: '' },
-        blog: { url: '' },
-        other: { url: '' },
-        wiki: { url: '' }
+      socials: {
+        facebook: { path: '' },
+        twitter: { path: '' },
+        github: { path: '' },
+        reddit: { path: '' },
+        slack: { path: '' },
+        blog: { path: '' },
+        other: { path: '' },
+        wiki: { path: '' }
       },
       status: '',
       subscribeNewsletter: true,
@@ -310,31 +310,31 @@ const getters = {
     return state.fields.tags
   },
   socialBlog: state => {
-    return state.fields.social.blog.url
+    return state.fields.socials.blog.path
   },
   socialFacebook: state => {
-    return state.fields.social.facebook.url
+    return state.fields.socials.facebook.path
   },
   socialGithub: state => {
-    return state.fields.social.github.url
+    return state.fields.socials.github.path
   },
   socialOther: state => {
-    return state.fields.social.other.url
+    return state.fields.socials.other.path
   },
   socialReddit: state => {
-    return state.fields.social.reddit.url
+    return state.fields.socials.reddit.path
   },
   socialSlack: state => {
-    return state.fields.social.slack.url
+    return state.fields.socials.slack.path
   },
   socialSlackErrors: state => {
     return state.errors.socialSlack
   },
   socialTwitter: state => {
-    return state.fields.social.twitter.url
+    return state.fields.socials.twitter.path
   },
   socialWiki: state => {
-    return state.fields.social.wiki.url
+    return state.fields.socials.wiki.path
   },
   status: state => {
     return state.fields.status

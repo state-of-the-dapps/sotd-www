@@ -1,10 +1,10 @@
 const dappStatuses = Object.freeze([
   'live',
   'beta',
-  'stealth',
   'prototype',
   'wip',
   'concept',
+  'stealth',
   'unknown',
   'abandoned'
 ])
