@@ -25,7 +25,7 @@
         return this.$store.getters['dapps/list/pagerOffset']
       },
       totalCount () {
-        return this.$store.getters['dapps/list/totalCount']
+        return this.$store.getters['dapps/list/pagerTotalCount']
       },
       isLoading () {
         return this.$store.getters['dapps/list/isLoading']
