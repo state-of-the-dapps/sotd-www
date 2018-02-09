@@ -13,9 +13,10 @@
       description="I accept only links for projects listed on State of the DApps"
       impression="N/A"
       contact-method="support@stateofthedapps.com"
+      open-details="tab"
       algorithm="links">
     </linkexchange-link>
-    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"></script>
   </div>
 </template>
 
