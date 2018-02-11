@@ -49,7 +49,7 @@ function initialState () {
       highlights: [],
       joinSlack: true,
       languages: [],
-      location: '',
+      location: false,
       name: '',
       organizer: '',
       relatedDapps: [],

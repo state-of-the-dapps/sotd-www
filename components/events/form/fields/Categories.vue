@@ -8,7 +8,6 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
   import { eventCategories as categoryList } from '~/helpers/constants'
 
   export default {
@@ -25,18 +24,8 @@
     methods: {
       toggle (category) {
         this.$store.dispatch('events/form/toggleCategory', category)
-        this.validate()
-      },
-      validate () {
-        const errors = {
-          field: 'categories',
-          data: []
-        }
-        this.categories.length < 1 ? errors.data.push(`You must select at least one category`) : ''
-        this.dispatchErrors(errors, 'events')
       }
-    },
-    mixins: [dispatchErrors]
+    }
   }
 </script>
 
