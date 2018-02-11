@@ -55,6 +55,11 @@ ul, li {
   list-style-type: none;
 }
 
+em {
+  font-style: normal;
+  font-weight: 700;
+}
+
 a {
   color: $color--mine-shaft;
   text-decoration: underline;

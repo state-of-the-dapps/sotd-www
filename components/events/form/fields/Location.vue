@@ -1,7 +1,7 @@
 <template>
   <div class="item -component-events-form-fields-location">
     <div class="wrapper -location" @click="toggleDropdown">
-      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location.length" class="link -location">{{ location }}</span><span v-else>Location <span class="required">(required)</span></span>
+      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location" class="link -location">{{ location.text | escapeHtmlTags }}</span><span v-else>Location <span class="required">(required)</span></span>
     </div>
     <transition name="fade">
       <div v-if="dropdownIsActive" v-on-clickaway="toggleDropdown" class="wrapper -dropdown">
@@ -9,7 +9,7 @@
         <p v-if="locationSearchQuery.length < 3" class="location-instructions -dropdown">Enter at least 3 letters to search</p>
         <p v-if="locationSearchQuery.length >= 3 && locations.length === 0 && locationsAreLoading === false" class="location-instructions -dropdown">No locations were found. Check your city spelling, or try adding a state, province, or country.</p>
         <ul class="location-list -dropdown">
-          <li v-for="(option, index) in locations" :key="index" class="location-item -dropdown" @click="selectLocation(option)">{{ option | truncate(30) }}</li>
+          <li v-for="(option, index) in locations" :key="index" class="location-item -dropdown" @click="selectLocation(option)" v-html="option.text"></li>
         </ul>
         <p v-if="locationsAreLoading" class="loader-wrapper -dropdown">
           <button class="loader -dropdown"></button>
@@ -48,15 +48,29 @@
           this.locationsAreLoading = true
           searchTimer = setTimeout(() => {
             axios
-              .get('locations/lookup', {
-                params: {
-                  text: this.locationSearchQuery
-                }
+              .post('https://places-dsn.algolia.net/1/places/query', {
+                query: this.locationSearchQuery,
+                type: 'city'
               })
               .then(response => {
                 const data = response.data
-                const items = data.items
-                this.locations = items
+                const items = data.hits || []
+                if (items.length > 0) {
+                  const formattedItems = []
+                  for (let i = 0; i < items.length; i++) {
+                    var text = ''
+                    text += items[i]._highlightResult.locale_names.default[0].value + ', '
+                    text += items[i]._highlightResult.administrative[0].value + ', '
+                    text += items[i]._highlightResult.country.default.value
+                    console.log(items[i]._highlightResult)
+                    formattedItems.push({
+                      lat: items[i]._geoloc.lat,
+                      lon: items[i]._geoloc.lng,
+                      text: text
+                    })
+                  }
+                  this.locations = formattedItems
+                }
                 this.locationsAreLoading = false
                 this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length })
               })
@@ -69,7 +83,11 @@
       selectLocation (value) {
         const field = {
           name: 'location',
-          value: value
+          value: {
+            lat: value.lat,
+            lon: value.lon,
+            text: value.text
+          }
         }
         const errors = {
           field: 'location',
@@ -95,7 +113,6 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
-
   .-component-events-form-fields-location {
     &.item {
       border: 1px solid transparent;

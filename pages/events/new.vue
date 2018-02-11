@@ -54,7 +54,7 @@
   .section {
     &.-intro {
       background: rgba(lighten($color--gallery, 100%), 1);
-      box-shadow: 0 0 50px rgba($color--mine-shaft, .15);
+      box-shadow: 0 0 5px rgba($color--mine-shaft, .05);
       position: relative;
       z-index: 15;
       .container {

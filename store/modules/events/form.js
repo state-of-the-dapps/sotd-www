@@ -89,12 +89,17 @@ const actions = {
     commit('ADD_TAG', value)
   },
   fetchRelatedDapps: ({ commit, state }, value) => {
+    const relatedDapps = state.fields.relatedDapps
+    const relatedDappsSlugs = []
+    for (let i = 0; i < relatedDapps.length; i++) {
+      relatedDappsSlugs.push(relatedDapps[i].slug)
+    }
     axios
       .get('dapps', {
         params: {
-          excluded: state.fields.relatedDapps,
+          excluded: relatedDappsSlugs,
           tab: 'most-relevant',
-          limit: 50,
+          limit: 15,
           offset: 0,
           status: dappRefineStatusOptions[0],
           seed: randomSeed,

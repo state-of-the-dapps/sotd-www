@@ -19,6 +19,14 @@ Vue.filter('addMonths',
   }
 )
 
+Vue.filter('escapeHtmlTags',
+  value => {
+    if (value) {
+      return value.replace(/<.+?>/g, '')
+    }
+  }
+)
+
 Vue.filter('capitalize',
   value => {
     if (value) {

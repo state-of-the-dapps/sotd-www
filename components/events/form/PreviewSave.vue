@@ -279,6 +279,7 @@
     padding: 10px 20px;
     margin: 0 auto;
     text-align: center;
+    width: 100%;
     @include tweakpoint('min-width', 900px) {
       justify-content: center;
       text-align: center;
