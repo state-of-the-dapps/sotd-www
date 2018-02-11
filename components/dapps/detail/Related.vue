@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="heading">Related ÐApps</h2>
       <ul class="list">
-        <nuxt-link :to="{ name: slug, params: { slug: item.slug } }" @click.native="setActive(item.slug)" tag="li" v-for="(item, key) in items" class="item" :class="'-' + item.status" :key="item.slug">
+        <nuxt-link :to="{ name: 'dapps-slug', params: { slug: item.slug } }" @click.native="setActive(item.slug)" tag="li" v-for="item in items" class="item" :class="'-' + item.status" :key="item.slug">
           <h3 class="title">{{ item.name | truncate(25) }}</h3>
           <p class="teaser">{{ item.teaser }}</p>
           <p class="status" :class="'-' + item.status"></p>
@@ -24,7 +24,7 @@
       },
       slug () {
         if (this.popupIsActive === true) {
-          return 'index-dapps-slug'
+          return 'dapps-slug-popup'
         } else {
           return 'dapps-slug'
         }
@@ -100,7 +100,7 @@
     &.-live {
       background: $color--screamin-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--paris-daisy;
     }
     &.-prototype {
@@ -165,7 +165,7 @@
     &.-live {
       border-color: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       border-color: $color--gorse;
     }
     &.-prototype {

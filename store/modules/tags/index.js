@@ -3,9 +3,11 @@ import axios from '~/helpers/axios'
 const actions = {
   fetchItems: ({ commit, state, rootState }, value) => {
     axios
-      .get('tags', { params: { query: value, exclude: rootState.dapps.list.query.tags } })
+      .get('tags', { params: { text: value, excluded: rootState.dapps.list.query.tags } })
       .then(response => {
-        commit('SET_ITEMS', response.data)
+        const data = response.data
+        const items = data.items
+        commit('SET_ITEMS', items)
       })
   },
   resetItems: ({ commit }) => {

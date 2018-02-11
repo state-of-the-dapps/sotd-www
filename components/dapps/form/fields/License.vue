@@ -4,7 +4,7 @@
     <label class="label">Software license <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - license.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">(e.g. MIT, GPL)</p>
   </div>
@@ -43,7 +43,7 @@
         validationTimer = setTimeout(() => {
           this.license.length > 50 ? errors.data.push(`License can't be longer than 50 characters`) : ''
           this.license.length < 2 ? errors.data.push(`License must be longer than 1 character`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

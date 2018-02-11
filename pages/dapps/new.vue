@@ -3,7 +3,6 @@
     <section class="section -intro">
       <div class="container">
         <h1 class="heading">Submit a ÐApp</h1>
-        <p class="message">{{ content.message }}</p>
       </div>
     </section>
     <section class="section -form">
@@ -24,17 +23,13 @@
       Fields,
       PreviewSave
     },
-    computed: {
-      content () {
-        return {
-          body: ''
-        }
-      }
-    },
     head () {
       return {
         title: 'State of the ÐApps — Submit a ÐApp'
       }
+    },
+    mounted () {
+      this.$store.dispatch('setSiteSection', 'dapps')
     }
   }
 </script>
@@ -44,7 +39,7 @@
 
   .heading {
     text-align: center;
-    margin: 0 0 .5rem 0;
+    margin: 0;
     font-size: 1.75rem;
     font-weight: 700;
   }
@@ -59,7 +54,9 @@
   .section {
     &.-intro {
       background: rgba(lighten($color--gallery, 100%), 1);
-      border-bottom: 8px solid darken($color--gallery, 5%);
+      box-shadow: 0 0 5px rgba($color--mine-shaft, .05);
+      position: relative;
+      z-index: 15;
       .container {
         padding-top: 50px;
         padding-bottom: 50px;

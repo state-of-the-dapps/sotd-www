@@ -1,15 +1,15 @@
 import { generateRandomSeed } from '~/helpers/functions'
-import { dappsCategoryOptions, dappsRefineOptions } from '~/helpers/constants'
+import { dappRefineTabOptions as tabOptions, dappRefineStatusOptions as statusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
 function initialQuery () {
   return {
-    category: dappsCategoryOptions[0],
+    tab: tabOptions[0],
     limit: 50,
     offset: 0,
-    refine: dappsRefineOptions[0],
+    status: statusOptions[0],
     seed: randomSeed,
     tags: [],
     text: ''
@@ -24,17 +24,18 @@ const actions = {
         params: state.query
       })
       .then(response => {
-        commit('SET_ITEMS', response)
+        const data = response.data
+        commit('SET_ITEMS', data)
         commit('SET_LOADING_STATUS', false)
       })
   },
   incrementOffsetQuery: ({ commit }) => {
     commit('INCREMENT_OFFSET_QUERY')
   },
-  setCategoryQuery: ({ commit }, value) => {
+  setTabQuery: ({ commit }, value) => {
     commit('SET_CATEGORY_QUERY', value)
   },
-  setRefineQuery: ({ commit }, value) => {
+  setStatusQuery: ({ commit }, value) => {
     commit('SET_REFINE_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
@@ -61,8 +62,8 @@ const actions = {
   setFriendlyUrl: ({ commit }) => {
     commit('SET_FRIENDLY_URL')
   },
-  toggleBrowseDropdown: ({ commit }, type) => {
-    commit('TOGGLE_BROWSE_DROPDOWN', type)
+  toggleRefineDropdown: ({ commit }, type) => {
+    commit('TOGGLE_REFINE_DROPDOWN', type)
   }
 }
 
@@ -70,11 +71,11 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
-  categoriesDropdownIsActive: state => {
-    return state.browse.categories.isActive
+  tabDropdownIsActive: state => {
+    return state.refine.tab.isActive
   },
-  categoryQuery: state => {
-    return state.query.category
+  tabQuery: state => {
+    return state.query.tab
   },
   friendlyUrl: state => {
     return state.friendlyUrl
@@ -91,19 +92,19 @@ const getters = {
   isLoading: state => {
     return state.isLoading
   },
-  refineDropdownIsActive: state => {
-    return state.browse.refine.isActive
+  statusDropdownIsActive: state => {
+    return state.refine.status.isActive
   },
-  refineQuery: state => {
-    return state.query.refine
+  statusQuery: state => {
+    return state.query.status
   },
-  paginationOffset: state => {
-    return state.pagination.offset
+  pagerOffset: state => {
+    return state.pager.offset
   },
-  paginationTotalCount: state => {
-    return state.pagination.totalCount
+  pagerTotalCount: state => {
+    return state.pager.totalCount
   },
-  tagsQuery: state => {
+  tagQuery: state => {
     return state.query.tags
   },
   textQuery: state => {
@@ -116,7 +117,7 @@ const mutations = {
     state.query.tags.push(value)
   },
   INCREMENT_OFFSET_QUERY (state) {
-    state.query.offset = state.pagination.offset + state.query.limit
+    state.query.offset = state.pager.offset + state.query.limit
   },
   REMOVE_LAST_TAG_FROM_QUERY (state) {
     state.query.tags.pop()
@@ -131,47 +132,48 @@ const mutations = {
     state.activeItemIndex = index
   },
   SET_CATEGORY_QUERY (state, value) {
-    var options = dappsCategoryOptions || []
+    var options = tabOptions || []
     if (options.indexOf(value) !== -1) {
-      state.query.category = value
+      state.query.tab = value
     } else {
-      state.query.category = options[0]
+      state.query.tab = options[0]
     }
   },
   SET_FRIENDLY_QUERY (state, params) {
     var tags = params.tags
-    var category = params.category
+    var tab = params.tab
     if (tags !== undefined) {
       tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
       state.query.tags = tags
     }
-    if (category !== undefined) {
-      state.query.category = category
+    if (tab !== undefined) {
+      state.query.tab = tab
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = dappsCategoryOptions || []
+    var options = tabOptions || []
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
-    var category = state.query.category
+    var tab = state.query.tab
     var url = '/'
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
       url = url + 'tagged/' + tags + '/'
     }
-    if (category !== options[0] && category !== 'most-relevant') {
-      url = url + 'tab/' + encodeURIComponent(category)
+    if (tab !== options[0] && tab !== 'most-relevant') {
+      url = url + 'tab/' + encodeURIComponent(tab)
     }
     state.friendlyUrl = url
     window.history.replaceState({}, '', url)
   },
-  SET_ITEMS (state, response) {
-    state.pagination.totalCount = Number(response.headers['x-pagination-count'])
-    state.pagination.offset = Number(response.headers['x-pagination-offset'])
-    if (state.pagination.offset === 0) {
-      state.items = response.data
+  SET_ITEMS (state, data) {
+    const items = data.items
+    const pager = data.pager
+    state.pager.totalCount = pager.totalCount
+    state.pager.offset = pager.offset
+    if (state.pager.offset !== 0) {
+      state.items = state.items.concat(items)
     } else {
-      let items = state.items.concat(response.data)
       state.items = items
     }
     state.query.offset = 0
@@ -180,30 +182,30 @@ const mutations = {
     state.isLoading = value
   },
   SET_REFINE_QUERY (state, value) {
-    state.query.refine = value
+    state.query.status = value
   },
   SET_TEXT_QUERY (state, value) {
     state.query.text = value
   },
-  TOGGLE_BROWSE_DROPDOWN (state, type) {
-    state.browse[type].isActive = !state.browse[type].isActive
+  TOGGLE_REFINE_DROPDOWN (state, type) {
+    state.refine[type].isActive = !state.refine[type].isActive
   }
 }
 
 const state = {
   activeItemIndex: -1,
-  browse: {
-    categories: {
+  refine: {
+    tab: {
       isActive: false
     },
-    refine: {
+    status: {
       isActive: false
     }
   },
   friendlyUrl: '/',
   items: [],
   isLoading: true,
-  pagination: {
+  pager: {
     offset: 0,
     totalCount: 0
   },

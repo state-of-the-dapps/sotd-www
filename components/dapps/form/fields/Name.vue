@@ -4,10 +4,10 @@
     <label class="label">ÐApp name <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 25 - name.length }}</span>
     <ul v-if="warnings && warnings.length > 0" class="warning-list">
-      <li v-for="warning in warnings" class="warning-item">{{ warning }}</li>
+      <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
     </ul>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
   </div>
 </template>
@@ -61,14 +61,19 @@
           })
           hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a URL`) : null
           axios
-            .get('dapps/' + this.name)
+            .get('dapps/lookup', {
+              params: {
+                name: this.name
+              }
+            })
             .then(response => {
-              if (response.data.hasOwnProperty('name') && this.name.length > 0) {
+              const data = response.data
+              const item = data.item
+              if (item.exists) {
                 errors.data.push(`Name has already been taken`)
               }
-
-              this.dispatchErrors(errors)
-              this.dispatchWarnings(warnings)
+              this.dispatchErrors(errors, 'dapps')
+              this.dispatchWarnings(warnings, 'dapps')
             })
             .catch((error) => {
               console.log(error)

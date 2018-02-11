@@ -27,7 +27,7 @@
           <input v-model="slack" class="input" type="text" placeholder="slack invitation url" maxlength="100" @input="validate">
         </div>
         <ul v-if="slackErrors && slackErrors.length > 0" class="error-list -social">
-          <li v-for="error in slackErrors" class="error-item -social">{{ error }}</li>
+          <li v-for="(error, index) in slackErrors" :key="index" class="error-item -social">{{ error }}</li>
         </ul>
       </li>
       <li class="item">
@@ -166,7 +166,7 @@
         validationTimer = setTimeout(() => {
           this.slack.endsWith('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
           this.slack.length > 0 && !this.slack.includes('.') ? errors.data.push(`Slack invitation should be a url`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

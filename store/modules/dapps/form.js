@@ -3,7 +3,7 @@ import axios from '~/helpers/axios'
 function initialState () {
   return {
     errorFields: [
-      'author',
+      'authors',
       'description',
       'email',
       'license',
@@ -12,11 +12,11 @@ function initialState () {
       'tags',
       'teaser',
       'acceptedTerms',
-      'website'
+      'websiteUrl'
     ],
     errors: {
       additionalAuthors: [],
-      author: [],
+      authors: [],
       dappUrl: [],
       description: [],
       email: [],
@@ -31,12 +31,11 @@ function initialState () {
       tags: [],
       teaser: [],
       acceptedTerms: [],
-      website: []
+      websiteUrl: []
     },
     fields: {
       additionalAuthors: '',
-      author: '',
-      dappUrl: '',
+      authors: [],
       description: '',
       contracts: {
         mainnet: { address: '' },
@@ -49,24 +48,27 @@ function initialState () {
       license: '',
       logo: '',
       name: '',
-      social: {
-        facebook: { url: '' },
-        twitter: { url: '' },
-        github: { url: '' },
-        reddit: { url: '' },
-        slack: { url: '' },
-        blog: { url: '' },
-        other: { url: '' },
-        wiki: { url: '' }
+      socials: {
+        facebook: { path: '' },
+        twitter: { path: '' },
+        github: { path: '' },
+        reddit: { path: '' },
+        slack: { path: '' },
+        blog: { path: '' },
+        other: { path: '' },
+        wiki: { path: '' }
       },
       status: '',
       subscribeNewsletter: true,
       tags: [],
       teaser: '',
       acceptedTerms: false,
-      website: ''
+      siteUrls: {
+        dapp: '',
+        website: ''
+      }
     },
-    tagsQuery: '',
+    tagQuery: '',
     tagsResults: [],
     warnings: {
       name: [],
@@ -84,9 +86,11 @@ const actions = {
   },
   fetchTags: ({ commit, state }, value) => {
     axios
-      .get('tags', { params: { query: value, exclude: state.fields.tags } })
+      .get('tags', { params: { text: value, excluded: state.fields.tags } })
       .then(response => {
-        commit('SET_TAG_RESULTS', response.data)
+        var data = response.data
+        var items = data.items
+        commit('SET_TAG_RESULTS', items)
       })
   },
   removeErrorField ({ commit }, field) {
@@ -113,13 +117,16 @@ const actions = {
   setField ({ commit }, field) {
     commit('SET_FIELD', field)
   },
+  setSiteUrl ({ commit }, field) {
+    commit('SET_SITE_URL', field)
+  },
   setSocial ({ commit }, field) {
     commit('SET_SOCIAL', field)
   },
   setStatus ({ commit }, value) {
     commit('SET_STATUS', value)
   },
-  setTagsQuery ({ commit }, value) {
+  setTagQuery ({ commit }, value) {
     commit('SET_TAG_QUERY', value)
   },
   setWarnings ({ commit }, warnings) {
@@ -173,7 +180,7 @@ const mutations = {
   },
   RESET_TAG_RESULTS (state) {
     state.tagsResults = []
-    state.tagsQuery = ''
+    state.tagQuery = ''
   },
   SELECT_TAG (state, index) {
     if (state.fields.tags.indexOf(state.tagsResults[index]) === -1) {
@@ -190,9 +197,6 @@ const mutations = {
   SET_TAG_RESULTS (state, items) {
     state.tagsResults = items
   },
-  TOGGLE_CHECKBOX (state, field) {
-    state.fields[field] = !state.fields[field]
-  },
   SET_CONTRACT (state, field) {
     state.fields.contracts[field.name]['address'] = field.value
   },
@@ -202,8 +206,11 @@ const mutations = {
   SET_FIELD (state, field) {
     state.fields[field.name] = field.value
   },
+  SET_SITE_URL (state, field) {
+    state.fields.siteUrls[field.name] = field.value
+  },
   SET_SOCIAL (state, field) {
-    state.fields.social[field.name]['url'] = field.value
+    state.fields.socials[field.name]['path'] = field.value
   },
   SET_STATUS (state, value) {
     const index = state.errorFields.indexOf('status')
@@ -213,10 +220,13 @@ const mutations = {
     state.fields.status = value
   },
   SET_TAG_QUERY (state, value) {
-    state.tagsQuery = value
+    state.tagQuery = value
   },
   SET_WARNINGS (state, warnings) {
     state.warnings[warnings.field] = warnings.data
+  },
+  TOGGLE_CHECKBOX (state, field) {
+    state.fields[field] = !state.fields[field]
   }
 }
 
@@ -227,17 +237,17 @@ const getters = {
   additionalAuthorsErrors: state => {
     return state.errors.additionalAuthors
   },
-  author: state => {
-    return state.fields.author
+  authors: state => {
+    return state.fields.authors
   },
-  authorErrors: state => {
-    return state.errors.author
+  authorsErrors: state => {
+    return state.errors.authors
   },
   contracts: state => {
     return state.fields.contracts
   },
   dappUrl: state => {
-    return state.fields.dappUrl
+    return state.fields.siteUrls.dapp
   },
   dappUrlErrors: state => {
     return state.errors.dappUrl
@@ -300,31 +310,31 @@ const getters = {
     return state.fields.tags
   },
   socialBlog: state => {
-    return state.fields.social.blog.url
+    return state.fields.socials.blog.path
   },
   socialFacebook: state => {
-    return state.fields.social.facebook.url
+    return state.fields.socials.facebook.path
   },
   socialGithub: state => {
-    return state.fields.social.github.url
+    return state.fields.socials.github.path
   },
   socialOther: state => {
-    return state.fields.social.other.url
+    return state.fields.socials.other.path
   },
   socialReddit: state => {
-    return state.fields.social.reddit.url
+    return state.fields.socials.reddit.path
   },
   socialSlack: state => {
-    return state.fields.social.slack.url
+    return state.fields.socials.slack.path
   },
   socialSlackErrors: state => {
     return state.errors.socialSlack
   },
   socialTwitter: state => {
-    return state.fields.social.twitter.url
+    return state.fields.socials.twitter.path
   },
   socialWiki: state => {
-    return state.fields.social.wiki.url
+    return state.fields.socials.wiki.path
   },
   status: state => {
     return state.fields.status
@@ -332,8 +342,8 @@ const getters = {
   subscribeNewsletter: state => {
     return state.fields.subscribeNewsletter
   },
-  tagsQuery: state => {
-    return state.tagsQuery
+  tagQuery: state => {
+    return state.tagQuery
   },
   tagsResults: state => {
     return state.tagsResults
@@ -350,11 +360,11 @@ const getters = {
   acceptedTerms: state => {
     return state.fields.acceptedTerms
   },
-  website: state => {
-    return state.fields.website
+  websiteUrl: state => {
+    return state.fields.siteUrls.website
   },
-  websiteErrors: state => {
-    return state.errors.website
+  websiteUrlErrors: state => {
+    return state.errors.websiteUrl
   }
 }
 

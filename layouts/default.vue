@@ -1,9 +1,13 @@
 <template>
   <div class="main-container">
-    <Announcement/>
-    <Masthead/>
-    <nuxt/>
+    <div class="content-container">
+      <Announcement/>
+      <Utilities type="head" />
+      <Masthead/>
+      <nuxt/>
+    </div>
     <Foot/>
+    <Utilities type="foot" />
     <transition name="fade">
       <img @click="scrollUp" class="scroll-up" :class="{ '--has-announcement': announcement, '--is-active': scrollNeeded }" src="~/assets/images/scroll-up.png" width="36" height="36">
     </transition>
@@ -11,10 +15,11 @@
 </template>
 
 <script>
-  import Announcement from '~/components/shared/Announcement.vue'
+  import Announcement from '~/components/shared/Announcements.vue'
   import Foot from '~/components/shared/Foot.vue'
   import Masthead from '~/components/shared/Masthead.vue'
-  
+  import Utilities from '~/components/shared/Utilities.vue'
+
   let scrollTimer
 
   export default {
@@ -26,7 +31,8 @@
     components: {
       Announcement,
       Foot,
-      Masthead
+      Masthead,
+      Utilities
     },
     computed: {
       announcement () {
@@ -64,6 +70,11 @@
     height: 100%;
     position: relative;
   }
+
+  .content-container {
+    min-height: 98%;
+  }
+
   .scroll-up {
     position: fixed;
     bottom: 12px;

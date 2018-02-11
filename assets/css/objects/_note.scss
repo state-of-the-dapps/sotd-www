@@ -1,25 +1,25 @@
 .note {
   display: inline-block;
-  font-size: .8rem;
+  font-size: .75rem;
   background: rgba($color--mine-shaft, .1);
-  padding: 4px 5px 2px;
+  padding: 3px 4px;
   vertical-align: top;
   font-weight: 600;
   margin-left: 5px;
   &.-live {
-    background: $color--bright-green;
+    background: $color--dapp-live;
   }
-  &.-demo {
-    background: $color--gorse;
+  &.-beta {
+    background: $color--dapp-beta;
   }
   &.-prototype {
-    background: $color--koromiko;
+    background: $color--dapp-prototype;
   }
   &.-wip {
-    background: $color--malibu;
+    background: $color--dapp-wip;
   }
   &.-concept {
-    background: $color--portage;
+    background: $color--dapp-concept;
   }
   &.-nsfw {
   }

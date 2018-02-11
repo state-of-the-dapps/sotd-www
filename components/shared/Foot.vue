@@ -1,85 +1,85 @@
 <template>
   <section class="section -footer">
     <div class="container">
-      <p class="logo-wrapper"><img class="logo" src="~/assets/images/logo-reverse.png" width="190"></p>
-      <ul class="social-list">
-        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Twitter' })" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="~/assets/images/social/twitter-reverse.png" width="21" alt="Twitter"></a></li>
-        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Github' })" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="~/assets/images/social/github-reverse.png" width="21" alt="Github"></a></li>
-        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Reddit' })" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="~/assets/images/social/reddit-reverse.png" width="21" alt="Reddit"></a></li>
-        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Medium' })" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="~/assets/images/social/medium-reverse.png" width="21" alt="Medium"></a></li>
-        <li class="social-item"><a @click="$mixpanel.track('SotD - Social', { platform: 'Slack' })" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="~/assets/images/social/slack-reverse.png" width="21" alt="Slack"></a></li>
+      <ul class="list -links">
+        <li class="item -links"><nuxt-link @click.native="$mixpanel.track('Footer - About')" to="/about" class="link">About</nuxt-link></li>
+        <li class="item -links"><nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of use</nuxt-link></li>
+        <ul class="list -social-logo-links">
+          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Twitter' })" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="~/assets/images/social/twitter-reverse.png" width="18" alt="Twitter" class="icon -social-logo-links"></a></li>
+          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Github' })" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="~/assets/images/social/github-reverse.png" width="18" alt="Github" class="icon -social-logo-links"></a></li>
+          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Reddit' })" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="~/assets/images/social/reddit-reverse.png" width="18" alt="Reddit" class="icon -social-logo-links"></a></li>
+          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Medium' })" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="~/assets/images/social/medium-reverse.png" width="18" alt="Medium" class="icon -social-logo-links"></a></li>
+          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Slack' })" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="~/assets/images/social/slack-reverse.png" width="18" alt="Slack" class="icon -social-logo-links"></a></li>
+        </ul>
       </ul>
-      <h4 class="disclaimer-heading">
-        <nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of Use</nuxt-link>
-      </h4>
-      <p class="disclaimer-message">{{ disclaimer }}</p>
-      <p class="attribution">Designed by <a @click="$mixpanel.track('SotD - Designer website')" href="https://www.enginecollaborative.com" class="link" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></p>
+      <ul class="list -attributions">
+        <li><img class="logo -social-logo-links" src="~/assets/images/logo-reverse.png" width="120"></li>
+        <li>Copyright &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</li>
+        <li>Designed by <a class="link -attributions" @click="$mixpanel.track('SotD - Designer website')" href="https://www.enginecollaborative.com" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></li>
+      </ul>
     </div>
   </section>
 </template>
-
-<script>
-  export default {
-    computed: {
-      disclaimer () {
-        return // TODO
-      }
-    }
-  }
-</script>
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
   .container {
-    padding: 30px 20px 75px 20px;
+    padding: 30px 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      flex-direction: row;
+    }
   }
 
   .section {
     background: $color--mine-shaft;
-    color: $color--gallery;
-  }
-
-  .attribution {
-    text-align: center;
-    margin-top: 5rem;
-  }
-
-  .disclaimer-heading {
-    text-align: center;
-    font-weight: 300;
-    font-size: 1rem;
-    text-transform: uppercase;
-    margin-top: 30px;
-    margin-bottom: 0;
-  }
-
-  .disclaimer-message {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    color: darken($color--gallery, 25%);
   }
 
   .link {
-    color: $color--gallery;
+    color: darken($color--gallery, 25%);
   }
 
-  .logo-wrapper {
-    text-align: center;
+  .-attributions {
+    &.list {
+      margin: 15px 0;
+      text-align: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        text-align: right;
+        width: 50%;
+      }
+    }
   }
 
-  .section {
-    background: $color--mine-shaft;
+  .-links {
+    &.list {
+      margin: 15px 0;
+      text-align: center;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        text-align: left;
+        width: 50%;
+      }
+    }
   }
 
-  .social-item {
-    margin: 2px;
-  }
-
-  .social-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30px;
+  .-social-logo-links {
+    &.list {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+    }
+    &.item {
+      margin-right: 5px;
+    }
+    &.icon {
+      display: block;
+    }
+    &.logo {
+      margin-bottom: 5px;
+    }
   }
 </style>

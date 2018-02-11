@@ -2,9 +2,9 @@
   <section class="section -main-info">
     <div class="container">
       <ul class="list">
-        <li v-if="item.author" class="item -author">
-          <h3 class="sub-heading">Author<span v-if="item.additionalAuthors">s</span></h3>
-          <p class="sub-body">{{ item.author }}<span v-if="item.additionalAuthors">, {{ item.additionalAuthors }}</span></p>
+        <li v-if="item.authors && item.authors.length > 0" class="item -author">
+          <h3 class="sub-heading">Author<span v-if="item.authors.length > 1">s</span></h3>
+          <p class="sub-body"><span v-for="(author, index) in item.authors">{{ author }}<span v-if="index !== item.authors.length - 1">, </span></span></p>
         </li>
         <li class="item -description">
           <p class="body"><img v-if="item.logoUrl" class="logo" :src="item.logoUrl">{{ item.description }}</p>
@@ -31,7 +31,7 @@
         </li>
         <li v-if="tags && tags.length > 0" class="sub-item">
           <h3 class="sub-heading">Tags</h3>
-          <p class="sub-body"><a class="sub-tag" v-for="tag in tags" @click="findDappsByTag(tag)">#{{ tag }}</a></p>
+          <p class="sub-body"><a class="sub-tag" v-for="(tag, index) in tags" :key="index" @click="findDappsByTag(tag)">#{{ tag }}</a></p>
         </li>
       </ul>
     </div>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-  import Contract from '~/components/dapps/detail/MainInfo/Contract.vue'
+  import Contract from '~/components/dapps/detail/mainInfo/Contract.vue'
 
   export default {
     computed: {

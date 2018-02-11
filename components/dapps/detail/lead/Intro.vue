@@ -2,14 +2,11 @@
   <div class="wrapper">
     <div class="new-banner" @click="$mixpanel.track('DApp - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
-      <li v-for="badge in item.badges" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
-        <div class="badge-info">{{ badge | formatDappsBadge | capitalize }}</div>
+      <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
+        <div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div>
       </li>
     </ul>
     <div class="info">
-      <div @click="$mixpanel.track('DApp - Icon', { detail: true })" class="icon-wrapper" :class="'-' + item.status">
-        <p class="icon-placeholder">{{ item.name | firstLetter | capitalize }}</p>
-      </div>
       <div class="description-wrapper">
         <h3 class="title">{{ item.name }}<span v-if="item.isNsfw" class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
         <p class="description">{{ item.teaser }}</p>
@@ -58,7 +55,7 @@
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     &:after {
       position: absolute;
-      top: -7px;
+      top: -2px;
       right: 6px;
       content: '';
       width: 1px;
@@ -72,7 +69,7 @@
     display: flex;
     right: 10px;
     top: -2px;
-    z-index: 5;
+    z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
       right: 20px;
     }
@@ -94,51 +91,7 @@
   }
 
   .description-wrapper {
-    flex: 1;
-  }
-
-  .icon-image {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .icon-placeholder {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: rgba(0,0,0,.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-size: 1.7rem;
-    border-radius: 50%;
-    margin-right: 10px;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-demo {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
-    @include tweakpoint('min-width', 900px) {
-      width: 120px;
-      height: 120px;
-      margin-right: 20px;
-      font-size: 2.25rem;
-    }
+    flex-grow: 1;
   }
 
   .info {
@@ -182,22 +135,25 @@
       margin-left: 6px;
     }
     &.-live {
-      color: $color--screamin-green;
+      color: $color--dapp-live-light;
     }
-    &.-demo {
-      color: $color--paris-daisy;
+    &.-beta {
+      color: $color--dapp-beta-light;
     }
     &.-prototype {
-      color: $color--golden-tainoi;
+      color: $color--dapp-prototype-light;
     }
     &.-wip {
-      color: $color--anakiwa;
+      color: $color--dapp-wip-light;
     }
     &.-concept {
-      color: $color--perfume;
+      color: $color--dapp-concept-light;
     }
-    &.-stealth, &.-abandoned, &.-unknown {
-      color: $color--alabaster;
+    &.-stealth {
+      color: $color--dapp-stealth-light;
+    }
+    &.-abandoned, &.-unknown {
+      color: $color--dapp-abandoned-light;
     }
   }
 

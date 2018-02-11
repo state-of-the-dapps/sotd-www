@@ -1,14 +1,14 @@
 <template>
   <div>
-    <p class="heading">Project status <span class="required">(required)</span></p>
+    <p class="heading">ÐApp status <span class="required">(required)</span></p>
     <ul class="list">
-      <li v-for="item in items" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatDappsStatus | capitalize }}</li>
+      <li v-for="(item, index) in items" :key="index" @click="select(item)" :class="status === item ? 'item -' + item + ' --is-selected' : 'item -' + item">{{ item | formatDappStatus | capitalize }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-  import { dappsStatusList as statusList } from '~/helpers/constants'
+  import { dappStatuses as statusList } from '~/helpers/constants'
 
   export default {
     computed: {
@@ -52,28 +52,28 @@
       border-color:$color--mine-shaft;
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live;
     }
-    &.-demo {
-      background: $color--paris-daisy;
+    &.-beta {
+      background: $color--dapp-beta;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
+      background: $color--dapp-prototype;
     }
     &.-wip {
-      background: $color--anakiwa;
+      background: $color--dapp-wip;
     }
     &.-concept {
-      background: $color--perfume;
+      background: $color--dapp-concept;
     }
     &.-stealth {
-      background: rgba($color--mine-shaft,.5);
+      background: $color--dapp-stealth;
     }
     &.-unknown {
-      background: rgba($color--mine-shaft,.2);
+      background: $color--dapp-unknown;
     }
     &.-abandoned {
-      background: $color--alabaster;
+      background: $color--dapp-abandoned;
     }
   }
 
