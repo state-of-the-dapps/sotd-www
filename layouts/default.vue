@@ -72,6 +72,7 @@
   }
 
   .content-container {
+    overflow: auto;
     min-height: 98%;
   }
 

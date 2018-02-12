@@ -10,6 +10,8 @@ function initialQuery () {
     dateStart: formatDate(Date.now(), 'YYYY-MM-DD'),
     limit: 50,
     location: '',
+    lat: '',
+    lon: '',
     locationRadius: 50,
     locationRadiusUnit: 'miles',
     offset: 0,
@@ -216,7 +218,9 @@ const mutations = {
     state.query.locationRadiusUnit = value
   },
   SET_LOCATION_QUERY (state, value) {
-    state.query.location = value
+    state.query.lat = value.lat
+    state.query.lon = value.lon
+    state.query.location = value.text
   },
   SET_REFINE_QUERY (state, value) {
     state.query.status = value

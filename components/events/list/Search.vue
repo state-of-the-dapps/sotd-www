@@ -14,10 +14,10 @@
               within 
               <span class="location-selection" @click="toggleLocationDropdown">
                 <span v-if="locationRadiusQuery">{{ locationRadiusQuery }} {{ locationRadiusUnitQuery }}</span><span v-else>any distance</span>
-                </span> of <span class="location-selection" @click="toggleLocationDropdown">{{ locationQuery || 'any location' }}
+                </span> of <span class="location-selection" @click="toggleLocationDropdown"><span v-if="locationQuery">{{ locationQuery | escapeHtmlTags }}</span><span v-else>any location</span>
               </span>
             </span>
-            <span v-else="locationQuery">
+            <span v-else>
               <span class="location-selection" @click="toggleLocationDropdown">search by location</span>
             </span>
           </span>   

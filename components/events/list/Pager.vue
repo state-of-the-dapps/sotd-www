@@ -72,10 +72,10 @@
   }
 
   .message {
-    margin: 8rem 0;
+    margin: 3rem 0;
     padding-bottom: 20px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: lighten($color--mine-shaft,55%);
   }
 </style>

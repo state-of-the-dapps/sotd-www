@@ -50,7 +50,8 @@
             axios
               .post('https://places-dsn.algolia.net/1/places/query', {
                 query: this.locationSearchQuery,
-                type: 'city'
+                type: 'city',
+                hitsPerPage: 10
               })
               .then(response => {
                 const data = response.data
@@ -62,7 +63,6 @@
                     text += items[i]._highlightResult.locale_names.default[0].value + ', '
                     text += items[i]._highlightResult.administrative[0].value + ', '
                     text += items[i]._highlightResult.country.default.value
-                    console.log(items[i]._highlightResult)
                     formattedItems.push({
                       lat: items[i]._geoloc.lat,
                       lon: items[i]._geoloc.lng,
@@ -72,7 +72,7 @@
                   this.locations = formattedItems
                 }
                 this.locationsAreLoading = false
-                this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length })
+                this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length, component: 'Event form' })
               })
           }, 750)
         } else {

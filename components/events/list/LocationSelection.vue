@@ -7,7 +7,7 @@
           <p v-if="locationSearchQuery.length < 3" class="location-instructions">Enter at least 3 letters to search</p>
           <p v-if="locationSearchQuery.length >= 3 && locations.length === 0 && locationsAreLoading === false" class="location-instructions">No locations were found. Check your city spelling, or try adding a state, province, or country.</p>
           <ul class="location-list">
-            <li v-for="(option, index) in locations" :key="index" class="location-item" :class="selectedLocation === option ? '--is-selected' : ''" @click="selectLocation(option)">{{ option | truncate(30) }}</li>
+            <li v-for="(option, index) in locations" :key="index" class="location-item" :class="selectedLocation === option.text ? '--is-selected' : ''" @click="selectLocation(option)" v-html="option.text"></li>
           </ul>
           <p v-if="locationsAreLoading" class="loader-wrapper">
             <button class="loader"></button>
@@ -82,17 +82,31 @@
           this.locationsAreLoading = true
           searchTimer = setTimeout(() => {
             axios
-              .get('locations/lookup', {
-                params: {
-                  text: this.locationSearchQuery
-                }
+              .post('https://places-dsn.algolia.net/1/places/query', {
+                query: this.locationSearchQuery,
+                type: 'city',
+                hitsPerPage: 5
               })
               .then(response => {
                 const data = response.data
-                const items = data.items
-                this.locations = items
+                const items = data.hits || []
+                if (items.length > 0) {
+                  const formattedItems = []
+                  for (let i = 0; i < items.length; i++) {
+                    var text = ''
+                    text += items[i]._highlightResult.locale_names.default[0].value + ', '
+                    text += items[i]._highlightResult.administrative[0].value + ', '
+                    text += items[i]._highlightResult.country.default.value
+                    formattedItems.push({
+                      lat: items[i]._geoloc.lat,
+                      lon: items[i]._geoloc.lng,
+                      text: text
+                    })
+                  }
+                  this.locations = formattedItems
+                }
                 this.locationsAreLoading = false
-                this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length })
+                this.$mixpanel.track('Locations - Search', { query: this.locationSearchQuery, resultsCount: items.length, component: 'Event list' })
               })
           }, 750)
         } else {
@@ -224,6 +238,7 @@
   }
 
   .location {
+    width: 190px;
     flex-grow: 1;
     padding-right: 10px;
     border-right: 1px solid $color--mine-shaft;
