@@ -8,7 +8,7 @@ const randomSeed = generateRandomSeed()
 function initialQuery () {
   return {
     dateStart: formatDate(Date.now(), 'YYYY-MM-DD'),
-    limit: 1,
+    limit: 50,
     location: '',
     locationRadius: 50,
     locationRadiusUnit: 'miles',

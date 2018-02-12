@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  import axios from '~/helpers/axios'
+  /* import axios from '~/helpers/axios' */
   import addDays from 'date-fns/add_days'
   import addMonths from 'date-fns/add_months'
   import formatDate from 'date-fns/format'
@@ -83,6 +83,7 @@
         this.$store.dispatch('events/list/fetchItems')
       },
       setDayCategories () {
+        /*
         axios
           .get('events/calendar', {
             params: this.eventsFullQuery
@@ -107,6 +108,7 @@
           .catch((error) => {
             console.log(error)
           })
+        */
       },
       setupMonth () {
         clearTimeout(setDayCategoriesTimer)
