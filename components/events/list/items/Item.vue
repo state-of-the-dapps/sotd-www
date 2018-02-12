@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="fade" mode="out-in">
     <nuxt-link @click.native="setIndex(item, index)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -component-events-list-items-item" :key="item.slug">
       <div class="wrapper -main">
         <div class="wrapper -date">

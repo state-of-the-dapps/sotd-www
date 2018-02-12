@@ -6,7 +6,7 @@
           Load the <span v-if="totalCount - itemCount > 1"> <span v-if="totalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ totalCount - itemCount }}</span> events</span><span v-else>last event</span>
         </button>
       </p>
-      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} Events here. You can always <nuxt-link @click.native="$mixpanel.track('Events - New Event')" :to="{ name: 'event-new' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} events here. You can always <nuxt-link @click.native="$mixpanel.track('Events - New Event')" :to="{ name: 'events-new' }" class="link">submit one!</nuxt-link></p>
       <p v-if="isLoading" class="loader-wrapper"><button v-if="isLoading" class="loader"></button></p>
     </div>
   </section>
@@ -25,7 +25,7 @@
         return this.$store.getters['events/list/pagerOffset']
       },
       totalCount () {
-        return this.$store.getters['events/list/totalCount']
+        return this.$store.getters['events/list/pagerTotalCount']
       },
       isLoading () {
         return this.$store.getters['events/list/isLoading']
