@@ -15,7 +15,7 @@
               <div class="title-attribution-wrapper">
                 <div>
                   <h3 class="title">{{ item.name | truncate(25) }}<span v-if="item.isNsfw"  class="note -nsfw" :class="'-' + item.status">NSFW</span></h3>
-                  <p class="attribution">by <span v-if="item.authors.length > 0"><strong>{{ item.authors[0] | truncate(20) }}</strong></span><span v-if="item.authors.length > 1"> +{{ item.authors.length - 1 }}</span></p>
+                  <p class="attribution" v-if="item.authors">by <span v-if="item.authors.length > 0"><strong>{{ item.authors[0] | truncate(20) }}</strong></span><span v-if="item.authors.length > 1"> +{{ item.authors.length - 1 }}</span></p>
                 </div>
               </div>
               <div class="description-wrapper">
