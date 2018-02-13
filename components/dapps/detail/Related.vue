@@ -98,25 +98,25 @@
       transform: translateY(-4px);
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live-light;
     }
     &.-beta {
-      background: $color--paris-daisy;
+      background: $color--dapp-beta-light;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
+      background: $color--dapp-prototype-light;
     }
     &.-wip {
-      background: $color--anakiwa;
+      background: $color--dapp-wip-light;
     }
     &.-concept {
-      background: $color--perfume;
+      background: $color--dapp-concept-light;
     }
     &.-stealth {
-      background: $color--alabaster;
+      background: $color--dapp-stealth-light;
     }
     &.-abandoned, &.-unknown {
-      background: $color--alabaster;
+      background: $color--dapp-unknown-light;
       &:after {
         content: " ";
         position: absolute;
@@ -163,19 +163,19 @@
     text-transform: uppercase;
     font-weight: 700;
     &.-live {
-      border-color: $color--bright-green;
+      border-color: $color--dapp-live;
     }
     &.-beta {
-      border-color: $color--gorse;
+      border-color: $color--dapp-beta;
     }
     &.-prototype {
-      border-color: $color--koromiko;
+      border-color: $color--dapp-prototype;
     }
     &.-wip {
-      border-color: $color--malibu;
+      border-color: $color--dapp-wip;
     }
     &.-concept {
-      border-color: $color--portage;
+      border-color: $color--dapp-concept;
     }
   }
 
