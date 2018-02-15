@@ -154,14 +154,20 @@
 
   .-calendar {
     &.wrapper {
-      width: 350px;
+      width: 100%;
+      max-width: 350px;
       margin: 0 auto 20px;
       position: sticky;
       top: 19px;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        width: 350px;
+      }
     }
     &.wrapper-inner {
-      padding: 0 10px;
       user-select: none;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        padding: 0 10px;
+      }
     }
   }
 

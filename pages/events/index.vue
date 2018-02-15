@@ -70,7 +70,7 @@
   .-results-filters {
     &.wrapper {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       max-width: 900px;
       margin: 0 auto;
       padding: 25px 20px;
@@ -93,7 +93,10 @@
   .-filters {
     &.wrapper {
       margin: 0 auto;
-      width: 350px;
+      width: 100%;
+      @include tweakpoint('min-width', $tweakpoint--default) {
+        width: 350px;
+      }
     }
   } 
 </style>
