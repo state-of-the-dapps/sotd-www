@@ -2,7 +2,7 @@
   <section class="section -utilities" :class="'--' + type">
     <div class="container">
       <ul class="list">
-        <li class="item -description">A curated list of {{ statDappCount }} projects and {{ statEventCount }} upcoming events for Ethereum's decentralized apps</li>
+        <li class="item -description">A curated list of <strong>{{ statDappCount }}</strong> projects and <strong>{{ statEventCount }}</strong> upcoming events for Ethereum's decentralized apps</li>
         <li class="item"><nuxt-link :to="{ name: 'what' }" class="link">What's a ÐApp</nuxt-link></li>
         <li class="item"><nuxt-link :to="{ name: 'about' }" class="link">About</nuxt-link></li>
         <li class="item">         
@@ -137,7 +137,7 @@
 
   .list {
     text-align: center;
-    font-size: .95rem;
+    font-size: .9rem;
     @include tweakpoint('min-width', $tweakpoint--default) {
       text-align: left;
       display: flex;
@@ -153,7 +153,7 @@
     position: relative;
     border: 1px solid transparent;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: .5rem .4rem;
+      padding: .55rem .4rem;
     }
     &.-newsletter {
       cursor: pointer;

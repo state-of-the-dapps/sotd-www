@@ -237,8 +237,7 @@
     position: relative;
     display: inline-block;
     margin: 0 1px;
-    text-decoration: underline;
-    font-weight: 600;
+    text-decoration: none;
   }
 
   .location-text {

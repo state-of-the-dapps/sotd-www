@@ -83,6 +83,8 @@
   .nav-item {
     display: inline-block;
     position: relative;
+    margin-right: 15px;
+    font-size: 1.05rem;
     &:after {
       content: '';
       position: absolute;
@@ -96,6 +98,7 @@
     }
     &:last-child {
       margin-left: 6px;
+      margin-right: 0;
     }
     &.--is-active {
       &:after {
@@ -106,7 +109,7 @@
 
   .nav-link {
     display: inline-block;
-    padding: 8px 15px;
+    padding: 8px 20px;
     text-decoration: none;
     transition: all .2s ease;
     position: relative;
