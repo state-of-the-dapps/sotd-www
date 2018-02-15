@@ -88,6 +88,9 @@ const actions = {
   addTag ({ commit }, value) {
     commit('ADD_TAG', value)
   },
+  clearEndDate ({ commit }) {
+    commit('CLEAR_END_DATE')
+  },
   fetchRelatedDapps: ({ commit, state }, value) => {
     const relatedDapps = state.fields.relatedDapps
     const relatedDappsSlugs = []
@@ -196,6 +199,9 @@ const mutations = {
         state.errorFields.splice(index, 1)
       }
     }
+  },
+  CLEAR_END_DATE (state) {
+    state.fields.dates.end = ''
   },
   REMOVE_ERROR_FIELD (state, field) {
     const index = state.errorFields.indexOf(field)
