@@ -14,7 +14,7 @@
   export default {
     computed: {
       item () {
-        return this.$store.getters['dapps/detail/item']
+        return this.$store.getters['events/detail/item']
       }
     }
   }

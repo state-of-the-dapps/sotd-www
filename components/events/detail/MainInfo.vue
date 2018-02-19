@@ -29,7 +29,7 @@
       </li>
       <li class="item -sidebar">
         <h3 class="sub-heading -sidebar">Languages</h3>
-        <span v-for="(language, index) in item.languages" :key="index">{{ language }} <span v-if="index + 1 < item.languages.length">, </span></span>
+        <span v-for="(language, index) in item.languages" :key="index">{{ language }}<span v-if="index + 1 < item.languages.length">, </span></span>
       </li>
       <li class="item -sidebar">
         <h3 class="sub-heading -sidebar">Registration info</h3>
