@@ -1,8 +1,8 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <textarea class="text-area" maxlength="500" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="description.length > 0 ? '--is-filled' : ''" type="text" v-model="description" @input="validate"></textarea>
+    <textarea class="text-area" maxlength="1000" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="description.length > 0 ? '--is-filled' : ''" type="text" v-model="description" @input="validate"></textarea>
     <label class="label">Full description <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 500 - description.length }}</span>
+    <span class="remaining-characters">{{ 1000 - description.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
@@ -41,7 +41,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.description.length > 500 ? errors.data.push(`Description can't be longer than 500 characters`) : ''
+          this.description.length > 1000 ? errors.data.push(`Description can't be longer than 1000 characters`) : ''
           this.description.length < 50 ? errors.data.push(`Description must be longer than 50 characters`) : ''
           this.dispatchErrors(errors, 'events')
         }, 750)

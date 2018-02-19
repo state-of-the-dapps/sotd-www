@@ -1,8 +1,8 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <textarea class="text-area" maxlength="500" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="highlights.length > 0 ? '--is-filled' : ''" type="text" v-model="highlights" @input="validate"></textarea>
+    <textarea class="text-area" maxlength="1000" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="highlights.length > 0 ? '--is-filled' : ''" type="text" v-model="highlights" @input="validate"></textarea>
     <label class="label">Highlights</label>
-    <span class="remaining-characters">{{ 500 - highlights.length }}</span>
+    <span class="remaining-characters">{{ 1000 - highlights.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
@@ -43,7 +43,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.highlights.length > 500 ? errors.data.push(`Highlights can't be longer than 500 characters`) : ''
+          this.highlights.length > 1000 ? errors.data.push(`Highlights can't be longer than 1000 characters`) : ''
           this.highlights.length > 0 && this.highlights.length < 10 ? errors.data.push(`Highlights must be longer than 10 characters`) : ''
           this.dispatchErrors(errors, 'events')
         }, 750)
