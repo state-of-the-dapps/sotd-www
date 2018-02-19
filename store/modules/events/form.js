@@ -12,7 +12,6 @@ function initialState () {
       'description',
       'email',
       'languages',
-      'location',
       'name',
       'organizer',
       'registrationInfo',

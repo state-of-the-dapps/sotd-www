@@ -1,7 +1,7 @@
 <template>
   <div class="item -component-events-form-fields-location">
     <div class="wrapper -location" @click="toggleDropdown">
-      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location" class="link -location">{{ location.text | escapeHtmlTags }}</span><span v-else>Location <span class="required">(required)</span></span>
+      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location" class="link -location">{{ location.text | escapeHtmlTags }}</span><span v-else>Location</span>
     </div>
     <transition name="fade">
       <div v-if="dropdownIsActive" v-on-clickaway="toggleDropdown" class="wrapper -dropdown">
@@ -89,12 +89,7 @@
             text: value.text
           }
         }
-        const errors = {
-          field: 'location',
-          data: []
-        }
         this.$store.dispatch('events/form/setField', field)
-        this.dispatchErrors(errors, 'events')
         this.toggleDropdown()
       },
       toggleDropdown () {
