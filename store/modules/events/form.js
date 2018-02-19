@@ -48,7 +48,7 @@ function initialState () {
       highlights: [],
       joinSlack: true,
       languages: [],
-      location: false,
+      location: '',
       name: '',
       organizer: '',
       relatedDapps: [],
@@ -89,6 +89,9 @@ const actions = {
   },
   clearEndDate ({ commit }) {
     commit('CLEAR_END_DATE')
+  },
+  clearLocation ({ commit }) {
+    commit('CLEAR_LOCATION')
   },
   fetchRelatedDapps: ({ commit, state }, value) => {
     const relatedDapps = state.fields.relatedDapps
@@ -207,6 +210,9 @@ const mutations = {
   },
   CLEAR_END_DATE (state) {
     state.fields.dates.end = ''
+  },
+  CLEAR_LOCATION (state) {
+    state.fields.location = ''
   },
   REMOVE_ERROR_FIELD (state, field) {
     const index = state.errorFields.indexOf(field)
