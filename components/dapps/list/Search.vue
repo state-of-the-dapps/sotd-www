@@ -52,7 +52,11 @@
       },
       fetchSuggestedTagsWithNoQuery () {
         if (this.textQuery.length === 0 && this.tags.length === 0) {
-          this.$store.dispatch('tags/fetchItems', '')
+          let tagsQuery = {
+            value: '',
+            model: 'dapps'
+          }
+          this.$store.dispatch('tags/fetchItems', tagsQuery)
         }
       },
       removeLastTag () {
@@ -80,7 +84,11 @@
         searchTimer = setTimeout(() => {
           if (this.tags.length < 3 && this.textQuery.length > 1) {
             this.$store.dispatch('dapps/list/setTabQuery', 'most-relevant')
-            this.$store.dispatch('tags/fetchItems', lastWord)
+            let tagsQuery = {
+              value: lastWord,
+              model: 'dapps'
+            }
+            this.$store.dispatch('tags/fetchItems', tagsQuery)
           }
           if (this.textQuery.length === 0) {
             this.$store.dispatch('dapps/list/setTabQuery', dappRefineTabOptions[0])

@@ -118,7 +118,13 @@ const actions = {
   },
   fetchTags: ({ commit, state }, value) => {
     axios
-      .get('tags', { params: { text: value, excluded: state.fields.tags } })
+      .get('tags', {
+        params: {
+          text: value,
+          excluded: state.fields.tags,
+          type: 'events'
+        }
+      })
       .then(response => {
         var data = response.data
         var items = data.items

@@ -1,9 +1,15 @@
 import axios from '~/helpers/axios'
 
 const actions = {
-  fetchItems: ({ commit, state, rootState }, value) => {
+  fetchItems: ({ commit, state, rootState }, query) => {
     axios
-      .get('tags', { params: { text: value, excluded: rootState.dapps.list.query.tags } })
+      .get('tags', {
+        params: {
+          text: query.value,
+          excluded: rootState.dapps.list.query.tags,
+          type: query.model
+        }
+      })
       .then(response => {
         const data = response.data
         const items = data.items
