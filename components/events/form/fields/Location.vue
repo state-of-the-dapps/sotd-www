@@ -6,7 +6,7 @@
     </div>
     <transition name="fade">
       <div v-if="dropdownIsActive" v-on-clickaway="toggleDropdown" class="wrapper -dropdown">
-        <input class="search-input -dropdown" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
+        <input ref="search" class="search-input -dropdown" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
         <p v-if="locationSearchQuery.length < 3" class="location-instructions -dropdown">Enter at least 3 letters to search</p>
         <p v-if="locationSearchQuery.length >= 3 && locations.length === 0 && locationsAreLoading === false" class="location-instructions -dropdown">No locations were found. Check your city spelling, or try adding a state, province, or country.</p>
         <ul class="location-list -dropdown">
@@ -101,6 +101,9 @@
         this.locationsAreLoading = false
         this.locationSearchQuery = ''
         this.dropdownIsActive = !this.dropdownIsActive
+        if (this.dropdownIsActive) {
+          this.$refs.search.$el.focus()
+        }
       }
     },
     directives: {
