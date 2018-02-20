@@ -32,22 +32,17 @@
         return this.$store.getters['dapps/detail/viewMethod']
       }
     },
-    destroyed () {
-      this.$store.dispatch('dapps/detail/resetItem')
-    },
-    fetch ({ store, params, isServer, error }) {
-      if (isServer) {
-        return axios
-          .get('dapps/' + params.slug)
-          .then(response => {
-            const data = response.data
-            const item = data.item
-            store.dispatch('dapps/detail/setItem', item)
-            if (!Object.keys(item).length > 0) {
-              error({ statusCode: 404 })
-            }
-          })
-      }
+    fetch ({ store, params, error }) {
+      return axios
+        .get('dapps/' + params.slug)
+        .then(response => {
+          const data = response.data
+          const item = data.item
+          store.dispatch('dapps/detail/setItem', item)
+          if (!Object.keys(item).length > 0) {
+            error({ statusCode: 404 })
+          }
+        })
     },
     mounted () {
       this.$store.dispatch('setSiteSection', 'dapps')
