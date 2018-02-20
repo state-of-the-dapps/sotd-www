@@ -135,6 +135,7 @@
       text-transform: uppercase;
     }
     &.wrapper {
+      min-width: 75px;
       width: 75px;
       height: 75px;
       margin: 0 auto 20px;
