@@ -33,6 +33,7 @@
       }
     },
     fetch ({ store, params, error }) {
+      console.log('running')
       return axios
         .get('dapps/' + params.slug)
         .then(response => {

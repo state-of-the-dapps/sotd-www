@@ -60,7 +60,6 @@
     destroyed () {
       document.body.classList.remove('--has-popup')
       this.$store.dispatch('dapps/detail/hidePopup')
-      this.$store.dispatch('dapps/detail/resetItem')
       window.removeEventListener('keyup', this.escapeToHide)
     },
     directives: {
