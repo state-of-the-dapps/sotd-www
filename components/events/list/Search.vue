@@ -22,7 +22,6 @@
             </span>
           </span>   
         </div>
-          </span>
       </div>
       <SuggestedTags
         :items="suggestedTags"

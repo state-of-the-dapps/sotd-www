@@ -17,7 +17,6 @@
       <ul v-if="item.categories && item.categories.length > 0" class="list -categories">
         <li v-for="(category, index) in item.categories" :key="index" class="item -categories" :class="'--' + category">{{ category | formatEventCategory | capitalize }}</li>
       </ul>
-    </li>
     </nuxt-link>
   </transition>
 </template>
