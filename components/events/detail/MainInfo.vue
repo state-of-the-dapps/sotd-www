@@ -16,7 +16,7 @@
       </li>
     </ul>
     <ul class="list -sidebar">
-      <li class="item -sidebar">
+      <li v-if="item.location.text" class="item -sidebar">
         <div class="wrapper -map">
           <img class="image -map" :src="'https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/' + item.location.lon + ',' + item.location.lat + ',5.67,0.00,0.00/440x400@2x?access_token=' + mapboxKey">
           <img class="pin -map" src="~/assets/images/icons/pin.png" width="20">
