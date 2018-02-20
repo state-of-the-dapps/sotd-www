@@ -8,8 +8,8 @@
         </div>
         <div class="wrapper -body">
           <h2 class="heading -body">{{ item.name }}</h2>
-          <h3 v-if="item.locationText" class="sub-heading -body">
-            in <span class="location -body">{{ item.locationText }}</span> <br/>organized by <span class="name -body">{{ item.organizer }}</span>
+          <h3 class="sub-heading -body">
+            <span v-if="item.locationText">in <span class="location -body">{{ item.locationText }}</span> <br/></span>organized by <span class="name -body">{{ item.organizer }}</span>
           </h3>
           <p class="teaser -body">{{ item.teaser }}</p>
         </div>
