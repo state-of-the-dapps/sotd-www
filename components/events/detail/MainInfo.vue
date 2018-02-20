@@ -4,13 +4,13 @@
       <li class="item -main --description">
         <p>{{ item.description }}</p>
       </li>
-      <li class="item -main --schedule" v-if="item.highlights.length">
+      <li v-if="item.highlights && item.highlights.length" class="item -main --schedule">
         <h2 class="heading -main">Schedule highlights</h2>
         <ul class="list -schedule">
           <li v-for="(highlight, index) in item.highlights" :key="index" class="item -schedule">{{ highlight }}</li>
         </ul>
       </li>
-      <li v-if="item.sponsors.length" class="item -main">
+      <li v-if="item.sponsors && item.sponsors.length" class="item -main">
         <h3 class="sub-heading -main">Sponsored by</h3>
         <span v-for="(sponsor, index) in item.sponsors" :key="index">{{ sponsor }} <span v-if="index + 1 < item.sponsors.length"> / </span></span>
       </li>
