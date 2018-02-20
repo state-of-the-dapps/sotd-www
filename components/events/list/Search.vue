@@ -136,6 +136,11 @@
       toggleLocationDropdown () {
         this.locationDropdownIsActive = !this.locationDropdownIsActive
         this.$mixpanel.track('Events - Toggle Location Dropdown')
+        if (this.locationDropdownIsActive) {
+          this.$nextTick(() => {
+            document.getElementById('locationSearch').focus()
+          })
+        }
       },
       updateTextQuery (value) {
         this.textQuery = value

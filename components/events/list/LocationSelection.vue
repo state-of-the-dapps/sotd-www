@@ -3,7 +3,7 @@
     <div class="container -location-selection" v-if="isActive" v-on-clickaway="hide">
       <div class="selection">
         <div class="location">
-          <input class="text-input" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
+          <input id="locationSearch" class="text-input" type="text" v-model="locationSearchQuery" @input="fetchLocations" placeholder="Search for a city">
           <p v-if="locationSearchQuery.length < 3" class="location-instructions">Enter at least 3 letters to search</p>
           <p v-if="locationSearchQuery.length >= 3 && locations.length === 0 && locationsAreLoading === false" class="location-instructions">No locations were found. Check your city spelling, or try adding a state, province, or country.</p>
           <ul class="location-list">
