@@ -35,7 +35,7 @@
     destroyed () {
       this.$store.dispatch('dapps/detail/resetItem')
     },
-    fetch ({ store, params, redirect, isServer, error }) {
+    fetch ({ store, params, isServer, error }) {
       if (isServer) {
         return axios
           .get('dapps/' + params.slug)
@@ -43,6 +43,7 @@
             const data = response.data
             const item = data.item
             store.dispatch('dapps/detail/setItem', item)
+            console.log(this.item)
             if (!Object.keys(item).length > 0) {
               error({ statusCode: 404 })
             }
@@ -55,7 +56,9 @@
         axios
           .get('dapps/' + this.$route.params.slug)
           .then(response => {
-            this.$store.dispatch('dapps/detail/setItem', response.data)
+            const data = response.data
+            const item = data.item
+            this.$store.dispatch('dapps/detail/setItem', item)
           })
       }
       this.$mixpanel.track('DApp - View', {
