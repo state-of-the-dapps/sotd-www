@@ -30,3 +30,4 @@ For detailed explanation on how Nuxt works, checkout the [Nuxt.js docs](https://
 
 - Current design by [Engine Collaborative](https://www.enginecollaborative.com)
 - v1 design by [Chris Hitchcott](http://hitchcott.com)
+
