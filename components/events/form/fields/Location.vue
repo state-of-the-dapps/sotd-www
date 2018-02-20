@@ -1,8 +1,8 @@
 <template>
   <div class="item -component-events-form-fields-location">
     <div class="wrapper -location" @click="toggleDropdown">
-      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location" class="link -location">{{ location.text | escapeHtmlTags }}</span><span v-else>Location</span>
-      <img v-if="location" @click.stop="clearLocation" class="clear -location" src="~/assets/images/close/small.png" width="9" alt="Clear">
+      <img src="~/assets/images/icons/pin.png" width="16" class="pin -location"> <span v-if="location.hasOwnProperty('text')" class="link -location">{{ location.text | escapeHtmlTags }}</span><span v-else>Location</span>
+      <img v-if="location.hasOwnProperty('text')" @click.stop="clearLocation" class="clear -location" src="~/assets/images/close/small.png" width="9" alt="Clear">
     </div>
     <transition name="fade">
       <div v-if="dropdownIsActive" v-on-clickaway="toggleDropdown" class="wrapper -dropdown">

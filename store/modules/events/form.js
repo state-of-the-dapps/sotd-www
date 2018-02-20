@@ -48,7 +48,7 @@ function initialState () {
       highlights: [],
       joinSlack: true,
       languages: [],
-      location: '',
+      location: {},
       name: '',
       organizer: '',
       relatedDapps: [],
