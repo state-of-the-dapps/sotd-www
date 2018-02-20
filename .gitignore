@@ -16,5 +16,8 @@ coverage
 # Mac .DS_Store
 .DS_Store
 
+# Ignore .vscode files
+.vscode
+
 # Use yarn
 package-lock.json

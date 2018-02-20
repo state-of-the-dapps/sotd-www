@@ -1,6 +1,6 @@
-const initialDappsStatusList = Object.freeze([
+const dappStatuses = Object.freeze([
   'live',
-  'demo',
+  'beta',
   'prototype',
   'wip',
   'concept',
@@ -9,16 +9,45 @@ const initialDappsStatusList = Object.freeze([
   'abandoned'
 ])
 
-let refineDappsStatusList = initialDappsStatusList.slice()
-refineDappsStatusList.unshift('any')
+const dappRefineStatusOptions = dappStatuses.slice()
+dappRefineStatusOptions.unshift('any')
 
-export const dappsStatusList = initialDappsStatusList
-
-export const dappsRefineOptions = refineDappsStatusList
-
-export const dappsCategoryOptions = Object.freeze([
+const dappRefineTabOptions = Object.freeze([
   'hot',
   'new',
   'most-viewed',
   'most-relevant'
 ])
+
+const daysOfTheWeek = Object.freeze([
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat'
+])
+
+const eventCategories = Object.freeze([
+  'conference',
+  'crowdsale',
+  'hackathon',
+  'ico',
+  'meetup',
+  'release',
+  'summit',
+  'workshop'
+])
+
+const eventRefineCategoryOptions = eventCategories.slice()
+eventRefineCategoryOptions.unshift('all')
+
+export {
+  dappStatuses,
+  dappRefineStatusOptions,
+  dappRefineTabOptions,
+  daysOfTheWeek,
+  eventCategories,
+  eventRefineCategoryOptions
+}

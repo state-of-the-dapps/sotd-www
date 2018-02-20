@@ -20,21 +20,21 @@ export const getCaretPosition = {
 
 export const dispatchErrors = {
   methods: {
-    dispatchErrors (errors) {
+    dispatchErrors (errors, model) {
       if (errors.data.length > 0) {
-        this.$store.dispatch('dapps/form/addErrorField', errors.field)
+        this.$store.dispatch(model + '/form/addErrorField', errors.field)
       } else {
-        this.$store.dispatch('dapps/form/removeErrorField', errors.field)
+        this.$store.dispatch(model + '/form/removeErrorField', errors.field)
       }
-      this.$store.dispatch('dapps/form/setErrors', errors)
+      this.$store.dispatch(model + '/form/setErrors', errors)
     }
   }
 }
 
 export const dispatchWarnings = {
   methods: {
-    dispatchWarnings (warnings) {
-      this.$store.dispatch('dapps/form/setWarnings', warnings)
+    dispatchWarnings (warnings, model) {
+      this.$store.dispatch(model + '/form/setWarnings', warnings)
     }
   }
 }

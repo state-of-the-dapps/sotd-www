@@ -1,6 +1,7 @@
 function item () {
   return {
     contracts: [],
+    socials: [],
     tags: []
   }
 }
@@ -37,7 +38,7 @@ const getters = {
     return state.item
   },
   relatedItems: state => {
-    return state.item.related
+    return state.item.relatedDapps
   },
   viewMethod: state => {
     return state.viewMethod

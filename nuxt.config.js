@@ -1,6 +1,7 @@
 const env = {
-  apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v1/',
+  apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v2/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS,
+  mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
   mode: process.env.MODE || 'universal',
   linkexchangeRecipientAddress: process.env.LINKEXCHANGE_RECIPIENT_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
@@ -13,8 +14,8 @@ module.exports = {
     /*
     ** Run ESLINT on save
     */
-    extend (config, ctx) {
-      if (ctx.isClient) {
+    extend (config, { isClient }) {
+      if (isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -25,7 +26,6 @@ module.exports = {
     },
     vendor: [
       'axios',
-      'date-fns/format',
       'mixpanel-browser',
       'smoothscroll-polyfill',
       'vue-clickaway',
@@ -57,6 +57,7 @@ module.exports = {
   ],
   env: {
     apiUrl: env.apiUrl,
+    mapboxKey: env.mapboxKey,
     linkexchangeRecipientAddress: env.linkexchangeRecipientAddress,
     linkexchangeTillDate: env.linkexchangeTillDate,
     linkexchangeWhitelistAddress: env.linkexchangeWhitelistAddress,
@@ -92,7 +93,7 @@ module.exports = {
       }
     ]
   },
-  loading: { color: '#333' },
+  loading: { color: '#eee' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },

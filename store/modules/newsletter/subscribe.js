@@ -2,8 +2,13 @@ import axios from '~/helpers/axios'
 
 const actions = {
   submit ({ commit }, email) {
+    const data = {
+      fields: {
+        email: email
+      }
+    }
     commit('SET_LOADING_IS_ACTIVE', true)
-    axios.post('newsletter/subscribe', { email: email })
+    axios.post('newsletter/subscribe', data)
       .then((response) => {
         commit('SUBMIT')
         commit('SET_LOADING_IS_ACTIVE', false)

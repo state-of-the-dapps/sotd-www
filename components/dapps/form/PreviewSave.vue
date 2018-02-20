@@ -4,16 +4,13 @@
       <div class="item -preview" :class="'-' + status">
           <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
           <div class="info">
-              <div @click="$mixpanel.track('New DApp - Preview icon')" class="icon-wrapper" :class="'-' + status">
-                  <p class="icon-placeholder"><span v-if="name">{{ name | firstLetter | capitalize }}</span><span v-else>Ð</span></p>
-              </div>
               <div class="description-wrapper">
-                  <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>ÐApp preview</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="author">{{ author }}</span><span v-else>Founder</span></strong> {{ additionalAuthors | additionalAuthorsCount }}</p>
+                  <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
+                  <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
                   <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
               </div>
           </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')">{{ status | formatDappsStatus }}</p>
+          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')"><span v-if="status">{{ status | formatDappStatus }}</span></p>
       </div>
       <div class="checkboxes">
         <div class="checkbox-field">
@@ -22,7 +19,7 @@
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
-          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SoTÐ slack community</label>
+          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
         </div>
         <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
@@ -33,7 +30,7 @@
       <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'1 field needs your attention'">
       <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
       <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
-      <input v-else="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
+      <input v-else-if="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
     </div>
   </div>
 </template>
@@ -43,11 +40,8 @@
 
   export default {
     computed: {
-      author () {
-        return this.$store.getters['dapps/form/author']
-      },
-      additionalAuthors () {
-        return this.$store.getters['dapps/form/additionalAuthors']
+      authors () {
+        return this.$store.getters['dapps/form/authors']
       },
       errorFields () {
         return this.$store.getters['dapps/form/errorFields']
@@ -103,22 +97,23 @@
     methods: {
       submit () {
         if (this.honeypot === null) {
-          const obj = {}
-          obj.data = this.fields
+          const data = {
+            fields: this.fields
+          }
           this.sending = true
-          axios.post('dapps', obj)
+          axios.post('dapps', data)
             .then((response) => {
               this.sending = false
               this.$store.dispatch('dapps/form/resetForm')
-              this.$mixpanel.track('New DApp - Submit', {
+              this.$mixpanel.track('New ÐApp - Submit', {
                 disabled: false,
-                name: obj.data.name,
-                email: obj.data.email,
-                author: obj.data.author,
-                joinSlack: obj.data.joinSlack,
-                subscribeNewsletter: obj.data.subscribeNewsletter
+                name: this.fields.name,
+                email: this.fields.email,
+                author: this.fields.author,
+                joinSlack: this.fields.joinSlack,
+                subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              this.$router.replace({ path: '/confirmation/new' })
+              this.$router.replace({ name: 'dapps-new-confirmation' })
             })
             .catch((error) => {
               alert(error.response.data.message)
@@ -146,7 +141,7 @@
     display: flex;
     right: 10px;
     top: -2px;
-    z-index: 5;
+    z-index: 8;
   }
 
   .checkboxes {
@@ -208,7 +203,7 @@
   }
 
   .description-wrapper {
-    flex: 1;
+    flex-grow: 1;
   }
 
   .icon-image {
@@ -230,7 +225,7 @@
     &.-live {
       background: $color--bright-green;
     }
-    &.-demo {
+    &.-beta {
       background: $color--gorse;
     }
     &.-prototype {
@@ -300,9 +295,9 @@
       transform: scale3d(1.015, 1.015, 1);
     }
     &.-live {
-      background: $color--screamin-green;
+      background: $color--dapp-live-light;
     }
-    &.-demo {
+    &.-beta {
       background: $color--paris-daisy;
     }
     &.-prototype {
@@ -367,22 +362,22 @@
     margin-left: 6px;
     transition: color .2s ease;
     &.-live {
-      color: $color--screamin-green;
+      color: $color--dapp-live-light;
     }
-    &.-demo {
-      color: $color--paris-daisy;
+    &.-beta {
+      color: $color--dapp-beta-light;
     }
     &.-prototype {
-      color: $color--golden-tainoi;
+      color: $color--dapp-prototype-light;
     }
     &.-wip {
-      color: $color--anakiwa;
+      color: $color--dapp-wip-light;
     }
     &.-concept {
-      color: $color--perfume;
+      color: $color--dapp-concept-light;
     }
     &.-inactive {
-      color: $color--alabaster;
+      color: $color--dapp-unknown-light;
     }
   }
 
@@ -398,27 +393,27 @@
     left: 0;
     width: 100%;
     text-align: center;
-    border-bottom: 4px solid rgba($color--mine-shaft,.2);
     margin: 0;
-    padding: 5px;
+    padding: 10px 5px;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 700;
     transition: border .2s ease;
+    color: rgba($color--mine-shaft,.75);
     &.-live {
-      border-color: $color--bright-green;
+      background: $color--dapp-live;
     }
-    &.-demo {
-      border-color: $color--gorse;
+    &.-beta {
+      background: $color--dapp-beta;
     }
     &.-prototype {
-      border-color: $color--koromiko;
+      background: $color--dapp-prototype;
     }
     &.-wip {
-      border-color: $color--malibu;
+      background: $color--dapp-wip;
     }
     &.-concept {
-      border-color: $color--portage;
+      background: $color--dapp-concept;
     }
   }
 

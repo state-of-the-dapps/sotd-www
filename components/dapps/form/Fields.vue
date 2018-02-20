@@ -6,8 +6,7 @@
     <Description/>
     <Website/>
     <DappUrl/>
-    <Author/>
-    <AdditionalAuthors/>
+    <Authors/>
     <License/>
     <Logo/>
     <Contracts/>
@@ -18,8 +17,7 @@
 </template>
 
 <script>
-  import AdditionalAuthors from '~/components/dapps/form/fields/AdditionalAuthors.vue'
-  import Author from '~/components/dapps/form/fields/Author.vue'
+  import Authors from '~/components/dapps/form/fields/Authors.vue'
   import Contracts from '~/components/dapps/form/fields/Contracts.vue'
   import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
   import Description from '~/components/dapps/form/fields/Description.vue'
@@ -35,8 +33,7 @@
 
   export default {
     components: {
-      AdditionalAuthors,
-      Author,
+      Authors,
       Contracts,
       DappUrl,
       Description,

@@ -4,7 +4,7 @@
     <label class="label">Logo URL</label>
     <span class="remaining-characters">{{ 255 - logo.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Provide a URL to your logo</p>
   </div>
@@ -42,7 +42,7 @@
         }
         validationTimer = setTimeout(() => {
           this.logo.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },

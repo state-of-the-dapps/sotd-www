@@ -7,7 +7,7 @@
         <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('mainnet')" v-model="mainnet" placeholder="0x..." maxlength="42">
           <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in mainnetErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -16,7 +16,7 @@
         <div class="input-wrapper" :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('ropsten')" v-model="ropsten" placeholder="0x..." maxlength="42">
           <ul v-if="ropstenErrors && ropstenErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in ropstenErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in ropstenErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -25,7 +25,7 @@
         <div class="input-wrapper" :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('kovan')" v-model="kovan" placeholder="0x..." maxlength="42">
           <ul v-if="kovanErrors && kovanErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in kovanErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in kovanErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -34,7 +34,7 @@
         <div class="input-wrapper" :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''">
           <input class="input" type="text" @input="validate('rinkeby')" v-model="rinkeby" placeholder="0x..." maxlength="42">
           <ul v-if="rinkebyErrors && rinkebyErrors.length > 0" class="error-list -contracts">
-            <li v-for="error in rinkebyErrors" class="error-item">{{ error }}</li>
+            <li v-for="(error, index) in rinkebyErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
         </div>
       </li>
@@ -126,7 +126,7 @@
             this[field].length !== 42 ? errors.data.push(`Address must be exactly 42 characters`) : ''
             !this[field].startsWith('0x') ? errors.data.push(`Address must start with 0x`) : ''
           }
-          this.dispatchErrors(errors)
+          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },
@@ -168,7 +168,7 @@
   }
 
   .input-wrapper {
-    flex: 1;
+    flex-grow: 1;
     box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
     border: 1px solid transparent;
   }

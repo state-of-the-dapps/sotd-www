@@ -40,25 +40,29 @@
         return axios
           .get('dapps/' + params.slug)
           .then(response => {
-            store.dispatch('dapps/detail/setItem', response.data)
-            if (!Object.keys(response.data).length > 0) {
+            const data = response.data
+            const item = data.item
+            store.dispatch('dapps/detail/setItem', item)
+            if (!Object.keys(item).length > 0) {
               error({ statusCode: 404 })
             }
           })
       }
     },
     mounted () {
-      this.$mixpanel.track('DApp - View', {
-        targetDapp: this.$route.params.slug,
-        method: this.viewMethod
-      }, this.$store.dispatch('dapps/detail/resetViewMethod'))
-      if (!Object.hasOwnProperty('slug')) {
+      this.$store.dispatch('setSiteSection', 'dapps')
+      if (this.viewMethod === 'popup') {
         axios
           .get('dapps/' + this.$route.params.slug)
           .then(response => {
             this.$store.dispatch('dapps/detail/setItem', response.data)
           })
       }
+      this.$mixpanel.track('DApp - View', {
+        targetDapp: this.$route.params.slug,
+        method: this.viewMethod
+      })
+      this.$store.dispatch('dapps/detail/resetViewMethod')
     },
     head () {
       return {
