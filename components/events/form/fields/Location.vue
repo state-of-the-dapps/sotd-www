@@ -102,7 +102,9 @@
         this.locationSearchQuery = ''
         this.dropdownIsActive = !this.dropdownIsActive
         if (this.dropdownIsActive) {
-          this.$refs.search.$el.focus()
+          this.$nextTick(() => {
+            this.$refs.search.focus()
+          })
         }
       }
     },
