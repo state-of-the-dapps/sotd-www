@@ -44,7 +44,7 @@ module.exports = {
   modules: [
     '@nuxtjs/sentry',
     '@nuxtjs/router',
-    ['@nuxtjs/google-analytics', { ua: env.googleAnalytics }]
+    ['@nuxtjs/google-analytics', { id: env.googleAnalytics }]
   ],
   router: {
     saveScrollPosition: true
