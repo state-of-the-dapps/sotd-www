@@ -108,6 +108,10 @@ export function createRouter () {
         name: 'dapps-new'
       },
       {
+        path: '/dapps/new/form',
+        redirect: { name: 'dapps-new' }
+      },
+      {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
         name: 'dapps-new-confirmation'
