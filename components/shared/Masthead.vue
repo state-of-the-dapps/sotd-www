@@ -83,8 +83,11 @@
   .nav-item {
     display: inline-block;
     position: relative;
-    margin-right: 15px;
+    margin-right: 5px;
     font-size: 1.05rem;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-right: 15px;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -109,11 +112,14 @@
 
   .nav-link {
     display: inline-block;
-    padding: 8px 20px;
+    padding: 8px 15px;
     text-decoration: none;
     transition: all .2s ease;
     position: relative;
     cursor: pointer;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      padding: 8px 20px;      
+    }
     &.-submit {
       width: 150px;
       text-align: center;
