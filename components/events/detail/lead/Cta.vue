@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item.siteUrls.website" class="wrapper -component-events-detail-lead-cta">
+  <div v-if="item.siteUrls && item.siteUrls.website" class="wrapper -component-events-detail-lead-cta">
     <div>
       <a v-if="item.siteUrls.website" :href="item.siteUrls.website" @click="$mixpanel.track('Event - Site', { type: ['website'], url: item.siteUrls.website })" class="link -cta" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Visit Event Website</a>
     </div>
