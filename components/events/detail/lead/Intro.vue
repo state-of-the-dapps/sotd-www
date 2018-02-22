@@ -6,7 +6,7 @@
       </li>
     </ul>
     <div class="info">
-      <div class="wrapper -dates">
+      <div v-if="item.dates" class="wrapper -dates">
         <div @click="$mixpanel.track('Event - Date', { detail: true })" class="wrapper -date --start">
           <div class="month-year -date">{{ item.dates.start | formatDate('MMM YYYY') }}</div>
           <div class="day -date">{{ item.dates.start | formatDate('D') }}</div>
