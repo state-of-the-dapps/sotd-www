@@ -95,7 +95,7 @@
     box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
     &:after {
       position: absolute;
-      bottom: -2px;
+      bottom: -7px;
       right: 6px;
       content: '';
       width: 1px;
