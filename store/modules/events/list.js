@@ -5,9 +5,13 @@ import axios from '~/helpers/axios'
 
 const randomSeed = generateRandomSeed()
 
+function today () {
+  return formatDate(Date.now(), 'YYYY-MM-DD')
+}
+
 function initialQuery () {
   return {
-    dateStart: formatDate(Date.now(), 'YYYY-MM-DD'),
+    dateStart: today(),
     limit: 50,
     location: '',
     lat: '',
