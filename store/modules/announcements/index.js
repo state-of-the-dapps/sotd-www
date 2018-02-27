@@ -29,9 +29,9 @@ const mutations = {
   }
 }
 
-const state = {
+const state = () => ({
   item: {}
-}
+})
 
 export default {
   actions,

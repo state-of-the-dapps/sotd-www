@@ -71,13 +71,13 @@ const mutations = {
   }
 }
 
-const state = {
+const state = () => ({
   dropdownIsActive: false,
   confirmation: false,
   email: '',
   emailIsValid: false,
   isLoading: false
-}
+})
 
 export default {
   actions,

@@ -75,11 +75,11 @@ const mutations = {
   }
 }
 
-const state = {
+const state = () => ({
   popupIsActive: false,
   item: item(),
   viewMethod: 'direct'
-}
+})
 
 export default {
   actions,
