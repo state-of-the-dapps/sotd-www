@@ -42,7 +42,7 @@ const mutations = {
   }
 }
 
-const state = {
+const state = () => ({
   site: {
     section: ''
   },
@@ -50,7 +50,7 @@ const state = {
     dappCount: 0,
     eventCount: 0
   }
-}
+})
 
 const createStore = () => {
   return new Vuex.Store({

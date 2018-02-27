@@ -237,7 +237,7 @@ const mutations = {
   }
 }
 
-const state = {
+const state = () => ({
   activeItemIndex: -1,
   refine: {
     category: {
@@ -252,7 +252,7 @@ const state = {
     totalCount: 0
   },
   query: initialQuery()
-}
+})
 
 export default {
   actions,
