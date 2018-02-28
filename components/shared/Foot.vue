@@ -15,7 +15,7 @@
       <ul class="list -attributions">
         <li><img class="logo -social-logo-links" src="~/assets/images/logo-reverse.png" width="120"></li>
         <li>Copyright &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</li>
-        <li>Designed by <a class="link -attributions" @click="$mixpanel.track('SotD - Designer website')" href="https://www.enginecollaborative.com" target="_blank" rel="noopener noreferrer">Engine Collaborative</a></li>
+        <li>Designed by <a class="link -attributions" @click="$mixpanel.track('SotD - Designer website')" href="https://www.theduo.io" target="_blank" rel="noopener noreferrer">Duo</a></li>
       </ul>
     </div>
   </section>
