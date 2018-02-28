@@ -28,6 +28,6 @@ For detailed explanation on how Nuxt works, checkout the [Nuxt.js docs](https://
 
 ## Acknowledgements
 
-- Current design by [Engine Collaborative](https://www.enginecollaborative.com)
+- Current design by [Duo](https://www.theduo.io)
 - v1 design by [Chris Hitchcott](http://hitchcott.com)
 
