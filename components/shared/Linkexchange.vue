@@ -2,7 +2,7 @@
   <div class="linkexchange-wrapper">
     <linkexchange-link
       id="linkexchange"
-      api-url="https://api-staging.userfeeds.io"
+      api-url="https://api.userfeeds.io"
       size="rectangle"
       type="text"
       :recipient-address="recipientAddress"
@@ -11,7 +11,7 @@
       widget-title="State of the DApps"
       :till-date="tillDate"
       description="I accept only links for projects listed on State of the DApps"
-      impression="N/A"
+      impression="100k unique pageviews per month"
       contact-method="support@stateofthedapps.com"
       open-details="tab"
       algorithm="links">
