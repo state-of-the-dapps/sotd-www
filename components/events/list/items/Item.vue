@@ -32,7 +32,7 @@
     },
     computed: {
       date () {
-        const date = new Date(this.item.date).toISOString().slice(0, 10)
+        const date = this.item.date.slice(0, 10)
         return date
       }
     }
