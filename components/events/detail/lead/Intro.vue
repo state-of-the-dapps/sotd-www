@@ -8,13 +8,13 @@
     <div class="info">
       <div v-if="item.dates" class="wrapper -dates">
         <div @click="$mixpanel.track('Event - Date', { detail: true })" class="wrapper -date --start">
-          <div class="month-year -date">{{ item.dates.start | formatDate('MMM YYYY') }}</div>
-          <div class="day -date">{{ item.dates.start | formatDate('D') }}</div>
+          <div class="month-year -date">{{ new Date(item.dates.start).toISOString().slice(0, 10) | formatDate('MMM YYYY') }}</div>
+          <div class="day -date">{{ new Date(item.dates.start).toISOString().slice(0, 10) | formatDate('D') }}</div>
         </div>
         <div v-if="item.dates.start !== item.dates.end" class="wrapper -date --to">to</div>
         <div v-if="item.dates.start !== item.dates.end" @click="$mixpanel.track('Event - Date', { detail: true })" class="wrapper -date --end">
-          <div class="month-year -date">{{ item.dates.end | formatDate('MMM YYYY') }}</div>
-          <div class="day -date">{{ item.dates.end | formatDate('D') }}</div>        
+          <div class="month-year -date">{{ new Date(item.dates.end).toISOString().slice(0, 10) | formatDate('MMM YYYY') }}</div>
+          <div class="day -date">{{ new Date(item.dates.end).toISOString().slice(0, 10) | formatDate('D') }}</div>        
         </div>
       </div>
       <div class="description-wrapper">

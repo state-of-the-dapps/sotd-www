@@ -3,8 +3,8 @@
     <nuxt-link @click.native="setIndex(item, index)" tag="li" :to="{ name: 'events-slug-popup', params: { slug: item.slug } }" class="item -component-events-list-items-item" :key="item.slug">
       <div class="wrapper -main">
         <div class="wrapper -date">
-          <div class="month-year -date">{{ item.date | formatDate('MMM YYYY') }}</div>
-          <div class="day -date">{{ item.date | formatDate('D') }}</div>
+          <div class="month-year -date">{{ date | formatDate('MMM YYYY') }}</div>
+          <div class="day -date">{{ date | formatDate('D') }}</div>
         </div>
         <div class="wrapper -body">
           <h2 class="heading -body">{{ item.name }}</h2>
@@ -28,6 +28,12 @@
       setIndex (item, index) {
         this.$store.dispatch('events/detail/setViewMethod', 'popup')
         this.$store.dispatch('events/list/setActiveItemIndex', index)
+      }
+    },
+    computed: {
+      date () {
+        const date = new Date(this.item.date).toISOString().slice(0, 10)
+        return date
       }
     }
   }
