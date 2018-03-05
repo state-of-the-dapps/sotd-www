@@ -12,11 +12,6 @@
       "babel-register"
     ]
   },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/router": "^1.0.1",
@@ -41,7 +36,7 @@
     "test": "ava"
   },
   "devDependencies": {
-    "ava": "^0.19.1",
+    "ava": "^0.25.0",
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",
