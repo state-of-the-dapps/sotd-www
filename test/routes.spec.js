@@ -22,7 +22,7 @@ test.before('Init Nuxt.js', async t => {
 test('DApp list exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/', context)
-  t.regex(html, /\d+ DApps Built on Ethereum/)
+  t.true(html.includes('A curated list'))
 })
 
 test('DApp detail exists and renders HTML', async t => {
@@ -40,7 +40,7 @@ test('DApp new exists and renders HTML', async t => {
 test('Event list exists and renders HTML', async t => {
   let context = {}
   const { html } = await nuxt.renderRoute('/events', context)
-  t.true(html.includes('Submit an event'))
+  t.true(html.includes('search by location'))
 })
 
 test('Static page exists and renders HTML', async t => {
