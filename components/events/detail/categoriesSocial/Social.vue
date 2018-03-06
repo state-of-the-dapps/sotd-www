@@ -28,6 +28,7 @@
       margin-left: 4px;
       font-size: 1.05rem;
       &.--hashtag {
+        text-decoration: underline;
         margin-left: 0;
         margin-right: 8px;
       }
