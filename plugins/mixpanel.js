@@ -35,6 +35,9 @@ const mp = function (Vue) {
       if (process.env.mixpanel) {
         email = email || 'Undefined'
         mixpanel.identify(email)
+        mixpanel.people.set({
+          '$email': email
+        })
       } else {
         console.log('Mixpanel Identity: ', email)
       }
