@@ -68,6 +68,7 @@
       newsletterSubscribe () {
         if (this.newsletterEmailIsValid && !this.newsletterIsLoading) {
           this.$store.dispatch('newsletter/subscribe/submit', this.newsletterEmail)
+          this.$mixpanel.identify(this.newsletterEmail)
           this.$mixpanel.track('Newsletter', { action: 'dropdown' })
         }
       },

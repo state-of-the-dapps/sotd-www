@@ -104,7 +104,7 @@
           axios.post('dapps', data)
             .then((response) => {
               this.sending = false
-              this.$store.dispatch('dapps/form/resetForm')
+              this.$mixpanel.identify(this.fields.email)
               this.$mixpanel.track('New ÐApp - Submit', {
                 disabled: false,
                 name: this.fields.name,
@@ -113,6 +113,7 @@
                 joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
+              this.$store.dispatch('dapps/form/resetForm')
               this.$router.replace({ name: 'dapps-new-confirmation' })
             })
             .catch((error) => {
