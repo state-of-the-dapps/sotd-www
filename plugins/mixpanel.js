@@ -30,6 +30,14 @@ const mp = function (Vue) {
         console.log('Mixpanel Event: ', name)
         console.log('Mixpanel Data: ', data)
       }
+    },
+    identify (email) {
+      if (process.env.mixpanel) {
+        email = email || 'Undefined'
+        mixpanel.identify(email)
+      } else {
+        console.log('Mixpanel Identity: ', email)
+      }
     }
   }
 }
