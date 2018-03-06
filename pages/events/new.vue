@@ -3,6 +3,7 @@
     <section class="section -intro">
       <div class="container">
         <h1 class="heading">Submit an event</h1>
+        <p class="description">Use this form to submit an upcoming event related to ÐApps.</p>
       </div>
     </section>
     <section class="section -form">
@@ -44,10 +45,10 @@
     font-weight: 700;
   }
 
-  .message {
+  .description {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto;
+    margin: .5rem auto 0 auto;
     font-size: 1.1rem;
   }
 
