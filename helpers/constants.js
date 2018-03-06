@@ -5,7 +5,6 @@ const dappStatuses = Object.freeze([
   'wip',
   'concept',
   'stealth',
-  'unknown',
   'abandoned'
 ])
 
