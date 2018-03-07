@@ -107,7 +107,7 @@
           axios.post('dapps', data)
             .then((response) => {
               this.sending = false
-              this.$mixpanel.alias({
+              this.$mixpanel.setUser({
                 '$email': this.fields.email,
                 '$name': this.fields.authors,
                 'hasWeb3': typeof web3 !== 'undefined',
