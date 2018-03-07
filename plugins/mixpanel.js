@@ -31,7 +31,7 @@ const mp = function (Vue) {
         console.log('Mixpanel Data: ', data)
       }
     },
-    alias (personData) {
+    setUser (personData) {
       let data = personData || {}
       if (process.env.mixpanel) {
         if (data.$email) {
