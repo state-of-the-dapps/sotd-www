@@ -7,7 +7,8 @@ import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
 const actions = {
-  nuxtServerInit ({ commit }) {
+  nuxtServerInit ({ commit }, { route }) {
+    commit('SET_USER_ENTRY_ROUTE', route.path)
     return axios
       .get('stats')
       .then(response => {
@@ -21,6 +22,9 @@ const actions = {
 }
 
 const getters = {
+  userEntryRoute: state => {
+    return state.user.entryRoute
+  },
   siteSection: state => {
     return state.site.section
   },
@@ -33,6 +37,9 @@ const getters = {
 }
 
 const mutations = {
+  SET_USER_ENTRY_ROUTE (state, path) {
+    state.user.entryRoute = path
+  },
   SET_SITE_SECTION (state, section) {
     state.site.section = section
   },
@@ -49,6 +56,9 @@ const state = () => ({
   stats: {
     dappCount: 0,
     eventCount: 0
+  },
+  user: {
+    entryRoute: ''
   }
 })
 

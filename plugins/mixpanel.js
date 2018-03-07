@@ -31,15 +31,20 @@ const mp = function (Vue) {
         console.log('Mixpanel Data: ', data)
       }
     },
-    identify (email) {
+    alias (personData) {
+      let data = personData || {}
       if (process.env.mixpanel) {
-        email = email || 'Undefined'
-        mixpanel.identify(email)
-        mixpanel.people.set({
-          '$email': email
-        })
+        if (data.$email) {
+          mixpanel.alias(data.$email)
+          mixpanel.people.set(data)
+        }
       } else {
-        console.log('Mixpanel Identity: ', email)
+        if (data.$email) {
+          console.log('Mixpanel Alias: ', data.$email)
+          console.log('Mixpanel Data:', data)
+        } else {
+          console.log('Email address is missing')
+        }
       }
     }
   }

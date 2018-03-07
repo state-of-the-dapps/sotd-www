@@ -15,7 +15,6 @@ function initialState () {
       'websiteUrl'
     ],
     errors: {
-      additionalAuthors: [],
       authors: [],
       dappUrl: [],
       description: [],
@@ -34,7 +33,6 @@ function initialState () {
       websiteUrl: []
     },
     fields: {
-      additionalAuthors: '',
       authors: [],
       description: '',
       contracts: {
@@ -237,12 +235,6 @@ const mutations = {
 }
 
 const getters = {
-  additionalAuthors: state => {
-    return state.fields.additionalAuthors
-  },
-  additionalAuthorsErrors: state => {
-    return state.errors.additionalAuthors
-  },
   authors: state => {
     return state.fields.authors
   },

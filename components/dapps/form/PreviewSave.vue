@@ -86,6 +86,9 @@
             this.$store.dispatch('dapps/form/removeErrorField', 'acceptedTerms')
           }
         }
+      },
+      userEntryRoute () {
+        return this.$store.getters['userEntryRoute']
       }
     },
     data: () => {
@@ -104,8 +107,15 @@
           axios.post('dapps', data)
             .then((response) => {
               this.sending = false
-              this.$mixpanel.identify(this.fields.email)
-              this.$mixpanel.track('New ÐApp - Submit', {
+              this.$mixpanel.alias({
+                '$email': this.fields.email,
+                '$name': this.fields.authors,
+                'hasWeb3': typeof web3 !== 'undefined',
+                'lastUpdated': new Date().toISOString(),
+                'lastDappSubmitted': this.fields.name,
+                'lastSessionEntryRoute': this.userEntryRoute
+              })
+              this.$mixpanel.track('New DApp - Submit', {
                 disabled: false,
                 name: this.fields.name,
                 email: this.fields.email,

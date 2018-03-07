@@ -83,6 +83,9 @@
             this.$store.dispatch('events/form/removeErrorField', 'acceptedTerms')
           }
         }
+      },
+      userEntryRoute () {
+        return this.$store.getters['userEntryRoute']
       }
     },
     data: () => {
@@ -101,7 +104,14 @@
           axios.post('events', data)
             .then((response) => {
               this.sending = false
-              this.$mixpanel.identify(this.fields.email)
+              this.$mixpanel.alias({
+                '$email': this.fields.email,
+                '$name': this.fields.organizer,
+                'hasWeb3': typeof web3 !== 'undefined',
+                'lastUpdated': new Date().toISOString(),
+                'lastEventSubmitted': this.fields.name,
+                'lastSessionEntryRoute': this.userEntryRoute
+              })
               this.$mixpanel.track('New event - Submit', {
                 disabled: false,
                 name: this.fields.name,
