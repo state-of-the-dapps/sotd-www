@@ -71,7 +71,7 @@
       newsletterSubscribe () {
         if (this.newsletterEmailIsValid && !this.newsletterIsLoading) {
           this.$store.dispatch('newsletter/subscribe/submit', this.newsletterEmail)
-          this.$mixpanel.alias({
+          this.$mixpanel.setUser({
             '$email': this.newsletterEmail,
             'hasWeb3': typeof web3 !== 'undefined',
             'lastUpdated': new Date().toISOString(),
