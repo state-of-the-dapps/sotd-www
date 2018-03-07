@@ -62,14 +62,22 @@
       },
       newsletterIsLoading () {
         return this.$store.getters['newsletter/subscribe/isLoading']
+      },
+      userEntryRoute () {
+        return this.$store.getters['userEntryRoute']
       }
     },
     methods: {
       newsletterSubscribe () {
         if (this.newsletterEmailIsValid && !this.newsletterIsLoading) {
           this.$store.dispatch('newsletter/subscribe/submit', this.newsletterEmail)
-          this.$mixpanel.identify(this.newsletterEmail)
-          this.$mixpanel.track('Newsletter', { action: 'dropdown' })
+          this.$mixpanel.alias({
+            '$email': this.newsletterEmail,
+            'hasWeb3': typeof web3 !== 'undefined',
+            'lastUpdated': new Date().toISOString(),
+            'lastSessionEntryRoute': this.userEntryRoute
+          })
+          this.$mixpanel.track('Newsletter', { action: 'dropdown', email: this.newsletterEmail })
         }
       },
       toggleNewsletterDropdown () {
