@@ -4,7 +4,7 @@
     <label class="label">ÐApp author(s) <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 100 - authors.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="error in errors" class="error-item">{{ error }}</li>
+      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Separate names or organizations with a comma</p>
   </div>
@@ -20,10 +20,10 @@
       authors: {
         get () {
           const values = this.$store.getters['dapps/form/authors'].slice()
-          return values.join(',')
+          return values.join(', ')
         },
         set (value) {
-          const values = value.split(',')
+          const values = value.split(', ')
           const field = {
             name: 'authors',
             value: values

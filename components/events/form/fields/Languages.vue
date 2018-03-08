@@ -23,10 +23,10 @@
       languages: {
         get () {
           const values = this.$store.getters['events/form/languages'].slice()
-          return values.join(',')
+          return values.join(', ')
         },
         set (value) {
-          const values = value.split(',')
+          const values = value.split(', ')
           const field = {
             name: 'languages',
             value: values

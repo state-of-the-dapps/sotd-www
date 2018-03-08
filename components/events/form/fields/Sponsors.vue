@@ -23,10 +23,10 @@
       sponsors: {
         get () {
           const values = this.$store.getters['events/form/sponsors'].slice()
-          return values.join(',')
+          return values.join(', ')
         },
         set (value) {
-          const values = value.split(',')
+          const values = value.split(', ')
           const field = {
             name: 'sponsors',
             value: values
