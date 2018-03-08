@@ -35,16 +35,6 @@
           <input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100">
         </div>
       </li>
-      <li class="item">
-        <div class="input-wrapper -other">
-          <input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100">
-        </div>
-      </li>
-      <li class="item">
-        <div class="input-wrapper -wiki">
-          <input v-model="wiki" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100">
-        </div>
-      </li>
     </ul>
   </div>
 </template>
@@ -92,18 +82,6 @@
           this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
-      other: {
-        get () {
-          return this.$store.getters['dapps/form/socialOther']
-        },
-        set (value) {
-          const field = {
-            name: 'other',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setSocial', field)
-        }
-      },
       reddit: {
         get () {
           return this.$store.getters['dapps/form/socialReddit']
@@ -138,18 +116,6 @@
         set (value) {
           const field = {
             name: 'twitter',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setSocial', field)
-        }
-      },
-      wiki: {
-        get () {
-          return this.$store.getters['dapps/form/socialWiki']
-        },
-        set (value) {
-          const field = {
-            name: 'wiki',
             value: value
           }
           this.$store.dispatch('dapps/form/setSocial', field)
@@ -255,14 +221,6 @@
     }
     &.-etherian:before {
       background: url('~/assets/images/social/etherian.png') center left no-repeat;
-      background-size: 21px 21px;
-    }
-    &.-other:before {
-      background: url('~/assets/images/social/other2.png') center left no-repeat;
-      background-size: 21px 21px;
-    }
-    &.-wiki:before {
-      background: url('~/assets/images/social/wiki.png') center left no-repeat;
       background-size: 21px 21px;
     }
   }

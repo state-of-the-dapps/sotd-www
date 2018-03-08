@@ -52,9 +52,7 @@ function initialState () {
         github: { path: '' },
         reddit: { path: '' },
         chat: { path: '' },
-        blog: { path: '' },
-        other: { path: '' },
-        wiki: { path: '' }
+        blog: { path: '' }
       },
       status: '',
       subscribeNewsletter: true,
@@ -316,9 +314,6 @@ const getters = {
   socialGithub: state => {
     return state.fields.socials.github.path
   },
-  socialOther: state => {
-    return state.fields.socials.other.path
-  },
   socialReddit: state => {
     return state.fields.socials.reddit.path
   },
@@ -330,9 +325,6 @@ const getters = {
   },
   socialTwitter: state => {
     return state.fields.socials.twitter.path
-  },
-  socialWiki: state => {
-    return state.fields.socials.wiki.path
   },
   status: state => {
     return state.fields.status
