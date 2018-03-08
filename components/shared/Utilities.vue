@@ -77,12 +77,12 @@
             'lastUpdated': new Date().toISOString(),
             'lastSessionEntryRoute': this.userEntryRoute
           })
-          this.$mixpanel.track('Newsletter', { action: 'dropdown', email: this.newsletterEmail })
+          this.$mixpanel.track('Newsletter - Subscribe', { email: this.newsletterEmail })
         }
       },
       toggleNewsletterDropdown () {
         if (!this.newsletterDropdown) {
-          this.$mixpanel.track('Newsletter', { action: 'subscribe' })
+          this.$mixpanel.track('Newsletter - Toggle dropdown')
         }
         this.$store.dispatch('newsletter/subscribe/toggleDropdown')
       },

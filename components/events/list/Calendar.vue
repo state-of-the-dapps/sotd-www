@@ -79,6 +79,7 @@
         return this.today === date
       },
       selectDate (date) {
+        this.$mixpanel.track('Date picker - Select date', { parent: 'event-list' })
         this.$store.dispatch('events/list/setDateStartQuery', date)
         this.$store.dispatch('events/list/fetchItems')
       },

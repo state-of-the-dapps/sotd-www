@@ -53,6 +53,9 @@
         required: true,
         default: false
       },
+      parent: {
+        type: String
+      },
       selectedDate: {
         type: String
       },
@@ -84,6 +87,7 @@
         return this.today === date
       },
       selectDate (date) {
+        this.$mixpanel.track('Date picker - Select date', { parent: this.parent })
         this.$emit('selectDate', date)
       },
       setupMonth () {
