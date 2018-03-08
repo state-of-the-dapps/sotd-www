@@ -26,7 +26,7 @@ function initialState () {
       name: [],
       rinkeby: [],
       ropsten: [],
-      socialSlack: [],
+      socialChat: [],
       tags: [],
       teaser: [],
       acceptedTerms: [],
@@ -51,7 +51,7 @@ function initialState () {
         twitter: { path: '' },
         github: { path: '' },
         reddit: { path: '' },
-        slack: { path: '' },
+        chat: { path: '' },
         blog: { path: '' },
         other: { path: '' },
         wiki: { path: '' }
@@ -322,11 +322,11 @@ const getters = {
   socialReddit: state => {
     return state.fields.socials.reddit.path
   },
-  socialSlack: state => {
-    return state.fields.socials.slack.path
+  socialChat: state => {
+    return state.fields.socials.chat.path
   },
-  socialSlackErrors: state => {
-    return state.errors.socialSlack
+  socialChatErrors: state => {
+    return state.errors.socialChat
   },
   socialTwitter: state => {
     return state.fields.socials.twitter.path
