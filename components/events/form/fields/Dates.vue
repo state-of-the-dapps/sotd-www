@@ -8,6 +8,7 @@
       </span>
       <DatePicker 
         type="start"
+        parent="event-form"
         :isActive="startIsActive" 
         :selectedDate="start"
         @hide="toggleDatePicker('start')" 
@@ -22,6 +23,7 @@
       </span>
       <DatePicker 
         type="end"
+        parent="event-form"
         :isActive="endIsActive" 
         :selectedDate="end"
         @hide="toggleDatePicker('end')" 
