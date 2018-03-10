@@ -22,27 +22,17 @@
           <input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100">
         </div>
       </li>
-      <li class="item" :class="slackErrors && slackErrors.length > 0 ? '--has-errors' : ''">
-        <div class="input-wrapper -slack">
-          <input v-model="slack" class="input" type="text" placeholder="slack invitation url" maxlength="100" @input="validate">
+      <li class="item" :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''">
+        <div class="input-wrapper -chat">
+          <input v-model="chat" class="input" type="text" placeholder="chat invitation url" maxlength="100" @input="validate">
         </div>
-        <ul v-if="slackErrors && slackErrors.length > 0" class="error-list -social">
-          <li v-for="(error, index) in slackErrors" :key="index" class="error-item -social">{{ error }}</li>
+        <ul v-if="chatErrors && chatErrors.length > 0" class="error-list -social">
+          <li v-for="(error, index) in chatErrors" :key="index" class="error-item -social">{{ error }}</li>
         </ul>
       </li>
       <li class="item">
         <div class="input-wrapper -blog">
           <input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100">
-        </div>
-      </li>
-      <li class="item">
-        <div class="input-wrapper -other">
-          <input v-model="other" class="input" type="text" placeholder="www.othersite.com" maxlength="100">
-        </div>
-      </li>
-      <li class="item">
-        <div class="input-wrapper -wiki">
-          <input v-model="wiki" class="input" type="text" placeholder="yourwikiurl.com" maxlength="100">
         </div>
       </li>
     </ul>
@@ -92,18 +82,6 @@
           this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
-      other: {
-        get () {
-          return this.$store.getters['dapps/form/socialOther']
-        },
-        set (value) {
-          const field = {
-            name: 'other',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setSocial', field)
-        }
-      },
       reddit: {
         get () {
           return this.$store.getters['dapps/form/socialReddit']
@@ -116,20 +94,20 @@
           this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
-      slack: {
+      chat: {
         get () {
-          return this.$store.getters['dapps/form/socialSlack']
+          return this.$store.getters['dapps/form/socialChat']
         },
         set (value) {
           const field = {
-            name: 'slack',
+            name: 'chat',
             value: value
           }
           this.$store.dispatch('dapps/form/setSocial', field)
         }
       },
-      slackErrors () {
-        return this.$store.getters['dapps/form/socialSlackErrors']
+      chatErrors () {
+        return this.$store.getters['dapps/form/socialChatErrors']
       },
       twitter: {
         get () {
@@ -142,30 +120,18 @@
           }
           this.$store.dispatch('dapps/form/setSocial', field)
         }
-      },
-      wiki: {
-        get () {
-          return this.$store.getters['dapps/form/socialWiki']
-        },
-        set (value) {
-          const field = {
-            name: 'wiki',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setSocial', field)
-        }
       }
     },
     methods: {
       validate () {
         clearTimeout(validationTimer)
         const errors = {
-          field: 'socialSlack',
+          field: 'socialChat',
           data: []
         }
         validationTimer = setTimeout(() => {
-          this.slack.endsWith('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
-          this.slack.length > 0 && !this.slack.includes('.') ? errors.data.push(`Slack invitation should be a url`) : ''
+          this.chat.endsWith('.slack.com') ? errors.data.push(`Slack invitation url should not contain .slack.com`) : ''
+          this.chat.length > 0 && !this.chat.includes('.') ? errors.data.push(`This should be a url`) : ''
           this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
@@ -241,8 +207,8 @@
       background: url('~/assets/images/social/github.png') center left no-repeat;
       background-size: 21px 21px;
     }
-    &.-slack:before {
-      background: url('~/assets/images/social/slack.png') center left no-repeat;
+    &.-chat:before {
+      background: url('~/assets/images/social/other2.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-reddit:before {
@@ -255,14 +221,6 @@
     }
     &.-etherian:before {
       background: url('~/assets/images/social/etherian.png') center left no-repeat;
-      background-size: 21px 21px;
-    }
-    &.-other:before {
-      background: url('~/assets/images/social/other2.png') center left no-repeat;
-      background-size: 21px 21px;
-    }
-    &.-wiki:before {
-      background: url('~/assets/images/social/wiki.png') center left no-repeat;
       background-size: 21px 21px;
     }
   }
