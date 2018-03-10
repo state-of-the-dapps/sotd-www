@@ -208,7 +208,7 @@
       background-size: 21px 21px;
     }
     &.-chat:before {
-      background: url('~/assets/images/social/other2.png') center left no-repeat;
+      background: url('~/assets/images/social/chat.png') center left no-repeat;
       background-size: 21px 21px;
     }
     &.-reddit:before {
