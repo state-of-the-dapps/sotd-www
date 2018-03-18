@@ -35,7 +35,7 @@
       loadMore () {
         this.$store.dispatch('events/list/incrementOffsetQuery')
         this.$store.dispatch('events/list/fetchItems')
-        this.$mixpanel.track('Events - Load more')
+        this.$mixpanel.track('Events - Load more', { offset: this.offset })
       }
     }
   }

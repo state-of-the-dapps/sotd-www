@@ -35,7 +35,7 @@
       loadMore () {
         this.$store.dispatch('dapps/list/incrementOffsetQuery')
         this.$store.dispatch('dapps/list/fetchItems')
-        this.$mixpanel.track('DApps - Load more')
+        this.$mixpanel.track('DApps - Load more', { offset: this.offset })
       }
     }
   }
