@@ -1,5 +1,5 @@
 const env = {
-  apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/v2/',
+  apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-000000-1',
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
