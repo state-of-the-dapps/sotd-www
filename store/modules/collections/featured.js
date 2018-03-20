@@ -7,7 +7,7 @@ const state = () => ({
 const actions = {
   fetchItems: ({ commit, state }) => {
     axios
-      .get('collections/featured')
+      .get('collections/list/featured')
       .then(response => {
         const data = response.data
         commit('SET_ITEMS', data)
