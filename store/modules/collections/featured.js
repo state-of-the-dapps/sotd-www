@@ -5,7 +5,7 @@ const state = () => ({
 })
 
 const actions = {
-  fetchItems: ({ commit, state }) => {
+  fetchItems ({ commit, state }) {
     axios
       .get('collections/list/featured')
       .then(response => {

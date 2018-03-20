@@ -34,16 +34,12 @@
   import Linkexchange from '~/components/shared/Linkexchange.vue'
 
   export default {
+    props: [
+      'items',
+      'itemCount'
+    ],
     components: {
       Linkexchange
-    },
-    computed: {
-      items () {
-        return this.$store.getters['dapps/list/items']
-      },
-      itemCount () {
-        return this.$store.getters['dapps/list/itemCount']
-      }
     },
     methods: {
       setIndex (item, key) {

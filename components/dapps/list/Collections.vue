@@ -3,7 +3,9 @@
     <div class="container">
       <ul class="list">
         <li v-for="(item, index) in items" :key="index" class="item">
-          <nuxt-link :to="{ name: 'collections-slug', params: { slug: item.slug } }" class="link">{{ item.name }}</nuxt-link>
+          <nuxt-link :to="{ name: 'collections-slug', params: { slug: item.slug } }" class="link">
+            {{ item.name }}
+          </nuxt-link>
         </li>
       </ul>
     </div>

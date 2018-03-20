@@ -3,7 +3,10 @@
     <Collections/>
     <Search/>
     <CountRefine/>
-    <Items/>
+    <Items
+      :items="dapps"
+      :itemCount="dappCount"
+    />
     <Pager/>
     <nuxt-child/>
   </div>
@@ -25,6 +28,12 @@
       Search
     },
     computed: {
+      dapps () {
+        return this.$store.getters['dapps/list/items']
+      },
+      dappCount () {
+        return this.$store.getters['dapps/list/itemCount']
+      },
       tabQuery () {
         return this.$store.getters['dapps/list/tabQuery']
       },
