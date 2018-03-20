@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
@@ -52,6 +53,11 @@ export function createRouter () {
         path: '/about',
         component: About,
         name: 'about'
+      },
+      {
+        path: '/collections/:slug',
+        component: CollectionsSlug,
+        name: 'collections-slug'
       },
       {
         path: '/events/submit/new',
