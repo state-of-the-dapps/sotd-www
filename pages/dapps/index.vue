@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Collections/>
     <Search/>
     <CountRefine/>
     <Items/>
@@ -10,12 +11,14 @@
 
 <script>
   import CountRefine from '~/components/dapps/list/CountRefine.vue'
+  import Collections from '~/components/dapps/list/Collections.vue'
   import Items from '~/components/dapps/list/Items.vue'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
 
   export default {
     components: {
+      Collections,
       CountRefine,
       Items,
       Pager,
