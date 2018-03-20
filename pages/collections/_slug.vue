@@ -19,8 +19,8 @@
 import { mapGetters } from 'vuex'
 import axios from '~/helpers/axios'
 
-import Lead from '~/components/collections/detail/lead'
-import Items from '~/components/collections/detail/items'
+import Lead from '~/components/collections/detail/Lead'
+import Items from '~/components/collections/detail/Items'
 
 export default {
   components: {
