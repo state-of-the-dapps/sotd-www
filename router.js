@@ -7,7 +7,6 @@ const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const DappsSlug = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
-const DappsSlugPopup = () => import('~/pages/dapps/_slug/popup.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
 const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
@@ -145,8 +144,8 @@ export function createRouter () {
         children: [
           {
             path: '',
-            component: Placeholder,            
-            name: 'dapps'          
+            component: Placeholder,
+            name: 'dapps'
           },
           {
             path: 'tagged/:tags',
