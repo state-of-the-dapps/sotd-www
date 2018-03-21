@@ -10,8 +10,8 @@
     <Items v-if="collection.items.length" 
       :items="collection.items"
       :model="collection.model"
+      routeName="dapps-slug"
     />
-    <nuxt-child/>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     ])
   },
   fetch ({ store, params, error }) {
-    store.dispatch('setSiteSection', '')
+    store.dispatch('setSiteSection', 'dapps')
     return axios
       .get('collections/' + params.slug)
       .then(response => {

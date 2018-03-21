@@ -56,7 +56,7 @@ const mutations = {
     state.popupIsActive = false
   },
   RESET_ITEM (state) {
-    state.item = item
+    state.item = item()
   },
   RESET_VIEW_METHOD (state) {
     state.viewMethod = ''
