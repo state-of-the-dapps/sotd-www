@@ -36,8 +36,7 @@
   export default {
     props: [
       'items',
-      'itemCount',
-      'routeName'
+      'itemCount'
     ],
     components: {
       Linkexchange

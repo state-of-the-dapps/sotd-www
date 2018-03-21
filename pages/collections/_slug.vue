@@ -10,7 +10,6 @@
     <Items v-if="collection.items.length" 
       :items="collection.items"
       :model="collection.model"
-      routeName="dapps-slug"
     />
   </div>
 </template>

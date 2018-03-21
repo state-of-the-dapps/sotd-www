@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <span v-if="historyExists" class="back" @click="$router.go(-1)"><img src="~/assets/images/arrows/next.png" width="14"></span>
+    <span v-if="historyExists" class="back" @click="$router.go(-1)"><img src="~/assets/images/arrows/next.png" width="12"></span>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
       <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
         <div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div>
@@ -41,10 +41,12 @@
   .back {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: calc(100% + 8px);
-    width: 25px;
+    top: 50%;
+    margin-top: -15px;
+    left: 20px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
     background: $color--mine-shaft;
     color: $color--gallery;
     padding: 4px 7px 4px 5px;
@@ -133,7 +135,7 @@
     padding: 10px 0;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding: 10px 0;
-      margin-left: 5px;
+      margin-left: 25px;
     }
   }
 

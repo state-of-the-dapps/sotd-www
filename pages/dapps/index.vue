@@ -6,7 +6,6 @@
     <Items
       :items="dapps"
       :itemCount="dappCount"
-      routeName="dapps-slug-popup"
     />
     <Pager/>
     <nuxt-child/>
