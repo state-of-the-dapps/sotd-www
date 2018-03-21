@@ -23,7 +23,6 @@
       }
     },
     mounted () {
-      console.log(window.history.length)
       if (window.history.length > 2) {
         this.historyExists = true
       }
