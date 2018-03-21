@@ -6,7 +6,7 @@
           <div class="item -linkexchange">
             <Linkexchange/>
           </div>
-          <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ path: '/dapps/' + item.slug }" class="item" :class="'-' + item.status" :key="item.slug">
+          <nuxt-link v-for="(item, key) in items" @click.native="trackDappView(item.slug)" :to="{ path: '/dapps/' + item.slug }" class="item" :class="'-' + item.status" :key="key">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
               <li v-for="(badge, index) in item.badges" :key="index" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div></li>
@@ -43,11 +43,11 @@
       Linkexchange
     },
     methods: {
-      setIndex (item, key) {
-        if (this.routeName === 'dapps-slug-popup') {
-          this.$store.dispatch('dapps/detail/setViewMethod', 'popup')
-          this.$store.dispatch('dapps/list/setActiveItemIndex', key)
-        }
+      trackDappView (slug) {
+        this.$mixpanel.track('DApp - View', {
+          targetDapp: slug,
+          method: 'list'
+        })
       }
     }
   }

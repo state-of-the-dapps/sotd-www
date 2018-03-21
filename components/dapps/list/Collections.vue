@@ -2,11 +2,9 @@
   <section class="component--dapps-list-collections">
     <div class="container">
       <ul class="list">
-        <li v-for="(item, index) in items" :key="index" class="item">
-          <nuxt-link :to="{ name: 'collections-slug', params: { slug: item.slug } }" class="link">
-            {{ item.name }}
-          </nuxt-link>
-        </li>
+        <nuxt-link v-for="(item, index) in items" :to="{ name: 'collections-slug', params: { slug: item.slug } }" :tag="li" :key="index" class="item">
+          {{ item.name }}
+        </nuxt-link>
       </ul>
     </div>
   </section>
@@ -33,14 +31,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '~assets/css/settings';
+
+  .container {
+    padding: 15px 10px;
+  }
   .list {
     display: flex;
   }
   .item {
     flex: 1;
-  }
-  .link {
-    display: block;
-    text-align: center;
+    margin: 0 10px;
+    background: rgba($color--gallery, .2);
+    padding: 0 10px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 25px 0 rgba($color--mine-shaft, .12);
   }
 </style>
