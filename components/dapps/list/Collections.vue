@@ -2,7 +2,7 @@
   <section class="component--dapps-list-collections">
     <div class="container">
       <ul class="list">
-        <nuxt-link v-for="(item, index) in items" :to="{ name: 'collections-slug', params: { slug: item.slug } }" :tag="li" :key="index" class="item">
+        <nuxt-link v-for="(item, index) in items" :to="{ name: 'collections-slug', params: { slug: item.slug } }" tag="li" :key="index" class="item">
           {{ item.name }}
         </nuxt-link>
       </ul>

@@ -63,7 +63,6 @@
       return {
         title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
       }
-    },
-    scrollToTop: false
+    }
   }
 </script>
