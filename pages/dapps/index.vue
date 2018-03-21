@@ -47,21 +47,15 @@
     mounted () {
       this.$store.dispatch('setSiteSection', 'dapps')
       this.$store.dispatch('dapps/list/setFriendlyQuery', this.$route.params)
-      this.$store.dispatch('dapps/list/setFriendlyUrl')
-      this.$store.dispatch('dapps/list/fetchItems')
-    },
-    watch: {
-      'tagQuery': function () {
-        this.$store.dispatch('dapps/list/setFriendlyUrl')
-      },
-      'tabQuery': function () {
-        this.$store.dispatch('dapps/list/setFriendlyUrl')
+      if (this.dappCount < 1) {
+        this.$store.dispatch('dapps/list/fetchItems')
       }
     },
     head () {
       return {
         title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
       }
-    }
+    },
+    scrollToTop: false
   }
 </script>

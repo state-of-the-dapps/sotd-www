@@ -34,18 +34,22 @@ const actions = {
   },
   setTabQuery: ({ commit }, value) => {
     commit('SET_CATEGORY_QUERY', value)
+    commit('SET_FRIENDLY_URL')
   },
   setStatusQuery: ({ commit }, value) => {
     commit('SET_REFINE_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
     commit('ADD_TAG_TO_QUERY', value)
+    commit('SET_FRIENDLY_URL')
   },
   removeLastTagFromQuery: ({ commit }) => {
     commit('REMOVE_LAST_TAG_FROM_QUERY')
+    commit('SET_FRIENDLY_URL')
   },
   removeTagFromQuery: ({ commit }, index) => {
     commit('REMOVE_TAG_FROM_QUERY', index)
+    commit('SET_FRIENDLY_URL')
   },
   resetQuery ({ commit }) {
     commit('RESET_QUERY')
@@ -164,7 +168,8 @@ const mutations = {
       url = url + 'tab/' + encodeURIComponent(tab)
     }
     state.friendlyUrl = url
-    window.history.replaceState({}, '', url)
+    console.log(url)
+    this.$router.push(url)
   },
   SET_ITEMS (state, data) {
     const items = data.items
