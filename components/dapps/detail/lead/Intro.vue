@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="new-banner" @click="$mixpanel.track('DApp - New flag', { detail: true })" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
+    <span v-if="historyExists" class="back" @click="$router.go(-1)"><img src="~/assets/images/arrows/next.png" width="14"></span>
     <ul class="badge-list" v-if="item.badges && item.badges.length > 0">
       <li v-for="(badge, index) in item.badges" :key="index" @click="$mixpanel.track('DApp - Badge', { detail: true })" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image">
         <div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div>
@@ -18,6 +18,9 @@
 <script>
   export default {
     computed: {
+      historyExists (history) {
+        return true
+      },
       item () {
         return this.$store.getters['dapps/detail/item']
       }
@@ -27,6 +30,29 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .back {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(100% + 8px);
+    width: 25px;
+    background: $color--mine-shaft;
+    color: $color--gallery;
+    padding: 4px 7px 4px 5px;
+    z-index: 10;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      display: flex;
+    }
+    img {
+      transform: rotate(180deg)
+    }
+  }
 
   .badge-item {
     position: relative;
@@ -71,7 +97,7 @@
     top: -2px;
     z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      right: 20px;
+      right: 25px;
     }
   }
 
@@ -100,6 +126,7 @@
     padding: 10px 0;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding: 10px 0;
+      margin-left: 10px;
     }
   }
 
