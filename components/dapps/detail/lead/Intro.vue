@@ -17,10 +17,18 @@
 
 <script>
   export default {
+    data () {
+      return {
+        historyExists: false
+      }
+    },
+    mounted () {
+      console.log(window.history.length)
+      if (window.history.length > 2) {
+        this.historyExists = true
+      }
+    },
     computed: {
-      historyExists (history) {
-        return true
-      },
       item () {
         return this.$store.getters['dapps/detail/item']
       }
@@ -126,7 +134,7 @@
     padding: 10px 0;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding: 10px 0;
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
 
