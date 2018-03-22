@@ -77,12 +77,12 @@
       padding: 10px;
       box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
       width: 250px;
-      top: 65px;
+      top: 133px;
       left: 10px;
       overflow: hidden;
       z-index: 10;
       @include tweakpoint('min-width', $tweakpoint--default) {
-        top: 85px;
+        top: 153px;
         left: 75px;
         width: 500px;
       }

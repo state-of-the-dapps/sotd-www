@@ -141,22 +141,24 @@ export function createRouter () {
       {
         path: '/',
         component: Dapps,
-        name: 'dapps'
-      },
-      {
-        path: '/tab/:tab',
-        component: Dapps,
-        alias: '/'
-      },
-      {
-        path: '/tagged/:tags',
-        component: Dapps,
-        alias: '/'
-      },
-      {
-        path: '/tagged/:tags/tab/:tab',
-        component: Dapps,
-        alias: '/'
+        name: 'dapps',
+        children: [
+          {
+            path: 'tab/:tab',
+            component: Dapps,
+            name: 'dapps-tab',
+          },
+          {
+            path: 'tagged/:tags',
+            component: Dapps,
+            name: 'dapps-tags'
+          },
+          {
+            path: 'tagged/:tags/tab/:tab',
+            component: Dapps,
+            name: 'dapps-tab-tags'
+          }
+        ]
       },
       {
         path: '/terms',

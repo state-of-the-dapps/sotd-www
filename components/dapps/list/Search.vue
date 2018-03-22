@@ -1,6 +1,10 @@
 <template>
   <section class="section -search">
     <div class="container">
+      <div class="heading-wrapper">
+        <h3 class="sub-heading">Explore</h3>
+        <h2 class="heading">the ÐApps</h2>
+      </div>
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
@@ -110,6 +114,30 @@
 
 <style lang="scss" scoped>
   @import '~assets/css/settings';
+
+  .section {
+    &.-search {
+      margin-top: 30px;
+      background: rgba(lighten($color--gallery, 100%), .35);
+      background: linear-gradient(to bottom, rgba(lighten($color--gallery, 100%), .35), rgba(lighten($color--gallery, 100%), 0));
+    }
+  }
+
+  .sub-heading {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .heading {
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-bottom: 1.3rem;
+  }
 
   .close {
     position: relative;

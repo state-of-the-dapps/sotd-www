@@ -155,21 +155,35 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = tabOptions || []
-    var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
-    var tab = state.query.tab
-    var url = '/'
+    var tags = state.query.tags.filter(entry => entry.trim() !== '') || ''
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
-      url = url + 'tagged/' + tags + '/'
     }
-    if (tab !== options[0] && tab !== 'most-relevant') {
-      url = url + 'tab/' + encodeURIComponent(tab)
+    var tab = state.query.tab
+    var routerObj = {}
+
+    if (tab && tags.length > 0) {
+      routerObj['name'] = 'dapps-tab-tags'
+      routerObj['params'] = {
+        tab: tab,
+        tags: tags
+      }
+    } else if (tab) {
+      routerObj['name'] = 'dapps-tab'
+      routerObj['params'] = {
+        tab: tab
+      }
+    } else if (tags.length > 0) {
+      routerObj['name'] = 'dapps-tags'
+      routerObj['params'] = {
+        tags: tags
+      }
+    } else {
+      routerObj['name'] = 'dapps'
     }
-    state.friendlyUrl = url
-    console.log(url)
-    this.$router.push(url)
+    console.log(routerObj)
+    this.$router.replace(routerObj)
   },
   SET_ITEMS (state, data) {
     const items = data.items
