@@ -146,7 +146,7 @@ export function createRouter () {
           {
             path: 'tab/:tab',
             component: Dapps,
-            name: 'dapps-tab',
+            name: 'dapps-tab'
           },
           {
             path: 'tagged/:tags',
