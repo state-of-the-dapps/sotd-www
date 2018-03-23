@@ -145,17 +145,17 @@ export function createRouter () {
         children: [
           {
             path: 'tab/:tab',
-            component: Dapps,
+            component: Placeholder,
             name: 'dapps-tab'
           },
           {
             path: 'tagged/:tags',
-            component: Dapps,
+            component: Placeholder,
             name: 'dapps-tags'
           },
           {
             path: 'tagged/:tags/tab/:tab',
-            component: Dapps,
+            component: Placeholder,
             name: 'dapps-tab-tags'
           }
         ]
