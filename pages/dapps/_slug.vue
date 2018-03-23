@@ -39,6 +39,7 @@
           const data = response.data
           const item = data.item
           store.dispatch('dapps/detail/setItem', item)
+          store.dispatch('setSiteSection', 'dapps')
           if (!Object.keys(item).length > 0) {
             error({ statusCode: 404 })
           }
