@@ -84,7 +84,7 @@ export default {
   .item {
     flex: 1;
     margin: 0 10px;
-    background: rgba($color--gallery, .2);
+    background: rgba(white, .25);
     padding: 0 7px;
     height: 75px;
     display: flex;
