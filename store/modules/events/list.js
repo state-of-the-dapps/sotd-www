@@ -1,9 +1,6 @@
 import formatDate from 'date-fns/format'
-import { generateRandomSeed } from '~/helpers/functions'
 import { eventRefineCategoryOptions as categoryOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
-
-const randomSeed = generateRandomSeed()
 
 function today () {
   return formatDate(Date.now(), 'YYYY-MM-DD')
@@ -19,7 +16,6 @@ function initialQuery () {
     locationRadius: 50,
     locationRadiusUnit: 'miles',
     offset: 0,
-    seed: randomSeed,
     category: categoryOptions[0],
     tags: [],
     text: ''
