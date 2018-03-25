@@ -3,7 +3,7 @@
     <div class="container">
       <h2 class="heading">Related ÐApps</h2>
       <ul class="list">
-        <nuxt-link :to="{ name: routeName, params: { slug: item.slug } }" @click.native="setActive(item.slug)" tag="li" v-for="item in items" class="item" :class="'-' + item.status" :key="item.slug">
+        <nuxt-link :to="{ name: routeName, params: { slug: item.slug } }" @click.native="trackDappView(item.slug)" tag="li" v-for="item in items" class="item" :class="'-' + item.status" :key="item.slug">
           <h3 class="title">{{ item.name | truncate(25) }}</h3>
           <p class="teaser">{{ item.teaser }}</p>
           <p class="status" :class="'-' + item.status"></p>
@@ -34,16 +34,11 @@
       }
     },
     methods: {
-      setActive (slug) {
-        this.$store.dispatch('dapps/detail/setViewMethod', 'related')
-        if (this.popupIsActive) {
-          this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
-          document.getElementById('close').scrollIntoView()
-          this.$mixpanel.track('DApp - View', {
-            targetDapp: slug,
-            method: this.viewMethod
-          }, this.$store.dispatch('dapps/detail/resetViewMethod'))
-        }
+      trackDappView (slug) {
+        this.$mixpanel.track('DApp - View', {
+          targetDapp: slug,
+          method: 'related'
+        })
       }
     }
   }

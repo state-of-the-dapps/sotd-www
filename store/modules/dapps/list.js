@@ -36,18 +36,22 @@ const actions = {
   },
   setTabQuery: ({ commit }, value) => {
     commit('SET_CATEGORY_QUERY', value)
+    commit('SET_FRIENDLY_URL')
   },
   setStatusQuery: ({ commit }, value) => {
     commit('SET_REFINE_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
     commit('ADD_TAG_TO_QUERY', value)
+    commit('SET_FRIENDLY_URL')
   },
   removeLastTagFromQuery: ({ commit }) => {
     commit('REMOVE_LAST_TAG_FROM_QUERY')
+    commit('SET_FRIENDLY_URL')
   },
   removeTagFromQuery: ({ commit }, index) => {
     commit('REMOVE_TAG_FROM_QUERY', index)
+    commit('SET_FRIENDLY_URL')
   },
   resetQuery ({ commit }) {
     commit('RESET_QUERY')
@@ -153,20 +157,35 @@ const mutations = {
     }
   },
   SET_FRIENDLY_URL (state) {
-    var options = tabOptions || []
-    var tags = state.query.tags.filter(entry => entry.trim() !== '') || []
-    var tab = state.query.tab
-    var url = '/'
+    var tags = state.query.tags.filter(entry => entry.trim() !== '') || ''
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
       tags = tags.join('+')
-      url = url + 'tagged/' + tags + '/'
     }
-    if (tab !== options[0] && tab !== 'most-relevant') {
-      url = url + 'tab/' + encodeURIComponent(tab)
+    var tab = state.query.tab
+    var routerObj = {}
+
+    if (tab && tags.length > 0) {
+      routerObj['name'] = 'dapps-tab-tags'
+      routerObj['params'] = {
+        tab: tab,
+        tags: tags
+      }
+    } else if (tab) {
+      routerObj['name'] = 'dapps-tab'
+      routerObj['params'] = {
+        tab: tab
+      }
+    } else if (tags.length > 0) {
+      routerObj['name'] = 'dapps-tags'
+      routerObj['params'] = {
+        tags: tags
+      }
+    } else {
+      routerObj['name'] = 'dapps'
     }
-    state.friendlyUrl = url
-    window.history.replaceState({}, '', url)
+    console.log(routerObj)
+    this.$router.replace(routerObj)
   },
   SET_ITEMS (state, data) {
     const items = data.items

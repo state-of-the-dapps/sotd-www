@@ -81,7 +81,7 @@
     top: -2px;
     z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      right: 20px;
+      right: 25px;
     }
   }
 

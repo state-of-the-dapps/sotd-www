@@ -6,7 +6,7 @@
           <div class="item -linkexchange">
             <Linkexchange/>
           </div>
-          <nuxt-link v-for="(item, key) in items" @click.native="setIndex(item, key)" :to="{ name: 'dapps-slug-popup', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="item.slug">
+          <nuxt-link v-for="(item, key) in items" @click.native="trackDappView(item.slug)" :to="{ path: '/dapps/' + item.slug }" class="item" :class="'-' + item.status" :key="key">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
               <li v-for="(badge, index) in item.badges" :key="index" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div></li>
@@ -34,21 +34,19 @@
   import Linkexchange from '~/components/shared/Linkexchange.vue'
 
   export default {
+    props: [
+      'items',
+      'itemCount'
+    ],
     components: {
       Linkexchange
     },
-    computed: {
-      items () {
-        return this.$store.getters['dapps/list/items']
-      },
-      itemCount () {
-        return this.$store.getters['dapps/list/itemCount']
-      }
-    },
     methods: {
-      setIndex (item, key) {
-        this.$store.dispatch('dapps/detail/setViewMethod', 'popup')
-        this.$store.dispatch('dapps/list/setActiveItemIndex', key)
+      trackDappView (slug) {
+        this.$mixpanel.track('DApp - View', {
+          targetDapp: slug,
+          method: 'list'
+        })
       }
     }
   }

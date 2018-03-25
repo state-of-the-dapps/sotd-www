@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const DappsSlug = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
-const DappsSlugPopup = () => import('~/pages/dapps/_slug/popup.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
 const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
@@ -18,26 +18,37 @@ const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
-const scrollBehavior = (to, from, savedPosition) => {
-  // SavedPosition is only available for popstate navigations.
-  if (savedPosition) {
-    return savedPosition
-  } else {
-    let position = {}
-    // If no children detected
-    if (to.matched.length < 2) {
-      // Scroll to the top of the page
-      position = { x: 0, y: 0 }
-    } else if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
-      // If one of the children has scrollToTop option set to true
-      position = { x: 0, y: 0 }
-    }
-    // If link has anchor, scroll to anchor by returning the selector
-    if (to.hash) {
-      position = { selector: to.hash }
-    }
-    return position
+const scrollBehavior = function (to, from, savedPosition) {
+  // if the returned position is falsy or an empty object,
+  // will retain current scroll position.
+  let position = false
+
+  // if no children detected
+  if (to.matched.length < 2) {
+    // scroll to the top of the page
+    position = { x: 0, y: 0 }
+  } else if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+    // if one of the children has scrollToTop option set to true
+    position = { x: 0, y: 0 }
   }
+
+  // savedPosition is only available for popstate navigations (back button)
+  if (savedPosition) {
+    position = savedPosition
+  }
+
+  return new Promise(resolve => {
+    // wait for the out transition to complete (if necessary)
+    window.$nuxt.$once('triggerScroll', () => {
+      // coords will be used if no selector is provided,
+      // or if the selector didn't match any element.
+      if (to.hash && document.querySelector(to.hash)) {
+        // scroll to anchor by returning the selector
+        position = { selector: to.hash }
+      }
+      resolve(position)
+    })
+  })
 }
 
 export function createRouter () {
@@ -52,6 +63,11 @@ export function createRouter () {
         path: '/about',
         component: About,
         name: 'about'
+      },
+      {
+        path: '/collections/:slug',
+        component: CollectionsSlug,
+        name: 'collections-slug'
       },
       {
         path: '/events/submit/new',
@@ -125,33 +141,22 @@ export function createRouter () {
       {
         path: '/',
         component: Dapps,
+        name: 'dapps',
         children: [
           {
-            path: '',
+            path: 'tab/:tab',
             component: Placeholder,
-            name: 'dapps'
+            name: 'dapps-tab'
           },
           {
             path: 'tagged/:tags',
             component: Placeholder,
-            name: 'dapps-tagged-tags',
-            children: [
-              {
-                path: 'tab/:tab',
-                component: Placeholder,
-                name: 'dapps-tagged-tags-tab-tab'
-              }
-            ]
+            name: 'dapps-tags'
           },
           {
-            path: 'tab/:tab',
+            path: 'tagged/:tags/tab/:tab',
             component: Placeholder,
-            name: 'dapps-tab-tab'
-          },
-          {
-            path: 'dapps/:slug',
-            component: DappsSlugPopup,
-            name: 'dapps-slug-popup'
+            name: 'dapps-tab-tags'
           }
         ]
       },
