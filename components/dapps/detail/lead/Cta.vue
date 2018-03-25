@@ -26,7 +26,7 @@
   .link {
     position: relative;
     display: inline-block;
-    margin: 10px 0 10px 0;
+    margin: 10px 5px;
     text-decoration: none;
     padding: 15px 25px;
     color: $color--gallery;
