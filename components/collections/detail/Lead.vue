@@ -3,7 +3,7 @@
     <h2 class="sub-heading">Collection</h2>
     <h1 class="heading">{{ name }}<span v-if="curator">, by {{ curator }}</span></h1>
     <p class="description">
-      {{ description }}.<span v-if="linkUrl && linkText"> <a :href="linkUrl">{{ linkText }}</a></span>
+      {{ description }}<span v-if="linkUrl && linkText">. <a :href="linkUrl" target="_blank" rel="noopener noreferrer">{{ linkText }}</a></span>
     </p>
   </div>
 </template>
