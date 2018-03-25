@@ -22,6 +22,7 @@ export default {
     return {
       collectionIcons: {
         'best-of-metamask': 'metamask',
+        'collectibles-hypetrain': 'collectibles-hypetrain',
         'featured': 'featured',
         'hottest': 'hottest',
         'mobile-friendly': 'mobile',
