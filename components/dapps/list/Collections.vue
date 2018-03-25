@@ -1,5 +1,5 @@
 <template>
-  <section class="component--dapps-list-collections">
+  <section class="component--dapps-list-collections" v-if="items.length">
     <div class="container">
       <div class="heading-wrapper">
         <h2 class="heading">Featured ÐApp Collections</h2>
@@ -22,6 +22,7 @@ export default {
     return {
       collectionIcons: {
         'best-of-metamask': 'metamask',
+        'collectibles-hypetrain': 'collectibles-hypetrain',
         'featured': 'featured',
         'hottest': 'hottest',
         'mobile-friendly': 'mobile',

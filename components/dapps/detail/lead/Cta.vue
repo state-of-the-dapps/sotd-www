@@ -26,13 +26,14 @@
   .link {
     position: relative;
     display: inline-block;
-    margin: 10px 0 10px 6px;
+    margin: 10px 5px;
     text-decoration: none;
     padding: 15px 25px;
     color: $color--gallery;
     background: $color--mine-shaft;
     box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
     @include tweakpoint('min-width', $tweakpoint--default) {
+      margin: 10px 0 10px 6px;
       padding: 20px 40px;
       font-size: 1.1rem;
     }
