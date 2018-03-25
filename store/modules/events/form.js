@@ -1,8 +1,5 @@
-import { generateRandomSeed } from '~/helpers/functions'
 import { dappRefineStatusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
-
-const randomSeed = generateRandomSeed()
 
 function initialState () {
   return {
@@ -103,11 +100,10 @@ const actions = {
       .get('dapps', {
         params: {
           excluded: relatedDappsSlugs,
-          tab: 'most-relevant',
+          tab: 'most-viewed',
           limit: 15,
           offset: 0,
           status: dappRefineStatusOptions[0],
-          seed: randomSeed,
           tags: [],
           text: state.relatedDappQuery
         }
