@@ -41,7 +41,7 @@
   .back {
     display: none;
     position: absolute;
-    top: 50%;
+    top: -40px;
     margin-top: -15px;
     left: 20px;
     border-radius: 50%;
@@ -57,6 +57,7 @@
     justify-content: center;
     @include tweakpoint('min-width', $tweakpoint--default) {
       display: flex;
+      top: 50%;
     }
     img {
       transform: rotate(180deg)
