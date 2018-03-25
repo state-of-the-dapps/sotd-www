@@ -2,7 +2,7 @@
   <div class="wrapper -component-events-detail-maininfo">
     <ul class="list -main">
       <li class="item -main --description">
-        <p>{{ item.description }}</p>
+        <p v-for="(paragraph, index) in description" :key="index">{{ paragraph }}</p>
       </li>
       <li v-if="item.highlights && item.highlights.length" class="item -main --schedule">
         <h2 class="heading -main">Schedule highlights</h2>
@@ -55,6 +55,11 @@
     computed: {
       friendlyUrl () {
         return this.$store.getters['events/list/friendlyUrl']
+      },
+      description () {
+        const value = this.item.description || []
+        const formattedValue = value.split('\n\n')
+        return formattedValue
       },
       item () {
         return this.$store.getters['events/detail/item']
