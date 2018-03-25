@@ -7,9 +7,9 @@
           <p class="sub-body"><span v-for="(author, index) in item.authors" :key="index">{{ author }}<span v-if="index !== item.authors.length - 1">, </span></span></p>
         </li>
         <li class="item -description">
-          <p class="body">
-            <img v-if="item.logoUrl" class="logo" :src="item.logoUrl">{{ item.description }}
-          </p>
+          <div class="body">
+            <img v-if="item.logoUrl" class="logo" :src="item.logoUrl"><p v-for="(paragraph, index) in description" :key="index">{{ paragraph }}</p>
+          </div>
         </li>
       </ul>
       <ul class="sub-list">
@@ -47,6 +47,11 @@
     computed: {
       friendlyUrl () {
         return this.$store.getters['dapps/list/friendlyUrl']
+      },
+      description () {
+        const value = this.item.description || []
+        const formattedValue = value.split('\n\n')
+        return formattedValue
       },
       item () {
         return this.$store.getters['dapps/detail/item']
