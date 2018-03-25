@@ -128,6 +128,10 @@
 
   .description-wrapper {
     flex-grow: 1;
+    text-align: center;
+    @include tweakpoint('min-width', 600px) {
+      text-align: left;
+    }    
   }
 
   .info {
