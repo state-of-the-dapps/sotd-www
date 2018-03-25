@@ -1,5 +1,5 @@
 <template>
-  <section class="component--dapps-list-collections">
+  <section class="component--dapps-list-collections" v-if="items.length">
     <div class="container">
       <div class="heading-wrapper">
         <h2 class="heading">Featured ÐApp Collections</h2>
