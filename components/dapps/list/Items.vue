@@ -6,7 +6,7 @@
           <div class="item -linkexchange">
             <Linkexchange/>
           </div>
-          <nuxt-link v-for="(item, key) in items" @click.native="trackDappView(item.slug)" :to="{ path: '/dapps/' + item.slug }" class="item" :class="'-' + item.status" :key="key">
+          <nuxt-link v-for="(item, key) in items" @click.native="trackDappView(item.slug)" :to="{ name: 'dapps-slug', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="key">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
               <li v-for="(badge, index) in item.badges" :key="index" class="badge-item"><img :src="require('~/assets/images/badges/' + badge + '.png')" width="16" class="badge-image"><div class="badge-info">{{ badge | formatDappBadge | capitalize }}</div></li>

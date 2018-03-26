@@ -10,12 +10,6 @@ const actions = {
   setItem ({ commit }, item) {
     commit('SET_ITEM', item)
   },
-  showPopup ({ commit }) {
-    commit('SHOW_POPUP')
-  },
-  hidePopup ({ commit }) {
-    commit('HIDE_POPUP')
-  },
   resetItem ({ commit }) {
     commit('RESET_ITEM')
   },
@@ -24,16 +18,10 @@ const actions = {
   },
   setViewMethod ({ commit }, method) {
     commit('SET_VIEW_METHOD', method)
-  },
-  togglePopup ({ commit }) {
-    commit('TOGGLE_POPUP')
   }
 }
 
 const getters = {
-  popupIsActive: state => {
-    return state.popupIsActive
-  },
   item: state => {
     return state.item
   },
@@ -49,12 +37,6 @@ const mutations = {
   SET_ITEM (state, item) {
     state.item = item
   },
-  SHOW_POPUP (state) {
-    state.popupIsActive = true
-  },
-  HIDE_POPUP (state) {
-    state.popupIsActive = false
-  },
   RESET_ITEM (state) {
     state.item = item()
   },
@@ -63,19 +45,10 @@ const mutations = {
   },
   SET_VIEW_METHOD (state, method) {
     state.viewMethod = method
-  },
-  TOGGLE_POPUP (state) {
-    state.popupIsActive = !state.popupIsActive
-    if (state.popupIsActive === true) {
-      document.body.classList.add('--has-popup')
-    } else {
-      document.body.classList.remove('--has-popup')
-    }
   }
 }
 
 const state = () => ({
-  popupIsActive: false,
   item: item(),
   viewMethod: 'direct'
 })

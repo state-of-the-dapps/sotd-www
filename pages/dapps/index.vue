@@ -9,7 +9,6 @@
       sourceModel="dapps"
     />
     <Pager/>
-    <nuxt-child/>
   </div>
 </template>
 
