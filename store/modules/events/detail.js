@@ -25,9 +25,6 @@ const actions = {
   },
   setViewMethod ({ commit }, method) {
     commit('SET_VIEW_METHOD', method)
-  },
-  togglePopup ({ commit }) {
-    commit('TOGGLE_POPUP')
   }
 }
 
