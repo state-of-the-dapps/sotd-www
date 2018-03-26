@@ -14,6 +14,8 @@
 </template>
 
 <script>
+  import { mpDappView } from '~/helpers/mixpanel'
+
   export default {
     computed: {
       items () {
@@ -35,10 +37,12 @@
     },
     methods: {
       trackDappView (slug) {
-        this.$mixpanel.track('DApp - View', {
-          targetDapp: slug,
-          method: 'related'
-        })
+        const sourceComponent = '/dapps/detail/related'
+        const sourceModel = 'dapps'
+        const sourcePath = this.$route.path
+        const targetDapp = slug
+        const action = mpDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
+        this.$mixpanel.track(action.name, action.data)
       }
     }
   }

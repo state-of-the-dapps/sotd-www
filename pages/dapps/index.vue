@@ -6,6 +6,7 @@
     <Items
       :items="dapps"
       :itemCount="dappCount"
+      sourceModel="dapps"
     />
     <Pager/>
     <nuxt-child/>
