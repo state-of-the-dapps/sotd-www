@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: $color--gallery;
+  background: $color--bg;
   font-size: 13px;
   height: 100%;
 }
@@ -20,7 +20,6 @@ body, input, textarea {
 }
 
 body {
-  background: url('~/assets/images/bg.jpg') center center;
   background-size: 100px 100px;
   height: 100%;
   &.--has-popup {
