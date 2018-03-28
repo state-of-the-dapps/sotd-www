@@ -13,6 +13,7 @@ const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || 
 const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
+const Home = () => import('~/pages/home.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/what.vue').then(m => m.default || m)
@@ -60,6 +61,11 @@ export function createRouter () {
     linkExactActiveClass: 'nuxt-link-exact-active',
     scrollBehavior,
     routes: [
+      {
+        path: '/',
+        component: Home,
+        name: 'home'
+      },      
       {
         path: '/about',
         component: About,
@@ -145,7 +151,7 @@ export function createRouter () {
       },
       // the root /dapps route goes after other /dapps/{params} routes, so that a direct GET to any other /dapps/{params} will render before /dapps child routes
       {
-        path: '/',
+        path: '/dapps',
         component: Dapps,
         name: 'dapps',
         children: [
