@@ -143,9 +143,9 @@
   .container {
     &.-location-selection {
       position: absolute;
-      background: $color--gallery;
+      background: $color--gray;
       padding: 10px;
-      box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
+      box-shadow: 0 17px 70px rgba($color--black,.2);
       width: 300px;
       top: 65px;
       right: 10px;
@@ -165,9 +165,9 @@
     width: 100%;
     margin-top: 10px;
     border: none;
-    background: rgba($color--mine-shaft, 1);
-    box-shadow: 0 17px 70px rgba($color--mine-shaft, 0.3);
-    color: $color--gallery;
+    background: rgba($color--black, 1);
+    box-shadow: 0 17px 70px rgba($color--black, 0.3);
+    color: $color--gray;
     font-size: .9rem;
     font-weight: 600;
     padding: 6px;
@@ -204,8 +204,8 @@
     font-size: .8rem;
     cursor: pointer;
     &.--is-selected {
-      background: $color--mine-shaft;
-      color: $color--gallery;
+      background: $color--black;
+      color: $color--gray;
     }
     &:hover {
       text-decoration: underline;
@@ -223,8 +223,8 @@
     &.--is-selected {
       padding: 4px 3px;
       margin-left: -3px;
-      background: $color--mine-shaft;
-      color: $color--gallery;
+      background: $color--black;
+      color: $color--gray;
     }
   }
 
@@ -241,7 +241,7 @@
     width: 190px;
     flex-grow: 1;
     padding-right: 10px;
-    border-right: 1px solid $color--mine-shaft;
+    border-right: 1px solid $color--black;
   }
 
   .location-instructions {
@@ -258,11 +258,11 @@
     font-size: .9rem;
     cursor: pointer;
     &:nth-child(odd) {
-      background: rgba($color--mine-shaft,.075);
+      background: rgba($color--black,.075);
     }
     &.--is-selected {
-      background: $color--mine-shaft;
-      color: $color--gallery;
+      background: $color--black;
+      color: $color--gray;
     }
     &:hover {
       text-decoration: underline;
@@ -274,11 +274,11 @@
   }
 
   .text-input {
-    border: 1px solid rgba($color--mine-shaft, .2);
+    border: 1px solid rgba($color--black, .2);
     padding: 5px;
     width: 100%;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-    background: lighten($color--gallery,100%);
+    box-shadow: 0 0 20px rgba($color--black,.05);
+    background: lighten($color--gray,100%);
     transition: background .2s ease;
     &:focus + .label,  &.--is-filled + .label {
       top: -11px;

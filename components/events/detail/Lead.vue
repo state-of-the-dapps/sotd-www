@@ -36,7 +36,7 @@
       margin: 0 auto;
       padding: 30px 40px;
       position: relative;
-      background: lighten($color--gallery, 100%);
+      background: lighten($color--gray, 100%);
       @include tweakpoint('min-width', 600px) {
         display: flex;
         align-items: center;
@@ -59,7 +59,7 @@
     &.list {
       display: flex;
       height: 5px;
-      background: $color--mine-shaft;
+      background: $color--black;
       @include tweakpoint('min-width', 600px) {
         height: 8px;
       }      
@@ -68,35 +68,35 @@
       height: 100%;
       flex-grow: 1;
       &.--ico {
-        background: $color--event-crimson;
+        background: $color--event-ico;
       }
       &.--hackathon {
-        background: $color--event-orange;
+        background: $color--event-hackathon;
       }
       &.--summit {
-        background: $color--event-yellow;
+        background: $color--event-summit;
       }
       &.--crowdsale {
-        background: $color--event-green;
+        background: $color--event-crowdsale;
       }
       &.--conference {
-        background: $color--event-aquamarine;
+        background: $color--event-conference;
       }
       &.--meetup {
-        background: $color--event-blue;
+        background: $color--event-meetup;
       }
       &.--release {
-        background: $color--event-burple;
+        background: $color--event-release;
       }
       &.--workshop {
-        background: $color--event-purple;
+        background: $color--event-workshop;
       }
     }
   }
 
   .-component-events-detail-lead {
     &.wrapper {
-      background: lighten($color--gallery, 100%);
+      background: lighten($color--gray, 100%);
     }
   }
 </style>

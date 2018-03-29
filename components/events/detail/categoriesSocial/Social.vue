@@ -56,15 +56,15 @@
       z-index: 5;
       font-weight: 600;
       text-align: center;
-      background: lighten($color--gallery, 10%);
-      border: 1px solid $color--mine-shaft;
+      background: lighten($color--gray, 10%);
+      border: 1px solid $color--black;
       padding: 3px 8px 2px;
       text-transform: uppercase;
       font-size: .7rem;
       opacity: 0;
       transition: opacity .5s ease;
       white-space: nowrap;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+      box-shadow: 0 0 20px rgba($color--black,.1);
       &:after {
         position: absolute;
         bottom:-7px;
@@ -72,7 +72,7 @@
         content: '';
         width: 1px;
         height: 7px;
-        background: $color--mine-shaft;
+        background: $color--black;
       }
     }
   }

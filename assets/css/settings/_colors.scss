@@ -1,31 +1,18 @@
-// color names from http://chir.ag/projects/name-that-color/
+$color--black: #333;
+$color--gray: #eee;
+$color--white: #fafafa;
 
-$color--alabaster: #fafafa;
-$color--anakiwa: #a1c9ff;
-$color--bright-green: #67e600;
-$color--burning-orange: #ff763c;
-$color--dove-gray: #626262;
-$color--gallery: #eee;
-$color--golden-tainoi: #ffc662;
-$color--gorse: #ffef41;
-$color--koromiko: #ffac62;
-$color--malibu: #83b8ff;
-$color--mine-shaft: #333;
-$color--paris-daisy: #fffa7a;
-$color--perfume: #c1a7f3;
-$color--portage: #ad88f3;
-$color--screamin-green: #95ff61;
-$color--tart-orange: #fe4a49;
-$color--wild-sand: #f4f4f4;
+$color--warning: #ff763c;
+$color--error: #fe4a49;
 
-$color--event-crimson: #ff5757;
-$color--event-orange: #ff8f57;
-$color--event-yellow : #ffd500;
-$color--event-green : #00edb1;
-$color--event-aquamarine: #00b8ff;
-$color--event-blue: #3de5ff;
-$color--event-burple: #4f64ff;
-$color--event-purple: #bd5eff;
+$color--event-ico: #ff5757;
+$color--event-hackathon: #ff8f57;
+$color--event-summit: #ffd500;
+$color--event-crowdsale: #00edb1;
+$color--event-conference: #00b8ff;
+$color--event-meetup: #3de5ff;
+$color--event-release: #4f64ff;
+$color--event-workshop: #bd5eff;
 
 $color--dapp-live: #b6fc94;
 $color--dapp-live-light: #e2ffd4;
@@ -43,5 +30,3 @@ $color--dapp-unknown: #F5F5F5;
 $color--dapp-unknown-light: #FAFAFA;
 $color--dapp-abandoned: #F5F5F5;
 $color--dapp-abandoned-light: #FAFAFA;
-
-$color--bg: #eee;

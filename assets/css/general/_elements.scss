@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: $color--bg;
+  background: $color--gray;
   font-size: 13px;
   height: 100%;
 }
@@ -15,7 +15,7 @@ body, input, textarea {
   font-weight: 300;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
-  color: $color--mine-shaft;
+  color: $color--black;
   letter-spacing: -.25px;
 }
 
@@ -60,7 +60,7 @@ em {
 }
 
 a {
-  color: $color--mine-shaft;
+  color: $color--black;
   text-decoration: underline;
   cursor: pointer;
 }

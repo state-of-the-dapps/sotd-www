@@ -29,7 +29,7 @@
 
   .-component-events-detail-categoriessocial {
     &.wrapper {
-      background: lighten($color--gallery, 100%);
+      background: lighten($color--gray, 100%);
     }
     &.wrapper-inner {
       max-width: 2000px;

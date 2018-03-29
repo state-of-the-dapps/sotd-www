@@ -86,15 +86,15 @@
     z-index: 5;
     font-weight: 600;
     text-align: center;
-    background: $color--gallery;
-    border: 1px solid $color--mine-shaft;
+    background: $color--gray;
+    border: 1px solid $color--black;
     padding: 3px 8px 2px;
     text-transform: uppercase;
     font-size: .7rem;
     opacity: 0;
     transition: opacity .5s ease;
     white-space: nowrap;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     &:after {
       position: absolute;
       bottom: -7px;
@@ -102,7 +102,7 @@
       content: '';
       width: 1px;
       height: 7px;
-      background: $color--mine-shaft;
+      background: $color--black;
     }
   }
 
@@ -148,7 +148,7 @@
     height: 200px;
     margin: 0 10px 10px 10px;
     background: white;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     transition: transform .3s ease, opacity .3s ease;
     text-decoration: none;
     order: 10;
@@ -348,7 +348,7 @@
   }
 
   .new-message {
-    color: $color--gallery;
+    color: $color--gray;
     display: inline-block;
     font-size: .7rem;
     text-transform: uppercase;
@@ -385,7 +385,7 @@
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 700;
-    color: rgba($color--mine-shaft, .75);
+    color: rgba($color--black, .75);
     line-height: 1.5;
     &.-live {
       background: $color--dapp-live;

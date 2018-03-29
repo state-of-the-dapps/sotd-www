@@ -93,28 +93,28 @@
       text-align: center;
       padding: 8px;
       &.--ico {
-        background: $color--event-crimson;
+        background: $color--event-ico;
       }
       &.--hackathon {
-        background: $color--event-orange;
+        background: $color--event-hackathon;
       }
       &.--summit {
-        background: $color--event-yellow;
+        background: $color--event-summit;
       }
       &.--crowdsale {
-        background: $color--event-green;
+        background: $color--event-crowdsale;
       }
       &.--conference {
-        background: $color--event-aquamarine;
+        background: $color--event-conference;
       }
       &.--meetup {
-        background: $color--event-blue;
+        background: $color--event-meetup;
       }
       &.--release {
-        background: $color--event-burple;
+        background: $color--event-release;
       }
       &.--workshop {
-        background: $color--event-purple;
+        background: $color--event-workshop;
       }
     }
   }
@@ -136,7 +136,7 @@
       width: 100%;
       font-size: .775rem;
       font-weight: 600;
-      background: darken($color--gallery, 10%);
+      background: darken($color--gray, 10%);
       text-transform: uppercase;
     }
     &.wrapper {
@@ -144,7 +144,7 @@
       width: 75px;
       height: 75px;
       margin: 0 auto 20px;
-      background: $color--gallery;
+      background: $color--gray;
       @include tweakpoint('min-width', $tweakpoint--default) {
         display: flex;
         flex-direction: column;
@@ -155,8 +155,8 @@
 
   .-component-events-list-items-item {
     &.item {
-      background: lighten($color--gallery, 100%);
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+      background: lighten($color--gray, 100%);
+      box-shadow: 0 0 20px rgba($color--black,.1);
       margin-bottom: 20px;
       padding: 20px;
       position: relative;

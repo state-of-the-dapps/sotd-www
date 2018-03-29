@@ -114,8 +114,8 @@
 
   .item {
     width: 100%;
-    background: $color--alabaster;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    background: $color--white;
+    box-shadow: 0 0 20px rgba($color--black,.1);
     overflow: hidden;
     margin-left: 10px;
     margin-right: 10px;
@@ -147,7 +147,7 @@
   .logo {
     max-width: 160px;
     max-height: 160px;
-    background: darken($color--alabaster, 6%);
+    background: darken($color--white, 6%);
     padding: 15px;
     float: right;
     margin-left: 20px;
@@ -170,9 +170,9 @@
     margin: 0 10px;
     overflow: hidden;
     padding: 20px;
-    background: rgba($color--alabaster, .2);
+    background: rgba($color--white, .2);
     margin-bottom: 20px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     @include tweakpoint('min-width', $tweakpoint--default) {
       width: calc(33.33% - 20px);
     }

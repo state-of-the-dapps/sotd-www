@@ -113,8 +113,8 @@
   }
 
   .section {
-    background: $color--mine-shaft;
-    color: $color--gallery;
+    background: $color--black;
+    color: $color--gray;
     &.--foot {
       padding: 10px 40px;
       @include tweakpoint('min-width', $tweakpoint--default) {
@@ -156,7 +156,7 @@
 
   .link {
     display: inline-block;
-    color: $color--gallery;
+    color: $color--gray;
     text-decoration: none;
     padding: .2rem .5rem;
     position: relative;
@@ -173,7 +173,7 @@
       }
     }
     &.--is-active {
-      border-color: $color--gallery;
+      border-color: $color--gray;
       @include tweakpoint('min-width', $tweakpoint--default) {
         border-color: transparent;
       }
@@ -185,7 +185,7 @@
           right: 50%;
           width: 1px;
           height: 12px;
-          background: $color--mine-shaft;
+          background: $color--black;
           z-index: 15;
         }
       }
@@ -197,17 +197,17 @@
   }
 
   .dropdown {
-    color: $color--mine-shaft;
+    color: $color--black;
     position: absolute;
     right: 50%;
     top: 25px;
     z-index: 20;
     margin-right: -150px;
-    border: 1px solid $color--mine-shaft;
-    background: rgba(lighten($color--gallery, 100%),.97);
+    border: 1px solid $color--black;
+    background: rgba(lighten($color--gray, 100%),.97);
     padding: 15px;
     width: 300px;
-    box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 10px rgba($color--black,.1);
     text-align: left;
     @include tweakpoint('min-width', $tweakpoint--default) {
       right: 0;
@@ -232,8 +232,8 @@
     width: 100%;
     margin-top: 10px;
     border: none;
-    background: rgba($color--mine-shaft, .1);
-    color: rgba($color--mine-shaft, .4);
+    background: rgba($color--black, .1);
+    color: rgba($color--black, .4);
     font-size: 1rem;
     font-weight: 600;
     padding: 6px;
@@ -244,9 +244,9 @@
       margin-right: 0;
     }
     &.--is-ready {
-      background: rgba($color--mine-shaft, 1);
-      box-shadow: 0 17px 70px rgba($color--mine-shaft, 0.3);
-      color: $color--gallery;
+      background: rgba($color--black, 1);
+      box-shadow: 0 17px 70px rgba($color--black, 0.3);
+      color: $color--gray;
       &:hover {
         cursor: pointer;
       }
@@ -257,11 +257,11 @@
   }
 
   .text-input {
-    border: 1px solid rgba($color--mine-shaft, .2);
+    border: 1px solid rgba($color--black, .2);
     padding: 10px;
     width: 100%;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-    background: lighten($color--gallery,100%);
+    box-shadow: 0 0 20px rgba($color--black,.05);
+    background: lighten($color--gray,100%);
     transition: background .2s ease;
     &:focus + .label,  &.--is-filled + .label {
       top: -11px;

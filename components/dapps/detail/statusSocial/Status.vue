@@ -26,7 +26,7 @@
       position: absolute;
       width: 15px;
       height: 15px;
-      background-color: $color--mine-shaft;
+      background-color: $color--black;
       left: 0;
       top: 1px;
       border-radius: 50%;

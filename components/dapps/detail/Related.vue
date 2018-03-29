@@ -58,7 +58,7 @@
     text-align: center;
     background: white;
     word-wrap: break-word;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     transition: transform .3s ease, opacity .3s ease;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
@@ -145,7 +145,7 @@
     left: 0;
     width: 100%;
     text-align: center;
-    border-bottom: 4px solid rgba($color--mine-shaft,.2);
+    border-bottom: 4px solid rgba($color--black,.2);
     margin: 0;
     padding: 5px;
     font-size: .8rem;
@@ -179,6 +179,6 @@
   }
 
   .section {
-    background: lighten($color--gallery, 100%);
+    background: lighten($color--gray, 100%);
   }
 </style>

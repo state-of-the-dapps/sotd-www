@@ -29,49 +29,49 @@
         position: absolute;
         width: 15px;
         height: 15px;
-        background-color: $color--mine-shaft;
+        background-color: $color--black;
         left: 0;
         top: 1px;
         border-radius: 50%;
       }
       &.--ico {
         &:before {
-          background: $color--event-crimson;
+          background: $color--event-ico;
         }
       }
       &.--hackathon {
         &:before {
-          background: $color--event-orange;
+          background: $color--event-hackathon;
         }
       }
       &.--summit {
         &:before {
-          background: $color--event-yellow;
+          background: $color--event-summit;
         }
       }
       &.--crowdsale {
         &:before {
-          background: $color--event-green;
+          background: $color--event-crowdsale;
         }
       }
       &.--conference {
         &:before {
-          background: $color--event-aquamarine;
+          background: $color--event-conference;
         }
       }
       &.--meetup {
         &:before {
-          background: $color--event-blue;
+          background: $color--event-meetup;
         }
       }
       &.--release {
         &:before {
-          background: $color--event-burple;
+          background: $color--event-release;
         }
       }
       &.--workshop {
         &:before {
-          background: $color--event-purple;
+          background: $color--event-workshop;
         }
       }
     }

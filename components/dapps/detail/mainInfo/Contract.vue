@@ -55,9 +55,9 @@
     text-transform: uppercase;
     font-weight: 600;
     font-size: .65rem;
-    background: $color--mine-shaft;
+    background: $color--black;
     padding: 2px 5px;
-    color: $color--gallery;
+    color: $color--gray;
   }
 
   .contract-network {

@@ -46,9 +46,9 @@
 
   .button {
     padding: 12px 25px;
-    color: $color--gallery;
-    background: $color--mine-shaft;
-    box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
+    color: $color--gray;
+    background: $color--black;
+    box-shadow: 0 17px 70px rgba($color--black,.2);
     cursor: pointer;
     position: relative;
     &:active {
@@ -76,6 +76,6 @@
     padding-bottom: 20px;
     text-align: center;
     font-size: 1.75rem;
-    color: lighten($color--mine-shaft,55%);
+    color: lighten($color--black,55%);
   }
 </style>

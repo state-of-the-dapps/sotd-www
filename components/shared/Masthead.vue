@@ -95,7 +95,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: $color--mine-shaft;
+      background: $color--black;
       transition: transform .5s ease;
       transform: scaleX(0)
     }
@@ -125,9 +125,9 @@
       text-align: center;
       padding: 8px 15px;
       margin-left: 10px;
-      color: $color--gallery;
-      background: $color--mine-shaft;
-      box-shadow: 0 17px 70px rgba($color--mine-shaft,.4);
+      color: $color--gray;
+      background: $color--black;
+      box-shadow: 0 17px 70px rgba($color--black,.4);
     }
   }
 

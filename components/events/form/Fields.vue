@@ -81,8 +81,8 @@
       position: relative;
       border: 1px solid transparent;
       &.-icon, &.-image {
-        background: rgba(lighten($color--gallery, 100%), .9);
-        box-shadow: 0 0 20px rgba($color--mine-shaft, .05);
+        background: rgba(lighten($color--gray, 100%), .9);
+        box-shadow: 0 0 20px rgba($color--black, .05);
         width: 150px;
         height: 150px;
         display: flex;
@@ -93,7 +93,7 @@
         margin-right: auto;
         border-radius: 50%;
         &.-drop {
-          border-color: $color--mine-shaft;
+          border-color: $color--black;
         }
       }
       &.-image {
@@ -103,14 +103,14 @@
         border-radius: 10px;
       }
       &.--has-errors {
-        border-color: $color--tart-orange;
+        border-color: $color--error;
       }
     }
 
     /deep/ .required {
       display: inline-block;
       padding-left: 2px;
-      color: $color--tart-orange;
+      color: $color--error;
     }
 
     /deep/ .label {
@@ -127,8 +127,8 @@
       border: none;
       padding: 30px 50px 30px 20px;
       width: 100%;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-      background: rgba(lighten($color--gallery, 100%),.9);
+      box-shadow: 0 0 20px rgba($color--black,.05);
+      background: rgba(lighten($color--gray, 100%),.9);
       transition: background .2s ease;
       &:focus {
         background: none;
@@ -164,15 +164,15 @@
 
     /deep/ .error-list, /deep/ .warning-list {
       padding: 10px 20px;
-      color: lighten($color--alabaster, 100%);
+      color: lighten($color--white, 100%);
     }
 
     /deep/ .error-list {
-      background: $color--tart-orange;
+      background: $color--error;
     }
 
     /deep/ .warning-list {
-      background: $color--burning-orange;
+      background: $color--warning;
     }
 
     /deep/ .error-item, /deep/ .warning-item {

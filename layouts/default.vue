@@ -83,8 +83,8 @@
     opacity: 0;
     transition: opacity .2s ease;
     cursor: pointer;
-    -webkit-filter: drop-shadow(0 0 10px rgba($color--mine-shaft, .2));
-    filter:         drop-shadow(0 0 10px rgba($color--mine-shaft, .2));
+    -webkit-filter: drop-shadow(0 0 10px rgba($color--black, .2));
+    filter:         drop-shadow(0 0 10px rgba($color--black, .2));
     &.--has-announcement {
       @include tweakpoint('min-width', 1000px) {
         bottom: 55px;

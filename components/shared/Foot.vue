@@ -36,12 +36,12 @@
   }
 
   .section {
-    background: $color--mine-shaft;
-    color: darken($color--gallery, 25%);
+    background: $color--black;
+    color: darken($color--gray, 25%);
   }
 
   .link {
-    color: darken($color--gallery, 25%);
+    color: darken($color--gray, 25%);
   }
 
   .-attributions {

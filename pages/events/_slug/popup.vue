@@ -188,7 +188,7 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba($color--mine-shaft, .9);
+    background: rgba($color--black, .9);
     top: 0;
     left: 0;
     z-index: 100;

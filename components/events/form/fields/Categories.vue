@@ -41,41 +41,41 @@
   .item {
     width: calc(50% - 10px);
     margin: 5px;
-    background: lighten($color--gallery, 100%);
+    background: lighten($color--gray, 100%);
     padding: 10px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
     transition: all .2s ease;
     user-select: none;
     font-size: .95rem;
     &:hover {
       cursor: pointer;
-      border: 1px solid $color--mine-shaft;
+      border: 1px solid $color--black;
     }
     &.--is-selected {
       &.--ico {
-        background: $color--event-crimson;
+        background: $color--event-ico;
       }
       &.--hackathon {
-        background: $color--event-orange;
+        background: $color--event-hackathon;
       }
       &.--summit {
-        background: $color--event-yellow;
+        background: $color--event-summit;
       }
       &.--crowdsale {
-        background: $color--event-green;
+        background: $color--event-crowdsale;
       }
       &.--conference {
-        background: $color--event-aquamarine;
+        background: $color--event-conference;
       }
       &.--meetup {
-        background: $color--event-blue;
+        background: $color--event-meetup;
       }
       &.--release {
-        background: $color--event-burple;
+        background: $color--event-release;
       }
       &.--workshop {
-        background: $color--event-purple;
+        background: $color--event-workshop;
       }
     }
   }
