@@ -36,15 +36,14 @@ input::placeholder {
 }
 
 h1, h2 {
-  font-weight: 600;
-}
-
-h1, h2, h3, h4 {
-  letter-spacing: -.5px;
+  font-family: 'Dharma-Gothic-Regular';
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  font-weight: 300;
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 5rem;
   line-height: 1;
 }
 
@@ -96,4 +95,15 @@ button::-moz-focus-inner {
 
 #__nuxt, #__layout {
   height: 100%;
+}
+
+html, .wf-loading {
+  visibility: hidden !important;
+  opacity: 0;
+}
+
+.wf-active, .wf-inactive {
+  visibility: visible !important;
+  opacity: 1;
+  transition: opacity 0.1s;
 }

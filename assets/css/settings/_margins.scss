@@ -1,0 +1,11 @@
+$margin--wrapper-narrow: 0px 10px;
+$margin--wrapper-wide: 0px 22px;
+
+// Handles main margin wrappers
+@mixin margin-wrapper-main {
+    margin: $margin--wrapper-narrow;
+    @include tweakpoint('min-width', 750px) {
+        margin: $margin--wrapper-wide
+    }
+}
+  

@@ -1,6 +1,11 @@
 <template>
-  <div class="layout--home">
-    <Foot/>
+  <div class="layout-home">
+    <div class="main">
+      <nuxt/>
+    </div>
+    <div class="footer">
+      <Foot/>
+    </div>
   </div>
 </template>
 
@@ -13,3 +18,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.layout-home {
+  height: 100%;
+}
+
+.main {
+  min-height: 98%;
+  overflow: auto;
+  position: relative;
+}
+</style>

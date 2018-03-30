@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import { mpDappView } from '~/helpers/mixpanel'
+  import { trackDappView } from '~/helpers/mixpanel'
   import Linkexchange from '~/components/shared/Linkexchange.vue'
 
   export default {
@@ -49,7 +49,7 @@
         const sourceModel = this.sourceModel
         const sourcePath = this.$route.path
         const targetDapp = slug
-        const action = mpDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
+        const action = trackDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
         this.$mixpanel.track(action.name, action.data)
       }
     }

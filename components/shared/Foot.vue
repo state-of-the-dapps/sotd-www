@@ -1,85 +1,138 @@
 <template>
-  <section class="section -footer">
-    <div class="container">
-      <ul class="list -links">
-        <li class="item -links"><nuxt-link @click.native="$mixpanel.track('Footer - About')" to="/about" class="link">About</nuxt-link></li>
-        <li class="item -links"><nuxt-link @click.native="$mixpanel.track('Footer - Terms of Use')" to="/terms" class="link">Terms of use</nuxt-link></li>
-        <ul class="list -social-logo-links">
-          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Twitter' })" href="https://twitter.com/StateOfTheDApps" class="social-link -twitter"><img src="~/assets/images/social/twitter-reverse.png" width="18" alt="Twitter" class="icon -social-logo-links"></a></li>
-          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Github' })" href="https://github.com/state-of-the-dapps" class="social-link -github"><img src="~/assets/images/social/github-reverse.png" width="18" alt="Github" class="icon -social-logo-links"></a></li>
-          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Reddit' })" href="https://reddit.com/r/StateOfTheDApps" class="social-link -reddit"><img src="~/assets/images/social/reddit-reverse.png" width="18" alt="Reddit" class="icon -social-logo-links"></a></li>
-          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Medium' })" href="https://blog.stateofthedapps.com/" class="social-link -medium"><img src="~/assets/images/social/medium-reverse.png" width="18" alt="Medium" class="icon -social-logo-links"></a></li>
-          <li class="item -social-logo-links"><a @click="$mixpanel.track('SotD - Social', { platform: 'Slack' })" href="https://slack.stateofthedapps.com/" class="social-link -slack"><img src="~/assets/images/social/slack-reverse.png" width="18" alt="Slack" class="icon -social-logo-links"></a></li>
-        </ul>
-      </ul>
-      <ul class="list -attributions">
-        <li><img class="logo -social-logo-links" src="~/assets/images/logo-reverse.png" width="120"></li>
-        <li>Copyright &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</li>
-        <li>Designed by <a class="link -attributions" @click="$mixpanel.track('SotD - Designer website')" href="https://www.theduo.io" target="_blank" rel="noopener noreferrer">Duo</a></li>
-      </ul>
-    </div>
-  </section>
+<div class="component--shared-footer">
+  <ul class="nav-list">
+    <li class="nav-item">
+      <nuxt-link @click.native="trackAboutPage()" to="/about" class="nav-link">About</nuxt-link>
+    </li>
+    <li class="nav-item">
+      <nuxt-link @click.native="trackTermsPage()" to="/terms" class="nav-link">Terms of use</nuxt-link>
+    </li>
+    <ul class="social-list">
+      <li class="social-item">
+        <a @click="trackSocial('Twitter')" href="https://twitter.com/StateOfTheDApps" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/twitter-reverse.png" alt="Twitter" class="social-icon"></a>
+      </li>
+      <li class="social-item">
+        <a @click="trackSocial('Github')" href="https://github.com/state-of-the-dapps" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/github-reverse.png" alt="Github" class="social-icon"></a>
+      </li>
+      <li class="social-item">
+        <a @click="trackSocial('Reddit')" href="https://reddit.com/r/StateOfTheDApps" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/reddit-reverse.png" alt="Reddit" class="social-icon"></a>
+      </li>
+      <li class="social-item">
+        <a @click="trackSocial('Medium')" href="https://blog.stateofthedapps.com/" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/medium-reverse.png" alt="Medium" class="social-icon"></a>
+      </li>
+      <li class="social-item">
+        <a @click="trackSocial('Slack')" href="https://slack.stateofthedapps.com/" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/slack-reverse.png" alt="Slack" class="social-icon"></a>
+      </li>
+    </ul>
+  </ul>
+  <ul class="attribution-list">
+    <li class="attribution-item">
+      <img class="attribution-logo" src="~/assets/images/logo-reverse.png">
+    </li>
+    <li class="attribution-item">
+      <span>Copyright &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</span>
+    </li>
+    <li class="attribution-item">
+      <span>Designed by <a class="attribution-link" @click="$mixpanel.track('SotD - Designer website')" href="https://www.theduo.io" target="_blank" rel="noopener noreferrer">Duo</a></span>
+    </li>
+  </ul>
+</div>
 </template>
 
+<script>
+import { trackAboutPage, trackSocial, trackTermsPage } from '~/helpers/mixpanel'
+
+export default {
+  data: () => {
+    return {
+      sourceComponent: '/shared/foot',
+      sourcePageLocation: 'footer',
+      sourcePath: ''
+    }
+  },
+  methods: {
+    trackAboutPage () {
+      const action = trackAboutPage(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackTermsPage () {
+      const action = trackTermsPage(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackSocial (platform) {
+      const action = trackSocial(platform, this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
+  mounted () {
+    this.sourcePath = this.$route.path
+  }
+}
+</script>
+
 <style lang="scss" scoped>
-  @import '~assets/css/settings';
+@import '~assets/css/settings';
 
-  .container {
-    padding: 30px 70px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      flex-direction: row;
-    }
-  }
+.attribution-link {
+  color: darken($color--gray, 25%);
+  text-decoration: none;
+  font-weight: 700;
+}
 
-  .section {
-    background: $color--black;
-    color: darken($color--gray, 25%);
+.attribution-list {
+  margin: 15px 0;
+  text-align: center;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    text-align: right;
+    width: 50%;
   }
+}
 
-  .link {
-    color: darken($color--gray, 25%);
-  }
+.attribution-logo {
+  margin-bottom: 8px;
+  width: 120px;
+}
 
-  .-attributions {
-    &.list {
-      margin: 15px 0;
-      text-align: center;
-      @include tweakpoint('min-width', $tweakpoint--default) {
-        text-align: right;
-        width: 50%;
-      }
-    }
+.component--shared-footer {
+  align-items: center;
+  background: $color--black;
+  color: darken($color--gray, 25%);
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  justify-content: center;
+  padding: 20px 30px;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    flex-direction: row;
   }
+}
 
-  .-links {
-    &.list {
-      margin: 15px 0;
-      text-align: center;
-      @include tweakpoint('min-width', $tweakpoint--default) {
-        text-align: left;
-        width: 50%;
-      }
-    }
-  }
+.nav-link {
+  color: darken($color--gray, 25%);
+  text-decoration: none;
+}
 
-  .-social-logo-links {
-    &.list {
-      margin-top: 5px;
-      display: flex;
-      align-items: center;
-    }
-    &.item {
-      margin-right: 5px;
-    }
-    &.icon {
-      display: block;
-    }
-    &.logo {
-      margin-bottom: 5px;
-    }
+.nav-list {
+  margin: 15px 0;
+  text-align: center;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    text-align: left;
+    width: 50%;
   }
+}
+
+.social-list {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.social-icon {
+  display: block;
+  width: 20px;
+}
+
+.social-item {
+  margin-right: 4px;
+}
 </style>

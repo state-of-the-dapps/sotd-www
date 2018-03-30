@@ -15,7 +15,7 @@
   import Related from '~/components/dapps/detail/Related.vue'
   import StatusSocial from '~/components/dapps/detail/StatusSocial.vue'
   import Tools from '~/components/dapps/detail/Tools.vue'
-  import { mpDappView } from '~/helpers/mixpanel'
+  import { trackDappView } from '~/helpers/mixpanel'
 
   export default {
     components: {
@@ -51,7 +51,7 @@
       const sourceModel = ''
       const sourcePath = ''
       const targetDapp = this.item.slug
-      const action = mpDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
+      const action = trackDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
     },
     head () {
