@@ -19,13 +19,16 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
 .component-HomeHero {
-  background-image: $gradient--hero;
+  background-image: $gradient--hero-1;
   color: lighten($color--white, 100%);
+  padding: 10px 0 20px 0;
+  /deep/ a {
+    color: white;
+  }
 }
 
 .wrapper {
