@@ -59,7 +59,7 @@
   font-size: 5.3rem;
   line-height: .825;
   letter-spacing: 1.05px;
-  margin: 1.5rem 0;
+  margin: 0 0 1.5rem 0;
 }
 </style>
 

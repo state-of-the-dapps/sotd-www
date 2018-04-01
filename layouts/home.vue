@@ -26,7 +26,8 @@ export default {
 
 .main {
   min-height: 98%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
 }
 </style>

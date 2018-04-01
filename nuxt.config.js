@@ -93,7 +93,7 @@ module.exports = {
       }
     ]
   },
-  loading: { color: '#eee' },
+  loading: { color: '#fff' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },
