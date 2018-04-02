@@ -9,16 +9,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import IconBadgeMetamask from '~/components/IconBadgeMetamask'
 
 export default {
   data () {
     return {
-      loaded: 'is-waiting'
+      loaded: ''
     }
+  },
+  destroyed () {
+    this.$store.dispatch('setHeroLoaded')
   },
   components: {
     IconBadgeMetamask
+  },
+  computed: {
+    ...mapGetters([
+      'heroHasLoaded'
+    ])
   },
   props: [
     'index',
@@ -28,6 +37,9 @@ export default {
     loadImage () {
       this.loaded = 'is-active'
     }
+  },
+  mounted () {
+    this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
   }
 }
 </script>

@@ -33,11 +33,18 @@
   width: 50%;
   margin: 0 5px;
   text-align: center;
+  @include tweakpoint('min-width', 480px) {
+    width: 40%;
+    max-width: 200px; 
+  }
 }
 
 .description {
   font-size: 1.1rem;
   width: 75%;
+  @include tweakpoint('min-width', 640px) {
+    width: 90%;
+  }
 }
 
 .description-link {
@@ -64,6 +71,14 @@
   line-height: .825;
   letter-spacing: 1.05px;
   margin: 1rem 0 1.5rem 0;
+  opacity: 0;
+  animation: fadeInHomeHero 1s linear both;
+  animation-delay: 1s;
+}
+
+@keyframes fadeInHomeHero {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; }
 }
 </style>
 

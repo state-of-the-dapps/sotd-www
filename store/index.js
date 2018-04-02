@@ -17,14 +17,17 @@ const actions = {
         commit('SET_STATS', data)
       })
   },
+  setHeroLoaded ({ commit }) {
+    commit('SET_HERO_LOADED')
+  },
   setSiteSection ({ commit }, section) {
     commit('SET_SITE_SECTION', section)
   }
 }
 
 const getters = {
-  userEntryRoute: state => {
-    return state.user.entryRoute
+  heroHasLoaded: state => {
+    return state.site.heroHasLoaded
   },
   siteSection: state => {
     return state.site.section
@@ -34,12 +37,15 @@ const getters = {
   },
   statEventCount: state => {
     return state.stats.eventCount
+  },
+  userEntryRoute: state => {
+    return state.user.entryRoute
   }
 }
 
 const mutations = {
-  SET_USER_ENTRY_ROUTE (state, path) {
-    state.user.entryRoute = path
+  SET_HERO_LOADED (state) {
+    state.site.heroHasLoaded = true
   },
   SET_SITE_SECTION (state, section) {
     state.site.section = section
@@ -47,11 +53,15 @@ const mutations = {
   SET_STATS (state, data) {
     state.stats.dappCount = data.dappCount
     state.stats.eventCount = data.eventCount
+  },
+  SET_USER_ENTRY_ROUTE (state, path) {
+    state.user.entryRoute = path
   }
 }
 
 const state = () => ({
   site: {
+    heroHasLoaded: false,
     section: ''
   },
   stats: {

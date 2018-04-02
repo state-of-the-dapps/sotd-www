@@ -26,6 +26,11 @@ export default {
   background-image: $gradient--hero-1;
   color: lighten($color--white, 100%);
   padding: 10px 0 20px 0;
+  @include tweakpoint('min-width', 640px) {
+    background-image: $gradient--hero-2;
+    padding-top: 17px;
+    padding-bottom: 22px;
+  }
   /deep/ a {
     color: white;
   }

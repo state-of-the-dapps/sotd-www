@@ -43,9 +43,13 @@ export default {
 
 .component-HomeHeroContentIcons {
   position: relative;
-  top: 0;
+  bottom: 0;
   left: 30px;
   height: 270px;
+  @include tweakpoint('min-width', 640px) {
+    left: 0;
+    bottom: 10px;
+  }
 }
 
 .card {
@@ -69,98 +73,126 @@ export default {
     bottom: 50px;
     left: 0;
     z-index: 1;
-    transition-delay: 1s;
+    &.is-active {
+      transition-delay: 2s;
+    }
   }
   &.-dapp-1 {
     transform: scale(.4);
     bottom: 130px;
     left: 77px;
     z-index: 2;
-    transition-delay: 1.2s;
+    &.is-active {
+      transition-delay: 2.2s;
+    }
   }
   &.-dapp-2 {
     transform: scale(.4);
     bottom: 37px;
     left: 125px;
     z-index: 4;
-    transition-delay: .8s;
+    &.is-active {
+      transition-delay: 1.8s;
+    }
   }
   &.-dapp-3 {
     transform: scale(.57);
     bottom: 114px;
     left: 157px;
     z-index: 3;
-    transition-delay: .2s;
+    &.is-active {
+      transition-delay: 1.2s;
+    }
   }
   &.-dapp-4 {
     transform: scale(.29);
     bottom: 45px;
     left: 216px;
     z-index: 3;
-    transition-delay: 1.75s;
+    &.is-active {
+      transition-delay: 2.75s;
+    }
   }
   &.-dapp-5 {
     transform: scale(.46);
     bottom: 83px;
     left: 257px;
     z-index: 3;
-    transition-delay: 1s;
+    &.is-active {
+      transition-delay: 2s;
+    }
   }
   &.-dapp-6 {
     transform: scale(.35);
     bottom: 5px;
     left: 298px;
     z-index: 3;
-    transition-delay: .5s;
+    &.is-active {
+      transition-delay: 1.5s;
+    }
   }
   &.-dapp-7 {
     transform: scale(0.46);
     bottom: 150px;
     left: 337px;
     z-index: 3;
-    transition-delay: .75s;
+    &.is-active {
+      transition-delay: 1.75s;
+    }
   }
   &.-dapp-8 {
     transform: scale(0.57);
     bottom: 25px;
     left: 361px;
     z-index: 3;
-    transition-delay: 1.2s;
+    &.is-active {
+      transition-delay: 2.2s;
+    }
   }
   &.-dapp-9 {
     transform: scale(0.46);
     bottom: 146px;
     left: 444px;
     z-index: 1;
-    transition-delay: 1.4s;
+    &.is-active {
+      transition-delay: 2.4s;
+    }
   }
   &.-dapp-10 {
     transform: scale(0.46);
     bottom: 63px;
     left: 486px;
     z-index: 4;
-    transition-delay: .9s;
+    &.is-active {
+      transition-delay: 1.9s;
+    }
   }
   &.-dapp-11 {
     transform: scale(0.57);
     bottom: 0px;
     left: 563px;
     z-index: 3;
-    transition-delay: 1.6s;
+    &.is-active {
+      transition-delay: 2.6s;
+    }
   }
   &.-dapp-12 {
     transform: scale(0.57);
     bottom: 127px;
     left: 575px;
     z-index: 1;
-    transition-delay: .6s;
+    &.is-active {
+      transition-delay: 1.6s;
+    }
   }
   &.-dapp-13 {
     transform: scale(0.55);
     bottom: 81px;
     left: 645px;
     z-index: 2;
-    transition-delay: .4s;
+    &.is-active {
+      transition-delay: 1.4s;
+    }
   }
 }
 </style>
