@@ -60,8 +60,8 @@ export default {
   transform-origin: bottom left;
   z-index: 5;
   color: $color--purple;
-  // transition: opacity 1s ease;
-  opacity: 1;
+  transition: opacity 1s ease;
+  opacity: 0;
   &.is-active {
     opacity: 1;
   }

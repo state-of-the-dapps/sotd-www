@@ -39,6 +39,7 @@ export default {
   ],
   methods: {
     loadImage () {
+      console.log('It loaded')
       this.loaded = 'is-active'
     }
   },
