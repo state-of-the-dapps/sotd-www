@@ -1,17 +1,15 @@
 <template>
   <div class="component-HomeHeroContentIcons">
-    <div v-for="(status, index) in cards" :key="index" :class="'card -dapp-' + index">
-      <img class="card-icon" :src="require('~/assets/images/dapp-icons/' + index + '.jpg')" />
-      <div :class="'card-info -' + status">
-        <span class="status">{{ status }}</span>
-        <IconBadgeMetamask/>
-      </div>
-    </div>
+    <HomeHeroContentIconsItem v-for="(status, index) in cards" 
+      :key="index"
+      :index="index"
+      :status="status"
+    />
   </div>
 </template>
 
 <script>
-import IconBadgeMetamask from '~/components/IconBadgeMetamask'
+import HomeHeroContentIconsItem from '~/components/HomeHeroContentIconsItem'
 
 export default {
   data () {
@@ -23,16 +21,22 @@ export default {
         'beta',
         'live',
         'live',
-        'live'
+        'live',
+        'live',
+        'live',
+        'beta',
+        'live',
+        'beta',
+        'wip',
+        'wip'
       ]
     }
   },
   components: {
-    IconBadgeMetamask
+    HomeHeroContentIconsItem
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -41,7 +45,7 @@ export default {
   position: relative;
   top: 0;
   left: 30px;
-  height: 300px;
+  height: 270px;
 }
 
 .card {
@@ -52,76 +56,112 @@ export default {
   transform-origin: bottom left;
   z-index: 5;
   color: $color--purple;
+  transition: opacity 1s ease;
+  opacity: 0;
+  &.is-active {
+    opacity: 1;
+  }
+  &.is-waiting {
+    opacity: 0;
+  }
   &.-dapp-0 {
     transform: scale(.55);
-    bottom: 83px;
+    bottom: 50px;
     left: 0;
     z-index: 1;
+    transition-delay: 1s;
   }
   &.-dapp-1 {
     transform: scale(.4);
-    bottom: 153px;
+    bottom: 130px;
     left: 77px;
     z-index: 2;
+    transition-delay: 1.2s;
   }
   &.-dapp-2 {
     transform: scale(.4);
-    bottom: 43px;
+    bottom: 37px;
     left: 125px;
     z-index: 4;
+    transition-delay: .8s;
   }
   &.-dapp-3 {
-    transform: scale(.55);
-    bottom: 136px;
+    transform: scale(.57);
+    bottom: 114px;
     left: 157px;
     z-index: 3;
+    transition-delay: .2s;
   }
   &.-dapp-4 {
     transform: scale(.29);
-    bottom: 56px;
+    bottom: 45px;
     left: 216px;
     z-index: 3;
+    transition-delay: 1.75s;
   }
   &.-dapp-5 {
     transform: scale(.46);
-    bottom: 99px;
-    left: 255px;
+    bottom: 83px;
+    left: 257px;
     z-index: 3;
+    transition-delay: 1s;
   }
   &.-dapp-6 {
     transform: scale(.35);
     bottom: 5px;
-    left: 295px;
+    left: 298px;
     z-index: 3;
+    transition-delay: .5s;
   }
-}
-
-.card-icon {
-  display: block;
-  width: 200px;
-}
-
-.card-info {
-  background: $color--dapp-live;
-  height: 40px;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 0px 10px;
-  display: flex;
-  align-items: center;
-  &.-beta{
-    background: $color--dapp-beta;    
+  &.-dapp-7 {
+    transform: scale(0.46);
+    bottom: 150px;
+    left: 337px;
+    z-index: 3;
+    transition-delay: .75s;
   }
-  &.-concept {
-    background: $color--dapp-concept;    
-  }  
-  &.-live {
-    background: $color--dapp-live;    
+  &.-dapp-8 {
+    transform: scale(0.57);
+    bottom: 25px;
+    left: 361px;
+    z-index: 3;
+    transition-delay: 1.2s;
   }
-}
-
-.status {
-  flex-grow: 1;
+  &.-dapp-9 {
+    transform: scale(0.46);
+    bottom: 146px;
+    left: 444px;
+    z-index: 1;
+    transition-delay: 1.4s;
+  }
+  &.-dapp-10 {
+    transform: scale(0.46);
+    bottom: 63px;
+    left: 486px;
+    z-index: 4;
+    transition-delay: .9s;
+  }
+  &.-dapp-11 {
+    transform: scale(0.57);
+    bottom: 0px;
+    left: 563px;
+    z-index: 3;
+    transition-delay: 1.6s;
+  }
+  &.-dapp-12 {
+    transform: scale(0.57);
+    bottom: 127px;
+    left: 575px;
+    z-index: 1;
+    transition-delay: .6s;
+  }
+  &.-dapp-13 {
+    transform: scale(0.55);
+    bottom: 81px;
+    left: 645px;
+    z-index: 2;
+    transition-delay: .4s;
+  }
 }
 </style>
 
