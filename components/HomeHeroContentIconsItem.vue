@@ -3,14 +3,14 @@
   <img class="card-icon" @load="loadImage()" :src="require('~/assets/images/dapp-icons/' + index + '.jpg')" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>
-    <IconBadgeMetamask/>
+    <SvgIconBadgeMetamask/>
   </div>
 </div>  
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import IconBadgeMetamask from '~/components/IconBadgeMetamask'
+import SvgIconBadgeMetamask from '~/components/SvgIconBadgeMetamask'
 
 export default {
   data () {
@@ -22,7 +22,7 @@ export default {
     this.$store.dispatch('setHeroLoaded')
   },
   components: {
-    IconBadgeMetamask
+    SvgIconBadgeMetamask
   },
   computed: {
     ...mapGetters([

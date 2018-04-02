@@ -2,10 +2,10 @@
   <div class="component-Menu">
     <div class="nameplate">
       <nuxt-link class="logo-link -icon" :to="{ name: 'home' }">
-        <IconLogo fill="white" :width="45" :height="45" />
+        <SvgIconLogo fill="white" :width="45" :height="45" />
       </nuxt-link>
       <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }">
-        <Logotype fill="white" :width="120" :height="26" />
+        <SvgLogotype fill="white" :width="120" :height="26" />
       </nuxt-link>
       <span class="tagline">The curated list of decentralized applications</span>
     </div>
@@ -20,7 +20,7 @@
         <nuxt-link class="nav-link" :to="{ name: 'events' }">Events</nuxt-link>
       </li>
       <li class="nav-item -newsletter">
-        <IconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
+        <SvgIconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
         <span class="nav-link -newsletter">Stay in the loop</span>
       </li>
     </ul>
@@ -28,15 +28,15 @@
 </template>
 
 <script>
-import IconLogo from '~/components/IconLogo'
-import IconMail from '~/components/IconMail'
-import Logotype from '~/components/Logotype'
+import SvgIconLogo from '~/components/SvgIconLogo'
+import SvgIconMail from '~/components/SvgIconMail'
+import SvgLogotype from '~/components/SvgLogotype'
 
 export default {
   components: {
-    IconLogo,
-    IconMail,
-    Logotype
+    SvgIconLogo,
+    SvgIconMail,
+    SvgLogotype
   }
 }
 </script>
