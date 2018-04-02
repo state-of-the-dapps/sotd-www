@@ -1,13 +1,9 @@
 <template>
 <div :class="'card -dapp-' + index + ' ' + loaded">
-  <img class="card-icon" @load="loadImage()" :src="require('~/assets/images/dapp-icons/' + index + '.jpg')" />
+  <img class="card-icon" :src="imageSrc" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>
-    <SvgIconBadgeMetamask
-      fill="purple"
-      :height="18"
-      :width="18"
-    />
+    <SvgIconBadgeMetamask/>
   </div>
 </div>  
 </template>
@@ -19,7 +15,8 @@ import SvgIconBadgeMetamask from '~/components/SvgIconBadgeMetamask'
 export default {
   data () {
     return {
-      loaded: ''
+      loaded: '',
+      imageSrc: ''
     }
   },
   destroyed () {
@@ -38,13 +35,16 @@ export default {
     'status'
   ],
   methods: {
-    loadImage () {
-      console.log('It loaded')
+    loadImage (index) {
+      var img = new Image()
+      img.src = require('~/assets/images/dapp-icons/' + index + '.jpg')
+      this.imageSrc = img.src
       this.loaded = 'is-active'
     }
   },
   mounted () {
     this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
+    this.loadImage(this.index)
   }
 }
 </script>
