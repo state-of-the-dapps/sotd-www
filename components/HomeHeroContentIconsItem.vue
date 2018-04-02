@@ -3,7 +3,11 @@
   <img class="card-icon" @load="loadImage()" :src="require('~/assets/images/dapp-icons/' + index + '.jpg')" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>
-    <SvgIconBadgeMetamask/>
+    <SvgIconBadgeMetamask
+      fill="purple"
+      :height="18"
+      :width="18"
+    />
   </div>
 </div>  
 </template>
