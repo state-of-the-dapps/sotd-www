@@ -38,8 +38,10 @@ export default {
     loadImage (index) {
       var img = new Image()
       img.src = require('~/assets/images/dapp-icons/' + index + '.jpg')
+      img.onload = () => {
+        this.loaded = 'is-active'
+      }
       this.imageSrc = img.src
-      this.loaded = 'is-active'
     }
   },
   mounted () {
