@@ -7,7 +7,7 @@
       <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }">
         <SvgLogotype fill="white" :width="120" :height="26" />
       </nuxt-link>
-      <span class="tagline">The curated list of decentralized applications</span>
+      <span class="tagline">The curated list of decentralized apps</span>
     </div>
     <ul class="nav-list" role="navigation">
       <li class="nav-item">

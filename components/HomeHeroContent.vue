@@ -43,5 +43,12 @@ export default {
       width: 775px;
     }    
   }
+  @include tweakpoint('min-width', 1550px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 775px;
+  }
 }
 </style>

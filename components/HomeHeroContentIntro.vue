@@ -51,6 +51,10 @@ export default {
 .cta-list {
   display: flex;
   margin: 50px -5px 0;
+  @include tweakpoint('min-width', 1550px) {
+    justify-content: center;
+    margin: 25px 0;
+  }
 }
 
 .cta-item {
@@ -72,6 +76,11 @@ export default {
   @include tweakpoint('min-width', 1400px) {
     width: 70%;
   }
+  @include tweakpoint('min-width', 1550px) {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 .description-link {
@@ -87,6 +96,9 @@ export default {
   line-height: 1.05;
   letter-spacing: 0;
   margin: 0 1px;
+  @include tweakpoint('min-width', 1550px) {
+    text-align: left;
+  }
 }
 
 .subtitle-wrapper {
@@ -99,6 +111,9 @@ export default {
   letter-spacing: 1.05px;
   margin: 1rem 0 1.5rem 0;
   opacity: 0;
+  @include tweakpoint('min-width', 1550px) {
+    text-align: center;
+  }
   &.-first-load {
     animation: fadeInHomeHero 1s linear both;
     animation-delay: 1s;

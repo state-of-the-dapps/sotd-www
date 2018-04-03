@@ -53,6 +53,10 @@ export default {
   @include tweakpoint('min-width', 1400px) {
     bottom: 25px;
   }
+  @include tweakpoint('min-width', 1550px) {
+    margin-top: -125px;
+    left: 20px;
+  }
 }
 
 .card {
