@@ -100,7 +100,7 @@ export default {
   padding: 15px 0;
   display: inline-block;
   padding-left: 100%;
-  animation: scroll-left 50s linear infinite;
+  animation: scroll-left 60s linear infinite;
 }
 
 .event-list-wrapper {
