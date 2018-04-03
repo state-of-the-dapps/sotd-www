@@ -9,6 +9,11 @@
           <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
           <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
           <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
         </span>
       </div>
       <ul class="button-list">
