@@ -1,6 +1,6 @@
 <template>
   <div class="component-HomeHeroContentIntro">
-    <h1 class="title">Explore decentralized <br>applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
+    <h1 class="title" :class="'-' + loaded">Explore decentralized <br>applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
     <p class="description">Lollipop sesame snaps croissant cake gummies halvah danish marzipan brownie. Liquorice jelly-o cake caramels. Donut gummies liquorice. <nuxt-link class="description-link" to="/">Learn more</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }">Explore the ÐApps</nuxt-link></li>
@@ -8,6 +8,30 @@
     </ul>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters([
+      'heroHasLoaded'
+    ])
+  },
+  data () {
+    return {
+      loaded: ''
+    }
+  },
+  destroyed () {
+    this.$store.dispatch('setHeroLoaded')
+  },
+  mounted () {
+    this.loaded = (!this.heroHasLoaded) ? 'first-load' : 'has-loaded'
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -72,8 +96,13 @@
   letter-spacing: 1.05px;
   margin: 1rem 0 1.5rem 0;
   opacity: 0;
-  animation: fadeInHomeHero 1s linear both;
-  animation-delay: 1s;
+  &.-first-load {
+    animation: fadeInHomeHero 1s linear both;
+    animation-delay: 1s;
+  }
+  &.-has-loaded {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInHomeHero {
