@@ -153,8 +153,9 @@ export default {
     @include tweakpoint('min-width', 1550px) {
       left: auto;
       right: auto;
-      right: 320px;
-      bottom: 40px;
+      right: 330px;
+      bottom: 70px;
+      transform: scale(.35);
       transform-origin: bottom right;
       z-index: 5;
     } 
