@@ -81,7 +81,7 @@ export default {
   &.-newsletter {
     padding: 4px 10px 4px 20px;
     border-left: 1px solid rgba($color--white, .6);
-    @include tweakpoint('min-width', 640px) {
+    @include tweakpoint('min-width', 575px) {
       padding: 14px 10px 14px 20px;
     }
     @include tweakpoint('min-width', 834px) {
@@ -99,7 +99,7 @@ export default {
   }
   &.-newsletter {
     display: none;
-    @include tweakpoint('min-width', 640px) {
+    @include tweakpoint('min-width', 575px) {
       display: inline-block;
       padding-left: 10px;
     }

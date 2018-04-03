@@ -21,7 +21,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-HomeHeroContent {
-  @include tweakpoint('min-width', 640px) {
+  @include tweakpoint('min-width', 575px) {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -31,6 +31,16 @@ export default {
     }
     .component-HomeHeroContentIcons {
       flex-grow: 1;
+    }    
+  }
+  @include tweakpoint('min-width', 1300px) {
+    .component-HomeHeroContentIntro {
+      width: 500px;
+    }    
+  }
+  @include tweakpoint('min-width', 1400px) {
+    .component-HomeHeroContentIntro {
+      width: 775px;
     }    
   }
 }

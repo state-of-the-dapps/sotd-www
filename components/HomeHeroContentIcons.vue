@@ -46,9 +46,12 @@ export default {
   bottom: 0;
   left: 30px;
   height: 270px;
-  @include tweakpoint('min-width', 640px) {
+  @include tweakpoint('min-width', 575px) {
     left: 0;
     bottom: 10px;
+  }
+  @include tweakpoint('min-width', 1400px) {
+    bottom: 25px;
   }
 }
 

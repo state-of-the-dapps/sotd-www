@@ -1,6 +1,6 @@
 <template>
   <div class="component-HomeHeroContentIntro">
-    <h1 class="title" :class="'-' + loaded">Explore decentralized <br>applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
+    <h1 class="title" :class="'-' + loaded">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
     <p class="description">Lollipop sesame snaps croissant cake gummies halvah danish marzipan brownie. Liquorice jelly-o cake caramels. Donut gummies liquorice. <nuxt-link class="description-link" to="/">Learn more</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }">Explore the ÐApps</nuxt-link></li>
@@ -66,8 +66,11 @@ export default {
 .description {
   font-size: 1.1rem;
   width: 75%;
-  @include tweakpoint('min-width', 640px) {
+  @include tweakpoint('min-width', 575px) {
     width: 90%;
+  }
+  @include tweakpoint('min-width', 1400px) {
+    width: 70%;
   }
 }
 
