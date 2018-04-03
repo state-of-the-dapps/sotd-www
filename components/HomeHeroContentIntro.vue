@@ -36,6 +36,11 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-HomeHeroContentIntro {
+  position: relative;
+  z-index: 20;
+}
+
 .cta-link {
   display: block;
   padding: 10px 0;
