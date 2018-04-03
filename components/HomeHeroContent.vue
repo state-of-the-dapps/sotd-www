@@ -31,7 +31,7 @@ export default {
     }
     .component-HomeHeroContentIcons {
       flex-grow: 1;
-    }    
+    } 
   }
   @include tweakpoint('min-width', 1300px) {
     .component-HomeHeroContentIntro {
@@ -41,14 +41,16 @@ export default {
   @include tweakpoint('min-width', 1400px) {
     .component-HomeHeroContentIntro {
       width: 775px;
+      margin: 40px auto;
     }    
   }
   @include tweakpoint('min-width', 1550px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 0 auto;
-    width: 775px;
+    .component-HomeHeroContentIcons {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+    }    
   }
 }
 </style>

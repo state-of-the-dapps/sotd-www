@@ -26,6 +26,7 @@ export default {
   background-image: $gradient--hero-1;
   color: lighten($color--white, 100%);
   padding: 10px 0 20px 0;
+  overflow: hidden;
   @include tweakpoint('min-width', 575px) {
     background-image: $gradient--hero-2;
     padding-top: 17px;

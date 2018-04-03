@@ -52,10 +52,7 @@ export default {
   }
   @include tweakpoint('min-width', 1400px) {
     bottom: 25px;
-  }
-  @include tweakpoint('min-width', 1550px) {
-    margin-top: -125px;
-    left: 20px;
+    margin-top: 20px;
   }
 }
 
@@ -80,6 +77,12 @@ export default {
     bottom: 50px;
     left: 0;
     z-index: 1;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      bottom: 85px;
+      left: 265px;
+    }
     &.is-active {
       transition-delay: 2s;
     }
@@ -89,6 +92,12 @@ export default {
     bottom: 130px;
     left: 77px;
     z-index: 2;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      bottom: 160px;
+      left: 40px;
+    }
     &.is-active {
       transition-delay: 2.2s;
     }
@@ -98,6 +107,11 @@ export default {
     bottom: 37px;
     left: 125px;
     z-index: 4;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      left: 160px;
+    }
     &.is-active {
       transition-delay: 1.8s;
     }
@@ -107,6 +121,12 @@ export default {
     bottom: 114px;
     left: 157px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      bottom: 58px;
+      left: 58px;
+    }
     &.is-active {
       transition-delay: 1.2s;
     }
@@ -116,6 +136,11 @@ export default {
     bottom: 45px;
     left: 216px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      left: 340px;
+    } 
     &.is-active {
       transition-delay: 2.75s;
     }
@@ -125,6 +150,14 @@ export default {
     bottom: 83px;
     left: 257px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 320px;
+      bottom: 40px;
+      transform-origin: bottom right;
+      z-index: 5;
+    } 
     &.is-active {
       transition-delay: 2s;
     }
@@ -134,6 +167,14 @@ export default {
     bottom: 5px;
     left: 298px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: -15px;
+      bottom: 120px;
+      z-index: 3;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 1.5s;
     }
@@ -143,6 +184,14 @@ export default {
     bottom: 150px;
     left: 337px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 75px;
+      bottom: 130px;
+      z-index: 3;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 1.75s;
     }
@@ -152,6 +201,13 @@ export default {
     bottom: 25px;
     left: 361px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 20px;
+      z-index: 3;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 2.2s;
     }
@@ -161,6 +217,13 @@ export default {
     bottom: 146px;
     left: 444px;
     z-index: 1;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      bottom: 25px;
+      left: -10px;
+      z-index: 3;
+    }
     &.is-active {
       transition-delay: 2.4s;
     }
@@ -170,6 +233,13 @@ export default {
     bottom: 63px;
     left: 486px;
     z-index: 4;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 110px;
+      z-index: 4;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 1.9s;
     }
@@ -179,6 +249,14 @@ export default {
     bottom: 0px;
     left: 563px;
     z-index: 3;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 230px;
+      bottom: 113px;
+      z-index: 4;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 2.6s;
     }
@@ -188,6 +266,13 @@ export default {
     bottom: 127px;
     left: 575px;
     z-index: 1;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      left: 165px;
+      bottom: 110px;
+      z-index: 4;
+    }
     &.is-active {
       transition-delay: 1.6s;
     }
@@ -197,6 +282,14 @@ export default {
     bottom: 81px;
     left: 645px;
     z-index: 2;
+    @include tweakpoint('min-width', 1550px) {
+      left: auto;
+      right: auto;
+      right: 180px;
+      bottom: 20px;
+      z-index: 3;
+      transform-origin: bottom right;
+    }
     &.is-active {
       transition-delay: 1.4s;
     }

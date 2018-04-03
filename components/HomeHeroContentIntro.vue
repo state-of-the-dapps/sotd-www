@@ -112,6 +112,7 @@ export default {
   margin: 1rem 0 1.5rem 0;
   opacity: 0;
   @include tweakpoint('min-width', 1550px) {
+    margin-top: 20px;
     text-align: center;
   }
   &.-first-load {
