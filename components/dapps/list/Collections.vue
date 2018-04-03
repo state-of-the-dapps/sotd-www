@@ -26,7 +26,8 @@ export default {
         'featured': 'featured',
         'hottest': 'hottest',
         'mobile-friendly': 'mobile',
-        'recently-added': 'recently-added'
+        'recently-added': 'recently-added',
+        'cryptogaming': 'cryptogaming'
       }
     }
   },
