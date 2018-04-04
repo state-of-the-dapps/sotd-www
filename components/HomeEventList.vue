@@ -17,7 +17,7 @@
         </span>
       </div>
       <ul class="button-list">
-        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">Upcoming events</nuxt-link></li>
+        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View events</nuxt-link></li>
         <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
       </ul>
     </div>
@@ -72,11 +72,13 @@ export default {
   @include tweakpoint('min-width', 834px) {
     margin: 0;
     padding-left: 15px;
+    width: 300px;
   }
 }
 
 .button-link {
-  display: block;
+  display: flex;
+  justify-content: center;
   padding: 7px 15px;
   text-decoration: none;
   background: $color--black;
