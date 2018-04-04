@@ -1,7 +1,7 @@
 <template>
   <div class="component-HomeHeroContentIntro">
     <h1 class="title" :class="'-' + loaded">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
-    <p class="description">Lollipop sesame snaps croissant cake gummies halvah danish marzipan brownie. Liquorice jelly-o cake caramels. Donut gummies liquorice. <nuxt-link class="description-link" to="/">Learn more</nuxt-link></p>
+    <p class="description">Lollipop sesame snaps croissant cake gummies halvah danish marzipan brownie. Liquorice jelly-o cake caramels. Donut gummies liquorice. <nuxt-link class="description-link" :to="{ name: 'what'}">Learn more</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }">Explore the ÐApps</nuxt-link></li>
       <li class="cta-item"><nuxt-link class="cta-link -submit" :to="{ name: 'dapps-new' }">Submit a ÐApp</nuxt-link></li>
