@@ -39,11 +39,14 @@ export default {
 @import '~assets/css/settings';
 
 .component-HomeEventList {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
   white-space: nowrap;
   border-bottom: 1px solid rgba($color--black, .15);
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  @include tweakpoint('min-width', 834px) {
+    margin-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .component-SvgIconCalendar {
@@ -109,7 +112,12 @@ export default {
   flex: 1;
   overflow: hidden;
   position: relative;
+  margin: 0 -10px;
+  @include tweakpoint('min-width', 640px) {
+    margin: 0 -20px;
+  }
   @include tweakpoint('min-width', 834px) {
+    margin: 0;
     border-left: 1px solid rgba($color--black, .3);
     border-right: 1px solid rgba($color--black, .3);
   }  
@@ -127,8 +135,6 @@ export default {
 
 .wrapper {
   @include margin-wrapper-main;
-  margin-top: 10px;
-  margin-bottom: 10px;
   @include tweakpoint('min-width', 834px) {
     display: flex;
     align-items: center;
