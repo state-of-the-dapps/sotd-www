@@ -8,7 +8,7 @@
         </span>
       </div>
       <ul class="button-list">
-        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View events</nuxt-link></li>
+        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View all events</nuxt-link></li>
         <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
       </ul>
     </div>
