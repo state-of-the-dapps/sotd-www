@@ -74,7 +74,7 @@ export default {
   margin: 0 -5px;
   @include tweakpoint('min-width', 834px) {
     margin: 0;
-    padding-left: 15px;
+    padding-left: 20px;
     width: 300px;
   }
 }
@@ -130,7 +130,7 @@ export default {
 .heading {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 20px;
 }
 
 .wrapper {
