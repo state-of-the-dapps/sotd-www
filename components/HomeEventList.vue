@@ -17,8 +17,8 @@
         </span>
       </div>
       <ul class="button-list">
-        <li class="button-item"><a class="button-link" href="#">Upcoming events</a></li>
-        <li class="button-item"><a class="button-link -submit" href="#">Submit an event</a></li>
+        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">Upcoming events</nuxt-link></li>
+        <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
       </ul>
     </div>
   </div>
