@@ -2,16 +2,19 @@
   <div class="page-home">
     <HomeHero/>
     <HomeEventList/>
+    <DappsFeaturedList/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import DappsFeaturedList from '~/components/DappsFeaturedList'
 import HomeEventList from '~/components/HomeEventList'
 import HomeHero from '~/components/HomeHero'
 
 export default {
   components: {
+    DappsFeaturedList,
     HomeEventList,
     HomeHero
   },

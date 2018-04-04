@@ -52,10 +52,10 @@ export default {
 @import '~assets/css/settings';
 
 .component-HomeEventList {
-  margin-top: 20px;
+  margin-top: 30px;
   white-space: nowrap;
   border-bottom: 1px solid rgba($color--black, .15);
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   @include tweakpoint('min-width', 834px) {
     margin-top: 10px;
     padding-bottom: 10px;
