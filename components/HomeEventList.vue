@@ -4,16 +4,7 @@
       <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
       <div class="event-list-wrapper">
         <span class="event-list">
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp; 
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
-          <strong>Mar 2</strong> &ndash; Some event &nbsp; &nbsp; &nbsp; &nbsp;
+          <span v-for="(event, index) in events" :key="index"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
         </span>
       </div>
       <ul class="button-list">
@@ -25,11 +16,33 @@
 </template>
 
 <script>
+import axios from '~/helpers/axios'
+import formatDate from 'date-fns/format'
 import SvgIconCalendar from '~/components/SvgIconCalendar'
 
 export default {
   components: {
     SvgIconCalendar
+  },
+  data () {
+    return {
+      events: []
+    }
+  },
+  mounted () {
+    const limit = 10
+    const dateStart = formatDate(Date.now(), 'YYYY-MM-DD')
+    axios.get('events', {
+      params: {
+        dateStart,
+        limit
+      }
+    })
+    .then(response => {
+      const data = response.data
+      const items = data.items
+      this.events = items
+    })
   }
 }
 </script>
