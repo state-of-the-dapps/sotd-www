@@ -19,10 +19,11 @@
     "axios": "^0.16.2",
     "clipboard": "^1.5.16",
     "date-fns": "^1.29.0",
+    "jquery": "^3.3.1",
     "mixpanel-browser": "^2.13.0",
     "nuxt": "1.3.0",
     "redirect-ssl": "^1.2.1",
-    "smoothscroll-polyfill": "^0.3.6",
+    "smoothscroll-polyfill": "^0.4.3",
     "vue-clickaway": "^2.1.0",
     "webfontloader": "^1.6.28"
   },
