@@ -25,7 +25,6 @@ module.exports = {
       }
     },
     vendor: [
-      'jquery',
       'axios',
       'mixpanel-browser',
       'smoothscroll-polyfill',

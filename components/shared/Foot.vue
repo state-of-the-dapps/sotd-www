@@ -101,9 +101,11 @@ export default {
   flex-direction: column;
   font-size: 1rem;
   justify-content: center;
-  padding: 20px 30px;
+  padding: 20px 10px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     flex-direction: row;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }
 
