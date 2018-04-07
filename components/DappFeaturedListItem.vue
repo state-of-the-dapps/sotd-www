@@ -31,7 +31,7 @@ export default {
     width: calc(33.33% - 20px);
   }
   &:hover {
-    transform: scale(1.03)
+    transform: translateY(-2px);
   }
 }
 

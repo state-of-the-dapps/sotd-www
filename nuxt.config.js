@@ -46,9 +46,6 @@ module.exports = {
     '@nuxtjs/router',
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }]
   ],
-  router: {
-    saveScrollPosition: true
-  },
   serverMiddleware: [
     'redirect-ssl'
   ],
@@ -93,7 +90,7 @@ module.exports = {
       }
     ]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#333' },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },

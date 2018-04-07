@@ -7,5 +7,9 @@ $margin--wrapper-medium: 0px 22px;
     @include tweakpoint('min-width', 640px) {
         margin: $margin--wrapper-medium
     }
+    @include tweakpoint('min-width', 2500px) {
+        margin: 0 auto;
+        max-width: 2600px;
+    }
 }
   

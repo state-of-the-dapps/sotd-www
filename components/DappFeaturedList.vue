@@ -86,10 +86,13 @@ export default {
 }
 
 .linkexchange {
-  width: 25%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  @include tweakpoint('min-width', 1200px) {
+    width: 25%;
+  }
 }
 
 .view-all {

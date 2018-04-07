@@ -11,9 +11,12 @@ export default {
   components: {
     DappCardsItem
   },
-  data () {
-    return {
-      dapps: []
+  props: {
+    dapps: {
+      default () {
+        return []
+      },
+      type: Array
     }
   }
 }
