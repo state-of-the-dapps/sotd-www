@@ -1,21 +1,21 @@
 <template>
-  <div class="component-DappFeaturedList">
-    <div class="wrapper">
-      <h2 class="title-2"><SvgIconFeatured/>Featured ÐApps <a href="#" class="view-all">View all <SvgIconChevron :width="8" :height="8" direction="right" /></a></h2>
-      <div class="featured-wrapper">
-        <div class="featured-list-wrapper">
-          <ul class="featured-list">
-            <DappFeaturedListItem v-for="(dapp, index) in dapps" 
-              :key="index"
-              :dapp="dapp"
-              :index="index"
-            />
-          </ul>
-        </div>
-        <div class="linkexchange">Linkexchange</div>
+<div class="component-DappFeaturedList">
+  <div class="wrapper">
+    <h2 class="title-2"><SvgIconFeatured/>Featured ÐApps <a href="#" class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></a></h2>
+    <div class="featured-wrapper">
+      <div class="featured-list-wrapper">
+        <ul class="featured-list">
+          <DappFeaturedListItem v-for="(dapp, index) in dapps" 
+            :key="index"
+            :dapp="dapp"
+            :index="index"
+          />
+        </ul>
       </div>
+      <div class="linkexchange">Linkexchange</div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -95,7 +95,7 @@ export default {
   }
 }
 
-.view-all {
+.cta {
   position: relative;
   bottom: 4px;
   display: inline-block;

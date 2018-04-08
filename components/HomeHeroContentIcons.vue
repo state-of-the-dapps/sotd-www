@@ -1,11 +1,11 @@
 <template>
-  <div class="component-HomeHeroContentIcons">
-    <HomeHeroContentIconsItem v-for="(status, index) in cards" 
-      :key="index"
-      :index="index"
-      :status="status"
-    />
-  </div>
+<div class="component-HomeHeroContentIcons">
+  <HomeHeroContentIconsItem v-for="(status, index) in cards" 
+    :key="index"
+    :index="index"
+    :status="status"
+  />
+</div>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
   }
 }
 
-.card {
+.component-HomeHeroContentIconsItem {
   position: absolute;
   border-radius: 5px;
   overflow: hidden;

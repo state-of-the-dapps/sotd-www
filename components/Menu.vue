@@ -1,30 +1,30 @@
 <template>
-  <div class="component-Menu">
-    <div class="nameplate">
-      <nuxt-link class="logo-link -icon" :to="{ name: 'home' }">
-        <SvgIconLogo fill="white" :width="45" :height="45" />
-      </nuxt-link>
-      <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }">
-        <SvgLogotype fill="white" :width="120" :height="26" />
-      </nuxt-link>
-      <span class="tagline">The curated list of decentralized apps</span>
-    </div>
-    <ul class="nav-list" role="navigation">
-      <li class="nav-item">
-        <nuxt-link class="nav-link" :to="{ name: 'home' }">Home</nuxt-link>
-      </li>
-      <li class="nav-item">
-        <nuxt-link class="nav-link" :to="{ name: 'dapps' }">ÐApps</nuxt-link>
-      </li>
-      <li class="nav-item">
-        <nuxt-link class="nav-link" :to="{ name: 'events' }">Events</nuxt-link>
-      </li>
-      <li class="nav-item -newsletter">
-        <SvgIconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
-        <span class="nav-link -newsletter">Stay in the loop</span>
-      </li>
-    </ul>
+<div class="component-Menu">
+  <div class="nameplate">
+    <nuxt-link class="logo-link -icon" :to="{ name: 'home' }">
+      <SvgIconLogo fill="white" :width="45" :height="45" />
+    </nuxt-link>
+    <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }">
+      <SvgLogotype fill="white" :width="120" :height="26" />
+    </nuxt-link>
+    <span class="tagline">The curated list of decentralized apps</span>
   </div>
+  <ul class="nav-list" role="navigation">
+    <li class="nav-item">
+      <nuxt-link class="nav-link" :to="{ name: 'home' }">Home</nuxt-link>
+    </li>
+    <li class="nav-item">
+      <nuxt-link class="nav-link" :to="{ name: 'dapps' }">ÐApps</nuxt-link>
+    </li>
+    <li class="nav-item">
+      <nuxt-link class="nav-link" :to="{ name: 'events' }">Events</nuxt-link>
+    </li>
+    <li class="nav-item -newsletter">
+      <SvgIconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
+      <span class="nav-link -newsletter">Stay in the loop</span>
+    </li>
+  </ul>
+</div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-<div :class="'card -dapp-' + index + ' ' + loaded">
+<div class="component-HomeHeroContentIconsItem" :class="'-dapp-' + index + ' ' + loaded">
   <img class="card-icon" :src="imageSrc" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>

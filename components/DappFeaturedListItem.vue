@@ -1,10 +1,10 @@
 <template>
-  <li class="component-DappFeaturedListItem" :id="'dapps-featured-list-item-' + index">
-    <a class="dapp-link" href="#">
-      <img class="dapp-image" src="">
-      <div class="dapp-name" :class="'-' + dapp.status">{{ dapp.name }}</div>
-    </a>
-  </li>
+<li class="component-DappFeaturedListItem" :id="'dapps-featured-list-item-' + index">
+  <a class="dapp-link" href="#">
+    <img class="dapp-image" src="">
+    <div class="dapp-name" :class="'-' + dapp.status">{{ dapp.name }}</div>
+  </a>
+</li>
 </template>
 
 <script>

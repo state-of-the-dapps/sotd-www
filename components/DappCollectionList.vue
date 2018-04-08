@@ -1,10 +1,8 @@
 <template>
-  <div class="component-DappCollectionPreview">
-    <div class="wrapper">
-      <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="view-all">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
-      <DappCards :dapps="dapps" />
-    </div>
-  </div>
+<div class="component-DappCollectionList">
+  <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
+  <DappCards :dapps="dapps" />
+</div>
 </template>
 
 <script>
@@ -44,25 +42,26 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.view-all {
+.component-DappCollectionList {
+  border-top: 1px solid rgba($color--black, .15);
+  padding-bottom: 20px;
+}
+
+.cta {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
   letter-spacing: -.25px;
-  margin-left: 12px;
+  margin-left: 10px;
   text-decoration: none;
   font-weight: 300;
 }
 
-.wrapper {
-  @include margin-wrapper-main;
-  border-top: 1px solid rgba($color--black, .15)
-}
-
 .title-3 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-top: 2.25rem;
+  margin-top: 2.2rem;
+  margin-bottom: .2rem;
 }
 </style>
 

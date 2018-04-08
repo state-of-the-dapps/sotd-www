@@ -1,18 +1,18 @@
 <template>
-  <div class="component-HomeEventList">
-    <div class="wrapper">
-      <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
-      <div class="event-list-wrapper">
-        <span class="event-list">
-          <span v-for="(event, index) in events" :key="index"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
-        </span>
-      </div>
-      <ul class="button-list">
-        <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View all events</nuxt-link></li>
-        <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
-      </ul>
+<div class="component-HomeEventList">
+  <div class="wrapper">
+    <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
+    <div class="event-list-wrapper">
+      <span class="event-list">
+        <span v-for="(event, index) in events" :key="index"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
+      </span>
     </div>
+    <ul class="button-list">
+      <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View all events</nuxt-link></li>
+      <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
+    </ul>
   </div>
+</div>
 </template>
 
 <script>

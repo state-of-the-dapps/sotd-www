@@ -20,6 +20,9 @@ const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
 Vue.use(Router)
 
+if (process.client) {
+  window.history.scrollRestoration = 'manual'
+}
 const scrollBehavior = function (to, from, savedPosition) {
   // if the returned position is falsy or an empty object,
   // will retain current scroll position.
@@ -44,9 +47,20 @@ const scrollBehavior = function (to, from, savedPosition) {
     window.$nuxt.$once('triggerScroll', () => {
       // coords will be used if no selector is provided,
       // or if the selector didn't match any element.
-      if (to.hash && document.querySelector(to.hash)) {
-        // scroll to anchor by returning the selector
-        position = { selector: to.hash }
+      if (to.hash) {
+        let hash = to.hash
+        // CSS.escape() is not supported with IE and Edge.
+        if (typeof window.CSS !== 'undefined' && typeof window.CSS.escape !== 'undefined') {
+          hash = '#' + window.CSS.escape(hash.substr(1))
+        }
+        try {
+          if (document.querySelector(hash)) {
+            // scroll to anchor by returning the selector
+            position = { selector: hash }
+          }
+        } catch (e) {
+          console.warn('Failed to save scroll position. Please add CSS.escape() polyfill (https://github.com/mathiasbynens/CSS.escape).')
+        }
       }
       resolve(position)
     })

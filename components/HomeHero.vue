@@ -1,10 +1,10 @@
 <template>
-  <div class="component-HomeHero">
-    <div class="wrapper">
-      <Menu/>
-      <HomeHeroContent/>
-    </div>
+<div class="component-HomeHero">
+  <div class="wrapper">
+    <Menu/>
+    <HomeHeroContent/>
   </div>
+</div>
 </template>
 
 <script>
