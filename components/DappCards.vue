@@ -1,6 +1,6 @@
 <template>
   <ul class="component-DappCards">
-    <DappCardsItem v-for="(dapp, index) in dapps" :key="index" />
+    <DappCardsItem v-for="(dapp, index) in dapps" :key="index" :dapp="dapp" />
   </ul>
 </template>
 

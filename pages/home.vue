@@ -4,7 +4,7 @@
     <HomeEventList/>
     <DappFeaturedList/>
     <div class="wrapper">
-      <h2 class="title-2"><SvgIconCollection/><nuxt-link to="/home2">link</nuxt-link>Collections</h2>
+      <h2 class="title-2"><SvgIconCollection/>Collections</h2>
     </div>
     <DappCollectionPreview v-for="(collection, index) in collections" :collection="collection" :key="index"/>
   </div>
@@ -42,7 +42,6 @@ export default {
       title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
     }
   },
-  layout: 'home',
   mounted () {
     axios
       .get('collections/list/featured')

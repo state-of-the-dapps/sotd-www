@@ -184,7 +184,6 @@ const mutations = {
     } else {
       routerObj['name'] = 'dapps'
     }
-    console.log(routerObj)
     this.$router.replace(routerObj)
   },
   SET_ITEMS (state, data) {

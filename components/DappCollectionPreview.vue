@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import axios from '~/helpers/axios'
 import DappCards from '~/components/DappCards'
 import SvgIconChevron from '~/components/SvgIconChevron'
 
@@ -20,6 +21,15 @@ export default {
     return {
       dapps: []
     }
+  },
+  mounted () {
+    axios
+      .get('collections/' + this.collection.slug)
+      .then(response => {
+        const collection = response.data
+        const dapps = collection.items
+        this.dapps = dapps.slice(0, 6)
+      })
   },
   props: {
     collection: {
