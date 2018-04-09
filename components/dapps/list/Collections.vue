@@ -27,7 +27,8 @@ export default {
         'hottest': 'hottest',
         'mobile-friendly': 'mobile',
         'recently-added': 'recently-added',
-        'cryptogaming': 'cryptogaming'
+        'cryptogaming': 'cryptogaming',
+        'finance': 'finance'
       }
     }
   },
