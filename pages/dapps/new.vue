@@ -3,7 +3,10 @@
     <section class="section -intro">
       <div class="container">
         <h1 class="heading">Submit a ÐApp</h1>
-        <p class="description">Use this form to submit a new Ethereum decentralized app.</p>
+        <p class="description">
+          Use this form to submit a new Ethereum decentralized app.<br />
+          Looking to update an existing ÐApp? <a @click="$mixpanel.track('New DApp - Suggest a change')" :href="'mailto:support@stateofthedapps.com?subject=The following ÐApp needs a change:&body=Please change the following:'" class="link -suggest"><img src="~/assets/images/icons/suggest.png" width="14" class="image"> Suggest a change</a>
+        </p>
       </div>
     </section>
     <section class="section -form">
