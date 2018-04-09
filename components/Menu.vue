@@ -21,7 +21,7 @@
     </li>
     <li class="nav-item -newsletter">
       <SvgIconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
-      <span class="nav-link -newsletter">Stay in the loop</span>
+      <span class="nav-link -newsletter" @click="scrollToMailingList()">Stay in the loop</span>
     </li>
   </ul>
 </div>
@@ -37,6 +37,12 @@ export default {
     SvgIconLogo,
     SvgIconMail,
     SvgLogotype
+  },
+  methods: {
+    scrollToMailingList () {
+      document.getElementById('component-SecondaryCtaMailingList')
+              .scrollIntoView({ behavior: 'smooth' })
+    }
   }
 }
 </script>
@@ -78,6 +84,7 @@ export default {
   margin-left: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   &.-newsletter {
     padding: 4px 10px 4px 20px;
     border-left: 1px solid rgba($color--white, .6);

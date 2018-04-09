@@ -25,7 +25,7 @@ export default {
       .get('collections/list/featured')
       .then(response => {
         const collections = response.data
-        this.collections = collections
+        this.collections = collections.slice(1)
       })
   }
 }

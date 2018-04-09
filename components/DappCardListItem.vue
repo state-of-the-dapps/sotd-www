@@ -38,7 +38,7 @@ export default {
   height: 215px;
   margin: 10px;
   box-shadow: 0 10px 30px rgba($color--black, .1);
-  transition: all .2s ease;
+  transition: all .4s ease;
   border-radius: 4px;
   overflow: hidden;
   &:hover {

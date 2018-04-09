@@ -41,8 +41,12 @@ export default {
 }
 
 .cta {
+  display: inline-block;
   border: 1px solid lighten($color--white, 100%);
-  padding: 4px 20px;
+  padding: 6px 20px;
+  color: lighten($color--white, 100%);
+  text-decoration: none;
+  margin: 5px 0;
 }
 
 .description {

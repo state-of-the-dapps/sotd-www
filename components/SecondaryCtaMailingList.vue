@@ -1,11 +1,11 @@
 <template>
-<div class="component-SecondaryCtaMailingList">
+<div class="component-SecondaryCtaMailingList" id="component-SecondaryCtaMailingList">
   <div class="wrapper">
     <SvgIconMail fill="white" :width="30" :height="30" />
     <h2 class="title-2">Stay in the loop</h2>
     <p class="description">Subscribe to receive updates.</p>
     <div class="input-wrapper">
-      <input class="input" type="text" placeholder="Enter your email here" />
+      <input id="component-SecondaryCtaMailingList-input" class="input" type="text" placeholder="Enter your email here" />
     </div>
     <button class="cta">Join</button>
   </div>
