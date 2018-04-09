@@ -62,6 +62,7 @@ export default {
   font-weight: 600;
   margin-top: 2.2rem;
   margin-bottom: .2rem;
+  letter-spacing: -.5px;
 }
 </style>
 
