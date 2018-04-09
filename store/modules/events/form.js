@@ -43,7 +43,7 @@ function initialState () {
       email: '',
       hashtag: '',
       highlights: [],
-      joinSlack: true,
+      joinSlack: false,
       languages: [],
       location: {},
       name: '',
@@ -59,7 +59,7 @@ function initialState () {
         }
       },
       sponsors: [],
-      subscribeNewsletter: true,
+      subscribeNewsletter: false,
       tags: [],
       teaser: '',
       siteUrls: {

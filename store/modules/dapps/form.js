@@ -42,7 +42,7 @@ function initialState () {
         rinkeby: { address: '' }
       },
       email: '',
-      joinSlack: true,
+      joinSlack: false,
       license: '',
       logo: '',
       name: '',
@@ -55,7 +55,7 @@ function initialState () {
         blog: { path: '' }
       },
       status: '',
-      subscribeNewsletter: true,
+      subscribeNewsletter: false,
       tags: [],
       teaser: '',
       acceptedTerms: false,
