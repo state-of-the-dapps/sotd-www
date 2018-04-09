@@ -18,7 +18,7 @@
 <script>
 import axios from '~/helpers/axios'
 import formatDate from 'date-fns/format'
-import SvgIconCalendar from '~/components/SvgIconCalendar'
+import SvgIconCalendar from './SvgIconCalendar'
 
 export default {
   components: {

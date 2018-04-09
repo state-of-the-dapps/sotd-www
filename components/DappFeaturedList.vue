@@ -20,9 +20,9 @@
 
 <script>
 import axios from '~/helpers/axios'
-import DappFeaturedListItem from '~/components/DappFeaturedListItem'
-import SvgIconChevron from '~/components/SvgIconChevron'
-import SvgIconFeatured from '~/components/SvgIconFeatured'
+import DappFeaturedListItem from './DappFeaturedListItem'
+import SvgIconChevron from './SvgIconChevron'
+import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {

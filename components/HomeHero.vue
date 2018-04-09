@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import HomeHeroContent from '~/components/HomeHeroContent'
-import Menu from '~/components/Menu'
+import HomeHeroContent from './HomeHeroContent'
+import Menu from './Menu'
 
 export default {
   components: {
@@ -23,12 +23,12 @@ export default {
 @import '~assets/css/settings';
 
 .component-HomeHero {
-  background-image: $gradient--hero-1;
+  background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
   padding: 10px 0 20px 0;
   overflow: hidden;
   @include tweakpoint('min-width', 575px) {
-    background-image: $gradient--hero-2;
+    background-image: $gradient--main-2;
     padding-top: 17px;
     padding-bottom: 22px;
   }

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HomeHeroContentIconsItem from '~/components/HomeHeroContentIconsItem'
+import HomeHeroContentIconsItem from './HomeHeroContentIconsItem'
 
 export default {
   data () {

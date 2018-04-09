@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import SvgIconLogo from '~/components/SvgIconLogo'
-import SvgIconMail from '~/components/SvgIconMail'
-import SvgLogotype from '~/components/SvgLogotype'
+import SvgIconLogo from './SvgIconLogo'
+import SvgIconMail from './SvgIconMail'
+import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {

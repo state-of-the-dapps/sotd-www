@@ -7,8 +7,8 @@
 
 <script>
 import axios from '~/helpers/axios'
-import DappCollectionList from '~/components/DappCollectionList'
-import SvgIconCollection from '~/components/SvgIconCollection'
+import DappCollectionList from './DappCollectionList'
+import SvgIconCollection from './SvgIconCollection'
 
 export default {
   components: {
@@ -18,11 +18,6 @@ export default {
   data () {
     return {
       collections: []
-    }
-  },
-  head () {
-    return {
-      title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
     }
   },
   mounted () {

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import HomeHeroContentIcons from '~/components/HomeHeroContentIcons'
-import HomeHeroContentIntro from '~/components/HomeHeroContentIntro'
+import HomeHeroContentIcons from './HomeHeroContentIcons'
+import HomeHeroContentIntro from './HomeHeroContentIntro'
 
 export default {
   components: {

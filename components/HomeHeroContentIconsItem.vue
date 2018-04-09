@@ -3,14 +3,14 @@
   <img class="card-icon" :src="imageSrc" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>
-    <SvgIconBadgeMetamask/>
+    <SvgBadgeMetamask/>
   </div>
 </div>  
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import SvgIconBadgeMetamask from '~/components/SvgIconBadgeMetamask'
+import SvgBadgeMetamask from './SvgBadgeMetamask'
 
 export default {
   data () {
@@ -23,7 +23,7 @@ export default {
     this.$store.dispatch('setHeroLoaded')
   },
   components: {
-    SvgIconBadgeMetamask
+    SvgBadgeMetamask
   },
   computed: {
     ...mapGetters([

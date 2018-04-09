@@ -78,6 +78,9 @@ button {
     -webkit-user-select: none; /* for button */
        -moz-user-select: none;
         -ms-user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
 }
 
 button::-moz-focus-inner {

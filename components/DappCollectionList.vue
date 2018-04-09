@@ -1,18 +1,18 @@
 <template>
 <div class="component-DappCollectionList">
   <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
-  <DappCards :dapps="dapps" />
+  <DappCardList :dapps="dapps" />
 </div>
 </template>
 
 <script>
 import axios from '~/helpers/axios'
-import DappCards from '~/components/DappCards'
-import SvgIconChevron from '~/components/SvgIconChevron'
+import DappCardList from './DappCardList'
+import SvgIconChevron from './SvgIconChevron'
 
 export default {
   components: {
-    DappCards,
+    DappCardList,
     SvgIconChevron
   },
   data () {
@@ -58,8 +58,8 @@ export default {
 }
 
 .title-3 {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.35rem;
+  font-weight: 600;
   margin-top: 2.2rem;
   margin-bottom: .2rem;
 }
