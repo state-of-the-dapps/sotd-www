@@ -82,15 +82,25 @@ export default {
 
 .new {
   position: absolute;
-  overflow: hidden;
   display: inline-block;
   top: 0;
-  background: $color--purple;
-  padding: 5px 6px;
+  padding: 4px 6px;
   text-transform: uppercase;
   font-size: .7rem;
   z-index: 2;
   @include dapp-text-colors;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -3px;
+    border-top: 18px solid $color--purple;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    height: 0;
+    width: 37px;
+    z-index: -1;
+  }
 }
 
 .status {

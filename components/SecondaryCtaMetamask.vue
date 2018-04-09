@@ -9,7 +9,7 @@
       <p class="description">Description for Metamask</p>
     </div>
     <div class="cta-wrapper">
-      <button class="cta">Add Metamask to Chrome</button>
+      <a href="https://metamask.io/" class="cta" target="_blank" rel="noopener noreferrer">Discover Metamask</a>
     </div>
   </div>
 </div>
