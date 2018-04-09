@@ -7,13 +7,18 @@
     <div class="input-wrapper">
       <input id="component-SecondaryCtaMailingList-input" v-model="email" @input="validateEmail" class="input" type="text" placeholder="Enter your email here" />
     </div>
-    <button class="cta" :class="emailIsValid ? '-is-valid' : ''">Join</button>
+    <button class="cta" @click="subscribe()" 
+      :class="[emailIsValid ? '-is-valid' : '', 
+               isSubmitting ? '-is-submitting' : '',
+               justSubmitted ? '-just-submitted' : '']">{{ ctaText }}
+    </button>
   </div>
 </div>
 </template>
 
 <script>
 import { isValidEmail } from '~/helpers/validators'
+import axios from '~/helpers/axios'
 import SvgIconMail from './SvgIconMail'
 
 export default {
@@ -22,11 +27,43 @@ export default {
   },
   data () {
     return {
+      ctaText: 'Sign up',
       email: '',
-      emailIsValid: false
+      emailIsValid: false,
+      isSubmitting: false,
+      justSubmitted: false
     }
   },
   methods: {
+    subscribe () {
+      if (this.emailIsValid && !this.isSubmitting) {
+        this.ctaText = 'Submitting'
+        this.isSubmitting = true
+        const data = {
+          fields: {
+            email: this.email
+          }
+        }
+        axios.post('newsletter/subscribe', data)
+          .then((response) => {
+            this.isSubmitting = false
+            this.justSubmitted = true
+            this.ctaText = 'Thanks! We\'ll be in touch!'
+            return new Promise((resolve) => {
+              setTimeout(() => {
+                this.justSubmitted = false
+                this.ctaText = 'Sign up'
+                resolve()
+              }, 5000)
+            })
+          })
+          .catch(() => {
+            this.isSubmitting = false
+            this.ctaText = 'Sign up'
+            alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
+          })
+      }
+    },
     validateEmail () {
       let isValid = false
       if (this.email.length > 0) {
@@ -55,6 +92,12 @@ export default {
   }
   &.-is-valid {
     opacity: 1;
+  }
+  &.-is-submitting {
+    opacity: .5;
+  }
+  &.-just-submitted {
+    border-color: transparent;
   }
 }
 
