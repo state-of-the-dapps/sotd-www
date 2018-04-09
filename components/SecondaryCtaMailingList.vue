@@ -5,19 +5,37 @@
     <h2 class="title-2">Stay in the loop</h2>
     <p class="description">Subscribe to receive updates.</p>
     <div class="input-wrapper">
-      <input id="component-SecondaryCtaMailingList-input" class="input" type="text" placeholder="Enter your email here" />
+      <input id="component-SecondaryCtaMailingList-input" v-model="email" @input="validateEmail" class="input" type="text" placeholder="Enter your email here" />
     </div>
-    <button class="cta">Join</button>
+    <button class="cta" :class="emailIsValid ? '-is-valid' : ''">Join</button>
   </div>
 </div>
 </template>
 
 <script>
+import { isValidEmail } from '~/helpers/validators'
 import SvgIconMail from './SvgIconMail'
 
 export default {
   components: {
     SvgIconMail
+  },
+  data () {
+    return {
+      email: '',
+      emailIsValid: false
+    }
+  },
+  methods: {
+    validateEmail () {
+      let isValid = false
+      if (this.email.length > 0) {
+        isValid = isValidEmail(this.email)
+      } else {
+        isValid = false
+      }
+      this.emailIsValid = isValid
+    }
   }
 }
 </script>
@@ -30,8 +48,13 @@ export default {
   padding: 4px 75px;
   border: 1px solid lighten($color--white, 100%);
   position: relative;
+  opacity: 0;
+  transition: all .5s ease;
   &:active {
     top: 1px;
+  }
+  &.-is-valid {
+    opacity: 1;
   }
 }
 
