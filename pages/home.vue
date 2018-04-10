@@ -30,6 +30,7 @@ export default {
     return {
       title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
     }
-  }
+  },
+  layout: 'home'
 }
 </script>

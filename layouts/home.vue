@@ -1,25 +1,22 @@
 <template>
   <div class="layout-default">
-    <div class="main">
-      <Menu/>
+    <main class="main">
       <nuxt/>
-    </div>
-    <div class="footer">
+    </main>
+    <footer class="footer">
       <SecondaryCta/>
       <Foot/>
-    </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import Foot from '~/components/shared/Foot'
-import Menu from '~/components/Menu'
+import Foot from '~/components/shared/Foot.vue'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     Foot,
-    Menu,
     SecondaryCta
   }
 }
