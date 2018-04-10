@@ -49,12 +49,12 @@ export default {
           .then((response) => {
             this.trackNewsletterSubscribe()
             this.email = ''
-            this.isSubmitting = false
             this.justSubmitted = true
             this.ctaText = 'Thanks! We\'ll be in touch!'
             return new Promise((resolve) => {
               setTimeout(() => {
                 this.emailIsValid = false
+                this.isSubmitting = false
                 this.justSubmitted = false
                 this.ctaText = 'Sign up'
                 resolve()
@@ -96,7 +96,6 @@ export default {
   border: 1px solid lighten($color--white, 100%);
   position: relative;
   opacity: 0;
-  transition: all .5s ease;
   &:active {
     top: 1px;
   }
@@ -104,10 +103,18 @@ export default {
     opacity: 1;
   }
   &.-is-submitting {
-    opacity: .5;
+    border-color: transparent;
+    cursor: default;
+    &:active {
+      top: 0;
+    }
   }
   &.-just-submitted {
     border-color: transparent;
+    cursor: default;
+    &:active {
+      top: 0;
+    }
   }
 }
 
