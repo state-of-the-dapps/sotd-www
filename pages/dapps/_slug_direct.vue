@@ -47,10 +47,11 @@
         })
     },
     mounted () {
+      const sourceCollection = ''
       const sourceComponent = ''
       const sourcePath = ''
       const targetDapp = this.item.slug
-      const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+      const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
     },
     head () {

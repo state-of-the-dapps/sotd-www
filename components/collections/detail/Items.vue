@@ -3,6 +3,7 @@
     <DappItems v-if="model == 'dapps'"
       :items="items"
       :itemCount="itemCount"
+      :sourceCollection="sourceCollection"
     />
   </div>
 </template>
@@ -21,7 +22,8 @@ export default {
   },
   props: [
     'items',
-    'model'
+    'model',
+    'sourceCollection'
   ]
 }
 </script>

@@ -1,6 +1,9 @@
 <template>
 <ul class="component-DappCardList">
-  <DappCardListItem v-for="(dapp, index) in dapps" :key="index" :dapp="dapp" />
+  <DappCardListItem v-for="(dapp, index) in dapps"
+    :key="index"
+    :dapp="dapp" 
+    :sourceCollection="sourceCollection" />
 </ul>
 </template>
 
@@ -17,6 +20,9 @@ export default {
         return []
       },
       type: Array
+    },
+    sourceCollection: {
+      type: String
     }
   }
 }

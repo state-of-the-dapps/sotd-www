@@ -24,9 +24,10 @@ export default {
   },
   methods: {
     trackDappView (targetDapp) {
+      const sourceCollection = this.sourceCollection
       const sourceComponent = 'DappCardListItem'
       const sourcePath = this.$route.path
-      const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+      const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
     }
   },
@@ -34,6 +35,9 @@ export default {
     dapp: {
       required: true,
       type: Object
+    },
+    sourceCollection: {
+      type: String
     }
   }
 }

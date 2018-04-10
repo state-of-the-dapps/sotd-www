@@ -27,10 +27,11 @@
     },
     methods: {
       trackDappView (slug) {
+        const sourceCollection = ''
         const sourceComponent = '/dapps/detail/related'
         const sourcePath = this.$route.path
         const targetDapp = slug
-        const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+        const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
         this.$mixpanel.track(action.name, action.data)
       }
     }

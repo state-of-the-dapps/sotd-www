@@ -14,11 +14,12 @@ export const trackCollectionView = function (sourceComponent, sourcePath, target
   return action
 }
 
-export const trackDappView = function (sourceComponent, sourcePath, targetDapp) {
+export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
   let name = 'DApp - View'
   let data = {
     targetDapp
   }
+  if (sourceCollection) { data = { ...data, sourceCollection } }
   if (sourceComponent) { data = { ...data, sourceComponent } }
   if (sourcePath) { data = { ...data, sourcePath } }
 

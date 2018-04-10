@@ -10,6 +10,7 @@
     <Items v-if="collection.items.length" 
       :items="collection.items"
       :model="collection.model"
+      :sourceCollection="$route.params.slug"
     />
   </div>
 </template>

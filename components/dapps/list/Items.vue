@@ -37,17 +37,20 @@
   export default {
     props: [
       'items',
-      'itemCount'
+      'itemCount',
+      'sourceCollection'
     ],
     components: {
       Linkexchange
     },
     methods: {
       trackDappView (slug) {
+        console.log(this.sourceCollection)
+        const sourceCollection = this.sourceCollection
         const sourceComponent = '/dapps/list/items/item'
         const sourcePath = this.$route.path
         const targetDapp = slug
-        const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+        const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
         this.$mixpanel.track(action.name, action.data)
       }
     }

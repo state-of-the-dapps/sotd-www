@@ -1,7 +1,7 @@
 <template>
 <div class="component-DappCollectionList">
   <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta" @click.native="trackCollectionView(collection.slug)">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
-  <DappCardList :dapps="dapps" />
+  <DappCardList :dapps="dapps" :sourceCollection="collection.slug" />
 </div>
 </template>
 
