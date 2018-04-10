@@ -38,7 +38,10 @@ export default {
   overflow: hidden;
   transition: all .2s ease;
   @include tweakpoint('min-width', 750px) {
-    width: calc(33.33% - 20px);
+    width: calc(50% - 20px);
+  }
+  @include tweakpoint('min-width', 1200px) {
+    width: calc(25% - 20px); 
   }
   &:hover {
     transform: translateY(-2px);
