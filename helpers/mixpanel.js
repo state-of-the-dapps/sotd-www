@@ -1,51 +1,110 @@
-export const trackAboutPage = function (sourceComponent, sourcePageLocation, sourcePath) {
+export const trackCollectionView = function (sourceComponent, sourcePath, targetCollection) {
+  let name = 'Collection - View'
   let data = {
-    sourceComponent,
-    sourcePageLocation,
-    sourcePath
+    targetCollection
   }
+  if (sourceComponent) { data = { ...data, sourceComponent } }
+  if (sourcePath) { data = { ...data, sourcePath } }
 
   const action = {
-    name: 'About page',
-    data: data
+    name,
+    data
   }
 
   return action
 }
 
-export const trackDappView = function (sourceComponent, sourceModel, sourcePath, targetDapp) {
+export const trackDappView = function (sourceComponent, sourcePath, targetDapp) {
+  let name = 'DApp - View'
   let data = {
     targetDapp
   }
   if (sourceComponent) { data = { ...data, sourceComponent } }
-  if (sourceModel) { data = { ...data, sourceModel } }
   if (sourcePath) { data = { ...data, sourcePath } }
 
   const action = {
-    name: 'DApp - View',
-    data: data
+    name,
+    data
   }
 
   return action
 }
 
-export const trackSocial = function (platform, sourceComponent, sourcePageLocation, sourcePath) {
+export const trackHomeEventCta = function (targetCta) {
+  let name = 'Home Event Cta'
   let data = {
-    platform,
+    targetCta
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackHomeHeroCta = function (targetCta) {
+  let name = 'Home Hero CTA'
+  let data = {
+    targetCta
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackHomeHeroDappIcon = function (targetIndex) {
+  let name = 'Home Hero Dapp Icon'
+  let data = {
+    targetIndex
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackMenu = function (sourcePath, targetMenuItem) {
+  let name = 'Menu'
+  let data = {
+    sourcePath,
+    targetMenuItem
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackPageAbout = function (sourceComponent, sourcePageLocation, sourcePath) {
+  let name = 'About page'
+  let data = {
     sourceComponent,
     sourcePageLocation,
     sourcePath
   }
 
   const action = {
-    name: 'Social',
-    data: data
+    name,
+    data
   }
 
   return action
 }
 
-export const trackTermsPage = function (sourceComponent, sourcePageLocation, sourcePath) {
+export const trackPageTerms = function (sourceComponent, sourcePageLocation, sourcePath) {
+  let name = 'Terms page'
   let data = {
     sourceComponent,
     sourcePageLocation,
@@ -53,8 +112,25 @@ export const trackTermsPage = function (sourceComponent, sourcePageLocation, sou
   }
 
   const action = {
-    name: 'Terms page',
-    data: data
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackSocial = function (sourceComponent, sourcePageLocation, sourcePath, targetPlatform) {
+  let name = 'Social'
+  let data = {
+    sourceComponent,
+    sourcePageLocation,
+    sourcePath,
+    targetPlatform
+  }
+
+  const action = {
+    name,
+    data
   }
 
   return action

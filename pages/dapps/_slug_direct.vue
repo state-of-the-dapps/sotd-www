@@ -48,10 +48,9 @@
     },
     mounted () {
       const sourceComponent = ''
-      const sourceModel = ''
       const sourcePath = ''
       const targetDapp = this.item.slug
-      const action = trackDappView(sourceComponent, sourceModel, sourcePath, targetDapp)
+      const action = trackDappView(sourceComponent, sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
     },
     head () {

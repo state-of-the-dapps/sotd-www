@@ -1,7 +1,7 @@
 <template>
 <div class="component-DappFeaturedList">
   <div class="wrapper">
-    <h2 class="title-2"><SvgIconFeatured/>Featured ÐApps <a href="#" class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></a></h2>
+    <h2 class="title-2"><SvgIconFeatured/>Featured ÐApps <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h2>
     <div class="featured-wrapper">
       <div class="featured-list-wrapper">
         <ul class="featured-list">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { trackCollectionView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import SvgIconChevron from './SvgIconChevron'
@@ -34,6 +35,15 @@ export default {
     return {
       scrollIndex: 0,
       dapps: []
+    }
+  },
+  methods: {
+    trackCollectionView (slug) {
+      const sourceComponent = 'DappFeaturedList'
+      const sourcePath = this.$route.path
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {

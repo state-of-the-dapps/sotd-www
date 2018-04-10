@@ -3,7 +3,6 @@
     <DappItems v-if="model == 'dapps'"
       :items="items"
       :itemCount="itemCount"
-      sourceModel="collections"
     />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-<div class="component-HomeHeroContentIconsItem" :class="'-dapp-' + index + ' ' + loaded">
+<div class="component-HomeHeroContentIconsItem" :class="'-dapp-' + index + ' ' + loaded" @click="trackHomeHeroDappIcon(index)">
   <img class="card-icon" :src="imageSrc" />
   <div :class="'card-info -' + status">
     <span class="status">{{ status }}</span>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { trackHomeHeroDappIcon } from '~/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 import SvgBadgeMetamask from './SvgBadgeMetamask'
 
@@ -42,6 +43,10 @@ export default {
         this.loaded = 'is-active'
       }
       this.imageSrc = img.src
+    },
+    trackHomeHeroDappIcon (targetIndex) {
+      const action = trackHomeHeroDappIcon(targetIndex)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {

@@ -1,14 +1,24 @@
 <template>
 <li class="component-DappFeaturedListItem" :id="'dapps-featured-list-item-' + index">
-  <a class="dapp-link" href="#">
+  <nuxt-link :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">
     <img class="dapp-image" src="">
     <div class="dapp-name" :class="'-' + dapp.status">{{ dapp.name }}</div>
-  </a>
+  </nuxt-link>
 </li>
 </template>
 
 <script>
+import { trackDappView } from '~/helpers/mixpanel'
+
 export default {
+  methods: {
+    trackDappView (targetDapp) {
+      const sourceComponent = 'DappFeaturedListItem'
+      const sourcePath = this.$route.path
+      const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
   props: ['dapp', 'index']
 }
 </script>

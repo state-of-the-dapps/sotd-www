@@ -1,11 +1,12 @@
 <template>
 <div class="component-DappCollectionList">
-  <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
+  <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta" @click.native="trackCollectionView(collection.slug)">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
   <DappCardList :dapps="dapps" />
 </div>
 </template>
 
 <script>
+import { trackCollectionView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from './DappCardList'
 import SvgIconChevron from './SvgIconChevron'
@@ -18,6 +19,15 @@ export default {
   data () {
     return {
       dapps: []
+    }
+  },
+  methods: {
+    trackCollectionView (slug) {
+      const sourceComponent = 'DappCollectionList'
+      const sourcePath = this.$route.path
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {

@@ -2,10 +2,10 @@
 <div class="component--shared-footer">
   <ul class="nav-list">
     <li class="nav-item">
-      <nuxt-link @click.native="trackAboutPage()" to="/about" class="nav-link">About</nuxt-link>
+      <nuxt-link @click.native="trackPageAbout()" to="/about" class="nav-link">About</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link @click.native="trackTermsPage()" to="/terms" class="nav-link">Terms of use</nuxt-link>
+      <nuxt-link @click.native="trackPageTerms()" to="/terms" class="nav-link">Terms of use</nuxt-link>
     </li>
     <ul class="social-list">
       <li class="social-item">
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { trackAboutPage, trackSocial, trackTermsPage } from '~/helpers/mixpanel'
+import { trackPageAbout, trackSocial, trackPageTerms } from '~/helpers/mixpanel'
 
 export default {
   data: () => {
@@ -51,16 +51,16 @@ export default {
     }
   },
   methods: {
-    trackAboutPage () {
-      const action = trackAboutPage(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackPageAbout () {
+      const action = trackPageAbout(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackTermsPage () {
-      const action = trackTermsPage(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackPageTerms () {
+      const action = trackPageTerms(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
     trackSocial (platform) {
-      const action = trackSocial(platform, this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      const action = trackSocial(this.sourceComponent, this.sourcePageLocation, this.sourcePath, platform)
       this.$mixpanel.track(action.name, action.data)
     }
   },

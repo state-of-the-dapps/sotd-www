@@ -6,7 +6,6 @@
     <Items
       :items="dapps"
       :itemCount="dappCount"
-      sourceModel="dapps"
     />
     <Pager/>
   </div>

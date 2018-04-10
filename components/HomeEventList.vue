@@ -8,14 +8,15 @@
       </span>
     </div>
     <ul class="button-list">
-      <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }">View all events</nuxt-link></li>
-      <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }">Submit an event</nuxt-link></li>
+      <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }" @click.native="trackHomeEventCta('view')">View all events</nuxt-link></li>
+      <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }" @click.native="trackHomeEventCta('submit')">Submit an event</nuxt-link></li>
     </ul>
   </div>
 </div>
 </template>
 
 <script>
+import { trackHomeEventCta } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import formatDate from 'date-fns/format'
 import SvgIconCalendar from './SvgIconCalendar'
@@ -27,6 +28,12 @@ export default {
   data () {
     return {
       events: []
+    }
+  },
+  methods: {
+    trackHomeEventCta (targetCta) {
+      const action = trackHomeEventCta(targetCta)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
