@@ -2,6 +2,7 @@ html {
   box-sizing: border-box;
   background: $color--gray;
   font-size: 13px;
+  height: 100%;
 }
 
 *, *:before, *:after {
@@ -86,10 +87,6 @@ button {
 button::-moz-focus-inner {
     border: 0;
     padding: 0;
-}
-
-#__nuxt {
-  overflow: hidden;
 }
 
 #__nuxt, #__layout {
