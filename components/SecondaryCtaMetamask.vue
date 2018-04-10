@@ -6,10 +6,10 @@
     </div>
     <div class="description-wrapper">
       <h5 class="title-5">Metamask</h5>
-      <p class="description">Metamask lets you use Ethereum ÐApps within your browser. <a class="link" href="https://metamask.io/" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Try it now</a></p>
+      <p class="description">Metamask lets you use Ethereum ÐApps within your browser. <a class="link" href="https://metamask.io/?ref=StateOfTheDApps" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Try it now</a></p>
     </div>
     <div class="cta-wrapper">
-      <a href="https://metamask.io/" class="cta" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Discover Metamask</a>
+      <a href="https://metamask.io/?ref=StateOfTheDApps" class="cta" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Discover Metamask</a>
     </div>
   </div>
 </div>
