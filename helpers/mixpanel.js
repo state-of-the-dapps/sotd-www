@@ -87,6 +87,37 @@ export const trackMenu = function (sourcePath, targetMenuItem) {
   return action
 }
 
+export const trackMetamaskCta = function (sourceComponent, sourcePath) {
+  let name = 'Metamask CTA'
+  let data = {
+    sourceComponent,
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackNewsletterSubscribe = function (email, sourceComponent, sourcePath) {
+  let name = 'Newsletter - Subscribe'
+  let data = {
+    email,
+    sourceComponent,
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackPageAbout = function (sourceComponent, sourcePageLocation, sourcePath) {
   let name = 'About page'
   let data = {

@@ -3,7 +3,7 @@
   <div class="wrapper">
     <SvgIconMail fill="white" :width="30" :height="30" />
     <h2 class="title-2">Stay in the loop</h2>
-    <p class="description">Subscribe to receive updates.</p>
+    <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
     <div class="input-wrapper">
       <input id="component-SecondaryCtaMailingList-input" v-model="email" @input="validateEmail" class="input" type="text" placeholder="Enter your email here" />
     </div>
@@ -18,6 +18,7 @@
 
 <script>
 import { isValidEmail } from '~/helpers/validators'
+import { trackNewsletterSubscribe } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import SvgIconMail from './SvgIconMail'
 
@@ -46,11 +47,14 @@ export default {
         }
         axios.post('newsletter/subscribe', data)
           .then((response) => {
+            this.trackNewsletterSubscribe()
+            this.email = ''
             this.isSubmitting = false
             this.justSubmitted = true
             this.ctaText = 'Thanks! We\'ll be in touch!'
             return new Promise((resolve) => {
               setTimeout(() => {
+                this.emailIsValid = false
                 this.justSubmitted = false
                 this.ctaText = 'Sign up'
                 resolve()
@@ -63,6 +67,12 @@ export default {
             alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
           })
       }
+    },
+    trackNewsletterSubscribe () {
+      const sourceComponent = 'SecondaryCtaMailingList'
+      const sourcePath = this.$route.path
+      const action = trackNewsletterSubscribe(this.email, sourceComponent, sourcePath)
+      this.$mixpanel.track(action.name, action.data)
     },
     validateEmail () {
       let isValid = false
@@ -110,6 +120,7 @@ export default {
 
 .description {
   margin-top: 0;
+  font-size: 1.05rem;
 }
 
 .input {

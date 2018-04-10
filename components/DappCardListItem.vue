@@ -1,6 +1,6 @@
 <template>
 <li class="component-DappCardListItem" :class="'-' + dapp.status">
-  <nuxt-link class="link" :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }">
+  <nuxt-link class="link" :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
     <h4 class="title-4">{{ dapp.name }}</h4>
     <p class="description">{{ dapp.teaser }}</p>
     <div class="meta" :class="'-' + dapp.status">
@@ -15,11 +15,20 @@
 </template>
 
 <script>
+import { trackDappView } from '~/helpers/mixpanel'
 import DappBadgeList from './DappBadgeList'
 
 export default {
   components: {
     DappBadgeList
+  },
+  methods: {
+    trackDappView (targetDapp) {
+      const sourceComponent = 'DappCardListItem'
+      const sourcePath = this.$route.path
+      const action = trackDappView(sourceComponent, sourcePath, targetDapp)
+      this.$mixpanel.track(action.name, action.data)
+    }
   },
   props: {
     dapp: {
