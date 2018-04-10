@@ -121,11 +121,20 @@ export default {
   margin-right: 25px;
 }
 
+$duration: 35s;
+
 .event-list {
   padding: 15px 0;
   display: inline-block;
   padding-left: 100%;
-  animation: scroll-left 60s linear infinite;
+    -webkit-animation-iteration-count: infinite; 
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+   -webkit-animation-name: ticker;
+           animation-name: ticker;
+    -webkit-animation-duration: $duration;
+            animation-duration: $duration;
 }
 
 .event-list-wrapper {
@@ -158,6 +167,19 @@ export default {
   @include tweakpoint('min-width', 834px) {
     display: flex;
     align-items: center;
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
