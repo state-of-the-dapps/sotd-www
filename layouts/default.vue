@@ -4,6 +4,7 @@
       <nuxt/>
     </div>
     <div class="footer">
+      <SecondaryCta/>
       <Foot/>
     </div>
   </div>
@@ -11,10 +12,12 @@
 
 <script>
 import Foot from '~/components/shared/Foot.vue'
+import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
-    Foot
+    Foot,
+    SecondaryCta
   }
 }
 </script>

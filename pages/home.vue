@@ -4,7 +4,6 @@
     <HomeEventList/>
     <DappFeaturedList/>
     <HomeFeaturedCollections/>
-    <SecondaryCta/>
   </div>
 </template>
 
@@ -14,15 +13,13 @@ import DappFeaturedList from '~/components/DappFeaturedList'
 import HomeEventList from '~/components/HomeEventList'
 import HomeFeaturedCollections from '~/components/HomeFeaturedCollections'
 import HomeHero from '~/components/HomeHero'
-import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     HomeFeaturedCollections,
     DappFeaturedList,
     HomeEventList,
-    HomeHero,
-    SecondaryCta
+    HomeHero
   },
   computed: {
     ...mapGetters([

@@ -38,7 +38,7 @@ export default {
   methods: {
     subscribe () {
       if (this.emailIsValid && !this.isSubmitting) {
-        this.ctaText = 'Submitting'
+        this.ctaText = 'Submitting...'
         this.isSubmitting = true
         const data = {
           fields: {
