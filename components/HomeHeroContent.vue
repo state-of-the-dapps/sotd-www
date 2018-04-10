@@ -33,12 +33,12 @@ export default {
       flex-grow: 1;
     } 
   }
-  @include tweakpoint('min-width', 1300px) {
+  @include tweakpoint('min-width', 1150px) {
     .component-HomeHeroContentIntro {
       width: 500px;
     }    
   }
-  @include tweakpoint('min-width', 1400px) {
+  @include tweakpoint('min-width', 1250px) {
     .component-HomeHeroContentIntro {
       width: 775px;
       margin: 40px auto;
