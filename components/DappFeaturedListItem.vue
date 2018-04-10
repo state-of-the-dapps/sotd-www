@@ -56,6 +56,7 @@ export default {
   justify-content: center;
   height: 100%;
   width: 100%;
+  text-decoration: none;
 }
 
 .dapp-name {
@@ -64,7 +65,11 @@ export default {
   right: 0;
   border-bottom-left-radius: 4px;
   background: $color--black;
-  color: $color--white;
-  padding: 7px 10px;
+  color: $color--purple;
+  font-size: .8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  @include dapp-background-colors;
 }
 </style>
