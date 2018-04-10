@@ -22,7 +22,6 @@ export default {
 <style lang="scss" scoped>
 .layout-default {
   height: 100%;
-  overflow: hidden;
 }
 
 .main {

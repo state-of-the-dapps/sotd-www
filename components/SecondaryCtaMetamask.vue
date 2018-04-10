@@ -5,8 +5,8 @@
       <SvgBadgeMetamask fill="white" :width="35" :height="35" />
     </div>
     <div class="description-wrapper">
-      <h5 class="title-5">Bring ÐApps to life with Metamask</h5>
-      <p class="description">Description for Metamask</p>
+      <h5 class="title-5">Metamask</h5>
+      <p class="description">Metamask lets you use Ethereum ÐApps within your browser. <a class="link" href="https://metamask.io/" target="_blank" rel="noopener noreferrer">Try it now</a></p>
     </div>
     <div class="cta-wrapper">
       <a href="https://metamask.io/" class="cta" target="_blank" rel="noopener noreferrer">Discover Metamask</a>
@@ -67,6 +67,10 @@ export default {
     width: 25%;
     text-align: left;
   }
+}
+
+.link {
+  color: lighten($color--white, 100%);
 }
 
 .title-5 {
