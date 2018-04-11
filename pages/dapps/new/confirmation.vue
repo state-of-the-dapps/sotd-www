@@ -3,7 +3,7 @@
     <section class="section">
       <div class="text-container">
         <h1 class="heading">Thanks for submitting!</h1>
-        <p>Your post will be reviewed shortly by our digital cats. Stay tuned for status updates via email, typically within one business day.</p>
+        <p>Your post will be reviewed in the next 24h by our digital cats. Stay tuned for updates via email.</p>
       </div>
     </section>
   </div>
