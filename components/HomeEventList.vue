@@ -117,7 +117,6 @@ export default {
 }
 
 .event-item {
-  flex: 0 0 auto;
   margin-right: 25px;
 }
 
