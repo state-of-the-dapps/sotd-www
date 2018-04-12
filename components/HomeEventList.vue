@@ -123,6 +123,7 @@ export default {
 $duration: 35s;
 
 .event-list {
+  width: auto;
   padding: 15px 0;
   display: inline-block;
   padding-left: 100%;
