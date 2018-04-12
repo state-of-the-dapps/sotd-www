@@ -3,8 +3,8 @@
   <div class="wrapper">
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
-      <span class="event-list">
-        <span v-for="(event, index) in events" :key="index"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
+      <span class="event-list" :class="isReady ? '-is-ready' : ''">
+        <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
       </span>
     </div>
     <ul class="button-list">
@@ -27,7 +27,8 @@ export default {
   },
   data () {
     return {
-      events: []
+      events: [],
+      isReady: false
     }
   },
   methods: {
@@ -49,6 +50,7 @@ export default {
       const data = response.data
       const items = data.items
       this.events = items
+      this.isReady = true
     })
   }
 }
@@ -118,6 +120,7 @@ export default {
 
 .event-item {
   margin-right: 25px;
+  position: relative;
 }
 
 $duration: 35s;
@@ -126,6 +129,7 @@ $duration: 35s;
   padding: 15px 0;
   display: inline-block;
   padding-left: 100%;
+  &.-is-ready {
     -webkit-animation-iteration-count: infinite; 
             animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
@@ -134,6 +138,7 @@ $duration: 35s;
            animation-name: ticker;
     -webkit-animation-duration: $duration;
             animation-duration: $duration;
+  }
 }
 
 .event-list-wrapper {
