@@ -1,7 +1,7 @@
 <template>
 <div class="component-HomeHero">
   <div class="wrapper">
-    <Menu/>
+    <Menu color="white" />
     <HomeHeroContent/>
   </div>
 </div>
@@ -29,7 +29,7 @@ export default {
   overflow: hidden;
   @include tweakpoint('min-width', 575px) {
     background-image: $gradient--main-2;
-    padding-top: 17px;
+    padding-top: 7px;
     padding-bottom: 22px;
   }
   /deep/ a {
@@ -38,7 +38,7 @@ export default {
 }
 
 .wrapper {
-  @include margin-wrapper-main
+  @include margin-wrapper-main;
 }
 </style>
 

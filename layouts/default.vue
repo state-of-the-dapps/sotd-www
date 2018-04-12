@@ -1,7 +1,11 @@
 <template>
   <div class="layout-default">
     <div class="main">
-      <Menu/>
+      <div class="menu">
+        <div class="menu-wrapper">
+          <Menu/>
+        </div>
+      </div>
       <nuxt/>
     </div>
     <div class="footer">
@@ -26,6 +30,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~assets/css/settings';
+
 .layout-default {
   height: 100%;
 }
@@ -34,5 +40,14 @@ export default {
   min-height: 98%;
   position: relative;
   overflow: hidden;
+}
+
+.menu {
+  background: rgba($color--white, .5);
+}
+
+.menu-wrapper {
+  @include margin-wrapper-main;
+  padding: 7px 0;
 }
 </style>

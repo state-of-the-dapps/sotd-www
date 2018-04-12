@@ -2,26 +2,26 @@
 <div class="component-Menu">
   <div class="nameplate">
     <nuxt-link class="logo-link -icon" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
-      <SvgIconLogo fill="white" :width="45" :height="45" />
+      <SvgIconLogo :fill="color" :width="45" :height="45" />
     </nuxt-link>
     <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
-      <SvgLogotype fill="white" :width="120" :height="26" />
+      <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
     <span class="tagline">The curated list of decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
     <li class="nav-item">
-      <nuxt-link class="nav-link" :to="{ name: 'home' }" @click.native="trackMenu('home')">Home</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')">ÐApps</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')">ÐApps</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :to="{ name: 'events' }" @click.native="trackMenu('events')">Events</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'events' }" @click.native="trackMenu('events')">Events</nuxt-link>
     </li>
-    <li class="nav-item -newsletter" @click="scrollToMailingList('subscribe')">
-      <SvgIconMail class="nav-icon -newsletter" fill="white" :width="18" :height="18" /> 
-      <span class="nav-link -newsletter">Stay in the loop</span>
+    <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
+      <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
+      <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li>
   </ul>
 </div>
@@ -50,6 +50,11 @@ export default {
       const action = trackMenu(sourcePath, targetMenuItem)
       this.$mixpanel.track(action.name, action.data)
     }
+  },
+  props: {
+    color: {
+      default: 'black'
+    }
   }
 }
 </script>
@@ -60,6 +65,7 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
+  padding: 10px 0;
 }
 
 .logo-link {
@@ -72,6 +78,7 @@ export default {
     display: none;
     @include tweakpoint('min-width', 834px) {
       display: block;
+      height: 26px;
     }
   }
 }
@@ -94,7 +101,12 @@ export default {
   cursor: pointer;
   &.-newsletter {
     padding: 4px 10px 4px 20px;
-    border-left: 1px solid rgba($color--white, .6);
+    &.-white {
+      border-left: 1px solid rgba($color--white, .4);
+    }
+    &.-black {
+      border-left: 1px solid rgba($color--black, .2);
+    }
     @include tweakpoint('min-width', 575px) {
       padding: 14px 10px 14px 20px;
     }
@@ -108,8 +120,16 @@ export default {
   text-decoration: none;
   display: flex;
   align-items: center;
+  border: 1px solid transparent;
+  border-left: 0;
+  border-right: 0;
   &.nuxt-link-active {
-    border-bottom: 1px solid $color--white;
+    &.-white {
+      border-bottom: 1px solid $color--white;
+    }
+    &.-black {
+      border-bottom: 1px solid $color--black;
+    }
   }
   &.-newsletter {
     display: none;
