@@ -1,6 +1,6 @@
 <template>
-<div class="component-HomeHeroContentIntro">
-  <h1 class="title-1" :class="'-' + loaded">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
+<div class="component-HomeHeroContentIntro" :class="'-' + loaded">
+  <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
   <p class="description">Lollipop sesame snaps croissant cake gummies halvah danish marzipan brownie. Liquorice jelly-o cake caramels. Donut gummies liquorice. <nuxt-link class="description-link" :to="{ name: 'what'}" @click.native="trackHomeHeroCta('learn')">Learn more</nuxt-link></p>
   <ul class="cta-list">
     <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }" @click.native="trackHomeHeroCta('explore')">Explore the ÐApps</nuxt-link></li>
@@ -46,6 +46,14 @@ export default {
 .component-HomeHeroContentIntro {
   position: relative;
   z-index: 20;
+  opacity: 0;
+  &.-first-load {
+    animation: fadeInHomeHero 1s linear both;
+    animation-delay: 1s;
+  }
+  &.-has-loaded {
+    opacity: 1;
+  }
 }
 
 .cta-link {
@@ -122,17 +130,9 @@ export default {
   line-height: .825;
   letter-spacing: 1.05px;
   margin: 1rem 0 1.5rem 0;
-  opacity: 0;
   @include tweakpoint('min-width', 1550px) {
     margin-top: 20px;
     text-align: center;
-  }
-  &.-first-load {
-    animation: fadeInHomeHero 1s linear both;
-    animation-delay: 1s;
-  }
-  &.-has-loaded {
-    opacity: 1;
   }
 }
 
