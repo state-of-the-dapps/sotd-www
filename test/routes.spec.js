@@ -21,8 +21,8 @@ test.before('Init Nuxt.js', async t => {
 
 test('DApp list exists and renders HTML', async t => {
   let context = {}
-  const { html } = await nuxt.renderRoute('/', context)
-  t.true(html.includes('A curated list'))
+  const { html } = await nuxt.renderRoute('/dapps', context)
+  t.true(html.includes('The curated list'))
 })
 
 test('DApp detail exists and renders HTML', async t => {

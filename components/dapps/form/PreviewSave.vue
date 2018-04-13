@@ -186,7 +186,7 @@
       display: block;
       width: 13px;
       height: 13px;
-      border: 1px solid $color--mine-shaft;
+      border: 1px solid $color--black;
       position: absolute;
       top: 1px;
       left: 0;
@@ -195,7 +195,7 @@
       cursor: pointer;
       content: '';
       display: block;
-      background: $color--mine-shaft;
+      background: $color--black;
       transition: transform .1s ease;
       transform: scale(0);
       width: 9px;
@@ -215,44 +215,6 @@
 
   .description-wrapper {
     flex-grow: 1;
-  }
-
-  .icon-image {
-    max-width: 100%;
-  }
-
-  .icon-wrapper {
-    width: 60px;
-    height: 60px;
-    background: rgba(0,0,0,.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 50%;
-    font-size: 1.95rem;
-    margin-right: 10px;
-    transition: background .2s ease;
-    &.-live {
-      background: $color--bright-green;
-    }
-    &.-beta {
-      background: $color--gorse;
-    }
-    &.-prototype {
-      background: $color--koromiko;
-    }
-    &.-wip {
-      background: $color--malibu;
-    }
-    &.-concept {
-      background: $color--portage;
-    }
-    @include tweakpoint('min-width', 900px) {
-      margin-right: 0;
-      width: 75px;
-      height: 75px;
-    }
   }
 
   .info {
@@ -277,7 +239,7 @@
     height: 125px;
     margin: 0 10px 10px 10px;
     background: white;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     transition: background .2s ease, opacity .4s ease;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
@@ -309,22 +271,22 @@
       background: $color--dapp-live-light;
     }
     &.-beta {
-      background: $color--paris-daisy;
+      background: $color--dapp-beta-light;
     }
     &.-prototype {
-      background: $color--golden-tainoi;
+      background: $color--dapp-prototype-light;
     }
     &.-wip {
-      background: $color--anakiwa;
+      background: $color--dapp-wip-light;
     }
     &.-concept {
-      background: $color--perfume;
+      background: $color--dapp-concept-light;
     }
     &.-stealth {
-      background: $color--alabaster;
+      background: $color--dapp-stealth-light;
     }
     &.-abandoned, &.-unknown {
-      background: $color--alabaster;
+      background: $color--dapp-abandoned-light;
       &:after {
         content: " ";
         position: absolute;
@@ -365,7 +327,7 @@
   }
 
   .new-message {
-    color: $color--gallery;
+    color: $color--gray;
     display: inline-block;
     font-size: .7rem;
     text-transform: uppercase;
@@ -395,7 +357,7 @@
   .required {
     display: inline-block;
     padding-left: 2px;
-    color: $color--tart-orange;
+    color: $color--error;
   }
 
   .status {
@@ -410,7 +372,7 @@
     text-transform: uppercase;
     font-weight: 700;
     transition: border .2s ease;
-    color: rgba($color--mine-shaft,.75);
+    color: rgba($color--black,.75);
     &.-live {
       background: $color--dapp-live;
     }
@@ -439,8 +401,8 @@
     width: 300px;
     margin-top: 15px;
     border: none;
-    background: rgba($color--mine-shaft, .1);
-    color: $color--mine-shaft;
+    background: rgba($color--black, .1);
+    color: $color--black;
     font-size: 1rem;
     font-weight: 600;
     padding: 15px;
@@ -451,9 +413,9 @@
       margin-right: 0;
     }
     &.--is-ready {
-      background: rgba($color--mine-shaft, 1);
-      box-shadow: 0 17px 70px rgba($color--mine-shaft, 0.3);
-      color: $color--gallery;
+      background: rgba($color--black, 1);
+      box-shadow: 0 17px 70px rgba($color--black, 0.3);
+      color: $color--gray;
       &:hover {
         cursor: pointer;
       }

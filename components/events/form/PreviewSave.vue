@@ -183,7 +183,7 @@
       display: block;
       width: 13px;
       height: 13px;
-      border: 1px solid $color--mine-shaft;
+      border: 1px solid $color--black;
       position: absolute;
       top: 1px;
       left: 0;
@@ -192,7 +192,7 @@
       cursor: pointer;
       content: '';
       display: block;
-      background: $color--mine-shaft;
+      background: $color--black;
       transition: transform .1s ease;
       transform: scale(0);
       width: 9px;
@@ -228,7 +228,7 @@
       padding: 0;
       width: 50px;
       height: 50px;
-      background: $color--gallery;
+      background: $color--gray;
       overflow: hidden;
       font-size: 1.25rem;
       margin: 0;
@@ -260,7 +260,7 @@
       width: 100%;
       font-size: .75rem;
       font-weight: 600;
-      background: darken($color--gallery, 10%);
+      background: darken($color--gray, 10%);
       text-transform: uppercase;
       @include tweakpoint('min-width', $tweakpoint--default) {
         font-size: .9rem;
@@ -306,7 +306,7 @@
     height: 180px;
     margin: 0 10px 10px 10px;
     background: white;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     transition: background .2s ease, opacity .4s ease;
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
@@ -334,37 +334,6 @@
       cursor: pointer;
       transform: scale3d(1.015, 1.015, 1);
     }
-    &.-live {
-      background: $color--screamin-green;
-    }
-    &.-beta {
-      background: $color--paris-daisy;
-    }
-    &.-prototype {
-      background: $color--golden-tainoi;
-    }
-    &.-wip {
-      background: $color--anakiwa;
-    }
-    &.-concept {
-      background: $color--perfume;
-    }
-    &.-stealth {
-      background: $color--alabaster;
-    }
-    &.-abandoned, &.-unknown {
-      background: $color--alabaster;
-      &:after {
-        content: " ";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(white,.7);
-        pointer-events: none;
-      }
-    }
     &.-preview {
       width: 300px;
       margin: 0 auto;
@@ -385,7 +354,7 @@
   .required {
     display: inline-block;
     padding-left: 2px;
-    color: $color--tart-orange;
+    color: $color--error;
   }
 
   .sticky {
@@ -399,8 +368,8 @@
     width: 300px;
     margin-top: 15px;
     border: none;
-    background: rgba($color--mine-shaft, .1);
-    color: $color--mine-shaft;
+    background: rgba($color--black, .1);
+    color: $color--black;
     font-size: 1rem;
     font-weight: 600;
     padding: 15px;
@@ -411,9 +380,9 @@
       margin-right: 0;
     }
     &.--is-ready {
-      background: rgba($color--mine-shaft, 1);
-      box-shadow: 0 17px 70px rgba($color--mine-shaft, 0.3);
-      color: $color--gallery;
+      background: rgba($color--black, 1);
+      box-shadow: 0 17px 70px rgba($color--black, 0.3);
+      color: $color--gray;
       &:hover {
         cursor: pointer;
       }

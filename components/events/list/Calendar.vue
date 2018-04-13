@@ -184,28 +184,28 @@
       flex: 1;
       height: 100%;
       &.--ico {
-        background: $color--event-crimson;
+        background: $color--event-ico;
       }
       &.--hackathon {
-        background: $color--event-orange;
+        background: $color--event-hackathon;
       }
       &.--summit {
-        background: $color--event-yellow;
+        background: $color--event-summit;
       }
       &.--crowdsale {
-        background: $color--event-green;
+        background: $color--event-crowdsale;
       }
       &.--conference {
-        background: $color--event-aquamarine;
+        background: $color--event-conference;
       }
       &.--meetup {
-        background: $color--event-blue;
+        background: $color--event-meetup;
       }
       &.--release {
-        background: $color--event-burple;
+        background: $color--event-release;
       }
       &.--workshop {
-        background: $color--event-purple;
+        background: $color--event-workshop;
       }
     }
   }
@@ -215,7 +215,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      filter: drop-shadow(0 0 10px rgba($color--mine-shaft,.05));
+      filter: drop-shadow(0 0 10px rgba($color--black,.05));
     }
     &.item {
       position: relative;
@@ -226,9 +226,9 @@
       width: calc(14.28571429% - 1px);
       box-sizing: content-box;
       height: 47px;
-      background: lighten($color--gallery, 20%);
-      border-right: 1px solid rgba($color--mine-shaft, .1);
-      border-top: 1px solid rgba($color--mine-shaft, .1);
+      background: lighten($color--gray, 20%);
+      border-right: 1px solid rgba($color--black, .1);
+      border-top: 1px solid rgba($color--black, .1);
       cursor: pointer;
       &:nth-child(-n+7) {
         border-top: none;
@@ -251,13 +251,13 @@
       }
       &.is-selected {
         position: relative;
-        color: $color--gallery;
+        color: $color--gray;
         &:before {
           content: '';
           width: 100%;
           height: 100%;
           position: absolute;
-          background: $color--mine-shaft;
+          background: $color--black;
         }
         &:hover {
           text-decoration: none;
@@ -292,7 +292,7 @@
     }
     &.list {
       display: flex;
-      box-shadow: 0 0 5px rgba($color--mine-shaft,.02);
+      box-shadow: 0 0 5px rgba($color--black,.02);
     }
     &.image {
       position: relative;
@@ -310,13 +310,13 @@
       width: 14.28571429%;
       font-size: 1.05rem;
       text-align: center;
-      background: $color--mine-shaft;
-      color: $color--gallery;
+      background: $color--black;
+      color: $color--gray;
       text-transform: uppercase;
       cursor: pointer;
       &.--current {
-        color: $color--mine-shaft;
-        background: lighten($color--gallery, 20%);
+        color: $color--black;
+        background: lighten($color--gray, 20%);
         flex-grow: 1;
         cursor: initial;
         &:hover {

@@ -38,7 +38,7 @@ export default {
   .linkexchange-wrapper {
     width: 100% !important;
     height: 100% !important;
-    border: 1px solid $color--mine-shaft;
+    border: 1px solid $color--black;
   }
 
   #linkexchange {
@@ -47,7 +47,7 @@ export default {
   }
 
   #linkexchange * {
-    color: $color--mine-shaft !important;
+    color: $color--black !important;
   }
 
   #linkexchange .LX__banner__self {
@@ -104,7 +104,7 @@ export default {
   }
 
   #linkexchange .LX__modal__self {
-    background-color: rgba($color--mine-shaft,.85) !important;
+    background-color: rgba($color--black,.85) !important;
   }
 
   #linkexchange .LX__menu__self {

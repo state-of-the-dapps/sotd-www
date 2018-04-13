@@ -48,7 +48,7 @@
   }
 
   .section {
-    border-bottom: 5px solid $color--mine-shaft;
+    border-bottom: 5px solid $color--black;
     @include tweakpoint('min-width', 600px) {
       border-width: 8px;
     }

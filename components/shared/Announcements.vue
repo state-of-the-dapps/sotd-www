@@ -59,12 +59,12 @@
   }
 
   .link {
-    color: $color--gallery;
+    color: $color--gray;
   }
 
   .message {
     text-align: center;
-    color: $color--gallery;
+    color: $color--gray;
     font-size: .9rem;
     max-width: 1000px;
     margin-left: auto;
@@ -72,7 +72,7 @@
   }
 
   .section {
-    background: $color--mine-shaft;
+    background: $color--black;
     transition: visibility .4s ease, opacity .3s ease;
     @include tweakpoint('min-width', $tweakpoint--default) {
       position: fixed;

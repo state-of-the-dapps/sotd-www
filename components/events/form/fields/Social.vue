@@ -63,10 +63,10 @@
     width: 145px;
     overflow: hidden;
     &::placeholder {
-        color: rgba($color--mine-shaft, .5);
+        color: rgba($color--black, .5);
     }
     &:focus::placeholder {
-        color: rgba($color--mine-shaft,.5);
+        color: rgba($color--black,.5);
     }
   }
 
@@ -75,14 +75,14 @@
     margin: 5px;
     border: 1px solid transparent;
     &.--has-errors {
-      border-color: $color--tart-orange;
+      border-color: $color--error;
     }
   }
 
   .input-wrapper {
-    background: rgba(lighten($color--gallery, 100%),.9);
+    background: rgba(lighten($color--gray, 100%),.9);
     padding: 10px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     position: relative;
     &:before {
       content: " ";

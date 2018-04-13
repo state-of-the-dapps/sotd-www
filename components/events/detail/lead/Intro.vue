@@ -54,15 +54,15 @@
     z-index: 5;
     font-weight: 600;
     text-align: center;
-    background: $color--gallery;
-    border: 1px solid $color--mine-shaft;
+    background: $color--gray;
+    border: 1px solid $color--black;
     padding: 3px 8px 2px;
     text-transform: uppercase;
     font-size: .7rem;
     opacity: 0;
     transition: opacity .5s ease;
     white-space: nowrap;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     &:after {
       position: absolute;
       top: -7px;
@@ -70,7 +70,7 @@
       content: '';
       width: 1px;
       height: 7px;
-      background: $color--mine-shaft;
+      background: $color--black;
     }
   }
 
@@ -106,7 +106,7 @@
     &.wrapper {
       width: 60px;
       height: 60px;
-      background: $color--gallery;
+      background: $color--gray;
       overflow: hidden;
       font-size: 1.25rem;
       margin: 0;
@@ -138,7 +138,7 @@
       width: 100%;
       font-size: .75rem;
       font-weight: 600;
-      background: darken($color--gallery, 10%);
+      background: darken($color--gray, 10%);
       text-transform: uppercase;
       @include tweakpoint('min-width', $tweakpoint--default) {
         font-size: .9rem;

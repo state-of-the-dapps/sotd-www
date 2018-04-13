@@ -151,7 +151,7 @@
 
   .input-wrapper {
     &.--has-errors {
-      border-color: $color--tart-orange;
+      border-color: $color--error;
     }
   }
 
@@ -169,7 +169,7 @@
 
   .input-wrapper {
     flex-grow: 1;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
   }
 
@@ -177,6 +177,6 @@
     width: 100%;
     padding: 8px 10px;
     border: none;
-    background: rgba(lighten($color--gallery, 100%),.9);
+    background: rgba(lighten($color--gray, 100%),.9);
   }
 </style>

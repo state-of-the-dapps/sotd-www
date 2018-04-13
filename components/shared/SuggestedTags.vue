@@ -73,9 +73,9 @@
   .container {
     &.-suggested-tags {
       position: absolute;
-      background: rgba($color--gallery,.9);
+      background: rgba($color--gray,.9);
       padding: 10px;
-      box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
+      box-shadow: 0 17px 70px rgba($color--black,.2);
       width: 250px;
       top: 133px;
       left: 10px;
@@ -92,8 +92,8 @@
   .item {
     display: block;
     padding: 7px 28px 7px 10px;
-    background: lighten($color--gallery,2%);
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    background: lighten($color--gray,2%);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     text-decoration: none;
     position: relative;
     margin: 2px;

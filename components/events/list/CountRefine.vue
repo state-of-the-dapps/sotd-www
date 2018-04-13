@@ -73,7 +73,7 @@
     margin: 0 5px;
     width: 112px;
     white-space: nowrap;
-    border: 1px solid rgba($color--mine-shaft,.15);
+    border: 1px solid rgba($color--black,.15);
     position: relative;
     &:hover {
       cursor: pointer;
@@ -91,19 +91,19 @@
       bottom: 6px;
     }
     &.--is-active {
-      border-color: $color--mine-shaft;
+      border-color: $color--black;
       &:after {
         transform: scaleY(1);
       }
     }
     /deep/ .container {
       position: absolute;
-      border: 1px solid $color--mine-shaft;
-      background: rgba(lighten($color--gallery, 100%),.95);
+      border: 1px solid $color--black;
+      background: rgba(lighten($color--gray, 100%),.95);
       padding: 10px;
       width: calc(100% + 2px);
       z-index: 10;
-      box-shadow: 0 0 10px rgba($color--mine-shaft,.1);
+      box-shadow: 0 0 10px rgba($color--black,.1);
       top: 21px;
       left: -1px;
     }
@@ -118,7 +118,7 @@
         margin-bottom: 0;
       }
       &:hover {
-        border-left: 1px solid $color--mine-shaft;
+        border-left: 1px solid $color--black;
         padding-left: 3px;
         margin-left: -4px;
         cursor: pointer;

@@ -112,8 +112,8 @@
   @import '~assets/css/settings';
 
   .add {
-    background: $color--mine-shaft;
-    color: $color--gallery;
+    background: $color--black;
+    color: $color--gray;
     display: inline-block;
     font-size: .75rem;
     font-weight: 700;
@@ -132,9 +132,9 @@
 
   .dropdown {
     position: absolute;
-    background: rgba($color--gallery,.9);
+    background: rgba($color--gray,.9);
     padding: 10px;
-    box-shadow: 0 17px 70px rgba($color--mine-shaft,.2);
+    box-shadow: 0 17px 70px rgba($color--black,.2);
     width: 320px;
     top: 37px;
     left: 0;
@@ -148,8 +148,8 @@
   .dropdown-item {
     display: block;
     padding: 7px 28px 7px 10px;
-    background: lighten($color--gallery,2%);
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    background: lighten($color--gray,2%);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     text-decoration: none;
     position: relative;
     margin: 2px;
@@ -187,19 +187,19 @@
     width: 100%;
     font-size: .95rem;
     &::placeholder {
-      color: $color--mine-shaft;
+      color: $color--black;
     }
     &:focus::placeholder {
-      color: rgba($color--mine-shaft,.5);
+      color: rgba($color--black,.5);
     }
   }
 
   .input-wrapper {
-    background: rgba(lighten($color--gallery, 100%),.9);
+    background: rgba(lighten($color--gray, 100%),.9);
     display: flex;
     width: 100%;
     padding: 10px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     margin-bottom: 10px;
     position: relative;
   }
@@ -208,13 +208,13 @@
     display: flex;
     align-items: center;
     margin: 5px;
-    background: rgba(lighten($color--gallery,100%),.3);
+    background: rgba(lighten($color--gray,100%),.3);
     padding: 10px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
     position: relative;
     &.--has-warning {
-      border-color: $color--burning-orange;
+      border-color: $color--warning;
     }
   }
 

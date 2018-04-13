@@ -6,7 +6,6 @@
     <Items
       :items="dapps"
       :itemCount="dappCount"
-      sourceModel="dapps"
     />
     <Pager/>
   </div>
@@ -55,7 +54,6 @@
       return {
         title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
       }
-    },
-    scrollToTop: false
+    }
   }
 </script>

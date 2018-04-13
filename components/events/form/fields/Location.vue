@@ -131,8 +131,8 @@
       z-index: 5;
       width: 100%;
       height: 200px;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-      background: lighten($color--gallery, 100%);
+      box-shadow: 0 0 20px rgba($color--black,.05);
+      background: lighten($color--gray, 100%);
       padding: 10px;
     }
     &.location-instructions {
@@ -143,8 +143,8 @@
       border: 1px solid rgba(51,51,51,.2);
       padding: 5px;
       width: 100%;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-      background: lighten($color--gallery, 100%);
+      box-shadow: 0 0 20px rgba($color--black,.05);
+      background: lighten($color--gray, 100%);
       transition: background .2s ease;
     }
     &.location-list {
@@ -157,11 +157,11 @@
       font-size: .9rem;
       cursor: pointer;
       &:nth-child(odd) {
-        background: rgba($color--mine-shaft,.075);
+        background: rgba($color--black,.075);
       }
       &.--is-selected {
-        background: $color--mine-shaft;
-        color: $color--gallery;
+        background: $color--black;
+        color: $color--gray;
       }
       &:hover {
         text-decoration: underline;
@@ -185,8 +185,8 @@
       padding: 0 50px 0 20px;
       width: 100%;
       height: 60px;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-      background: rgba(lighten($color--gallery, 100%),.9);
+      box-shadow: 0 0 20px rgba($color--black,.05);
+      background: rgba(lighten($color--gray, 100%),.9);
       display: flex;
       align-items: center;
     }

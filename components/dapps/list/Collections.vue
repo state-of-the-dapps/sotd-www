@@ -92,7 +92,7 @@ export default {
     height: 75px;
     display: flex;
     align-items: center;
-    box-shadow: 0 5px 25px 0 rgba($color--mine-shaft, .12);
+    box-shadow: 0 5px 25px 0 rgba($color--black, .12);
     overflow: hidden;
     font-size: 1.075rem;
     &:hover {

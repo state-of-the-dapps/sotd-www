@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: $color--gallery;
+  background: $color--gray;
   font-size: 13px;
   height: 100%;
 }
@@ -15,12 +15,11 @@ body, input, textarea {
   font-weight: 300;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
-  color: $color--mine-shaft;
+  color: $color--black;
   letter-spacing: -.25px;
 }
 
 body {
-  background: url('~/assets/images/bg.jpg') center center;
   background-size: 100px 100px;
   height: 100%;
   &.--has-popup {
@@ -34,14 +33,6 @@ body {
 
 input::placeholder {
   line-height: 1.7;
-}
-
-h1, h2 {
-  font-weight: 600;
-}
-
-h1, h2, h3, h4 {
-  letter-spacing: -.5px;
 }
 
 h1 {
@@ -61,7 +52,7 @@ em {
 }
 
 a {
-  color: $color--mine-shaft;
+  color: $color--black;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -88,6 +79,9 @@ button {
     -webkit-user-select: none; /* for button */
        -moz-user-select: none;
         -ms-user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
 }
 
 button::-moz-focus-inner {
@@ -97,4 +91,15 @@ button::-moz-focus-inner {
 
 #__nuxt, #__layout {
   height: 100%;
+}
+
+html, .wf-loading {
+  visibility: hidden !important;
+  opacity: 0;
+}
+
+.wf-active, .wf-inactive {
+  visibility: visible !important;
+  opacity: 1;
+  transition: opacity 0.5s;
 }

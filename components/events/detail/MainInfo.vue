@@ -117,12 +117,12 @@
     &.item {
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 0 20px rgba($color--mine-shaft, .1);
+      box-shadow: 0 0 20px rgba($color--black, .1);
       &.--description {
-        background: lighten($color--alabaster, 100%);
+        background: lighten($color--white, 100%);
       }
       &.--schedule {
-        background: lighten($color--alabaster, 100%);        
+        background: lighten($color--white, 100%);        
       }
       p {
         margin-top: 0;
@@ -146,7 +146,7 @@
     }
     &.item {
       padding: .75rem 0;
-      border-bottom: 1px solid rgba($color--mine-shaft, .1);
+      border-bottom: 1px solid rgba($color--black, .1);
       position: relative;
       padding-left: 15px;
       &:last-child {
@@ -160,7 +160,7 @@
         content: '';
         width: 5px;
         height: 5px;
-        background: $color--mine-shaft;
+        background: $color--black;
         border-radius: 50%;
       }
     }
@@ -176,8 +176,8 @@
     &.item {
       padding: 15px;
       margin-bottom: 20px;
-      background: rgba($color--alabaster, .25);
-      box-shadow: 0 0 20px rgba($color--mine-shaft, .1);
+      background: rgba($color--white, .25);
+      box-shadow: 0 0 20px rgba($color--black, .1);
     }
     &.sub-heading {
       font-size: 1.15rem;

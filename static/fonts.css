@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Dharma-Gothic-Regular';
+    src: url('/fonts/dharma-gothic/362B3B_0_0.eot');
+    src: url('/fonts/dharma-gothic/362B3B_0_0.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/dharma-gothic/362B3B_0_0.woff2') format('woff2'),
+         url('/fonts/dharma-gothic/362B3B_0_0.woff') format('woff'),
+         url('/fonts/dharma-gothic/362B3B_0_0.ttf') format('truetype');
+}

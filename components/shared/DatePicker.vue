@@ -122,7 +122,7 @@
       // wrapper top/left/bottom/right positioning should be declared in the parent component
       background: url('~/assets/images/bg.jpg') center center;
       background-size: 100px 100px;
-      box-shadow: 0 0 20px rgba($color--mine-shaft, .1);
+      box-shadow: 0 0 20px rgba($color--black, .1);
       padding: 20px;
       cursor: initial;
       width: 275px;
@@ -134,7 +134,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      filter: drop-shadow(0 0 10px rgba($color--mine-shaft,.05));
+      filter: drop-shadow(0 0 10px rgba($color--black,.05));
     }
     &.item {
       position: relative;
@@ -145,9 +145,9 @@
       width: calc(14.28571429% - 1px);
       box-sizing: content-box;
       height: 33px;
-      background: lighten($color--gallery, 20%);
-      border-right: 1px solid rgba($color--mine-shaft, .1);
-      border-top: 1px solid rgba($color--mine-shaft, .1);
+      background: lighten($color--gray, 20%);
+      border-right: 1px solid rgba($color--black, .1);
+      border-top: 1px solid rgba($color--black, .1);
       user-select: none;
       cursor: pointer;
       &:nth-child(-n+7) {
@@ -171,13 +171,13 @@
       }
       &.is-selected {
         position: relative;
-        color: $color--gallery;
+        color: $color--gray;
         &:before {
           content: '';
           width: 100%;
           height: 100%;
           position: absolute;
-          background: $color--mine-shaft;
+          background: $color--black;
         }
         &:hover {
           text-decoration: none;
@@ -213,7 +213,7 @@
     }
     &.list {
       display: flex;
-      box-shadow: 0 0 5px rgba($color--mine-shaft,.02);
+      box-shadow: 0 0 5px rgba($color--black,.02);
     }
     &.image {
       position: relative;
@@ -231,14 +231,14 @@
       width: 14.28571429%;
       font-size: .9rem;
       text-align: center;
-      background: $color--mine-shaft;
-      color: $color--gallery;
+      background: $color--black;
+      color: $color--gray;
       text-transform: uppercase;
       user-select: none;
       cursor: pointer;
       &.--current {
-        color: $color--mine-shaft;
-        background: lighten($color--gallery, 20%);
+        color: $color--black;
+        background: lighten($color--gray, 20%);
         flex-grow: 1;
         cursor: initial;
         &:hover {

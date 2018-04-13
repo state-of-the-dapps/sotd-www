@@ -175,7 +175,7 @@
     justify-content: center;
     height: 50px;
     width: 40px;
-    background: $color--mine-shaft;
+    background: $color--black;
     &:hover {
       cursor: default;
     }
@@ -263,8 +263,8 @@
     display: flex;
     align-items: center;
     padding: 7px 10px;
-    background: darken($color--gallery,6%);
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.1);
+    background: darken($color--gray,6%);
+    box-shadow: 0 0 20px rgba($color--black,.1);
     text-decoration: none;
     position: relative;
     margin: 2px;
@@ -279,8 +279,8 @@
   .wrapper {
     position: relative;
     z-index: 5;
-    box-shadow: 0 17px 70px 0 rgba($color--mine-shaft,.22);
-    background: lighten($color--gallery,2%);
+    box-shadow: 0 17px 70px 0 rgba($color--black,.22);
+    background: lighten($color--gray,2%);
     height: 50px;
     display: flex;
     align-items: center;

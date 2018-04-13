@@ -41,15 +41,15 @@
   .item {
     width: calc(50% - 10px);
     margin: 5px;
-    background: $color--mine-shaft;
+    background: $color--black;
     padding: 10px;
-    box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
+    box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
     &:hover {
       cursor: pointer;
     }
     &.--is-selected {
-      border-color:$color--mine-shaft;
+      border-color:$color--black;
     }
     &.-live {
       background: $color--dapp-live;

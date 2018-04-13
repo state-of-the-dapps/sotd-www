@@ -43,6 +43,6 @@
   }
 
   .section {
-    background: lighten($color--gallery, 100%);
+    background: lighten($color--gray, 100%);
   }
 </style>

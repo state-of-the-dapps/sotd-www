@@ -134,8 +134,8 @@
     &.wrapper {
       position: relative;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba($color--mine-shaft,.05);
-      background: rgba(lighten($color--gallery, 100%),.9);
+      box-shadow: 0 0 20px rgba($color--black,.05);
+      background: rgba(lighten($color--gray, 100%),.9);
       display: flex;
       align-items: center;
       height: 60px;
