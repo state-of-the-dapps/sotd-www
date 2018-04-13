@@ -1,9 +1,9 @@
 <template>
 <div class="component-HomeHeroContentIntro" :class="'-' + loaded">
   <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
-  <p class="description">State of the ÐApps showcases the best applications built for the Ethereum blockchain. Come back daily to discover what is possible with Web3 technology, try out beta products and live ÐApps, promote your own decentralized creations. <nuxt-link class="description-link" :to="{ name: 'what'}" @click.native="trackHomeHeroCta('learn')">Learn more</nuxt-link></p>
+  <p class="description">Discover the possiblities of the Ethereum blockchain with our definitive registry of ÐApp projects. <nuxt-link class="description-link" :to="{ name: 'what'}" @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
   <ul class="cta-list">
-    <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }" @click.native="trackHomeHeroCta('explore')">Explore the ÐApps</nuxt-link></li>
+    <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'dapps' }" @click.native="trackHomeHeroCta('browse')">Browse the ÐApps</nuxt-link></li>
     <li class="cta-item"><nuxt-link class="cta-link -submit" :to="{ name: 'dapps-new' }" @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
   </ul>
 </div>
@@ -101,10 +101,6 @@ export default {
     width: 80%;
     margin: 0 auto;
   }
-}
-
-.description-link {
-  font-weight: 600;
 }
 
 .subtitle {
