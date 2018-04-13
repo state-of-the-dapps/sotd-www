@@ -127,7 +127,7 @@ export default {
 
 .description {
   margin-top: 0;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .input {
