@@ -1,8 +1,15 @@
 <template>
-<li class="component-DappFeaturedListItem" :id="'dapps-featured-list-item-' + index">
-  <nuxt-link :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">
-    <img class="dapp-image" src="">
-    <div class="dapp-name" :class="'-' + dapp.status">{{ dapp.name }}</div>
+<li class="component-DappFeaturedListItem" :id="'dapp-featured-list-item-' + index">
+  <nuxt-link 
+    :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" 
+    class="link" 
+    @click.native="trackDappView(dapp.slug)"
+    :style="'background-image: url(' + dapp.image_key_visual + ')'">
+    <img class="image" src="">
+    <div class="info">
+      <h4 class="title-4">{{ dapp.name }}</h4>   
+      <p class="tagline">{{ dapp.tagline }}</p>
+    </div>
   </nuxt-link>
 </li>
 </template>
@@ -28,11 +35,11 @@ export default {
 @import '~assets/css/settings';
 
 .component-DappFeaturedListItem {
-  height: 200px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 15px rgba($color--black, .15);
+  box-shadow: 0 10px 30px rgba($color--black, .1);
   margin: 0 10px 20px 10px;
   border-radius: 4px;
   width: 100%;
@@ -49,7 +56,7 @@ export default {
   }
 }
 
-.dapp-link {
+.link {
   position: relative;
   display: flex;
   align-items: center;
@@ -57,19 +64,32 @@ export default {
   height: 100%;
   width: 100%;
   text-decoration: none;
+  background-image: url(https://s3.eu-west-3.amazonaws.com/sotd-img/dapps/decentraland/key_visual_1523561498.jpg);
+  background-size: 600px 250px;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-.dapp-name {
+.info {
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
+  border-top: 4px solid $color--gray;
   border-bottom-left-radius: 4px;
-  background: $color--black;
+  background: $color--white;
   color: $color--purple;
-  font-size: .8rem;
-  font-weight: 600;
-  text-transform: uppercase;
   padding: 10px 12px;
-  @include dapp-background-colors;
+  width: 100%;
+  text-align: center;
+}
+
+.tagline {
+  margin: 0;
+}
+
+.title-4 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 </style>

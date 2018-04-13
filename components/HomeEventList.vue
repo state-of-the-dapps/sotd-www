@@ -4,7 +4,7 @@
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
       <span class="event-list" :class="isReady ? '-is-ready' : ''">
-        <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }} &nbsp; &nbsp; &nbsp; &nbsp;</span> 
+        <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }}</span> 
       </span>
     </div>
     <ul class="button-list">

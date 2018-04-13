@@ -101,7 +101,7 @@ export default {
 
 .linkexchange {
   width: 100%;
-  height: 200px;
+  height: 250px;
   margin: 0 10px;
   display: flex;
   align-items: center;
