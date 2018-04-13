@@ -136,6 +136,24 @@ export function createRouter () {
         component: DappsSlug,
         name: 'dapps-slug'
       },
+      {
+        path: '/tab/:tab',
+        redirect: {
+          name: 'dapps-tab'
+        }
+      },
+      {
+        path: '/tagged/:tags',
+        redirect: {
+          name: 'dapps-tags'
+        }
+      },
+      {
+        path: '/tagged/:tags/tab/:tab',
+        redirect: {
+          name: 'dapps-tab-tags'
+        }
+      },
       // the root /dapps route goes after other /dapps/{params} routes, so that a direct GET to any other /dapps/{params} will render before /dapps child routes
       {
         path: '/dapps',
