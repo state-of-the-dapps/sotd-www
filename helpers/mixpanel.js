@@ -32,7 +32,7 @@ export const trackDappView = function (sourceCollection, sourceComponent, source
 }
 
 export const trackHomeEventCta = function (targetCta) {
-  let name = 'Home Event Cta'
+  let name = 'Home Event CTA'
   let data = {
     targetCta
   }
@@ -60,7 +60,7 @@ export const trackHomeHeroCta = function (targetCta) {
 }
 
 export const trackHomeHeroDappIcon = function (targetIndex) {
-  let name = 'Home Hero Dapp Icon'
+  let name = 'Home Hero DApp Icon'
   let data = {
     targetIndex
   }
