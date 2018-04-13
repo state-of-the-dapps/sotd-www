@@ -19,6 +19,10 @@
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'events' }" @click.native="trackMenu('events')">Events</nuxt-link>
     </li>
+    <li v-if="siteSection !== ''" class="nav-item">
+      <nuxt-link v-if="siteSection === 'dapps'" @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link>
+      <nuxt-link v-if="siteSection === 'events'" @click.native="trackMenu('events-new')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an event</nuxt-link>
+    </li>
     <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
@@ -28,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { trackMenu } from '~/helpers/mixpanel'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
@@ -38,6 +43,11 @@ export default {
     SvgIconLogo,
     SvgIconMail,
     SvgLogotype
+  },
+  computed: {
+    ...mapGetters([
+      'siteSection'
+    ])
   },
   methods: {
     scrollToMailingList (targetMenuItem) {
@@ -98,6 +108,7 @@ export default {
   margin-left: 20px;
   display: flex;
   align-items: center;
+  text-align: center;
   cursor: pointer;
   &.-newsletter {
     padding: 4px 10px 4px 20px;
@@ -136,6 +147,14 @@ export default {
     @include tweakpoint('min-width', 575px) {
       display: inline-block;
       padding-left: 10px;
+    }
+  }
+  &.-submit {
+    background: $color--black;
+    color: $color--white;
+    padding: 5px;
+    @include tweakpoint('min-width', 840px) {
+      padding: 5px 10px;
     }
   }
 }

@@ -41,7 +41,7 @@
   .back {
     display: none;
     position: absolute;
-    top: -40px;
+    top: 50%;
     margin-top: -15px;
     left: 20px;
     border-radius: 50%;
@@ -138,6 +138,7 @@
     display: flex;
     align-items: center;
     padding: 10px 0;
+    margin: 0 25px;
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding: 10px 0;
       margin-left: 25px;

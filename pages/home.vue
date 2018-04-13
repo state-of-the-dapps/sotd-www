@@ -31,6 +31,9 @@ export default {
       title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
     }
   },
-  layout: 'home'
+  layout: 'home',
+  mounted () {
+    this.$store.dispatch('setSiteSection', '')
+  }
 }
 </script>

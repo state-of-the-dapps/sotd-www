@@ -91,6 +91,7 @@ export default {
 .description {
   font-size: 1.15rem;
   width: 75%;
+  margin-top: .5rem;
   @include tweakpoint('min-width', 575px) {
     width: 90%;
   }
@@ -126,7 +127,7 @@ export default {
   font-size: 5.3rem;
   line-height: .825;
   letter-spacing: 1.05px;
-  margin: 1rem 0 1.5rem 0;
+  margin: 1rem 0 .75rem 0;
   @include tweakpoint('min-width', 1550px) {
     margin-top: 20px;
     margin-bottom: 10px;
