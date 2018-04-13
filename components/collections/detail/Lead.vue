@@ -24,7 +24,7 @@ export default {
   .component--collections-detail-lead {
     padding: 0 20px;
     text-align: center;
-    margin: 3rem 0 9rem 0;
+    margin: 3rem 0 3.5rem 0;
   }
   .heading {
     font-size: 2rem;
