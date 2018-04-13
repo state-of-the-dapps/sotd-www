@@ -64,7 +64,7 @@ export default {
   height: 100%;
   width: 100%;
   text-decoration: none;
-  background-image: url(https://s3.eu-west-3.amazonaws.com/sotd-img/dapps/decentraland/key_visual_1523561498.jpg);
+  background-image: url('');
   background-size: 600px 250px;
   background-position: center center;
   background-repeat: no-repeat;
