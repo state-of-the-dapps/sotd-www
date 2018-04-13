@@ -65,7 +65,7 @@ export default {
   text-decoration: none;
   background-image: url('');
   background-size: 600px 250px;
-  background-position: center center;
+  background-position: center -22px;
   background-repeat: no-repeat;
 }
 
