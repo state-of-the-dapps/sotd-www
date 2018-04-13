@@ -7,7 +7,7 @@
       <span class="status">{{ dapp.status }}</span>
       <DappBadgeList v-if="dapp.badges.length" :badges="dapp.badges" />
     </div>
-    <span class="new" :class="'-' + dapp.status">
+    <span v-if="dapp.isNew" class="new" :class="'-' + dapp.status">
       New
     </span>
   </nuxt-link>
