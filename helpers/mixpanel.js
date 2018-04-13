@@ -14,6 +14,22 @@ export const trackCollectionView = function (sourceComponent, sourcePath, target
   return action
 }
 
+export const trackContact = function (sourceComponent, sourcePageLocation, sourcePath) {
+  let name = 'Contact'
+  let data = {
+    sourceComponent,
+    sourcePageLocation,
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
   let name = 'DApp - View'
   let data = {

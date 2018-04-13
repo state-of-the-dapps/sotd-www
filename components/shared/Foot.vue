@@ -2,6 +2,9 @@
 <div class="component--shared-footer">
   <ul class="nav-list">
     <li class="nav-item">
+      <a @click="trackContact()" href="mailto:support@stateofthedapps.com" class="nav-link">Contact us</a>
+    </li>
+    <li class="nav-item">
       <nuxt-link @click.native="trackPageAbout()" to="/about" class="nav-link">About</nuxt-link>
     </li>
     <li class="nav-item">
@@ -40,7 +43,7 @@
 </template>
 
 <script>
-import { trackPageAbout, trackSocial, trackPageTerms } from '~/helpers/mixpanel'
+import { trackContact, trackPageAbout, trackPageTerms, trackSocial } from '~/helpers/mixpanel'
 
 export default {
   data: () => {
@@ -51,6 +54,10 @@ export default {
     }
   },
   methods: {
+    trackContact () {
+      const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
     trackPageAbout () {
       const action = trackPageAbout(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
