@@ -4,8 +4,7 @@
     :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" 
     class="link" 
     @click.native="trackDappView(dapp.slug)"
-    :style="'background-image: url(' + dapp.image_key_visual + ')'">
-    <img class="image" src="">
+    :style="'background-image: url(' + dapp.imageKeyVisual + ')'">
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
       <p class="tagline">{{ dapp.tagline }}</p>
