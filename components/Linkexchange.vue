@@ -70,11 +70,12 @@ export default {
 
   #linkexchange .LX__banner__container {
     height: 100% !important;
-    background: none;
     background-color: $color--gray !important;
+    background: lighten($color--gray, 5%) !important;
     background-size: 100px 100px !important;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    text-align: center;
   }
 
   #linkexchange .LX__link__summary:after,   #linkexchange .LX__link__summary:before {

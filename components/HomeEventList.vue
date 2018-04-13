@@ -3,9 +3,9 @@
   <div class="wrapper">
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
-      <span class="event-list" :class="isReady ? '-is-ready' : ''">
+      <nuxt-link :to="{ name: 'events' }" class="event-list" :class="isReady ? '-is-ready' : ''">
         <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }}</span> 
-      </span>
+      </nuxt-link>
     </div>
     <ul class="button-list">
       <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }" @click.native="trackHomeEventCta('view')">View all events</nuxt-link></li>
@@ -129,6 +129,7 @@ $duration: 35s;
   padding: 15px 0;
   display: inline-block;
   padding-left: 100%;
+  text-decoration: none;
   &.-is-ready {
     -webkit-animation-iteration-count: infinite; 
             animation-iteration-count: infinite;
