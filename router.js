@@ -82,12 +82,8 @@ export function createRouter () {
       {
         path: '/events',
         component: Events,
+        name: 'events',
         children: [
-          {
-            path: '',
-            component: Placeholder,
-            name: 'events'
-          },
           {
             path: 'tagged/:tags',
             component: Placeholder,
