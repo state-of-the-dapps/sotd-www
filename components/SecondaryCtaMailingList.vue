@@ -17,14 +17,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { isValidEmail } from '~/helpers/validators'
-import { trackNewsletterSubscribe } from '~/helpers/mixpanel'
+import { setUser, trackNewsletterSubscribe } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import SvgIconMail from './SvgIconMail'
 
 export default {
   components: {
     SvgIconMail
+  },
+  computed: {
+    ...mapGetters([
+      'userEntryRoute'
+    ])
   },
   data () {
     return {
@@ -73,6 +79,11 @@ export default {
       const sourcePath = this.$route.path
       const action = trackNewsletterSubscribe(this.email, sourceComponent, sourcePath)
       this.$mixpanel.track(action.name, action.data)
+
+      const hasWeb3 = typeof web3 !== 'undefined'
+      const lastUpdated = new Date().toISOString()
+      const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+      this.$mixpanel.setUser(user)
     },
     validateEmail () {
       let isValid = false

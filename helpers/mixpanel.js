@@ -1,3 +1,14 @@
+export const setUser = function ($email, hasWeb3, lastUpdated, userEntryRoute) {
+  let user = {
+    $email,
+    hasWeb3,
+    lastUpdated,
+    userEntryRoute
+  }
+
+  return user
+}
+
 export const trackCollectionView = function (sourceComponent, sourcePath, targetCollection) {
   let name = 'Collection - View'
   let data = {
