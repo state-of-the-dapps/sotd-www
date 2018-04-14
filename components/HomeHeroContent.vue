@@ -40,7 +40,7 @@ export default {
   }
   @include tweakpoint('min-width', 1250px) {
     .component-HomeHeroContentIntro {
-      width: 775px;
+      width: 650px;
       margin: 40px auto;
     }    
   }

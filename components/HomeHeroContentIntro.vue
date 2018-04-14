@@ -93,7 +93,7 @@ export default {
   width: 75%;
   margin-top: .5rem;
   @include tweakpoint('min-width', 575px) {
-    width: 90%;
+    width: 60%;
   }
   @include tweakpoint('min-width', 1400px) {
     width: 70%;
@@ -121,6 +121,9 @@ export default {
 
 .subtitle-wrapper {
   display: inline-block;
+  @include tweakpoint('min-width', 1250px) {
+    display: none;
+  }
 }
 
 .title-1 {

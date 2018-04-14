@@ -50,7 +50,7 @@ export default {
     left: 0;
     bottom: 10px;
   }
-  @include tweakpoint('min-width', 1400px) {
+  @include tweakpoint('min-width', 1550px) {
     bottom: 25px;
     margin-top: 20px;
   }

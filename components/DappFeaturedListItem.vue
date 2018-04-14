@@ -63,8 +63,7 @@ export default {
   height: 100%;
   width: 100%;
   text-decoration: none;
-  background-image: url('');
-  background-size: 600px 250px;
+  background-size: cover;
   background-position: center -22px;
   background-repeat: no-repeat;
 }
