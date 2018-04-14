@@ -47,7 +47,7 @@ export default {
   @include tweakpoint('min-width', 1400px) {
     .component-HomeHeroContentIcons {
       position: absolute;
-      top: 70px;
+      top: 75px;
       left: 0;
       width: 100%;
     }    
