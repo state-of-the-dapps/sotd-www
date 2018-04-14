@@ -77,7 +77,7 @@ export default {
     bottom: 50px;
     left: 0;
     z-index: 1;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       bottom: 85px;
@@ -92,7 +92,7 @@ export default {
     bottom: 130px;
     left: 77px;
     z-index: 2;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       bottom: 160px;
@@ -107,7 +107,7 @@ export default {
     bottom: 37px;
     left: 125px;
     z-index: 4;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       left: 160px;
@@ -121,7 +121,7 @@ export default {
     bottom: 114px;
     left: 157px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       bottom: 58px;
@@ -136,7 +136,7 @@ export default {
     bottom: 45px;
     left: 216px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       left: 340px;
@@ -150,10 +150,10 @@ export default {
     bottom: 83px;
     left: 257px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
-      right: 330px;
+      right: 310px;
       bottom: 70px;
       transform: scale(.35);
       transform-origin: bottom right;
@@ -168,7 +168,7 @@ export default {
     bottom: 5px;
     left: 298px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: -15px;
@@ -185,7 +185,7 @@ export default {
     bottom: 150px;
     left: 337px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: 75px;
@@ -202,7 +202,7 @@ export default {
     bottom: 25px;
     left: 361px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: 20px;
@@ -218,7 +218,7 @@ export default {
     bottom: 146px;
     left: 444px;
     z-index: 1;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       bottom: 25px;
@@ -234,7 +234,7 @@ export default {
     bottom: 63px;
     left: 486px;
     z-index: 4;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: 110px;
@@ -250,7 +250,7 @@ export default {
     bottom: 0px;
     left: 563px;
     z-index: 3;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: 230px;
@@ -267,7 +267,7 @@ export default {
     bottom: 127px;
     left: 575px;
     z-index: 1;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       left: 165px;
@@ -283,7 +283,7 @@ export default {
     bottom: 81px;
     left: 645px;
     z-index: 2;
-    @include tweakpoint('min-width', 1550px) {
+    @include tweakpoint('min-width', 1400px) {
       left: auto;
       right: auto;
       right: 180px;

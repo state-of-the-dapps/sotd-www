@@ -72,7 +72,7 @@ export default {
 .cta-list {
   display: flex;
   margin: 50px -5px 0;
-  @include tweakpoint('min-width', 1550px) {
+  @include tweakpoint('min-width', 1400px) {
     justify-content: center;
     margin: 25px 0;
   }
@@ -93,12 +93,12 @@ export default {
   width: 75%;
   margin-top: .5rem;
   @include tweakpoint('min-width', 575px) {
-    width: 90%;
+    width: 80%;
   }
   @include tweakpoint('min-width', 1400px) {
     width: 70%;
   }
-  @include tweakpoint('min-width', 1550px) {
+  @include tweakpoint('min-width', 1400px) {
     text-align: center;
     width: 80%;
     margin: 0 auto;
@@ -114,13 +114,16 @@ export default {
   line-height: 1.05;
   letter-spacing: 0;
   margin: 0 1px;
-  @include tweakpoint('min-width', 1550px) {
+  @include tweakpoint('min-width', 1400px) {
     text-align: left;
   }
 }
 
 .subtitle-wrapper {
   display: inline-block;
+  @include tweakpoint('min-width', 1250px) {
+    display: none;
+  }
 }
 
 .title-1 {
@@ -128,7 +131,7 @@ export default {
   line-height: .825;
   letter-spacing: 1.05px;
   margin: 1rem 0 .75rem 0;
-  @include tweakpoint('min-width', 1550px) {
+  @include tweakpoint('min-width', 1400px) {
     margin-top: 20px;
     margin-bottom: 10px;
     text-align: center;
