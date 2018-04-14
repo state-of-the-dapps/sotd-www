@@ -59,8 +59,7 @@
       return {
         title: 'State of the ÐApps — ' + this.eventCount + ' Upcoming Events'
       }
-    },
-    scrollToTop: false
+    }
   }
 </script>
 
