@@ -44,7 +44,7 @@ export default {
       margin: 40px auto;
     }    
   }
-  @include tweakpoint('min-width', 1550px) {
+  @include tweakpoint('min-width', 1400px) {
     .component-HomeHeroContentIcons {
       position: absolute;
       top: 70px;
