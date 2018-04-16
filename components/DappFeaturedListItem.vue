@@ -19,7 +19,7 @@ import { trackDappView } from '~/helpers/mixpanel'
 export default {
   methods: {
     trackDappView (targetDapp) {
-      const sourceCollection = ''
+      const sourceCollection = 'featured'
       const sourceComponent = 'DappFeaturedListItem'
       const sourcePath = this.$route.path
       const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
