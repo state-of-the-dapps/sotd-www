@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper -component-events-detail-categoriessocial-social">
-    <ul class="list -social" v-if="item.socials.length || item.hashtag">
-      <li class="item -social --hashtag" :class="item.socials.length ? '--has-socials': ''"><a @click="$mixpanel.track('Event - Social', { platform: 'hashtag' })" :href="'https://www.twitter.com/hashtag/' + item.hashtag" class="link -social --hashtag" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">#{{ item.hashtag }}</a></li>
+    <ul class="list -social" v-if="(item.socials && item.socials.length) || item.hashtag">
+      <li class="item -social --hashtag" :class="(item.socials && item.socials.length) ? '--has-socials': ''"><a @click="$mixpanel.track('Event - Social', { platform: 'hashtag' })" :href="'https://www.twitter.com/hashtag/' + item.hashtag" class="link -social --hashtag" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">#{{ item.hashtag }}</a></li>
       <li v-for="(social, index) in item.socials" :key="index" class="item -social"><a @click="$mixpanel.track('Event - Social', { platform: social.platform, url: social.url })" :href="social.url" class="link -social" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')"><img :src="require('~/assets/images/social/' + social.platform + '.png')" class="image -social" width="32" :alt="social.platform"></a>
         <div class="info -social">{{ social.platform | capitalize }}</div>
       </li>
