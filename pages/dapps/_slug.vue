@@ -4,12 +4,14 @@
     <StatusSocial/>
     <MainInfo/>
     <Tools/>
+    <DappFeedback :dapp="item"/>
     <Related/>
   </div>
 </template>
 
 <script>
   import axios from '~/helpers/axios'
+  import DappFeedback from '~/components/DappFeedback'
   import MainInfo from '~/components/dapps/detail/MainInfo.vue'
   import Lead from '~/components/dapps/detail/Lead.vue'
   import Related from '~/components/dapps/detail/Related.vue'
@@ -18,6 +20,7 @@
 
   export default {
     components: {
+      DappFeedback,
       MainInfo,
       Lead,
       Related,
