@@ -48,13 +48,13 @@
       friendlyUrl () {
         return this.$store.getters['dapps/list/friendlyUrl']
       },
+      item () {
+        return this.$store.getters['dapps/detail/item']
+      },
       description () {
         const value = this.item.description || []
         const formattedValue = value.split('\n\n')
         return formattedValue
-      },
-      item () {
-        return this.$store.getters['dapps/detail/item']
       },
       tags () {
         var tags

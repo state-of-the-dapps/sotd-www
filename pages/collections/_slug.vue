@@ -3,8 +3,8 @@
     <Lead 
       :description="collection.description"
       :curator="collection.curator"
-      :linkUrl="collection.link.url"
       :linkText="collection.link.text"
+      :linkUrl="collection.link.url"
       :name="collection.name"
     />
     <Items v-if="collection.items.length" 
