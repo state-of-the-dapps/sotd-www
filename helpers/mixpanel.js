@@ -41,11 +41,11 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
-export const trackDappFeedback = function (dapp, wouldRecommend) {
+export const trackDappFeedback = function (dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {
     dapp,
-    wouldRecommend
+    feedback
   }
 
   const action = {

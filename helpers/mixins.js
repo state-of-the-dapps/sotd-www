@@ -1,3 +1,5 @@
+import axios from '~/helpers/axios'
+
 export const getCaretPosition = {
   methods: {
     getCaretPosition (ctrl) {
@@ -35,6 +37,35 @@ export const dispatchWarnings = {
   methods: {
     dispatchWarnings (warnings, model) {
       this.$store.dispatch(model + '/form/setWarnings', warnings)
+    }
+  }
+}
+
+export const setDappPage = {
+  computed: {
+    dapp () {
+      return this.$store.getters['dapps/detail/item']
+    }
+  },
+  fetch ({ store, params, error }) {
+    return axios
+      .get('dapps/' + params.slug)
+      .then(response => {
+        const data = response.data
+        const dapp = data.item
+        store.dispatch('dapps/detail/setItem', dapp)
+        store.dispatch('setSiteSection', 'dapps')
+        if (!Object.keys(dapp).length > 0) {
+          error({ statusCode: 404 })
+        }
+      })
+  },
+  head () {
+    return {
+      title: this.dapp.name + ' — State of the ÐApps',
+      meta: [
+        { hid: 'description', name: 'description', content: this.dapp.teaser }
+      ]
     }
   }
 }

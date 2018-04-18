@@ -4,13 +4,13 @@
     <StatusSocial/>
     <MainInfo/>
     <Tools/>
-    <DappFeedback :dapp="item"/>
+    <DappFeedback :dapp="dapp"/>
     <Related/>
   </div>
 </template>
 
 <script>
-  import axios from '~/helpers/axios'
+  import { setDappPage } from '~/helpers/mixins'
   import DappFeedback from '~/components/DappFeedback'
   import MainInfo from '~/components/dapps/detail/MainInfo.vue'
   import Lead from '~/components/dapps/detail/Lead.vue'
@@ -27,34 +27,6 @@
       StatusSocial,
       Tools
     },
-    computed: {
-      item () {
-        return this.$store.getters['dapps/detail/item']
-      },
-      viewMethod () {
-        return this.$store.getters['dapps/detail/viewMethod']
-      }
-    },
-    fetch ({ store, params, error }) {
-      return axios
-        .get('dapps/' + params.slug)
-        .then(response => {
-          const data = response.data
-          const item = data.item
-          store.dispatch('dapps/detail/setItem', item)
-          store.dispatch('setSiteSection', 'dapps')
-          if (!Object.keys(item).length > 0) {
-            error({ statusCode: 404 })
-          }
-        })
-    },
-    head () {
-      return {
-        title: this.item.name + ' — State of the ÐApps',
-        meta: [
-          { hid: 'description', name: 'description', content: this.item.teaser }
-        ]
-      }
-    }
+    mixins: [setDappPage]
   }
 </script>
