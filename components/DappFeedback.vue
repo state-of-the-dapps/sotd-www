@@ -1,7 +1,7 @@
 <template>
 <div class="component-DappFeedback">
   <div class="wrapper">
-    <h3 class="title-3">Would you recommend this DApp?</h3>
+    <h3 class="title-3">Would you recommend this DApp to a friend?</h3>
     <ul v-if="!hasSubmitted" class="list">
       <li v-for="(option, index) in options" :key="index" class="item"><span class="submit" @click="trackDappFeedback(option)"><component :is="svgFeedbackComponent(option)" :width="25" :height="25"></component></span></li>
     </ul>
