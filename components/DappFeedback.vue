@@ -60,7 +60,7 @@ export default {
 
 .component-DappFeedback {
   margin-bottom: 20px;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     margin-bottom: 0;
   }
 }
@@ -70,7 +70,7 @@ export default {
   line-height: 25px;
   height: 25px;
   margin: 10px 0;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     margin: 0;
   }
 }
@@ -81,7 +81,7 @@ export default {
   justify-content: center;
   height: 25px;
   margin: 10px 0;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     margin: 0;
   }
 }
@@ -102,7 +102,7 @@ export default {
   font-weight: 300;
   font-size: 1rem;
   margin: 0;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     margin-right: 5px;
   }
 }
@@ -111,7 +111,7 @@ export default {
   @include margin-wrapper-main;
   padding: 20px 0;
   text-align: center;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     display: flex;
     align-items: center;
   }

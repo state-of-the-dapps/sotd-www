@@ -57,7 +57,7 @@ export default {
 @import '~assets/css/settings';
 
 .container {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     padding-top: 0;
     display: flex;
     align-items: center;
