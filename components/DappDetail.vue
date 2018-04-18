@@ -3,8 +3,10 @@
     <Lead/>
     <StatusSocial/>
     <MainInfo/>
-    <Tools/>
-    <DappFeedback/>
+    <div class="container">
+      <Tools/>
+      <DappFeedback/>
+    </div>
     <Related/>
   </div>
 </template>
@@ -34,7 +36,6 @@ export default {
     })
   },
   mounted () {
-    console.log(this.dapp)
     if (this.directView) {
       const sourceCollection = ''
       const sourceComponent = ''
@@ -51,3 +52,25 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.container {
+  @include tweakpoint('min-width', 1000px) {
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    padding-left: 160px;
+    padding-right: 160px;
+    &:first-child {
+      flex-grow: 1;
+    }
+  }
+  @include tweakpoint('min-width', 1250px) {
+    justify-content: flex-start;
+  }
+}
+</style>

@@ -5,7 +5,9 @@
     <ul v-if="!hasSubmitted" class="list">
       <li v-for="(option, index) in options" :key="index" class="item"><span class="submit" @click="trackDappFeedback(option)"><component :is="svgFeedbackComponent(option)" :width="25" :height="25"></component></span></li>
     </ul>
-    <p v-else class="confirmation">Thanks for your feedback!</p>
+    <transition name="fade">
+      <p v-if="hasSubmitted" class="confirmation">Thanks for your feedback!</p>
+    </transition>
   </div>
 </div>
 </template>
@@ -56,11 +58,21 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-DappFeedback {
+  margin-bottom: 20px;
+  @include tweakpoint('min-width', 1000px) {
+    margin-bottom: 0;
+  }
+}
+
 .confirmation {
   transition: all .5s ease;
   line-height: 25px;
   height: 25px;
   margin: 10px 0;
+  @include tweakpoint('min-width', 1000px) {
+    margin: 0;
+  }
 }
 
 .list {
@@ -69,23 +81,42 @@ export default {
   justify-content: center;
   height: 25px;
   margin: 10px 0;
+  @include tweakpoint('min-width', 1000px) {
+    margin: 0;
+  }
 }
 
 .submit {
   display: flex;
-  padding: 5px;
+  padding: 0 5px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  @include tweakpoint('min-width', 1250px) {
+    padding: 0;
+    padding-left: 10px;
+  }
 }
 
 .title-3 {
+  font-weight: 300;
+  font-size: 1rem;
   margin: 0;
+  @include tweakpoint('min-width', 1000px) {
+    margin-right: 5px;
+  }
 }
 
 .wrapper {
   @include margin-wrapper-main;
   padding: 20px 0;
   text-align: center;
+  @include tweakpoint('min-width', 1000px) {
+    display: flex;
+    align-items: center;
+  }
+  @include tweakpoint('min-width', 1250px) {
+    margin-right: 0;
+  }
 }
 </style>
