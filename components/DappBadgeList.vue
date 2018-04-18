@@ -2,7 +2,7 @@
 <ul class="component-DappBadgeList">
   <li class="item" v-for="(badge, index) in badges" :key="index">
     <span class="popover">{{ badge | formatDappBadge }}</span>
-    <component :is="svgBadge(badge)" :width="12" :height="14"></component>
+    <component :is="svgBadgeComponent(badge)" :width="12" :height="14"></component>
   </li>
 </ul>
 </template>
@@ -32,7 +32,7 @@ export default {
     SvgBadgeToken
   },
   methods: {
-    svgBadge (badge) {
+    svgBadgeComponent (badge) {
       const badgeComponent = dappBadgeComponentMap[badge]
       return badgeComponent
     }

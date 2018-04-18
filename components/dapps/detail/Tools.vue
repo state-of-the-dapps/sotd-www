@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div class="container">
+    <div class="wrapper">
       <ul class="list">
         <li class="item"><a @click="$mixpanel.track('DApp - Suggest a change', { slug: item.slug })" :href="'mailto:support@stateofthedapps.com?subject=The following ÐApp needs an update: ' + item.name + '&body=https://www.stateofthedapps.com/dapps/' + item.slug" class="link -suggest"><img src="~/assets/images/icons/suggest.png" width="14" class="image"> Edit</a></li>
         <li class="item"><a @click="$mixpanel.track('DApp - Flag as inappropriate', { slug: item.slug })" :href="'mailto:support@stateofthedapps.com?subject=Please review this ÐApp: ' + item.name + '&body=https://www.stateofthedapps.com/dapps/' + item.slug" class="link -flag"><img src="~/assets/images/icons/flag.png" width="14" class="image"> Flag as inappropriate</a></li>
@@ -23,10 +23,6 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
-  .container {
-    padding-bottom: 30px;
-  }
-
   .image {
     display: none;
     position: relative;
@@ -39,11 +35,24 @@
   .link {
     text-decoration: none;
     margin: 0 10px;
+    @include tweakpoint('min-width', 1250px) {
+      margin-left: 0;
+    }
   }
 
   .list {
     display: flex;
     justify-content: center;
     align-items: center;
+    line-height: 25px;
+    @include tweakpoint('min-width', 1250px) {
+      justify-content: flex-start;
+    }
+  }
+
+  .section {
+    @include tweakpoint('min-width', 1250px) {
+      flex-grow: 1;
+    }
   }
 </style>

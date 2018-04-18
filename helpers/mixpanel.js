@@ -41,6 +41,21 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
+export const trackDappFeedback = function (dapp, feedback) {
+  let name = 'DApp - Feedback'
+  let data = {
+    dapp,
+    feedback
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
   let name = 'DApp - View'
   let data = {

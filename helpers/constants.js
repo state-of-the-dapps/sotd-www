@@ -54,6 +54,12 @@ const eventCategories = Object.freeze([
 const eventRefineCategoryOptions = eventCategories.slice()
 eventRefineCategoryOptions.unshift('all')
 
+const feedbackComponentMap = Object.freeze({
+  'negative': 'SvgFeedbackNegative',
+  'neutral': 'SvgFeedbackNeutral',
+  'positive': 'SvgFeedbackPositive'
+})
+
 export {
   dappBadgeComponentMap,
   dappRefineStatusOptions,
@@ -61,5 +67,6 @@ export {
   dappStatuses,
   daysOfTheWeek,
   eventCategories,
-  eventRefineCategoryOptions
+  eventRefineCategoryOptions,
+  feedbackComponentMap
 }
