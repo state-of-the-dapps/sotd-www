@@ -106,12 +106,15 @@ export default {
   padding: 4px 75px;
   border: 1px solid lighten($color--white, 100%);
   position: relative;
-  opacity: 0;
-  &:active {
-    top: 1px;
-  }
+  opacity: .4;
+  transition: all .2s ease;
+  cursor: default;
   &.-is-valid {
     opacity: 1;
+    cursor: pointer;
+    &:active {
+      top: 1px;
+    }
   }
   &.-is-submitting {
     border-color: transparent;
