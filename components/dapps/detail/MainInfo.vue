@@ -67,16 +67,14 @@
     },
     methods: {
       findDappsByTag (tag) {
-        this.$store.dispatch('dapps/list/setActiveItemIndex', -1)
         this.$store.dispatch('dapps/list/resetQuery')
         this.$store.dispatch('tags/selectItem', tag)
         this.$store.dispatch('dapps/list/addTagToQuery', tag)
         this.$store.dispatch('dapps/list/fetchItems')
-        this.$store.dispatch('dapps/list/setFriendlyUrl')
-        this.$router.push(this.friendlyUrl, function () {
+        this.$store.dispatch('dapps/list/setFriendlyUrl').then((response) => {
           document.getElementById('__nuxt').scrollIntoView()
+          this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })
         })
-        this.$mixpanel.track('DApp - Tag', { name: tag, slug: this.item.slug })
       }
     }
   }
