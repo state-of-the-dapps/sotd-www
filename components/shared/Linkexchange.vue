@@ -71,7 +71,6 @@ export default {
 
   #linkexchange .LX__banner__container {
     height: 100% !important;
-    background: url('~/assets/images/bg.jpg') center center !important;
     background-size: 100px 100px !important;
     padding-left: 15px !important;
     padding-right: 15px !important;
