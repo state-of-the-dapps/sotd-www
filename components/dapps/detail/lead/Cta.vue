@@ -1,11 +1,11 @@
 <template>
   <div v-if="item.sites.dappUrl || item.sites.websiteUrl" class="wrapper">
     <span v-if="item.sites.websiteUrl === item.sites.dappUrl">
-      <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('DApp - Site', { type: ['website','dapp'], url: item.sites.websiteUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp/Website<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('DApp - Site', { type: ['website','dapp'], url: item.sites.websiteUrl, dapp: item.slug })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp/Website<span v-if="item.isNsfw"> (NSFW)</span></a>
     </span>
     <span v-else>
-      <a v-if="item.sites.dappUrl" :href="item.sites.dappUrl" @click="$mixpanel.track('DApp - Site', { type: ['dapp'], url: item.sites.dappUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp<span v-if="item.isNsfw"> (NSFW)</span></a>
-      <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('DApp - Site', { type: ['website'], url: item.sites.websiteUrl })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Visit website<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.sites.dappUrl" :href="item.sites.dappUrl" @click="$mixpanel.track('DApp - Site', { type: ['dapp'], url: item.sites.dappUrl, dapp: item.slug })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Launch ÐApp<span v-if="item.isNsfw"> (NSFW)</span></a>
+      <a v-if="item.sites.websiteUrl" :href="item.sites.websiteUrl" @click="$mixpanel.track('DApp - Site', { type: ['website'], url: item.sites.websiteUrl, dapp: item.slug })" class="link" target="_blank" :rel="'noopener noreferrer' + (item.nofollow ? ' nofollow' : '')">Visit website<span v-if="item.isNsfw"> (NSFW)</span></a>
     </span>
   </div>
 </template>
