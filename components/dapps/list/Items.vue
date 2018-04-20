@@ -45,7 +45,6 @@
     },
     methods: {
       trackDappView (slug) {
-        console.log(this.sourceCollection)
         const sourceCollection = this.sourceCollection
         const sourceComponent = '/dapps/list/items/item'
         const sourcePath = this.$route.path
