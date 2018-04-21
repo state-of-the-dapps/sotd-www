@@ -69,7 +69,7 @@
             .then(response => {
               const data = response.data
               const item = data.item
-              if (item.exists) {
+              if (item.slug) {
                 errors.data.push(`Name has already been taken`)
               }
               this.dispatchErrors(errors, 'dapps')
