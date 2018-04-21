@@ -57,8 +57,8 @@
           { value: 'ethereum' }
         ]
         validationTimer = setTimeout(() => {
-          this.teaser.length > 75 ? errors.data.push(`Teaser can't be longer than 75 characters`) : ''
-          this.teaser.length < 4 ? errors.data.push(`Teaser must be longer than 3 characters`) : ''
+          this.teaser.length > 75 ? errors.data.push(`Tagline can't be longer than 75 characters`) : ''
+          this.teaser.length < 4 ? errors.data.push(`Tagline must be longer than 3 characters`) : ''
           var hasWarningWords = warningWords.some((word) => {
             return this.teaser.toLowerCase().indexOf(word.value) !== -1
           })
