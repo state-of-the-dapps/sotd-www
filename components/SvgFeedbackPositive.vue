@@ -31,10 +31,6 @@ export default {
 path {
 	transition: fill .2s ease;
 	pointer-events: all;
-	fill: $color--black;
-}
-
-svg:hover path {
 	fill: $color--feedback-positive;
 }
 </style>
