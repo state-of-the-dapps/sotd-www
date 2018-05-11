@@ -42,10 +42,6 @@ export default {
   overflow: hidden;
 }
 
-.menu {
-  background: rgba($color--white, .5);
-}
-
 .menu-wrapper {
   @include margin-wrapper-main;
   padding: 7px 0;

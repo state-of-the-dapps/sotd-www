@@ -18,7 +18,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { isValidEmail } from '~/helpers/validators'
+import { validateEmail } from '~/helpers/mixins'
 import { setUser, trackNewsletterSubscribe } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import SvgIconMail from './SvgIconMail'
@@ -84,17 +84,9 @@ export default {
       const lastUpdated = new Date().toISOString()
       const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
       this.$mixpanel.setUser(user)
-    },
-    validateEmail () {
-      let isValid = false
-      if (this.email.length > 0) {
-        isValid = isValidEmail(this.email)
-      } else {
-        isValid = false
-      }
-      this.emailIsValid = isValid
     }
-  }
+  },
+  mixins: [validateEmail]
 }
 </script>
 

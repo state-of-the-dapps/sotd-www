@@ -1,4 +1,5 @@
 import axios from '~/helpers/axios'
+import { isValidEmail } from '~/helpers/validators'
 
 export const getCaretPosition = {
   methods: {
@@ -66,6 +67,20 @@ export const setDappPage = {
       meta: [
         { hid: 'description', name: 'description', content: this.dapp.teaser }
       ]
+    }
+  }
+}
+
+export const validateEmail = {
+  methods: {
+    validateEmail () {
+      let isValid = false
+      if (this.email.length > 0) {
+        isValid = isValidEmail(this.email)
+      } else {
+        isValid = false
+      }
+      this.emailIsValid = isValid
     }
   }
 }
