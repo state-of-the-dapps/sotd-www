@@ -2,6 +2,14 @@ function item () {
   return {
     contracts: [],
     socials: [],
+    stats: {
+      'dau': 0,
+      'mau': 0,
+      'tx_1d': 0,
+      'tx_30d': 0,
+      'tx_7d': 0,
+      'wau': 0
+    },
     tags: []
   }
 }
