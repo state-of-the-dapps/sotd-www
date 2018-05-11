@@ -13,6 +13,44 @@
         </li>
       </ul>
       <ul class="sub-list">
+        <li v-if="stats" class="sub-item">
+          <div class="stat-wrapper-main">
+            <div class="stat-wrapper">
+              <h3 class="sub-heading">Active users</h3>
+              <ul class="stat-list">
+                <li class="stat-item">
+                  <span class="stat-label">Monthly</span>
+                  <span class="stat-count">{{ item.stats.mau.toLocaleString() }}</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-label">Weekly</span>
+                  <span class="stat-count">{{ item.stats.wau.toLocaleString() }}</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-label">Daily</span>
+                  <span class="stat-count">{{ item.stats.dau.toLocaleString() }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="stat-wrapper">
+              <h3 class="sub-heading">Transactions</h3>
+              <ul class="stat-list">
+                <li class="stat-item">
+                  <span class="stat-label">30 days</span>
+                  <span class="stat-count">{{ item.stats.tx_30d.toLocaleString() }}</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-label">7 days</span>
+                  <span class="stat-count">{{ item.stats.tx_7d.toLocaleString() }}</span>
+                </li>
+                <li class="stat-item">
+                  <span class="stat-label">1 day</span>
+                  <span class="stat-count">{{ item.stats.tx_1d.toLocaleString() }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>        
+        </li>
         <li v-if="item.contracts && item.contracts.length > 0" class="sub-item">
           <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
           <ul class="sub-body">
@@ -55,6 +93,17 @@
         const value = this.item.description || []
         const formattedValue = value.split('\n\n')
         return formattedValue
+      },
+      stats () {
+        let stats = this.item.stats
+        let count = 0 +
+        stats.dau +
+        stats.mau +
+        stats.wau +
+        stats.tx_1d +
+        stats.tx_7d +
+        stats.tx_30d
+        return count
       },
       tags () {
         var tags
@@ -150,6 +199,44 @@
     float: right;
     margin-left: 20px;
     margin-bottom: 20px;
+  }
+
+  .stat-count {
+    margin-left: auto;
+  }
+
+  .stat-item {
+    display: flex;
+    border-bottom: 1px solid rgba($color--black, .1);
+    padding: 3px 0;
+  }
+
+  .stat-list {
+    margin-top: 10px;
+  }
+
+  .stat-title {
+    margin: 12px 0 5px 0;
+  }
+
+  .stat-wrapper-main {
+    @include tweakpoint('min-width', 1250px) {
+      display: flex;
+    }
+  }
+
+  .stat-wrapper {
+    margin-bottom: 15px;
+    @include tweakpoint('min-width', 1250px) {
+      width: 50%;
+      margin-bottom: 0;
+      &:first-child {
+        padding-right: 10px;
+      }
+      &:last-child {
+        padding-left: 10px;
+      }
+    }
   }
 
   .sub-body {
