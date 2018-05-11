@@ -7,7 +7,7 @@
     <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
-    <span class="tagline">The curated list of decentralized apps</span>
+    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
     <li class="nav-item">
@@ -46,7 +46,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'siteSection'
+      'siteSection',
+      'statDappCount'
     ])
   },
   methods: {
