@@ -28,7 +28,7 @@ export default {
   },
   head () {
     return {
-      title: 'State of the ÐApps — ' + this.statDappCount + ' Projects Built on Ethereum'
+      title: 'State of the ÐApps — ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum'
     }
   },
   layout: 'home',
