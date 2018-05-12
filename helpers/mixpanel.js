@@ -193,12 +193,11 @@ export const trackPageTerms = function (sourceComponent, sourcePageLocation, sou
   return action
 }
 
-export const trackPromotedDappSubmit = function (email, dapp, user, hasSubmittedDapp) {
+export const trackPromotedDappSubmit = function (email, dapp, hasSubmittedDapp) {
   let name = 'Promoted DApp - Submit'
   let data = {
     email,
     dapp,
-    name: user,
     hasSubmittedDapp
   }
 

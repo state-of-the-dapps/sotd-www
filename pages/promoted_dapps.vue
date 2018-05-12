@@ -71,7 +71,7 @@ export default {
         const name = this.name
         const hasSubmittedDapp = this.hasSubmittedDapp
 
-        const action = trackPromotedDappSubmit(email, dapp, name, hasSubmittedDapp)
+        const action = trackPromotedDappSubmit(email, dapp, hasSubmittedDapp)
         this.$mixpanel.track(action.name, action.data)
 
         const hasWeb3 = typeof web3 !== 'undefined'
