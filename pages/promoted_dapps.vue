@@ -30,6 +30,8 @@
 
 <script>
 import axios from '~/helpers/axios'
+import { mapGetters } from 'vuex'
+import { setUser, trackPromotedDappSubmit } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 
 export default {
@@ -43,6 +45,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'userEntryRoute'
+    ]),
     formIsValid () {
       let isValid = false
       if (this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid) {
@@ -53,6 +58,7 @@ export default {
   },
   methods: {
     getStarted () {
+      this.$mixpanel.track('Promoted DApps - Get Started')
       this.$refs.getStartedEl.scrollIntoView({ behavior: 'smooth' })
     },
     selectSubmittedDapp (selection) {
@@ -60,12 +66,25 @@ export default {
     },
     send () {
       if (this.formIsValid) {
+        const email = this.email
+        const dapp = this.dapp
+        const name = this.name
+        const hasSubmittedDapp = this.hasSubmittedDapp
+
+        const action = trackPromotedDappSubmit(email, dapp, name, hasSubmittedDapp)
+        this.$mixpanel.track(action.name, action.data)
+
+        const hasWeb3 = typeof web3 !== 'undefined'
+        const lastUpdated = new Date().toISOString()
+        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        this.$mixpanel.setUser(user)
+
         const data = {
           fields: {
-            email: this.email,
-            dapp: this.dapp,
-            name: this.name,
-            hasSubmittedDapp: this.hasSubmittedDapp
+            email,
+            dapp,
+            name,
+            hasSubmittedDapp
           }
         }
         axios.post('promoted/dapps', data)
