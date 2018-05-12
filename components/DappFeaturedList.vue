@@ -1,7 +1,13 @@
 <template>
 <div class="component-DappFeaturedList">
   <div class="wrapper">
-    <h2 class="title-2"><SvgIconFeatured/>Featured ÐApps <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h2>
+    <h2 class="title-2">
+      <SvgIconFeatured/>Featured ÐApps 
+      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all 
+        <SvgIconChevron :width="8" :height="8" direction="right" />
+      </nuxt-link>
+      <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPagePromotedDapps()">Promote your ÐApp here</nuxt-link>
+    </h2>
     <div class="featured-wrapper">
       <div class="featured-list-wrapper">
         <ul class="featured-list">
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-import { trackCollectionView } from '~/helpers/mixpanel'
+import { trackCollectionView, trackPagePromotedDapps } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import Linkexchange from './Linkexchange'
@@ -38,15 +44,21 @@ export default {
   data () {
     return {
       scrollIndex: 0,
-      dapps: []
+      dapps: [],
+      sourcePath: this.$route.path
     }
   },
   methods: {
     trackCollectionView (slug) {
       const sourceComponent = 'DappFeaturedList'
-      const sourcePath = this.$route.path
       const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, sourcePath, targetCollection)
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackPagePromotedDapps () {
+      const sourceComponent = 'DappFeaturedList'
+      const sourcePageLocation = 'main'
+      const action = trackPagePromotedDapps(sourceComponent, sourcePageLocation, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     }
   },
@@ -126,6 +138,16 @@ export default {
   letter-spacing: -.25px;
   margin-left: 12px;
   text-decoration: none;
+  &.-promote {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    text-decoration: underline;
+  }
+}
+
+.title-2 {
+  position: relative;
 }
 
 .wrapper {
