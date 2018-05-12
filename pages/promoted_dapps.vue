@@ -4,26 +4,26 @@
       <h1 class="title-1">Promote your ÐApp</h1>
       <p class="description">Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.
 </p>
-      <div class="get-started-wrapper"><button class="get-started">Get started</button></div>
+      <div class="get-started-wrapper"><button class="get-started" @click="getStarted">Get started</button></div>
     </div>
     <div class="preview-wrapper">
       <img class="preview" src="~/assets/images/promoted-preview.jpg" width="1200">
     </div>
     <div class="wrapper">
-      <h2 class="title-2">Get started now!</h2>
+      <h2 class="title-2" ref="getStartedEl">Get started now!</h2>
       <div class="fields">
-        <div><input class="input" v-model="name" type="text" placeholder="Your name"></div>
+        <div><input class="input" v-model="name" ref="name" type="text" placeholder="Your name"></div>
         <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>   
         <div><input class="input" v-model="dapp" type="text" placeholder="Your ÐApp's name"></div>  
         <div class="submitted-wrapper">
-          Has this ÐApp already been submitted on this website?
+          Is this ÐApp already listed on this website?
           <p>
             <button class="selection" :class="hasSubmittedDapp == 'yes' ? '--active' : ''" @click="selectSubmittedDapp('yes')">Yes</button>
             <button class="selection" :class="hasSubmittedDapp == 'no' ? '--active' : ''" @click="selectSubmittedDapp('no')">No</button>
           </p>
         </div>
       </div>
-      <div class="send-wrapper"><button class="send" :class="isValidForm ? '--is-ready' : ''" @click="send">Send</button></div>
+      <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send">Send</button></div>
     </div>
   </div>
 </template>
@@ -39,27 +39,43 @@ export default {
       dapp: '',
       name: '',
       hasSubmittedDapp: '',
-      isValidEmail: false,
-      isValidForm: false
+      emailIsValid: false
+    }
+  },
+  computed: {
+    formIsValid () {
+      let isValid = false
+      if (this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid) {
+        isValid = true
+      }
+      return isValid
     }
   },
   methods: {
+    getStarted () {
+      this.$refs.getStartedEl.scrollIntoView({ behavior: 'smooth' })
+    },
     selectSubmittedDapp (selection) {
       this.hasSubmittedDapp = selection
     },
     send () {
-      const data = {
-        fields: {
-          email: this.email,
-          dapp: this.dapp,
-          name: this.name,
-          hasSubmittedDapp: this.hasSubmittedDapp
+      if (this.formIsValid) {
+        const data = {
+          fields: {
+            email: this.email,
+            dapp: this.dapp,
+            name: this.name,
+            hasSubmittedDapp: this.hasSubmittedDapp
+          }
         }
+        axios.post('promoted/dapps', data)
+          .then((response) => {
+            this.$router.push({ name: 'dapps-new-confirmation' })
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       }
-      axios.post('promoted/dapps', data)
-        .then((response) => {
-          this.store.dispatch()
-        })
     }
   },
   mixins: [validateEmail],
@@ -125,6 +141,9 @@ export default {
   width: 45px;
   text-align: center;
   transition: all .1s ease;
+  &:hover {
+    background: rgba($color--black, .1);  
+  }
   &.--active {
     background: $color--black;  
     color: $color--white;  
@@ -138,6 +157,7 @@ export default {
   font-size: .9rem;
   padding: 12px 75px;
   cursor: default;
+  transition: all .2s ease;
   &.--is-ready {
     background: $color--black;
     box-shadow: 0 17px 70px rgba($color--black, .4);
