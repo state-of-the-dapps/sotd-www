@@ -15,6 +15,7 @@ const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default 
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Home = () => import('~/pages/home.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
+const PromotedDapps = () => import('~/pages/promoted_dapps.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
@@ -131,6 +132,11 @@ export function createRouter () {
         path: '/dapps/:slug',
         component: DappsSlug,
         name: 'dapps-slug'
+      },
+      {
+        path: '/promoted-dapps',
+        component: PromotedDapps,
+        name: 'promoted-dapps'
       },
       {
         path: '/tab/:tab',

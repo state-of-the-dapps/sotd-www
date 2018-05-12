@@ -62,7 +62,8 @@ const mutations = {
 const state = () => ({
   site: {
     heroHasLoaded: false,
-    section: ''
+    section: '',
+    modalIsActive: false
   },
   stats: {
     dappCount: 0,
