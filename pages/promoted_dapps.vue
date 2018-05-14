@@ -39,12 +39,13 @@ export default {
   data () {
     return {
       country: '',
-      email: '',
       dapp: '',
-      name: '',
-      hasSubmittedDapp: '',
+      description: 'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.',
+      email: '',
       emailIsValid: false,
-      description: 'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.'
+      formIsSubmitting: false,
+      name: '',
+      hasSubmittedDapp: ''
     }
   },
   computed: {
@@ -53,7 +54,7 @@ export default {
     ]),
     formIsValid () {
       let isValid = false
-      if (this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid) {
+      if (this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid && !this.formIsSubmitting) {
         isValid = true
       }
       return isValid
@@ -76,7 +77,8 @@ export default {
       this.hasSubmittedDapp = selection
     },
     send () {
-      if (this.formIsValid) {
+      if (this.formIsValid && !this.formIsSubmitting) {
+        this.formtIsSubmitting = true
         const country = this.country
         const email = this.email
         const dapp = this.dapp
@@ -105,6 +107,7 @@ export default {
             this.$router.push({ name: 'dapps-new-confirmation' })
           })
           .catch((error) => {
+            this.formtIsSubmitting = false
             console.log(error)
           })
       }
