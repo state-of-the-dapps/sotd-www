@@ -16,9 +16,6 @@
             :dapp="dapp"
             :index="index"
           />
-          <li class="linkexchange">
-            <Linkexchange/>
-          </li>
         </ul>
       </div>
     </div>
@@ -30,14 +27,12 @@
 import { trackCollectionView, trackPagePromotedDapps } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
-import Linkexchange from './Linkexchange'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
     DappFeaturedListItem,
-    Linkexchange,
     SvgIconChevron,
     SvgIconFeatured
   },
@@ -108,24 +103,6 @@ export default {
 .featured-wrapper {
   @include tweakpoint('min-width', 750px) {
     display: flex;
-  }
-}
-
-.linkexchange {
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba($color--black, .1);
-  width: 100%;
-  height: 250px;
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @include tweakpoint('min-width', 750px) {
-    width: calc(50% - 20px); 
-  }
-  @include tweakpoint('min-width', 1200px) {
-    width: calc(25% - 20px); 
   }
 }
 
