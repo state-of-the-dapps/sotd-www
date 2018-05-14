@@ -104,7 +104,7 @@ export default {
         }
         axios.post('promoted/dapps', data)
           .then((response) => {
-            // this.$router.push({ name: 'dapps-new-confirmation' })
+            this.$router.push({ name: 'dapps-new-confirmation' })
           })
           .catch((error) => {
             this.formtIsSubmitting = false
