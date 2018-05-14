@@ -2,7 +2,7 @@
   <div class="page-promote">
     <div class="wrapper">
       <h1 class="title-1">Promote your ÐApp</h1>
-      <p class="description">Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.
+      <p class="description">{{ description }}
 </p>
       <div class="get-started-wrapper"><button class="get-started" @click="getStarted">Get started</button></div>
     </div>
@@ -13,7 +13,8 @@
       <h2 class="title-2" ref="getStartedEl">Get started now!</h2>
       <div class="fields">
         <div><input class="input" v-model="name" ref="name" type="text" placeholder="Your name"></div>
-        <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>   
+        <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>
+        <div><input class="input" v-model="country" type="text" placeholder="Your country"></div>   
         <div><input class="input" v-model="dapp" type="text" placeholder="Your ÐApp's name"></div>  
         <div class="submitted-wrapper">
           Is this ÐApp already listed on this website?
@@ -37,11 +38,13 @@ import { validateEmail } from '~/helpers/mixins'
 export default {
   data () {
     return {
+      country: '',
       email: '',
       dapp: '',
       name: '',
       hasSubmittedDapp: '',
-      emailIsValid: false
+      emailIsValid: false,
+      description: 'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.'
     }
   },
   computed: {
@@ -50,10 +53,18 @@ export default {
     ]),
     formIsValid () {
       let isValid = false
-      if (this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid) {
+      if (this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid) {
         isValid = true
       }
       return isValid
+    }
+  },
+  head () {
+    return {
+      title: 'State of the ÐApps — Promote your ÐApp',
+      meta: [
+        { hid: 'description', name: 'description', content: this.description }
+      ]
     }
   },
   methods: {
@@ -66,12 +77,13 @@ export default {
     },
     send () {
       if (this.formIsValid) {
+        const country = this.country
         const email = this.email
         const dapp = this.dapp
         const name = this.name
         const hasSubmittedDapp = this.hasSubmittedDapp
 
-        const action = trackPromotedDappSubmit(email, dapp, hasSubmittedDapp)
+        const action = trackPromotedDappSubmit(dapp, email, hasSubmittedDapp)
         this.$mixpanel.track(action.name, action.data)
 
         const hasWeb3 = typeof web3 !== 'undefined'
@@ -81,8 +93,9 @@ export default {
 
         const data = {
           fields: {
-            email,
+            country,
             dapp,
+            email,
             name,
             hasSubmittedDapp
           }
