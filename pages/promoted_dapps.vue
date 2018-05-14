@@ -78,7 +78,7 @@ export default {
     },
     send () {
       if (this.formIsValid && !this.formIsSubmitting) {
-        this.formtIsSubmitting = true
+        this.formIsSubmitting = true
         const country = this.country
         const email = this.email
         const dapp = this.dapp
@@ -104,7 +104,7 @@ export default {
         }
         axios.post('promoted/dapps', data)
           .then((response) => {
-            this.$router.push({ name: 'dapps-new-confirmation' })
+            // this.$router.push({ name: 'dapps-new-confirmation' })
           })
           .catch((error) => {
             this.formtIsSubmitting = false
