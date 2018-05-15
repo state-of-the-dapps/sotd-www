@@ -181,7 +181,6 @@ export const trackPromotedDappsView = function (sourceComponent, sourcePath) {
   let name = 'Promoted DApps - View'
   let data = {
     sourceComponent,
-    sourcePageLocation,
     sourcePath
   }
 
