@@ -52,7 +52,6 @@ export default {
     },
     trackPromotedDappsView () {
       const sourceComponent = 'DappFeaturedList'
-      const sourcePageLocation = 'main'
       const action = trackPromotedDappsView(sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     }
