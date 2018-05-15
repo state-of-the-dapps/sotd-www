@@ -177,11 +177,12 @@ export const trackPageAbout = function (sourceComponent, sourcePageLocation, sou
   return action
 }
 
-export const trackPromotedDappsView = function (sourceComponent, sourcePath) {
+export const trackPromotedDappsView = function (sourceComponent, sourcePath, userEntryRoute) {
   let name = 'Promoted DApps - View'
   let data = {
     sourceComponent,
-    sourcePath
+    sourcePath,
+    userEntryRoute
   }
 
   const action = {

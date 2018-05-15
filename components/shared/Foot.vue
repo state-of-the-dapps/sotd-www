@@ -56,6 +56,11 @@ export default {
       sourcePath: ''
     }
   },
+  computed: {
+    userEntryRoute () {
+      return this.$store.getters['userEntryRoute']
+    }
+  },
   methods: {
     trackContact () {
       const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
@@ -66,7 +71,7 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     },
     trackPromotedDappsView () {
-      const action = trackPromotedDappsView(this.sourceComponent, this.sourcePath)
+      const action = trackPromotedDappsView(this.sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
     },
     trackPageTerms () {

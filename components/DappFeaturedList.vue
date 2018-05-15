@@ -36,6 +36,11 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
+  computed: {
+    userEntryRoute () {
+      return this.$store.getters['userEntryRoute']
+    }
+  },
   data () {
     return {
       scrollIndex: 0,
@@ -52,7 +57,7 @@ export default {
     },
     trackPromotedDappsView () {
       const sourceComponent = 'DappFeaturedList'
-      const action = trackPromotedDappsView(sourceComponent, this.sourcePath)
+      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
     }
   },
