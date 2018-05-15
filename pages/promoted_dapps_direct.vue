@@ -2,6 +2,7 @@
   <div class="page-promoted-dapps">
     <PromotedDapps
       :description="description"
+      :directView="true"
     />
   </div>
 </template>
@@ -17,4 +18,3 @@ export default {
   mixins: [setPromotedDappsPage]
 }
 </script>
-

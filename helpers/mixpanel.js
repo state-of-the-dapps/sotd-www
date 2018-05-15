@@ -180,10 +180,11 @@ export const trackPageAbout = function (sourceComponent, sourcePageLocation, sou
 export const trackPromotedDappsView = function (sourceComponent, sourcePath, userEntryRoute) {
   let name = 'Promoted DApps - View'
   let data = {
-    sourceComponent,
-    sourcePath,
     userEntryRoute
   }
+
+  if (sourceComponent) { data = { ...data, sourceComponent } }
+  if (sourcePath) { data = { ...data, sourcePath } }
 
   const action = {
     name,

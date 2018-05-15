@@ -71,6 +71,22 @@ export const setDappPage = {
   }
 }
 
+export const setPromotedDappsPage = {
+  data () {
+    return {
+      description: 'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.'
+    }
+  },
+  head () {
+    return {
+      title: 'State of the ÐApps — Promote your ÐApp',
+      meta: [
+        { hid: 'description', name: 'description', content: this.description }
+      ]
+    }
+  }
+}
+
 export const validateEmail = {
   methods: {
     validateEmail () {

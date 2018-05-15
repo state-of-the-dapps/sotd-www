@@ -8,7 +8,7 @@
       <nuxt-link @click.native="trackPageAbout()" to="/about" class="nav-link">About</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link @click.native="trackPromotedDappsView()" to="/promoted-dapps" class="nav-link">Promote your ÐApp</nuxt-link>
+      <nuxt-link @click.native="trackPromotedDappsView()" :to="{ name: 'promoted-dapps' }" class="nav-link">Promote your ÐApp</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link @click.native="trackPageTerms()" to="/terms" class="nav-link">Terms of use</nuxt-link>
