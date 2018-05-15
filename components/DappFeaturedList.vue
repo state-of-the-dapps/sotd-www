@@ -6,7 +6,7 @@
       <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all 
         <SvgIconChevron :width="8" :height="8" direction="right" />
       </nuxt-link>
-      <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPagePromotedDapps()">Promote your ÐApp here</nuxt-link>
+      <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
     </h2>
     <div class="featured-wrapper">
       <div class="featured-list-wrapper">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { trackCollectionView, trackPagePromotedDapps } from '~/helpers/mixpanel'
+import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import SvgIconChevron from './SvgIconChevron'
@@ -50,10 +50,10 @@ export default {
       const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPagePromotedDapps () {
+    trackPromotedDappsView () {
       const sourceComponent = 'DappFeaturedList'
       const sourcePageLocation = 'main'
-      const action = trackPagePromotedDapps(sourceComponent, sourcePageLocation, this.sourcePath)
+      const action = trackPromotedDappsView(sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     }
   },

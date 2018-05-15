@@ -8,7 +8,7 @@
       <nuxt-link @click.native="trackPageAbout()" to="/about" class="nav-link">About</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link @click.native="trackPagePromotedDapps()" to="/promoted-dapps" class="nav-link">Promote your ÐApp</nuxt-link>
+      <nuxt-link @click.native="trackPromotedDappsView()" to="/promoted-dapps" class="nav-link">Promote your ÐApp</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link @click.native="trackPageTerms()" to="/terms" class="nav-link">Terms of use</nuxt-link>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { trackContact, trackPageAbout, trackPagePromotedDapps, trackPageTerms, trackSocial } from '~/helpers/mixpanel'
+import { trackContact, trackPageAbout, trackPromotedDappsView, trackPageTerms, trackSocial } from '~/helpers/mixpanel'
 
 export default {
   data: () => {
@@ -65,8 +65,8 @@ export default {
       const action = trackPageAbout(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPagePromotedDapps () {
-      const action = trackPagePromotedDapps(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackPromotedDappsView () {
+      const action = trackPromotedDappsView(this.sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
     trackPageTerms () {
