@@ -22,6 +22,9 @@ const actions = {
   },
   setSiteSection ({ commit }, section) {
     commit('SET_SITE_SECTION', section)
+  },
+  setSiteModal ({ commit }, modal) {
+    commit('SET_SITE_MODAL', modal)
   }
 }
 
@@ -31,6 +34,9 @@ const getters = {
   },
   siteSection: state => {
     return state.site.section
+  },
+  siteModal: state => {
+    return state.site.modal
   },
   statDappCount: state => {
     return state.stats.dappCount
@@ -46,6 +52,9 @@ const getters = {
 const mutations = {
   SET_HERO_LOADED (state) {
     state.site.heroHasLoaded = true
+  },
+  SET_SITE_MODAL (state, modal) {
+    state.site.modal = modal
   },
   SET_SITE_SECTION (state, section) {
     state.site.section = section
@@ -63,7 +72,10 @@ const state = () => ({
   site: {
     heroHasLoaded: false,
     section: '',
-    modalIsActive: false
+    modal: {
+      component: '',
+      mpData: {}
+    }
   },
   stats: {
     dappCount: 0,
