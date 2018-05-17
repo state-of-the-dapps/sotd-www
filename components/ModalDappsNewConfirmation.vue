@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ModalPromotedDappsNewConfirmation">
+  <div class="component-ModalDappsNewConfirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
     <p class="message">Your post will be reviewed in the next 24 hours by our digital cats. Stay tuned for updates via email.</p>
     <p class="cta-wrapper"><button class="cta" @click="close">Ok</button></p>
@@ -15,7 +15,7 @@ export default {
         mpData: {}
       }
       this.$store.dispatch('setSiteModal', modal)
-      this.$router.push({ name: 'home' })
+      this.$router.push({ name: 'promoted-dapps' })
     }
   }
 }

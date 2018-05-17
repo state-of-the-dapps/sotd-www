@@ -12,10 +12,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import ModalDappsNewConfirmation from './ModalDappsNewConfirmation'
 import ModalPromotedDappsNewConfirmation from './ModalPromotedDappsNewConfirmation'
 
 export default {
   components: {
+    ModalDappsNewConfirmation,
     ModalPromotedDappsNewConfirmation
   },
   computed: {

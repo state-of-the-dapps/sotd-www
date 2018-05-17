@@ -46,6 +46,7 @@ export default {
   bottom: 0;
   left: 30px;
   height: 270px;
+  overflow: hidden;
   @include tweakpoint('min-width', 575px) {
     left: 0;
     bottom: 10px;
