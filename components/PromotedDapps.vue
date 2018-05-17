@@ -107,7 +107,7 @@ export default {
         axios.post('promoted/dapps', data)
           .then((response) => {
             const modal = {
-              component: 'ModalPromotedDappsConfirmation',
+              component: 'ModalPromotedDappsNewConfirmation',
               mpData: {}
             }
             this.$store.dispatch('setSiteModal', modal)

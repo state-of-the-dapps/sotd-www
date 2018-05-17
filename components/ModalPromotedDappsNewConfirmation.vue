@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ModalPromotedDappsConfirmation">
+  <div class="component-ModalPromotedDappsNewConfirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
     <p class="message">Your post will be reviewed in the next 24h by our digital cats. Stay tuned for updates via email.</p>
     <p class="cta-wrapper"><button class="cta" @click="close">Ok</button></p>
