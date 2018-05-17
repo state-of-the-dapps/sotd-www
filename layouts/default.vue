@@ -52,7 +52,6 @@ export default {
 .main {
   min-height: 98%;
   position: relative;
-  overflow: hidden;
 }
 
 .menu-wrapper {

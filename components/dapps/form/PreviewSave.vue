@@ -124,7 +124,11 @@
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
               this.$store.dispatch('dapps/form/resetForm')
-              this.$router.replace({ name: 'dapps-new-confirmation' })
+              const modal = {
+                component: 'ModalDappsNewConfirmation',
+                mpData: {}
+              }
+              this.$store.dispatch('setSiteModal', modal)
             })
             .catch((error) => {
               alert(error.response.data.message)
