@@ -106,7 +106,11 @@ export default {
         }
         axios.post('promoted/dapps', data)
           .then((response) => {
-            this.$router.push({ name: 'dapps-new-confirmation' })
+            const modal = {
+              component: 'ModalPromotedDappsNewConfirmation',
+              mpData: {}
+            }
+            this.$store.dispatch('setSiteModal', modal)
           })
           .catch((error) => {
             this.formtIsSubmitting = false
