@@ -1,7 +1,7 @@
 <template>
 <div class="component-PropmotedDapps">
   <div class="wrapper">
-    <h1 class="title-1">Promote your ÐApp</h1>
+    <h1 class="title-1">Promote your ÐApp to attract more users</h1>
     <p class="description">{{ description }}</p>
     <div class="get-started-wrapper"><button class="get-started" @click="getStarted">Get started</button></div>
   </div>
@@ -23,6 +23,7 @@
         </p>
       </div>
     </div>
+    <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about next steps.</p>
     <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send">Send</button></div>
   </div>
 </div>
@@ -140,6 +141,12 @@ export default {
   font-size: 1.2rem;
   max-width: 500px;
   margin: 0 auto;
+}
+
+.disclaimer {
+  text-align: center;
+  max-width: 375px;
+  margin: 0 auto 10px;
 }
 
 .fields {
