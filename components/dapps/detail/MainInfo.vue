@@ -14,9 +14,19 @@
       </ul>
       <ul class="sub-list">
         <li v-if="stats" class="sub-item">
-          <div class="stat-wrapper-main">
+          <div class="stat-wrapper-outer">
             <div class="stat-wrapper">
               <h3 class="sub-heading">Active users</h3>
+              <div class="sparkline-wrapper">
+                <trend v-if="item.sparklines.users"
+                  :data="item.sparklines.users"
+                  :gradient="['#b6fc94', '#8ac3ff']"
+                  :stroke-width="4"
+                  :padding="0"
+                  auto-draw
+                  smooth>
+                </trend>
+              </div>
               <ul class="stat-list">
                 <li class="stat-item">
                   <span class="stat-label">Monthly</span>
@@ -34,6 +44,15 @@
             </div>
             <div class="stat-wrapper">
               <h3 class="sub-heading">Transactions</h3>
+              <div class="sparkline-wrapper">
+                <trend v-if="item.sparklines.transactions"
+                  :data="item.sparklines.transactions"
+                  :gradient="['#ffe952', '#ffba4a']"
+                  :stroke-width="4"
+                  auto-draw
+                  smooth>
+                </trend>
+              </div>
               <ul class="stat-list">
                 <li class="stat-item">
                   <span class="stat-label">30 days</span>
@@ -49,7 +68,7 @@
                 </li>
               </ul>
             </div>
-          </div>        
+          </div>
         </li>
         <li v-if="item.contracts && item.contracts.length > 0" class="sub-item">
           <h3 class="sub-heading">Contract address<span v-if="item.contracts.length > 1">es</span></h3>
@@ -80,6 +99,7 @@
 
 <script>
   import Contract from '~/components/dapps/detail/mainInfo/Contract.vue'
+  import Trend from 'vuetrend'
 
   export default {
     computed: {
@@ -112,7 +132,7 @@
       }
     },
     components: {
-      Contract
+      Contract, Trend
     },
     methods: {
       findDappsByTag (tag) {
@@ -201,6 +221,10 @@
     margin-bottom: 20px;
   }
 
+  .sparkline-wrapper {
+    margin: 8px 0;
+  }
+
   .stat-count {
     margin-left: auto;
   }
@@ -219,7 +243,7 @@
     margin: 12px 0 5px 0;
   }
 
-  .stat-wrapper-main {
+  .stat-wrapper-outer {
     @include tweakpoint('min-width', 1250px) {
       display: flex;
     }
