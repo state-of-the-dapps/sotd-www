@@ -2,6 +2,10 @@ function item () {
   return {
     contracts: [],
     socials: [],
+    sparklines: {
+      users: [],
+      transactions: []
+    },
     stats: {
       'dau': 0,
       'mau': 0,
