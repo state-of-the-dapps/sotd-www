@@ -22,7 +22,7 @@
                   :data="item.sparklines.users"
                   :gradient="['#b6fc94', '#8ac3ff']"
                   :stroke-width="4"
-                  :padding="0"
+                  :padding="4"
                   auto-draw
                   smooth>
                 </trend>
