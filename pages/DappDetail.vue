@@ -1,15 +1,16 @@
 <template>
-  <DappDetail/>
+  <div class="page-dapps-detail">
+    <DappDetail/>
+  </div>
 </template>
 
 <script>
-import { setDappPage } from '~/helpers/mixins'
 import DappDetail from '~/components/DappDetail'
 
 export default {
   components: {
     DappDetail
-  },
-  mixins: [setDappPage]
+  }
 }
 </script>
+
