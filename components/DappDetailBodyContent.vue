@@ -11,7 +11,6 @@
       <DappDetailBodyContentModules/>
     </div>
     <div class="actions-related">
-      Actions/Related
     </div>
   </div>
 </template>

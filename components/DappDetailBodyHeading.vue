@@ -1,7 +1,66 @@
 <template>
   <div class="component-DappDetailBodyHeading">
-    <span>Back</span>
-    <h1 class="title-1">DApp title</h1>
-    <span>Tagline tagline tagline tagline tagline</span>
+    <ul class="items -live">
+      <li class="item"><span class="back"><SvgIconChevron fill="-live" :width="10" :height="10"/></span></li>
+      <li class="item"><h1 class="title-1">Axie Infinity</h1></li>
+      <li class="item"><span class="tagline">Collect and raise fantasy creatures called Axie</span></li>
+    </ul>
   </div>
 </template>
+
+<script>
+import SvgIconChevron from './SvgIconChevron'
+
+export default {
+  components: {
+    SvgIconChevron
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.back {
+  display: block;
+  transform: rotate(90deg);
+  background: $color--purple;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.item {
+  @include tweakpoint('min-width', 750px) {
+    margin-right: 10px;
+  }  
+}
+
+.items {
+  color: $color--purple;
+  padding: 15px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  text-align: center;
+  @include tweakpoint('min-width', 750px) {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 10px 12px;
+  }
+  @include dapp-background-colors;
+}
+
+.title-1 {
+  font-size: 3.2rem;
+  margin: 0;
+  text-transform: initial;
+}
+</style>
+

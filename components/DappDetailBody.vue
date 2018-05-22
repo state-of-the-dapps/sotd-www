@@ -1,7 +1,9 @@
 <template>
   <div class="component-DappDetailBody">
-    <DappDetailBodyHeading/>
-    <DappDetailBodyContent/>
+    <div class="wrapper -live">
+      <DappDetailBodyHeading/>
+      <DappDetailBodyContent/>
+    </div>
   </div>
 </template>
 
@@ -16,3 +18,24 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-DappDetailBody {
+  @include margin-wrapper-main;
+}
+
+.wrapper {
+  background: lighten($color--white, 100%);
+  max-width: 1200px;
+  margin: 20px auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba($color--black, .1);
+  border-bottom: 10px solid $color--black;
+  &.-live {
+    border-color: $color--dapp-live;
+  }
+}
+</style>
+

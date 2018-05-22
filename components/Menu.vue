@@ -76,7 +76,7 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .logo-link {
@@ -120,7 +120,7 @@ export default {
       border-left: 1px solid rgba($color--black, .2);
     }
     @include tweakpoint('min-width', 575px) {
-      padding: 14px 10px 14px 20px;
+      padding: 10px 10px 10px 20px;
     }
     @include tweakpoint('min-width', 834px) {
       padding-right: 0;
