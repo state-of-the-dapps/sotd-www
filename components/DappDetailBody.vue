@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBody">
     <div class="wrapper -live">
-      <DappDetailBodyHeading/>
+      <DappDetailBodyHeading :direct="direct"/>
       <DappDetailBodyContent/>
     </div>
   </div>
@@ -15,7 +15,8 @@ export default {
   components: {
     DappDetailBodyContent,
     DappDetailBodyHeading
-  }
+  },
+  props: ['direct']
 }
 </script>
 

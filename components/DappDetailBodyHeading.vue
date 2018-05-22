@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBodyHeading">
     <ul class="items -live">
-      <li class="item"><span class="back"><SvgIconChevron fill="-live" :width="10" :height="10"/></span></li>
+      <li class="item" v-if="!direct"><span class="back"><SvgIconChevron fill="-live" :width="10" :height="10"/></span></li>
       <li class="item"><h1 class="title-1">Axie Infinity</h1></li>
       <li class="item"><span class="tagline">Collect and raise fantasy creatures called Axie</span></li>
     </ul>
@@ -14,6 +14,11 @@ import SvgIconChevron from './SvgIconChevron'
 export default {
   components: {
     SvgIconChevron
+  },
+  props: {
+    direct: {
+      default: false
+    }
   }
 }
 </script>

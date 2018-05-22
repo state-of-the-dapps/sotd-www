@@ -1,6 +1,6 @@
 <template>
 <li class="component-DappCardListItem" :class="'-' + dapp.status">
-  <nuxt-link class="link" :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
+  <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
     <h4 class="title-4">{{ dapp.name }}</h4>
     <p class="description">{{ dapp.teaser }}</p>
     <div class="meta" :class="'-' + dapp.status">

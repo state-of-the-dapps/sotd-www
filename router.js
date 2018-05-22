@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
 const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
+const DappDetailDirect = () => import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
@@ -65,9 +66,14 @@ export function createRouter () {
         name: 'collections-slug'
       },
       {
-        path: '/dapps/detail',
+        path: '/dapps/:slug',
+        component: DappDetailDirect,
+        name: 'dapp-detail-direct'
+      },
+      {
+        path: '/dapps/:slug',
         component: DappDetail,
-        name: 'dapps-detail'
+        name: 'dapp-detail'
       },
       {
         path: '/events/submit/new',
