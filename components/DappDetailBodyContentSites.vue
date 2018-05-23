@@ -39,6 +39,16 @@
   margin-right: auto;
 }
 
+.social-list {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include tweakpoint('min-width', 1000px) {
+    justify-content: flex-start;
+  }
+}
+
 .wrapper {
   margin: 0 10px 24px 10px;
   padding-bottom: 24px;
