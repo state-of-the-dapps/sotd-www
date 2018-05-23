@@ -191,6 +191,10 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.black {
+  fill: $color--black;
+}
+
 .purple {
   fill: $color--purple;
 }

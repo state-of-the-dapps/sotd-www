@@ -34,11 +34,11 @@
 export default {
   props: {
     'height': {
-      default: 25,
+      default: 22,
       type: Number
     },
     'width': {
-      default: 25,
+      default: 22,
       type: Number
     }
   }
@@ -49,8 +49,7 @@ export default {
 @import '~assets/css/settings';
 
 path {
-	transition: fill .2s ease;
 	pointer-events: all;
-	fill: $color--feedback-negative;
+	fill: $color--black;
 }
 </style>

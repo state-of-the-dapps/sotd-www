@@ -25,6 +25,6 @@
 .wrapper {
   margin: 0 10px 24px 10px;
   padding-bottom: 24px;
-  border-bottom: 1px solid $color--gray;
+  border-bottom: 1px solid darken($color--gray, 6%);
 }
 </style>
