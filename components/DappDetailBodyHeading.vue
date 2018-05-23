@@ -58,7 +58,7 @@ export default {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   text-align: center;
-  @include tweakpoint('min-width', 750px) {
+  @include tweakpoint('min-width', 1000px) {
     display: flex;
     align-items: center;
     text-align: left;

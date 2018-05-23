@@ -10,6 +10,11 @@
 @import '~assets/css/settings';
 
 .description {
-  padding: 0 10px;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  @include tweakpoint('min-width', 1000px) {
+    text-align: left;
+    padding: 15px 10px 5px 10px;
+  }
 }
 </style>

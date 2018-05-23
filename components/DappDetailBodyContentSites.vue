@@ -27,6 +27,18 @@
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.button {
+  background: $color--black;
+  color: $color--gray;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wrapper {
   margin: 0 10px 24px 10px;
   padding-bottom: 24px;

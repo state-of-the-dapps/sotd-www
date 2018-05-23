@@ -4,11 +4,21 @@
     <div class="main">
       <DappDetailBodyContentImage/>
       <DappDetailBodyContentDescription/>
+      <media :query="{maxWidth: 1000}">
+        <div>
+          <DappDetailBodyContentSites/>
+          <DappDetailBodyContentRecommend/>
+        </div>
+      </media>
       <DappDetailBodyContentModules/>
     </div>
     <div class="actions-related">
-      <DappDetailBodyContentSites/>
-      <DappDetailBodyContentRecommend/>
+      <media :query="{minWidth: 1000}">
+        <div>
+        <DappDetailBodyContentSites/>
+        <DappDetailBodyContentRecommend/>
+        </div>
+      </media>
       <DappDetailBodyContentBadges/>
       <DappDetailBodyContentTags/>
       <DappDetailBodyContentTools/>
@@ -68,7 +78,7 @@ export default {
 
 .actions-related {
   @include tweakpoint('min-width', 1000px) {
-    width: 200px;
+    width: 190px;
     padding-left: 10px;
   }  
 }

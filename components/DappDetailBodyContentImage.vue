@@ -11,7 +11,10 @@
 
 .image {
   max-width: 100%;
-  border-radius: 4px;
+  display: block;
+  @include tweakpoint('min-width', 1000px) {
+    border-radius: 4px;
+  } 
 }
 
 .wrapper {
