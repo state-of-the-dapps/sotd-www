@@ -50,11 +50,11 @@ export default {
       type: String
     },
     'height': {
-      default: 23,
+      default: 21,
       type: Number
     },
     'width': {
-      default: 23,
+      default: 21,
       type: Number
     }
   }
