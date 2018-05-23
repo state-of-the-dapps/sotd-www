@@ -1,6 +1,8 @@
 <template>
   <div class="component-DappDetailBodyContentImage">
-    <img class="image" src="https://d3colfu6jphe2a.cloudfront.net/dapps/axie-infinity/key_visual_1526279552.jpg">
+    <div class="wrapper">
+      <img class="image" src="https://d3colfu6jphe2a.cloudfront.net/dapps/axie-infinity/key_visual_1526279552.jpg">
+    </div>
   </div>
 </template>
 
@@ -9,5 +11,12 @@
 
 .image {
   max-width: 100%;
+  border-radius: 4px;
+}
+
+.wrapper {
+  @include tweakpoint('min-width', 1000px) {
+    margin: 0 10px;
+  } 
 }
 </style>
