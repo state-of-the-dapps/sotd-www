@@ -6,23 +6,66 @@
     <ul class="social-list">
       <li class="social-item">
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
-          Social
+          <SvgSocialChat/>
         </a>
       </li>
       <li class="social-item">
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
-          Social
+          <SvgSocialBlog/>
         </a>
       </li>
       <li class="social-item">
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
-          Social
+          <SvgSocialFacebook/>
+        </a>
+      </li>
+      <li class="social-item">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+          <SvgSocialGithub/>
+        </a>
+      </li>
+      <li class="social-item">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+          <SvgSocialGitter/>
+        </a>
+      </li>
+      <li class="social-item">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+          <SvgSocialReddit/>
+        </a>
+      </li>
+      <li class="social-item">
+        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+          <SvgSocialTwitter/>
         </a>
       </li>
     </ul>
   </div>
 </div>
 </template>
+
+<script>
+import SvgSocialChat from './SvgSocialChat'
+import SvgSocialBlog from './SvgSocialBlog'
+import SvgSocialFacebook from './SvgSocialFacebook'
+import SvgSocialGithub from './SvgSocialGithub'
+import SvgSocialGitter from './SvgSocialGitter'
+import SvgSocialReddit from './SvgSocialReddit'
+import SvgSocialTwitter from './SvgSocialTwitter'
+
+export default {
+  components: {
+    SvgSocialChat,
+    SvgSocialBlog,
+    SvgSocialFacebook,
+    SvgSocialGithub,
+    SvgSocialGitter,
+    SvgSocialReddit,
+    SvgSocialTwitter
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -39,9 +82,15 @@
   margin-right: auto;
 }
 
+.social-item {
+  padding: 3px;
+}
+
 .social-list {
-  padding-top: 10px;
+  padding-top: 5px;
+  margin: 0 -3px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   @include tweakpoint('min-width', 1000px) {
