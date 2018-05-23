@@ -5,37 +5,37 @@
     <button class="button">Visit website</button>
     <ul class="social-list">
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialChat/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialBlog/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialFacebook/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialGithub/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialGitter/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialReddit/>
         </a>
       </li>
       <li class="social-item">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
           <SvgSocialTwitter/>
         </a>
       </li>
@@ -86,8 +86,12 @@ export default {
   padding: 3px;
 }
 
+.social-link {
+  display: block;
+  height: 21px;
+}
+
 .social-list {
-  padding-top: 5px;
   margin: 0 -3px;
   display: flex;
   flex-wrap: wrap;

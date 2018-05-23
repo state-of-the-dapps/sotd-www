@@ -1,16 +1,16 @@
 <template>
 <div class="component-DappDetailBodyContentRecommend">
   <div class="wrapper">
-    <p>Would you recommend this DApp to a friend?</p>
+    <p>Would you recommend this ÐApp to a friend?</p>
     <ul class="reaction-list">
       <li class="reaction-item">
-        Positive
+        <SvgReactionPositive/>
       </li>
       <li class="reaction-item">
-        Neutral
+        <SvgReactionNeutral/>
       </li>
       <li class="social-item">
-        Negative
+        <SvgReactionNegative/>
       </li>
     </ul>
   </div>
