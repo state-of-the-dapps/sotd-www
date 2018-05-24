@@ -20,11 +20,11 @@ export default {
       type: String
     },
     'height': {
-      default: 22,
+      default: 24,
       type: Number
     },
     'width': {
-      default: 22,
+      default: 24,
       type: Number
     }
   }

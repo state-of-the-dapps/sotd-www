@@ -76,7 +76,7 @@ export default {
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 5px;
+  padding: 6px;
   margin-bottom: 7px;
   margin-left: auto;
   margin-right: auto;
@@ -88,7 +88,7 @@ export default {
 
 .social-link {
   display: block;
-  height: 21px;
+  height: 24px;
 }
 
 .social-list {
