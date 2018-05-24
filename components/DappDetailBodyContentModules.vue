@@ -3,118 +3,37 @@
     <div class="main-wrapper">
       <div class="module-wrapper -tier-1">
         <div class="module -status">
-          <div>
-            <span class="status -live"></span> Status: <strong>Live</strong>
-          </div>
+          <DappDetailBodyContentModulesStatus/>
         </div>
         <div class="module">
-          <h4 class="subtitle">Author(s)</h4>
-          <p class="details">Axie Infinity Inc.</p>
+          <DappDetailBodyContentModulesAuthors/>
         </div>
         <div class="module">
-          <h4 class="subtitle">Software license</h4>
-          <p class="details">MIT</p>
+          <DappDetailBodyContentModulesLicense/>
         </div>
       </div>
       <div class="module-wrapper -tier-2">
         <div class="module">
-          Submitted: <strong>Jun 13, 2017</strong>
+          <DappDetailBodyContentModulesSubmitted/>
         </div>
         <div class="module">
-          Last updated: <strong>Jun 20, 2017</strong>
+          <DappDetailBodyContentModulesUpdated/>
         </div>
       </div>
       <div class="module-wrapper -tier-3">
         <div class="module">
-          <h4 class="subtitle">Active users</h4>
-          <div class="sparkline">
-            <trend
-              :data="[0,1,1,2,3,5,8,5,3,2,1,1,0]"
-              :gradient="['#333']"
-              :stroke-width="2"
-              :padding="4"
-              :height="40"
-              auto-draw
-              smooth>
-            </trend>
-          </div>
-          <ul class="stat-list">
-            <li class="stat-item">
-              <span>Monthly</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-            <li class="stat-item">
-              <span>Weekly</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-            <li class="stat-item">
-              <span>Daily</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-          </ul>
+          <DappDetailBodyContentModulesUsers/>
         </div>
         <div class="module">
-          <h4 class="subtitle">Transactions</h4>
-          <div class="sparkline">
-            <trend
-              :data="[0,1]"
-              :gradient="['#333']"
-              :stroke-width="2"
-              :height="40"
-              auto-draw
-              smooth>
-            </trend>
-          </div>
-          <ul class="stat-list">
-            <li class="stat-item">
-              <span>Monthly</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-            <li class="stat-item">
-              <span>Weekly</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-            <li class="stat-item">
-              <span>Daily</span>
-              <span class="stat-value">1,208,982</span>
-            </li>
-          </ul>
+          <DappDetailBodyContentModulesTransactions/>
         </div>
       </div>
       <div class="module-wrapper -tier-4">
         <div class="module">
-          <h4 class="subtitle">Contract address(es)</h4>
-          <ul class="contract-list">
-            <li class="contract-item">
-              <span class="contract-name"><strong>Mainnet</strong></span>
-              <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
-            </li>
-            <li class="contract-item">
-              <span class="contract-name"><strong>Rinkeby</strong></span>
-              <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
-            </li>
-          </ul>
+          <DappDetailBodyContentModulesContracts/>
         </div>
         <div class="module">
-          <h4 class="subtitle">Featured in these collections</h4>
-          <ul class="collection-list">
-            <li class="collection-item">
-              <span class="collection-icon"></span>
-              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-            </li>
-            <li class="collection-item">
-              <span class="collection-icon"></span>
-              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-            </li>
-            <li class="collection-item">
-              <span class="collection-icon"></span>
-              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-            </li>
-            <li class="collection-item">
-              <span class="collection-icon"></span>
-              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-            </li>
-          </ul>
+          <DappDetailBodyContentModulesCollections/>
         </div>
       </div>
     </div>
@@ -122,13 +41,27 @@
 </template>
 
 <script>
-import Trend from 'vuetrend'
-import SvgBadgeFeatured from './SvgBadgeFeatured'
+import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
+import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModulesCollections'
+import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
+import DappDetailBodyContentModulesLicense from './DappDetailBodyContentModulesLicense'
+import DappDetailBodyContentModulesStatus from './DappDetailBodyContentModulesStatus'
+import DappDetailBodyContentModulesSubmitted from './DappDetailBodyContentModulesSubmitted'
+import DappDetailBodyContentModulesTransactions from './DappDetailBodyContentModulesTransactions'
+import DappDetailBodyContentModulesUpdated from './DappDetailBodyContentModulesUpdated'
+import DappDetailBodyContentModulesUsers from './DappDetailBodyContentModulesUsers'
 
 export default {
   components: {
-    SvgBadgeFeatured,
-    Trend
+    DappDetailBodyContentModulesAuthors,
+    DappDetailBodyContentModulesCollections,
+    DappDetailBodyContentModulesContracts,
+    DappDetailBodyContentModulesLicense,
+    DappDetailBodyContentModulesStatus,
+    DappDetailBodyContentModulesSubmitted,
+    DappDetailBodyContentModulesTransactions,
+    DappDetailBodyContentModulesUpdated,
+    DappDetailBodyContentModulesUsers
   }
 }
 </script>
@@ -136,63 +69,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
-
-.collection-list {
-  margin-top: 9px;
-}
-
-.collection-item {
-  padding: 3px 0;
-}
-
-.collection-name {
-  display: flex;
-  align-items: center;
-}
-
-.collection-name-description {
-  margin-left: 5px;
-}
-
-.contract-item {
-  display: flex;
-  align-items: center;
-  padding: 2px 0;
-}
-
-.contract-list {
-  margin-top: 10px;
-}
-
-.contract-name {
-  width: 75px;
-}
-
-.contract-address {
-  flex: 1;
-  position: relative;
-  top: 1px;
-}
-
-.contract-address-value {
-  font-family: 'Inconsolata', monospace;
-}
-
-.contract-address-copy {
-  margin-left: 5px;
-  font-size: .7rem;
-  color: $color--white;
-  background: $color--black;
-  padding: 2px 5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  position: relative;
-  top: -1px;
-}
-
-.details {
-  margin: 0;
-}
 
 .main-wrapper {
   padding: 10px;
@@ -237,43 +113,5 @@ export default {
       }
     }
   }
-}
-
-.sparkline {
-  margin: 10px 0;
-}
-
-.subtitle {
-  margin: 0;
-}
-
-.stat-item {
-  padding: 4px 5px;
-  &:nth-child(odd) {
-    background: lighten($color--white, 100%);
-  }
-  display: flex;
-  align-items: center;
-  span {
-    width: 50%;
-    &:last-child {
-      text-align: right;
-    }
-  }
-}
-
-.stat-value {
-  font-family: 'Inconsolata', monospace;
-}
-
-.status {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  position: relative;
-  top: 3px;
-  margin-right: 3px;
-  border-radius: 50%;
-  @include dapp-background-colors
 }
 </style>
