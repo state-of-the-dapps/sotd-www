@@ -95,11 +95,11 @@ export default {
 .badge-item {
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .description {
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 .subtitle {

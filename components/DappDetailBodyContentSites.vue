@@ -1,7 +1,7 @@
 <template>
 <div class="component-DappDetailBodyContentSites">
   <div class="wrapper">
-    <button class="button">Launch DApp</button>
+    <button class="button">Launch ÐApp</button>
     <button class="button">Visit website</button>
     <ul class="social-list">
       <li class="social-item">
@@ -77,7 +77,7 @@ export default {
   width: 100%;
   max-width: 200px;
   padding: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   margin-left: auto;
   margin-right: auto;
 }

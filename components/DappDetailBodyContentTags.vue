@@ -4,13 +4,13 @@
     <h4 class="subtitle">Tags</h4>
     <ul class="tag-list">
       <li class="tag-item">
-        Tag
+        <a class="tag-link" href="#">#smart-contract</a>
       </li>
       <li class="tag-item">
-        Tag
+        <a class="tag-link" href="#">#tag</a>
       </li>
       <li class="tag-item">
-        Tag
+        <a class="tag-link" href="#">#tag</a>
       </li>
     </ul>
   </div>
@@ -19,6 +19,25 @@
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.subtitle {
+  font-weight: 300; 
+  margin-bottom: .75rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -4px;
+}
+
+.tag-link {
+  text-decoration: none;
+  display: block;
+  padding: 5px 8px;
+  margin: 4px;
+  background: lighten($color--gray, 2%);
+}
 
 .wrapper {
   margin: 0 10px 24px 10px;
