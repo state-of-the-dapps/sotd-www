@@ -2,8 +2,10 @@
   <div class="component-DappDetailBodyContentModules">
     <div class="main-wrapper">
       <div class="module-wrapper -tier-1">
-        <div class="module">
-          <span class="status -live"></span> Status: <strong>Live</strong>
+        <div class="module -status">
+          <div>
+            <span class="status -live"></span> Status: <strong>Live</strong>
+          </div>
         </div>
         <div class="module">
           <h4 class="subtitle">Author(s)</h4>
@@ -16,10 +18,10 @@
       </div>
       <div class="module-wrapper -tier-2">
         <div class="module">
-          <span class="status -live"></span> Submitted: <strong>Jun 13, 2017</strong>
+          Submitted: <strong>Jun 13, 2017</strong>
         </div>
         <div class="module">
-          <span class="status -live"></span> Last updated: <strong>Jun 20, 2017</strong>
+          Last updated: <strong>Jun 20, 2017</strong>
         </div>
       </div>
       <div class="module-wrapper -tier-3">
@@ -29,15 +31,15 @@
           <ul class="stat-list">
             <li class="stat-item">
               <span>Monthly</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
             <li class="stat-item">
               <span>Weekly</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
             <li class="stat-item">
               <span>Daily</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
           </ul>
         </div>
@@ -47,15 +49,15 @@
           <ul class="stat-list">
             <li class="stat-item">
               <span>Monthly</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
             <li class="stat-item">
               <span>Weekly</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
             <li class="stat-item">
               <span>Daily</span>
-              <span>1,208,982</span>
+              <span class="stat-value">1,208,982</span>
             </li>
           </ul>
         </div>
@@ -121,6 +123,13 @@
   padding: 10px;
   margin-bottom: 10px;
   overflow: hidden;
+  @include tweakpoint('min-width', 800px) {
+    padding: 20px;
+  }
+  &.-status {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .module-wrapper {
@@ -147,7 +156,41 @@
   }
 }
 
+.sparkline {
+  margin: 10px 0;
+}
+
 .subtitle {
   margin: 0;
+}
+
+.stat-item {
+  padding: 4px 5px;
+  &:nth-child(odd) {
+    background: lighten($color--white, 100%);
+  }
+  display: flex;
+  align-items: center;
+  span {
+    width: 50%;
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.stat-value {
+  font-family: 'Inconsolata', monospace;
+}
+
+.status {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  top: 3px;
+  margin-right: 3px;
+  border-radius: 50%;
+  @include dapp-background-colors
 }
 </style>
