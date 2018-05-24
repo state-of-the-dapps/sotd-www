@@ -65,16 +65,14 @@
       <div class="module-wrapper -tier-4">
         <div class="module">
           <h4 class="subtitle">Contract address(es)</h4>
-          <ul class="contact-list">
+          <ul class="contract-list">
             <li class="contract-item">
               <span class="contract-name"><strong>Mainnet</strong></span>
-              <span class="contract-address">0x960b236A07cf122663c43033...</span>
-              <span class="contract-copy">Copy</span>
+              <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
             </li>
             <li class="contract-item">
               <span class="contract-name"><strong>Rinkeby</strong></span>
-              <span class="contract-address">0x960b236A07cf122663c43033...</span>
-              <span class="contract-copy">Copy</span>
+              <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
             </li>
           </ul>
         </div>
@@ -83,19 +81,19 @@
           <ul class="collection-list">
             <li class="collection-item">
               <span class="collection-icon"></span>
-              <span class="collection-name">Best games of 2018</span>
+              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
             </li>
             <li class="collection-item">
               <span class="collection-icon"></span>
-              <span class="collection-name">Best games of 2018</span>
+              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
             </li>
             <li class="collection-item">
               <span class="collection-icon"></span>
-              <span class="collection-name">Best games of 2018</span>
+              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
             </li>
             <li class="collection-item">
               <span class="collection-icon"></span>
-              <span class="collection-name">Best games of 2018</span>
+              <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
             </li>
           </ul>
         </div>
@@ -104,8 +102,72 @@
   </div>
 </template>
 
+<script>
+import SvgBadgeFeatured from './SvgBadgeFeatured'
+
+export default {
+  components: {
+    SvgBadgeFeatured
+  }
+}
+</script>
+
+
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.collection-list {
+  margin-top: 9px;
+}
+
+.collection-item {
+  padding: 3px 0;
+}
+
+.collection-name {
+  display: flex;
+  align-items: center;
+}
+
+.collection-name-description {
+  margin-left: 5px;
+}
+
+.contract-item {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.contract-list {
+  margin-top: 10px;
+}
+
+.contract-name {
+  width: 75px;
+}
+
+.contract-address {
+  flex: 1;
+  position: relative;
+  top: 1px;
+}
+
+.contract-address-value {
+  font-family: 'Inconsolata', monospace;
+}
+
+.contract-address-copy {
+  margin-left: 5px;
+  font-size: .7rem;
+  color: $color--white;
+  background: $color--black;
+  padding: 2px 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  position: relative;
+  top: -1px;
+}
 
 .details {
   margin: 0;
