@@ -1,3 +1,52 @@
+const dappItem = Object.freeze({
+  authors: [],
+  badges: [],
+  contracts: [],
+  created: '',
+  description: '',
+  isNew: false,
+  isNsfw: false,
+  lastUpdated: '',
+  license: '',
+  logoUrl: '',
+  name: '',
+  nofollow: false,
+  relatedDapps: [],
+  sites: {
+    websiteUrl: '',
+    dappUrl: ''
+  },
+  slug: '',
+  socials: [],
+  sparklines: {
+    transactions: [],
+    users: []
+  },
+  stats: {
+    'ctr': 0,
+    'positive': 0,
+    'negative': 0,
+    'neutral': 0,
+    'impressions': 0,
+    'clicks': 0,
+    'dau': 0,
+    'mau': 0,
+    'tx_1d': 0,
+    'tx_30d': 0,
+    'tx_7d': 0,
+    'wau': 0,
+    'qau': 0,
+    'tx_90d': 0,
+    'flagged': 0,
+    'shared': 0,
+    'suggested': 0,
+    'contract_created': ''
+  },
+  status: '',
+  tags: [],
+  teaser: ''
+})
+
 const dappBadgeComponentMap = Object.freeze({
   '0x': 'SvgBadge0x',
   'complete': 'SvgBadgeComplete',
@@ -62,6 +111,7 @@ const feedbackComponentMap = Object.freeze({
 
 export {
   dappBadgeComponentMap,
+  dappItem,
   dappRefineStatusOptions,
   dappRefineTabOptions,
   dappStatuses,

@@ -1,5 +1,6 @@
 import axios from '~/helpers/axios'
 import { isValidEmail } from '~/helpers/validators'
+import * as constants from '~/helpers/constants'
 
 export const getCaretPosition = {
   methods: {
@@ -42,10 +43,10 @@ export const dispatchWarnings = {
   }
 }
 
-export const setDappPage = {
-  computed: {
-    dapp () {
-      return this.$store.getters['dapps/detail/item']
+export const setDappDetailPage = {
+  data () {
+    return {
+      dapp: constants.dappItem
     }
   },
   fetch ({ store, params, error }) {

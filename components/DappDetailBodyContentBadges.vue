@@ -4,7 +4,7 @@
     <h4 class="subtitle">Badges</h4>
     <ul class="badge-list">
       <li class="badge-item">
-        <SvgBadge0x fill="black"/> <span class="description">0x</span>
+        <SvgBadge0x fill="black"/> <span class="description">0x protocol compatible</span>
       </li>
       <li class="badge-item">
         <SvgBadgeComplete fill="black"/> <span class="description">Has a complete profile</span>
