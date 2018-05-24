@@ -47,11 +47,14 @@ export default {
 .tool-link {
   display: flex;
   align-items: center;
+  justify-content: center;
+  @include tweakpoint('min-width', 1000px) {
+    justify-content: flex-start;
+  }
 }
 
 .wrapper {
   margin: 0 10px 24px 10px;
   padding-bottom: 24px;
-  border-bottom: 1px solid darken($color--gray, 6%);
 }
 </style>

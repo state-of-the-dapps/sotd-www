@@ -96,6 +96,10 @@ export default {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  justify-content: center;
+  @include tweakpoint('min-width', 1000px) {
+    justify-content: flex-start;
+  }
 }
 
 .description {
@@ -105,6 +109,10 @@ export default {
 .subtitle {
   font-weight: 300; 
   margin-bottom: .75rem;
+  text-align: center;
+  @include tweakpoint('min-width', 1000px) {
+    text-align: left;
+  }
 }
 
 .wrapper {

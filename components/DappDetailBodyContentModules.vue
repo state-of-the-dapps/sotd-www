@@ -111,6 +111,9 @@
 
 .main-wrapper {
   padding: 10px;
+  @include tweakpoint('min-width', 700px) {
+    padding: 5px;
+  }
 }
 
 .module {
@@ -118,6 +121,30 @@
   padding: 10px;
   margin-bottom: 10px;
   overflow: hidden;
+}
+
+.module-wrapper {
+  @include tweakpoint('min-width', 800px) {
+    display: flex;
+    .module {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  &.-tier-1 {
+    @include tweakpoint('min-width', 800px) {
+      .module {
+        width: calc(33.33% - 10px);
+      }
+    }
+  }
+  &.-tier-2, &.-tier-3, &.-tier-4 {
+    @include tweakpoint('min-width', 800px) {
+      .module {
+        width: calc(50% - 10px);
+      }
+    }
+  }
 }
 
 .subtitle {
