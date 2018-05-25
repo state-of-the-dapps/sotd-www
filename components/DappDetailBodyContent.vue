@@ -19,7 +19,7 @@
           <DappDetailBodyContentRecommend/>
         </div>
       </media>
-      <DappDetailBodyContentBadges/>
+      <DappDetailBodyContentBadges v-if="dapp.badges.length" :dapp="dapp"/>
       <DappDetailBodyContentTags/>
       <DappDetailBodyContentTools/>
     </div>

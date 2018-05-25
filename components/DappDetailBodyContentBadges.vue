@@ -3,32 +3,9 @@
   <div class="wrapper">
     <h4 class="subtitle">Badges</h4>
     <ul class="badge-list">
-      <li class="badge-item">
-        <SvgBadge0x fill="black"/> <span class="description">0x protocol compatible</span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeComplete fill="black"/> <span class="description">Has a complete profile</span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeConsensys fill="black"/> <span class="description">Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a></span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeFeatured fill="black"/> <span class="description">Currently featured</span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeHot fill="black"/> <span class="description">Currently hot</span>
-      </li>      
-      <li class="badge-item">
-        <SvgBadgeMetamask fill="black"/> <span class="description">Works with <a href="https://www.metamask.io" target="_blank">Metamask</a></span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeSolidified fill="black"/> <span class="description">Audited by <a href="https://solidified.io/" target="_blank">Solidified</a></span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeStatus fill="black"/> <span class="description">On <a href="https://status.im/" target="_blank">Status.im</a></span>
-      </li>
-      <li class="badge-item">
-        <SvgBadgeToken fill="black"/> <span class="description">Has a token</span>
+      <li v-for="(badge, index) in dapp.badges" :key="index" class="badge-item">
+        <component :is="mapSvgBadge(badge, 'component')" fill="black" :width="16" :height="18"></component>
+        <span class="description" v-html="mapSvgBadge(badge, 'description')"></span>
       </li>
     </ul>
   </div>
@@ -36,6 +13,7 @@
 </template>
 
 <script>
+import { dappBadgeMap } from '~/helpers/constants'
 import SvgBadge0x from './SvgBadge0x'
 import SvgBadgeComplete from './SvgBadgeComplete'
 import SvgBadgeConsensys from './SvgBadgeConsensys'
@@ -57,6 +35,19 @@ export default {
     SvgBadgeSolidified,
     SvgBadgeStatus,
     SvgBadgeToken
+  },
+  methods: {
+    mapSvgBadge (badge, prop) {
+      const badgeObj = dappBadgeMap[badge]
+      if (badgeObj) {
+        return badgeObj[prop]
+      }
+    }
+  },
+  props: {
+    dapp: {
+      required: true
+    }
   }
 }
 </script>

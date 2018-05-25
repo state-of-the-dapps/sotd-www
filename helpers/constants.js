@@ -50,16 +50,43 @@ const dappSchema = Object.freeze({
   teaser: ''
 })
 
-const dappBadgeComponentMap = Object.freeze({
-  '0x': 'SvgBadge0x',
-  'complete': 'SvgBadgeComplete',
-  'consensys': 'SvgBadgeConsensys',
-  'featured': 'SvgBadgeFeatured',
-  'hot': 'SvgBadgeHot',
-  'metamask': 'SvgBadgeMetamask',
-  'solidified': 'SvgBadgeSolidified',
-  'status-im': 'SvgBadgeStatus',
-  'token': 'SvgBadgeToken'
+const dappBadgeMap = Object.freeze({
+  '0x': {
+    component: 'SvgBadge0x',
+    description: '0x protocol compatible'
+  },
+  'complete': {
+    component: 'SvgBadgeComplete',
+    description: 'Has a complete profile'
+  },
+  'consensys': {
+    component: 'SvgBadgeConsensys',
+    description: 'Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a>'
+  },
+  'featured': {
+    component: 'SvgBadgeFeatured',
+    description: 'Currently featured'
+  },
+  'hot': {
+    component: 'SvgBadgeHot',
+    description: 'Currently hot'
+  },
+  'metamask': {
+    component: 'SvgBadgeMetamask',
+    description: 'Works with <a href="https://www.metamask.io" target="_blank">Metamask</a>'
+  },
+  'solidified': {
+    component: 'SvgBadgeSolidified',
+    description: 'Audited by <a href="https://solidified.io/" target="_blank">Solidified</a>'
+  },
+  'status-im': {
+    component: 'SvgBadgeStatus',
+    description: 'On <a href="https://status.im/" target="_blank">Status.im</a>'
+  },
+  'token': {
+    component: 'SvgBadgeToken',
+    description: 'Has a token'
+  }
 })
 
 const dappSocialComponentMap = Object.freeze({
@@ -123,7 +150,7 @@ const feedbackComponentMap = Object.freeze({
 })
 
 export {
-  dappBadgeComponentMap,
+  dappBadgeMap,
   dappGameTag,
   dappRefineStatusOptions,
   dappRefineTabOptions,
