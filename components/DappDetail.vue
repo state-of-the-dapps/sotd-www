@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetail">
-    <DappDetailBody :direct="direct"/>
-    <DappDetailRelatedDapps/>
+    <DappDetailBody :dapp="dapp" :direct="direct"/>
+    <DappDetailRelatedDapps :dapp="dapp"/>
   </div>
 </template>
 
@@ -14,6 +14,13 @@ export default {
     DappDetailBody,
     DappDetailRelatedDapps
   },
-  props: ['direct']
+  props: {
+    dapp: {
+      required: true
+    },
+    direct: {
+      default: false
+    }
+  }
 }
 </script>

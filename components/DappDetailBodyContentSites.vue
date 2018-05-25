@@ -1,42 +1,20 @@
 <template>
 <div class="component-DappDetailBodyContentSites">
   <div class="wrapper">
-    <button class="button">Launch ÐApp</button>
-    <button class="button">Visit website</button>
-    <ul class="social-list">
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialChat/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialBlog/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialFacebook/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialGithub/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialGitter/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialReddit/>
-        </a>
-      </li>
-      <li class="social-item">
-        <a class="social-link" href="https://google.com" target="_blank" rel="noopener noreferrer" title="">
-          <SvgSocialTwitter/>
+    <span v-if="dapp.sites.websiteUrl && dapp.sites.dappUrl">
+      <button class="button">
+        <span v-if="dapp.tags.includes(dappGameTag)">Play game</span>
+        <span v-else>Launch ÐApp/website</span>
+      </button>
+    </span>
+    <span v-else>
+      <button v-if="dapp.sites.dappUrl" class="button">Launch ÐApp</button>
+      <button v-if="dapp.sites.websiteUrl" class="button">Visit website</button>
+    </span>
+    <ul v-if="dapp.socials.length" class="social-list">
+      <li v-for="(social, index) in dapp.socials" :key="index" class="social-item">
+        <a class="social-link" :href="social.url" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize">
+          <component :is="svgSocialComponent(social.platform)"></component>
         </a>
       </li>
     </ul>
@@ -45,6 +23,7 @@
 </template>
 
 <script>
+import { dappGameTag, dappSocialComponentMap } from '~/helpers/constants'
 import SvgSocialChat from './SvgSocialChat'
 import SvgSocialBlog from './SvgSocialBlog'
 import SvgSocialFacebook from './SvgSocialFacebook'
@@ -54,6 +33,11 @@ import SvgSocialReddit from './SvgSocialReddit'
 import SvgSocialTwitter from './SvgSocialTwitter'
 
 export default {
+  data () {
+    return {
+      dappGameTag
+    }
+  },
   components: {
     SvgSocialChat,
     SvgSocialBlog,
@@ -62,6 +46,17 @@ export default {
     SvgSocialGitter,
     SvgSocialReddit,
     SvgSocialTwitter
+  },
+  methods: {
+    svgSocialComponent (platform) {
+      const socialComponent = dappSocialComponentMap[platform]
+      return socialComponent
+    }
+  },
+  props: {
+    dapp: {
+      required: true
+    }
   }
 }
 </script>

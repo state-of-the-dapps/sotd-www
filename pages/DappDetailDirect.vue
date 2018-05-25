@@ -1,17 +1,12 @@
-<template>
-  <div class="page-dapps-detail">
-    <DappDetail :direct="true"/>
-  </div>
-</template>
-
 <script>
-import { setDappDetailPage } from '~/helpers/mixins'
-import DappDetail from '~/components/DappDetail'
+import DappDetail from './DappDetail'
 
 export default {
-  components: {
-    DappDetail
-  },
-  mixins: [setDappDetailPage]
+  extends: DappDetail,
+  data () {
+    return {
+      direct: true
+    }
+  }
 }
 </script>

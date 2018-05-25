@@ -2,21 +2,21 @@
 <div class="component-DappDetailBodyContent">
   <div class="wrapper">
     <div class="main">
-      <DappDetailBodyContentImage/>
-      <DappDetailBodyContentDescription/>
+      <DappDetailBodyContentImage v-if="dapp.productImage" :dapp="dapp"/>
+      <DappDetailBodyContentDescription :dapp="dapp"/>
       <media :query="{maxWidth: 1000}">
         <div>
-          <DappDetailBodyContentSites/>
+          <DappDetailBodyContentSites :dapp="dapp"/>
           <DappDetailBodyContentRecommend/>
         </div>
       </media>
-      <DappDetailBodyContentModules/>
+      <DappDetailBodyContentModules :dapp="dapp"/>
     </div>
     <div class="actions-related">
       <media :query="{minWidth: 1000}">
         <div>
-        <DappDetailBodyContentSites/>
-        <DappDetailBodyContentRecommend/>
+          <DappDetailBodyContentSites :dapp="dapp"/>
+          <DappDetailBodyContentRecommend/>
         </div>
       </media>
       <DappDetailBodyContentBadges/>
@@ -49,6 +49,11 @@ export default {
     DappDetailBodyContentTags,
     DappDetailBodyContentTools,
     Media
+  },
+  props: {
+    dapp: {
+      required: true
+    }
   }
 }
 </script>

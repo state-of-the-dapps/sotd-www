@@ -62,6 +62,11 @@ export default {
     DappDetailBodyContentModulesTransactions,
     DappDetailBodyContentModulesUpdated,
     DappDetailBodyContentModulesUsers
+  },
+  props: {
+    dapp: {
+      required: true
+    }
   }
 }
 </script>

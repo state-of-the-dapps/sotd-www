@@ -1,4 +1,6 @@
-const dappItem = Object.freeze({
+const dappGameTag = 'game'
+
+const dappSchema = Object.freeze({
   authors: [],
   badges: [],
   contracts: [],
@@ -11,6 +13,7 @@ const dappItem = Object.freeze({
   logoUrl: '',
   name: '',
   nofollow: false,
+  productImage: '',
   relatedDapps: [],
   sites: {
     websiteUrl: '',
@@ -57,6 +60,16 @@ const dappBadgeComponentMap = Object.freeze({
   'solidified': 'SvgBadgeSolidified',
   'status-im': 'SvgBadgeStatus',
   'token': 'SvgBadgeToken'
+})
+
+const dappSocialComponentMap = Object.freeze({
+  'chat': 'SvgSocialChat',
+  'blog': 'SvgSocialBlog',
+  'facebook': 'SvgSocialFacebook',
+  'github': 'SvgSocialGithub',
+  'gitter': 'SvgSocialGitter',
+  'reddit': 'SvgSocialReddit',
+  'twitter': 'SvgSocialTwitter'
 })
 
 const dappStatuses = Object.freeze([
@@ -111,9 +124,11 @@ const feedbackComponentMap = Object.freeze({
 
 export {
   dappBadgeComponentMap,
-  dappItem,
+  dappGameTag,
   dappRefineStatusOptions,
   dappRefineTabOptions,
+  dappSchema,
+  dappSocialComponentMap,
   dappStatuses,
   daysOfTheWeek,
   eventCategories,

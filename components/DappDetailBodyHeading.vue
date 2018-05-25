@@ -2,8 +2,8 @@
   <div class="component-DappDetailBodyHeading">
     <ul class="items -live">
       <li class="item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron fill="-live" :width="10" :height="10"/></span></li>
-      <li class="item"><h1 class="title-1">Axie Infinity</h1></li>
-      <li class="item"><span class="tagline">Collect and raise fantasy creatures called Axie</span></li>
+      <li class="item"><h1 class="title-1">{{ dapp.name }}</h1></li>
+      <li class="item"><span class="tagline">{{ dapp.teaser }}</span></li>
     </ul>
   </div>
 </template>
@@ -16,6 +16,9 @@ export default {
     SvgIconChevron
   },
   props: {
+    dapp: {
+      required: true
+    },
     direct: {
       default: false
     }

@@ -1,15 +1,26 @@
 <template>
   <div class="component-DappDetailBodyContentImage">
     <div class="wrapper">
-      <img class="image" src="https://d3colfu6jphe2a.cloudfront.net/dapps/axie-infinity/key_visual_1526279552.jpg">
+      <img class="image" :src="dapp.productImage">
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    dapp: {
+      required: true
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
 .image {
+  width: 100%;
   max-width: 100%;
   display: block;
   @include tweakpoint('min-width', 1000px) {
@@ -18,8 +29,9 @@
 }
 
 .wrapper {
+  margin-bottom: 20px;
   @include tweakpoint('min-width', 1000px) {
-    margin: 0 10px;
+    margin: 0 10px 25px 10px;
   } 
 }
 </style>
