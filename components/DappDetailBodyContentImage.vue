@@ -29,9 +29,10 @@ export default {
 }
 
 .wrapper {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   @include tweakpoint('min-width', 1000px) {
-    margin: 0 10px 25px 10px;
+    margin: 0 10px;
+    padding: 0 0 25px 0;
   } 
 }
 </style>

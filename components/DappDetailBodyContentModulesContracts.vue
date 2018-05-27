@@ -5,28 +5,57 @@
     <li v-for="(contract, index) in contracts" :key="index" class="contract-item">
       <span class="contract-name"><strong>{{ contract.network | capitalize }}</strong></span>
       <span class="contract-address">
-        <a :href="'https://etherscan.io/address/' + contract.address" class="contract-address-value" target="_blank" rel="noopener noreferrer">
+        <a @click="trackContract(contract.address, contract.network)" :href="'https://' + (contract.network === 'mainnet' ? '' : contract.network + '.') + 'etherscan.io/address/' + contract.address" class="contract-address-value" target="_blank" rel="noopener noreferrer">
           <media :query="{maxWidth: 500}">
             <span>{{ contract.address | truncate(20) }}</span>
           </media>
           <media :query="{minWidth: 500}">
             <span>{{ contract.address }}</span>
           </media>
-        </a><span class="contract-address-copy">Copy</span></span>
+        </a>
+        <span class="contract-address-copy" v-clipboard:copy="contract.address" v-clipboard:success="copy" @click="trackContractCopy(contract.address, contract.network)">{{ copyText }}</span>
+      </span>
     </li>
   </ul>
 </div>
 </template>
 
 <script>
+import { trackDappContract, trackDappContractCopy } from '~/helpers/mixpanel'
 import Media from 'vue-media'
 
 export default {
   components: {
     Media
   },
+  data: () => {
+    return {
+      copyText: 'Copy'
+    }
+  },
+  methods: {
+    copy () {
+      this.copyText = 'Copied!'
+      setTimeout(() => {
+        this.copyText = 'Copy'
+      }, 1500)
+    },
+    trackContract (address, network) {
+      const dapp = this.slug
+      const action = trackDappContract(address, dapp, network)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackContractCopy (address, network) {
+      const dapp = this.slug
+      const action = trackDappContractCopy(address, dapp, network)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
   props: {
     contracts: {
+      required: true
+    },
+    slug: {
       required: true
     }
   }
@@ -69,6 +98,10 @@ export default {
   font-weight: 600;
   position: relative;
   top: -1px;
+  cursor: pointer;
+  &:active {
+    top: 0;
+  }
 }
 
 .subtitle {

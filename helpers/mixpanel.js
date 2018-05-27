@@ -41,6 +41,38 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
+export const trackDappContract = function (address, dapp, network) {
+  let name = 'DApp - Contract'
+  let data = {
+    address,
+    dapp,
+    network
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappContractCopy = function (address, dapp, network) {
+  let name = 'DApp - Contract Copy'
+  let data = {
+    address,
+    dapp,
+    network
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappFeedback = function (dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {

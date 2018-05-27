@@ -43,7 +43,8 @@
       <div class="module-wrapper -tier-4" v-if="dapp.contracts.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
-            :contracts="dapp.contracts"/>
+            :contracts="dapp.contracts"
+            :slug="dapp.slug"/>
         </div>
       </div>
     </div>
