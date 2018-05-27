@@ -7,6 +7,7 @@
       <media :query="{maxWidth: 1000}">
         <div>
           <DappDetailBodyContentSites
+            :isNsfw="dapp.isNsfw"
             :sites="dapp.sites"
             :socials="dapp.socials"
             :tags="dapp.tags"/>
@@ -19,6 +20,7 @@
       <media :query="{minWidth: 1000}">
         <div>
           <DappDetailBodyContentSites
+            :isNsfw="dapp.isNsfw"
             :sites="dapp.sites"
             :socials="dapp.socials"
             :tags="dapp.tags"/>

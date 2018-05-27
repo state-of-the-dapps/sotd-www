@@ -3,13 +3,16 @@
   <div class="wrapper">
     <span v-if="sites.websiteUrl && sites.dappUrl">
       <button class="button">
-        <span v-if="tags.includes(dappGameTag)">Play game</span>
-        <span v-else>Launch ÐApp/website</span>
+        <span v-if="tags.includes(dappGameTag)">Play game<span v-if="isNsfw"> (NSFW)</span></span>
+        <span v-else>Launch ÐApp/website<span v-if="isNsfw"> (NSFW)</span></span>
       </button>
     </span>
     <span v-else>
-      <button v-if="sites.dappUrl" class="button">Launch ÐApp</button>
-      <button v-if="sites.websiteUrl" class="button">Visit website</button>
+      <button v-if="sites.dappUrl" class="button">
+        <span v-if="tags.includes(dappGameTag)">Play game<span v-if="isNsfw"> (NSFW)</span></span>
+        <span v-else>Launch ÐApp<span v-if="isNsfw"> (NSFW)</span></span>
+      </button>
+      <button v-if="sites.websiteUrl" class="button">Visit website<span v-if="isNsfw"> (NSFW)</span></button>
     </span>
     <ul v-if="socials.length" class="social-list">
       <li v-for="(social, index) in socials" :key="index" class="social-item">
@@ -54,6 +57,9 @@ export default {
     }
   },
   props: {
+    isNsfw: {
+      required: true
+    },
     sites: {
       required: true
     },

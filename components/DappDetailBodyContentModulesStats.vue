@@ -1,11 +1,12 @@
 <template>
-<div class="component-DappDetailBodyContentModulesTransactions">
-  <h4 class="subtitle">Transactions</h4>
+<div class="component-DappDetailBodyContentModulesUsers">
+  <h4 class="subtitle">{{ title }}</h4>
   <div class="sparkline">
     <trend
-      :data="[0,1]"
+      :data="sparkline"
       :gradient="['#333']"
       :stroke-width="2"
+      :padding="4"
       :height="40"
       auto-draw
       smooth>
@@ -13,16 +14,20 @@
   </div>
   <ul class="stat-list">
     <li class="stat-item">
-      <span>Monthly</span>
-      <span class="stat-value">1,208,982</span>
+      <span>Daily</span>
+      <span class="stat-value">{{ stats.dau.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
       <span>Weekly</span>
-      <span class="stat-value">1,208,982</span>
+      <span class="stat-value">{{ stats.wau.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
-      <span>Daily</span>
-      <span class="stat-value">1,208,982</span>
+      <span>Monthly</span>
+      <span class="stat-value">{{ stats.mau.toLocaleString() }}</span>
+    </li>
+    <li class="stat-item">
+      <span>Quarterly</span>
+      <span class="stat-value">{{ stats.qau.toLocaleString() }}</span>
     </li>
   </ul>
 </div>
@@ -34,6 +39,17 @@ import Trend from 'vuetrend'
 export default {
   components: {
     Trend
+  },
+  props: {
+    sparkline: {
+      required: true
+    },
+    stats: {
+      required: true
+    },
+    title: {
+      required: true
+    }
   }
 }
 </script>

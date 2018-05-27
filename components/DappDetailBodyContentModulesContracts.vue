@@ -1,18 +1,38 @@
 <template>
 <div class="component-DappDetailBodyContentModulesContracts">
-  <h4 class="subtitle">Contract address(es)</h4>
+  <h4 class="subtitle">Contract address<span v-if="contracts.length > 1">(es)</span></h4>
   <ul class="contract-list">
-    <li class="contract-item">
-      <span class="contract-name"><strong>Mainnet</strong></span>
-      <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
-    </li>
-    <li class="contract-item">
-      <span class="contract-name"><strong>Rinkeby</strong></span>
-      <span class="contract-address"><a href="#" class="contract-address-value">0x960b236A07cf12</a>&hellip;<span class="contract-address-copy">Copy</span></span>
+    <li v-for="(contract, index) in contracts" :key="index" class="contract-item">
+      <span class="contract-name"><strong>{{ contract.network | capitalize }}</strong></span>
+      <span class="contract-address">
+        <a :href="'https://etherscan.io/address/' + contract.address" class="contract-address-value" target="_blank" rel="noopener noreferrer">
+          <media :query="{maxWidth: 500}">
+            <span>{{ contract.address | truncate(20) }}</span>
+          </media>
+          <media :query="{minWidth: 500}">
+            <span>{{ contract.address }}</span>
+          </media>
+        </a><span class="contract-address-copy">Copy</span></span>
     </li>
   </ul>
 </div>
 </template>
+
+<script>
+import Media from 'vue-media'
+
+export default {
+  components: {
+    Media
+  },
+  props: {
+    contracts: {
+      required: true
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -28,13 +48,11 @@
 }
 
 .contract-name {
-  width: 75px;
+  min-width: 70px;
 }
 
 .contract-address {
   flex: 1;
-  position: relative;
-  top: 1px;
 }
 
 .contract-address-value {
@@ -42,7 +60,7 @@
 }
 
 .contract-address-copy {
-  margin-left: 5px;
+  margin-left: 8px;
   font-size: .7rem;
   color: $color--white;
   background: $color--black;

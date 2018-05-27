@@ -3,13 +3,13 @@
   <div class="wrapper">
     <ul class="tool-list">
       <li class="tool-item">
-        <a href="#" class="tool-link"><img src="~/assets/images/icons/edit.png" width="14"> <span class="description">Edit this ÐApp</span></a>
+        <a href="#" class="tool-link"><SvgIconEdit :width="14" :height="14"/> <span class="description">Edit this ÐApp</span></a>
       </li>
       <li class="tool-item">
-        <a href="#" class="tool-link"><img src="~/assets/images/icons/share.png" width="14"> <span class="description">Share this ÐApp</span></a>
+        <a href="#" class="tool-link"><SvgIconShare :width="14" :height="14"/> <span class="description">Share this ÐApp</span></a>
       </li>
       <li class="tool-item">
-        <a href="#" class="tool-link"><img src="~/assets/images/icons/flag.png" width="14"> <span class="description">Flag as inappropriate</span></a>
+        <a href="#" class="tool-link"><SvgIconFlag :width="14" :height="14"/> <span class="description">Flag as inappropriate</span></a>
       </li>
       <li class="tool-item">
         <a href="#" class="tool-link"><SvgIconFeatured :width="14" :height="14"/> <span class="description">Promote this ÐApp</span></a>
@@ -20,11 +20,17 @@
 </template>
 
 <script>
+import SvgIconEdit from './SvgIconEdit'
 import SvgIconFeatured from './SvgIconFeatured'
+import SvgIconFlag from './SvgIconFlag'
+import SvgIconShare from './SvgIconShare'
 
 export default {
   components: {
-    SvgIconFeatured
+    SvgIconEdit,
+    SvgIconFeatured,
+    SvgIconFlag,
+    SvgIconShare
   }
 }
 </script>

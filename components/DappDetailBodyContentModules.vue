@@ -20,20 +20,24 @@
           <DappDetailBodyContentModulesUpdated :updated="dapp.lastUpdated"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-3">
+      <div class="module-wrapper -tier-3" v-if="stats">
         <div class="module">
-          <DappDetailBodyContentModulesUsers/>
+          <DappDetailBodyContentModulesStats 
+            :stats="dapp.stats"
+            :sparkline="dapp.sparklines.users"
+            title="Active users"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesTransactions/>
+          <DappDetailBodyContentModulesStats
+            :stats="dapp.stats"
+            :sparkline="dapp.sparklines.transactions"
+            title="Transactions"/>
         </div>
       </div>
       <div class="module-wrapper -tier-4">
         <div class="module">
-          <DappDetailBodyContentModulesContracts/>
-        </div>
-        <div class="module">
-          <DappDetailBodyContentModulesCollections/>
+          <DappDetailBodyContentModulesContracts v-if="dapp.contracts.length"
+            :contracts="dapp.contracts"/>
         </div>
       </div>
     </div>
@@ -46,10 +50,9 @@ import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModu
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
 import DappDetailBodyContentModulesLicense from './DappDetailBodyContentModulesLicense'
 import DappDetailBodyContentModulesStatus from './DappDetailBodyContentModulesStatus'
+import DappDetailBodyContentModulesStats from './DappDetailBodyContentModulesStats'
 import DappDetailBodyContentModulesSubmitted from './DappDetailBodyContentModulesSubmitted'
-import DappDetailBodyContentModulesTransactions from './DappDetailBodyContentModulesTransactions'
 import DappDetailBodyContentModulesUpdated from './DappDetailBodyContentModulesUpdated'
-import DappDetailBodyContentModulesUsers from './DappDetailBodyContentModulesUsers'
 
 export default {
   components: {
@@ -58,10 +61,15 @@ export default {
     DappDetailBodyContentModulesContracts,
     DappDetailBodyContentModulesLicense,
     DappDetailBodyContentModulesStatus,
+    DappDetailBodyContentModulesStats,
     DappDetailBodyContentModulesSubmitted,
-    DappDetailBodyContentModulesTransactions,
-    DappDetailBodyContentModulesUpdated,
-    DappDetailBodyContentModulesUsers
+    DappDetailBodyContentModulesUpdated
+  },
+  computed: {
+    stats () {
+      let dauExists = this.dapp.stats.dau !== undefined
+      return dauExists
+    }
   },
   props: {
     dapp: {
@@ -111,12 +119,19 @@ export default {
       }
     }
   }
-  &.-tier-2, &.-tier-3, &.-tier-4 {
+  &.-tier-2, &.-tier-3 {
     @include tweakpoint('min-width', 800px) {
       .module {
         width: calc(50% - 10px);
       }
     }
+  }
+  &.-tier-4 {
+    @include tweakpoint('min-width', 800px) {
+      .module {
+        width: calc(100% - 10px);
+      }
+    }    
   }
 }
 </style>
