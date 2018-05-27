@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBodyContentImage">
     <div class="wrapper">
-      <img class="image" :src="dapp.productImage">
+      <img class="image" :src="productImage">
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    dapp: {
+    productImage: {
       required: true
     }
   }

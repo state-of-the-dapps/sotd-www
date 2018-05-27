@@ -1,18 +1,18 @@
 <template>
 <div class="component-DappDetailBodyContentSites">
   <div class="wrapper">
-    <span v-if="dapp.sites.websiteUrl && dapp.sites.dappUrl">
+    <span v-if="sites.websiteUrl && sites.dappUrl">
       <button class="button">
-        <span v-if="dapp.tags.includes(dappGameTag)">Play game</span>
+        <span v-if="tags.includes(dappGameTag)">Play game</span>
         <span v-else>Launch ÐApp/website</span>
       </button>
     </span>
     <span v-else>
-      <button v-if="dapp.sites.dappUrl" class="button">Launch ÐApp</button>
-      <button v-if="dapp.sites.websiteUrl" class="button">Visit website</button>
+      <button v-if="sites.dappUrl" class="button">Launch ÐApp</button>
+      <button v-if="sites.websiteUrl" class="button">Visit website</button>
     </span>
-    <ul v-if="dapp.socials.length" class="social-list">
-      <li v-for="(social, index) in dapp.socials" :key="index" class="social-item">
+    <ul v-if="socials.length" class="social-list">
+      <li v-for="(social, index) in socials" :key="index" class="social-item">
         <a class="social-link" :href="social.url" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize">
           <component :is="svgSocialComponent(social.platform)"></component>
         </a>
@@ -54,7 +54,13 @@ export default {
     }
   },
   props: {
-    dapp: {
+    sites: {
+      required: true
+    },
+    socials: {
+      required: true
+    },
+    tags: {
       required: true
     }
   }
@@ -71,7 +77,7 @@ export default {
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 6px;
+  padding: 7px 5px;
   margin-bottom: 7px;
   margin-left: auto;
   margin-right: auto;

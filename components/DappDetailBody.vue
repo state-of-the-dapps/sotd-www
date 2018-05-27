@@ -1,7 +1,11 @@
 <template>
   <div class="component-DappDetailBody">
     <div class="wrapper -live">
-      <DappDetailBodyHeading :dapp="dapp" :direct="direct"/>
+      <DappDetailBodyHeading
+        :direct="direct"
+        :name="dapp.name"
+        :status="dapp.status"
+        :teaser="dapp.teaser"/>
       <DappDetailBodyContent :dapp="dapp" />
     </div>
   </div>

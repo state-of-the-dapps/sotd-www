@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBodyContentDescription">
     <p class="description">
-        {{ dapp.description }}
+        {{ description }}
     </p>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    dapp: {
+    description: {
       required: true
     }
   }

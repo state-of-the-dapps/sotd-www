@@ -3,7 +3,7 @@
   <div class="wrapper">
     <h4 class="subtitle">Badges</h4>
     <ul class="badge-list">
-      <li v-for="(badge, index) in dapp.badges" :key="index" class="badge-item">
+      <li v-for="(badge, index) in badges" :key="index" class="badge-item">
         <component :is="mapSvgBadge(badge, 'component')" fill="black" :width="16" :height="18"></component>
         <span class="description" v-html="mapSvgBadge(badge, 'description')"></span>
       </li>
@@ -45,7 +45,7 @@ export default {
     }
   },
   props: {
-    dapp: {
+    badges: {
       required: true
     }
   }

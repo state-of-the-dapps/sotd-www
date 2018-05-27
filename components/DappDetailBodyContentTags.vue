@@ -3,19 +3,24 @@
   <div class="wrapper">
     <h4 class="subtitle">Tags</h4>
     <ul class="tag-list">
-      <li class="tag-item">
-        <a class="tag-link" href="#">#smart-contract</a>
-      </li>
-      <li class="tag-item">
-        <a class="tag-link" href="#">#tag</a>
-      </li>
-      <li class="tag-item">
-        <a class="tag-link" href="#">#tag</a>
+      <li v-for="(tag, index) in tags" :key="index" class="tag-item">
+        <a class="tag-link" href="#">#{{ tag }}</a>
       </li>
     </ul>
   </div>
 </div>
 </template>
+
+<script>
+export default {
+  props: {
+    tags: {
+      required: true
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';

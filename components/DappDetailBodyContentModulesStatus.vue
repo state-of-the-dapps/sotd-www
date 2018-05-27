@@ -1,8 +1,19 @@
 <template>
 <div class="component-DappDetailBodyContentModulesStatus">
-  <span class="status -live"></span> Status: <strong>Live</strong>
+  <span class="status" :class="'-' + status"></span> Status: <strong>{{ status | capitalize }}</strong>
 </div>
 </template>
+
+<script>
+export default {
+  props: {
+    status: {
+      required: true
+    }
+  }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';

@@ -3,21 +3,21 @@
     <div class="main-wrapper">
       <div class="module-wrapper -tier-1">
         <div class="module -status">
-          <DappDetailBodyContentModulesStatus/>
+          <DappDetailBodyContentModulesStatus :status="dapp.status"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesAuthors/>
+          <DappDetailBodyContentModulesAuthors :authors="dapp.authors"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesLicense/>
+          <DappDetailBodyContentModulesLicense :license="dapp.license"/>
         </div>
       </div>
       <div class="module-wrapper -tier-2">
         <div class="module">
-          <DappDetailBodyContentModulesSubmitted/>
+          <DappDetailBodyContentModulesSubmitted :submitted="dapp.created"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesUpdated/>
+          <DappDetailBodyContentModulesUpdated :updated="dapp.lastUpdated"/>
         </div>
       </div>
       <div class="module-wrapper -tier-3">

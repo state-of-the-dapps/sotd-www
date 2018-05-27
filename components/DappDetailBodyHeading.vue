@@ -1,9 +1,9 @@
 <template>
   <div class="component-DappDetailBodyHeading">
-    <ul class="items -live">
-      <li class="item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron fill="-live" :width="10" :height="10"/></span></li>
-      <li class="item"><h1 class="title-1">{{ dapp.name }}</h1></li>
-      <li class="item"><span class="tagline">{{ dapp.teaser }}</span></li>
+    <ul class="heading-items" :class="'-' + status">
+      <li class="heading-item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron :fill="'-' + status" :width="10" :height="10"/></span></li>
+      <li class="heading-item"><h1 class="heading-title">{{ name }}</h1></li>
+      <li class="heading-item"><span class="heading-tagline">{{ teaser }}</span></li>
     </ul>
   </div>
 </template>
@@ -16,11 +16,17 @@ export default {
     SvgIconChevron
   },
   props: {
-    dapp: {
-      required: true
-    },
     direct: {
       default: false
+    },
+    name: {
+      required: true
+    },
+    status: {
+      required: true
+    },
+    teaser: {
+      required: true
     }
   }
 }
@@ -49,13 +55,13 @@ export default {
   }
 }
 
-.item {
+.heading-item {
   @include tweakpoint('min-width', 750px) {
     margin-right: 10px;
   }  
 }
 
-.items {
+.heading-items {
   color: $color--purple;
   padding: 15px;
   border-top-left-radius: 4px;
@@ -70,7 +76,8 @@ export default {
   @include dapp-background-colors;
 }
 
-.title-1 {
+.heading-title {
+  @include title-1;
   font-size: 3.2rem;
   margin: 0;
   text-transform: initial;

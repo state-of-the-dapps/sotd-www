@@ -2,11 +2,14 @@
 <div class="component-DappDetailBodyContent">
   <div class="wrapper">
     <div class="main">
-      <DappDetailBodyContentImage v-if="dapp.productImage" :dapp="dapp"/>
-      <DappDetailBodyContentDescription :dapp="dapp"/>
+      <DappDetailBodyContentImage v-if="dapp.productImage" :productImage="dapp.productImage"/>
+      <DappDetailBodyContentDescription v-if="dapp.description" :description="dapp.description"/>
       <media :query="{maxWidth: 1000}">
         <div>
-          <DappDetailBodyContentSites :dapp="dapp"/>
+          <DappDetailBodyContentSites
+            :sites="dapp.sites"
+            :socials="dapp.socials"
+            :tags="dapp.tags"/>
           <DappDetailBodyContentRecommend/>
         </div>
       </media>
@@ -15,12 +18,15 @@
     <div class="actions-related">
       <media :query="{minWidth: 1000}">
         <div>
-          <DappDetailBodyContentSites :dapp="dapp"/>
+          <DappDetailBodyContentSites
+            :sites="dapp.sites"
+            :socials="dapp.socials"
+            :tags="dapp.tags"/>
           <DappDetailBodyContentRecommend/>
         </div>
       </media>
-      <DappDetailBodyContentBadges v-if="dapp.badges.length" :dapp="dapp"/>
-      <DappDetailBodyContentTags/>
+      <DappDetailBodyContentBadges v-if="dapp.badges.length" :badges="dapp.badges"/>
+      <DappDetailBodyContentTags v-if="dapp.tags.length" :tags="dapp.tags"/>
       <DappDetailBodyContentTools/>
     </div>
   </div>
