@@ -83,8 +83,8 @@ export default {
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 7px 5px;
-  margin-bottom: 7px;
+  padding: 6px 5px;
+  margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
 }

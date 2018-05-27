@@ -23,20 +23,26 @@
       <div class="module-wrapper -tier-3" v-if="stats">
         <div class="module">
           <DappDetailBodyContentModulesStats 
-            :stats="dapp.stats"
+            :daily="dapp.stats.dau"
+            :monthly="dapp.stats.mau"
             :sparkline="dapp.sparklines.users"
-            title="Active users"/>
+            :quarterly="dapp.stats.qau"
+            title="Active users"
+            :weekly="dapp.stats.wau"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesStats
-            :stats="dapp.stats"
+          <DappDetailBodyContentModulesStats 
+            :daily="dapp.stats.tx_1d"
+            :monthly="dapp.stats.tx_30d"
             :sparkline="dapp.sparklines.transactions"
-            title="Transactions"/>
+            :quarterly="dapp.stats.tx_90d"
+            title="Transactions"
+            :weekly="dapp.stats.tx_7d"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-4">
+      <div class="module-wrapper -tier-4" v-if="dapp.contracts.length">
         <div class="module">
-          <DappDetailBodyContentModulesContracts v-if="dapp.contracts.length"
+          <DappDetailBodyContentModulesContracts
             :contracts="dapp.contracts"/>
         </div>
       </div>

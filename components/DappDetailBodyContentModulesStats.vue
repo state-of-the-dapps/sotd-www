@@ -5,9 +5,8 @@
     <trend
       :data="sparkline"
       :gradient="['#333']"
-      :stroke-width="2"
+      :stroke-width="1.5"
       :padding="4"
-      :height="40"
       auto-draw
       smooth>
     </trend>
@@ -15,19 +14,19 @@
   <ul class="stat-list">
     <li class="stat-item">
       <span>Daily</span>
-      <span class="stat-value">{{ stats.dau.toLocaleString() }}</span>
+      <span class="stat-value">{{ daily.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
       <span>Weekly</span>
-      <span class="stat-value">{{ stats.wau.toLocaleString() }}</span>
+      <span class="stat-value">{{ weekly.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
       <span>Monthly</span>
-      <span class="stat-value">{{ stats.mau.toLocaleString() }}</span>
+      <span class="stat-value">{{ monthly.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
       <span>Quarterly</span>
-      <span class="stat-value">{{ stats.qau.toLocaleString() }}</span>
+      <span class="stat-value">{{ quarterly.toLocaleString() }}</span>
     </li>
   </ul>
 </div>
@@ -41,13 +40,26 @@ export default {
     Trend
   },
   props: {
+    daily: {
+      default: 0,
+      required: true
+    },
+    monthly: {
+      default: 0,
+      required: true
+    },
     sparkline: {
       required: true
     },
-    stats: {
+    quarterly: {
+      default: 0,
       required: true
     },
     title: {
+      required: true
+    },
+    weekly: {
+      default: 0,
       required: true
     }
   }
