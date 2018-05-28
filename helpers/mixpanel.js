@@ -88,6 +88,38 @@ export const trackDappFeedback = function (dapp, feedback) {
   return action
 }
 
+export const trackDappSite = function (dapp, type, url) {
+  let name = 'DApp - Site'
+  let data = {
+    dapp,
+    type,
+    url
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappSocial = function (dapp, platform, url) {
+  let name = 'DApp - Social'
+  let data = {
+    dapp,
+    platform,
+    url
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
   let name = 'DApp - View'
   let data = {
