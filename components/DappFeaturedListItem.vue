@@ -1,7 +1,7 @@
 <template>
 <li class="component-DappFeaturedListItem" :id="'dapp-featured-list-item-' + index">
   <nuxt-link 
-    :to="{ name: 'dapps-slug', params: { slug: dapp.slug } }" 
+    :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
     class="link" 
     @click.native="trackDappView(dapp.slug)"
     :style="'background-image: url(' + dapp.imageKeyVisual + ')'">

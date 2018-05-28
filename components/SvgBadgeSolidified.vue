@@ -1,5 +1,5 @@
 <template>
-<svg class="component-SvgBadgeSolidified" :width="width" :height="height" x="0px" y="0px" viewBox="0 0 1280 1152.7">
+<svg class="component-SvgBadgeSolidified" :width="width" :height="height" x="0px" y="0px" viewBox="0 0 1021.4 1280">
   <path :class="fill" d="M133.1,129.7c0,125.6,0,248.6,0,374.3c41,0,78.6,0,123,0c0-84.7,0-166.6,0-248.6c174,0,341.3,0,512.7,0
 	c0,84.7,0,165.3,0,252.6c87.3,0,170,0,252.6,0c0,110.2,0,81.3,0,191.5c0,137.7-32.9,252.6-87.3,343.3
 	C841.3,1197.4,685.4,1280,523.5,1280c-218.4,0-392.4-98.1-499.9-357.5C13.5,898.3,2.1,860,0.1,827.1c40.3-20.8,80.6-41.7,123.6-63.8
@@ -22,7 +22,7 @@ export default {
       type: Number
     },
     'width': {
-      default: 18,
+      default: 16,
       type: Number
     }
   }
@@ -31,6 +31,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.black {
+  fill: $color--black;
+}
 
 .purple {
   fill: $color--purple;

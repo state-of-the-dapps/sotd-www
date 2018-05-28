@@ -1,5 +1,5 @@
 <template>
-<svg class="component-SvgBadgeFeatured" :width="width" :height="height" x="0px" y="0px" viewBox="0 0 1280 1152.7">
+<svg class="component-SvgBadgeFeatured" :width="width" :height="height" x="0px" y="0px" viewBox="0 0 914 1280">
   <polygon :class="fill" points="914.2,1280 457,1049.7 -0.2,1280 -0.2,0 914.2,0 "/>
 </svg>
 </template>
@@ -16,7 +16,7 @@ export default {
       type: Number
     },
     'width': {
-      default: 18,
+      default: 16,
       type: Number
     }
   }
@@ -25,6 +25,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.black {
+  fill: $color--black;
+}
 
 .purple {
   fill: $color--purple;

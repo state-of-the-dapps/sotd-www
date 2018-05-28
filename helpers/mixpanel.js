@@ -41,6 +41,52 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
+export const trackDappContract = function (address, dapp, network) {
+  let name = 'DApp - Contract'
+  let data = {
+    address,
+    dapp,
+    network
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappContractCopy = function (address, dapp, network) {
+  let name = 'DApp - Contract Copy'
+  let data = {
+    address,
+    dapp,
+    network
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappEdit = function (slug) {
+  let name = 'DApp - Suggest a change'
+  let data = {
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappFeedback = function (dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {
@@ -50,6 +96,81 @@ export const trackDappFeedback = function (dapp, feedback) {
 
   const action = {
     name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappFlag = function (slug) {
+  let name = 'DApp - Flag as inappropriate'
+  let data = {
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappShare = function (slug) {
+  let name = 'DApp - Share'
+  let data = {
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappSite = function (dapp, type, url) {
+  let name = 'DApp - Site'
+  let data = {
+    dapp,
+    type,
+    url
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappSocial = function (dapp, platform, url) {
+  let name = 'DApp - Social'
+  let data = {
+    dapp,
+    platform,
+    url
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappTag = function (name, slug) {
+  let actionName = 'DApp - Site'
+  let data = {
+    name,
+    slug
+  }
+
+  const action = {
+    name: actionName,
     data
   }
 

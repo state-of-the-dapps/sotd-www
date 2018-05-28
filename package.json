@@ -25,6 +25,7 @@
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.3",
     "vue-clickaway": "^2.1.0",
+    "vue-media": "^1.1.1",
     "vuetrend": "^0.3.2",
     "webfontloader": "^1.6.28"
   },

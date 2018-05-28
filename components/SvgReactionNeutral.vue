@@ -13,11 +13,11 @@
 export default {
   props: {
     'height': {
-      default: 25,
+      default: 24,
       type: Number
     },
     'width': {
-      default: 25,
+      default: 24,
       type: Number
     }
   }
@@ -28,7 +28,6 @@ export default {
 @import '~assets/css/settings';
 
 path {
-	transition: fill .2s ease;
 	pointer-events: all;
-	fill: $color--feedback-neutral;}
+	fill: $color--black;}
 </style>

@@ -3,11 +3,11 @@ import Router from 'vue-router'
 
 const About = () => import('~/pages/about.vue').then(m => m.default || m)
 const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
+const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
+const DappDetailDirect = () => import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
-const DappsSlug = () => import('~/pages/dapps/_slug.vue').then(m => m.default || m)
-const DappsSlugDirect = () => import('~/pages/dapps/_slug_direct.vue').then(m => m.default || m)
 const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
 const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
 const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
@@ -64,6 +64,16 @@ export function createRouter () {
         path: '/collections/:slug',
         component: CollectionsSlug,
         name: 'collections-slug'
+      },
+      {
+        path: '/dapps/:slug',
+        component: DappDetailDirect,
+        name: 'dapp-detail-direct'
+      },
+      {
+        path: '/dapps/:slug',
+        component: DappDetail,
+        name: 'dapp-detail'
       },
       {
         path: '/events/submit/new',
@@ -123,16 +133,6 @@ export function createRouter () {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
         name: 'dapps-new-confirmation'
-      },
-      {
-        path: '/dapps/:slug',
-        component: DappsSlugDirect,
-        name: 'dapps-slug-direct'
-      },
-      {
-        path: '/dapps/:slug',
-        component: DappsSlug,
-        name: 'dapps-slug'
       },
       {
         path: '/promoted-dapps',
