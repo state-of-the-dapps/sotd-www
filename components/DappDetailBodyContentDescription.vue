@@ -22,7 +22,7 @@ export default {
 
 .description {
   text-align: center;
-  padding: 0 10px 5px 10px;
+  padding: 20px 10px 5px 10px;
   font-size: 1.2rem;
   line-height: 1.4;
   margin-top: 0;
