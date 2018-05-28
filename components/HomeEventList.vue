@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
-      <nuxt-link :to="{ name: 'events' }" class="event-list" :class="isReady ? '-is-ready' : ''">
+      <nuxt-link :to="{ name: 'events' }" class="event-list" :class="isReady ? '-is-ready' : ''" @click.native="$mixpanel.track('Events - Ticker', {})">
         <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }}</span> 
       </nuxt-link>
     </div>
