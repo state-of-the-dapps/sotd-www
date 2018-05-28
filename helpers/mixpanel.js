@@ -120,6 +120,21 @@ export const trackDappSocial = function (dapp, platform, url) {
   return action
 }
 
+export const trackDappTag = function (name, slug) {
+  let actionName = 'DApp - Site'
+  let data = {
+    name,
+    slug
+  }
+
+  const action = {
+    name: actionName,
+    data
+  }
+
+  return action
+}
+
 export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
   let name = 'DApp - View'
   let data = {

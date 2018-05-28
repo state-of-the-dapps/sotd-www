@@ -4,7 +4,7 @@
     <h4 class="subtitle">Tags</h4>
     <ul class="tag-list">
       <li v-for="(tag, index) in tags" :key="index" class="tag-item">
-        <a class="tag-link" href="#">#{{ tag }}</a>
+        <a class="tag-link" @click="findDappsByTag(tag)">#{{ tag }}</a>
       </li>
     </ul>
   </div>
@@ -12,8 +12,29 @@
 </template>
 
 <script>
+import { trackDappTag } from '~/helpers/mixpanel'
+
 export default {
+  methods: {
+    findDappsByTag (tag) {
+      this.trackDappTag(tag)
+      this.$store.dispatch('dapps/list/resetQuery')
+      this.$store.dispatch('tags/selectItem', tag)
+      this.$store.dispatch('dapps/list/addTagToQuery', tag)
+      this.$store.dispatch('dapps/list/fetchItems')
+      this.$store.dispatch('dapps/list/setFriendlyUrl').then((response) => {
+        document.getElementById('__nuxt').scrollIntoView()
+      })
+    },
+    trackDappTag (name) {
+      const action = trackDappTag(name, this.slug)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
   props: {
+    slug: {
+      required: true
+    },
     tags: {
       required: true
     }

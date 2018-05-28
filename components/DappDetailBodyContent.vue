@@ -7,7 +7,7 @@
       <media :query="{maxWidth: 1000}">
         <div>
           <DappDetailBodyContentSites :dapp="dapp"/>
-          <DappDetailBodyContentRecommend/>
+          <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
       <DappDetailBodyContentModules :dapp="dapp"/>
@@ -16,11 +16,11 @@
       <media :query="{minWidth: 1000}">
         <div>
           <DappDetailBodyContentSites :dapp="dapp"/>
-          <DappDetailBodyContentRecommend/>
+          <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
       <DappDetailBodyContentBadges v-if="dapp.badges.length" :badges="dapp.badges"/>
-      <DappDetailBodyContentTags v-if="dapp.tags.length" :tags="dapp.tags"/>
+      <DappDetailBodyContentTags v-if="dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools/>
     </div>
   </div>

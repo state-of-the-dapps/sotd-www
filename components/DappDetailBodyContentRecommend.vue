@@ -3,13 +3,13 @@
   <div class="wrapper">
     <p class="description">Would you recommend this ÐApp to a friend?</p>
     <ul class="reaction-list">
-      <li class="reaction-item">
+      <li class="reaction-item" :class="currentReaction == 'positive' ? 'is-active' : ''" @click="trackDappFeedback('positive')">
         <SvgReactionPositive/>
       </li>
-      <li class="reaction-item">
+      <li class="reaction-item" :class="currentReaction == 'neutral' ? 'is-active' : ''" @click="trackDappFeedback('neutral')">
         <SvgReactionNeutral/>
       </li>
-      <li class="reaction-item">
+      <li class="reaction-item" :class="currentReaction == 'negative' ? 'is-active' : ''" @click="trackDappFeedback('negative')">
         <SvgReactionNegative/>
       </li>
     </ul>
@@ -18,15 +18,33 @@
 </template>
 
 <script>
+import { trackDappFeedback } from '~/helpers/mixpanel'
 import SvgReactionNegative from './SvgReactionNegative'
 import SvgReactionNeutral from './SvgReactionNeutral'
 import SvgReactionPositive from './SvgReactionPositive'
 
 export default {
+  data () {
+    return {
+      currentReaction: ''
+    }
+  },
   components: {
     SvgReactionNegative,
     SvgReactionNeutral,
     SvgReactionPositive
+  },
+  methods: {
+    trackDappFeedback (feedback) {
+      const action = trackDappFeedback(this.slug, feedback)
+      this.$mixpanel.track(action.name, action.data)
+      this.currentReaction = feedback
+    }
+  },
+  props: {
+    slug: {
+      required: true
+    }
   }
 }
 </script>
@@ -48,7 +66,7 @@ export default {
   cursor: pointer;
   opacity: .5;
   transition: opacity .2s ease;
-  &:hover {
+  &:hover, &.is-active {
     opacity: 1;
   }
 }
