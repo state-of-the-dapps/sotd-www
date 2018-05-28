@@ -3,7 +3,7 @@
   <div class="wrapper">
     <h4 class="subtitle">Tags</h4>
     <ul class="tag-list">
-      <li v-for="(tag, index) in tags" :key="index" class="tag-item">
+      <li v-for="(tag, index) in formattedTags" :key="index" class="tag-item">
         <a class="tag-link" @click="findDappsByTag(tag)">#{{ tag }}</a>
       </li>
     </ul>
@@ -15,6 +15,13 @@
 import { trackDappTag } from '~/helpers/mixpanel'
 
 export default {
+  computed: {
+    formattedTags () {
+      var tags
+      tags = this.tags || []
+      return this.$options.filters.removeEmptyArrayItems(tags)
+    }
+  },
   methods: {
     findDappsByTag (tag) {
       this.trackDappTag(tag)
