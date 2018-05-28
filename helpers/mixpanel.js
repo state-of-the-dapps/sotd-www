@@ -73,11 +73,53 @@ export const trackDappContractCopy = function (address, dapp, network) {
   return action
 }
 
+export const trackDappEdit = function (slug) {
+  let name = 'DApp - Suggest a change'
+  let data = {
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappFeedback = function (dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {
     dapp,
     feedback
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappFlag = function (slug) {
+  let name = 'DApp - Flag as inappropriate'
+  let data = {
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappShare = function (slug) {
+  let name = 'DApp - Share'
+  let data = {
+    slug
   }
 
   const action = {

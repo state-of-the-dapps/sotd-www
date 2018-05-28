@@ -21,7 +21,7 @@
       </media>
       <DappDetailBodyContentBadges v-if="dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentTags v-if="dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
-      <DappDetailBodyContentTools/>
+      <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
     </div>
   </div>
 </div>
