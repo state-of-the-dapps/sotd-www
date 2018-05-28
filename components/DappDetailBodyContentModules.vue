@@ -6,7 +6,7 @@
           <DappDetailBodyContentModulesStatus :status="dapp.status"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesAuthors v-if="dapp.authors" :authors="dapp.authors"/>
+          <DappDetailBodyContentModulesAuthors :authors="dapp.authors"/>
         </div>
         <div class="module">
           <DappDetailBodyContentModulesLicense :license="dapp.license"/>
