@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetail">
     <DappDetailBody :dapp="dapp" :direct="direct"/>
-    <DappDetailRelatedDapps :dapp="dapp"/>
+    <DappDetailRelatedDapps v-if="dapp.relatedDapps.length" :dapps="dapp.relatedDapps"/>
   </div>
 </template>
 

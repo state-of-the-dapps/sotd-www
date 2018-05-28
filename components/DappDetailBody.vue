@@ -41,7 +41,7 @@ export default {
 .wrapper {
   background: lighten($color--white, 100%);
   max-width: 1200px;
-  margin: 20px auto 60px auto;
+  margin: 20px auto 40px auto;
   border-radius: 4px;
   box-shadow: 0 10px 20px rgba($color--black, .1);
   border-bottom: 10px solid $color--black;
