@@ -62,7 +62,7 @@ export default {
   text-decoration: none;
   background: $color--black;
   border: 1px solid $color--black;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   &.-submit {
     background: transparent;
     border-color: lighten($color--white, 100%)
@@ -89,7 +89,7 @@ export default {
 }
 
 .description {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   width: 75%;
   margin-top: .5rem;
   @include tweakpoint('min-width', 575px) {
