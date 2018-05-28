@@ -1,4 +1,5 @@
 <template>
+<LayoutMain>
   <div>
     <section class="section">
       <div class="text-container">
@@ -31,17 +32,23 @@
       </div>
     </section>
   </div>
+</LayoutMain>
 </template>
 
 <script>
-  export default {
-    head () {
-      return {
-        title: `State of the ÐApps — What's a ÐApp`
-      }
-    },
-    mounted () {
-      this.$store.dispatch('setSiteSection', '')
+import LayoutMain from '~/components/LayoutMain'
+
+export default {
+  components: {
+    LayoutMain
+  },
+  head () {
+    return {
+      title: `State of the ÐApps — What's a ÐApp`
     }
+  },
+  mounted () {
+    this.$store.dispatch('setSiteSection', '')
   }
+}
 </script>

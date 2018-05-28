@@ -1,29 +1,32 @@
 <template>
-  <div>
-    <Lead 
-      :description="collection.description"
-      :curator="collection.curator"
-      :linkText="collection.link.text"
-      :linkUrl="collection.link.url"
-      :name="collection.name"
-    />
-    <Items v-if="collection.items.length" 
-      :items="collection.items"
-      :model="collection.model"
-      :sourceCollection="$route.params.slug"
-    />
-  </div>
+  <LayoutMain>
+    <div>
+      <Lead 
+        :description="collection.description"
+        :curator="collection.curator"
+        :linkText="collection.link.text"
+        :linkUrl="collection.link.url"
+        :name="collection.name"
+      />
+      <Items v-if="collection.items.length" 
+        :items="collection.items"
+        :model="collection.model"
+        :sourceCollection="$route.params.slug"
+      />
+    </div>
+  </LayoutMain>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import axios from '~/helpers/axios'
-
+import LayoutMain from '~/components/LayoutMain'
 import Lead from '~/components/collections/detail/Lead'
 import Items from '~/components/collections/detail/Items'
 
 export default {
   components: {
+    LayoutMain,
     Lead,
     Items
   },

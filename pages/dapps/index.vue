@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <Collections/>
-    <Search/>
-    <CountRefine/>
-    <Items
-      :items="dapps"
-      :itemCount="dappCount"
-    />
-    <Pager/>
-  </div>
+  <LayoutMain>
+    <div>
+      <Collections/>
+      <Search/>
+      <CountRefine/>
+      <Items
+        :items="dapps"
+        :itemCount="dappCount"
+      />
+      <Pager/>
+    </div>
+  </LayoutMain>
 </template>
 
 <script>
   import CountRefine from '~/components/dapps/list/CountRefine.vue'
   import Collections from '~/components/dapps/list/Collections.vue'
   import Items from '~/components/dapps/list/Items.vue'
+  import LayoutMain from '~/components/LayoutMain'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
 
@@ -23,6 +26,7 @@
       Collections,
       CountRefine,
       Items,
+      LayoutMain,
       Pager,
       Search
     },

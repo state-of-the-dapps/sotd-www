@@ -1,13 +1,16 @@
 <template>
-  <div class="page-dapps-detail">
-    <DappDetail :dapp="dapp" :direct="direct"/>
-  </div>
+  <LayoutMain>
+    <div class="page-dapps-detail">
+      <DappDetail :dapp="dapp" :direct="direct"/>
+    </div>
+  </LayoutMain>
 </template>
 
 <script>
 import axios from '~/helpers/axios'
 import DappDetail from '~/components/DappDetail'
 import * as constants from '~/helpers/constants'
+import LayoutMain from '~/components/LayoutMain'
 
 export default {
   data () {
@@ -39,7 +42,8 @@ export default {
     }
   },
   components: {
-    DappDetail
+    DappDetail,
+    LayoutMain
   }
 }
 </script>

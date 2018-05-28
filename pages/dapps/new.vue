@@ -1,4 +1,5 @@
 <template>
+<LayoutMain>
   <div>
     <section class="section -intro">
       <div class="container">
@@ -16,15 +17,18 @@
       </div>
     </section>
   </div>
+</LayoutMain>
 </template>
 
 <script>
   import Fields from '~/components/dapps/form/Fields'
+  import LayoutMain from '~/components/LayoutMain'
   import PreviewSave from '~/components/dapps/form/PreviewSave'
 
   export default {
     components: {
       Fields,
+      LayoutMain,
       PreviewSave
     },
     head () {

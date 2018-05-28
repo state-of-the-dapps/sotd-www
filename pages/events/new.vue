@@ -1,4 +1,5 @@
 <template>
+<LayoutMain>
   <div>
     <section class="section -intro">
       <div class="container">
@@ -13,15 +14,18 @@
       </div>
     </section>
   </div>
+</LayoutMain>
 </template>
 
 <script>
   import Fields from '~/components/events/form/Fields'
+  import LayoutMain from '~/components/LayoutMain'
   import PreviewSave from '~/components/events/form/PreviewSave'
 
   export default {
     components: {
       Fields,
+      LayoutMain,
       PreviewSave
     },
     head () {

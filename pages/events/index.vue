@@ -1,4 +1,5 @@
 <template>
+<LayoutMain>
   <div>
     <Search/>
     <div class="wrapper -results-filters">
@@ -13,12 +14,14 @@
     </div>
     <nuxt-child/>
   </div>
+</LayoutMain>
 </template>
 
 <script>
   import Calendar from '~/components/events/list/Calendar.vue'
   import CountRefine from '~/components/events/list/CountRefine.vue'
   import Items from '~/components/events/list/Items.vue'
+  import LayoutMain from '~/components/LayoutMain'
   import Pager from '~/components/events/list/Pager.vue'
   import Search from '~/components/events/list/Search.vue'
 
@@ -27,6 +30,7 @@
       Calendar,
       CountRefine,
       Items,
+      LayoutMain,
       Pager,
       Search
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="layout-default">
     <main class="main">
-      <nuxt/>
+      <slot></slot>
     </main>
     <footer class="footer">
       <SecondaryCta/>

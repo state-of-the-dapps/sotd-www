@@ -1,10 +1,12 @@
 <template>
+<LayoutHome>
   <div class="page-home">
     <HomeHero/>
     <HomeEventList/>
     <DappFeaturedList/>
     <HomeFeaturedCollections/>
   </div>
+</LayoutHome>
 </template>
 
 <script>
@@ -13,13 +15,15 @@ import DappFeaturedList from '~/components/DappFeaturedList'
 import HomeEventList from '~/components/HomeEventList'
 import HomeFeaturedCollections from '~/components/HomeFeaturedCollections'
 import HomeHero from '~/components/HomeHero'
+import LayoutHome from '~/components/LayoutHome'
 
 export default {
   components: {
     HomeFeaturedCollections,
     DappFeaturedList,
     HomeEventList,
-    HomeHero
+    HomeHero,
+    LayoutHome
   },
   computed: {
     ...mapGetters([
@@ -31,7 +35,6 @@ export default {
       title: 'State of the ÐApps — ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum'
     }
   },
-  layout: 'home',
   mounted () {
     this.$store.dispatch('setSiteSection', '')
   }

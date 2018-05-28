@@ -1,15 +1,18 @@
 <template>
+<LayoutMain>
   <div>
     <Lead/>
     <CategoriesSocial/>
     <MainInfo/>
     <Tools/>
   </div>
+</LayoutMain>
 </template>
 
 <script>
   import axios from '~/helpers/axios'
   import MainInfo from '~/components/events/detail/MainInfo.vue'
+  import LayoutMain from '~/components/LayoutMain'
   import Lead from '~/components/events/detail/Lead.vue'
   import CategoriesSocial from '~/components/events/detail/CategoriesSocial.vue'
   import Tools from '~/components/events/detail/Tools.vue'
@@ -17,6 +20,7 @@
   export default {
     components: {
       MainInfo,
+      LayoutMain,
       Lead,
       CategoriesSocial,
       Tools
