@@ -17,11 +17,7 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')">ÐApps</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'events' }" @click.native="trackMenu('events')">Events</nuxt-link>
-    </li>
-    <li v-if="siteSection !== ''" class="nav-item">
-      <nuxt-link v-if="siteSection === 'dapps'" @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link>
-      <nuxt-link v-if="siteSection === 'events'" @click.native="trackMenu('events-new')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an event</nuxt-link>
+      <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
     <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
@@ -76,7 +72,7 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 .logo-link {
@@ -111,21 +107,6 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  &.-newsletter {
-    padding: 4px 10px 4px 20px;
-    &.-white {
-      border-left: 1px solid rgba($color--white, .4);
-    }
-    &.-black {
-      border-left: 1px solid rgba($color--black, .2);
-    }
-    @include tweakpoint('min-width', 575px) {
-      padding: 10px 10px 10px 20px;
-    }
-    @include tweakpoint('min-width', 834px) {
-      padding-right: 0;
-    }
-  }
 }
 
 .nav-link {
@@ -151,11 +132,13 @@ export default {
     }
   }
   &.-submit {
-    background: $color--black;
-    color: $color--white;
+    border: 1px solid $color--black;
     padding: 5px;
     @include tweakpoint('min-width', 840px) {
       padding: 5px 10px;
+    }
+    &.is-home {
+      border-color: rgba($color--white, .7);
     }
   }
 }
