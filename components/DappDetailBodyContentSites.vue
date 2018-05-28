@@ -2,17 +2,17 @@
 <div class="component-DappDetailBodyContentSites">
   <div class="wrapper">
     <span v-if="sites.websiteUrl && sites.dappUrl">
-      <button class="button">
+      <a href="#" class="button">
         <span v-if="tags.includes(dappGameTag)">Play game<span v-if="isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp/website<span v-if="isNsfw"> (NSFW)</span></span>
-      </button>
+      </a>
     </span>
     <span v-else>
-      <button v-if="sites.dappUrl" class="button">
+      <a href="#" v-if="sites.dappUrl" class="button">
         <span v-if="tags.includes(dappGameTag)">Play game<span v-if="isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp<span v-if="isNsfw"> (NSFW)</span></span>
-      </button>
-      <button v-if="sites.websiteUrl" class="button">Visit website<span v-if="isNsfw"> (NSFW)</span></button>
+      </a>
+      <a v-if="sites.websiteUrl" class="button">Visit website<span v-if="isNsfw"> (NSFW)</span></a>
     </span>
     <ul v-if="socials.length" class="social-list">
       <li v-for="(social, index) in socials" :key="index" class="social-item">
@@ -78,12 +78,14 @@ export default {
 @import '~assets/css/settings';
 
 .button {
+  text-align: center;
+  text-decoration: none;
   background: $color--black;
   color: $color--gray;
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 6px 5px;
+  padding: 8px 5px;
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
