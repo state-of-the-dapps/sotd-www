@@ -13,19 +13,23 @@
   </div>
   <ul class="stat-list">
     <li class="stat-item">
-      <span>Daily</span>
+      <span v-if="type === 'numbers'">1 day</span>
+      <span v-else>Daily</span>
       <span class="stat-value">{{ daily.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
-      <span>Weekly</span>
+      <span v-if="type === 'numbers'">7 days</span>
+      <span v-else>Weekly</span>
       <span class="stat-value">{{ weekly.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
-      <span>Monthly</span>
+      <span v-if="type === 'numbers'">30 days</span>
+      <span v-else>Monthly</span>
       <span class="stat-value">{{ monthly.toLocaleString() }}</span>
     </li>
     <li class="stat-item">
-      <span>Quarterly</span>
+      <span v-if="type === 'numbers'">90 days</span>
+      <span v-else>Quarterly</span>
       <span class="stat-value">{{ quarterly.toLocaleString() }}</span>
     </li>
   </ul>
@@ -57,6 +61,9 @@ export default {
     },
     title: {
       required: true
+    },
+    type: {
+      default: 'words'
     },
     weekly: {
       default: 0,

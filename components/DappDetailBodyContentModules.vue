@@ -37,6 +37,7 @@
             :sparkline="dapp.sparklines.transactions"
             :quarterly="dapp.stats.tx_90d"
             title="Transactions"
+            type="numbers"
             :weekly="dapp.stats.tx_7d"/>
         </div>
       </div>
