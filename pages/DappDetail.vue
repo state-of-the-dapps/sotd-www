@@ -37,7 +37,8 @@ export default {
     return {
       title: this.dapp.name + ' — State of the ÐApps',
       meta: [
-        { hid: 'description', name: 'description', content: this.dapp.teaser }
+        { hid: 'description', name: 'description', content: this.dapp.teaser },
+        { hid: 'image', property: 'og:image', content: this.dapp.productImage }
       ]
     }
   },
