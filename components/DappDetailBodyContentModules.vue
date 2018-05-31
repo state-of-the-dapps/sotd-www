@@ -40,6 +40,16 @@
             type="numbers"
             :weekly="dapp.stats.tx_7d"/>
         </div>
+        <div class="module">
+          <DappDetailBodyContentModulesStats 
+            :daily="dapp.stats.value_1d"
+            :monthly="dapp.stats.value_30d"
+            :sparkline="dapp.sparklines.value"
+            :quarterly="dapp.stats.value_90d"
+            title="Value (ETH)"
+            type="numbers"
+            :weekly="dapp.stats.value_7d"/>
+        </div>
       </div>
       <div class="module-wrapper -tier-4" v-if="dapp.contracts.length">
         <div class="module">
