@@ -3,14 +3,10 @@
   <div class="wrapper">
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
-      <nuxt-link :to="{ name: 'events' }" class="event-list" :class="isReady ? '-is-ready' : ''" @click.native="$mixpanel.track('Events - Ticker', {})">
+      <span class="event-list" :class="isReady ? '-is-ready' : ''" @click.native="$mixpanel.track('Events - Ticker', {})">
         <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }}</span> 
-      </nuxt-link>
+      </span>
     </div>
-    <ul class="button-list">
-      <li class="button-item"><nuxt-link class="button-link" :to="{ name: 'events' }" @click.native="trackHomeEventCta('view')">View all events</nuxt-link></li>
-      <li class="button-item"><nuxt-link class="button-link -submit" :to="{ name: 'events-new' }" @click.native="trackHomeEventCta('submit')">Submit an event</nuxt-link></li>
-    </ul>
   </div>
 </div>
 </template>
