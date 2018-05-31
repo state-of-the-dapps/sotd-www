@@ -3,9 +3,6 @@
     <div class="container">
       <transition name="fade" v-if="itemCount > 0">
         <div class="list">
-          <div class="item -linkexchange">
-            <Linkexchange/>
-          </div>
           <nuxt-link v-for="(item, key) in items" @click.native="trackDappView(item.slug)" :to="{ name: 'dapp-detail', params: { slug: item.slug } }" class="item" :class="'-' + item.status" :key="key">
             <div class="new-banner" v-if="item.isNew"><span class="new-message" :class="'-' + item.status">New</span></div>
             <ul class="badge-list" v-if="item.badges">
@@ -152,23 +149,8 @@
     transition: transform .3s ease, opacity .3s ease;
     text-decoration: none;
     order: 10;
-    &:nth-child(1) {
-      order: 3;
-    }
-    &:nth-child(2) {
-      order: 1;
-    }
-    &:nth-child(3) {
-      order: 2;
-    }
     @include tweakpoint('min-width', 750px) {
       width: calc(50% - 20px);
-      &:nth-child(1) {
-        order: 2;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
     }
     @include tweakpoint('min-width', $tweakpoint--default) {
       width: calc(33.33% - 20px);
@@ -176,93 +158,18 @@
       justify-content: center;
       align-items: flex-start;
       margin-bottom: 20px;
-      &:nth-child(1) {
-        order: 3;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
-      &:nth-child(3) {
-        order: 2;
-      }
     }
     @include tweakpoint('min-width', 1000px) {
       width: calc(25% - 20px);
-      &:nth-child(1) {
-        order: 4;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
-      &:nth-child(3) {
-        order: 2;
-      }
-      &:nth-child(4) {
-        order: 3;
-      }
     }
     @include tweakpoint('min-width', 1150px) {
       width: calc(20% - 20px);
-      &:nth-child(1) {
-        order: 5;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
-      &:nth-child(3) {
-        order: 2;
-      }
-      &:nth-child(4) {
-        order: 3;
-      }
-      &:nth-child(5) {
-        order: 4;
-      }
     }
     @include tweakpoint('min-width', 1450px) {
       width: calc(16.66667% - 20px);
-      &:nth-child(1) {
-        order: 6;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
-      &:nth-child(3) {
-        order: 2;
-      }
-      &:nth-child(4) {
-        order: 3;
-      }
-      &:nth-child(5) {
-        order: 4;
-      }
-      &:nth-child(6) {
-        order: 5;
-      }
     }
     @include tweakpoint('min-width', 1750px) {
       width: calc(14.2857142857% - 20px);
-      &:nth-child(1) {
-        order: 7;
-      }
-      &:nth-child(2) {
-        order: 1;
-      }
-      &:nth-child(3) {
-        order: 2;
-      }
-      &:nth-child(4) {
-        order: 3;
-      }
-      &:nth-child(5) {
-        order: 4;
-      }
-      &:nth-child(6) {
-        order: 5;
-      }
-      &:nth-child(7) {
-        order: 6;
-      }
     }
     &:hover {
       cursor: pointer;
