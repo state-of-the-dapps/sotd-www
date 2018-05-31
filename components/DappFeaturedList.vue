@@ -15,6 +15,7 @@
             :key="index"
             :dapp="dapp"
             :index="index"
+            :hasPromotedDapp="hasPromotedDapp"
           />
         </ul>
       </div>
@@ -45,10 +46,17 @@ export default {
     return {
       scrollIndex: 0,
       dapps: [],
+      hasPromotedDapp: false,
       sourcePath: this.$route.path
     }
   },
   methods: {
+    getFeaturedDapps () {
+      return axios.get('collections/featured')
+    },
+    getPromotedDapps () {
+      return axios.get('promoted/dapps')
+    },
     trackCollectionView (slug) {
       const sourceComponent = 'DappFeaturedList'
       const targetCollection = slug
@@ -62,12 +70,17 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get('collections/featured')
-      .then(response => {
-        const collection = response.data
-        const dapps = collection.items
-        this.dapps = dapps.slice(0, 3)
+    Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()])
+      .then(([featured, promoted]) => {
+        const featuredDapps = featured.data.items
+        const promotedDapps = promoted.data
+        if (featuredDapps.length) {
+          this.dapps = featuredDapps.slice(0, 3)
+        }
+        if (promotedDapps.length) {
+          this.dapps.push(promotedDapps[0])
+          this.hasPromotedDapp = true
+        }
       })
   }
 }

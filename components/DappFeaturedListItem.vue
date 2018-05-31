@@ -1,5 +1,5 @@
 <template>
-<li class="component-DappFeaturedListItem" :id="'dapp-featured-list-item-' + index">
+<li class="component-DappFeaturedListItem" :class="hasPromotedDapp ? 'has-promotion' : ''" :id="'dapp-featured-list-item-' + index">
   <nuxt-link 
     :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
     class="link" 
@@ -26,7 +26,7 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  props: ['dapp', 'index']
+  props: ['dapp', 'hasPromotedDapp', 'index']
 }
 </script>
 
@@ -49,6 +49,11 @@ export default {
   }
   @include tweakpoint('min-width', 1200px) {
     width: calc(33.33% - 20px); 
+  }
+  &.has-promotion {
+    @include tweakpoint('min-width', 1200px) {
+      width: calc(25% - 20px); 
+    }    
   }
   &:hover {
     transform: translateY(-2px);
