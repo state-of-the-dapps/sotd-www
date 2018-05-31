@@ -5,7 +5,7 @@
     <trend
       :data="sparkline"
       :gradient="['#333']"
-      :stroke-width="1.5"
+      :stroke-width="1.75"
       :padding="4"
       auto-draw
       smooth>
@@ -87,7 +87,9 @@ export default {
 }
 
 .stat-item {
+  font-size: 1rem;
   padding: 4px 5px;
+  font-family: 'Inconsolata', monospace;
   &:nth-child(odd) {
     background: lighten($color--white, 100%);
   }
