@@ -78,7 +78,7 @@ export default {
           this.dapps = featuredDapps.slice(0, 3)
         }
         if (promotedDapps.length) {
-          this.dapps.push(promotedDapps[0])
+          this.dapps.unshift(promotedDapps[0])
           this.hasPromotedDapp = true
         }
       })
