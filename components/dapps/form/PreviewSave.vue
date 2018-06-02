@@ -1,37 +1,35 @@
 <template>
   <div class="wrapper">
-    <div class="sticky">
-      <div class="item -preview" :class="'-' + status">
-          <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
-          <div class="info">
-              <div class="description-wrapper">
-                  <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
-                  <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
-                  <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
-              </div>
-          </div>
-          <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')"><span v-if="status">{{ status | formatDappStatus }}</span></p>
-      </div>
-      <div class="checkboxes">
-        <div class="checkbox-field">
-          <input class="checkbox-input" type="checkbox" id="subscribe-newsletter-checkbox" v-model="subscribeNewsletter">
-          <label class="checkbox-label" for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
+    <div class="item -preview" :class="'-' + status">
+        <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
+        <div class="info">
+            <div class="description-wrapper">
+                <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
+                <p class="attribution" @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
+                <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
+            </div>
         </div>
-        <div class="checkbox-field">
-          <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
-          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
-        </div>
-        <div class="checkbox-field">
-          <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
-          <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New DApp - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
-        </div>
-      </div>
-      <input type="text" class="yumyum" v-model="honeypot">
-      <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })" class="submit" type="submit" :value="'1 field needs your attention'">
-      <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
-      <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
-      <input v-else-if="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
+        <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')"><span v-if="status">{{ status | formatDappStatus }}</span></p>
     </div>
+    <div class="checkboxes">
+      <div class="checkbox-field">
+        <input class="checkbox-input" type="checkbox" id="subscribe-newsletter-checkbox" v-model="subscribeNewsletter">
+        <label class="checkbox-label" for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
+      </div>
+      <div class="checkbox-field">
+        <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
+        <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
+      </div>
+      <div class="checkbox-field">
+        <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
+        <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New DApp - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
+      </div>
+    </div>
+    <input type="text" class="yumyum" v-model="honeypot">
+    <input v-if="errorFields.length == 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })" class="submit" type="submit" :value="'1 field needs your attention'">
+    <input v-else-if="errorFields.length > 0 && errorFields.length !== 1" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })" class="submit" type="submit" :value="errorFields.length + ' fields need your attention'">
+    <input v-else-if="sending" @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })" class="submit" type="submit" :value="'Please wait'">
+    <input v-else-if="errorFields.length == 0" class="submit --is-ready" type="submit" :value="'Submit'" @click.prevent="submit">
   </div>
 </template>
 
@@ -394,11 +392,6 @@
     }
   }
 
-  .sticky {
-    position: sticky;
-    top: 19px;
-  }
-
   .submit {
     display: block;
     margin: 0 auto;
@@ -447,7 +440,8 @@
     padding: 10px;
     margin: 0 auto;
     margin-top: 1px;
-    position: relative;
+    position: sticky;
+    top: 19px;
     @include tweakpoint('min-width', $tweakpoint--default) {
       margin-left: 0;
       margin-right: 0;
