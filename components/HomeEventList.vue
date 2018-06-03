@@ -3,9 +3,9 @@
   <div class="wrapper">
     <div class="heading"><SvgIconCalendar/> <strong>Upcoming events</strong></div>
     <div class="event-list-wrapper">
-      <span class="event-list" :class="isReady ? '-is-ready' : ''" @click.native="$mixpanel.track('Events - Ticker', {})">
+      <nuxt-link :to="{ name: 'events' }" class="event-list" :class="isReady ? '-is-ready' : ''" @click.native="$mixpanel.track('Events - Ticker', {})">
         <span v-for="(event, index) in events" :key="index" class="event-item"><strong>{{ event.date | formatDate('MMM D') }}</strong> &ndash; {{ event.name }}</span> 
-      </span>
+      </nuxt-link>
     </div>
   </div>
 </div>
