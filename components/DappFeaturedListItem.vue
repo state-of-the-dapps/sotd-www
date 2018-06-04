@@ -95,7 +95,7 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 5px 8px;
+  padding: 4px 8px;
   font-weight: 600;
   background: $color--gray;
   border-bottom-left-radius: 4px;

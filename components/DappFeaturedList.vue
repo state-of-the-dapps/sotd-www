@@ -73,14 +73,18 @@ export default {
     Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()])
       .then(([featured, promoted]) => {
         const featuredDapps = featured.data.items
-        const promotedDapps = promoted.data
+        // slots must be 4 or fewer
+        const slots = 2
+        const promotedDapps = promoted.data.slice(0, slots).reverse()
         if (featuredDapps.length) {
-          this.dapps = featuredDapps.slice(0, 3)
+          this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
         }
         if (promotedDapps.length) {
-          let promotedDapp = promotedDapps[0]
-          promotedDapp.isPromoted = true
-          this.dapps.unshift(promotedDapp)
+          for (var i = 0; i < promotedDapps.length; i++) {
+            let promotedDapp = promotedDapps[i]
+            promotedDapp.isPromoted = true
+            this.dapps.unshift(promotedDapp)
+          }
           this.hasPromotedDapp = true
         }
       })
