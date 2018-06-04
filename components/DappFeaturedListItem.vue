@@ -8,6 +8,7 @@
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
       <p class="tagline">{{ dapp.tagline }}</p>
+      <span v-if="dapp.isPromoted" class="promoted">promoted</span>
     </div>
   </nuxt-link>
 </li>
@@ -84,6 +85,20 @@ export default {
   padding: 10px 12px;
   width: 100%;
   text-align: center;
+
+}
+
+.promoted {
+  text-transform: uppercase;
+  font-size: .7rem;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 8px;
+  font-weight: 600;
+  background: $color--gray;
+  border-bottom-left-radius: 4px;
 }
 
 .tagline {
