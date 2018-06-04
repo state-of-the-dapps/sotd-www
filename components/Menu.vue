@@ -72,7 +72,8 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 22px;
+  margin: -10px -22px;
 }
 
 .logo-link {
