@@ -1,5 +1,5 @@
 <template>
-<div class="component-Menu">
+<div class="component-Menu" :class="'-' + color">
   <div class="nameplate">
     <nuxt-link class="logo-link -icon" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgIconLogo :fill="color" :width="45" :height="45" />
@@ -72,8 +72,11 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 20px 22px;
-  margin: -10px -22px;
+  padding: 20px 22px 16px 22px;
+  margin: -10px -22px 0px;
+  &.-white {
+    background: rgba($color--black, .2)
+  }
 }
 
 .logo-link {
