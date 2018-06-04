@@ -72,7 +72,7 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 20px 22px 16px 22px;
+  padding: 20px 22px 18px 22px;
   margin: -10px -22px 0px;
   &.-white {
     background: rgba($color--black, .2)
