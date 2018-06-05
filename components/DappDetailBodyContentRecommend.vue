@@ -2,17 +2,20 @@
 <div class="component-DappDetailBodyContentRecommend">
   <div class="wrapper">
     <p class="description">Would you recommend this ÐApp to a friend?</p>
-    <ul class="reaction-list">
-      <li class="reaction-item" :class="currentReaction == 'positive' ? 'is-active' : ''" @click="trackDappFeedback('positive')">
-        <SvgReactionPositive/>
-      </li>
-      <li class="reaction-item" :class="currentReaction == 'neutral' ? 'is-active' : ''" @click="trackDappFeedback('neutral')">
-        <SvgReactionNeutral/>
-      </li>
-      <li class="reaction-item" :class="currentReaction == 'negative' ? 'is-active' : ''" @click="trackDappFeedback('negative')">
-        <SvgReactionNegative/>
-      </li>
-    </ul>
+    <div class="reaction-wrapper">
+      <ul class="reaction-list" v-if="!hasSubmitted">
+        <li class="reaction-item" :class="currentReaction == 'positive' ? 'is-active' : ''" @click="submitDappFeedback('positive')">
+          <SvgReactionPositive/>
+        </li>
+        <li class="reaction-item" :class="currentReaction == 'neutral' ? 'is-active' : ''" @click="submitDappFeedback('neutral')">
+          <SvgReactionNeutral/>
+        </li>
+        <li class="reaction-item" :class="currentReaction == 'negative' ? 'is-active' : ''" @click="submitDappFeedback('negative')">
+          <SvgReactionNegative/>
+        </li>
+      </ul>
+      <p v-else class="confirmation">Thanks for your feedback!</p>
+    </div>
   </div>
 </div>
 </template>
@@ -26,7 +29,8 @@ import SvgReactionPositive from './SvgReactionPositive'
 export default {
   data () {
     return {
-      currentReaction: ''
+      currentReaction: '',
+      hasSubmitted: false
     }
   },
   components: {
@@ -35,10 +39,14 @@ export default {
     SvgReactionPositive
   },
   methods: {
-    trackDappFeedback (feedback) {
+    submitDappFeedback (feedback) {
       const action = trackDappFeedback(this.slug, feedback)
       this.$mixpanel.track(action.name, action.data)
+      this.hasSubmitted = true
       this.currentReaction = feedback
+      setTimeout(() => {
+        this.hasSubmitted = false
+      }, 3000)
     }
   },
   props: {
@@ -53,6 +61,12 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.confirmation {
+  margin: 0;
+  margin-top: 5px;
+  text-align: center;
+}
+
 .description {
   margin-bottom: 5px;
   text-align: center;
@@ -62,7 +76,7 @@ export default {
 }
 
 .reaction-item {
-  padding: 3px;
+  padding: 3px 3px 0 3px;
   cursor: pointer;
   opacity: .5;
   transition: opacity .2s ease;
@@ -80,6 +94,11 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     justify-content: flex-start;
   }
+}
+
+.reaction-wrapper {
+  height: 27px;
+  overflow: hidden;
 }
 
 .wrapper {
