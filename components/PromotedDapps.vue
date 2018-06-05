@@ -23,7 +23,7 @@
         </p>
       </div>
     </div>
-    <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about next steps.</p>
+    <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
     <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send">Send</button></div>
   </div>
 </div>
