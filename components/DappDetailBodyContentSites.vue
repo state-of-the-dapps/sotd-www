@@ -1,6 +1,9 @@
 <template>
 <div class="component-DappDetailBodyContentSites">
   <div class="wrapper">
+    <div v-if="dapp.logoUrl" class="logo-wrapper">
+      <img class="logo-image" :src="dapp.logoUrl"/>
+    </div>
     <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
@@ -89,6 +92,19 @@ export default {
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.logo-image {
+  max-width: 200px;
+  @include tweakpoint('min-width', 1000px) {
+    max-width: 100%;
+  }
+}
+
+.logo-wrapper {
+  text-align: center;
+  overflow: hidden;
+  padding-bottom: 15px;
 }
 
 .social-item {
