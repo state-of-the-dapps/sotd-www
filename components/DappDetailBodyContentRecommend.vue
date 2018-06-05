@@ -65,6 +65,9 @@ export default {
   margin: 0;
   margin-top: 5px;
   text-align: center;
+  @include tweakpoint('min-width', 1000px) {
+    text-align: left;
+  }
 }
 
 .description {
