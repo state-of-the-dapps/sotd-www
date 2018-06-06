@@ -54,6 +54,7 @@
       <div class="module-wrapper -tier-4" v-if="dapp.contracts.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
+            :additionalMainnet="dapp.contractsAdditionalMainnet"
             :contracts="dapp.contracts"
             :slug="dapp.slug"/>
         </div>
