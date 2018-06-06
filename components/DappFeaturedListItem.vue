@@ -3,8 +3,8 @@
   <nuxt-link 
     :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
     class="link" 
-    @click.native="trackDappView(dapp.slug)"
-    :style="'background-image: url(' + dapp.imageKeyVisual + ')'">
+    @click.native="trackDappView(dapp.slug)">
+    <img class="product-image" :src="dapp.imageKeyVisual"/>
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
       <p class="tagline">{{ dapp.tagline }}</p>
@@ -35,10 +35,6 @@ export default {
 @import '~assets/css/settings';
 
 .component-DappFeaturedListItem {
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0 10px 30px rgba($color--black, .1);
   margin: 0 10px 20px 10px;
   border-radius: 4px;
@@ -63,21 +59,12 @@ export default {
 
 .link {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   width: 100%;
   text-decoration: none;
-  background-size: cover;
-  background-position: center -22px;
-  background-repeat: no-repeat;
 }
 
 .info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   border-top: 4px solid $color--gray;
   border-bottom-left-radius: 4px;
   background: $color--white;
@@ -86,6 +73,11 @@ export default {
   width: 100%;
   text-align: center;
 
+}
+
+.product-image {
+  max-width: 100%;
+  display: block;
 }
 
 .promoted {
