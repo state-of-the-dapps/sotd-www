@@ -2,8 +2,8 @@
 <div class="component-DappFeaturedList">
   <div class="wrapper">
     <h2 class="title-2">
-      <SvgIconFeatured/>Featured ÐApps 
-      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all 
+      <SvgIconFeatured/>Featured ÐApps
+      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all
         <SvgIconChevron :width="8" :height="8" direction="right" />
       </nuxt-link>
       <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
@@ -11,7 +11,7 @@
     <div class="featured-wrapper">
       <div class="featured-list-wrapper">
         <ul class="featured-list">
-          <DappFeaturedListItem v-for="(dapp, index) in dapps" 
+          <DappFeaturedListItem v-for="(dapp, index) in dapps"
             :key="index"
             :dapp="dapp"
             :index="index"
@@ -74,7 +74,7 @@ export default {
       .then(([featured, promoted]) => {
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
-        const slots = 2
+        const slots = 3
         const promotedDapps = promoted.data.slice(0, slots).reverse()
         if (featuredDapps.length) {
           this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
