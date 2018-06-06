@@ -96,6 +96,7 @@ export default {
 
 .logo-image {
   display: block;
+  margin: 0 auto;
   max-width: 200px;
   @include tweakpoint('min-width', 1000px) {
     max-width: 100%;
