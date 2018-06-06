@@ -2,57 +2,60 @@
 <div class="component-DappDetailBodyContentModulesContracts">
   <h4 class="subtitle">Contract address<span v-if="contracts.length > 1">(es)</span></h4>
   <ul class="contract-list">
-    <li v-for="(contract, index) in contracts" :key="index" class="contract-item">
-      <span class="contract-name"><strong>{{ contract.network | capitalize }}</strong></span>
-      <span class="contract-address">
-        <a @click="trackContract(contract.address, contract.network)" :href="'https://' + (contract.network === 'mainnet' ? '' : contract.network + '.') + 'etherscan.io/address/' + contract.address" class="contract-address-value" target="_blank" rel="noopener noreferrer">
-          <media :query="{maxWidth: 500}">
-            <span>{{ contract.address | truncate(20) }}</span>
-          </media>
-          <media :query="{minWidth: 500}">
-            <span>{{ contract.address }}</span>
-          </media>
-        </a>
-        <span class="contract-address-copy" v-clipboard:copy="contract.address" v-clipboard:success="copy" @click="trackContractCopy(contract.address, contract.network)">{{ copyText }}</span>
-      </span>
-    </li>
+    <DappDetailBodyContentModulesContractsItem v-for="(contract, index) in mainnet" 
+      :key="index"
+      :address="contract.address"
+      :network="contract.network"
+      :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem v-for="(contract, index) in additionalMainnet" 
+      :key="index"
+      :address="contract"
+      :excludeLabel="true"
+      network="mainnet"
+      :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem v-for="(contract, index) in testnet" 
+      :key="index"
+      :address="contract.address"
+      :network="contract.network"
+      :slug="slug"/>
   </ul>
 </div>
 </template>
 
 <script>
-import { trackDappContract, trackDappContractCopy } from '~/helpers/mixpanel'
-import Media from 'vue-media'
+import DappDetailBodyContentModulesContractsItem from './DappDetailBodyContentModulesContractsItem'
 
 export default {
   components: {
-    Media
+    DappDetailBodyContentModulesContractsItem
   },
-  data: () => {
-    return {
-      copyText: 'Copy'
-    }
-  },
-  methods: {
-    copy () {
-      this.copyText = 'Copied!'
-      setTimeout(() => {
-        this.copyText = 'Copy'
-      }, 1500)
+  computed: {
+    mainnet () {
+      let contracts = this.contracts
+      let mainnet = []
+      for (let i = 0; i < contracts.length; i++) {
+        if (contracts[i].network === 'mainnet') {
+          mainnet.push(contracts[i])
+        }
+      }
+      return mainnet
     },
-    trackContract (address, network) {
-      const dapp = this.slug
-      const action = trackDappContract(address, dapp, network)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    trackContractCopy (address, network) {
-      const dapp = this.slug
-      const action = trackDappContractCopy(address, dapp, network)
-      this.$mixpanel.track(action.name, action.data)
+    testnet () {
+      let contracts = this.contracts
+      let testnet = []
+      for (let i = 0; i < contracts.length; i++) {
+        if (contracts[i].network !== 'mainnet') {
+          testnet.push(contracts[i])
+        }
+      }
+      return testnet
     }
   },
   props: {
     contracts: {
+      required: true
+    },
+    additionalMainnet: {
       required: true
     },
     slug: {
@@ -62,50 +65,14 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.contract-item {
-  display: flex;
-  align-items: center;
-  padding: 2px 0;
-}
-
 .contract-list {
   margin-top: 10px;
-}
-
-.contract-name {
-  min-width: 70px;
-}
-
-.contract-address {
-  flex: 1;
-}
-
-.contract-address-value {
-  font-family: 'Inconsolata', monospace;
-}
-
-.contract-address-copy {
-  margin-left: 8px;
-  font-size: .7rem;
-  color: $color--white;
-  background: $color--black;
-  padding: 2px 5px;
-  text-transform: uppercase;
-  font-weight: 600;
-  position: relative;
-  top: -1px;
-  cursor: pointer;
-  &:active {
-    top: 0;
-  }
 }
 
 .subtitle {
   margin: 0;
 }
 </style>
-
