@@ -29,7 +29,6 @@ export default {
 }
 
 .wrapper {
-  padding-bottom: 20px;
   @include tweakpoint('min-width', 1000px) {
     margin: 0 10px;
     padding: 0 0 25px 0;
