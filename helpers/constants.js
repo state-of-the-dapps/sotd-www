@@ -1,5 +1,7 @@
 const dappGameTag = 'game'
 
+const dappPromotedSlots = 3
+
 const dappSchema = Object.freeze({
   authors: [],
   badges: [],
@@ -152,6 +154,7 @@ const feedbackComponentMap = Object.freeze({
 export {
   dappBadgeMap,
   dappGameTag,
+  dappPromotedSlots,
   dappRefineStatusOptions,
   dappRefineTabOptions,
   dappSchema,
