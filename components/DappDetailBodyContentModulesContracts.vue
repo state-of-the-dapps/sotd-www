@@ -8,13 +8,13 @@
       :network="contract.network"
       :slug="slug"/>
     <DappDetailBodyContentModulesContractsItem v-for="(contract, index) in additionalMainnet" 
-      :key="index"
+      :key="index + mainnet.length"
       :address="contract"
       :excludeLabel="true"
       network="mainnet"
       :slug="slug"/>
     <DappDetailBodyContentModulesContractsItem v-for="(contract, index) in testnet" 
-      :key="index"
+      :key="index + mainnet.length + additionalMainnet.length"
       :address="contract.address"
       :network="contract.network"
       :slug="slug"/>
