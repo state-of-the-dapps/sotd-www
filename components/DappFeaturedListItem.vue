@@ -92,7 +92,7 @@ export default {
   top: 0;
   right: 0;
   z-index: 5;
-  padding: 4px 8px;
+  padding: 3px 5px;
   font-weight: 600;
   background: $color--gray;
   border-bottom-left-radius: 4px;
