@@ -26,6 +26,7 @@
 
 <script>
 import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
+import { dappPromotedSlots } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import SvgIconChevron from './SvgIconChevron'
@@ -74,7 +75,7 @@ export default {
       .then(([featured, promoted]) => {
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
-        const slots = 3
+        const slots = dappPromotedSlots
         const promotedDapps = promoted.data.slice(0, slots).reverse()
         if (featuredDapps.length) {
           this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
