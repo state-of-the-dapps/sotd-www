@@ -36,11 +36,13 @@ export default {
 
 .component-DappFeaturedListItem {
   box-shadow: 0 10px 30px rgba($color--black, .1);
+  background: $color--white;
   margin: 0 10px 20px 10px;
   border-radius: 4px;
   width: 100%;
   overflow: hidden;
   transition: all .2s ease;
+  transform: translateY(0px);
   @include tweakpoint('min-width', 750px) {
     width: calc(50% - 20px);
   }
@@ -58,6 +60,7 @@ export default {
 }
 
 .link {
+  display: block;
   position: relative;
   height: 100%;
   width: 100%;
@@ -65,6 +68,7 @@ export default {
 }
 
 .info {
+  position: relative;
   border-top: 4px solid $color--gray;
   border-bottom-left-radius: 4px;
   background: $color--white;
@@ -87,6 +91,7 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 5;
   padding: 4px 8px;
   font-weight: 600;
   background: $color--gray;
