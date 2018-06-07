@@ -1,6 +1,8 @@
 <template>
 <div class="component-DappCollectionList">
-  <h3 class="title-3">{{ collection.name }} <nuxt-link :to="{ name: 'collections-slug', params: { slug: collection.slug } }" class="cta" @click.native="trackCollectionView(collection.slug)">View all <SvgIconChevron :width="8" :height="8" direction="right" /></nuxt-link></h3>
+  <h3 class="title-3">
+    <nuxt-link class="link" :to="{ name: 'collections-slug', params: { slug: collection.slug } }" @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></span></nuxt-link>
+  </h3>
   <DappCardList :dapps="dapps" :sourceCollection="collection.slug" />
 </div>
 </template>
@@ -65,6 +67,10 @@ export default {
   margin-left: 10px;
   text-decoration: none;
   font-weight: 300;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .title-3 {

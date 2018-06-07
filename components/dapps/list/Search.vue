@@ -1,10 +1,6 @@
 <template>
   <section class="section -search">
     <div class="container">
-      <div class="heading-wrapper">
-        <h3 class="sub-heading">Explore</h3>
-        <h2 class="heading">the ÐApps</h2>
-      </div>
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
@@ -117,7 +113,6 @@
 
   .section {
     &.-search {
-      margin-top: 30px;
       background: rgba(lighten($color--gray, 100%), .35);
       background: linear-gradient(to bottom, rgba(lighten($color--gray, 100%), .35), rgba(lighten($color--gray, 100%), 0));
     }
@@ -151,7 +146,7 @@
   .container {
     position: relative;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding-top: 25px;
+      padding-top: 55px;
       padding-bottom: 25px;
     }
   }

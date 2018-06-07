@@ -149,6 +149,7 @@ export default {
 
 .title-2 {
   position: relative;
+  font-size: 2.5rem;
 }
 
 .wrapper {

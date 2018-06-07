@@ -1,23 +1,40 @@
 <template>
 <div class="component-HomeFeaturedCollections">
-  <h2 class="title-2"><SvgIconCollection/>Collections</h2>
+  <h2 class="title-2">
+    <SvgIconCollection/>ÐApp Collections
+    <nuxt-link :to="{ name: 'collections'}" class="cta" @click.native="trackCollectionView('home')">View all
+      <SvgIconChevron :width="8" :height="8" direction="right" />
+    </nuxt-link>
+  </h2>
   <DappCollectionList v-for="(collection, index) in collections" :collection="collection" :key="index"/>
 </div>
 </template>
 
 <script>
+import { trackCollectionView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCollectionList from './DappCollectionList'
+import SvgIconChevron from './SvgIconChevron'
 import SvgIconCollection from './SvgIconCollection'
 
 export default {
   components: {
     DappCollectionList,
+    SvgIconChevron,
     SvgIconCollection
   },
   data () {
     return {
-      collections: []
+      collections: [],
+      sourcePath: this.$route.path
+    }
+  },
+  methods: {
+    trackCollectionView (slug) {
+      const sourceComponent = 'HomeFeaturedCollections'
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
@@ -25,7 +42,7 @@ export default {
       .get('collections/list/featured')
       .then(response => {
         const collections = response.data
-        this.collections = collections.slice(1)
+        this.collections = collections.slice(1, 4)
       })
   }
 }
@@ -42,8 +59,26 @@ export default {
   margin-right: 7px;
 }
 
+.cta {
+  position: relative;
+  bottom: 4px;
+  display: inline-block;
+  font-family: 'Overpass';
+  font-size: 1rem;
+  letter-spacing: -.25px;
+  margin-left: 12px;
+  text-decoration: none;
+  &.-promote {
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    text-decoration: underline;
+  }
+}
+
 .title-2 {
   margin-top: .5rem;
   margin-bottom: 1rem;
+  font-size: 2.5rem;
 }
 </style>
