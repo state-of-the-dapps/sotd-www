@@ -1,13 +1,11 @@
 <template>
   <LayoutMain>
     <div>
-      <Collections/>
       <Search/>
       <CountRefine/>
-      <Items
-        :items="dapps"
-        :itemCount="dappCount"
-      />
+      <div class="dapp-wrapper">
+        <DappCardList :dapps="dapps" />
+      </div>
       <Pager/>
     </div>
   </LayoutMain>
@@ -16,7 +14,7 @@
 <script>
   import CountRefine from '~/components/dapps/list/CountRefine.vue'
   import Collections from '~/components/dapps/list/Collections.vue'
-  import Items from '~/components/dapps/list/Items.vue'
+  import DappCardList from '~/components/DappCardList'
   import LayoutMain from '~/components/LayoutMain'
   import Pager from '~/components/dapps/list/Pager.vue'
   import Search from '~/components/dapps/list/Search.vue'
@@ -25,7 +23,7 @@
     components: {
       Collections,
       CountRefine,
-      Items,
+      DappCardList,
       LayoutMain,
       Pager,
       Search
@@ -61,3 +59,11 @@
     }
   }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.dapp-wrapper {
+  @include margin-wrapper-main;
+}
+</style>
