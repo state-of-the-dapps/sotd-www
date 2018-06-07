@@ -19,7 +19,7 @@
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>
     </li>
-    <li class="nav-item">
+    <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
     <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
@@ -84,6 +84,8 @@ export default {
 
 .logo-link {
   &.-icon {
+    width: 45px;
+    height: 45px;
     @include tweakpoint('min-width', 834px) {
       display: none;
     }
@@ -114,6 +116,12 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
+  &.-newsletter, &.-submit {
+    display: none;
+    @include tweakpoint('min-width', 600px) {
+      display: flex;
+    }
+  }
 }
 
 .nav-link {
@@ -133,7 +141,7 @@ export default {
   }
   &.-newsletter {
     display: none;
-    @include tweakpoint('min-width', 575px) {
+    @include tweakpoint('min-width', 1050px) {
       display: inline-block;
       padding-left: 10px;
     }
@@ -157,7 +165,7 @@ export default {
 
 .tagline {
   display: none;
-  @include tweakpoint('min-width', 834px) {
+  @include tweakpoint('min-width', 1000px) {
     display: inline-block;
     padding-left: 10px;
   }
