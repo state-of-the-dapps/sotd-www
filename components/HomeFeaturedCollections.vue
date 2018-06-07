@@ -79,5 +79,6 @@ export default {
 .title-2 {
   margin-top: .5rem;
   margin-bottom: 1rem;
+  font-size: 2.5rem;
 }
 </style>
