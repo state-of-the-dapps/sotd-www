@@ -1,5 +1,11 @@
 const dappGameTag = 'game'
 
+const dappListDefaultLimit = 50
+
+const dappListDefaultSortBy = 'dau'
+
+const dappListDefaultSortOrder = 'desc'
+
 const dappPromotedSlots = 3
 
 const dappSchema = Object.freeze({
@@ -154,6 +160,9 @@ const feedbackComponentMap = Object.freeze({
 export {
   dappBadgeMap,
   dappGameTag,
+  dappListDefaultLimit,
+  dappListDefaultSortBy,
+  dappListDefaultSortOrder,
   dappPromotedSlots,
   dappRefineStatusOptions,
   dappRefineTabOptions,

@@ -6,9 +6,6 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatDappTabOptions }}
-            <TabDropdown/>
-          </span> with
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
             <StatusDropdown/>
           </span>
