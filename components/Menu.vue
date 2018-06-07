@@ -14,10 +14,13 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')">Find a ÐApp</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'list' }" @click.native="trackMenu('list')" exact>ÐApp List</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>
+    </li>
+    <li class="nav-item">
+      <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
     </li>
     <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
@@ -35,12 +38,14 @@ import { mapGetters } from 'vuex'
 import { trackMenu } from '~/helpers/mixpanel'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
+import SvgIconMagnifier from './SvgIconMagnifier'
 import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {
     SvgIconLogo,
     SvgIconMail,
+    SvgIconMagnifier,
     SvgLogotype
   },
   computed: {
@@ -137,6 +142,9 @@ export default {
     }
     &.-black {
       border-bottom: 1px solid $color--black;
+    }
+    &.-search {
+      border-color: transparent;
     }
   }
   &.-newsletter {
