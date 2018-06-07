@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { trackCollectionView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCollectionList from './DappCollectionList'
 import SvgIconChevron from './SvgIconChevron'
@@ -24,7 +25,16 @@ export default {
   },
   data () {
     return {
-      collections: []
+      collections: [],
+      sourcePath: this.$route.path
+    }
+  },
+  methods: {
+    trackCollectionView (slug) {
+      const sourceComponent = 'HomeFeaturedCollections'
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
