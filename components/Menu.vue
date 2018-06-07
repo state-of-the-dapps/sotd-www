@@ -131,7 +131,7 @@ export default {
   border: 1px solid transparent;
   border-left: 0;
   border-right: 0;
-  &.nuxt-link-active {
+  &.nuxt-link-exact-active {
     &.-white {
       border-bottom: 1px solid $color--white;
     }
