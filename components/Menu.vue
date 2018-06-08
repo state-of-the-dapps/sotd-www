@@ -14,7 +14,7 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'list' }" @click.native="trackMenu('list')" exact>ÐApp List</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'list' }" @click.native="trackMenu('list')" exact>ÐApp Rankings</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>

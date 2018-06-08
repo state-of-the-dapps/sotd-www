@@ -52,7 +52,7 @@ export default {
 
 .component-DappCardListItem {
   position: relative;
-  height: 215px;
+  height: 200px;
   margin: 10px;
   box-shadow: 0 10px 30px rgba($color--black, .1);
   transition: all .4s ease;
