@@ -17,10 +17,10 @@ const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue'
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Home = () => import('~/pages/home.vue').then(m => m.default || m)
-const List = () => import('~/pages/List.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/promoted_dapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/promoted_dapps_direct.vue').then(m => m.default || m)
+const Ranking = () => import('~/pages/Ranking.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/what.vue').then(m => m.default || m)
 
@@ -169,9 +169,9 @@ export function createRouter () {
         name: 'dapps-new-confirmation'
       },
       {
-        path: '/list',
-        component: List,
-        name: 'list'
+        path: '/ranking',
+        component: Ranking,
+        name: 'ranking'
       },
       {
         path: '/promoted-dapps',

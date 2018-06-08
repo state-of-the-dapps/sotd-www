@@ -1,6 +1,6 @@
 <template>
   <ul class="component-DappListHeadings">
-    <li v-for="(field, index) in fields" :key="index" class="row">
+    <li v-for="(field, index) in fields" :key="index" class="column -rank">
       <div class="column -rank">
         <span v-if="field.name" class="field -name">{{ field.name }}</span>
         <span v-if="field.help" class="field -help">?</span>
@@ -20,4 +20,3 @@ export default {
 
 
 </style>
-

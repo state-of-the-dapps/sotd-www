@@ -1,9 +1,9 @@
 <template>
   <LayoutMain>
-    <div class="page-list">
+    <div class="page-ranking">
       <div class="hero-wrapper">
-        <h1 class="title-1">ÐApp List</h1>
-        <p class="description">Check out the hottest ÐApps on the market</p>
+        <h1 class="title-1">ÐApp Ranking</h1>
+        <p class="description">Check out the hottest ÐApps on the market. Rank them by active users or weekly transaction volume.</p>
       </div>
       <DappList/>
     </div>
@@ -26,8 +26,9 @@ export default {
 @import '~assets/css/settings';
 
 .description {
-  margin-top: .5rem;
+  margin: .5rem auto 0 auto;
   text-align: center;
+  max-width: 400px;
 }
 
 .hero-wrapper {
@@ -35,7 +36,7 @@ export default {
   padding: 4rem 0 3rem 0;
 }
 
-.page-list {
+.page-ranking {
   padding-bottom: 50px;
 }
 
