@@ -35,14 +35,14 @@
         return this.$store.getters['tags/items']
       },
       tags () {
-        return this.$store.getters['dapps/list/tagQuery']
+        return this.$store.getters['dapps/search/tagQuery']
       },
       textQuery: {
         get () {
-          return this.$store.getters['dapps/list/textQuery']
+          return this.$store.getters['dapps/search/textQuery']
         },
         set (value) {
-          this.$store.dispatch('dapps/list/setTextQuery', value)
+          this.$store.dispatch('dapps/search/setTextQuery', value)
         }
       }
     },
@@ -62,17 +62,17 @@
       removeLastTag () {
         if (this.textQuery.length < 1 && this.tags.length > 0) {
           this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-          this.$store.dispatch('dapps/list/removeLastTagFromQuery')
-          this.$store.dispatch('dapps/list/fetchItems')
+          this.$store.dispatch('dapps/search/removeLastTagFromQuery')
+          this.$store.dispatch('dapps/search/fetchItems')
           this.fetchSuggestedTagsWithNoQuery()
         }
       },
       removeTag (tag, key) {
         document.getElementById('search').focus()
         this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
-        this.$store.dispatch('dapps/list/removeTagFromQuery', key)
+        this.$store.dispatch('dapps/search/removeTagFromQuery', key)
         this.$store.dispatch('tags/resetItems')
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('dapps/search/fetchItems')
         this.fetchSuggestedTagsWithNoQuery()
       },
       search (event) {
@@ -83,7 +83,7 @@
         var lastWord = result ? result[0] : null
         searchTimer = setTimeout(() => {
           if (this.tags.length < 3 && this.textQuery.length > 1) {
-            this.$store.dispatch('dapps/list/setTabQuery', 'most-relevant')
+            this.$store.dispatch('dapps/search/setTabQuery', 'most-relevant')
             let tagsQuery = {
               value: lastWord,
               model: 'dapps'
@@ -91,10 +91,10 @@
             this.$store.dispatch('tags/fetchItems', tagsQuery)
           }
           if (this.textQuery.length === 0) {
-            this.$store.dispatch('dapps/list/setTabQuery', dappRefineTabOptions[0])
+            this.$store.dispatch('dapps/search/setTabQuery', dappRefineTabOptions[0])
             this.fetchSuggestedTagsWithNoQuery()
           }
-          this.$store.dispatch('dapps/list/fetchItems')
+          this.$store.dispatch('dapps/search/fetchItems')
         }, 200)
         trackTimer = setTimeout(() => {
           this.$mixpanel.track('DApps - Search', { query: this.textQuery })

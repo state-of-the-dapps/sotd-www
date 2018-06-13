@@ -57,6 +57,7 @@ export default {
 .menu-wrapper {
   @include margin-wrapper-main;
   padding: 7px 0 0 0;
+  overflow: hidden;
 }
 
 .wrapper {

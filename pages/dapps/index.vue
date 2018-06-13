@@ -12,12 +12,12 @@
 </template>
 
 <script>
-  import CountRefine from '~/components/dapps/list/CountRefine.vue'
-  import Collections from '~/components/dapps/list/Collections.vue'
+  import CountRefine from '~/components/dapps/search/CountRefine.vue'
+  import Collections from '~/components/dapps/search/Collections.vue'
   import DappCardList from '~/components/DappCardList'
   import LayoutMain from '~/components/LayoutMain'
-  import Pager from '~/components/dapps/list/Pager.vue'
-  import Search from '~/components/dapps/list/Search.vue'
+  import Pager from '~/components/dapps/search/Pager.vue'
+  import Search from '~/components/dapps/search/Search.vue'
 
   export default {
     components: {
@@ -30,26 +30,26 @@
     },
     computed: {
       dapps () {
-        return this.$store.getters['dapps/list/items']
+        return this.$store.getters['dapps/search/items']
       },
       dappCount () {
-        return this.$store.getters['dapps/list/itemCount']
+        return this.$store.getters['dapps/search/itemCount']
       },
       tabQuery () {
-        return this.$store.getters['dapps/list/tabQuery']
+        return this.$store.getters['dapps/search/tabQuery']
       },
       statDappCount () {
         return this.$store.getters['statDappCount']
       },
       tagQuery () {
-        return this.$store.getters['dapps/list/tagQuery']
+        return this.$store.getters['dapps/search/tagQuery']
       }
     },
     mounted () {
       this.$store.dispatch('setSiteSection', 'dapps')
-      this.$store.dispatch('dapps/list/setFriendlyQuery', this.$route.params)
+      this.$store.dispatch('dapps/search/setFriendlyQuery', this.$route.params)
       if (this.dappCount < 1) {
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('dapps/search/fetchItems')
       }
     },
     head () {

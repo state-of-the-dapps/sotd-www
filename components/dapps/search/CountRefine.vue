@@ -6,9 +6,6 @@
       </ul>
       <ul>
         <li>Show
-          <span class="dropdown" :class="{ '--is-active': tabDropdownIsActive }" @click="toggle('tab')">{{ selectedTab | formatDappTabOptions }}
-            <TabDropdown/>
-          </span> with
           <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
             <StatusDropdown/>
           </span>
@@ -20,8 +17,8 @@
 </template>
 
 <script>
-  import TabDropdown from '~/components/dapps/list/countRefine/TabDropdown.vue'
-  import StatusDropdown from '~/components/dapps/list/countRefine/StatusDropdown.vue'
+  import TabDropdown from '~/components/dapps/search/countRefine/TabDropdown.vue'
+  import StatusDropdown from '~/components/dapps/search/countRefine/StatusDropdown.vue'
 
   export default {
     beforeDestroy () {
@@ -38,28 +35,28 @@
     },
     computed: {
       tabDropdownIsActive () {
-        return this.$store.getters['dapps/list/tabDropdownIsActive']
+        return this.$store.getters['dapps/search/tabDropdownIsActive']
       },
       statusDropdownIsActive () {
-        return this.$store.getters['dapps/list/statusDropdownIsActive']
+        return this.$store.getters['dapps/search/statusDropdownIsActive']
       },
       selectedTab () {
-        return this.$store.getters['dapps/list/tabQuery']
+        return this.$store.getters['dapps/search/tabQuery']
       },
       selectedStatus () {
-        return this.$store.getters['dapps/list/statusQuery']
+        return this.$store.getters['dapps/search/statusQuery']
       },
       itemCount () {
-        return this.$store.getters['dapps/list/itemCount']
+        return this.$store.getters['dapps/search/itemCount']
       },
       pagerTotalCount () {
-        return this.$store.getters['dapps/list/pagerTotalCount']
+        return this.$store.getters['dapps/search/pagerTotalCount']
       }
     },
     methods: {
       toggle (type) {
         this.$mixpanel.track('DApps - Toggle ' + type)
-        this.$store.dispatch('dapps/list/toggleRefineDropdown', type)
+        this.$store.dispatch('dapps/search/toggleRefineDropdown', type)
       }
     }
   }

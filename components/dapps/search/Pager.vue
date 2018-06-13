@@ -16,25 +16,25 @@
   export default {
     computed: {
       itemCount () {
-        return this.$store.getters['dapps/list/itemCount']
+        return this.$store.getters['dapps/search/itemCount']
       },
       itemQueryLimit () {
-        return this.$store.getters['dapps/list/itemQueryLimit']
+        return this.$store.getters['dapps/search/itemQueryLimit']
       },
       offset () {
-        return this.$store.getters['dapps/list/pagerOffset']
+        return this.$store.getters['dapps/search/pagerOffset']
       },
       totalCount () {
-        return this.$store.getters['dapps/list/pagerTotalCount']
+        return this.$store.getters['dapps/search/pagerTotalCount']
       },
       isLoading () {
-        return this.$store.getters['dapps/list/isLoading']
+        return this.$store.getters['dapps/search/isLoading']
       }
     },
     methods: {
       loadMore () {
-        this.$store.dispatch('dapps/list/incrementOffsetQuery')
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('dapps/search/incrementOffsetQuery')
+        this.$store.dispatch('dapps/search/fetchItems')
         this.$mixpanel.track('DApps - Load more', { offset: this.offset })
       }
     }
