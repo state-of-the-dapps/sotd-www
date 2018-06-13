@@ -1,6 +1,6 @@
 @mixin dapp-rankings-widths {
   .column {
-    padding: 0 10px;
+    padding: 0 7px;
     &.-rank {
       width: 60px; 
     }
@@ -20,7 +20,7 @@
     }   
     &.-category {
       display: none;
-      width: 80px;
+      width: 100px;
       @include tweakpoint('min-width', 500px) {
         display: block;
       }
