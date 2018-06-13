@@ -55,7 +55,7 @@ export default {
           help: '7 day ÐApp transaction volume',
           id: 'vol_7d',
           sort: true,
-          title: 'Volume (7 d)'
+          title: 'Volume (7d)'
         }
       ]
     }

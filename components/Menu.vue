@@ -10,7 +10,7 @@
     <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
-    <li class="nav-item">
+    <li class="nav-item -home">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
@@ -125,6 +125,12 @@ export default {
     display: none;
     @include tweakpoint('min-width', 600px) {
       display: flex;
+    }
+  }
+  &.-home {
+    display: none;
+    @include tweakpoint('min-width', 600px) {
+      display: block;
     }
   }
 }

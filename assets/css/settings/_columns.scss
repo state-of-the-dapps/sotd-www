@@ -1,26 +1,49 @@
 @mixin dapp-rankings-widths {
   .column {
-    padding: 0 5px;
+    padding: 0 10px;
     &.-rank {
-      width: 60px;
+      width: 60px; 
     }
     &.-dapp {
-      width: 200px;
+      flex: 1;
+      width: 190px;
+      @include tweakpoint('min-width', 1000px) {
+        flex: 0 1 auto;
+      }      
     }
     &.-tagline {
+      display: none;
       flex: 1;
+      @include tweakpoint('min-width', 1000px) {
+        display: block;
+      }
     }   
     &.-category {
-      width: 100px;
+      display: none;
+      width: 80px;
+      @include tweakpoint('min-width', 500px) {
+        display: block;
+      }
     }
     &.-dau {
       width: 100px;
+      text-align: right;
     }
     &.-mau {
+      display: none;
       width: 100px;
+      text-align: right;
+      @include tweakpoint('min-width', 800px) {
+        display: block;
+      }
     }
     &.-vol_7d {
-      width: 100px;
+      display: none;
+      width: 125px;
+      text-align: right;
+      @include tweakpoint('min-width', 800px) {
+        display: block;
+      }
     }
   }
 }

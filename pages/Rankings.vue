@@ -3,7 +3,7 @@
     <div class="page-rankings">
       <div class="hero-wrapper">
         <h1 class="title-1">ÐApp Rankings</h1>
-        <p class="description">Check out the hottest ÐApps on the market. Rank them by active users or weekly transaction volume.</p>
+        <p class="description">Check out the hottest 50 ÐApps on the market.</p>
       </div>
       <DappList/>
     </div>
