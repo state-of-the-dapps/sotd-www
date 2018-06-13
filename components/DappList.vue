@@ -1,110 +1,84 @@
 <template>
   <div class="component-DappList">
-    <DappListHeadings :fields="fields"/>
-    <div v-if="isLoading">
-      Loading...
+    <div class="wrapper">
+      <DappListHeadings :fields="fields"/>
+        <div v-if="isLoading" class="loader-wrapper">
+          <button class="loader"></button>
+        </div>
+        <div v-else>
+          <DappListItem v-for="(dapp, index) in dapps" :key="index"
+          :dapp="dapp"/>
+        </div>
+      </div>
     </div>
-    <div v-else>
-      <DappListItem v-for="(dapp, index) in dapps" :key="index"
-      :dapp="dapp"/>
-    </div>
-  </div>
 </template>
 
 <script>
-import axios from '~/helpers/axios'
-import { dappListDefaultLimit, dappListDefaultSortBy, dappListDefaultSortOrder } from '~/helpers/constants'
+import { mapActions, mapGetters } from 'vuex'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 
 export default {
   data () {
     return {
-      dapps: [],
       fields: [
         {
           help: 'The default rank is sorted by DAU (Daily Active Users)',
           id: 'rank',
-          name: 'Rank',
-          sort: true
+          sort: true,
+          title: 'Rank'
         },
         {
           id: 'dapp',
-          name: 'ÐApp',
-          sort: true
+          sort: true,
+          title: 'ÐApp'
         },
         {
-          id: 'description',
-          name: 'Description'
+          id: 'tagline'
         },
         {
-          filter: 'status',
-          id: 'status',
-          name: 'Status'
+          id: 'category',
+          title: 'Category'
         },
         {
           help: 'Daily Active Users (unique contract addresses from ÐApp transactions)',
           id: 'dau',
-          name: 'DAU',
-          sort: true
+          sort: true,
+          title: 'DAU'
         },
         {
           help: 'Monthly Active Users (unique contract addresses from ÐApp transactions)',
           id: 'mau',
-          name: 'MAU',
-          sort: true
-        },
-        {
-          id: 'users_30d',
-          name: 'Users (30 d)'
+          title: 'MAU'
         },
         {
           help: '7 day ÐApp transaction volume',
           id: 'vol_7d',
-          name: 'Volume (7d)',
-          sort: true
+          sort: true,
+          title: 'Volume (7 d)'
         }
-      ],
-      isLoading: true,
-      pager: {
-        limit: dappListDefaultLimit,
-        offset: 0,
-        totalCount: 0
-      },
-      sort: {
-        by: dappListDefaultSortBy,
-        order: dappListDefaultSortOrder
-      },
-      status: ''
+      ]
     }
   },
   components: {
     DappListHeadings,
     DappListItem
   },
+  computed: {
+    ...mapGetters('dapps/rankings', [
+      'dapps',
+      'isLoading'
+    ])
+  },
   methods: {
-    findDapps () {
-      this.isLoading = true
-      axios
-        .get('dapps', {
-          params: {
-            limit: this.pager.limit,
-            offset: this.pager.offset,
-            order: this.sort.order,
-            sort: this.sort.by,
-            status: this.status
-          }
-        })
-        .then(response => {
-          const data = response.data
-          this.dapps = data.items
-          this.pager = data.pager
-          this.isLoading = false
-        })
-    }
+    ...mapActions('dapps/rankings', [
+      'fetchDapps'
+    ])
   },
   mounted () {
-    this.findDapps()
+    if (this.dapps.length < 1) {
+      this.fetchDapps()
+    }
   }
 }
 </script>
@@ -114,5 +88,18 @@ export default {
 
 .component-DappList {
   @include margin-wrapper-main;
+}
+
+.loader-wrapper {
+  margin: 25px auto;
+}
+
+.wrapper {
+  background: rgba($color--white, .5);
+  box-shadow: 0 10px 30px rgba($color--black, .175);
+  border-radius: 4px;
+  padding: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 </style>

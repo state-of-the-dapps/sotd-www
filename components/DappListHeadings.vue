@@ -1,8 +1,8 @@
 <template>
   <ul class="component-DappListHeadings">
-    <li v-for="(field, index) in fields" :key="index" class="column -rank">
-      <div class="column -rank">
-        <span v-if="field.name" class="field -name">{{ field.name }}</span>
+    <li v-for="(field, index) in fields" :key="index" class="column" :class="'-' + field.id">
+      <div class="field" :class="'-' + field.id">
+        <span v-if="field.title" class="field -name">{{ field.title }}</span>
         <span v-if="field.help" class="field -help">?</span>
       </div>
     </li>
@@ -18,5 +18,12 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-DappListHeadings {
+  display: flex;
+  padding: 0 0 17px 0;
+  text-transform: uppercase;
+  font-size: .85rem;
+}
 
+@include dapp-rankings-widths;
 </style>

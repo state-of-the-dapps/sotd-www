@@ -6,7 +6,7 @@ const actions = {
       .get('tags', {
         params: {
           text: query.value,
-          excluded: rootState.dapps.list.query.tags,
+          excluded: rootState.dapps.search.query.tags,
           type: query.model
         }
       })

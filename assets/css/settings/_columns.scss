@@ -1,0 +1,26 @@
+@mixin dapp-rankings-widths {
+  .column {
+    padding: 0 5px;
+    &.-rank {
+      width: 60px;
+    }
+    &.-dapp {
+      width: 200px;
+    }
+    &.-tagline {
+      flex: 1;
+    }   
+    &.-category {
+      width: 100px;
+    }
+    &.-dau {
+      width: 100px;
+    }
+    &.-mau {
+      width: 100px;
+    }
+    &.-vol_7d {
+      width: 100px;
+    }
+  }
+}

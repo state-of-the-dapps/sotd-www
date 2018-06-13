@@ -2,9 +2,9 @@ const dappGameTag = 'game'
 
 const dappListDefaultLimit = 50
 
-const dappListDefaultSortBy = 'dau'
+const dappListDefaultSort = 'rank'
 
-const dappListDefaultSortOrder = 'desc'
+const dappListDefaultOrder = 'asc'
 
 const dappPromotedSlots = 3
 
@@ -161,8 +161,8 @@ export {
   dappBadgeMap,
   dappGameTag,
   dappListDefaultLimit,
-  dappListDefaultSortBy,
-  dappListDefaultSortOrder,
+  dappListDefaultSort,
+  dappListDefaultOrder,
   dappPromotedSlots,
   dappRefineStatusOptions,
   dappRefineTabOptions,

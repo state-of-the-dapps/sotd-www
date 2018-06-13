@@ -1,8 +1,8 @@
 <template>
   <LayoutMain>
-    <div class="page-ranking">
+    <div class="page-rankings">
       <div class="hero-wrapper">
-        <h1 class="title-1">ÐApp Ranking</h1>
+        <h1 class="title-1">ÐApp Rankings</h1>
         <p class="description">Check out the hottest ÐApps on the market. Rank them by active users or weekly transaction volume.</p>
       </div>
       <DappList/>
@@ -36,7 +36,7 @@ export default {
   padding: 4rem 0 3rem 0;
 }
 
-.page-ranking {
+.page-rankings {
   padding-bottom: 50px;
 }
 

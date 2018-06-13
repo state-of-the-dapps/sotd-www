@@ -56,7 +56,10 @@
         this.$store.dispatch('tags/selectItem', key)
         this.$store.dispatch('tags/resetItems')
         // contextually dispatch actions based on the model
-        if (this.model === 'dapps' || this.model === 'events') {
+        if (this.model === 'dapps') {
+          this.$store.dispatch(this.model + '/search/addTagToQuery', item)
+          this.$store.dispatch(this.model + '/search/fetchItems')
+        } else if (this.model === 'events') {
           this.$store.dispatch(this.model + '/list/addTagToQuery', item)
           this.$store.dispatch(this.model + '/list/fetchItems')
         }

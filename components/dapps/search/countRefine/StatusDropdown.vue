@@ -15,10 +15,10 @@
   export default {
     computed: {
       isActive () {
-        return this.$store.getters['dapps/list/statusDropdownIsActive']
+        return this.$store.getters['dapps/search/statusDropdownIsActive']
       },
       optionsWithoutSelected () {
-        const selected = this.$store.getters['dapps/list/statusQuery']
+        const selected = this.$store.getters['dapps/search/statusQuery']
         const options = statusOptions.slice() || []
         if (options.indexOf(selected) !== -1) {
           options.splice(options.indexOf(selected), 1)
@@ -34,13 +34,13 @@
     methods: {
       hide () {
         this.$mixpanel.track('DApps - Hide status dropdown')
-        this.$store.dispatch('dapps/list/toggleRefineDropdown', 'status')
+        this.$store.dispatch('dapps/search/toggleRefineDropdown', 'status')
       },
       select (option) {
         this.$mixpanel.track('DApps - Select status', { option: option })
-        this.$store.dispatch('dapps/list/setStatusQuery', option)
-        this.$store.dispatch('dapps/list/toggleRefineDropdown', 'status')
-        this.$store.dispatch('dapps/list/fetchItems')
+        this.$store.dispatch('dapps/search/setStatusQuery', option)
+        this.$store.dispatch('dapps/search/toggleRefineDropdown', 'status')
+        this.$store.dispatch('dapps/search/fetchItems')
       }
     }
   }
