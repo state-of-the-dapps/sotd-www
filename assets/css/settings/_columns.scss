@@ -20,7 +20,7 @@
     }   
     &.-category {
       display: none;
-      width: 100px;
+      width: 125px;
       @include tweakpoint('min-width', 500px) {
         display: block;
       }
