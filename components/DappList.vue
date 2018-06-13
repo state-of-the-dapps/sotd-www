@@ -2,21 +2,26 @@
   <div class="component-DappList">
     <div class="wrapper">
       <DappListHeadings :fields="fields"/>
-        <div v-if="isLoading" class="loader-wrapper">
-          <button class="loader"></button>
-        </div>
-        <div v-else>
-          <DappListItem v-for="(dapp, index) in dapps" :key="index"
-          :dapp="dapp"/>
-        </div>
+      <div v-if="dapps.length">
+        <DappListItem v-for="(dapp, index) in dapps" :key="index"
+        :dapp="dapp"/>
       </div>
+      <LoadMore
+        @loadMore="loadMore"
+        :dapps="dapps"
+        :isLoading="isLoading"
+        :limit="limit"
+        :offset="offset"
+        :total="total"/>
     </div>
+  </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
+import LoadMore from './LoadMore'
 
 export default {
   data () {
@@ -57,22 +62,33 @@ export default {
           sort: true,
           title: 'Volume (7d)'
         }
-      ]
+      ],
+      sourcePath: this.$route.path
     }
   },
   components: {
     DappListHeadings,
-    DappListItem
+    DappListItem,
+    LoadMore
   },
   computed: {
     ...mapGetters('dapps/rankings', [
       'dapps',
-      'isLoading'
+      'isLoading',
+      'limit',
+      'offset',
+      'total'
     ])
   },
   methods: {
+    loadMore () {
+      this.incrementOffset()
+      this.fetchDapps('append')
+      this.$mixpanel.track('DApps - Load more', { offset: this.offset, sourcePath: this.sourcePath })
+    },
     ...mapActions('dapps/rankings', [
-      'fetchDapps'
+      'fetchDapps',
+      'incrementOffset'
     ])
   },
   mounted () {
