@@ -1,8 +1,8 @@
 <template>
-  <li class="component-DappListItem">
+  <li class="component-DappListItem" v-if="dapp.rank">
     <ul class="columns">
       <li class="column -rank">
-        {{ parseInt(dapp.rank).toLocaleString() }}
+        {{ Number(dapp.rank || 0).toLocaleString() }}
       </li>
       <li class="column -dapp">
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>
