@@ -20,7 +20,7 @@ export default {
 .component-DappListHeadings {
   background: darken($color--white, 2.5%);
   display: flex;
-  padding: 17px 0;
+  padding: 20px 0 17px 0;
   text-transform: uppercase;
   font-size: .85rem;
   position: sticky;
