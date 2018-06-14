@@ -23,14 +23,15 @@
       </li>
       <li class="column -dau">
         <span class="field-dau -value">{{ Number(dapp.stats.dau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span class="field-dau -pct" :class="dapp.stats.dau_pct > 0 ? 'is-positive' : 'is-negative'"><span v-if="dapp.stats.dau_pct > 0">+</span>{{ Number(dapp.stats.dau_pct).toLocaleString(undefined, {maximumFractionDigits: 2}) }}%</span>
+        <span class="field-dau -pct" :class="getDappStatsClass(dapp.stats.dau_pct)"><span v-if="dapp.stats.dau_pct > 0">+</span>{{ Number(dapp.stats.dau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -mau">
-        <span>{{ Number(dapp.stats.mau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span class="field-mau -value">{{ Number(dapp.stats.mau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span class="field-mau -pct" :class="dapp.stats.mau_pct > 0 ? 'is-positive' : 'is-negative'"><span v-if="dapp.stats.mau_pct > 0">+</span>{{ Number(dapp.stats.mau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -vol_7d">
         <span class="field-vol -value">{{ Number(dapp.stats.value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} ETH</span>
-        <span class="field-vol -pct" :class="dapp.stats.value_7d_pct > 0 ? 'is-positive' : 'is-negative'"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {maximumFractionDigits: 2}) }}%</span>
+        <span class="field-vol -pct" :class="dapp.stats.value_7d_pct > 0 ? 'is-positive' : 'is-negative'"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
     </ul>
   </li>
@@ -46,6 +47,15 @@ export default {
     }
   },
   methods: {
+    getDappStatsClass (value) {
+      let result = ''
+      if (value && value > 0) {
+        result = 'is-positive'
+      } else if (value && value < 0) {
+        result = 'is-negative'
+      }
+      return result
+    },
     trackDappView (targetDapp) {
       const sourceCollection = this.sourceCollection
       const sourceComponent = 'DappListItem'
@@ -98,7 +108,7 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  &.-vol_7d {
+  &.-vol_7d, &.-mau {
     @include tweakpoint('min-width', 800px) {
       display: flex;
       flex-direction: column;
@@ -116,7 +126,7 @@ export default {
   font-weight: 700;
 }
 
-.field-dau, .field-vol {
+.field-dau, .field-vol, .field-mau {
   flex: 1;
   &.-pct {
     font-size: 1rem;
