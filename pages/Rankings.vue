@@ -18,6 +18,11 @@ export default {
   components: {
     DappList,
     LayoutMain
+  },
+  head () {
+    return {
+      title: 'State of the ÐApps — ÐApp List Ranked by Daily Active Users'
+    }
   }
 }
 </script>
