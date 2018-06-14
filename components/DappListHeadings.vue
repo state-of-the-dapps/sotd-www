@@ -18,10 +18,13 @@ export default {
 @import '~assets/css/settings';
 
 .component-DappListHeadings {
+  background: darken($color--white, 2.5%);
   display: flex;
-  padding: 0 0 17px 0;
+  padding: 17px 0;
   text-transform: uppercase;
   font-size: .85rem;
+  position: sticky;
+  top: 0;
 }
 
 @include dapp-rankings-widths;

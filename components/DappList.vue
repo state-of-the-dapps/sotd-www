@@ -2,10 +2,10 @@
   <div class="component-DappList">
     <div class="wrapper">
       <DappListHeadings :fields="fields"/>
-      <div v-if="dapps.length">
+      <ul v-if="dapps.length">
         <DappListItem v-for="(dapp, index) in dapps" :key="index"
         :dapp="dapp"/>
-      </div>
+      </ul>
       <LoadMore
         @loadMore="loadMore"
         :dapps="dapps"
@@ -111,10 +111,10 @@ export default {
 }
 
 .wrapper {
-  background: rgba($color--white, .5);
+  background: darken($color--white, 2.5%);
   box-shadow: 0 10px 30px rgba($color--black, .175);
   border-radius: 4px;
-  padding: 20px;
+  padding: 0 20px;
   max-width: 1500px;
   margin: 0 auto;
 }
