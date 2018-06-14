@@ -24,7 +24,7 @@ export default {
   text-transform: uppercase;
   font-size: .85rem;
   position: sticky;
-  top: 0;
+  top: -1px;
 }
 
 @include dapp-rankings-widths;
