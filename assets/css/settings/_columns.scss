@@ -49,7 +49,7 @@
       display: none;
       width: 150px;
       text-align: right;
-      @include tweakpoint('min-width', 800px) {
+      @include tweakpoint('min-width', 1000px) {
         display: block;
       }      
     }
