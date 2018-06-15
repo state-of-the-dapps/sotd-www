@@ -39,14 +39,30 @@
         <span v-if="dapp.stats.value_7d_pct === undefined || dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
         <span v-else class="field-vol -pct" :class="getDappStatsClass(dapp.stats.value_7d_pct)"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
+      <li class="column -users_30d">
+        <div class="wrapper">
+          <trend
+            :data="dapp.sparklines.users"
+            :gradient="['#333']"
+            :stroke-width="3"
+            :padding="4"
+            auto-draw
+            smooth>
+          </trend>
+        </div>
+      </li>
     </ul>
   </li>
 </template>
 
 <script>
 import { trackDappView } from '~/helpers/mixpanel'
+import Trend from 'vuetrend'
 
 export default {
+  components: {
+    Trend
+  },
   data () {
     return {
       sourcePath: this.$route.path
@@ -149,5 +165,8 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
+  .-users_30d & {
+    height: auto;
+  }
 }
 </style>

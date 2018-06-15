@@ -45,5 +45,13 @@
         display: block;
       }
     }
+    &.-users_30d {
+      display: none;
+      width: 150px;
+      text-align: right;
+      @include tweakpoint('min-width', 800px) {
+        display: block;
+      }      
+    }
   }
 }

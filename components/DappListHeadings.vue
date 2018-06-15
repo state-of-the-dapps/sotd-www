@@ -37,7 +37,7 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
-  &.-dau, &.-mau, &.-vol_7d {
+  &.-dau, &.-mau, &.-vol_7d, &.-users_30d {
     .field.-name {
       margin-left: auto;
     }
@@ -68,6 +68,8 @@ export default {
     border-bottom-color: $color--black;
   }
 }
+
+
 
 @include dapp-rankings-widths;
 </style>

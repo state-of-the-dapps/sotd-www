@@ -66,6 +66,11 @@ export default {
           id: 'vol_7d',
           sort: true,
           title: 'Volume (7d)'
+        },
+        {
+          help: 'Users over the past 30 days',
+          id: 'users_30d',
+          title: 'Users (30d)'
         }
       ],
       sourcePath: this.$route.path
