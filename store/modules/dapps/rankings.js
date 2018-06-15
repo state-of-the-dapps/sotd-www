@@ -25,6 +25,9 @@ const actions = {
   },
   incrementOffset ({ commit }) {
     commit('INCREMENT_OFFSET')
+  },
+  setSort ({ commit }, sortOptions) {
+    commit('SET_SORT', sortOptions)
   }
 }
 
@@ -40,6 +43,12 @@ const getters = {
   },
   offset: state => {
     return state.offset
+  },
+  order: state => {
+    return state.order
+  },
+  sort: state => {
+    return state.sort
   },
   total: state => {
     return state.total
@@ -62,6 +71,11 @@ const mutations = {
   },
   SET_LOADING_STATUS (state, status) {
     state.isLoading = status
+  },
+  SET_SORT (state, sortOptions) {
+    state.offset = 0
+    state.order = sortOptions.order
+    state.sort = sortOptions.sort
   }
 }
 
