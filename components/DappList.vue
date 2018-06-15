@@ -1,7 +1,11 @@
 <template>
-  <div class="component-DappList">
+  <div class="component-DappList" id="component-DappList">
     <div class="wrapper">
-      <DappListHeadings :fields="fields"/>
+      <DappListHeadings
+        :fields="fields"
+        :order="order"
+        :sort="sort"
+        @sortDapps="sortDapps"/>
       <ul v-if="dapps.length">
         <DappListItem v-for="(dapp, index) in dapps" :key="index"
         :dapp="dapp"/>
@@ -19,6 +23,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { trackDappRankingSort } from '~/helpers/mixpanel'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -35,7 +40,6 @@ export default {
         },
         {
           id: 'dapp',
-          sort: true,
           title: 'ÐApp'
         },
         {
@@ -54,6 +58,7 @@ export default {
         {
           help: 'Monthly Active Users (unique contract addresses from ÐApp transactions)',
           id: 'mau',
+          sort: true,
           title: 'MAU'
         },
         {
@@ -77,6 +82,8 @@ export default {
       'isLoading',
       'limit',
       'offset',
+      'order',
+      'sort',
       'total'
     ])
   },
@@ -88,8 +95,17 @@ export default {
     },
     ...mapActions('dapps/rankings', [
       'fetchDapps',
-      'incrementOffset'
-    ])
+      'incrementOffset',
+      'setSort'
+    ]),
+    sortDapps (sortOptions) {
+      this.setSort(sortOptions)
+      this.fetchDapps()
+      const action = trackDappRankingSort(this.order, this.sort)
+      this.$mixpanel.track(action.name, action.data)
+      document.getElementById('component-DappList')
+              .scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
   },
   mounted () {
     if (this.dapps.length < 1) {

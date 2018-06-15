@@ -22,21 +22,21 @@
         </div>
       </li>
       <li class="column -dau">
-        <span v-if="dapp.stats.dau === null">-</span>
+        <span v-if="!dapp.stats.dau || dapp.stats.dau === null">-</span>
         <span v-else class="field-dau -value">{{ Number(dapp.stats.dau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span v-if="dapp.stats.dau_pct === null" class="field-dau -pct">-</span>
+        <span v-if="!dapp.stats.dau_pct || dapp.stats.dau_pct === null" class="field-dau -pct">-</span>
         <span v-else class="field-dau -pct" :class="getDappStatsClass(dapp.stats.dau_pct)"><span v-if="dapp.stats.dau_pct > 0">+</span>{{ Number(dapp.stats.dau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -mau">
-        <span v-if="dapp.stats.mau === null">-</span>
+        <span v-if="!dapp.stats.mau || dapp.stats.mau === null">-</span>
         <span v-else class="field-mau -value">{{ Number(dapp.stats.mau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span v-if="dapp.stats.mau_pct === null" class="field-mau -pct">-</span>
+        <span v-if="!dapp.stats.mau_pct || dapp.stats.mau_pct === null" class="field-mau -pct">-</span>
         <span v-else class="field-mau -pct" :class="getDappStatsClass(dapp.stats.mau_pct)"><span v-if="dapp.stats.mau_pct > 0">+</span>{{ Number(dapp.stats.mau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -vol_7d">
-        <span v-if="dapp.stats.value_7d === null">-</span>
+        <span v-if="!dapp.stats.value_7d || dapp.stats.value_7d === null">-</span>
         <span v-else class="field-vol -value">{{ Number(dapp.stats.value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} ETH</span>
-        <span v-if="dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
+        <span v-if="!dapp.stats.value_7d_pct || dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
         <span v-else class="field-vol -pct" :class="getDappStatsClass(dapp.stats.value_7d_pct)"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
     </ul>
