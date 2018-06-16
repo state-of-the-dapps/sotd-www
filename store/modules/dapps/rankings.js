@@ -10,7 +10,8 @@ const actions = {
           limit: state.limit,
           offset: state.offset,
           order: state.order,
-          sort: state.sort
+          sort: state.sort,
+          tags: state.category
         }
       })
       .then(response => {
@@ -26,12 +27,18 @@ const actions = {
   incrementOffset ({ commit }) {
     commit('INCREMENT_OFFSET')
   },
+  setCategory ({ commit }, category) {
+    commit('SET_CATEGORY', category)
+  },
   setSort ({ commit }, sortOptions) {
     commit('SET_SORT', sortOptions)
   }
 }
 
 const getters = {
+  category: state => {
+    return state.category
+  },
   dapps: state => {
     return state.dapps
   },
@@ -72,6 +79,14 @@ const mutations = {
   SET_LOADING_STATUS (state, status) {
     state.isLoading = status
   },
+  SET_CATEGORY (state, category) {
+    let categories = []
+    if (category) {
+      categories.push(category)
+    }
+    state.offset = 0
+    state.category = categories
+  },
   SET_SORT (state, sortOptions) {
     state.offset = 0
     state.order = sortOptions.order
@@ -80,6 +95,7 @@ const mutations = {
 }
 
 const state = () => ({
+  category: [],
   dapps: [],
   isLoading: true,
   limit: dappListDefaultLimit,

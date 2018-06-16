@@ -19,7 +19,6 @@ export default {
     DappList,
     LayoutMain
   },
-  props: ['category'],
   head () {
     return {
       title: 'State of the ÐApps — ÐApp List Ranked by Daily Active Users'

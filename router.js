@@ -172,7 +172,6 @@ export function createRouter () {
         path: '/rankings',
         component: Rankings,
         name: 'rankings',
-        props: true,
         children: [
           {
             path: 'category/:category',
