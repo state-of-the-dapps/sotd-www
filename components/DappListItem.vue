@@ -18,7 +18,7 @@
       </li>
       <li class="column -category">
         <div class="wrapper">
-          <span v-if="dapp.tags.length" class="category">{{ dapp.tags[0] }}</span>
+          <span v-if="dapp.tags.length" class="category"><span v-if="!category.length">{{ dapp.tags[0] }}</span>{{ category[0] }}<span></span></span>
         </div>
       </li>
       <li class="column -dau">
@@ -86,6 +86,9 @@ export default {
     }
   },
   props: {
+    category: {
+      required: false
+    },
     dapp: {
       required: true
     }

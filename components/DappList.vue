@@ -8,6 +8,7 @@
         @sortDapps="sortDapps"/>
       <ul v-if="dapps.length">
         <DappListItem v-for="(dapp, index) in dapps" :key="index"
+        :category="category"
         :dapp="dapp"/>
       </ul>
       <LoadMore
