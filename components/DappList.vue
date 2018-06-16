@@ -1,7 +1,5 @@
 <template>
   <div class="component-DappList" id="component-DappList">
-    <nuxt-link to="/rankings">Reset category</nuxt-link>
-    <nuxt-link to="/rankings/category/game">Go to games</nuxt-link>
     <div class="wrapper">
       <DappListHeadings
         :fields="fields"
