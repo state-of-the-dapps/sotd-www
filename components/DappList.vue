@@ -84,6 +84,7 @@ export default {
   },
   computed: {
     ...mapGetters('dapps/rankings', [
+      'category',
       'dapps',
       'isLoading',
       'limit',
@@ -102,6 +103,7 @@ export default {
     ...mapActions('dapps/rankings', [
       'fetchDapps',
       'incrementOffset',
+      'setCategory',
       'setSort'
     ]),
     sortDapps (sortOptions) {
@@ -114,7 +116,17 @@ export default {
     }
   },
   mounted () {
+    if (this.category.length) {
+      this.$router.replace({name: 'rankings-category', params: {category: this.category[0]}})
+    }
     if (this.dapps.length < 1) {
+      this.setCategory(this.$route.params.category)
+      this.fetchDapps()
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.setCategory(this.$route.params.category)
       this.fetchDapps()
     }
   }

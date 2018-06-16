@@ -171,7 +171,14 @@ export function createRouter () {
       {
         path: '/rankings',
         component: Rankings,
-        name: 'rankings'
+        name: 'rankings',
+        children: [
+          {
+            path: 'category/:category',
+            component: Rankings,
+            name: 'rankings-category'
+          }
+        ]
       },
       {
         path: '/promoted-dapps',
