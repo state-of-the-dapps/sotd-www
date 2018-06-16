@@ -2,9 +2,10 @@
   <ul class="component-DappListHeadings">
     <li v-for="(field, index) in fields" :key="index" class="column" :class="'-' + field.id">
       <div class="field-wrapper" :class="'-' + field.id">
-        <span v-if="field.title" @click="sortDapps(field)" class="field -name" :class="sort === field.id ? 'is-active' : ''">
+        <span v-if="field.title" @click="sortDapps(field)" class="field -name">
           {{ field.title }}
         </span>
+        <span v-if="sort === field.id" class="sort-arrow"/>
       </div>
     </li>
   </ul>
@@ -49,13 +50,20 @@ export default {
 
 .field.-name {
   .-rank &, .-dau &, .-mau &, .-vol_7d & {
-    border-bottom: 1px solid darken($color--gray, 20%);
+    border-bottom: 1px solid $color--black;
     cursor: pointer;
-    &.is-active {
-      border-color: $color--black;
-    }
   }
 }
+
+.sort-arrow {
+  margin-left: 4px;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 8px solid $color--black;
+}
+  
 
 @include dapp-rankings-widths;
 </style>
