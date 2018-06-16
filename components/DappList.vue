@@ -35,7 +35,7 @@ export default {
         {
           help: 'The default rank is sorted by DAU (Daily Active Users)',
           id: 'rank',
-          sort: true,
+          order: 'asc',
           title: 'Rank'
         },
         {
@@ -52,19 +52,20 @@ export default {
         {
           help: 'Daily Active Users (unique contract addresses from ÐApp transactions)',
           id: 'dau',
+          order: 'desc',
           sort: true,
           title: 'DAU'
         },
         {
           help: 'Monthly Active Users (unique contract addresses from ÐApp transactions)',
           id: 'mau',
-          sort: true,
+          order: 'desc',
           title: 'MAU'
         },
         {
           help: '7 day ÐApp transaction volume',
           id: 'vol_7d',
-          sort: true,
+          order: 'desc',
           title: 'Volume (7d)'
         },
         {

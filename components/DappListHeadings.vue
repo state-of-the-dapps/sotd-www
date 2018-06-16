@@ -2,13 +2,9 @@
   <ul class="component-DappListHeadings">
     <li v-for="(field, index) in fields" :key="index" class="column" :class="'-' + field.id">
       <div class="field-wrapper" :class="'-' + field.id">
-        <span v-if="field.title" class="field -name">
+        <span v-if="field.title" @click="sortDapps(field)" class="field -name" :class="sort === field.id ? 'is-active' : ''">
           {{ field.title }}
         </span>
-        <div v-if="field.sort" class="sort-wrapper">
-          <span @click="$emit('sortDapps', { order: 'asc', sort: field.id })" class="sort -asc" :class="sort === field.id && order === 'asc' ? 'is-active' : ''"/>
-          <span @click="$emit('sortDapps', { order: 'desc', sort: field.id })"  class="sort -desc" :class="sort === field.id && order === 'desc' ? 'is-active' : ''"/>
-        </div>
       </div>
     </li>
   </ul>
@@ -16,7 +12,14 @@
 
 <script>
 export default {
-  props: ['fields', 'order', 'sort']
+  props: ['fields', 'order', 'sort'],
+  methods: {
+    sortDapps (field) {
+      if (field.order) {
+        this.$emit('sortDapps', { order: field.order, sort: field.id })
+      }
+    }
+  }
 }
 </script>
 
@@ -44,32 +47,15 @@ export default {
   }
 }
 
-.sort-wrapper {
-  display: inline-block;
-  position: relative;
-  margin-left: 5px;
-  top: -1px;
-}
-
-.sort {
-  display: block;
-  width: 0; 
-  height: 0; 
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 6px solid rgba($color--black, .3);
-  margin: 3px 0;
-  transition: all .2s ease;
-  cursor: pointer;
-  &.-desc {
-    transform: rotate(180deg)
-  }
-  &.is-active, &:hover {
-    border-bottom-color: $color--black;
+.field.-name {
+  .-rank &, .-dau &, .-mau &, .-vol_7d & {
+    border-bottom: 1px solid darken($color--gray, 20%);
+    cursor: pointer;
+    &.is-active {
+      border-color: $color--black;
+    }
   }
 }
-
-
 
 @include dapp-rankings-widths;
 </style>
