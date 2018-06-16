@@ -14,7 +14,7 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')" exact>ÐApp Rankings</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">ÐApp Rankings</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>
@@ -142,7 +142,7 @@ export default {
   border: 1px solid transparent;
   border-left: 0;
   border-right: 0;
-  &.nuxt-link-exact-active {
+  &.nuxt-link-active, &.nuxt-link-exact-active {
     &.-white {
       border-bottom: 1px solid $color--white;
     }
