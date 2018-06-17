@@ -1,5 +1,11 @@
 <template>
   <div class="component-DappList" id="component-DappList">
+    <ul class="category-list">
+      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category.length ? 'is-active' : ''">All categories</nuxt-link></li>
+      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/game'}" class="category-link" :class="category[0] === 'game' ? 'is-active' : ''">Games</nuxt-link></li>
+      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/exchange'}" class="category-link" :class="category[0] === 'exchange' ? 'is-active' : ''">Exchanges</nuxt-link></li>
+      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/finance'}" class="category-link" :class="category[0] === 'finance' ? 'is-active' : ''">Finance</nuxt-link></li>
+    </ul>
     <div class="wrapper">
       <DappListHeadings
         :fields="fields"
@@ -136,6 +142,28 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.category-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 9px;
+  margin: 3px;
+  border-radius: 4px;
+  background: lighten($color--white, 100%);
+  box-shadow: 0 2px 15px rgba($color--black, .15);
+  &.is-active {
+    background: $color--black;
+    color: $color--white;
+  }
+}
+
+.category-list {
+  padding-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 .component-DappList {
   @include margin-wrapper-main;
