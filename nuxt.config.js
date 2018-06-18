@@ -1,5 +1,6 @@
 const env = {
   apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/',
+  cdnPublicPath: process.env.CDN_PUBLIC_PATH || '',
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-000000-1',
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
@@ -24,6 +25,7 @@ module.exports = {
         })
       }
     },
+    publicPath: env.cdnPublicPath,
     vendor: [
       'axios',
       'mixpanel-browser',
