@@ -16,9 +16,9 @@
           <span>{{ dapp.teaser }}</span>
         </div>
       </li>
-      <li class="column -category">
+      <li class="column -tags">
         <div class="wrapper">
-          <span v-if="dapp.tags.length" class="category">{{ dapp.tags[0] }}</span>
+          <span v-for="(tag, index) in dapp.tags" :key="index" class="tag">{{ tag }}</span>
         </div>
       </li>
       <li class="column -dau">
@@ -86,9 +86,6 @@ export default {
     }
   },
   props: {
-    category: {
-      required: false
-    },
     dapp: {
       required: true
     }
@@ -101,12 +98,14 @@ export default {
 
 @include dapp-rankings-widths;
 
-.category {
+.tag {
   display: inline-block;
   font-size: .95rem;
-  padding: 2px 5px;
+  padding: 3px 6px;
   background: rgba($color--gray, .6);
   border-radius: 4px;
+  margin-right: 4px;
+  white-space: nowrap;
 }
 
 .component-DappListItem {
@@ -137,6 +136,12 @@ export default {
     @include tweakpoint('min-width', 800px) {
       display: flex;
       flex-direction: column;
+    }
+  }
+  &.-tags {
+    overflow: hidden;
+    .wrapper {
+      overflow-x: auto;
     }
   }
   @include tweakpoint('min-width', 800px) {

@@ -2,9 +2,9 @@
   <div class="component-DappList" id="component-DappList">
     <ul class="category-list">
       <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category.length ? 'is-active' : ''">All categories</nuxt-link></li>
-      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/game'}" class="category-link" :class="category[0] === 'game' ? 'is-active' : ''">Games</nuxt-link></li>
-      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/exchange'}" class="category-link" :class="category[0] === 'exchange' ? 'is-active' : ''">Exchanges</nuxt-link></li>
-      <li class="category-item"><nuxt-link :to="{path: '/rankings/category/finance'}" class="category-link" :class="category[0] === 'finance' ? 'is-active' : ''">Finance</nuxt-link></li>
+      <li v-for="(dappCategory, index) in dappCategories" :key="index">
+        <nuxt-link :to="{path: '/rankings/category/' + dappCategory}" class="category-link" :class="dappCategory === category[0] ? 'is-active' : ''">{{ dappCategory | formatCategory }}</nuxt-link>
+      </li>
     </ul>
     <div class="wrapper">
       <DappListHeadings
@@ -14,7 +14,6 @@
         @sortDapps="sortDapps"/>
       <ul v-if="dapps.length">
         <DappListItem v-for="(dapp, index) in dapps" :key="index"
-        :category="category"
         :dapp="dapp"/>
       </ul>
       <LoadMore
@@ -31,6 +30,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { trackDappRankingSort } from '~/helpers/mixpanel'
+import { dappCategoryTagsMap } from '~/helpers/constants'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -53,8 +53,8 @@ export default {
           id: 'tagline'
         },
         {
-          id: 'category',
-          title: 'Category'
+          id: 'tags',
+          title: 'Tags'
         },
         {
           help: 'Daily Active Users (unique contract addresses from ÐApp transactions)',
@@ -90,6 +90,14 @@ export default {
     LoadMore
   },
   computed: {
+    dappCategories () {
+      let categories = []
+      for (let category in dappCategoryTagsMap) {
+        categories.push(category)
+      }
+      categories.sort()
+      return categories
+    },
     ...mapGetters('dapps/rankings', [
       'category',
       'dapps',
@@ -158,7 +166,7 @@ export default {
 }
 
 .category-list {
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

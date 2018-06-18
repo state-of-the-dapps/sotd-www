@@ -3,6 +3,15 @@ import formatDate from 'date-fns/format'
 import addMonths from 'date-fns/add_months'
 import * as constants from '~/helpers/constants'
 
+Vue.filter('formatCategory',
+  (value) => {
+    if (value) {
+      var category = value.charAt(0).toUpperCase() + value.slice(1).replace('-', ' ')
+      return category
+    }
+  }
+)
+
 Vue.filter('formatDate',
   (value, format) => {
     if (value) {

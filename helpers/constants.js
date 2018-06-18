@@ -1,3 +1,18 @@
+const dappCategoryTagsMap = Object.freeze({
+  'energy': ['energy', 'solar', 'green'],
+  'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace'],
+  'finance': ['audit', 'crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'money'],
+  'gambling': ['casino', 'gamble', 'gambling', 'lottery'],
+  'games': ['boardgame', 'game', 'games', 'collectible', 'collectibles', 'video-games'],
+  'health': ['health', 'medical', 'healthcare', 'fitness'],
+  'insurance': ['insurance'],
+  'media': ['music', 'music-platform', 'video', 'photography', 'media'],
+  'organizations': ['legal', 'dao', 'organization', 'management'],
+  'relationships': ['marriage', 'nsfw', 'relationship', 'sexuality'],
+  'supply-chain': ['provenance', 'supply'],
+  'voting': ['vote', 'voting', 'poll', 'election']
+})
+
 const dappGameTag = 'game'
 
 const dappListDefaultLimit = 50
@@ -158,6 +173,7 @@ const feedbackComponentMap = Object.freeze({
 })
 
 export {
+  dappCategoryTagsMap,
   dappBadgeMap,
   dappGameTag,
   dappListDefaultLimit,
