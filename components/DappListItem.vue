@@ -142,6 +142,9 @@ export default {
     overflow: hidden;
     .wrapper {
       overflow-x: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
   @include tweakpoint('min-width', 800px) {
