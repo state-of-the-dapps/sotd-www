@@ -1,6 +1,6 @@
 const env = {
   apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/',
-  cdnPublicPath: process.env.CDN_PUBLIC_PATH || '',
+  cdnPublicPath: process.env.CDN_PUBLIC_PATH || '/_nuxt/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-000000-1',
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
