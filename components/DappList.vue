@@ -3,7 +3,7 @@
     <ul class="category-list">
       <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category.length ? 'is-active' : ''">All categories</nuxt-link></li>
       <li v-for="(dappCategory, index) in dappCategories" :key="index">
-        <nuxt-link :to="{path: '/rankings/category/' + dappCategory}" class="category-link" :class="dappCategory === category[0] ? 'is-active' : ''">{{ dappCategory | formatCategory }}</nuxt-link>
+        <nuxt-link @click.native="trackDappRankingCategory(dappCategory)" :to="{path: '/rankings/category/' + dappCategory}" class="category-link" :class="dappCategory === category[0] ? 'is-active' : ''">{{ dappCategory | formatCategory }}</nuxt-link>
       </li>
     </ul>
     <div class="wrapper">
@@ -29,7 +29,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { trackDappRankingSort } from '~/helpers/mixpanel'
+import { trackDappRankingCategory, trackDappRankingSort } from '~/helpers/mixpanel'
 import { dappCategoryTagsMap } from '~/helpers/constants'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
@@ -128,6 +128,10 @@ export default {
       this.$mixpanel.track(action.name, action.data)
       document.getElementById('component-DappList')
               .scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
+    trackDappRankingCategory (category) {
+      const action = trackDappRankingCategory(category)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
