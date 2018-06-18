@@ -2,14 +2,14 @@ const dappCategoryTagsMap = Object.freeze({
   'energy': ['energy', 'solar', 'green'],
   'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace'],
   'finance': ['audit', 'crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'money'],
-  'gambling': ['casino', 'gamble', 'gambling', 'lottery'],
+  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'dice'],
   'games': ['boardgame', 'game', 'games', 'collectible', 'collectibles', 'video-games'],
   'health': ['health', 'medical', 'healthcare', 'fitness'],
-  'insurance': ['insurance'],
-  'media': ['music', 'music-platform', 'video', 'photography', 'media'],
+  'insurance': ['insurance', 'claims'],
+  'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art'],
   'organizations': ['legal', 'dao', 'organization', 'management'],
   'relationships': ['marriage', 'nsfw', 'relationship', 'sexuality'],
-  'supply-chain': ['provenance', 'supply'],
+  'supply-chain': ['provenance', 'supply', 'supply-chain'],
   'voting': ['vote', 'voting', 'poll', 'election']
 })
 
