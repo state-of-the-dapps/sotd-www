@@ -6,7 +6,7 @@
           Load the <span v-if="total - dapps.length > 1"> <span v-if="total - dapps.length > limit">next {{ limit }}</span><span v-else>last {{ total - dapps.length }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="dapps.length >= total && !isLoading" class="message">No {{ dapps.length > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="dapps.length >= total && !isLoading" class="message">No {{ dapps.length > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one</nuxt-link>!</p>
       <p v-if="isLoading" class="loader-wrapper"><button class="loader"></button></p>
     </div>
   </div>
@@ -56,17 +56,13 @@ export default {
     margin: 0;
   }
 
-  .link {
-    text-decoration: none;
-  }
-
   .loading-wrapper {
     padding-top: 20px;
   }
 
   .message {
     text-align: center;
-    font-size: 2rem;
-    color: lighten($color--black,55%);
+    font-size: 1.25rem;
+    color: $color--black;
   }
 </style>

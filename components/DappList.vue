@@ -1,5 +1,11 @@
 <template>
   <div class="component-DappList" id="component-DappList">
+    <ul class="category-list">
+      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category.length ? 'is-active' : ''">All categories</nuxt-link></li>
+      <li v-for="(dappCategory, index) in dappCategories" :key="index">
+        <nuxt-link @click.native="trackDappRankingCategory(dappCategory)" :to="{path: '/rankings/category/' + dappCategory}" class="category-link" :class="dappCategory === category[0] ? 'is-active' : ''">{{ dappCategory | formatCategory }}</nuxt-link>
+      </li>
+    </ul>
     <div class="wrapper">
       <DappListHeadings
         :fields="fields"
@@ -8,7 +14,6 @@
         @sortDapps="sortDapps"/>
       <ul v-if="dapps.length">
         <DappListItem v-for="(dapp, index) in dapps" :key="index"
-        :category="category"
         :dapp="dapp"/>
       </ul>
       <LoadMore
@@ -24,7 +29,8 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { trackDappRankingSort } from '~/helpers/mixpanel'
+import { trackDappRankingCategory, trackDappRankingSort } from '~/helpers/mixpanel'
+import { dappCategoryTagsMap } from '~/helpers/constants'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -47,8 +53,8 @@ export default {
           id: 'tagline'
         },
         {
-          id: 'category',
-          title: 'Category'
+          id: 'tags',
+          title: 'Tags'
         },
         {
           help: 'Daily Active Users (unique contract addresses from ÐApp transactions)',
@@ -84,6 +90,14 @@ export default {
     LoadMore
   },
   computed: {
+    dappCategories () {
+      let categories = []
+      for (let category in dappCategoryTagsMap) {
+        categories.push(category)
+      }
+      categories.sort()
+      return categories
+    },
     ...mapGetters('dapps/rankings', [
       'category',
       'dapps',
@@ -114,6 +128,10 @@ export default {
       this.$mixpanel.track(action.name, action.data)
       document.getElementById('component-DappList')
               .scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
+    trackDappRankingCategory (category) {
+      const action = trackDappRankingCategory(category)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
@@ -136,6 +154,28 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.category-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 9px;
+  margin: 3px;
+  border-radius: 4px;
+  background: lighten($color--white, 100%);
+  box-shadow: 0 2px 15px rgba($color--black, .15);
+  &.is-active {
+    background: $color--black;
+    color: $color--white;
+  }
+}
+
+.category-list {
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 
 .component-DappList {
   @include margin-wrapper-main;

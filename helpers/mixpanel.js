@@ -116,6 +116,20 @@ export const trackDappFlag = function (slug) {
   return action
 }
 
+export const trackDappRankingCategory = function (category) {
+  let name = 'DApp Ranking - Category'
+  let data = {
+    category
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappRankingSort = function (order, sort) {
   let name = 'DApp Ranking - Sort'
   let data = {
