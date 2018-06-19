@@ -27,11 +27,13 @@
       <span v-else>Monthly</span>
       <span class="stat-value">{{ monthly.toLocaleString() }}</span>
     </li>
+    <!--
     <li class="stat-item">
       <span v-if="type === 'numbers'">90 days</span>
       <span v-else>Quarterly</span>
       <span class="stat-value">{{ quarterly.toLocaleString() }}</span>
     </li>
+    -->
   </ul>
 </div>
 </template>
