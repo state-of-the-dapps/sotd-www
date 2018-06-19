@@ -77,7 +77,7 @@
   @include tweakpoint('min-width', 1000px) {
     margin-right: 20px;
     padding-right: 20px;
-    border-right: 1px solid $color--black;
+    border-right: 1px solid rgba($color--black, .2);
   }
 }
 </style>
