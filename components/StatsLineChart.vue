@@ -26,7 +26,8 @@ export default {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            fontFamily: 'Overpass'
+            fontFamily: 'Overpass',
+            fontSize: 13
           }
         }],
         xAxes: [{
@@ -34,7 +35,8 @@ export default {
             display: false
           },
           ticks: {
-            fontFamily: 'Overpass'
+            fontFamily: 'Overpass',
+            fontSize: 15
           }
         }]
       },
@@ -43,6 +45,9 @@ export default {
       },
       tooltips: {
         enabled: false
+      },
+      hover: {
+        mode: null
       }
     })
   }
