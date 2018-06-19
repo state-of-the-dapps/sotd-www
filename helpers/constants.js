@@ -1,21 +1,17 @@
 const dappCategoryTagsMap = Object.freeze({
+  'community': ['social', 'chat', 'message', 'messaging', 'community', 'communication', 'charity', 'donate', 'gift', 'giving', 'marriage', 'relationship', 'sexuality', 'sex'],
   'energy': ['energy', 'solar', 'green', 'environment'],
   'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace', 'trading', 'trade'],
-  'finance': ['crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'money', 'wealth', 'loan', 'borrow'],
+  'finance': ['crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'fundraising', 'money', 'wealth', 'loan', 'borrow'],
   'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'dice'],
   'games': ['boardgame', 'game', 'games', 'collectible', 'collectibles', 'video-games'],
+  'governance': ['legal', 'dao', 'organization', 'management', 'governance', 'vote', 'voting', 'poll', 'election'],
   'health': ['health', 'medical', 'healthcare', 'fitness'],
+  'identity': ['identity', 'kyc', 'identification', 'profiles'],
   'insurance': ['insurance', 'claims'],
   'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing'],
-  'organizations': ['legal', 'dao', 'organization', 'management'],
-  'relationships': ['marriage', 'nsfw', 'relationship', 'sexuality', 'sex'],
-  'supply-chain': ['provenance', 'supply', 'supply-chain'],
-  'voting': ['vote', 'voting', 'poll', 'election'],
-  'social': ['social', 'chat', 'message', 'messaging', 'community', 'communication'],
-  'identity': ['identity', 'kyc', 'identification', 'profiles'],
-  'charity': ['charity', 'donate', 'gift', 'giving', 'fundraising'],
-  'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup'],
-  'ownership': ['ownership', 'property', 'real-estate', 'rent', 'rental']
+  'property': ['ownership', 'property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
+  'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup']
 })
 
 const dappGameTag = 'game'

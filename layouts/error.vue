@@ -9,7 +9,7 @@
 <script>
   export default {
     mounted () {
-      this.$mixpanel.track('Error page', { type: '404', resource: this.$route.fullPath })
+      this.$mixpanel.track('Error page', { type: this.error.statusCode, resource: this.$route.fullPath })
     },
     props: ['error']
   }
