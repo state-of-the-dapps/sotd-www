@@ -1,0 +1,54 @@
+<template>
+  <LayoutMain>
+    <div class="page-stats">
+      <div class="hero-wrapper">
+        <h1 class="title-1">ÐApp Statistics</h1>
+        <p class="description">Top stats on the development of decentralized apps for Ethereum.</p>
+        <Stats/>
+      </div>
+    </div>
+  </LayoutMain>
+</template>
+
+<script>
+import LayoutMain from '~/components/LayoutMain'
+import Stats from '~/components/Stats'
+
+export default {
+  components: {
+    LayoutMain,
+    Stats
+  },
+  head () {
+    return {
+      title: 'State of the ÐApps — ÐApp Statistics'
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.description {
+  margin: .5rem auto 0 auto;
+  text-align: center;
+  max-width: 400px;
+}
+
+.hero-wrapper {
+  @include margin-wrapper-main;
+  padding: 4rem 0 3rem 0;
+}
+
+.page-stats{
+  padding-bottom: 50px;
+}
+
+.title-1 {
+  @include title-1;
+  font-size: 3.5rem;
+  text-align: center;
+  margin: 0;
+}
+</style>

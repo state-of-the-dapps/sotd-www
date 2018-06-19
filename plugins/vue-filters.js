@@ -1,7 +1,18 @@
 import Vue from 'vue'
+import NumAbbr from 'number-abbreviate'
 import formatDate from 'date-fns/format'
 import addMonths from 'date-fns/add_months'
 import * as constants from '~/helpers/constants'
+
+Vue.filter('abbreviateNumber',
+  (value, decimals) => {
+    if (value) {
+      var numAbbr = new NumAbbr()
+      var abbreviatedNumber = numAbbr.abbreviate(value, decimals)
+      return abbreviatedNumber
+    }
+  }
+)
 
 Vue.filter('formatCategory',
   (value) => {
