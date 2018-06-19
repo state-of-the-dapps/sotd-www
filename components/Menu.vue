@@ -7,7 +7,7 @@
     <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
-    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} decentralized apps</span>
+    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} <br/>decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
     <li class="nav-item -home">
@@ -15,6 +15,9 @@
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">ÐApp Rankings</nuxt-link>
+    </li>
+    <li class="nav-item -stats">
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>ÐApp Stats</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>
@@ -180,7 +183,7 @@ export default {
 .tagline {
   display: none;
   font-size: .98rem;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     display: inline-block;
     padding-left: 10px;
   }
