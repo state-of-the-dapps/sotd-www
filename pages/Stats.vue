@@ -3,7 +3,7 @@
     <div class="page-stats">
       <div class="hero-wrapper">
         <h1 class="title-1">ÐApp Statistics</h1>
-        <p class="description">Top stats on the development of decentralized apps for Ethereum.</p>
+        <p class="description">Stats on the development of decentralized apps for Ethereum.</p>
         <Stats/>
       </div>
     </div>
