@@ -32,17 +32,19 @@
         </div>
       </li>
     </ul>
-    <h2 class="heading-2">ÐApps per category</h2>
-    <StatsLineChart/>
+    <h2 class="heading-2">ÐApps by Category</h2>
+    <div class="chart-wrapper">
+      <StatsBarChart/>
+    </div>
   </div>
 </template>
 
 <script>
-import StatsLineChart from './StatsLineChart'
+import StatsBarChart from './StatsBarChart'
 
 export default {
   components: {
-    StatsLineChart
+    StatsBarChart
   }
 }
 </script>
@@ -50,6 +52,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.chart-wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+}
 
 .list {
   display: block;
@@ -74,9 +81,8 @@ export default {
 }
 
 .heading {
-  @include title;
-  text-transform: uppercase;
-  font-size: 2.35rem;
+  font-weight: 300;
+  font-size: 1.2rem;
   margin-bottom: 0;
 }
 
@@ -84,7 +90,8 @@ export default {
   @include title-2;
   font-size: 3rem;
   text-align: center;
-  margin-top: 3.5rem;
+  margin-top: 6rem;
+  margin-bottom: 2.5rem;
 }
 
 .value {
@@ -98,8 +105,8 @@ export default {
 
 .wrapper {
   @include tweakpoint('min-width', 1000px) {
-    margin-right: 20px;
-    padding-right: 20px;
+    margin-right: 40px;
+    padding-right: 40px;
     border-right: 1px solid rgba($color--black, .2);
   }
 }

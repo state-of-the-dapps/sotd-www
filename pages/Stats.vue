@@ -3,7 +3,7 @@
     <div class="page-stats">
       <div class="hero-wrapper">
         <h1 class="title-1">ÐApp Statistics</h1>
-        <p class="description">Stats on the development of decentralized apps for Ethereum.</p>
+        <p class="description">Description description description description description description description</p>
         <Stats/>
       </div>
     </div>
@@ -31,7 +31,7 @@ export default {
 @import '~assets/css/settings';
 
 .description {
-  margin: .5rem auto 0 auto;
+  margin: .5rem auto 4rem auto;
   text-align: center;
   max-width: 400px;
 }
