@@ -10,25 +10,25 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Daily active users</h2>
-          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">24 HR transactions</h2>
-          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">24 HR volume (ETH)</h2>
-          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Smart contracts</h2>
-          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
     </ul>
