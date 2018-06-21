@@ -21,7 +21,10 @@ export default {
   },
   head () {
     return {
-      title: 'State of the ÐApps — ÐApp Statistics'
+      title: 'State of the ÐApps — ÐApp Statistics',
+      meta: [
+        { hid: 'description', name: 'description', content: 'Total ÐApps, Daily Active Users, ÐApps by Category and more...' }
+      ]
     }
   }
 }
