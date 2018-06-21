@@ -147,6 +147,12 @@ export default {
       }
     }
   }
+  &:nth-last-child(2) {
+    border-width: 0;
+    @include tweakpoint('min-width', 1000px) {
+      border-width: 1px;
+    }
+  }
   @include tweakpoint('min-width', 800px) {
     border-right: 1px solid darken($color--gray, 10%);
     &:last-child {

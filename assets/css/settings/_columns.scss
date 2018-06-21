@@ -21,9 +21,15 @@
     &.-tags {
       display: none;
       width: 125px;
-      @include tweakpoint('min-width', 500px) {
+      @include tweakpoint('min-width', 800px) {
         display: block;
       }
+      @include tweakpoint('min-width', 1400px) {
+        width: 200px;
+      }
+      @include tweakpoint('min-width', 1600px) {
+        width: 300px;
+      }     
     }
     &.-dau {
       width: 100px;
