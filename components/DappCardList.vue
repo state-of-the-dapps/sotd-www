@@ -46,10 +46,7 @@ export default {
   @include tweakpoint('min-width', 775px) {
     width: calc(33.33% - 20px);
   }
-  @include tweakpoint('min-width', 1200px) {
-    width: calc(25% - 20px);
-  }
-  @include tweakpoint('min-width', 1500px) {
+  @include tweakpoint('min-width', 1250px) {
     width: calc(16.66% - 20px);
   }
 }
