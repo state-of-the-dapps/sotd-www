@@ -72,8 +72,12 @@ const mutations = {
     state.site.section = section
   },
   SET_STATS (state, data) {
-    state.stats.dappCount = data.dappCount
-    state.stats.eventCount = data.eventCount
+    state.stats.dappContractCount = data.dappContractCount || 0
+    state.stats.dappCount = data.dappCount || 0
+    state.stats.dappDau = data.dappDau || 0
+    state.stats.dappTx24Hr = data.dappTx24Hr || 0
+    state.stats.dappVol24Hr = data.dappVol24Hr || 0
+    state.stats.eventCount = data.eventCount || 0
   },
   SET_USER_ENTRY_ROUTE (state, path) {
     state.user.entryRoute = path
