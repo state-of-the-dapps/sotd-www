@@ -38,8 +38,20 @@ const getters = {
   siteModal: state => {
     return state.site.modal
   },
+  statDappContractCount: state => {
+    return state.stats.dappContractCount
+  },
   statDappCount: state => {
     return state.stats.dappCount
+  },
+  statDappDau: state => {
+    return state.stats.dappDau
+  },
+  statDappTx24Hr: state => {
+    return state.stats.dappTx24Hr
+  },
+  statDappVol24Hr: state => {
+    return state.stats.dappVol24Hr
   },
   statEventCount: state => {
     return state.stats.eventCount
@@ -78,7 +90,11 @@ const state = () => ({
     }
   },
   stats: {
+    dappContractCount: 0,
     dappCount: 0,
+    dappDau: 0,
+    dappTx24Hr: 0,
+    dappVol24Hr: 0,
     eventCount: 0
   },
   user: {
