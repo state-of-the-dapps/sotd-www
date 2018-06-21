@@ -114,7 +114,6 @@ export default {
   font-size: 7rem;
   margin: 0;
   line-height: 1;
-  text-transform: uppercase;
   color: $color--black;
 }
 
