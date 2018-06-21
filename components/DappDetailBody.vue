@@ -1,6 +1,6 @@
 <template>
   <div class="component-DappDetailBody">
-    <div class="wrapper -live">
+    <div class="wrapper" :class="'-' + dapp.status">
       <DappDetailBodyHeading
         :direct="direct"
         :name="dapp.name"
@@ -45,8 +45,6 @@ export default {
   border-radius: 4px;
   box-shadow: 0 10px 20px rgba($color--black, .1);
   border-bottom: 10px solid $color--black;
-  &.-live {
-    border-color: $color--dapp-live;
-  }
+  @include dapp-border-colors;
 }
 </style>
