@@ -4,7 +4,7 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Total ÐApps</h2>
-          <p class="value">{{ statDappCount }}</p>
+          <p class="value">{{ statDappCount.toLocaleString() }}</p>
         </div>
       </li>
       <li class="item">
