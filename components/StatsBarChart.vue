@@ -7,7 +7,7 @@
         </div>
         <div class="stat-item-field -value">
           <div class="value" :style="'width:' + (category.count / maxCount) * 100 + '%;'">          
-            <p class="count">{{ category.count }}</p>
+            <p class="count">{{ category.count | abbreviateNumber(2) || 0 }}</p>
           </div>
         </div>
         <div class="spacer"/>
