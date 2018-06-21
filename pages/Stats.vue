@@ -3,7 +3,7 @@
     <div class="page-stats">
       <div class="hero-wrapper">
         <h1 class="title-1">ÐApp Statistics</h1>
-        <p class="description">Description description description description description description description</p>
+        <p class="description">Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.</p>
         <Stats/>
       </div>
     </div>

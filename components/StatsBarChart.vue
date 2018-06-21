@@ -6,7 +6,7 @@
           <h3 class="label">{{ category.name }}</h3>
         </div>
         <div class="stat-item-field -value">
-          <div class="value" :style="'min-width:' + (category.count / maxCount) * 100 + '%;'">          
+          <div class="value" :style="'width:' + (category.count / maxCount) * 100 + '%;'">          
             <p class="count">{{ category.count }}</p>
           </div>
         </div>
@@ -34,15 +34,51 @@ export default {
       categories: [
         {
           name: 'Games',
-          count: 598
+          count: 479
         },
         {
           name: 'Exchanges',
-          count: 309
+          count: 233
         },
         {
           name: 'Finance',
-          count: 209
+          count: 231
+        },
+        {
+          name: 'Community',
+          count: 203
+        },
+        {
+          name: 'Gambling',
+          count: 133
+        },
+        {
+          name: 'Media',
+          count: 99
+        },
+        {
+          name: 'Property',
+          count: 89
+        },
+        {
+          name: 'Governance',
+          count: 85
+        },
+        {
+          name: 'Storage',
+          count: 68
+        },
+        {
+          name: 'Energy',
+          count: 23
+        },
+        {
+          name: 'Health',
+          count: 16
+        },
+        {
+          name: 'Insurance',
+          count: 13
         }
       ]
     }
@@ -105,7 +141,7 @@ export default {
 }
 
 .value {
-  width: 0;
+  min-width: 30px;
   height: 50px;
   background: $gradient--dapp-live;
 }

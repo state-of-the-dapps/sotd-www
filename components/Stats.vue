@@ -4,31 +4,31 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Total ÐApps</h2>
-          <p class="value">{{ '1,650' }}</p>
+          <p class="value">{{ statDappCount }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Daily active users</h2>
-          <p class="value">{{ 15000 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">24 HR transactions</h2>
-          <p class="value">{{ 20000 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">24 HR volume (ETH)</h2>
-          <p class="value">{{ 250000 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">Smart contracts</h2>
-          <p class="value">{{ 500 | abbreviateNumber(2) }}</p>
+          <p class="value">{{ 0 | abbreviateNumber(2) }}</p>
         </div>
       </li>
     </ul>
@@ -40,11 +40,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import StatsBarChart from './StatsBarChart'
 
 export default {
   components: {
     StatsBarChart
+  },
+  computed: {
+    ...mapGetters([
+      'statDappCount'
+    ])
   }
 }
 </script>
@@ -96,7 +102,7 @@ export default {
   font-size: 3rem;
   text-align: center;
   margin-top: 6rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .value {
