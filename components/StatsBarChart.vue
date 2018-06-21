@@ -1,59 +1,112 @@
-<script>
-import { Bar } from 'vue-chartjs'
+<template>
+  <div class="component-StatsBarChart">
+    <ul class="stat-list">
+      <li v-for="(category, index) in categories" :key="index" class="stat-item">
+        <div class="stat-item-field -label">
+          <h3 class="label">{{ category.name }}</h3>
+        </div>
+        <div class="stat-item-field -value">
+          <div class="value" :style="'min-width:' + (category.count / maxCount) * 100 + '%;'">          
+            <p class="count">{{ category.count }}</p>
+          </div>
+        </div>
+        <div class="spacer"/>
+      </li>
+    </ul>
+  </div>
+</template>
 
+<script>
 export default {
-  extends: Bar,
-  mounted () {
-    var gradient = this.$refs.canvas.getContext('2d').createLinearGradient(0, 0, 0, 600)
-    gradient.addColorStop(0, '#acff84')
-    gradient.addColorStop(1, '#98e3ff')
-    // Overwriting base render method with actual data.
-    this.renderChart({
-      labels: ['Games (509)', 'Exchanges (199)', 'Finance (342)', 'Gambling (129)', 'Other (82)'],
-      datasets: [
+  computed: {
+    maxCount () {
+      let count = 0
+      let categoryCounts = []
+      for (var category of this.categories) {
+        categoryCounts.push(category.count)
+      }
+      count = Math.max(...categoryCounts)
+      return count
+    }
+  },
+  data () {
+    return {
+      categories: [
         {
-          label: '',
-          backgroundColor: gradient,
-          data: [609, 199, 324, 129, 82]
+          name: 'Games',
+          count: 598
+        },
+        {
+          name: 'Exchanges',
+          count: 309
+        },
+        {
+          name: 'Finance',
+          count: 209
         }
       ]
-    }, {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          display: false,
-          gridLines: {
-            display: false
-          },
-          ticks: {
-            beginAtZero: true
-          }
-        }],
-        xAxes: [{
-          gridLines: {
-            display: false,
-            color: '#333'
-          },
-          ticks: {
-            fontFamily: 'Overpass',
-            fontSize: 16,
-            fontColor: '#333',
-            autoSkip: false
-          },
-          barPercentage: 1.1
-        }]
-      },
-      legend: {
-        display: false
-      },
-      tooltips: {
-        enabled: false
-      },
-      hover: {
-        mode: null
-      }
-    })
+    }
   }
 }
 </script>
+
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.count {
+  @include title;
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: 50px;
+  padding: 0 10px;
+  text-align: right;
+}
+
+.label {
+  font-weight: 300;
+  margin: 5px 0;
+  font-size: 1.2rem;
+  letter-spacing: normal;
+  @include tweakpoint('min-width', 1000px) {
+    text-align: right;
+    padding-right: 10px;
+  }
+}
+
+.spacer {
+  @include tweakpoint('min-width', 1000px) {
+    width: 150px;
+  }
+}
+
+.stat-item {
+  margin: 16px 0;
+  @include tweakpoint('min-width', 1000px) {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+}
+
+.stat-item-field {
+   &.-label {
+    @include tweakpoint('min-width', 1000px) {
+      width: 150px;
+    }    
+  } 
+  &.-value {
+    @include tweakpoint('min-width', 1000px) {
+      flex: 1;
+      border-left: 1px solid $color--black;
+      padding: 10px 0;
+    }    
+  }
+}
+
+.value {
+  width: 0;
+  height: 50px;
+  background: $gradient--dapp-live;
+}
+</style>

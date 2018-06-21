@@ -33,7 +33,7 @@
       </li>
     </ul>
     <h2 class="heading-2">ÐApps by Category</h2>
-    <div class="chart-wrapper">
+    <div class="chart-wrapper-bar">
       <StatsBarChart/>
     </div>
   </div>
@@ -53,8 +53,13 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.chart-wrapper {
-  max-width: 950px;
+.chart-wrapper-bar {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.chart-wrapper-line {
+  max-width: 1200px;
   margin: 0 auto;
 }
 
