@@ -40,7 +40,7 @@ export default {
     return {
       fields: [
         {
-          help: 'The default rank is based on DAU, or Daily Active Users (unique contract addresses from ÐApp transactions)',
+          help: 'The default rank is based on DAU, or Daily Active Users (unique source addresses in transactions to ÐApp contracts)',
           id: 'rank',
           order: 'asc',
           title: 'Rank'
@@ -57,14 +57,14 @@ export default {
           title: 'Tags'
         },
         {
-          help: 'Daily Active Users (unique contract addresses from ÐApp transactions)',
+          help: 'Daily Active Users (unique source addresses in transactions to ÐApp contracts)',
           id: 'dau',
           order: 'desc',
           sort: true,
           title: 'DAU'
         },
         {
-          help: 'Monthly Active Users (unique contract addresses from ÐApp transactions)',
+          help: 'Monthly Active Users (unique source addresses in transactions to ÐApp contracts)',
           id: 'mau',
           order: 'desc',
           title: 'MAU'
@@ -76,7 +76,7 @@ export default {
           title: 'Vol (7d)'
         },
         {
-          help: 'Users (unique contract addresses from ÐApp transactions) over the past 30 days',
+          help: 'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
           id: 'users_30d',
           title: 'Users (30d)'
         }
