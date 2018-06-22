@@ -1,0 +1,51 @@
+<template>
+  <transition name="fade">
+    <div class="component-Popover" :class="reversed ? 'is-reversed' : ''">
+      <div class="wrapper">
+        {{ text }}
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  props: ['reversed', 'text']
+}
+</script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-Popover {
+  text-transform: initial;
+  position: absolute;
+  bottom: calc(1.1rem + 10px);
+  right: 0;
+  width: 150px;
+  text-align: left;
+  padding: 10px;
+  border-radius: 4px;
+  background: $color--white;
+  box-shadow: 0 5px 10px rgba($color--black, .15);
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    bottom: -5px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid $color--white;
+  }
+  &.is-reversed {
+    right: auto;
+    left: 0;
+    &:after {
+      right: auto;
+      left: 0;
+    }
+  }
+}
+</style>
