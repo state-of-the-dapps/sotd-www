@@ -5,6 +5,7 @@
         <span v-if="field.title" @click="sortDapps(field)" class="field -name">
           {{ field.title }}
         </span>
+        <Help v-if="field.help" :text="field.help" :reversed="field.id === 'rank'"/>
         <span v-if="sort === field.id" class="sort-arrow"/>
       </div>
     </li>
@@ -12,7 +13,12 @@
 </template>
 
 <script>
+import Help from './Help'
+
 export default {
+  components: {
+    Help
+  },
   props: ['fields', 'order', 'sort'],
   methods: {
     sortDapps (field) {

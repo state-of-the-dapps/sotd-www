@@ -40,7 +40,7 @@ export default {
     return {
       fields: [
         {
-          help: 'The default rank is sorted by DAU (Daily Active Users)',
+          help: 'The default rank is based on DAU, or Daily Active Users (unique contract addresses from ÐApp transactions)',
           id: 'rank',
           order: 'asc',
           title: 'Rank'
@@ -73,10 +73,10 @@ export default {
           help: '7 day ÐApp transaction volume',
           id: 'vol_7d',
           order: 'desc',
-          title: 'Volume (7d)'
+          title: 'Vol (7d)'
         },
         {
-          help: 'Users over the past 30 days',
+          help: 'Users (unique contract addresses from ÐApp transactions) over the past 30 days',
           id: 'users_30d',
           title: 'Users (30d)'
         }
