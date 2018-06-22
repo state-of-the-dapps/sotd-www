@@ -4,7 +4,7 @@
     <h4 class="subtitle">Tags</h4>
     <ul class="tag-list">
       <li v-for="(tag, index) in formattedTags" :key="index" class="tag-item">
-        <a class="tag-link" @click="findDappsByTag(tag)">#{{ tag }}</a>
+        <a class="tag-link" @click="findDappsByTag(tag)">{{ tag }}</a>
       </li>
     </ul>
   </div>
@@ -78,6 +78,7 @@ export default {
   padding: 5px 8px;
   margin: 4px;
   background: lighten($color--gray, 2%);
+  border-radius: 4px;
 }
 
 .wrapper {
