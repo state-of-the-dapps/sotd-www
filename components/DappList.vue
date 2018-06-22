@@ -70,7 +70,7 @@ export default {
           title: 'MAU'
         },
         {
-          help: '7 day ÐApp transaction volume',
+          help: 'Transaction volume to ÐApp contracts',
           id: 'vol_7d',
           order: 'desc',
           title: 'Vol (7d)'
