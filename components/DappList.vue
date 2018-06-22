@@ -76,7 +76,7 @@ export default {
           title: 'Vol (7d)'
         },
         {
-          help: 'Users over the past 30 days',
+          help: 'Users (unique contract addresses from ÐApp transactions) over the past 30 days',
           id: 'users_30d',
           title: 'Users (30d)'
         }
