@@ -7,20 +7,20 @@
     <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
-    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} <br/>decentralized apps</span>
+    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
     <li class="nav-item -home">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">ÐApp Rankings</nuxt-link>
-    </li>
-    <li class="nav-item -stats">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Stats</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">Rankings</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Curated Collections</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
+    </li>
+    <li class="nav-item -stats">
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
@@ -28,10 +28,12 @@
     <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
+    <!--
     <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li>
+    -->
   </ul>
 </div>
 </template>
@@ -182,7 +184,6 @@ export default {
 
 .tagline {
   display: none;
-  font-size: .98rem;
   @include tweakpoint('min-width', 1100px) {
     display: inline-block;
     padding-left: 10px;
