@@ -3,7 +3,7 @@
   <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">projects built <br>on Ethereum</span>)</span></h1>
   <p class="description">Discover the possibilities of the Ethereum blockchain with the definitive registry of ÐApp projects. <nuxt-link class="description-link" :to="{ name: 'what'}" @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
   <ul class="cta-list">
-    <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'rankings' }" @click.native="trackHomeHeroCta('rankings')">Browse the top ÐApps</nuxt-link></li>
+    <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'rankings' }" @click.native="trackHomeHeroCta('rankings')">View the top ÐApps</nuxt-link></li>
     <li class="cta-item"><nuxt-link class="cta-link -submit" :to="{ name: 'dapps-new' }" @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
   </ul>
 </div>
