@@ -35,7 +35,7 @@ export default {
   display: inline-block;
   background: rgba($color--black, .15);
   text-align: center;
-  font-size: .9em;
+  font-size: .9rem;
   width: 1.1rem;
   height: 1.1rem;
   line-height: 1.1rem;

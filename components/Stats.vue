@@ -3,25 +3,36 @@
     <ul class="list">
       <li class="item">
         <div class="wrapper">
-          <h2 class="heading">Total ÐApps</h2>
+          <h2 class="heading">
+            <span>Total ÐApps</span>
+          </h2>
           <p class="value">{{ statDappCount.toLocaleString() }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
-          <h2 class="heading">Daily active users</h2>
+          <h2 class="heading">
+            <span>Daily active users</span>
+            <Help text="Daily Active Users (unique source addresses in transactions to ÐApp contracts)"/>
+          </h2>
           <p class="value">{{ statDappDau | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
-          <h2 class="heading">24 hr transactions</h2>
+          <h2 class="heading">
+            <span>24 hr transactions</span>
+            <Help text="Number of transactions to ÐApp contracts"/>
+          </h2>
           <p class="value">{{ statDappTx24Hr | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
-          <h2 class="heading">24 hr volume (ETH)</h2>
+          <h2 class="heading">
+            <span>24 hr volume (ETH)</span>
+            <Help text="Transaction volume to ÐApp contracts"/>
+          </h2>
           <p class="value">{{ statDappVol24Hr | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
@@ -41,10 +52,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import Help from './Help'
 import StatsBarChart from './StatsBarChart'
 
 export default {
   components: {
+    Help,
     StatsBarChart
   },
   computed: {

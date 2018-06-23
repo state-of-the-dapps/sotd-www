@@ -21,6 +21,7 @@ export default {
   text-transform: initial;
   position: absolute;
   bottom: calc(1.1rem + 10px);
+  font-size: 1rem;
   right: 0;
   width: 150px;
   text-align: left;
