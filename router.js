@@ -186,7 +186,7 @@ export function createRouter () {
         path: '/my-list',
         component: MyList,
         name: 'my-list'
-      },      
+      },
       {
         path: '/promoted-dapps',
         component: PromotedDappsDirect,
