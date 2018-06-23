@@ -19,6 +19,7 @@
           <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
+      <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
       <DappDetailBodyContentBadges v-if="dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentTags v-if="dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
@@ -33,6 +34,7 @@ import DappDetailBodyContentBadges from './DappDetailBodyContentBadges'
 import DappDetailBodyContentDescription from './DappDetailBodyContentDescription'
 import DappDetailBodyContentImage from './DappDetailBodyContentImage'
 import DappDetailBodyContentModules from './DappDetailBodyContentModules'
+import DappDetailBodyContentRank from './DappDetailBodyContentRank'
 import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
 import DappDetailBodyContentSites from './DappDetailBodyContentSites'
 import DappDetailBodyContentTags from './DappDetailBodyContentTags'
@@ -44,6 +46,7 @@ export default {
     DappDetailBodyContentDescription,
     DappDetailBodyContentImage,
     DappDetailBodyContentModules,
+    DappDetailBodyContentRank,
     DappDetailBodyContentRecommend,
     DappDetailBodyContentSites,
     DappDetailBodyContentTags,
