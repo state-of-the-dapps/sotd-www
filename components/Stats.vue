@@ -13,7 +13,7 @@
         <div class="wrapper">
           <h2 class="heading">
             <span>Daily active users</span>
-            <Help text="Unique source addresses in transactions to ÐApp contracts (DAU)"/>
+            <Help text="Unique source addresses in transactions to ÐApp contracts"/>
           </h2>
           <p class="value">{{ statDappDau | abbreviateNumber(2) || 0 }}</p>
         </div>
