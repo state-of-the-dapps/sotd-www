@@ -7,7 +7,7 @@
     <img class="product-image" :src="dapp.imageKeyVisual"/>
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
-      <p class="tagline">{{ dapp.tagline }}</p>
+      <p class="tagline">{{ (dapp.tagline || dapp.teaser) | truncate(50) }}</p>
       <span v-if="dapp.isPromoted" class="promoted">promoted</span>
     </div>
   </nuxt-link>
