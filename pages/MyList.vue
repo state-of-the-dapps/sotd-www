@@ -1,25 +1,45 @@
 <template>
   <LayoutMain>
     <div class="page-my-list">
-      <div class="wrapper">
+      <div class="heading-wrapper">
         <h1 class="title-1">My List</h1>
         <p class="description">Keep track of your personal list of ÐApps.</p>
+      </div>
+      <div class="wrapper">
+        <DappCardList :dapps="dapps"/>
       </div>
     </div>
   </LayoutMain>
 </template>
 
 <script>
+import axios from '~/helpers/axios'
+import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
+  data () {
+    return {
+      dapps: [],
+      user_token: false
+    }
+  },
   components: {
+    DappCardList,
     LayoutMain
   },
   head () {
     return {
       title: 'State of the ÐApps — Your Personal List of Favorite ÐApps'
     }
+  },
+  mounted () {
+    axios
+      .get('users/' + this.user + '/dapps/starred')
+      .then(response => {
+        const dapps = response.data.items
+        this.dapps = dapps
+      })
   }
 }
 </script>
@@ -33,9 +53,16 @@ export default {
   max-width: 400px;
 }
 
-.wrapper {
+.wrapper, .heading-wrapper {
   @include margin-wrapper-main;
+}
+
+.heading-wrapper {
   padding: 4rem 0 3rem 0;
+}
+
+.page-my-list {
+  margin-bottom: 50px;
 }
 
 .title-1 {

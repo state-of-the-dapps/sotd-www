@@ -4,6 +4,12 @@
     <div v-if="dapp.logoUrl" class="logo-wrapper">
       <img class="logo-image" :src="dapp.logoUrl"/>
     </div>
+    <span class="star-wrapper">
+      <button class="button -star">
+        <SvgStar/>
+        <span class="star-text">Star this ÐApp</span>
+      </button>
+    </span>
     <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
@@ -38,6 +44,7 @@ import SvgSocialGithub from './SvgSocialGithub'
 import SvgSocialGitter from './SvgSocialGitter'
 import SvgSocialReddit from './SvgSocialReddit'
 import SvgSocialTwitter from './SvgSocialTwitter'
+import SvgStar from './SvgStar'
 
 export default {
   data () {
@@ -52,7 +59,8 @@ export default {
     SvgSocialGithub,
     SvgSocialGitter,
     SvgSocialReddit,
-    SvgSocialTwitter
+    SvgSocialTwitter,
+    SvgStar
   },
   methods: {
     svgSocialComponent (platform) {
@@ -83,8 +91,7 @@ export default {
 .button {
   text-align: center;
   text-decoration: none;
-  background: $color--black;
-  color: $color--gray;
+  border: 1px solid $color--black;
   display: block;
   width: 100%;
   max-width: 200px;
@@ -92,6 +99,14 @@ export default {
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
+  &.-star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color--black;
+    color: $color--white;
+    line-height: initial;
+  }
 }
 
 .logo-image {
@@ -127,6 +142,11 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     justify-content: flex-start;
   }
+}
+
+.star-text {
+  display: inline-block;
+  margin-left: 8px;
 }
 
 .wrapper {
