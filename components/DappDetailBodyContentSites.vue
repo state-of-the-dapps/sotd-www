@@ -5,9 +5,9 @@
       <img class="logo-image" :src="dapp.logoUrl"/>
     </div>
     <span class="star-wrapper">
-      <button class="button -star">
-        <SvgStar/>
-        <span class="star-text">Star this ÐApp</span>
+      <button class="button -add">
+        <span class="add-icon">+</span>
+        <span class="add-text">Add to my list</span>
       </button>
     </span>
     <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
@@ -88,6 +88,11 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.add-icon {
+  font-size: 2.1rem;
+  line-height: 0;
+}
+
 .button {
   text-align: center;
   text-decoration: none;
@@ -99,7 +104,7 @@ export default {
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
-  &.-star {
+  &.-add {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,9 +149,9 @@ export default {
   }
 }
 
-.star-text {
+.add-text {
   display: inline-block;
-  margin-left: 8px;
+  margin-left: 5px;
 }
 
 .wrapper {
