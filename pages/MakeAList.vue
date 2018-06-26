@@ -1,9 +1,9 @@
 <template>
   <LayoutMain>
-    <div class="page-my-list">
+    <div class="page-share">
       <div class="heading-wrapper">
-        <h1 class="title-1">My List</h1>
-        <p class="description">Keep track of your personal list of ÐApps.</p>
+        <h1 class="title-1">Make a List to Share</h1>
+        <p class="description">Create a list of ÐApps to share with your friends or visit later.</p>
       </div>
       <div class="wrapper">
         <DappCardList :dapps="dapps"/>
@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       dapps: [],
-      user_token: false
+      listToken: ''
     }
   },
   components: {
@@ -30,12 +30,12 @@ export default {
   },
   head () {
     return {
-      title: 'State of the ÐApps — Your Personal List of Favorite ÐApps'
+      title: 'State of the ÐApps — Share Your List of ÐApps'
     }
   },
   mounted () {
     axios
-      .get('users/' + this.user + '/dapps/starred')
+      .get('lists/' + this.listToken)
       .then(response => {
         const dapps = response.data.items
         this.dapps = dapps
@@ -61,7 +61,7 @@ export default {
   padding: 4rem 0 3rem 0;
 }
 
-.page-my-list {
+.page-share {
   margin-bottom: 50px;
 }
 

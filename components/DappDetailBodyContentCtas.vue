@@ -1,5 +1,5 @@
 <template>
-<div class="component-DappDetailBodyContentSites">
+<div class="component-DappDetailBodyContentCtas">
   <div class="wrapper">
     <div v-if="dapp.logoUrl" class="logo-wrapper">
       <img class="logo-image" :src="dapp.logoUrl"/>
