@@ -5,10 +5,13 @@
       <img class="logo-image" :src="dapp.logoUrl"/>
     </div>
     <span class="star-wrapper">
-      <button class="button -add">
+      <button v-if="!myList.includes(dapp.slug)" class="button -add" @click="addToMyList(dapp.slug)">
         <span class="add-icon">+</span>
         <span class="add-text">Add to my list</span>
       </button>
+      <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
+        <span class="add-text">Remove from my list</span>
+      </button> 
     </span>
     <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
@@ -49,7 +52,8 @@ import SvgStar from './SvgStar'
 export default {
   data () {
     return {
-      dappGameTag
+      dappGameTag,
+      myList: []
     }
   },
   components: {
@@ -63,6 +67,19 @@ export default {
     SvgStar
   },
   methods: {
+    addToMyList (slug) {
+      if (!this.myList.includes(slug)) {
+        this.myList.push(slug)
+        this.$localStorage.set('myList', this.myList)
+      }
+    },
+    removeFromMyList (slug) {
+      if (this.myList.includes(slug)) {
+        let item = this.myList.indexOf(slug)
+        this.myList.splice(item)
+        this.$localStorage.set('myList', this.myList)
+      }
+    },
     svgSocialComponent (platform) {
       const socialComponent = dappSocialComponentMap[platform]
       return socialComponent
@@ -74,6 +91,12 @@ export default {
     trackDappSocial (platform, url) {
       const action = trackDappSocial(this.dapp.slug, platform, url)
       this.$mixpanel.track(action.name, action.data)
+    }
+  },
+  mounted () {
+    const myList = this.$localStorage.get('myList')
+    if (myList) {
+      this.myList = myList.split(',')
     }
   },
   props: {
