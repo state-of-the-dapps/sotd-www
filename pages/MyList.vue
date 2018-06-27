@@ -1,8 +1,8 @@
 <template>
   <LayoutMain>
-    <div class="page-share">
+    <div class="page-my-list">
       <div class="heading-wrapper">
-        <h1 class="title-1">Make a List to Share</h1>
+        <h1 class="title-1">My List</h1>
         <p class="description">Create a list of ÐApps to share with your friends or visit later.</p>
       </div>
       <div class="wrapper">
@@ -61,7 +61,7 @@ export default {
   padding: 4rem 0 3rem 0;
 }
 
-.page-share {
+.page-my-list {
   margin-bottom: 50px;
 }
 

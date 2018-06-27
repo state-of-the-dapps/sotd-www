@@ -17,7 +17,7 @@ const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue'
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Home = () => import('~/pages/home.vue').then(m => m.default || m)
-const MakeAList = () => import('~/pages/MakeAList.vue').then(m => m.default || m)
+const MyList = () => import('~/pages/MyList.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/promoted_dapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/promoted_dapps_direct.vue').then(m => m.default || m)
@@ -193,9 +193,9 @@ export function createRouter () {
         name: 'promoted-dapps'
       },
       {
-        path: '/make-a-list',
-        component: MakeAList,
-        name: 'make-a-list'
+        path: '/my-list',
+        component: MyList,
+        name: 'my-list'
       },
       {
         path: '/tab/:tab',
