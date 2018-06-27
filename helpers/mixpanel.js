@@ -265,6 +265,36 @@ export const trackHomeHeroDappIcon = function (targetIndex) {
   return action
 }
 
+export const trackListAdd = function (dapp, list) {
+  let name = 'My List - Add'
+  let data = {
+    dapp,
+    list
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackListRemove = function (dapp, list) {
+  let name = 'My List - Remove'
+  let data = {
+    dapp,
+    list
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackMenu = function (sourcePath, targetMenuItem) {
   let name = 'Menu'
   let data = {
@@ -285,6 +315,20 @@ export const trackMetamaskCta = function (sourceComponent, sourcePath) {
   let data = {
     sourceComponent,
     sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackMyListView = function (dapps) {
+  let name = 'My List - View'
+  let data = {
+    dapps
   }
 
   const action = {

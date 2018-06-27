@@ -2,10 +2,14 @@
   <LayoutMain>
     <div class="page-my-list">
       <div class="heading-wrapper">
+        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
         <h1 class="title-1">My List</h1>
-        <p class="description">Create a list of ÐApps to share with your friends or visit later.</p>
+        <p class="description">Create a list of ÐApps to monitor.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
       </div>
       <div class="wrapper">
+        <div v-if="!dapps.length" class="instructions">
+          <img class="instructions-image" src="~/assets/images/addtolist.jpg">
+        </div>
         <DappCardList :dapps="dapps"/>
       </div>
     </div>
@@ -13,6 +17,7 @@
 </template>
 
 <script>
+import { trackMyListView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
@@ -47,6 +52,8 @@ export default {
           this.dapps = dapps
         })
     }
+    const action = trackMyListView(slugs)
+    this.$mixpanel.track(action.name, action.data)
   }
 }
 </script>
@@ -57,7 +64,16 @@ export default {
 .description {
   margin: .5rem auto 0 auto;
   text-align: center;
-  max-width: 400px;
+  max-width: 700px;
+}
+
+.instructions-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba($color--black, .15);
 }
 
 .wrapper, .heading-wrapper {
@@ -65,11 +81,23 @@ export default {
 }
 
 .heading-wrapper {
-  padding: 4rem 0 3rem 0;
+  padding: 3rem 0 3rem 0;
 }
 
 .page-my-list {
   margin-bottom: 50px;
+}
+
+.notice {
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba($color--black, .1);
+  line-height: 1.4;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 700px;
+  margin: 25px auto 35px;
+  padding: 10px;
+  background: lighten($color--white, 100%);
 }
 
 .title-1 {

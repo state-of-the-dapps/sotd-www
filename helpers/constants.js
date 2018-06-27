@@ -173,6 +173,8 @@ const feedbackComponentMap = Object.freeze({
   'positive': 'SvgFeedbackPositive'
 })
 
+const myListLimit = 50
+
 export {
   dappCategoryTagsMap,
   dappBadgeMap,
@@ -189,5 +191,6 @@ export {
   daysOfTheWeek,
   eventCategories,
   eventRefineCategoryOptions,
-  feedbackComponentMap
+  feedbackComponentMap,
+  myListLimit
 }

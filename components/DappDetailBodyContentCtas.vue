@@ -11,7 +11,7 @@
       </button>
       <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
         <span class="add-text">Remove from my list</span>
-      </button> 
+      </button>
     </span>
     <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import { dappGameTag, dappSocialComponentMap } from '~/helpers/constants'
-import { trackDappSite, trackDappSocial } from '~/helpers/mixpanel'
+import { dappGameTag, dappSocialComponentMap, myListLimit } from '~/helpers/constants'
+import { trackDappSite, trackDappSocial, trackListAdd, trackListRemove } from '~/helpers/mixpanel'
 import SvgSocialChat from './SvgSocialChat'
 import SvgSocialBlog from './SvgSocialBlog'
 import SvgSocialFacebook from './SvgSocialFacebook'
@@ -68,13 +68,21 @@ export default {
   },
   methods: {
     addToMyList (slug) {
-      if (!this.myList.includes(slug)) {
-        this.myList.push(slug)
-        this.$localStorage.set('myList', this.myList)
+      if (this.myList.length < myListLimit) {
+        if (!this.myList.includes(slug)) {
+          this.myList.push(slug)
+          this.$localStorage.set('myList', this.myList)
+          const action = trackListAdd(this.dapp.slug, this.myList)
+          this.$mixpanel.track(action.name, action.data)
+        }
+      } else {
+        alert('You have reached the limit of 50 dapps on your list. Please remove some before you add more.')
       }
     },
     removeFromMyList (slug) {
       if (this.myList.includes(slug)) {
+        const action = trackListRemove(this.dapp.slug, this.myList)
+        this.$mixpanel.track(action.name, action.data)
         let index = this.myList.indexOf(slug)
         this.myList.splice(index, 1)
         this.$localStorage.set('myList', this.myList)
