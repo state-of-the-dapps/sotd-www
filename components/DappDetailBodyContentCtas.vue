@@ -75,8 +75,8 @@ export default {
     },
     removeFromMyList (slug) {
       if (this.myList.includes(slug)) {
-        let item = this.myList.indexOf(slug)
-        this.myList.splice(item)
+        let index = this.myList.indexOf(slug)
+        this.myList.splice(index, 1)
         this.$localStorage.set('myList', this.myList)
       }
     },
