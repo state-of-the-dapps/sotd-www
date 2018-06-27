@@ -18,3 +18,9 @@
 @mixin font-monospace {
   font-family: 'Inconsolata', monospace;
 }
+
+@mixin dharma-gothic {
+  font-family: 'Dharma-Gothic-Regular';
+  letter-spacing: 0px;
+  font-weight: 300;
+}

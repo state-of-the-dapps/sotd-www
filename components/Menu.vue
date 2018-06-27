@@ -22,6 +22,9 @@
     <li class="nav-item -stats">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
+    <li class="nav-item -my-list">
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'my-list' }" @click.native="trackMenu('my-list')" exact>My List</nuxt-link>
+    </li>
     <li class="nav-item">
       <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
     </li>
@@ -126,7 +129,7 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  &.-newsletter, &.-submit {
+  &.-newsletter, &.-submit, &.-my-list {
     display: none;
     @include tweakpoint('min-width', 600px) {
       display: flex;

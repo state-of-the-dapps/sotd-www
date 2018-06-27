@@ -6,7 +6,7 @@
       <DappDetailBodyContentDescription v-if="dapp.description" :description="dapp.description"/>
       <media :query="{maxWidth: 1000}">
         <div>
-          <DappDetailBodyContentSites :dapp="dapp"/>
+          <DappDetailBodyContentCtas :dapp="dapp"/>
           <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
@@ -15,7 +15,7 @@
     <div class="actions-related">
       <media :query="{minWidth: 1000}">
         <div>
-          <DappDetailBodyContentSites :dapp="dapp"/>
+          <DappDetailBodyContentCtas :dapp="dapp"/>
           <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
@@ -31,24 +31,24 @@
 <script>
 import Media from 'vue-media'
 import DappDetailBodyContentBadges from './DappDetailBodyContentBadges'
+import DappDetailBodyContentCtas from './DappDetailBodyContentCtas'
 import DappDetailBodyContentDescription from './DappDetailBodyContentDescription'
 import DappDetailBodyContentImage from './DappDetailBodyContentImage'
 import DappDetailBodyContentModules from './DappDetailBodyContentModules'
 import DappDetailBodyContentRank from './DappDetailBodyContentRank'
 import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
-import DappDetailBodyContentSites from './DappDetailBodyContentSites'
 import DappDetailBodyContentTags from './DappDetailBodyContentTags'
 import DappDetailBodyContentTools from './DappDetailBodyContentTools'
 
 export default {
   components: {
     DappDetailBodyContentBadges,
+    DappDetailBodyContentCtas,
     DappDetailBodyContentDescription,
     DappDetailBodyContentImage,
     DappDetailBodyContentModules,
     DappDetailBodyContentRank,
     DappDetailBodyContentRecommend,
-    DappDetailBodyContentSites,
     DappDetailBodyContentTags,
     DappDetailBodyContentTools,
     Media
