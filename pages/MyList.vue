@@ -20,8 +20,7 @@ import LayoutMain from '~/components/LayoutMain'
 export default {
   data () {
     return {
-      dapps: [],
-      listToken: ''
+      dapps: []
     }
   },
   components: {
@@ -34,12 +33,20 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get('lists/' + this.listToken)
-      .then(response => {
-        const dapps = response.data.items
-        this.dapps = dapps
-      })
+    let slugs = this.$localStorage.get('myList') || []
+    if (slugs.length) {
+      slugs = slugs.split(',')
+      axios
+        .get('dapps', {
+          params: {
+            included: slugs
+          }
+        })
+        .then(response => {
+          const dapps = response.data.items
+          this.dapps = dapps
+        })
+    }
   }
 }
 </script>
