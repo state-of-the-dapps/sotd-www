@@ -265,11 +265,10 @@ export const trackHomeHeroDappIcon = function (targetIndex) {
   return action
 }
 
-export const trackListAdd = function (dapp, list) {
+export const trackListAdd = function (dapp) {
   let name = 'My List - Add'
   let data = {
-    dapp,
-    list
+    dapp
   }
 
   const action = {
@@ -280,11 +279,10 @@ export const trackListAdd = function (dapp, list) {
   return action
 }
 
-export const trackListRemove = function (dapp, list) {
+export const trackListRemove = function (dapp) {
   let name = 'My List - Remove'
   let data = {
-    dapp,
-    list
+    dapp
   }
 
   const action = {

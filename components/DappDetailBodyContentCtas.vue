@@ -72,7 +72,7 @@ export default {
         if (!this.myList.includes(slug)) {
           this.myList.push(slug)
           this.$localStorage.set('myList', this.myList)
-          const action = trackListAdd(this.dapp.slug, this.myList)
+          const action = trackListAdd(this.dapp.slug)
           this.$mixpanel.track(action.name, action.data)
         }
       } else {
@@ -81,11 +81,11 @@ export default {
     },
     removeFromMyList (slug) {
       if (this.myList.includes(slug)) {
-        const action = trackListRemove(this.dapp.slug, this.myList)
-        this.$mixpanel.track(action.name, action.data)
         let index = this.myList.indexOf(slug)
         this.myList.splice(index, 1)
         this.$localStorage.set('myList', this.myList)
+        const action = trackListRemove(this.dapp.slug)
+        this.$mixpanel.track(action.name, action.data)
       }
     },
     svgSocialComponent (platform) {
