@@ -21,6 +21,7 @@ const MyList = () => import('~/pages/MyList.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/promoted_dapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/promoted_dapps_direct.vue').then(m => m.default || m)
+const PublicList = () => import('~/pages/PublicList.vue').then(m => m.default || m)
 const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
@@ -169,6 +170,11 @@ export function createRouter () {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
         name: 'dapps-new-confirmation'
+      },
+      {
+        path: '/lists/:list_id',
+        component: PublicList,
+        name: 'public-list'
       },
       {
         path: '/rankings',
