@@ -6,7 +6,7 @@
         <label class="label">Give this list a name <span class="required">(required, minimum 3 characters)</span></label>
         <input v-model="name" class="input" type="text" maxlength="35" placeholder="e.g. Julia's favorite games">
       </div>
-      <p class="disclaimer"><strong>Please note:</strong> For now, once you create a link, the list will be permanent. If you want to make changes, you will need to make a new list.</p>
+      <p class="disclaimer"><strong>Please note:</strong> Once you create a link, the list will be permanent. If you want to make changes, you will need to make a new list.</p>
       <div class="actions">
         <button @click="close" class="button -cancel">Cancel</button> <button @click="getLink" class="button -commit" :class="isReady ? '': 'is-not-ready'">Get a shareable link for this list</button>
       </div>
