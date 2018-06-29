@@ -3,7 +3,7 @@
     <div class="page-public-list">
       <div class="heading-wrapper">
         <h1 class="title-1">{{ name }}</h1>
-        <p class="description">A list of ÐApps made by a member of the community. You can <nuxt-link :to="{name: 'my-list'}">make a list of ÐApps</nuxt-link> too!</p>
+        <p class="description">A list of ÐApps made by a member of the community. You can <nuxt-link :to="{name: 'my-list'}">make your own list </nuxt-link> too!</p>
       </div>
       <div class="wrapper">
         <DappCardList :dapps="dapps"/>
@@ -30,7 +30,10 @@ export default {
   },
   head () {
     return {
-      title: 'State of the ÐApps — Share Your List of ÐApps'
+      title: 'State of the ÐApps — ' + this.name + ' | A List of ÐApps',
+      meta: [
+        {hid: 'description', name: 'description', content: 'A list of ÐApps made by a member of the community. You can make your own list too!'}
+      ]
     }
   },
   asyncData ({ params, error }) {
