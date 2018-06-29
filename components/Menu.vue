@@ -129,7 +129,7 @@ export default {
   cursor: pointer;
   &.-newsletter, &.-submit, &.-my-list {
     display: none;
-    @include tweakpoint('min-width', 600px) {
+    @include tweakpoint('min-width', 700px) {
       display: flex;
     }
   }
