@@ -77,7 +77,7 @@ export default {
 @import '~assets/css/settings';
 
 .actions {
-  margin: 20px 0;
+  margin: 20px 0 10px;
 }
 
 .button {
