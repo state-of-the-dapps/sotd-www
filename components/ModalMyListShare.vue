@@ -14,7 +14,7 @@
     <div v-else>
       <h2 class="heading">Save this link</h2>
       <p class="disclaimer"><strong>Important:</strong> This link will not be available after you close this window. Please make sure you copy it and save it somewhere.</p>
-      <div><input class="input -url" type="text" :value="'https://stateofthedapps.com/lists/' + listUrl + '/' + slug" readonly></div>
+      <div><input class="input -url" type="text" :value="'https://www.stateofthedapps.com/lists/' + listUrl + '/' + slug" readonly></div>
       <div class="actions"><button @click="close" class="button -commit">I have saved this link!</button></div>
     </div>
   </div>
