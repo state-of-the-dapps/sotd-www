@@ -2,9 +2,9 @@
   <LayoutMain>
     <div class="page-my-list">
       <div class="heading-wrapper">
-        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
         <h1 class="title-1">My List</h1>
         <p class="description">Create a list of ÐApps to monitor and share with your friends.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
+        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
       </div>
       <div class="wrapper">
         <div v-if="!dapps.length" class="instructions">
@@ -95,7 +95,7 @@ export default {
 }
 
 .heading-wrapper {
-  padding: 3rem 0 2.5rem 0;
+  padding: 4rem 0 3rem 0;
 }
 
 .page-my-list {
