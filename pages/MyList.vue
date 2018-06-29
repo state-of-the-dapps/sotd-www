@@ -2,45 +2,63 @@
   <LayoutMain>
     <div class="page-my-list">
       <div class="heading-wrapper">
-        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
         <h1 class="title-1">My List</h1>
-        <p class="description">Create a list of ÐApps to monitor.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
+        <p class="description">Create a list of ÐApps to monitor and share with your friends.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
+        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
       </div>
       <div class="wrapper">
         <div v-if="!dapps.length" class="instructions">
           <img class="instructions-image" src="~/assets/images/addtolist.jpg">
         </div>
-        <DappCardList :dapps="dapps"/>
+        <div v-else>
+          <div class="share-wrapper"><button class="share-button" @click="share(dapps)">Share this list &nbsp; <SvgIconShare fill="white" :width="10" :height="10"/></button></div>
+          <DappCardList :dapps="dapps"/>
+        </div>
       </div>
     </div>
   </LayoutMain>
 </template>
 
 <script>
-import { trackMyListView } from '~/helpers/mixpanel'
+import { trackMyListShare, trackMyListView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
+import SvgIconShare from '~/components/SvgIconShare'
 
 export default {
   data () {
     return {
-      dapps: []
+      dapps: [],
+      slugs: []
     }
   },
   components: {
     DappCardList,
-    LayoutMain
+    LayoutMain,
+    SvgIconShare
   },
   head () {
     return {
       title: 'State of the ÐApps — Share Your List of ÐApps'
     }
   },
+  methods: {
+    share (dapps) {
+      const modal = {
+        component: 'ModalMyListShare',
+        mpData: {}
+      }
+      this.$store.dispatch('setSiteModal', modal)
+      const action = trackMyListShare(this.slugs)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
   mounted () {
-    let slugs = this.$localStorage.get('myList') || []
-    if (slugs.length) {
-      slugs = slugs.split(',')
+    this.slugs = this.$localStorage.get('myList') || []
+    let slugs = []
+    if (this.slugs.length) {
+      slugs = this.slugs.split(',')
       axios
         .get('dapps', {
           params: {
@@ -81,7 +99,7 @@ export default {
 }
 
 .heading-wrapper {
-  padding: 3rem 0 3rem 0;
+  padding: 4rem 0 3rem 0;
 }
 
 .page-my-list {
@@ -98,6 +116,23 @@ export default {
   margin: 25px auto 35px;
   padding: 10px;
   background: lighten($color--white, 100%);
+}
+
+.share-button {
+  background: $color--black;
+  color: $color--white;
+  padding: 12px 30px;
+  box-shadow: 0 0 20px rgba($color--black, .2);
+  margin-bottom: 25px;
+  position: relative;
+  &:active {
+    top: 1px;
+    box-shadow: none;
+  }
+}
+
+.share-wrapper {
+  text-align: center;
 }
 
 .title-1 {

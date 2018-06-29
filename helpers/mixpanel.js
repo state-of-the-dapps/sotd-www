@@ -337,6 +337,20 @@ export const trackMyListView = function (dapps) {
   return action
 }
 
+export const trackMyListShare = function (dapps) {
+  let name = 'My List - Share'
+  let data = {
+    dapps
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackNewsletterSubscribe = function (email, sourceComponent, sourcePath) {
   let name = 'Newsletter - Subscribe'
   let data = {
@@ -408,6 +422,36 @@ export const trackPromotedDappSubmit = function (dapp, email, hasSubmittedDapp) 
     dapp,
     email,
     hasSubmittedDapp
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackPublicListView = function (listUrl, sourcePath) {
+  let name = 'Public List - View'
+  let data = {
+    listUrl,
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackPublicListCreate = function (listUrl, slug) {
+  let name = 'Public List - Create'
+  let data = {
+    listUrl,
+    slug
   }
 
   const action = {

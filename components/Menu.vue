@@ -31,12 +31,10 @@
     <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
-    <!--
     <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li>
-    -->
   </ul>
 </div>
 </template>
@@ -131,7 +129,7 @@ export default {
   cursor: pointer;
   &.-newsletter, &.-submit, &.-my-list {
     display: none;
-    @include tweakpoint('min-width', 600px) {
+    @include tweakpoint('min-width', 700px) {
       display: flex;
     }
   }
