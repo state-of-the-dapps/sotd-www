@@ -34,7 +34,7 @@ export default {
   },
   asyncData ({ params, error }) {
     return axios
-      .get('lists/' + params.list_id)
+      .get('lists/' + params.list_url)
       .then(response => {
         const data = response.data
         const dapps = data.dapps

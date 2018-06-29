@@ -36,4 +36,8 @@ export default {
 .black {
   fill: $color--black;
 }
+
+.white {
+  fill: $color--white;
+}
 </style>

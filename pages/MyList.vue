@@ -10,7 +10,10 @@
         <div v-if="!dapps.length" class="instructions">
           <img class="instructions-image" src="~/assets/images/addtolist.jpg">
         </div>
-        <DappCardList :dapps="dapps"/>
+        <div v-else>
+          <div class="share-wrapper"><button class="share-button" @click="share(dapps)">Share this list &nbsp; <SvgIconShare fill="white" :width="10" :height="10"/></button></div>
+          <DappCardList :dapps="dapps"/>
+        </div>
       </div>
     </div>
   </LayoutMain>
@@ -21,6 +24,7 @@ import { trackMyListView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
+import SvgIconShare from '~/components/SvgIconShare'
 
 export default {
   data () {
@@ -30,11 +34,21 @@ export default {
   },
   components: {
     DappCardList,
-    LayoutMain
+    LayoutMain,
+    SvgIconShare
   },
   head () {
     return {
       title: 'State of the ÐApps — Share Your List of ÐApps'
+    }
+  },
+  methods: {
+    share (dapps) {
+      const modal = {
+        component: 'ModalMyListShare',
+        mpData: {}
+      }
+      this.$store.dispatch('setSiteModal', modal)
     }
   },
   mounted () {
@@ -81,7 +95,7 @@ export default {
 }
 
 .heading-wrapper {
-  padding: 3rem 0 3rem 0;
+  padding: 3rem 0 2.5rem 0;
 }
 
 .page-my-list {
@@ -98,6 +112,23 @@ export default {
   margin: 25px auto 35px;
   padding: 10px;
   background: lighten($color--white, 100%);
+}
+
+.share-button {
+  background: $color--black;
+  color: $color--white;
+  padding: 12px 30px;
+  box-shadow: 0 0 20px rgba($color--black, .2);
+  margin-bottom: 25px;
+  position: relative;
+  &:active {
+    top: 1px;
+    box-shadow: none;
+  }
+}
+
+.share-wrapper {
+  text-align: center;
 }
 
 .title-1 {

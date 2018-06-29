@@ -13,11 +13,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import ModalDappsNewConfirmation from './ModalDappsNewConfirmation'
+import ModalMyListShare from './ModalMyListShare'
 import ModalPromotedDappsNewConfirmation from './ModalPromotedDappsNewConfirmation'
 
 export default {
   components: {
     ModalDappsNewConfirmation,
+    ModalMyListShare,
     ModalPromotedDappsNewConfirmation
   },
   computed: {
@@ -49,9 +51,12 @@ export default {
   background: $color--gray;
   padding: 50px;
   border-radius: 4px;
-  margin: 40px auto;
+  margin: 40px 10px;
   z-index: 110;
-  box-shadow: 0 0 50px rgba($color--black, .25)
+  box-shadow: 0 0 50px rgba($color--black, .25);
+  @include tweakpoint('min-width', 600px) {
+    margin: 40px auto;
+  }
 }
 
 .outer-wrapper {

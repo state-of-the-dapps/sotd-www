@@ -172,9 +172,14 @@ export function createRouter () {
         name: 'dapps-new-confirmation'
       },
       {
-        path: '/lists/:list_id',
+        path: '/lists/:list_url',
         component: PublicList,
         name: 'public-list'
+      },
+      {
+        path: '/lists/:list_url/:slug',
+        component: PublicList,
+        name: 'public-list-slug'
       },
       {
         path: '/rankings',
