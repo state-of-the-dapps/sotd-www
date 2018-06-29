@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { trackPublicListView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
@@ -21,7 +22,9 @@ export default {
   data () {
     return {
       dapps: [],
-      name: ''
+      name: '',
+      sourcePath: this.$route.path,
+      listUrl: ''
     }
   },
   components: {
@@ -43,14 +46,20 @@ export default {
         const data = response.data
         const dapps = data.dapps
         const name = data.name
+        const listUrl = data.listUrl
         if (!dapps) {
           error({ statusCode: 404 })
         }
         return {
           dapps,
+          listUrl,
           name
         }
       })
+  },
+  mounted () {
+    const action = trackPublicListView(this.listUrl, this.sourcePath)
+    this.$mixpanel.track(action.name, action.data)
   }
 }
 </script>
@@ -78,7 +87,7 @@ export default {
 }
 
 .heading-wrapper {
-  padding: 3rem 0 3rem 0;
+  padding: 4rem 0 3rem 0;
 }
 
 .page-public-list {

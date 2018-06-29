@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { trackMyListView } from '~/helpers/mixpanel'
+import { trackMyListShare, trackMyListView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
@@ -29,7 +29,8 @@ import SvgIconShare from '~/components/SvgIconShare'
 export default {
   data () {
     return {
-      dapps: []
+      dapps: [],
+      slugs: []
     }
   },
   components: {
@@ -49,12 +50,15 @@ export default {
         mpData: {}
       }
       this.$store.dispatch('setSiteModal', modal)
+      const action = trackMyListShare(this.slugs)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
-    let slugs = this.$localStorage.get('myList') || []
-    if (slugs.length) {
-      slugs = slugs.split(',')
+    this.slugs = this.$localStorage.get('myList') || []
+    let slugs = []
+    if (this.slugs.length) {
+      slugs = this.slugs.split(',')
       axios
         .get('dapps', {
           params: {
