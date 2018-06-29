@@ -2,7 +2,8 @@
   <LayoutMain>
     <div class="page-public-list">
       <div class="heading-wrapper">
-        <h1 class="title-1">{{ name || 'Whoops, there\'s no list here' }}</h1>
+        <h1 class="title-1">{{ name }}</h1>
+        <p class="description">A list of ÐApps made by a member of the community. You can <nuxt-link :to="{name: 'my-list'}">make a list of ÐApps</nuxt-link> too!</p>
       </div>
       <div class="wrapper">
         <DappCardList :dapps="dapps"/>
@@ -39,6 +40,9 @@ export default {
         const data = response.data
         const dapps = data.dapps
         const name = data.name
+        if (!dapps) {
+          error({ statusCode: 404 })
+        }
         return {
           dapps,
           name
