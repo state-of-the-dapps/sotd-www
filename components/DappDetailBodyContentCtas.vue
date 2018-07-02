@@ -180,9 +180,12 @@ export default {
   }
 }
 
+.add-icon {
+  margin-right: 5px;
+}
+
 .add-text {
   display: inline-block;
-  margin-left: 5px;
 }
 
 .wrapper {
