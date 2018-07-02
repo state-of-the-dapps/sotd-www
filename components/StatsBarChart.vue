@@ -6,8 +6,8 @@
           <h3 class="label">{{ category.name }}</h3>
         </div>
         <div class="stat-item-field -value">
-          <div class="value" :style="'width:' + (category.count / maxCount) * 100 + '%;'">          
-            <p class="count">{{ category.count | abbreviateNumber(2) || 0 }}</p>
+          <div class="value" :style="'width:' + (category.dappCount / maxCount) * 100 + '%;'">          
+            <p class="count">{{ category.dappCount | abbreviateNumber(2) || 0 }}</p>
           </div>
         </div>
         <div class="spacer"/>
@@ -17,13 +17,15 @@
 </template>
 
 <script>
+import axios from '~/helpers/axios'
+
 export default {
   computed: {
     maxCount () {
       let count = 0
       let categoryCounts = []
       for (var category of this.categories) {
-        categoryCounts.push(category.count)
+        categoryCounts.push(category.dappCount)
       }
       count = Math.max(...categoryCounts)
       return count
@@ -31,61 +33,19 @@ export default {
   },
   data () {
     return {
-      categories: [
-        {
-          name: 'Games',
-          count: 479
-        },
-        {
-          name: 'Exchanges',
-          count: 233
-        },
-        {
-          name: 'Finance',
-          count: 231
-        },
-        {
-          name: 'Community',
-          count: 203
-        },
-        {
-          name: 'Gambling',
-          count: 133
-        },
-        {
-          name: 'Media',
-          count: 99
-        },
-        {
-          name: 'Property',
-          count: 89
-        },
-        {
-          name: 'Governance',
-          count: 85
-        },
-        {
-          name: 'Storage',
-          count: 68
-        },
-        {
-          name: 'Energy',
-          count: 23
-        },
-        {
-          name: 'Health',
-          count: 16
-        },
-        {
-          name: 'Insurance',
-          count: 13
-        }
-      ]
+      categories: []
     }
+  },
+  mounted () {
+    axios
+      .get('categories')
+      .then(response => {
+        const data = response.data
+        this.categories = data.items
+      })
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
