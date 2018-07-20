@@ -6,7 +6,7 @@
           Load the <span v-if="totalCount - itemCount > 1"> <span v-if="totalCount - itemCount > itemQueryLimit">next {{ itemQueryLimit }}</span><span v-else>last {{ totalCount - itemCount }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one!</nuxt-link></p>
+      <p v-if="itemCount >= totalCount && !isLoading" class="message">No {{ itemCount > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one</nuxt-link>!</p>
       <p v-if="isLoading" class="loader-wrapper"><button v-if="isLoading" class="loader"></button></p>
     </div>
   </section>
@@ -64,6 +64,7 @@
 
   .link {
     text-decoration: none;
+    border-bottom: 1px solid $color--black;
   }
 
   .loader-wrapper {
@@ -76,6 +77,6 @@
     padding-bottom: 20px;
     text-align: center;
     font-size: 2rem;
-    color: lighten($color--black,55%);
+    color: lighten($color--black,30%);
   }
 </style>

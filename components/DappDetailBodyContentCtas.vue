@@ -6,8 +6,7 @@
     </div>
     <span class="star-wrapper">
       <button v-if="!myList.includes(dapp.slug)" class="button -add" @click="addToMyList(dapp.slug)">
-        <span class="add-icon">+</span>
-        <span class="add-text">Add to my list</span>
+        <span class="add-text"><SvgPlus/> Add to my list</span>
       </button>
       <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
         <span class="add-text">Remove from my list</span>
@@ -45,6 +44,7 @@ import SvgSocialBlog from './SvgSocialBlog'
 import SvgSocialFacebook from './SvgSocialFacebook'
 import SvgSocialGithub from './SvgSocialGithub'
 import SvgSocialGitter from './SvgSocialGitter'
+import SvgPlus from './SvgPlus'
 import SvgSocialReddit from './SvgSocialReddit'
 import SvgSocialTwitter from './SvgSocialTwitter'
 import SvgStar from './SvgStar'
@@ -62,6 +62,7 @@ export default {
     SvgSocialFacebook,
     SvgSocialGithub,
     SvgSocialGitter,
+    SvgPlus,
     SvgSocialReddit,
     SvgSocialTwitter,
     SvgStar
