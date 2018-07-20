@@ -1,7 +1,9 @@
 <template>
 <div class="component-HomeFeaturedCollections">
   <h2 class="title-2">
-    <SvgIconCollection/>ÐApp Collections
+    <nuxt-link :to="{ name: 'collections'}" class="header-cta" @click.native="trackCollectionView('home')">
+      <SvgIconCollection/>ÐApp Collections
+    </nuxt-link>
     <nuxt-link :to="{ name: 'collections'}" class="cta" @click.native="trackCollectionView('home')">View all
       <SvgIconChevron :width="8" :height="8" direction="right" />
     </nuxt-link>
@@ -74,6 +76,10 @@ export default {
     bottom: 10px;
     text-decoration: underline;
   }
+}
+
+.header-cta {
+  text-decoration: none;
 }
 
 .title-2 {

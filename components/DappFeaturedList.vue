@@ -2,7 +2,9 @@
 <div class="component-DappFeaturedList">
   <div class="wrapper">
     <h2 class="title-2">
-      <SvgIconFeatured/>Featured ÐApps
+      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="header-cta" @click.native="trackCollectionView('featured')">
+        <SvgIconFeatured/>Featured ÐApps
+      </nuxt-link>
       <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all
         <SvgIconChevron :width="8" :height="8" direction="right" />
       </nuxt-link>
@@ -128,6 +130,10 @@ export default {
   @include tweakpoint('min-width', 750px) {
     display: flex;
   }
+}
+
+.header-cta {
+  text-decoration: none;
 }
 
 .cta {
