@@ -130,7 +130,8 @@ export default {
               .scrollIntoView({ behavior: 'smooth', block: 'start' })
     },
     trackDappRankingCategory (category) {
-      const action = trackDappRankingCategory(category)
+      const sourceComponent = 'DappList'
+      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
       this.$mixpanel.track(action.name, action.data)
     }
   },
