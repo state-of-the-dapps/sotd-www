@@ -20,14 +20,18 @@ import { trackMetamaskCta } from '~/helpers/mixpanel'
 import SvgBadgeMetamask from './SvgBadgeMetamask'
 
 export default {
+  data () {
+    return {
+      sourcePath: this.$route.path
+    }
+  },
   components: {
     SvgBadgeMetamask
   },
   methods: {
     trackMetamaskCta () {
       const sourceComponent = 'SecondaryCtaMetamask'
-      const sourcePath = this.$route.path
-      const action = trackMetamaskCta(sourceComponent, sourcePath)
+      const action = trackMetamaskCta(sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     }
   }

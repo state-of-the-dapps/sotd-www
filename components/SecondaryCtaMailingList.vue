@@ -38,7 +38,8 @@ export default {
       email: '',
       emailIsValid: false,
       isSubmitting: false,
-      justSubmitted: false
+      justSubmitted: false,
+      sourcePath: this.$route.path
     }
   },
   methods: {
@@ -76,8 +77,7 @@ export default {
     },
     trackNewsletterSubscribe () {
       const sourceComponent = 'SecondaryCtaMailingList'
-      const sourcePath = this.$route.path
-      const action = trackNewsletterSubscribe(this.email, sourceComponent, sourcePath)
+      const action = trackNewsletterSubscribe(this.email, sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
 
       const hasWeb3 = typeof web3 !== 'undefined'

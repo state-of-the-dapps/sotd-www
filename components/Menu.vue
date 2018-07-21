@@ -48,6 +48,11 @@ import SvgIconMagnifier from './SvgIconMagnifier'
 import SvgLogotype from './SvgLogotype'
 
 export default {
+  data () {
+    return {
+      sourcePath: this.$route.path
+    }
+  },
   components: {
     SvgIconLogo,
     SvgIconMail,
@@ -67,8 +72,7 @@ export default {
       this.trackMenu(targetMenuItem)
     },
     trackMenu (targetMenuItem) {
-      const sourcePath = this.$route.path
-      const action = trackMenu(sourcePath, targetMenuItem)
+      const action = trackMenu(this.sourcePath, targetMenuItem)
       this.$mixpanel.track(action.name, action.data)
     }
   },

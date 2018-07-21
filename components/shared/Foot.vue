@@ -62,11 +62,11 @@ import {
 } from '~/helpers/mixpanel'
 
 export default {
-  data: () => {
+  data () {
     return {
       sourceComponent: '/shared/foot',
       sourcePageLocation: 'footer',
-      sourcePath: ''
+      sourcePath: this.$route.path
     }
   },
   computed: {
@@ -99,9 +99,6 @@ export default {
       const action = trackSocial(this.sourceComponent, this.sourcePageLocation, this.sourcePath, platform)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  mounted () {
-    this.sourcePath = this.$route.path
   }
 }
 </script>

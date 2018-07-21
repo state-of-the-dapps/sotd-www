@@ -20,15 +20,15 @@ export default {
   },
   data () {
     return {
-      dapps: []
+      dapps: [],
+      sourcePath: this.$route.path
     }
   },
   methods: {
     trackCollectionView (slug) {
       const sourceComponent = 'DappCollectionList'
-      const sourcePath = this.$route.path
       const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, sourcePath, targetCollection)
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
       this.$mixpanel.track(action.name, action.data)
     }
   },
