@@ -8,7 +8,7 @@
       <nuxt-link @click.native="trackPageAbout()" to="/about" class="nav-link">About</nuxt-link>
     </li>
     <li class="nav-item">
-      <nuxt-link :to="{ name: 'dapps-new' }" class="nav-link">Submit a ÐApp</nuxt-link>
+      <nuxt-link @click.native="trackFooterSubmit()" :to="{ name: 'dapps-new' }" class="nav-link">Submit a ÐApp</nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link @click.native="trackPromotedDappsView()" :to="{ name: 'promoted-dapps' }" class="nav-link">Promote your ÐApp</nuxt-link>
@@ -52,7 +52,14 @@
 </template>
 
 <script>
-import { trackContact, trackPageAbout, trackPromotedDappsView, trackPageTerms, trackSocial } from '~/helpers/mixpanel'
+import {
+  trackContact,
+  trackFooterSubmit,
+  trackPageAbout,
+  trackPromotedDappsView,
+  trackPageTerms,
+  trackSocial
+} from '~/helpers/mixpanel'
 
 export default {
   data: () => {
@@ -70,6 +77,10 @@ export default {
   methods: {
     trackContact () {
       const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackFooterSubmit () {
+      const action = trackFooterSubmit(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
     trackPageAbout () {

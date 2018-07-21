@@ -225,6 +225,20 @@ export const trackDappView = function (sourceCollection, sourceComponent, source
   return action
 }
 
+export const trackFooterSubmit = function (sourcePath) {
+  let name = 'Footer - Submit'
+  let data = {
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackHomeEventCta = function (targetCta) {
   let name = 'Home Event CTA'
   let data = {
