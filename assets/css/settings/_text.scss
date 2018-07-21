@@ -15,6 +15,14 @@
   margin-bottom: .75rem;
 }
 
+@mixin title-3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2.2rem;
+  margin-bottom: .2rem;
+  letter-spacing: -.5px;
+}
+
 @mixin font-monospace {
   font-family: 'Inconsolata', monospace;
 }

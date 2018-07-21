@@ -9,10 +9,12 @@
         <SvgIconChevron :width="8" :height="8" direction="right" />
       </nuxt-link>
     </h2>
-    <DappFeaturedRankingCategory
-      v-for="(category, index) in categories"
-      :key="index"
-      :category="category"/>
+    <div class="categories">
+      <DappFeaturedRankingCategory
+        v-for="(category, index) in categories"
+        :key="index"
+        :category="category"/>
+    </div>
   </div>
 </div>
 </template>
@@ -60,6 +62,12 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.categories {
+  margin: 0 -10px;
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .component-DappFeaturedList {
   margin-bottom: 10px;
@@ -123,6 +131,9 @@ export default {
   position: relative;
   font-size: 2.5rem;
   margin-top: .75rem;
+  margin-bottom: 0rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba($color--black, .15);
 }
 
 .wrapper {
