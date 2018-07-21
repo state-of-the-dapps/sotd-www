@@ -116,9 +116,11 @@ export const trackDappFlag = function (slug) {
   return action
 }
 
-export const trackDappRankingCategory = function (category) {
+export const trackDappRankingCategory = function (sourceComponent, sourcePath, category) {
   let name = 'DApp Ranking - Category'
   let data = {
+    sourceComponent,
+    sourcePath,
     category
   }
 
