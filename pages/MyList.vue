@@ -1,21 +1,23 @@
 <template>
   <LayoutMain>
-    <div class="page-my-list">
-      <div class="heading-wrapper">
-        <h1 class="title-1">My List</h1>
-        <p class="description">Create a list of ÐApps to monitor and share with your friends.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
-        <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
-      </div>
-      <div class="wrapper">
-        <div v-if="!dapps.length" class="instructions">
-          <img class="instructions-image" src="~/assets/images/addtolist.jpg">
+    <transition name="fade">
+      <div class="page-my-list" v-if="ready">
+        <div class="heading-wrapper">
+          <h1 class="title-1">My List</h1>
+          <p class="description">Create a list of ÐApps to monitor and share with your friends.<span v-if="!dapps.length"> To begin, <nuxt-link :to="{name: 'dapps'}">visit some ÐApps</nuxt-link> and add them to your list!</span></p>
+          <p class="notice"><strong>Please note:</strong> This is an experimental feature. For now, your list will only be available on your current browser/device.<br/>Email feedback to <a href="mailto:support@stateofthedapps.com">support@stateofthedapps.com</a></p>
         </div>
-        <div v-else>
-          <div class="share-wrapper"><button class="share-button" @click="share(dapps)">Share this list &nbsp; <SvgIconShare fill="white" :width="10" :height="10"/></button></div>
-          <DappCardList :dapps="dapps"/>
+        <div class="wrapper">
+          <div v-if="!dapps.length" class="instructions">
+            <img class="instructions-image" src="~/assets/images/addtolist.jpg">
+          </div>
+          <div v-else>
+            <div class="share-wrapper"><button class="share-button" @click="share(dapps)">Share this list &nbsp; <SvgIconShare fill="white" :width="10" :height="10"/></button></div>
+            <DappCardList :dapps="dapps"/>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </LayoutMain>
 </template>
 
@@ -30,7 +32,8 @@ export default {
   data () {
     return {
       dapps: [],
-      slugs: []
+      slugs: [],
+      ready: false
     }
   },
   components: {
@@ -57,19 +60,20 @@ export default {
   mounted () {
     this.slugs = this.$localStorage.get('myList') || []
     let slugs = []
-    if (this.slugs.length) {
-      slugs = this.slugs.split(',')
-      axios
-        .get('dapps', {
-          params: {
-            included: slugs
-          }
-        })
-        .then(response => {
-          const dapps = response.data.items
+    slugs = this.slugs.split(',')
+    axios
+      .get('dapps', {
+        params: {
+          included: slugs
+        }
+      })
+      .then(response => {
+        const dapps = response.data.items
+        if (dapps.length) {
           this.dapps = dapps
-        })
-    }
+        }
+        this.ready = true
+      })
     const action = trackMyListView(slugs)
     this.$mixpanel.track(action.name, action.data)
   }
