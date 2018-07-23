@@ -60,7 +60,9 @@ export default {
   mounted () {
     this.slugs = this.$localStorage.get('myList') || []
     let slugs = []
-    slugs = this.slugs.split(',')
+    if (slugs.length) {
+      slugs = this.slugs.split(',')
+    }
     axios
       .get('dapps', {
         params: {
