@@ -60,7 +60,7 @@ export default {
   mounted () {
     this.slugs = this.$localStorage.get('myList') || []
     let slugs = []
-    if (slugs.length) {
+    if (this.slugs.length) {
       slugs = this.slugs.split(',')
     }
     axios
