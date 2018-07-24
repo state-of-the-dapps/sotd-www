@@ -14,7 +14,7 @@
     &.-tagline {
       display: none;
       flex: 1;
-      @include tweakpoint('min-width', 1100px) {
+      @include tweakpoint('min-width', 1200px) {
         display: block;
       }
     }   
@@ -40,6 +40,14 @@
       width: 100px;
       text-align: right;
       @include tweakpoint('min-width', 800px) {
+        display: block;
+      }
+    }
+    &.-dev_30d {
+      display: none;
+      width: 125px;
+      text-align: right;
+      @include tweakpoint('min-width', 1100px) {
         display: block;
       }
     }

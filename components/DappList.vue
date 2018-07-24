@@ -76,6 +76,13 @@ export default {
           title: 'Vol (7d)'
         },
         {
+          help: 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
+          id: 'dev_30d',
+          order: 'desc',
+          sort: true,
+          title: 'Dev (30d)'
+        },
+        {
           help: 'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
           id: 'users_30d',
           title: 'Users (30d)'

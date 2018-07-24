@@ -39,6 +39,12 @@
         <span v-if="dapp.stats.value_7d_pct === undefined || dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
         <span v-else class="field-vol -pct" :class="getDappStatsClass(dapp.stats.value_7d_pct)"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
+      <li class="column -dev_30d">
+        <span v-if="dapp.stats.dev_30d === undefined || dapp.stats.dev_30d === null">-</span>
+        <span v-else class="field-dev -value">{{ Number(dapp.stats.dev_30d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span v-if="dapp.stats.dev_30d_pct === undefined || dapp.stats.dev_30d_pct === null" class="field-dev -pct">-</span>
+        <span v-else class="field-dev -pct" :class="getDappStatsClass(dapp.stats.dev_30d_pct)"><span v-if="dapp.stats.dev_30d_pct > 0">+</span>{{ Number(dapp.stats.dev_30d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+      </li>
       <li class="column -users_30d">
         <div class="wrapper">
           <trend
@@ -124,7 +130,7 @@ export default {
 }
 
 .column {
-  &.-rank, &.-dau, &.-mau, &.-vol_7d {
+  &.-rank, &.-dau, &.-mau, &.-vol_7d, &.-dev_30d {
     font-size: 1.05rem;
     @include font-monospace;
   }
@@ -134,6 +140,12 @@ export default {
   }
   &.-vol_7d, &.-mau {
     @include tweakpoint('min-width', 800px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &.-dev_30d {
+    @include tweakpoint('min-width', 1100px) {
       display: flex;
       flex-direction: column;
     }
@@ -165,7 +177,7 @@ export default {
   font-weight: 700;
 }
 
-.field-dau, .field-vol, .field-mau {
+.field-dau, .field-vol, .field-mau, .field-dev {
   flex: 1;
   &.-pct {
     font-size: 1rem;
