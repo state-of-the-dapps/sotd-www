@@ -44,9 +44,6 @@ export default {
 .layout-default {
   height: 100%;
   position: relative;
-  &.has-modal {
-    overflow: hidden;
-  }
 }
 
 .main {

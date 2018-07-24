@@ -79,10 +79,10 @@ export default {
         // slots must be 4 or fewer
         const slots = dappPromotedSlots
         const promotedDapps = promoted.data.slice(0, slots).reverse()
-        if (featuredDapps.length) {
+        if (featuredDapps && featuredDapps.length) {
           this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
         }
-        if (promotedDapps.length) {
+        if (promotedDapps && promotedDapps.length) {
           for (var i = 0; i < promotedDapps.length; i++) {
             let promotedDapp = promotedDapps[i]
             promotedDapp.isPromoted = true
