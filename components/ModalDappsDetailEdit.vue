@@ -78,10 +78,12 @@ export default {
     submit () {
       axios
         .put(`dapps/${this.modalProps.slug}`, {
-          checkedActions: this.checkedActions,
-          email: this.email,
-          name: this.name,
-          suggestions: this.suggestions
+          fields: {
+            checkedActions: this.checkedActions,
+            email: this.email,
+            name: this.name,
+            suggestions: this.suggestions
+          }
         })
         .then(response => {
           console.log(response)
