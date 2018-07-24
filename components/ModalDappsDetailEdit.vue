@@ -54,6 +54,8 @@
 
 <script>
 import axios from '~/helpers/axios'
+import { mapGetters } from 'vuex'
+import { setUser, trackDappEditSubmit } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 
 export default {
@@ -63,9 +65,15 @@ export default {
       email: '',
       emailIsValid: false,
       name: '',
+      sourcePath: this.$route.path,
       submitted: false,
       suggestions: ''
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userEntryRoute'
+    ])
   },
   props: ['modalProps'],
   methods: {
@@ -90,10 +98,14 @@ export default {
               suggestions: this.suggestions
             }
           })
-          .then(response => {
-            console.log(response)
-          })
+          .then(response => {})
         this.submitted = true
+        const action = trackDappEditSubmit(this.checkedActions, this.email, this.modalProps.slug)
+        this.$mixpanel.track(action.name, action.data)
+        const hasWeb3 = typeof web3 !== 'undefined'
+        const lastUpdated = new Date().toISOString()
+        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        this.$mixpanel.setUser(user)
       }
     }
   },

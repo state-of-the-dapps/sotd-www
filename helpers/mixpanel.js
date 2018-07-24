@@ -87,6 +87,22 @@ export const trackDappEdit = function (slug) {
   return action
 }
 
+export const trackDappEditSubmit = function (changes, email, slug) {
+  let name = 'DApp - Submit a change'
+  let data = {
+    changes,
+    email,
+    slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappFeedback = function (dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {
