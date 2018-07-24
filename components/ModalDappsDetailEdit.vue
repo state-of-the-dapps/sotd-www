@@ -6,7 +6,7 @@
         <h3 class="title-3">Your name</h3>
         <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="name"/></div>
         <h3 class="title-3">Your email</h3>
-        <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" v-model="email"/></div>
+        <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
         <h3 class="title-3">I want to...</h3>
         <div class="checkboxes">
           <div class="checkbox-field">
@@ -42,7 +42,7 @@
         <h3 class="title-3">Suggested changes</h3>
         <div class="field"><textarea class="input-textarea" placeholder="Enter your suggestions here" v-model="suggestions"/></div>
       </div>
-      <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button class="cta" @click="submit">Submit</button></p>
+      <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button :class="emailIsValid ? '' : 'not-ready'" class="cta" @click="submit">Submit <span v-if="!emailIsValid">(enter a valid email first)</span></button></p>
     </div>
     <div v-if="submitted " class="step-2">
       <h1 class="title-1">Thanks!</h1>
@@ -54,12 +54,14 @@
 
 <script>
 import axios from '~/helpers/axios'
+import { validateEmail } from '~/helpers/mixins'
 
 export default {
   data () {
     return {
       checkedActions: [],
       email: '',
+      emailIsValid: false,
       name: '',
       submitted: false,
       suggestions: ''
@@ -76,21 +78,26 @@ export default {
       this.$store.dispatch('setSiteModal', modal)
     },
     submit () {
-      axios
-        .put(`dapps/${this.modalProps.slug}`, {
-          fields: {
-            checkedActions: this.checkedActions,
-            email: this.email,
-            name: this.name,
-            suggestions: this.suggestions
-          }
-        })
-        .then(response => {
-          console.log(response)
-        })
-      this.submitted = true
+      if (this.emailIsValid) {
+        axios
+          .put(`dapps/${this.modalProps.slug}`, {
+            fields: {
+              checkedActions: this.checkedActions,
+              email: this.email,
+              name: this.name,
+              dapp: this.modalProps.dapp,
+              path: this.modalProps.path,
+              suggestions: this.suggestions
+            }
+          })
+          .then(response => {
+            console.log(response)
+          })
+        this.submitted = true
+      }
     }
-  }
+  },
+  mixins: [validateEmail]
 }
 </script>
 
@@ -159,7 +166,11 @@ export default {
   color: $color--white;
   padding: 12px 50px;
   box-shadow: 0 5px 20px rgba($color--black, .2);
+  transition: opacity .2s ease;
   cursor: pointer;
+  &.not-ready {
+    opacity: 0.3;
+  }
 }
 
 .cta-wrapper {
