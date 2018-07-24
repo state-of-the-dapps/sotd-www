@@ -3,7 +3,7 @@
   <div class="wrapper">
     <ul class="tool-list">
       <li class="tool-item">
-        <a class="tool-link" @click="trackDappEdit" :href="'mailto:support@stateofthedapps.com?subject=The following ÐApp needs an update: ' + name + '&body=https://www.stateofthedapps.com/dapps/' + slug">
+        <a class="tool-link" @click="viewDappEdit">
           <SvgIconEdit :width="14" :height="14"/> <span class="description">Edit this ÐApp</span>
         </a>
       </li>
@@ -52,10 +52,6 @@ export default {
     }
   },
   methods: {
-    trackDappEdit () {
-      const action = trackDappEdit(this.slug)
-      this.$mixpanel.track(action.name, action.data)
-    },
     trackDappShare () {
       const action = trackDappShare(this.slug)
       this.$mixpanel.track(action.name, action.data)
@@ -68,6 +64,20 @@ export default {
       const sourceComponent = 'DappDetailBodyContentTools'
       const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
+    },
+    viewDappEdit () {
+      const action = trackDappEdit(this.slug)
+      this.$mixpanel.track(action.name, action.data)
+      const modal = {
+        component: 'ModalDappsDetailEdit',
+        mpData: {},
+        props: {
+          dapp: this.name,
+          path: `https://www.stateofthedapps.com${this.$route.path}`,
+          slug: this.slug
+        }
+      }
+      this.$store.dispatch('setSiteModal', modal)
     }
   },
   props: {

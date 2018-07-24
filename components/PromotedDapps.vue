@@ -109,7 +109,8 @@ export default {
           .then((response) => {
             const modal = {
               component: 'ModalPromotedDappsNewConfirmation',
-              mpData: {}
+              mpData: {},
+              props: {}
             }
             this.$store.dispatch('setSiteModal', modal)
           })

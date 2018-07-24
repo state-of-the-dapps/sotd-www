@@ -90,7 +90,8 @@ const state = () => ({
     section: '',
     modal: {
       component: '',
-      mpData: {}
+      mpData: {},
+      props: {}
     }
   },
   stats: {
