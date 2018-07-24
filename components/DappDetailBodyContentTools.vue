@@ -73,7 +73,8 @@ export default {
         mpData: {},
         props: {
           dapp: this.name,
-          path: `https://www.stateofthedapps.com${this.$route.path}`
+          path: `https://www.stateofthedapps.com${this.$route.path}`,
+          slug: this.slug
         }
       }
       this.$store.dispatch('setSiteModal', modal)

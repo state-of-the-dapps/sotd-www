@@ -1,0 +1,8 @@
+@mixin form-input-text {
+    border: none;
+    background: rgba($color--white, .9);
+    width: 100%;
+    padding: 10px 5px;
+    margin-bottom: 8px;
+    text-align: center;
+}

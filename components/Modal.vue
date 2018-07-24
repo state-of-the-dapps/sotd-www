@@ -3,7 +3,7 @@
     <div class="component-Modal" v-if="siteModal.component">
       <div class="outer-wrapper">
         <div class="inner-wrapper">
-          <component :is="siteModal.component" :modal="siteModal"></component>
+          <component :is="siteModal.component" :modalProps="siteModal.props"></component>
         </div>
       </div>
     </div>
