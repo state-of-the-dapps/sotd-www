@@ -50,7 +50,8 @@ export default {
     share (dapps) {
       const modal = {
         component: 'ModalMyListShare',
-        mpData: {}
+        mpData: {},
+        props: {}
       }
       this.$store.dispatch('setSiteModal', modal)
       const action = trackMyListShare(this.slugs)

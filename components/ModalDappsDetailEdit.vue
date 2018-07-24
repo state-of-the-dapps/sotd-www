@@ -2,7 +2,7 @@
   <div class="component-ModalPromotedDappsNewConfirmation">
     <div v-if="!submitted" class="step-1">
       <h1 class="title-1">Request a change</h1>
-      <p class="message">Message</p>
+      <p class="message">{{ modal }}</p>
       <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button class="cta" @click="submit">Submit</button></p>
     </div>
     <div v-if="submitted " class="step-2">
@@ -20,11 +20,13 @@ export default {
       submitted: false
     }
   },
+  props: ['modal'],
   methods: {
     close () {
       const modal = {
         component: '',
-        mpData: {}
+        mpData: {},
+        props: {}
       }
       this.$store.dispatch('setSiteModal', modal)
     },

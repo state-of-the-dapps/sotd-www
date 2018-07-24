@@ -124,7 +124,8 @@
               this.$store.dispatch('dapps/form/resetForm')
               const modal = {
                 component: 'ModalDappsNewConfirmation',
-                mpData: {}
+                mpData: {},
+                props: {}
               }
               this.$store.dispatch('setSiteModal', modal)
             })

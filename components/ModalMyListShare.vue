@@ -47,7 +47,8 @@ export default {
     close () {
       const modal = {
         component: '',
-        mpData: {}
+        mpData: {},
+        props: {}
       }
       this.$store.dispatch('setSiteModal', modal)
     },

@@ -70,7 +70,11 @@ export default {
       this.$mixpanel.track(action.name, action.data)
       const modal = {
         component: 'ModalDappsDetailEdit',
-        mpData: {}
+        mpData: {},
+        props: {
+          dapp: this.name,
+          path: `https://www.stateofthedapps.com${this.$route.path}`
+        }
       }
       this.$store.dispatch('setSiteModal', modal)
     }
