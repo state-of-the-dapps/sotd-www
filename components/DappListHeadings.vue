@@ -47,7 +47,7 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
-  &.-dau, &.-mau, &.-vol_7d, &.-users_30d {
+  &.-dau, &.-mau, &.-vol_7d, &.-dev_30d, &.-users_30d {
     .field.-name {
       margin-left: auto;
     }
@@ -55,7 +55,7 @@ export default {
 }
 
 .field.-name {
-  .-rank &, .-dau &, .-mau &, .-vol_7d & {
+  .-rank &, .-dau &, .-mau &, .-dev_30d &, .-vol_7d & {
     border-bottom: 1px solid $color--black;
     cursor: pointer;
   }
