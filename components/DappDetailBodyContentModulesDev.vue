@@ -1,12 +1,12 @@
 <template>
-<div class="component-DappDetailBodyContentModulesGithub">
+<div class="component-DappDetailBodyContentModulesDev">
   <div class="wrapper">
     <div class="field -title">
-      <h4 class="github-title">Github activity <span class="explanation">(code pushes, issues, pull requests, etc.)</span></h4>
+      <h4 class="dev-title">Development activity <span class="explanation">(code pushes, issues, pull requests, etc.)</span></h4>
     </div>
     <div class="field -data">
-      <p class="github-data"><strong>{{ dev30d }} events</strong> <span v-if="dev30dPct" :class="getDappStatsClass(dev30dPct)" class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
-      <p class="github-data"><strong>{{ dev90d }} events</strong> (90d)</p>
+      <p class="dev-data"><strong>{{ dev30d }} events</strong> <span v-if="dev30dPct" :class="getDappStatsClass(dev30dPct)" class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
+      <p class="dev-data"><strong>{{ dev90d }} events</strong> (90d)</p>
     </div>
   </div>
 </div>
@@ -69,14 +69,14 @@ export default {
   }
 }
 
-.github-data {
+.dev-data {
   margin: 0;
   @include tweakpoint('min-width', 800px) {
     padding-left: 20px;
   }
 }
 
-.github-title {
+.dev-title {
   margin: 0;
 }
 </style>

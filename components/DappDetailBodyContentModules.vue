@@ -22,7 +22,7 @@
       </div>
       <div class="module-wrapper -tier-3" v-if="dapp.stats.dev_30d">
         <div class="module">
-          <DappDetailBodyContentModulesGithub
+          <DappDetailBodyContentModulesDev
             :dev30d="dapp.stats.dev_30d"
             :dev30dPct="dapp.stats.dev_30d_pct"
             :dev90d="dapp.stats.dev_90d"/>
@@ -75,7 +75,7 @@
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModulesCollections'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
-import DappDetailBodyContentModulesGithub from './DappDetailBodyContentModulesGithub'
+import DappDetailBodyContentModulesDev from './DappDetailBodyContentModulesDev'
 import DappDetailBodyContentModulesLicense from './DappDetailBodyContentModulesLicense'
 import DappDetailBodyContentModulesStatus from './DappDetailBodyContentModulesStatus'
 import DappDetailBodyContentModulesStats from './DappDetailBodyContentModulesStats'
@@ -87,7 +87,7 @@ export default {
     DappDetailBodyContentModulesAuthors,
     DappDetailBodyContentModulesCollections,
     DappDetailBodyContentModulesContracts,
-    DappDetailBodyContentModulesGithub,
+    DappDetailBodyContentModulesDev,
     DappDetailBodyContentModulesLicense,
     DappDetailBodyContentModulesStatus,
     DappDetailBodyContentModulesStats,
