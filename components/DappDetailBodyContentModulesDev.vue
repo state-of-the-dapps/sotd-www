@@ -2,19 +2,41 @@
 <div class="component-DappDetailBodyContentModulesDev">
   <div class="wrapper">
     <div class="field -title">
-      <h4 class="dev-title">Development activity <span class="explanation">(code pushes, issues, pull requests, etc.)</span></h4>
+      <h4 class="dev-title">Development activity<Help text="Code pushes, issues, pull requests, etc."/></h4>
     </div>
     <div class="field -data">
-      <p class="dev-data"><strong>{{ dev30d }} events</strong> <span v-if="dev30dPct" :class="getDappStatsClass(dev30dPct)" class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
-      <p class="dev-data"><strong>{{ dev90d }} events</strong> (90d)</p>
+      <p class="dev-data">{{ dev30d }} events<span v-if="dev30dPct" :class="getDappStatsClass(dev30dPct)" class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
+      <p class="dev-data">{{ dev90d }} events (90d)</p>
+      <div class="sparkline">
+        <trend
+          :data="sparkline"
+          :gradient="['#333']"
+          :stroke-width="1.75"
+          :padding="4"
+          auto-draw
+          smooth>
+        </trend>
+      </div>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import Help from './Help'
+import Trend from 'vuetrend'
+
 export default {
-  props: ['dev30d', 'dev30dPct', 'dev90d'],
+  components: {
+    Help,
+    Trend
+  },
+  props: [
+    'dev30d',
+    'dev30dPct',
+    'dev90d',
+    'sparkline'
+  ],
   methods: {
     getDappStatsClass (value) {
       let result = ''
@@ -60,6 +82,13 @@ export default {
 
 .explanation {
   font-weight: 400;
+}
+
+.sparkline {
+  max-width: 215px;
+  @include tweakpoint('min-width', 800px) {
+    margin-left: 20px;
+  }
 }
 
 .wrapper {

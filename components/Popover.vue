@@ -22,6 +22,7 @@ export default {
   position: absolute;
   bottom: calc(1.1rem + 10px);
   font-size: 1rem;
+  font-weight: normal;
   right: 0;
   width: 150px;
   text-align: left;
@@ -29,6 +30,7 @@ export default {
   border-radius: 4px;
   background: $color--white;
   box-shadow: 0 5px 10px rgba($color--black, .15);
+  z-index: 100;
   &:after {
     content: '';
     position: absolute;

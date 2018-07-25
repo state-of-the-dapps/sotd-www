@@ -25,11 +25,12 @@
           <DappDetailBodyContentModulesDev
             :dev30d="dapp.stats.dev_30d"
             :dev30dPct="dapp.stats.dev_30d_pct"
-            :dev90d="dapp.stats.dev_90d"/>
+            :dev90d="dapp.stats.dev_90d"
+            :sparkline="dapp.sparklines.gh_events"/>
         </div>
       </div>
       <div class="module-wrapper -tier-4" v-if="stats">
-        <div class="module">
+        <div class="module -dev">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.dau"
             :monthly="dapp.stats.mau"
@@ -123,7 +124,6 @@ export default {
   background: lighten($color--gray, 3%);
   padding: 10px;
   margin-bottom: 10px;
-  overflow: hidden;
   @include tweakpoint('min-width', 800px) {
     padding: 20px;
   }
