@@ -20,7 +20,15 @@
           <DappDetailBodyContentModulesUpdated :updated="dapp.lastUpdated"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-3" v-if="stats">
+      <div class="module-wrapper -tier-3" v-if="dapp.stats.dev_30d">
+        <div class="module">
+          <DappDetailBodyContentModulesGithub
+            :dev30d="dapp.stats.dev_30d"
+            :dev30dPct="dapp.stats.dev_30d_pct"
+            :dev90d="dapp.stats.dev_90d"/>
+        </div>
+      </div>
+      <div class="module-wrapper -tier-4" v-if="stats">
         <div class="module">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.dau"
@@ -51,7 +59,7 @@
             :weekly="dapp.stats.value_7d"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-4" v-if="dapp.contracts.length">
+      <div class="module-wrapper -tier-5" v-if="dapp.contracts.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
             :additionalMainnet="dapp.contractsAdditionalMainnet"
@@ -67,6 +75,7 @@
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModulesCollections'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
+import DappDetailBodyContentModulesGithub from './DappDetailBodyContentModulesGithub'
 import DappDetailBodyContentModulesLicense from './DappDetailBodyContentModulesLicense'
 import DappDetailBodyContentModulesStatus from './DappDetailBodyContentModulesStatus'
 import DappDetailBodyContentModulesStats from './DappDetailBodyContentModulesStats'
@@ -78,6 +87,7 @@ export default {
     DappDetailBodyContentModulesAuthors,
     DappDetailBodyContentModulesCollections,
     DappDetailBodyContentModulesContracts,
+    DappDetailBodyContentModulesGithub,
     DappDetailBodyContentModulesLicense,
     DappDetailBodyContentModulesStatus,
     DappDetailBodyContentModulesStats,
@@ -138,14 +148,17 @@ export default {
       }
     }
   }
-  &.-tier-2, &.-tier-3 {
+  &.-tier-2, &.-tier-4 {
     @include tweakpoint('min-width', 800px) {
       .module {
         width: calc(50% - 10px);
       }
     }
   }
-  &.-tier-4 {
+  &.-tier-3 {
+    align-items: center;
+  }
+  &.-tier-3, &.-tier-5 {
     @include tweakpoint('min-width', 800px) {
       .module {
         width: calc(100% - 10px);
