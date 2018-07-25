@@ -85,8 +85,8 @@ export default {
 }
 
 .sparkline {
-  max-width: 215px;
   @include tweakpoint('min-width', 800px) {
+    max-width: 215px;
     margin-left: 20px;
   }
 }
