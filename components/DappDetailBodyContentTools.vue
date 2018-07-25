@@ -3,9 +3,9 @@
   <div class="wrapper">
     <ul class="tool-list">
       <li class="tool-item">
-        <a class="tool-link" @click="viewDappEdit">
+        <span class="tool-link" @click="viewDappEdit">
           <SvgIconEdit :width="14" :height="14"/> <span class="description">Edit this ÐApp</span>
-        </a>
+        </span>
       </li>
       <li class="tool-item">
         <a :href="'mailto:?subject=Check out this DApp: ' + name + '&body=https://www.stateofthedapps.com/dapps/' + slug" @click="trackDappShare" class="tool-link">
@@ -107,6 +107,8 @@ export default {
 }
 
 .tool-link {
+  text-decoration: underline;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
