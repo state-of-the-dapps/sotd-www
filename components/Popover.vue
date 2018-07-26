@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="component-Popover" :class="reversed ? 'is-reversed' : ''">
+    <div class="component-Popover" :class="[bottom ? 'is-bottom' : '', reversed ? 'is-reversed' : '']">
       <div class="wrapper">
         {{ text }}
       </div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ['reversed', 'text']
+  props: ['bottom', 'reversed', 'text']
 }
 </script>
 
@@ -41,6 +41,16 @@ export default {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid $color--white;
+  }
+  &.is-bottom {
+    bottom: auto;
+    top: calc(1.1rem + 10px);
+    &:after {
+      bottom: auto;
+      border-top: none;
+      border-bottom: 8px solid $color--white;
+      top: -5px
+    }
   }
   &.is-reversed {
     right: auto;

@@ -39,7 +39,7 @@
           </div>
         </div>
         <br>
-        <h3 class="title-3">Suggested changes</h3>
+        <h3 class="title-3">Tell us what should be changed on {{ modalProps.dapp }}</h3>
         <div class="field"><textarea class="input-textarea" placeholder="Enter your suggestions here" v-model="suggestions"/></div>
       </div>
       <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button :class="emailIsValid ? '' : 'not-ready'" class="cta" @click="submit">Submit <span v-if="!emailIsValid">(enter a valid email first)</span></button></p>

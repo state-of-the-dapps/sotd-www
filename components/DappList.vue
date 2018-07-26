@@ -7,22 +7,26 @@
       </li>
     </ul>
     <div class="wrapper">
-      <DappListHeadings
-        :fields="fields"
-        :order="order"
-        :sort="sort"
-        @sortDapps="sortDapps"/>
-      <ul v-if="dapps.length">
-        <DappListItem v-for="(dapp, index) in dapps" :key="index"
-        :dapp="dapp"/>
-      </ul>
-      <LoadMore
-        @loadMore="loadMore"
-        :dapps="dapps"
-        :isLoading="isLoading"
-        :limit="limit"
-        :offset="offset"
-        :total="total"/>
+      <div class="wrapper-2">
+        <div class="wrapper-3">
+          <DappListHeadings
+            :fields="fields"
+            :order="order"
+            :sort="sort"
+            @sortDapps="sortDapps"/>
+          <ul v-if="dapps.length">
+            <DappListItem v-for="(dapp, index) in dapps" :key="index"
+            :dapp="dapp"/>
+          </ul>
+          <LoadMore
+            @loadMore="loadMore"
+            :dapps="dapps"
+            :isLoading="isLoading"
+            :limit="limit"
+            :offset="offset"
+            :total="total"/>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -200,5 +204,14 @@ export default {
   padding: 0 20px;
   max-width: 1500px;
   margin: 0 auto;
+}
+
+.wrapper-2 {
+  width: 100%;
+  overflow: scroll;
+}
+
+.wrapper-3 {
+  min-width: 1300px;
 }
 </style>
