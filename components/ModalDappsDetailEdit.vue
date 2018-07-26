@@ -123,11 +123,8 @@ export default {
 }
 
 .checkboxes {
-    margin: 12px auto 0;
+    margin: 12px 0 0 0;
     width: 300px;
-    @include tweakpoint('min-width', 900px) {
-      margin-left: 0;
-    }
   }
 
   .checkbox-field {
