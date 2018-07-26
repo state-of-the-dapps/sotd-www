@@ -26,6 +26,24 @@ export default {
   },
   computed: {
     ...mapGetters(['siteModal'])
+  },
+  destroyed () {
+    this.close()
+  },
+  methods: {
+    close () {
+      const modal = {
+        component: '',
+        mpData: {},
+        props: {}
+      }
+      this.$store.dispatch('setSiteModal', modal)
+    }
+  },
+  watch: {
+    '$route' () {
+      this.close()
+    }
   }
 }
 </script>
