@@ -118,7 +118,7 @@ export default {
 
 .button {
   &.-cancel {
-    margin: 20px;
+    padding: 20px;
   }
 }
 
