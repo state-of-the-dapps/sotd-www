@@ -5,7 +5,7 @@
         <span v-if="field.title" @click="sortDapps(field)" class="field -name">
           {{ field.title }}
         </span>
-        <Help v-if="field.help" :text="field.help" :reversed="field.id === 'rank'"/>
+        <Help v-if="field.help" :text="field.help" :bottom="true" :reversed="field.id === 'rank'"/>
         <span v-if="sort === field.id" class="sort-arrow"/>
       </div>
     </li>

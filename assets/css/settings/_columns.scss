@@ -5,67 +5,33 @@
       width: 90px; 
     }
     &.-dapp {
-      flex: 1;
-      width: 190px;
-      @include tweakpoint('min-width', 1100px) {
-        flex: 0 1 auto;
-      }      
+      width: 190px;   
     }
     &.-tagline {
-      display: none;
       flex: 1;
-      @include tweakpoint('min-width', 1200px) {
-        display: block;
-      }
     }   
     &.-tags {
-      display: none;
-      width: 125px;
-      @include tweakpoint('min-width', 800px) {
-        display: block;
-      }
-      @include tweakpoint('min-width', 1400px) {
-        width: 200px;
-      }
-      @include tweakpoint('min-width', 1600px) {
-        width: 300px;
-      }     
+      width: 200px;    
     }
     &.-dau {
       width: 100px;
       text-align: right;
     }
     &.-mau {
-      display: none;
       width: 100px;
       text-align: right;
-      @include tweakpoint('min-width', 800px) {
-        display: block;
-      }
     }
     &.-dev_30d {
-      display: none;
       width: 125px;
       text-align: right;
-      @include tweakpoint('min-width', 1100px) {
-        display: block;
-      }
     }
     &.-vol_7d {
-      display: none;
       width: 125px;
       text-align: right;
-      @include tweakpoint('min-width', 800px) {
-        display: block;
-      }
     }
     &.-users_30d {
-      display: none;
       width: 150px;
-      text-align: right;
-      @include tweakpoint('min-width', 1100px) {
-        display: block;
-      }      
+      text-align: right;     
     }
   }
 }

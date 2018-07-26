@@ -138,17 +138,9 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  &.-vol_7d, &.-mau {
-    @include tweakpoint('min-width', 800px) {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  &.-dev_30d {
-    @include tweakpoint('min-width', 1100px) {
-      display: flex;
-      flex-direction: column;
-    }
+  &.-vol_7d, &.-mau, &.-dev_30d {
+    display: flex;
+    flex-direction: column;
   }
   &.-tags {
     overflow: hidden;
