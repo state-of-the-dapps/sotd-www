@@ -63,8 +63,10 @@
       <div class="module-wrapper -tier-5" v-if="dapp.contracts.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
-            :additionalMainnet="dapp.contractsAdditionalMainnet"
-            :contracts="dapp.contracts"
+            :mainnet="dapp.contractsMainnet"
+            :kovan="dapp.contractsKovan"
+            :rinkeby="dapp.contractsRinkeby"
+            :ropsten="dapp.contractsRopsten"
             :slug="dapp.slug"/>
         </div>
       </div>
