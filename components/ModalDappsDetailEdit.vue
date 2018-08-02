@@ -193,6 +193,7 @@ export default {
 
 .input-text {
   @include form-input-text;
+  display: block;
   background: lighten($color--white, 100%);
   text-align: left;
   padding: 10px;
