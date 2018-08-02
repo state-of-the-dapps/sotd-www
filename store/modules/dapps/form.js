@@ -242,6 +242,26 @@ const getters = {
   contracts: state => {
     return state.fields.contracts
   },
+  contractsMainnet: state => {
+    let contractsString = state.fields.contracts.mainnet.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
+  contractsKovan: state => {
+    let contractsString = state.fields.contracts.kovan.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
+  contractsRopsten: state => {
+    let contractsString = state.fields.contracts.ropsten.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
+  contractsRinkeby: state => {
+    let contractsString = state.fields.contracts.rinkeby.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
   dappUrl: state => {
     return state.fields.siteUrls.dapp
   },

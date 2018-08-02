@@ -41,6 +41,18 @@
       authors () {
         return this.$store.getters['dapps/form/authors']
       },
+      contractsMainnet () {
+        return this.$store.getters['dapps/form/contractsMainnet']
+      },
+      contractsKovan () {
+        return this.$store.getters['dapps/form/contractsKovan']
+      },
+      contractsRopsten () {
+        return this.$store.getters['dapps/form/contractsRopsten']
+      },
+      contractsRinkeby () {
+        return this.$store.getters['dapps/form/contractRinkeby']
+      },
       errorFields () {
         return this.$store.getters['dapps/form/errorFields']
       },
@@ -101,6 +113,10 @@
           const data = {
             fields: this.fields
           }
+          data.fields.contractsMainnet = this.contractsMainnet
+          data.fields.contractsKovan = this.contractsKovan
+          data.fields.contractsRopsten = this.contractsRopsten
+          data.fields.contractsRinkeby = this.contractsRinkeby
           this.sending = true
           axios.post('dapps', data)
             .then((response) => {
