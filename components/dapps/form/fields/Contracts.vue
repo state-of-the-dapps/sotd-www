@@ -123,7 +123,17 @@
         }
         validationTimer = setTimeout(() => {
           if (this[field].length > 0) {
-            this[field].length > 11000 ? errors.data.push(`No more than 20 addresses are allowed`) : ''
+            let contractArray = this[field].split('\n')
+            let contractErrors = []
+            contractArray.forEach(function (element) {
+              if (element.length > 0) {
+                element.length !== 42 ? contractErrors.push(`Address must be exactly 42 characters`) : ''
+                !element.startsWith('0x') ? contractErrors.push(`Address must start with 0x`) : ''
+              }
+            })
+            if (contractErrors.length > 0) {
+              errors.data.push(`One or more of your contract addresses are invalid`)
+            }
           }
           this.dispatchErrors(errors, 'dapps')
         }, 750)
@@ -163,7 +173,6 @@
   }
 
   .input-wrapper {
-    padding: 10px 0;
     flex-grow: 1;
     box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
@@ -176,7 +185,7 @@
     resize: none;
     min-height: 75px;
     width: 100%;
-    padding: 0 20px;
+    padding: 10px 20px;
     border: none;
   }
 </style>
