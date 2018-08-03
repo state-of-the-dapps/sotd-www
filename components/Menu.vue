@@ -23,7 +23,9 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
     <li class="nav-item -my-list">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'my-list' }" @click.native="trackMenu('my-list')" exact>My List</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'my-list' }" @click.native="trackMenu('my-list')" exact>
+        My List<span class="list-count" v-if="myList.length > 0"> {{ myList.length }}</span>
+      </nuxt-link>
     </li>
     <li class="nav-item">
       <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
@@ -50,6 +52,7 @@ import SvgLogotype from './SvgLogotype'
 export default {
   data () {
     return {
+      list: [],
       sourcePath: this.$route.path
     }
   },
@@ -60,10 +63,11 @@ export default {
     SvgLogotype
   },
   computed: {
-    ...mapGetters([
-      'siteSection',
-      'statDappCount'
-    ])
+    ...mapGetters({
+      siteSection: 'siteSection',
+      statDappCount: 'statDappCount',
+      myList: 'list/items'
+    })
   },
   methods: {
     scrollToMailingList (targetMenuItem) {
@@ -95,6 +99,18 @@ export default {
   &.-white {
     background: rgba($color--black, .2)
   }
+}
+
+.list-count {
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  background: rgba($color--black, .2);
+  display: inline-block;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 8px;
+  font-size: .7rem;
 }
 
 .logo-link {
@@ -152,6 +168,7 @@ export default {
   border: 1px solid transparent;
   border-left: 0;
   border-right: 0;
+  position: relative;
   &.nuxt-link-active, &.nuxt-link-exact-active {
     &.-white {
       border-bottom: 1px solid $color--white;
