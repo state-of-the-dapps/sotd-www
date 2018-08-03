@@ -5,7 +5,7 @@
       <li class="item">
         <div class="name">Mainnet</div>
         <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
-          <input class="input" type="text" @input="validate('mainnet')" v-model="mainnet" placeholder="0x..." maxlength="42">
+          <textarea class="input" @input="validate('mainnet')" v-model="mainnet" placeholder="Enter addresses (one per line)" maxlength="11000"/>
           <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
             <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
@@ -14,7 +14,7 @@
       <li class="item">
         <div class="name">Ropsten</div>
         <div class="input-wrapper" :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''">
-          <input class="input" type="text" @input="validate('ropsten')" v-model="ropsten" placeholder="0x..." maxlength="42">
+          <textarea class="input" @input="validate('ropsten')" v-model="ropsten" placeholder="Enter addresses (one per line)" maxlength="11000"/>
           <ul v-if="ropstenErrors && ropstenErrors.length > 0" class="error-list -contracts">
             <li v-for="(error, index) in ropstenErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
@@ -23,7 +23,7 @@
       <li class="item">
         <div class="name">Kovan</div>
         <div class="input-wrapper" :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''">
-          <input class="input" type="text" @input="validate('kovan')" v-model="kovan" placeholder="0x..." maxlength="42">
+          <textarea class="input" @input="validate('kovan')" v-model="kovan" placeholder="Enter addresses (one per line)" maxlength="11000"/>
           <ul v-if="kovanErrors && kovanErrors.length > 0" class="error-list -contracts">
             <li v-for="(error, index) in kovanErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
@@ -32,7 +32,7 @@
       <li class="item">
         <div class="name">Rinkeby</div>
         <div class="input-wrapper" :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''">
-          <input class="input" type="text" @input="validate('rinkeby')" v-model="rinkeby" placeholder="0x..." maxlength="42">
+          <textarea class="input" @input="validate('rinkeby')" v-model="rinkeby" placeholder="Enter addresses (one per line)" maxlength="11000"/>
           <ul v-if="rinkebyErrors && rinkebyErrors.length > 0" class="error-list -contracts">
             <li v-for="(error, index) in rinkebyErrors" :key="index" class="error-item">{{ error }}</li>
           </ul>
@@ -123,8 +123,17 @@
         }
         validationTimer = setTimeout(() => {
           if (this[field].length > 0) {
-            this[field].length !== 42 ? errors.data.push(`Address must be exactly 42 characters`) : ''
-            !this[field].startsWith('0x') ? errors.data.push(`Address must start with 0x`) : ''
+            let contractArray = this[field].split('\n')
+            let contractErrors = []
+            contractArray.forEach(function (element) {
+              if (element.length > 0) {
+                element.length !== 42 ? contractErrors.push(`Address must be exactly 42 characters`) : ''
+                !element.startsWith('0x') ? contractErrors.push(`Address must start with 0x`) : ''
+              }
+            })
+            if (contractErrors.length > 0) {
+              errors.data.push(`One or more of your contract addresses are invalid`)
+            }
           }
           this.dispatchErrors(errors, 'dapps')
         }, 750)
@@ -145,8 +154,8 @@
 
   .heading {
     text-align: center;
-    margin-top: 1.25rem;
-    margin-bottom: .75rem;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
   }
 
   .input-wrapper {
@@ -156,27 +165,27 @@
   }
 
   .item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
   }
 
   .name {
-    width: 75px;
-    padding: 8px 10px;
-    text-align: right;
+    padding: 8px 0 8px 20px;
   }
 
   .input-wrapper {
     flex-grow: 1;
     box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
+    background: rgba(lighten($color--gray, 100%),.9);
   }
 
-  input {
+  .input {
+    @include font-monospace;
+    display: block;
+    resize: none;
+    min-height: 75px;
     width: 100%;
-    padding: 8px 10px;
+    padding: 10px 20px;
     border: none;
-    background: rgba(lighten($color--gray, 100%),.9);
   }
 </style>
