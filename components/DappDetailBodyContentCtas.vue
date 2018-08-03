@@ -73,6 +73,7 @@ export default {
         if (!this.myList.includes(slug)) {
           this.myList.push(slug)
           this.$localStorage.set('myList', this.myList)
+          this.$store.dispatch('list/setItems', this.myList)
           const action = trackListAdd(this.dapp.slug)
           this.$mixpanel.track(action.name, action.data)
         }
@@ -85,6 +86,7 @@ export default {
         let index = this.myList.indexOf(slug)
         this.myList.splice(index, 1)
         this.$localStorage.set('myList', this.myList)
+        this.$store.dispatch('list/setItems', this.myList)
         const action = trackListRemove(this.dapp.slug)
         this.$mixpanel.track(action.name, action.data)
       }

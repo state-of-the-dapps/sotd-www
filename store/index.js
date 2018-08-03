@@ -3,6 +3,7 @@ import axios from '~/helpers/axios'
 import announcementsModule from './modules/announcements'
 import collectionsModule from './modules/collections'
 import dappsModule from './modules/dapps'
+import listModule from './modules/list'
 import eventsModule from './modules/events'
 import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
@@ -116,6 +117,7 @@ const createStore = () => {
       collections: collectionsModule,
       dapps: dappsModule,
       events: eventsModule,
+      list: listModule,
       newsletter: newsletterModule,
       tags: tagsModule
     },
