@@ -18,8 +18,10 @@ export default {
   },
   mounted () {
     const myListString = this.$localStorage.get('myList')
-    const myList = myListString.split(',')
-    this.$store.dispatch('list/setItems', myList)
+    if (myListString) {
+      const myList = myListString.split(',')
+      this.$store.dispatch('list/setItems', myList)
+    }
   }
 }
 </script>
