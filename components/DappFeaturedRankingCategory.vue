@@ -7,7 +7,7 @@
     <ul class="dapp-list">
       <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
         <span class="dapp-name"><nuxt-link @click.native="trackDappView(dapp.slug)" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }">{{ dapp.name }}</nuxt-link></span>
-        <span class="dapp-dau">{{ dapp.stats.dau.toLocaleString() }}</span>
+        <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
     </ul>
   </div>
