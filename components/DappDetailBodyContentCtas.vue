@@ -1,30 +1,33 @@
 <template>
 <div class="component-DappDetailBodyContentCtas">
   <div class="wrapper">
-    <div v-if="dapp.logoUrl" class="logo-wrapper">
-      <img class="logo-image" :src="dapp.logoUrl"/>
-    </div>
-    <span class="star-wrapper">
+    <div class="cta-wrapper">
+      <transition name="fade">
+        <div :class="added ? 'active' : ''" class="add-popover" v-if="added"><nuxt-link class="add-popover-button" :to="{ name: 'my-list' }">Go to my list</nuxt-link></div>
+      </transition>
       <button v-if="!myList.includes(dapp.slug)" class="button -add" @click="addToMyList(dapp.slug)">
         <span class="add-text"><SvgPlus/> Add to my list</span>
       </button>
       <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
         <span class="add-text">Remove from my list</span>
       </button>
-    </span>
-    <span v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
+    </div>
+    <div v-if="dapp.logoUrl" class="logo-wrapper">
+      <img class="logo-image" :src="dapp.logoUrl"/>
+    </div>
+    <div v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
       </a>
-    </span>
-    <span v-else>
+    </div>
+    <div v-else>
       <a v-if="dapp.sites.dappUrl" :href="dapp.sites.dappUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp<span v-if="dapp.isNsfw"> (NSFW)</span></span>
       </a>
       <a v-if="dapp.sites.websiteUrl" :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
-    </span>
+    </div>
     <ul v-if="dapp.socials.length" class="social-list">
       <li v-for="(social, index) in dapp.socials" :key="index" class="social-item">
         <a class="social-link" :href="social.url" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize" @click="trackDappSocial(social.platform, social.url)">
@@ -52,6 +55,7 @@ import SvgStar from './SvgStar'
 export default {
   data () {
     return {
+      added: false,
       dappGameTag,
       myList: []
     }
@@ -74,8 +78,12 @@ export default {
           this.myList.push(slug)
           this.$localStorage.set('myList', this.myList)
           this.$store.dispatch('list/setItems', this.myList)
+          this.added = true
           const action = trackListAdd(this.dapp.slug)
           this.$mixpanel.track(action.name, action.data)
+          setTimeout(() => {
+            this.added = false
+          }, 8500)
         }
       } else {
         alert('You have reached the limit of 50 dapps on your list. Please remove some before you add more.')
@@ -127,6 +135,34 @@ export default {
   line-height: 0;
 }
 
+.add-popover {
+  position: absolute;
+  top: -45px;
+  left: calc(50% - 60px);
+  width: 100%;
+  background: $color--black;
+  border-radius: 4px;
+  box-shadow: 0 4px 50px rgba($color--black, .2);
+  padding: 8px;
+  text-align: center;
+  width: 120px;
+  &:after {
+    content: '';
+    position: absolute;
+    right: calc(50% - 5px);
+    bottom: -5px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $color--black;
+  }
+}
+
+.add-popover-button {
+  color: $color--white;
+}
+
 .button {
   text-align: center;
   text-decoration: none;
@@ -148,6 +184,10 @@ export default {
   }
 }
 
+.cta-wrapper {
+  position: relative;
+}
+
 .logo-image {
   display: block;
   margin: 0 auto;
@@ -160,7 +200,7 @@ export default {
 .logo-wrapper {
   text-align: center;
   overflow: hidden;
-  padding-bottom: 15px;
+  padding-bottom: 8px;
 }
 
 .social-item {
