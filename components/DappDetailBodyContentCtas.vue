@@ -1,6 +1,9 @@
 <template>
 <div class="component-DappDetailBodyContentCtas">
   <div class="wrapper">
+    <div v-if="dapp.logoUrl" class="logo-wrapper">
+      <img class="logo-image" :src="dapp.logoUrl"/>
+    </div>
     <div class="cta-wrapper">
       <transition name="fade">
         <div :class="added ? 'active' : ''" class="add-popover" v-if="added"><nuxt-link class="add-popover-button" :to="{ name: 'my-list' }">Go to my list</nuxt-link></div>
@@ -11,9 +14,6 @@
       <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
         <span class="add-text">Remove from my list</span>
       </button>
-    </div>
-    <div v-if="dapp.logoUrl" class="logo-wrapper">
-      <img class="logo-image" :src="dapp.logoUrl"/>
     </div>
     <div v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
