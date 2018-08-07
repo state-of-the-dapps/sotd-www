@@ -23,7 +23,7 @@
     "date-fns": "^1.29.0",
     "mixpanel-browser": "^2.13.0",
     "number-abbreviate": "^2.0.0",
-    "nuxt": "1.4.0",
+    "nuxt": "1.4.2",
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.3",
     "vue-chartjs": "^3.3.2",
