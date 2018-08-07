@@ -8,9 +8,9 @@
         </span>
       </li>
       <li class="tool-item">
-        <a :href="'mailto:?subject=Check out this DApp: ' + name + '&body=https://www.stateofthedapps.com/dapps/' + slug" @click="trackDappShare" class="tool-link">
+        <span class="tool-link" @click="viewDappShare()" role="button">
           <SvgIconShare :width="14" :height="14"/> <span class="description">Share this ÐApp</span>
-        </a>
+        </span>
       </li>
       <li class="tool-item">
         <span class="tool-link" @click="viewDappEdit(['Flag'])" role="button">
@@ -52,22 +52,19 @@ export default {
     }
   },
   methods: {
-    trackDappShare () {
-      const action = trackDappShare(this.slug)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    trackDappFlag () {
-      const action = trackDappFlag(this.slug)
-      this.$mixpanel.track(action.name, action.data)
-    },
     trackPromotedDappsView () {
       const sourceComponent = 'DappDetailBodyContentTools'
       const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
     },
     viewDappEdit (checked = []) {
-      const action = trackDappEdit(this.slug)
-      this.$mixpanel.track(action.name, action.data)
+      if (checked.includes('Flag')) {
+        let action = trackDappFlag(this.slug)
+        this.$mixpanel.track(action.name, action.data)
+      } else {
+        let action = trackDappEdit(this.slug)
+        this.$mixpanel.track(action.name, action.data)
+      }
       const modal = {
         component: 'ModalDappsDetailEdit',
         mpData: {},
@@ -76,6 +73,19 @@ export default {
           dapp: this.name,
           path: `https://www.stateofthedapps.com${this.$route.path}`,
           slug: this.slug
+        }
+      }
+      this.$store.dispatch('setSiteModal', modal)
+    },
+    viewDappShare () {
+      const action = trackDappShare(this.slug)
+      this.$mixpanel.track(action.name, action.data)
+      const modal = {
+        component: 'ModalDappsDetailShare',
+        mpData: {},
+        props: {
+          dapp: this.name,
+          path: `https://www.stateofthedapps.com${this.$route.path}`
         }
       }
       this.$store.dispatch('setSiteModal', modal)
