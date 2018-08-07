@@ -3,7 +3,7 @@
   <div class="wrapper">
     <ul class="tool-list">
       <li class="tool-item">
-        <span class="tool-link" @click="viewDappEdit" role="button">
+        <span class="tool-link" @click="viewDappEdit()" role="button">
           <SvgIconEdit :width="14" :height="14"/> <span class="description">Edit this ÐApp</span>
         </span>
       </li>
@@ -13,9 +13,9 @@
         </a>
       </li>
       <li class="tool-item">
-        <a :href="'mailto:support@stateofthedapps.com?subject=Please review this ÐApp: ' + name + '&body=https://www.stateofthedapps.com/dapps/' + slug" @click="trackDappFlag" class="tool-link">
+        <span class="tool-link" @click="viewDappEdit(['Flag'])" role="button">
           <SvgIconFlag :width="14" :height="14"/> <span class="description">Flag as inappropriate</span>
-        </a>
+        </span>
       </li>
       <li class="tool-item">
         <nuxt-link :to="{ name: 'promoted-dapps' }" @click.native="trackPromotedDappsView" class="tool-link">
@@ -65,13 +65,14 @@ export default {
       const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappEdit () {
+    viewDappEdit (checked = []) {
       const action = trackDappEdit(this.slug)
       this.$mixpanel.track(action.name, action.data)
       const modal = {
         component: 'ModalDappsDetailEdit',
         mpData: {},
         props: {
+          checked: checked,
           dapp: this.name,
           path: `https://www.stateofthedapps.com${this.$route.path}`,
           slug: this.slug

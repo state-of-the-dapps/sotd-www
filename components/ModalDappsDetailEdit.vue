@@ -109,7 +109,10 @@ export default {
       }
     }
   },
-  mixins: [validateEmail]
+  mixins: [validateEmail],
+  mounted () {
+    this.checkedActions = this.modalProps.checked
+  }
 }
 </script>
 
