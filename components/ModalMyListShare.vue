@@ -131,6 +131,7 @@ export default {
   width: 100%;
   &.-url {
     text-align: center;
+    user-select: all;
   }
 }
 
