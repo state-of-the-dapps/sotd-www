@@ -8,6 +8,8 @@
       </li>
       <li class="column -dapp">
         <div class="wrapper">
+          <span v-if="dapp.iconUrl" class="dapp-icon-wrapper"><img class="dapp-icon" :src="dapp.iconUrl" width="32" height="32"></span>
+          <span v-else class="dapp-icon-wrapper has-no-icon">{{ dapp.name | firstLetter }}</span>
           <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>
         </div>
       </li>
@@ -163,6 +165,29 @@ export default {
       border-right: none;
     }
   } 
+}
+
+.dapp-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  border-radius: 4px;
+}
+
+.dapp-icon-wrapper {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 4px;
+  &.has-no-icon {
+    text-transform: uppercase;
+    background: $color--gray;
+  }
 }
 
 .dapp-link {
