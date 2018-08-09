@@ -8,8 +8,10 @@
       </li>
       <li class="column -dapp">
         <div class="wrapper">
-          <span v-if="dapp.iconUrl" class="dapp-icon-wrapper"><img class="dapp-icon" :src="dapp.iconUrl" width="32" height="32"></span>
-          <span v-else class="dapp-icon-wrapper has-no-icon">{{ dapp.name | firstLetter }}</span>
+          <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
+            <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+            <span v-else>{{ dapp.name | firstLetter }}</span>
+          </nuxt-link>
           <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>
         </div>
       </li>
@@ -184,6 +186,7 @@ export default {
   justify-content: center;
   font-weight: 700;
   border-radius: 4px;
+  text-decoration: none;
   &.has-no-icon {
     text-transform: uppercase;
     background: $color--gray;
