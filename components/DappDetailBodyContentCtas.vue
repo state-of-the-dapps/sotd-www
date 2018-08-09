@@ -15,7 +15,7 @@
         <span class="add-text">Remove from my list</span>
       </button>
     </div>
-    <div v-if="dapp.sites.websiteUrl === dapp.sites.dappUrl">
+    <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
