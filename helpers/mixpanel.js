@@ -209,6 +209,21 @@ export const trackDappSocial = function (dapp, platform, url) {
   return action
 }
 
+export const trackDappCategory = function (category, slug) {
+  let actionName = 'DApp - Category'
+  let data = {
+    category,
+    slug
+  }
+
+  const action = {
+    name: actionName,
+    data
+  }
+
+  return action
+}
+
 export const trackDappTag = function (name, slug) {
   let actionName = 'DApp - Site'
   let data = {

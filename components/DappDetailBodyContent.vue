@@ -20,8 +20,9 @@
         </div>
       </media>
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
-      <DappDetailBodyContentBadges v-if="dapp.badges.length" :badges="dapp.badges"/>
-      <DappDetailBodyContentTags v-if="dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
+      <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>
+      <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
+      <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
     </div>
   </div>
@@ -31,6 +32,7 @@
 <script>
 import Media from 'vue-media'
 import DappDetailBodyContentBadges from './DappDetailBodyContentBadges'
+import DappDetailBodyContentCategories from './DappDetailBodyContentCategories'
 import DappDetailBodyContentCtas from './DappDetailBodyContentCtas'
 import DappDetailBodyContentDescription from './DappDetailBodyContentDescription'
 import DappDetailBodyContentImage from './DappDetailBodyContentImage'
@@ -43,6 +45,7 @@ import DappDetailBodyContentTools from './DappDetailBodyContentTools'
 export default {
   components: {
     DappDetailBodyContentBadges,
+    DappDetailBodyContentCategories,
     DappDetailBodyContentCtas,
     DappDetailBodyContentDescription,
     DappDetailBodyContentImage,
