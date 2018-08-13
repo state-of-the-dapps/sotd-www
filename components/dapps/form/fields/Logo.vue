@@ -41,6 +41,7 @@
           data: []
         }
         validationTimer = setTimeout(() => {
+          this.logo.length && this.logo.length < 3 ? errors.data.push(`URL can't be less than 3 characters`) : ''
           this.logo.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
           this.dispatchErrors(errors, 'dapps')
         }, 750)

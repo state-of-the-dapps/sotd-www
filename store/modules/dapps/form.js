@@ -21,9 +21,11 @@ function initialState () {
       email: [],
       kovan: [],
       license: [],
+      icon: [],
       logo: [],
       mainnet: [],
       name: [],
+      productImage: [],
       rinkeby: [],
       ropsten: [],
       socialChat: [],
@@ -42,10 +44,12 @@ function initialState () {
         rinkeby: { address: '' }
       },
       email: '',
+      icon: '',
       joinSlack: false,
       license: '',
       logo: '',
       name: '',
+      productImage: '',
       socials: {
         facebook: { path: '' },
         twitter: { path: '' },
@@ -286,6 +290,12 @@ const getters = {
   fields: state => {
     return state.fields
   },
+  icon: state => {
+    return state.fields.icon
+  },
+  iconErrors: state => {
+    return state.errors.icon
+  },
   joinSlack: state => {
     return state.fields.joinSlack
   },
@@ -315,6 +325,12 @@ const getters = {
   },
   nameWarnings: state => {
     return state.warnings.name
+  },
+  productImage: state => {
+    return state.fields.productImage
+  },
+  productImageErrors: state => {
+    return state.errors.productImage
   },
   rinkebyErrors: state => {
     return state.errors.rinkeby
