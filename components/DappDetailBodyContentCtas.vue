@@ -16,21 +16,21 @@
       </button>
     </div>
     <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
-      <a :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
+      <a :href="dapp.sites.websiteUrl + '?utm_source=StateOfTheDApps'" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
       </a>
     </div>
     <div v-else>
-      <a v-if="dapp.sites.dappUrl" :href="dapp.sites.dappUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
+      <a v-if="dapp.sites.dappUrl" :href="dapp.sites.dappUrl + '?utm_source=StateOfTheDApps'" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         <span v-else>Launch ÐApp<span v-if="dapp.isNsfw"> (NSFW)</span></span>
       </a>
-      <a v-if="dapp.sites.websiteUrl" :href="dapp.sites.websiteUrl" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
+      <a v-if="dapp.sites.websiteUrl" :href="dapp.sites.websiteUrl + '?utm_source=StateOfTheDApps'" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
     </div>
     <ul v-if="dapp.socials.length" class="social-list">
       <li v-for="(social, index) in dapp.socials" :key="index" class="social-item">
-        <a class="social-link" :href="social.url" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize" @click="trackDappSocial(social.platform, social.url)">
+        <a class="social-link" :href="social.url + '?utm_source=StateOfTheDApps'" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize" @click="trackDappSocial(social.platform, social.url)">
           <component :is="svgSocialComponent(social.platform)"></component>
         </a>
       </li>
