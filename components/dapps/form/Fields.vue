@@ -9,6 +9,8 @@
     <Authors/>
     <License/>
     <Logo/>
+    <Icon/>
+    <ProductImage/>
     <Contracts/>
     <Status/>
     <Social/>
@@ -22,9 +24,11 @@
   import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
   import Description from '~/components/dapps/form/fields/Description.vue'
   import Email from '~/components/dapps/form/fields/Email.vue'
+  import Icon from '~/components/dapps/form/fields/Icon.vue'
   import License from '~/components/dapps/form/fields/License.vue'
   import Logo from '~/components/dapps/form/fields/Logo.vue'
   import Name from '~/components/dapps/form/fields/Name.vue'
+  import ProductImage from '~/components/dapps/form/fields/ProductImage.vue'
   import Social from '~/components/dapps/form/fields/Social.vue'
   import Status from '~/components/dapps/form/fields/Status.vue'
   import Tags from '~/components/dapps/form/fields/Tags.vue'
@@ -38,9 +42,11 @@
       DappUrl,
       Description,
       Email,
+      Icon,
       License,
       Logo,
       Name,
+      ProductImage,
       Social,
       Status,
       Tags,
@@ -139,6 +145,7 @@
       display: block;
       right: 20px;
       top: 30px;
+      font-size: 12px;
     }
 
     /deep/ .help {
