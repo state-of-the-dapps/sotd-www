@@ -1,7 +1,6 @@
 <template>
 <div class="component-DappDetailBodyContentBadges">
   <div class="wrapper">
-    <h4 class="subtitle">Badges</h4>
     <ul class="badge-list">
       <li v-for="(badge, index) in badges" :key="index" class="badge-item">
         <component :is="mapSvgBadge(badge, 'component')" fill="black" :width="16" :height="18"></component>
@@ -81,7 +80,7 @@ export default {
 
 .wrapper {
   margin: 0 10px 24px 10px;
-  padding-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid darken($color--gray, 6%);
 }
 </style>
