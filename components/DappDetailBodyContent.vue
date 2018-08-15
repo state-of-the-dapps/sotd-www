@@ -24,6 +24,7 @@
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
       <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
+      <DappDetailBodyContentMeta :name="dapp.name" :slug="dapp.slug"/>
     </div>
   </div>
 </div>
@@ -36,6 +37,7 @@ import DappDetailBodyContentCategories from './DappDetailBodyContentCategories'
 import DappDetailBodyContentCtas from './DappDetailBodyContentCtas'
 import DappDetailBodyContentDescription from './DappDetailBodyContentDescription'
 import DappDetailBodyContentImage from './DappDetailBodyContentImage'
+import DappDetailBodyContentMeta from './DappDetailBodyContentMeta'
 import DappDetailBodyContentModules from './DappDetailBodyContentModules'
 import DappDetailBodyContentRank from './DappDetailBodyContentRank'
 import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
@@ -49,6 +51,7 @@ export default {
     DappDetailBodyContentCtas,
     DappDetailBodyContentDescription,
     DappDetailBodyContentImage,
+    DappDetailBodyContentMeta,
     DappDetailBodyContentModules,
     DappDetailBodyContentRank,
     DappDetailBodyContentRecommend,
