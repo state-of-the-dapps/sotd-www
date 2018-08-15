@@ -101,11 +101,11 @@ export default {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column; 
-  padding: 15px 20px;; 
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   position: relative;
-  padding-top: 35px;
+  padding-top: 30px;
   color: $color--purple;
 }
 
