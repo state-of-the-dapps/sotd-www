@@ -1,6 +1,10 @@
 <template>
 <li class="component-DappCardListItem" :class="'-' + dapp.status">
   <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
+    <div :class="'-' + dapp.status" class="dapp-icon-wrapper">
+      <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+      <span v-else>{{ dapp.name | firstLetter }}</span>
+    </div>
     <h4 class="title-4">{{ dapp.name }}</h4>
     <p class="description">{{ dapp.teaser }}</p>
     <div class="meta" :class="'-' + dapp.status">
@@ -64,8 +68,27 @@ export default {
   @include dapp-background-gradients
 }
 
+.dapp-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  @include dapp-background-colors
+}
+
+.dapp-icon {
+  border-radius: 50%;
+}
+
 .description {
   max-width: 250px;
+  margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -76,12 +99,13 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column; 
   padding: 15px 20px;; 
   text-align: center;
   text-decoration: none;
   position: relative;
+  padding-top: 35px;
   color: $color--purple;
 }
 
@@ -132,7 +156,6 @@ export default {
   font-weight: 600;
   font-size: 1.5rem;
   margin: 0;
-  margin-top: -14px;
 }
 
 </style>
