@@ -6,6 +6,10 @@
     </h3>
     <ul class="dapp-list">
       <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
+        <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
+          <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+          <span v-else>{{ dapp.name | firstLetter }}</span>
+        </nuxt-link>
         <span class="dapp-name"><nuxt-link @click.native="trackDappView(dapp.slug)" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }">{{ dapp.name }}</nuxt-link></span>
         <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
@@ -103,6 +107,30 @@ export default {
   box-shadow: 0 5px 10px rgba($color--black, .05);
   margin-bottom: 7px;
   padding: 10px;
+}
+
+.dapp-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  border-radius: 4px;
+}
+
+.dapp-icon-wrapper {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  &.has-no-icon {
+    text-transform: uppercase;
+    background: $color--gray;
+  }
 }
 
 .dapp-list {
