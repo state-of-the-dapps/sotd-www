@@ -1,6 +1,6 @@
 <template>
   <li class="component-DappDetailBodyContentModulesContractsAddress">
-    <a @click="trackContract(address, network)" :href="'https://' + (network === 'mainnet' ? '' : network + '.') + 'etherscan.io/address/' + address" class="contract-address-value" target="_blank" rel="noopener noreferrer">
+    <a @click="trackContract(address, network)" :href="'https://' + (network === 'mainnet' ? '' : network + '.') + 'etherscan.io/address/' + address + '?utm_source=StateOfTheDApps'" class="contract-address-value" target="_blank" rel="noopener noreferrer">
       <media :query="{maxWidth: 500}">
         <span>{{ address | truncate(20) }}</span>
       </media>
