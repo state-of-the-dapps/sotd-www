@@ -24,6 +24,13 @@ const dappListDefaultOrder = 'asc'
 
 const dappPromotedSlots = 3
 
+const dappMetaBadges = [
+  'rank',
+  'users',
+  'status',
+  'feedback'
+]
+
 const dappSchema = Object.freeze({
   authors: [],
   badges: [],
@@ -187,6 +194,7 @@ export {
   dappListDefaultLimit,
   dappListDefaultSort,
   dappListDefaultOrder,
+  dappMetaBadges,
   dappPromotedSlots,
   dappRefineStatusOptions,
   dappRefineTabOptions,

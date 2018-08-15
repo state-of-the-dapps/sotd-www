@@ -5,28 +5,10 @@
         <h1 class="title-1">{{ dapp.name }} Resources</h1>
         <h2 style="margin-bottom: 5px;">Badges</h2>
         <p style="margin-top: 0;">Feel free to use these badges on your website</p>
-        <div class="badge-wrapper">
-          <img :src="`https://badges.stateofthedapps.com/${dapp.slug}/rank`"><br>
+        <div v-for="(badge, index) in badges" :key="index" class="badge-wrapper">
+          <img :src="`https://badges.stateofthedapps.com/${dapp.slug}/${badge}`"><br>
           <pre><code>&lt;a href=&quot;https://www.stateofthedapps.com/dapps/{{ dapp.slug }}&quot;&gt;
-  &lt;img src=&quot;https://badges.stateofthedapps.com/{{ dapp.slug }}/rank&quot;&gt;
-&lt;/a&gt;</code></pre>
-        </div>
-        <div class="badge-wrapper">
-          <img :src="`https://badges.stateofthedapps.com/${dapp.slug}/users`"><br>
-          <pre><code>&lt;a href=&quot;https://www.stateofthedapps.com/dapps/{{ dapp.slug }}&quot;&gt;
-  &lt;img src=&quot;https://badges.stateofthedapps.com/{{ dapp.slug }}/users&quot;&gt;
-&lt;/a&gt;</code></pre>
-        </div>
-        <div class="badge-wrapper">
-          <img :src="`https://badges.stateofthedapps.com/${dapp.slug}/status`"><br>
-          <pre><code>&lt;a href=&quot;https://www.stateofthedapps.com/dapps/{{ dapp.slug }}&quot;&gt;
-  &lt;img src=&quot;https://badges.stateofthedapps.com/{{ dapp.slug }}/status&quot;&gt;
-&lt;/a&gt;</code></pre>
-        </div>
-        <div class="badge-wrapper">
-          <img :src="`https://badges.stateofthedapps.com/${dapp.slug}/feedback`"><br>
-          <pre><code>&lt;a href=&quot;https://www.stateofthedapps.com/dapps/{{ dapp.slug }}&quot;&gt;
-  &lt;img src=&quot;https://badges.stateofthedapps.com/{{ dapp.slug }}/feedback&quot;&gt;
+  &lt;img src=&quot;https://badges.stateofthedapps.com/{{ dapp.slug }}/{{badge}}&quot;&gt;
 &lt;/a&gt;</code></pre>
         </div>
       </div>
@@ -42,7 +24,8 @@ import LayoutMain from '~/components/LayoutMain'
 export default {
   data () {
     return {
-      dapp: constants.dappSchema
+      dapp: constants.dappSchema,
+      badges: constants.dappMetaBadges
     }
   },
   asyncData ({ store, params, error }) {
