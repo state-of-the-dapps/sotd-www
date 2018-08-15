@@ -3,6 +3,7 @@
     <div class="wrapper" :class="'-' + dapp.status">
       <DappDetailBodyHeading
         :direct="direct"
+        :iconUrl="dapp.iconUrl"
         :name="dapp.name"
         :status="dapp.status"
         :teaser="dapp.teaser"/>

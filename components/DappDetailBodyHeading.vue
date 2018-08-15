@@ -2,7 +2,11 @@
   <div class="component-DappDetailBodyHeading">
     <ul class="heading-items" :class="'-' + status">
       <li class="heading-item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron :fill="'-' + status" :width="10" :height="10"/></span></li>
-      <li class="heading-item"><h1 class="heading-title">{{ name }}</h1></li>
+      <li class="heading-item">
+        <h1 class="heading-title">
+          <img v-if="iconUrl" class="dapp-icon" :src="iconUrl" width="30" height="30">{{ name }}
+        </h1>
+      </li>
       <li class="heading-item"><span class="heading-tagline">{{ teaser }}</span></li>
     </ul>
   </div>
@@ -18,6 +22,9 @@ export default {
   props: {
     direct: {
       default: false
+    },
+    iconUrl: {
+      required: true
     },
     name: {
       required: true
@@ -53,6 +60,11 @@ export default {
   &:active {
     top: 1px;
   }
+}
+
+.dapp-icon {
+  border-radius: 4px;
+  margin-right: 8px;
 }
 
 .heading-item {
