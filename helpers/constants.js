@@ -26,7 +26,15 @@ const dappPromotedSlots = 3
 
 const dappMetaBadges = [
   'rank',
-  'users',
+  'users_1d',
+  'users_7d',
+  'users_30d',
+  'tx_1d',
+  'tx_7d',
+  'tx_30d',
+  'value_1d',
+  'value_7d',
+  'value_30d',
   'status',
   'feedback'
 ]
