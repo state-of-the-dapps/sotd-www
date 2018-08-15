@@ -89,6 +89,20 @@ button::-moz-focus-inner {
     padding: 0;
 }
 
+pre {
+  margin: 0;
+  background: $color--white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba($color--black, .05);
+}
+
+code {
+  @include font-monospace;
+  margin: 0;
+  padding: 0;
+}
+
 #__nuxt, #__layout {
   height: 100%;
 }

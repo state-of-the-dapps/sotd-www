@@ -8,6 +8,7 @@ const Collections = () => import('~/pages/collections/index.vue').then(m => m.de
 const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
 const DappDetailDirect = () => import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
+const DappDetailMeta = () => import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
@@ -111,6 +112,11 @@ export function createRouter () {
         path: '/dapps/:slug',
         component: DappDetail,
         name: 'dapp-detail'
+      },
+      {
+        path: '/dapps/:slug/meta',
+        component: DappDetailMeta,
+        name: 'dapp-detail-meta'
       },
       {
         path: '/events/submit/new',
