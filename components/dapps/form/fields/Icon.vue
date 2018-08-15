@@ -6,7 +6,7 @@
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Provide a URL to your icon <br>Dimensions must be 192px width by 192px height <br><a href="https://d3colfu6jphe2a.cloudfront.net/dapps/cryptokitties/icon_cryptokitties_c11f219028564b15b5eafc5f249b49054eb45c5597039820e6b03eda563259ec.png" target="_blank">See an example</a></p>
+    <p class="help">Provide a URL to your icon <br>Dimensions must be 192px width by 192px height <br><a href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" target="_blank">View the guidelines</a></p>
   </div>
 </template>
 

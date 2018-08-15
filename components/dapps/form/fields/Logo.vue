@@ -6,7 +6,7 @@
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Provide a URL to your logo</p>
+    <p class="help">Provide a URL to your logo <br>Logo must be 400px width<br><a href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" target="_blank">View the guidelines</a></p>
   </div>
 </template>
 
