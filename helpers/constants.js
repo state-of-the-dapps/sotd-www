@@ -1,16 +1,16 @@
 const dappCategoryTagsMap = Object.freeze({
-  'community': ['social', 'chat', 'message', 'messaging', 'community', 'communication', 'charity', 'donate', 'gift', 'giving', 'marriage', 'relationship', 'sexuality', 'sex'],
-  'energy': ['energy', 'solar', 'green', 'environment'],
+  'social': ['social', 'chat', 'message', 'messaging', 'community', 'communication', 'charity', 'donate', 'gift', 'giving', 'marriage', 'relationship', 'sexuality', 'sex'],
+  'energy': ['energy', 'solar', 'green', 'environment', 'sustainability'],
   'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace', 'trading', 'trade'],
   'finance': ['crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'fundraising', 'money', 'wealth', 'loan', 'borrow'],
-  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'dice'],
+  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'dice', 'chance'],
   'games': ['boardgame', 'game', 'games', 'collectible', 'collectibles', 'video-games'],
-  'governance': ['legal', 'dao', 'organization', 'management', 'governance', 'vote', 'voting', 'poll', 'election'],
+  'governance': ['legal', 'dao', 'organization', 'governance', 'vote', 'voting', 'poll', 'election'],
   'health': ['health', 'medical', 'healthcare', 'fitness'],
   'identity': ['identity', 'kyc', 'identification', 'profiles'],
-  'insurance': ['insurance', 'claims'],
-  'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing'],
-  'property': ['ownership', 'property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
+  'insurance': ['insurance', 'claims', 'indemnity', 'provision'],
+  'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing', 'advertising'],
+  'property': ['property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
   'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup']
 })
 
