@@ -224,6 +224,34 @@ export const trackDappCategory = function (category, slug) {
   return action
 }
 
+export const trackDappMetaClick = function (dapp) {
+  let actionName = 'DApp - Meta Click'
+  let data = {
+    dapp
+  }
+
+  const action = {
+    name: actionName,
+    data
+  }
+
+  return action
+}
+
+export const trackDappMetaView = function (dapp) {
+  let actionName = 'DApp - Meta View'
+  let data = {
+    dapp
+  }
+
+  const action = {
+    name: actionName,
+    data
+  }
+
+  return action
+}
+
 export const trackDappTag = function (name, slug) {
   let actionName = 'DApp - Site'
   let data = {

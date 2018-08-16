@@ -21,6 +21,7 @@
 <script>
 import axios from '~/helpers/axios'
 import * as constants from '~/helpers/constants'
+import { trackDappMetaView } from '~/helpers/mixpanel'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
@@ -43,6 +44,10 @@ export default {
           dapp
         }
       })
+  },
+  mounted () {
+    const action = trackDappMetaView(this.dapp.slug)
+    this.$mixpanel.track(action.name, action.data)
   },
   head () {
     return {
