@@ -1,9 +1,10 @@
 const dappCategoryTagsMap = Object.freeze({
   'social': ['social', 'chat', 'message', 'messaging', 'community', 'communication', 'charity', 'donate', 'gift', 'giving', 'marriage', 'relationship', 'sexuality', 'sex'],
+  'development': ['development', 'coding', 'building', 'code', 'tools', 'deployment', 'programming', 'api', 'solidity'],
   'energy': ['energy', 'solar', 'green', 'environment', 'sustainability'],
   'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace', 'trading', 'trade'],
   'finance': ['crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'fundraising', 'money', 'wealth', 'loan', 'borrow'],
-  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'dice', 'chance'],
+  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'chance'],
   'games': ['boardgame', 'game', 'games', 'collectible', 'collectibles', 'video-games'],
   'governance': ['legal', 'dao', 'organization', 'governance', 'vote', 'voting', 'poll', 'election'],
   'health': ['health', 'medical', 'healthcare', 'fitness'],
@@ -11,7 +12,9 @@ const dappCategoryTagsMap = Object.freeze({
   'insurance': ['insurance', 'claims', 'indemnity', 'provision'],
   'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing', 'advertising'],
   'property': ['property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
-  'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup']
+  'security': ['security', 'protection', 'privacy', 'encryption', 'vpn', 'safety', 'cryptography', 'anti-fraud', 'anti-virus', 'cryptographic', 'kyc'],
+  'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup'],
+  'wallet': ['wallet', 'browser', 'lightwallet', 'multisig', 'keys']
 })
 
 const dappGameTag = 'game'
