@@ -28,6 +28,7 @@ export default {
 @import '~assets/css/settings';
 
 .description {
+  word-break: break-all;
   text-align: center;
   padding: 20px 10px 5px 10px;
   font-size: 1.2rem;
