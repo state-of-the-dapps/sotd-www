@@ -12,7 +12,7 @@ const dappCategoryTagsMap = Object.freeze({
   'insurance': ['insurance', 'claims', 'indemnity', 'provision'],
   'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing', 'advertising'],
   'property': ['property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
-  'security': ['security', 'protection', 'privacy', 'encryption', 'vpn', 'safety', 'cryptography', 'anti-fraud', 'anti-virus', 'cryptographic', 'kyc'],
+  'security': ['security', 'protection', 'privacy', 'encryption', 'vpn', 'safety', 'cryptography', 'anti-fraud', 'anti-virus', 'cryptographic'],
   'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup'],
   'wallet': ['wallet', 'browser', 'lightwallet', 'multisig', 'keys']
 })
