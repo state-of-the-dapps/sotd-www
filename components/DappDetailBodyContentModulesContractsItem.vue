@@ -14,7 +14,7 @@
         :slug="slug"
         :network="network"
         :address="address"/>
-      <li v-if="addresses.length > 10"><span class="show-hide" @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' addresses'  : 'Show ' + this.addresses.slice(visibleLimit).length + ' more addresses'}}</span></li>     
+      <li v-if="addresses.length > 10"><span class="show-hide" @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' contracts'  : 'Show ' + this.addresses.slice(visibleLimit).length + ' more contracts'}}</span></li>     
     </ul>
   </li>
 </template>
