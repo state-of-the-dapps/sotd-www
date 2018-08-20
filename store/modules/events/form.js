@@ -43,7 +43,6 @@ function initialState () {
       email: '',
       hashtag: '',
       highlights: [],
-      joinSlack: false,
       languages: [],
       location: {},
       name: '',
@@ -351,9 +350,6 @@ const getters = {
   },
   highlightsErrors: state => {
     return state.errors.highlights
-  },
-  joinSlack: state => {
-    return state.fields.joinSlack
   },
   languages: state => {
     return state.fields.languages

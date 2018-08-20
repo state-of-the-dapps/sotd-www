@@ -45,7 +45,6 @@ function initialState () {
       },
       email: '',
       icon: '',
-      joinSlack: false,
       license: '',
       logo: '',
       name: '',
@@ -295,9 +294,6 @@ const getters = {
   },
   iconErrors: state => {
     return state.errors.icon
-  },
-  joinSlack: state => {
-    return state.fields.joinSlack
   },
   kovanErrors: state => {
     return state.errors.kovan

@@ -27,10 +27,6 @@
           <label class="checkbox-label" for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
         </div>
         <div class="checkbox-field">
-          <input class="checkbox-input" type="checkbox" id="join-slack-checkbox" v-model="joinSlack">
-          <label class="checkbox-label" for="join-slack-checkbox">Invite me to the SotÐ slack community</label>
-        </div>
-        <div class="checkbox-field">
           <input class="checkbox-input" type="checkbox" id="accepted-terms-checkbox" v-model="acceptedTerms">
           <label class="checkbox-label" for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link @click.native="$mixpanel.track('New DApp - Terms of Service')" to="/terms">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
         </div>
@@ -61,14 +57,6 @@
         },
         set () {
           this.$store.dispatch('events/form/toggleCheckbox', 'subscribeNewsletter')
-        }
-      },
-      joinSlack: {
-        get () {
-          return this.$store.getters['events/form/joinSlack']
-        },
-        set () {
-          this.$store.dispatch('events/form/toggleCheckbox', 'joinSlack')
         }
       },
       acceptedTerms: {
@@ -117,7 +105,6 @@
                 name: this.fields.name,
                 email: this.fields.email,
                 author: this.fields.author,
-                joinSlack: this.fields.joinSlack,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
               this.$store.dispatch('events/form/resetForm')
