@@ -31,7 +31,7 @@
           </div>
           <div class="checkbox-field">
             <input class="checkbox-input" id="image" value="Image" type="checkbox" v-model="checkedActions">
-            <label class="checkbox-label" for="image">Add logo / icon / image</label>
+            <label class="checkbox-label" for="image">Add logo / icon / image URLs (<a href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" target="_blank">view image guidelines here</a>)</label>
           </div>
           <div class="checkbox-field">
             <input class="checkbox-input" id="flag" value="Flag" type="checkbox" v-model="checkedActions">
@@ -127,7 +127,7 @@ export default {
 
 .checkboxes {
     margin: 12px 0 0 0;
-    width: 300px;
+    width: 500px;
   }
 
   .checkbox-field {
