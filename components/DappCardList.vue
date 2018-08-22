@@ -39,6 +39,7 @@ export default {
 }
 
 .component-DappCardListItem {
+  height: 175px;
   width: calc(100% - 20px);
   @include tweakpoint('min-width', 480px) {
     width: calc(50% - 20px);
@@ -47,7 +48,7 @@ export default {
     width: calc(33.33% - 20px);
   }
   @include tweakpoint('min-width', 1250px) {
-    width: calc(16.66% - 20px);
+    width: calc(25% - 20px);
   }
 }
 </style>

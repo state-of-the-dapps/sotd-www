@@ -63,8 +63,11 @@ export default {
 }
 
 .dapp-icon {
-  border-radius: 4px;
+  border-radius: 2px;
+  padding: 2px;
   margin-right: 8px;
+  background: $color--white;
+  box-shadow: 0 5px 15px rgba($color--black, 0.2);
 }
 
 .heading-item {

@@ -3,19 +3,26 @@
   <h3 class="title-3">
     <nuxt-link class="link" :to="{ name: 'collections-slug', params: { slug: collection.slug } }" @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></span></nuxt-link>
   </h3>
-  <DappCardList :dapps="dapps" :sourceCollection="collection.slug" />
+  <media :query="{minWidth: 1250}">
+    <DappCardList :dapps="dapps.slice(0,4)" :sourceCollection="collection.slug" />
+  </media>
+  <media :query="{maxWidth: 1250}">
+    <DappCardList :dapps="dapps" :sourceCollection="collection.slug" />
+  </media>
 </div>
 </template>
 
 <script>
 import { trackCollectionView } from '~/helpers/mixpanel'
 import axios from '~/helpers/axios'
+import Media from 'vue-media'
 import DappCardList from './DappCardList'
 import SvgIconChevron from './SvgIconChevron'
 
 export default {
   components: {
     DappCardList,
+    Media,
     SvgIconChevron
   },
   data () {
