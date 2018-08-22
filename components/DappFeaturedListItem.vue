@@ -4,7 +4,7 @@
     :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
     class="link" 
     @click.native="trackDappView(dapp.slug)">
-    <img class="product-image" :src="dapp.imageKeyVisual"/>
+    <div class="product-image-wrapper"><img class="product-image" :src="dapp.imageKeyVisual"/></div>
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
       <p class="tagline">{{ (dapp.tagline || dapp.teaser) | truncate(50) }}</p>
@@ -66,7 +66,6 @@ export default {
 .link {
   display: block;
   position: relative;
-  height: 100%;
   width: 100%;
   text-decoration: none;
 }
@@ -80,11 +79,11 @@ export default {
   padding: 10px 12px;
   width: 100%;
   text-align: center;
-
 }
 
 .product-image {
-  max-width: 100%;
+  width: 100%;
+  height: 630 / 1200 * 100%;
   display: block;
 }
 
