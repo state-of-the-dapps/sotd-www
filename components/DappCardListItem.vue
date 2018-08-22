@@ -1,21 +1,26 @@
 <template>
-<li class="component-DappCardListItem" :class="'-' + dapp.status">
-  <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
-    <div :class="'-' + dapp.status" class="dapp-icon-wrapper">
-      <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
-      <span v-else>{{ dapp.name | firstLetter }}</span>
-    </div>
-    <h4 class="title-4">{{ dapp.name }}</h4>
-    <p class="description">{{ dapp.teaser }}</p>
-    <div class="meta" :class="'-' + dapp.status">
-      <span class="status">{{ dapp.status }}</span>
-      <DappBadgeList v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges" />
-    </div>
-    <span v-if="dapp.isNew" class="new" :class="'-' + dapp.status">
-      New
-    </span>
-  </nuxt-link>
-</li>
+  <li class="component-DappCardListItem" :class="'-' + dapp.status">
+    <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
+      <div :class="'-' + dapp.status" class="dapp-icon-wrapper">
+        <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+        <span v-else class="dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+      </div>
+      <div class="info-wrapper">
+        <h4 class="title-4">{{ dapp.name }}</h4>
+        <p class="description">{{ dapp.teaser }}</p>
+      </div>
+      <div class="meta" :class="'-' + dapp.status">
+        <span class="status">{{ dapp.status }}</span>
+        <DappBadgeList v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges" />
+      </div>
+      <span v-if="dapp.isNew" class="new">
+        New
+      </span>
+      <span v-if="dapp.categories && dapp.categories.length" class="category">
+        {{ dapp.categories[0] }}<span v-if="dapp.categories.length > 1"> +{{ dapp.categories.length - 1 }}</span>
+      </span>
+    </nuxt-link>
+  </li>
 </template>
 
 <script>
@@ -56,7 +61,6 @@ export default {
 
 .component-DappCardListItem {
   position: relative;
-  height: 200px;
   margin: 10px;
   box-shadow: 0 10px 30px rgba($color--black, .1);
   transition: all .4s ease;
@@ -65,7 +69,7 @@ export default {
   &:hover {
     transform: translateY(-2px);
   }
-  @include dapp-background-gradients
+  background: $color--white;
 }
 
 .dapp-icon-wrapper {
@@ -75,11 +79,21 @@ export default {
   margin-bottom: 10px;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 4px;
   font-weight: 700;
   font-size: 1.3rem;
   text-transform: uppercase;
-  @include dapp-background-colors
+  margin-right: 10px;
+}
+
+.dapp-icon-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: $color--gray;
 }
 
 .dapp-icon {
@@ -88,7 +102,7 @@ export default {
 
 .description {
   max-width: 250px;
-  margin-top: 5px;
+  margin-top: 2px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -100,12 +114,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-direction: column; 
-  padding: 15px 20px;
-  text-align: center;
+  padding: 15px;
   text-decoration: none;
   position: relative;
-  padding-top: 30px;
+  padding-bottom: 28px;
   color: $color--purple;
 }
 
@@ -118,43 +130,38 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 8px;
-  @include dapp-background-colors
+  @include dapp-background-gradients
 }
 
-.new {
+.new, .category {
   position: absolute;
   display: inline-block;
-  top: 0;
-  padding: 4px 6px;
+  top: 10px;
+  left: 10px;
   text-transform: uppercase;
-  font-size: .7rem;
+  font-size: .8rem;
   z-index: 2;
-  @include dapp-text-colors;
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -3px;
-    border-top: 18px solid $color--purple;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    height: 0;
-    width: 37px;
-    z-index: -1;
-  }
+  font-weight: 700;
+  color: $color--purple;
+}
+
+.category {
+  left: auto;
+  right: 10px;
+  font-weight: 600;
 }
 
 .status {
   text-transform: uppercase;
   font-size: .75rem;
-  font-weight: 600;
+  font-weight: 700;
   flex-grow: 1;
   text-align: left;
 }
 
 .title-4 {
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0;
 }
 
