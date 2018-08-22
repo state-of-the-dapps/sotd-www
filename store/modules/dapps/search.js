@@ -1,10 +1,5 @@
-import { generateRandomSeed } from '~/helpers/functions'
 import { dappRefineTabOptions as tabOptions, dappRefineStatusOptions as statusOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
-
-const randomSeed = () => {
-  return generateRandomSeed()
-}
 
 function initialQuery () {
   return {
@@ -12,7 +7,6 @@ function initialQuery () {
     limit: 50,
     offset: 0,
     status: statusOptions[0],
-    seed: randomSeed(),
     tags: [],
     text: ''
   }
