@@ -205,7 +205,7 @@ export default {
 .logo-wrapper {
   text-align: center;
   overflow: hidden;
-  padding-bottom: 8px;
+  padding-bottom: 16px;
 }
 
 .social-item {
