@@ -35,5 +35,9 @@ export default {
 .purple {
   fill: $color--purple;
 }
+
+.gray {
+  fill: $color--gray;
+}
 </style>
 

@@ -11,6 +11,7 @@
     <Logo/>
     <Icon/>
     <ProductImage/>
+    <Platform/>
     <Contracts/>
     <Status/>
     <Social/>
@@ -28,6 +29,7 @@
   import License from '~/components/dapps/form/fields/License.vue'
   import Logo from '~/components/dapps/form/fields/Logo.vue'
   import Name from '~/components/dapps/form/fields/Name.vue'
+  import Platform from '~/components/dapps/form/fields/Platform.vue'
   import ProductImage from '~/components/dapps/form/fields/ProductImage.vue'
   import Social from '~/components/dapps/form/fields/Social.vue'
   import Status from '~/components/dapps/form/fields/Status.vue'
@@ -46,6 +48,7 @@
       License,
       Logo,
       Name,
+      Platform,
       ProductImage,
       Social,
       Status,

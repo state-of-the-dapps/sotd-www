@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
     <div class="item -preview" :class="'-' + status">
-        <div class="new-banner" @click="$mixpanel.track('New DApp - Preview new flag')"><span class="new-message" :class="'-' + status">New</span></div>
         <div class="info">
             <div class="description-wrapper">
                 <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
@@ -48,6 +47,12 @@
       },
       contractsRinkeby () {
         return this.$store.getters['dapps/form/contractRinkeby']
+      },
+      contractsPoaMainnet () {
+        return this.$store.getters['dapps/form/contractsPoaMainnet']
+      },
+      contractsPoaTestnet () {
+        return this.$store.getters['dapps/form/contractsPoaTestnet']
       },
       errorFields () {
         return this.$store.getters['dapps/form/errorFields']
@@ -105,6 +110,8 @@
           data.fields.contractsKovan = this.contractsKovan
           data.fields.contractsRopsten = this.contractsRopsten
           data.fields.contractsRinkeby = this.contractsRinkeby
+          data.fields.contractsPoaMainnet = this.contractsPoaMainnet
+          data.fields.contractsPoaTestnet = this.contractsPoaTestnet
           this.sending = true
           axios.post('dapps', data)
             .then((response) => {
