@@ -1,6 +1,6 @@
 <template>
   <LayoutMain>
-    <div class="page-dapps-detail">
+    <div class="page-dapps-detail" itemscope itemtype="http://schema.org/Product">
       <DappDetail :dapp="dapp" :direct="direct"/>
     </div>
   </LayoutMain>

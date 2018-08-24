@@ -7,7 +7,6 @@
       <media :query="{maxWidth: 1000}">
         <div>
           <DappDetailBodyContentCtas :dapp="dapp"/>
-          <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
       <DappDetailBodyContentModules :dapp="dapp"/>
@@ -16,9 +15,12 @@
       <media :query="{minWidth: 1000}">
         <div>
           <DappDetailBodyContentCtas :dapp="dapp"/>
-          <DappDetailBodyContentRecommend :slug="dapp.slug"/>
         </div>
       </media>
+      <DappDetailBodyContentRecommend
+        :slug="dapp.slug"
+        :rating="dapp.stats.star_rating"
+        :votes="dapp.stats.votes"/>
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
       <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
