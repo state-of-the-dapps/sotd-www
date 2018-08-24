@@ -4,7 +4,7 @@
       <li class="heading-item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron :fill="'-' + status" :width="10" :height="10"/></span></li>
       <li class="heading-item">
         <h1 class="heading-title">
-          <img v-if="iconUrl" class="dapp-icon" :src="iconUrl" width="30" height="30">{{ name }}
+          <img v-if="iconUrl" class="dapp-icon" :src="iconUrl" width="30" height="30"><span itemprop="name">{{ name }}</span>
         </h1>
       </li>
       <li class="heading-item"><span class="heading-tagline">{{ teaser }}</span></li>
