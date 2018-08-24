@@ -1,9 +1,9 @@
 <template>
-<div class="component-DappDetailBodyContentRank">
+<div class="component-DappDetailBodyContentMeta">
   <div class="wrapper">
     <p class="description"><nuxt-link @click.native="trackDappMetaClick(slug)" :to="{name: 'dapp-detail-meta', params: {slug: slug}}">Add this ÐApp's badges to your website</nuxt-link></p>
     <ul class="badges">
-      <li v-for="(badge, index) in badges" :key="index"><nuxt-link @click.native="trackDappMetaClick(slug)" :to="{name: 'dapp-detail-meta', params: {slug: slug}}"><img :src="`https://badges.stateofthedapps.com/${slug}/${badge}`"></nuxt-link></li>
+      <li v-for="(badge, index) in badges" :key="index"><nuxt-link @click.native="trackDappMetaClick(slug)" :to="{name: 'dapp-detail-meta', params: {slug: slug}}" rel="nofollow noindex"><img :src="`https://badges.stateofthedapps.com/${slug}/${badge}`"></nuxt-link></li>
     </ul>
     <p style="margin-top: 5px;">And many more...</p>
   </div>

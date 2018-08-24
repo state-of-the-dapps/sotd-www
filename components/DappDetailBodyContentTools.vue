@@ -1,5 +1,5 @@
 <template>
-<div class="component-DappDetailBodyContentBadges">
+<div class="component-DappDetailBodyContentTools">
   <div class="wrapper">
     <ul class="tool-list">
       <li class="tool-item">
