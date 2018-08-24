@@ -51,6 +51,8 @@ const dappSchema = Object.freeze({
   contractsRinkeby: [],
   contractsRopsten: [],
   contractsAdditionalMainnet: [],
+  contractsPoaMainnet: [],
+  contractsPoaTestnet: [],
   created: '',
   description: '',
   isNew: false,
@@ -60,6 +62,7 @@ const dappSchema = Object.freeze({
   logoUrl: '',
   name: '',
   nofollow: false,
+  platform: '',
   productImage: '',
   relatedDapps: [],
   sites: {
@@ -176,6 +179,8 @@ const daysOfTheWeek = Object.freeze([
   'Sat'
 ])
 
+const dappDefaultPlatform = 'Ethereum'
+
 const eventCategories = Object.freeze([
   'conference',
   'crowdsale',
@@ -213,6 +218,7 @@ export {
   dappSocialComponentMap,
   dappStatuses,
   daysOfTheWeek,
+  dappDefaultPlatform,
   eventCategories,
   eventRefineCategoryOptions,
   feedbackComponentMap,

@@ -1,4 +1,5 @@
 import axios from '~/helpers/axios'
+import { dappDefaultPlatform } from '~/helpers/constants'
 
 function initialState () {
   return {
@@ -25,6 +26,8 @@ function initialState () {
       logo: [],
       mainnet: [],
       name: [],
+      poaMainnet: [],
+      poaTestnet: [],
       productImage: [],
       rinkeby: [],
       ropsten: [],
@@ -39,6 +42,8 @@ function initialState () {
       description: '',
       contracts: {
         mainnet: { address: '' },
+        poaMainnet: { address: '' },
+        poaTestnet: { address: '' },
         ropsten: { address: '' },
         kovan: { address: '' },
         rinkeby: { address: '' }
@@ -48,6 +53,7 @@ function initialState () {
       license: '',
       logo: '',
       name: '',
+      platform: dappDefaultPlatform,
       productImage: '',
       socials: {
         facebook: { path: '' },
@@ -265,6 +271,16 @@ const getters = {
     let contracts = contractsString.split('\n')
     return contracts
   },
+  contractsPoaMainnet: state => {
+    let contractsString = state.fields.contracts.poaMainnet.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
+  contractsPoaTestnet: state => {
+    let contractsString = state.fields.contracts.poaTestnet.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
   dappUrl: state => {
     return state.fields.siteUrls.dapp
   },
@@ -321,6 +337,15 @@ const getters = {
   },
   nameWarnings: state => {
     return state.warnings.name
+  },
+  platform: state => {
+    return state.fields.platform
+  },
+  poaMainnetErrors: state => {
+    return state.errors.poaMainnet
+  },
+  poaTestnetErrors: state => {
+    return state.errors.poaTestnet
   },
   productImage: state => {
     return state.fields.productImage

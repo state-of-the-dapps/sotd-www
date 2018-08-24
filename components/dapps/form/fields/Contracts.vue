@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p class="heading">Contract addresses</p>
-    <ul class="list">
+    <p class="heading">{{ platform }} contract addresses</p>
+    <ul v-if="platform === 'Ethereum'" class="list">
       <li class="item">
         <div class="name">Mainnet</div>
         <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
@@ -39,6 +39,26 @@
         </div>
       </li>
     </ul>
+    <ul v-if="platform === 'POA'" class="list">
+      <li class="item">
+        <div class="name">Mainnet</div>
+        <div class="input-wrapper" :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''">
+          <textarea class="input" @input="validate('poaMainnet')" v-model="poaMainnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
+          <ul v-if="poaMainnetErrors && poaMainnetErrors.length > 0" class="error-list -contracts">
+            <li v-for="(error, index) in poaMainnetErrors" :key="index" class="error-item">{{ error }}</li>
+          </ul>
+        </div>
+      </li>
+      <li class="item">
+        <div class="name">Testnet</div>
+        <div class="input-wrapper" :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''">
+          <textarea class="input" @input="validate('poaTestnet')" v-model="poaTestnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
+          <ul v-if="poaTestnetErrors && poaTestnetErrors.length > 0" class="error-list -contracts">
+            <li v-for="(error, index) in poaTestnetErrors" :key="index" class="error-item">{{ error }}</li>
+          </ul>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -49,6 +69,9 @@
 
   export default {
     computed: {
+      platform () {
+        return this.$store.getters['dapps/form/platform']
+      },
       contracts () {
         return this.$store.getters['dapps/form/contracts']
       },
@@ -111,6 +134,36 @@
       },
       rinkebyErrors () {
         return this.$store.getters['dapps/form/rinkebyErrors']
+      },
+      poaMainnet: {
+        get () {
+          return this.$store.getters['dapps/form/contracts'].poaMainnet.address
+        },
+        set (value) {
+          const field = {
+            name: 'poaMainnet',
+            value: value
+          }
+          this.$store.dispatch('dapps/form/setContract', field)
+        }
+      },
+      poaMainnetErrors () {
+        return this.$store.getters['dapps/form/poaMainnetErrors']
+      },
+      poaTestnet: {
+        get () {
+          return this.$store.getters['dapps/form/contracts'].poaTestnet.address
+        },
+        set (value) {
+          const field = {
+            name: 'poaTestnet',
+            value: value
+          }
+          this.$store.dispatch('dapps/form/setContract', field)
+        }
+      },
+      poaTestnetErrors () {
+        return this.$store.getters['dapps/form/poaTestnetErrors']
       }
     },
     methods: {
