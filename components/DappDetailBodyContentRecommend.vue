@@ -1,7 +1,7 @@
 <template>
 <div class="component-DappDetailBodyContentRecommend" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
   <div class="wrapper">
-    <p class="description" itemprop="reviewCount" :content="votes">Would you recommend this ÐApp to a friend?</p>
+    <p class="description" itemprop="ratingCount" :content="votes">Would you recommend this ÐApp to a friend?</p>
     <div class="reaction-wrapper" itemprop="ratingValue" :content="rating">
       <ul class="reaction-list" v-if="!hasSubmitted">
         <li class="reaction-item" :class="currentReaction == 'positive' ? 'is-active' : ''" @click="submitDappFeedback('positive')">
