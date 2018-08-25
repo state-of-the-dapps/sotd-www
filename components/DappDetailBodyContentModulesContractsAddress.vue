@@ -1,6 +1,11 @@
 <template>
   <li class="component-DappDetailBodyContentModulesContractsAddress">
-    <a @click="trackContract(address, network)" :href="'https://' + (network === 'mainnet' ? '' : network + '.') + 'etherscan.io/address/' + address + '?utm_source=StateOfTheDApps'" class="contract-address-value" target="_blank" rel="noopener noreferrer">
+    <a
+      @click="trackContract(address, network, platform)"
+      :href="addressLink"
+      class="contract-address-value"
+      target="_blank"
+      rel="noopener noreferrer">
       <media :query="{maxWidth: 500}">
         <span>{{ address | truncate(20) }}</span>
       </media>
@@ -25,6 +30,17 @@ export default {
       copyText: 'Copy'
     }
   },
+  computed: {
+    addressLink () {
+      let addressLink = ''
+      if (this.platform === 'Ethereum') {
+        addressLink = 'https://' + (this.network === 'mainnet' ? '' : this.network + '.') + 'etherscan.io/address/' + this.address + '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'POA') {
+        addressLink = 'https://' + (this.network === 'mainnet' ? '' : 'sokol.') + 'poaexplorer.com/address/' + (this.network === 'mainnet' ? '' : 'search/') + this.address + '?utm_source=StateOfTheDApps'
+      }
+      return addressLink
+    }
+  },
   methods: {
     copy () {
       this.copyText = 'Copied!'
@@ -32,14 +48,14 @@ export default {
         this.copyText = 'Copy'
       }, 1500)
     },
-    trackContract (address, network) {
+    trackContract (address, network, platform) {
       const dapp = this.slug
-      const action = trackDappContract(address, dapp, network)
+      const action = trackDappContract(address, dapp, network, platform)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackContractCopy (address, network) {
+    trackContractCopy (address, network, platform) {
       const dapp = this.slug
-      const action = trackDappContractCopy(address, dapp, network)
+      const action = trackDappContractCopy(address, dapp, network, platform)
       this.$mixpanel.track(action.name, action.data)
     }
   },
@@ -48,6 +64,9 @@ export default {
       required: true
     },
     network: {
+      required: true
+    },
+    platform: {
       required: true
     },
     slug: {
