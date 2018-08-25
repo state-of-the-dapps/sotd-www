@@ -1,5 +1,5 @@
 <template>
-<div class="component-DappDetailBodyContentModulesUsers">
+<div class="component-DappDetailBodyContentModulesStats">
   <h4 class="subtitle">{{ title }}</h4>
   <div class="sparkline">
     <trend

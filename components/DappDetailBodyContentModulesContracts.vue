@@ -21,6 +21,16 @@
       :addresses="ropsten"
       network="ropsten"
       :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem
+      v-if="poaMainnet.length"
+      :addresses="poaMainnet"
+      network="POA Mainnet"
+      :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem
+      v-if="poaTestnet.length"
+      :addresses="poaTestnet"
+      network="POA Testnet"
+      :slug="slug"/>
   </ul>
 </div>
 </template>
@@ -46,6 +56,14 @@ export default {
       required: true
     },
     ropsten: {
+      type: Array,
+      required: true
+    },
+    poaMainnet: {
+      type: Array,
+      required: true
+    },
+    poaTestnet: {
       type: Array,
       required: true
     },
