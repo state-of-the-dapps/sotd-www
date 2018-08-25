@@ -56,7 +56,7 @@
             :monthly="dapp.stats.value_30d"
             :sparkline="dapp.sparklines.value"
             :quarterly="dapp.stats.value_90d"
-            title="Value (ETH)"
+            title="Volume (ETH)"
             type="numbers"
             :weekly="dapp.stats.value_7d"/>
           <br v-if="dapp.stats.value_30d && dapp.stats.poa_value_30d">
@@ -66,7 +66,7 @@
             :monthly="dapp.stats.poa_value_30d"
             :sparkline="dapp.sparklines.poa_value"
             :quarterly="dapp.stats.poa_value_90d"
-            title="Value (POA)"
+            title="Volume (POA)"
             type="numbers"
             :weekly="dapp.stats.poa_value_7d"/>         
         </div>
