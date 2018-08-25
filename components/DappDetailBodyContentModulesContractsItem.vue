@@ -1,17 +1,19 @@
 <template>
   <li class="contract-item">
-    <h4 class="contract-name">{{ network | capitalize }} contract<span v-if="addresses.length > 1">s</span></h4>
+    <h4 class="contract-name">{{ network | capitalize }} contract<span v-if="addresses.length > 1">s</span> ({{ platform }})</h4>
     <ul class="contract-addresses">
       <DappDetailBodyContentModulesContractsAddress
         v-for="(address, index) in visibleAddresses"
         :key="index"
         :slug="slug"
+        :platform="platform"
         :network="network"
         :address="address"/>
       <DappDetailBodyContentModulesContractsAddress
         v-for="(address, index) in hiddenAddresses"
         :key="index + 10"
         :slug="slug"
+        :platform="platform"
         :network="network"
         :address="address"/>
       <li v-if="addresses.length > 10"><span class="show-hide" @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' contracts'  : 'Show ' + this.addresses.slice(visibleLimit).length + ' more contracts'}}</span></li>     
@@ -47,6 +49,9 @@ export default {
       required: true
     },
     network: {
+      required: true
+    },
+    platform: {
       required: true
     },
     slug: {

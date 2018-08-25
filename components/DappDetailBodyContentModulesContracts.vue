@@ -4,22 +4,38 @@
     <DappDetailBodyContentModulesContractsItem
       v-if="mainnet.length"
       :addresses="mainnet"
+      platform="Ethereum"
       network="mainnet"
       :slug="slug"/>
     <DappDetailBodyContentModulesContractsItem
       v-if="kovan.length"
       :addresses="kovan"
+      platform="Ethereum"
       network="kovan"
       :slug="slug"/>
     <DappDetailBodyContentModulesContractsItem
       v-if="rinkeby.length"
       :addresses="rinkeby"
+      platform="Ethereum"
       network="rinkeby"
       :slug="slug"/>
     <DappDetailBodyContentModulesContractsItem
       v-if="ropsten.length"
       :addresses="ropsten"
+      platform="Ethereum"
       network="ropsten"
+      :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem
+      v-if="poaMainnet.length"
+      :addresses="poaMainnet"
+      platform="POA"
+      network="mainnet"
+      :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem
+      v-if="poaTestnet.length"
+      :addresses="poaTestnet"
+      platform="POA"
+      network="testnet"
       :slug="slug"/>
   </ul>
 </div>
@@ -46,6 +62,14 @@ export default {
       required: true
     },
     ropsten: {
+      type: Array,
+      required: true
+    },
+    poaMainnet: {
+      type: Array,
+      required: true
+    },
+    poaTestnet: {
       type: Array,
       required: true
     },

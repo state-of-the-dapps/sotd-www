@@ -50,7 +50,8 @@
             :weekly="dapp.stats.tx_7d"/>
         </div>
         <div class="module">
-          <DappDetailBodyContentModulesStats 
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.platform === 'Ethereum'" 
             :daily="dapp.stats.value_1d"
             :monthly="dapp.stats.value_30d"
             :sparkline="dapp.sparklines.value"
@@ -58,15 +59,27 @@
             title="Value (ETH)"
             type="numbers"
             :weekly="dapp.stats.value_7d"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.platform === 'POA'" 
+            :daily="dapp.stats.poa_value_1d"
+            :monthly="dapp.stats.poa_value_30d"
+            :sparkline="dapp.sparklines.value"
+            :quarterly="dapp.stats.poa_value_90d"
+            title="Value (POA)"
+            type="numbers"
+            :weekly="dapp.stats.poa_value_7d"/>         
         </div>
       </div>
-      <div class="module-wrapper -tier-5" v-if="dapp.contracts.length">
+      <div class="module-wrapper -tier-5"
+        v-if="dapp.contracts.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
             :mainnet="dapp.contractsMainnet"
             :kovan="dapp.contractsKovan"
             :rinkeby="dapp.contractsRinkeby"
             :ropsten="dapp.contractsRopsten"
+            :poa-mainnet="dapp.contractsPoaMainnet"
+            :poa-testnet="dapp.contractsPoaTestnet"
             :slug="dapp.slug"/>
         </div>
       </div>

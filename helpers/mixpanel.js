@@ -41,12 +41,13 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
-export const trackDappContract = function (address, dapp, network) {
+export const trackDappContract = function (address, dapp, network, platform) {
   let name = 'DApp - Contract'
   let data = {
     address,
     dapp,
-    network
+    network,
+    platform
   }
 
   const action = {
@@ -57,12 +58,13 @@ export const trackDappContract = function (address, dapp, network) {
   return action
 }
 
-export const trackDappContractCopy = function (address, dapp, network) {
+export const trackDappContractCopy = function (address, dapp, network, platform) {
   let name = 'DApp - Contract Copy'
   let data = {
     address,
     dapp,
-    network
+    network,
+    platform
   }
 
   const action = {
