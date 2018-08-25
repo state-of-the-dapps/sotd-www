@@ -51,7 +51,7 @@
         </div>
         <div class="module">
           <DappDetailBodyContentModulesStats
-            v-if="dapp.platform === 'Ethereum'" 
+            v-if="dapp.stats.value_30d" 
             :daily="dapp.stats.value_1d"
             :monthly="dapp.stats.value_30d"
             :sparkline="dapp.sparklines.value"
@@ -59,8 +59,9 @@
             title="Value (ETH)"
             type="numbers"
             :weekly="dapp.stats.value_7d"/>
+          <br v-if="dapp.stats.value_30d && dapp.stats.poa_value_30d">
           <DappDetailBodyContentModulesStats
-            v-if="dapp.platform === 'POA'" 
+            v-if="dapp.stats.poa_value_30d" 
             :daily="dapp.stats.poa_value_1d"
             :monthly="dapp.stats.poa_value_30d"
             :sparkline="dapp.sparklines.poa_value"
