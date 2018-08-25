@@ -63,7 +63,7 @@
             v-if="dapp.platform === 'POA'" 
             :daily="dapp.stats.poa_value_1d"
             :monthly="dapp.stats.poa_value_30d"
-            :sparkline="dapp.sparklines.value"
+            :sparkline="dapp.sparklines.poa_value"
             :quarterly="dapp.stats.poa_value_90d"
             title="Value (POA)"
             type="numbers"
