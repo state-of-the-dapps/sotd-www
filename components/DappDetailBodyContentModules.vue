@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="module-wrapper -tier-4" v-if="stats">
-        <div class="module -dev">
+        <div class="module -dev" v-if="dapp.stats.mau">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.dau"
             :monthly="dapp.stats.mau"
@@ -39,7 +39,7 @@
             title="Active users"
             :weekly="dapp.stats.wau"/>
         </div>
-        <div class="module">
+        <div class="module" v-if="dapp.stats.tx_30d">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.tx_1d"
             :monthly="dapp.stats.tx_30d"
@@ -49,7 +49,7 @@
             type="numbers"
             :weekly="dapp.stats.tx_7d"/>
         </div>
-        <div class="module">
+        <div class="module" v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d" 
             :daily="dapp.stats.value_1d"
