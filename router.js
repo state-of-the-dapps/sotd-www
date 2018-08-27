@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const About = () => import('~/pages/About.vue').then(m => m.default || m)
 const Collections = () => import('~/pages/collections/index.vue').then(m => m.default || m)
 const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
@@ -17,16 +17,16 @@ const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || 
 const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
-const Home = () => import('~/pages/home.vue').then(m => m.default || m)
+const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const MyList = () => import('~/pages/MyList.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
-const PromotedDapps = () => import('~/pages/promoted_dapps.vue').then(m => m.default || m)
-const PromotedDappsDirect = () => import('~/pages/promoted_dapps_direct.vue').then(m => m.default || m)
+const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
+const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
 const PublicList = () => import('~/pages/PublicList.vue').then(m => m.default || m)
 const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
-const Terms = () => import('~/pages/terms.vue').then(m => m.default || m)
-const What = () => import('~/pages/what.vue').then(m => m.default || m)
+const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
+const What = () => import('~/pages/What.vue').then(m => m.default || m)
 
 if (process.client) {
   window.history.scrollRestoration = 'manual'

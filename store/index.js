@@ -57,6 +57,9 @@ const getters = {
   statEventCount: state => {
     return state.stats.eventCount
   },
+  statPlatforms: state => {
+    return state.stats.platforms
+  },
   userEntryRoute: state => {
     return state.user.entryRoute
   }
@@ -73,12 +76,7 @@ const mutations = {
     state.site.section = section
   },
   SET_STATS (state, data) {
-    state.stats.dappContractCount = data.dappContractCount || 0
-    state.stats.dappCount = data.dappCount || 0
-    state.stats.dappDau = data.dappDau || 0
-    state.stats.dappTx24Hr = data.dappTx24Hr || 0
-    state.stats.dappVol24Hr = data.dappVol24Hr || 0
-    state.stats.eventCount = data.eventCount || 0
+    state.stats = data
   },
   SET_USER_ENTRY_ROUTE (state, path) {
     state.user.entryRoute = path
@@ -101,7 +99,8 @@ const state = () => ({
     dappDau: 0,
     dappTx24Hr: 0,
     dappVol24Hr: 0,
-    eventCount: 0
+    eventCount: 0,
+    platforms: []
   },
   user: {
     entryRoute: ''
