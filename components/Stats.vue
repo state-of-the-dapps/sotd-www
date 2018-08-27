@@ -173,7 +173,7 @@ export default {
 .platform-heading, .platform-data {
   padding: 10px 15px;
   &.-platform {
-    background: rgba($color--black, .1);
+    background: rgba($color--black, .075);
     text-align: left;
   }
 }
