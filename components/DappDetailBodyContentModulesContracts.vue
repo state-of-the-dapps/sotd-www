@@ -35,7 +35,7 @@
       v-if="poaTestnet.length"
       :addresses="poaTestnet"
       platform="POA"
-      network="testnet"
+      network="Sokol Testnet"
       :slug="slug"/>
   </ul>
 </div>
