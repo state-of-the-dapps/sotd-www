@@ -3,9 +3,9 @@
     <div v-if="!submitted" class="step-1">
       <h1 class="title-1">Request a change to {{ modalProps.dapp }}</h1>
       <div class="fields">
-        <h3 class="title-3">Your name</h3>
+        <h3 class="title-3">Your name <span class="required">required</span></h3>
         <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="name"/></div>
-        <h3 class="title-3">Your email</h3>
+        <h3 class="title-3">Your email <span class="required">required</span></h3>
         <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
         <h3 class="title-3">I want to...</h3>
         <div class="checkboxes">
@@ -39,10 +39,10 @@
           </div>
         </div>
         <br>
-        <h3 class="title-3">Tell us what should be changed on {{ modalProps.dapp }}</h3>
+        <h3 class="title-3">Tell us what should be changed on {{ modalProps.dapp }}  <span class="required">required</span></h3>
         <div class="field"><textarea class="input-textarea" placeholder="Enter your suggestions here" v-model="suggestions"/></div>
       </div>
-      <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button :class="emailIsValid ? '' : 'not-ready'" class="cta" @click="submit">Submit <span v-if="!emailIsValid">(enter a valid email first)</span></button></p>
+      <p class="cta-wrapper"><button @click="close" class="button -cancel">Cancel</button> <button :class="formIsValid ? '' : 'not-ready'" class="cta" @click="submit">Submit</button></p>
     </div>
     <div v-if="submitted " class="step-2">
       <h1 class="title-1">Thanks!</h1>
@@ -73,7 +73,10 @@ export default {
   computed: {
     ...mapGetters([
       'userEntryRoute'
-    ])
+    ]),
+    formIsValid () {
+      return this.emailIsValid && this.name.length && this.suggestions.length
+    }
   },
   props: ['modalProps'],
   methods: {
@@ -126,52 +129,52 @@ export default {
 }
 
 .checkboxes {
-    margin: 12px 0 0 0;
-    width: 500px;
-  }
+  margin: 12px 0 0 0;
+  width: 500px;
+}
 
-  .checkbox-field {
-    margin-top: 9px;
-    display: flex;
-  }
+.checkbox-field {
+  margin-top: 9px;
+  display: flex;
+}
 
-  .checkbox-input {
-    display: none;
-    position: relative;
-    &:checked + .checkbox-label:after {
-      transform: scale(1);
-    }
+.checkbox-input {
+  display: none;
+  position: relative;
+  &:checked + .checkbox-label:after {
+    transform: scale(1);
   }
+}
 
-  .checkbox-label {
-    padding-left: 22px;
-    position: relative;
-    display: flex;
-    &:before {
-      cursor: pointer;
-      content: '';
-      display: block;
-      width: 13px;
-      height: 13px;
-      border: 1px solid $color--black;
-      position: absolute;
-      top: 1px;
-      left: 0;
-    }
-    &:after {
-      cursor: pointer;
-      content: '';
-      display: block;
-      background: $color--black;
-      transition: transform .1s ease;
-      transform: scale(0);
-      width: 9px;
-      height: 9px;
-      position: absolute;
-      top: 3px;
-      left: 2px;
-    }
+.checkbox-label {
+  padding-left: 22px;
+  position: relative;
+  display: flex;
+  &:before {
+    cursor: pointer;
+    content: '';
+    display: block;
+    width: 13px;
+    height: 13px;
+    border: 1px solid $color--black;
+    position: absolute;
+    top: 1px;
+    left: 0;
   }
+  &:after {
+    cursor: pointer;
+    content: '';
+    display: block;
+    background: $color--black;
+    transition: transform .1s ease;
+    transform: scale(0);
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: 3px;
+    left: 2px;
+  }
+}
 
 .cta {
   background: $color--black;
@@ -214,6 +217,15 @@ export default {
 
 .message {
   font-size: 1.1rem;
+}
+
+.required {
+  color: $color--required;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  top: -5px;
 }
 
 .title-1 {
