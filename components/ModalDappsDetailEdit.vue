@@ -89,7 +89,7 @@ export default {
       this.$store.dispatch('setSiteModal', modal)
     },
     submit () {
-      if (this.emailIsValid) {
+      if (this.formIsValid) {
         axios
           .put(`dapps/${this.modalProps.slug}`, {
             fields: {
