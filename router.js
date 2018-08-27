@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const About = () => import('~/pages/about.vue').then(m => m.default || m)
+const About = () => import('~/pages/About.vue').then(m => m.default || m)
 const Collections = () => import('~/pages/collections/index.vue').then(m => m.default || m)
 const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
 const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
