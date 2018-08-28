@@ -168,6 +168,12 @@ export default {
 
 .platform-heading {
   font-weight: 400;
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
 }
 
 .platform-heading, .platform-data {
@@ -178,6 +184,12 @@ export default {
 }
 
 .platform-data {
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
   &.-platform {
     text-transform: uppercase;
     font-size: 0.9rem;
