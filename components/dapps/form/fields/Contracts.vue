@@ -50,7 +50,7 @@
         </div>
       </li>
       <li class="item">
-        <div class="name">Testnet</div>
+        <div class="name">Sokol Testnet</div>
         <div class="input-wrapper" :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''">
           <textarea class="input" @input="validate('poaTestnet')" v-model="poaTestnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
           <ul v-if="poaTestnetErrors && poaTestnetErrors.length > 0" class="error-list -contracts">
