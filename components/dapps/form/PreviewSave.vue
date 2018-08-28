@@ -13,7 +13,7 @@
     <div class="checkboxes">
       <div class="checkbox-field">
         <input class="checkbox-input" type="checkbox" id="promotion-interest" v-model="promotionInterest">
-        <label class="checkbox-label" for="promotion-interest">I'm interested in promoting this ÐApp</label>
+        <label class="checkbox-label" for="promotion-interest">I'm interested in promoting this ÐApp to attract more users</label>
       </div>
       <div class="checkbox-field">
         <input class="checkbox-input" type="checkbox" id="subscribe-newsletter-checkbox" v-model="subscribeNewsletter">
