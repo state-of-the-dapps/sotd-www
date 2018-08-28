@@ -159,15 +159,23 @@ export default {
   text-align: right;
   margin: 0 auto;
   border-collapse: collapse;
-  width: 800px;
+  width: 900px;
 }
 
 .platform-heading-row {
   border-bottom: 1px solid $color--black;
 }
 
+.platform-heading, .platform-data {
+  padding: 5px 15px;
+  &.-platform {
+    text-align: left;
+  }
+}
+
 .platform-heading {
   font-weight: 400;
+  padding-bottom: 10px;
   &:first-child {
     padding-left: 0;
   }
@@ -176,14 +184,9 @@ export default {
   }
 }
 
-.platform-heading, .platform-data {
-  padding: 10px 15px;
-  &.-platform {
-    text-align: left;
-  }
-}
-
 .platform-data {
+  font-family: 'Dharma-Gothic-Regular';
+  font-size: 3.5rem;
   &:first-child {
     padding-left: 0;
   }
@@ -192,8 +195,6 @@ export default {
   }
   &.-platform {
     text-transform: uppercase;
-    font-size: 0.9rem;
-    font-weight: 700;
   }
 }
 
