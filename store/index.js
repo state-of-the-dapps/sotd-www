@@ -39,6 +39,9 @@ const getters = {
   siteModal: state => {
     return state.site.modal
   },
+  statCategories: state => {
+    return state.stats.categories
+  },
   statDappContractCount: state => {
     return state.stats.dappContractCount
   },
@@ -59,6 +62,9 @@ const getters = {
   },
   statPlatforms: state => {
     return state.stats.platforms
+  },
+  statStatuses: state => {
+    return state.stats.statuses
   },
   userEntryRoute: state => {
     return state.user.entryRoute
@@ -94,13 +100,15 @@ const state = () => ({
     }
   },
   stats: {
+    categories: [],
     dappContractCount: 0,
     dappCount: 0,
     dappDau: 0,
     dappTx24Hr: 0,
     dappVol24Hr: 0,
     eventCount: 0,
-    platforms: []
+    platforms: [],
+    statuses: []
   },
   user: {
     entryRoute: ''

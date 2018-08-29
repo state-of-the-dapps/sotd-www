@@ -1,13 +1,13 @@
 <template>
   <div class="component-StatsBarChart">
     <ul class="stat-list">
-      <li v-for="(category, index) in categories" :key="index" class="stat-item">
+      <li v-for="(status, index) in statuses" :key="index" class="stat-item">
         <div class="stat-item-field -label">
-          <h3 class="label">{{ category.name }}</h3>
+          <h3 class="label">{{ status.status | formatDappStatus | capitalize }}</h3>
         </div>
         <div class="stat-item-field -value">
-          <div class="value" :style="'width:' + (category.dappCount / maxCount) * 100 + '%;'">          
-            <p class="count">{{ category.dappCount | abbreviateNumber(2) || 0 }}</p>
+          <div :class="'-' + status.status" class="value" :style="'width:' + (status.dappCount / maxCount) * 100 + '%;'">          
+            <p class="count">{{ status.dappCount | abbreviateNumber(2) || 0 }}</p>
           </div>
         </div>
         <div class="spacer"/>
@@ -17,32 +17,20 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
-
 export default {
   computed: {
     maxCount () {
       let count = 0
-      let categoryCounts = []
-      for (var category of this.categories) {
-        categoryCounts.push(category.dappCount)
+      let statusCounts = []
+      for (var status of this.statuses) {
+        statusCounts.push(status.dappCount)
       }
-      count = Math.max(...categoryCounts)
+      count = Math.max(...statusCounts)
       return count
     }
   },
-  data () {
-    return {
-      categories: []
-    }
-  },
-  mounted () {
-    axios
-      .get('categories')
-      .then(response => {
-        const data = response.data
-        this.categories = data.items
-      })
+  props: {
+    statuses: Array
   }
 }
 </script>
@@ -103,6 +91,6 @@ export default {
 .value {
   min-width: 30px;
   height: 50px;
-  background: $gradient--dapp-live;
+  @include dapp-background-gradients;
 }
 </style>

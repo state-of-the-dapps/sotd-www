@@ -34,46 +34,79 @@
         </div>
       </li>
     </ul>
+    <h2 class="heading-2">Categories</h2>
+    <div class="table-wrapper">
+      <table class="table">
+        <thead class="table-headings">
+          <tr class="table-heading-row">
+            <th class="table-heading -name">Category</th>
+            <th class="table-heading">Total ÐApps</th>
+            <th class="table-heading">
+              <span>Monthly active users</span>
+              <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
+            </th>
+            <th class="table-heading">
+              <span>Transactions (30d)</span>
+              <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
+            </th>
+            <th class="table-heading"># of contracts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(category, index) in statCategories"
+            :key="index"
+            class="table-row">
+            <td class="table-data -name">{{ category.category }}</td>
+            <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
+            <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ category.dappContractCount | abbreviateNumber(2) || 0 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <h2 class="heading-2">Platforms</h2>
-    <div class="platforms-wrapper">
-      <table class="platforms">
-        <thead class="platform-headings">
-          <tr class="platform-heading-row">
-            <th class="platform-heading -platform">Platform</th>
-            <th class="platform-heading">Total ÐApps</th>
-            <th class="platform-heading">
+    <div class="table-wrapper">
+      <table class="table">
+        <thead class="table-headings">
+          <tr class="table-heading-row">
+            <th class="table-heading -name">Platform</th>
+            <th class="table-heading">Total ÐApps</th>
+            <th class="table-heading">
               <span>Daily active users</span>
               <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
             </th>
-            <th class="platform-heading">
-              <span>24 hr transactions</span>
+            <th class="table-heading">
+              <span>Transactions (24hr)</span>
               <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
             </th>
-            <th class="platform-heading">
-              <span>24 hr volume</span>
-              <Help text="Transaction volume to ÐApp contracts" :bottom="true"/>
+            <th class="table-heading">
+              <span>Volume (24hr)</span>
+              <Help text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly" :bottom="true"/>
             </th>
-            <th class="platform-heading"># of contracts</th>
+            <th class="table-heading"># of contracts</th>
           </tr>
         </thead>
         <tbody>
           <tr
             v-for="(platform, index) in statPlatforms"
             :key="index"
-            class="platform-row">
-            <td class="platform-data -platform">{{ platform.platform }}</td>
-            <td class="platform-data">{{ platform.dappCount.toLocaleString() }}</td>
-            <td class="platform-data">{{ platform.dappDau | abbreviateNumber(2) || 0  }}</td>
-            <td class="platform-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0  }}</td>
-            <td class="platform-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0  }}</td>
-            <td class="platform-data">{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</td>
+            class="table-row">
+            <td class="table-data -name">{{ platform.platform }}</td>
+            <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
+            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <h2 class="heading-2">Categories</h2>
+    <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
-      <StatsBarChart/>
+      <StatsStatusBarChart
+        :statuses="statStatuses"/>
     </div>
   </div>
 </template>
@@ -81,21 +114,23 @@
 <script>
 import { mapGetters } from 'vuex'
 import Help from './Help'
-import StatsBarChart from './StatsBarChart'
+import StatsStatusBarChart from './StatsStatusBarChart'
 
 export default {
   components: {
     Help,
-    StatsBarChart
+    StatsStatusBarChart
   },
   computed: {
     ...mapGetters([
+      'statCategories',
       'statDappContractCount',
       'statDappCount',
       'statDappDau',
       'statDappTx24Hr',
       'statDappVol24Hr',
-      'statPlatforms'
+      'statPlatforms',
+      'statStatuses'
     ])
   }
 }
@@ -151,29 +186,29 @@ export default {
   margin-bottom: 2rem;
 }
 
-.platforms-wrapper {
+.table-wrapper {
   overflow-x: scroll;
 }
 
-.platforms {
+.table {
   text-align: right;
   margin: 0 auto;
   border-collapse: collapse;
   width: 900px;
 }
 
-.platform-heading-row {
+.table-heading-row {
   border-bottom: 1px solid $color--black;
 }
 
-.platform-heading, .platform-data {
+.table-heading, .table-data {
   padding: 5px 15px;
-  &.-platform {
+  &.-name {
     text-align: left;
   }
 }
 
-.platform-heading {
+.table-heading {
   font-weight: 400;
   padding-bottom: 10px;
   &:first-child {
@@ -184,7 +219,7 @@ export default {
   }
 }
 
-.platform-data {
+.table-data {
   font-family: 'Dharma-Gothic-Regular';
   font-size: 3.5rem;
   &:first-child {
@@ -193,12 +228,12 @@ export default {
   &:last-child {
     padding-right: 0;
   }
-  &.-platform {
+  &.-name {
     text-transform: uppercase;
   }
 }
 
-.platform-row {
+.table-row {
   border-bottom: 1px solid rgba($color--black, .2);
 }
 
