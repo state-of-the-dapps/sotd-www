@@ -39,6 +39,9 @@ const getters = {
   siteModal: state => {
     return state.site.modal
   },
+  statCategories: state => {
+    return state.stats.categories
+  },
   statDappContractCount: state => {
     return state.stats.dappContractCount
   },
@@ -97,6 +100,7 @@ const state = () => ({
     }
   },
   stats: {
+    categories: [],
     dappContractCount: 0,
     dappCount: 0,
     dappDau: 0,
