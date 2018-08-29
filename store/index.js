@@ -60,6 +60,9 @@ const getters = {
   statPlatforms: state => {
     return state.stats.platforms
   },
+  statStatuses: state => {
+    return state.stats.statuses
+  },
   userEntryRoute: state => {
     return state.user.entryRoute
   }
@@ -100,7 +103,8 @@ const state = () => ({
     dappTx24Hr: 0,
     dappVol24Hr: 0,
     eventCount: 0,
-    platforms: []
+    platforms: [],
+    statuses: []
   },
   user: {
     entryRoute: ''

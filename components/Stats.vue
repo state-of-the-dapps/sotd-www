@@ -71,9 +71,10 @@
         </tbody>
       </table>
     </div>
-    <h2 class="heading-2">Categories</h2>
+    <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
-      <StatsBarChart/>
+      <StatsStatusBarChart
+        :statuses="statStatuses"/>
     </div>
   </div>
 </template>
@@ -81,12 +82,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import Help from './Help'
-import StatsBarChart from './StatsBarChart'
+import StatsStatusBarChart from './StatsStatusBarChart'
 
 export default {
   components: {
     Help,
-    StatsBarChart
+    StatsStatusBarChart
   },
   computed: {
     ...mapGetters([
@@ -95,7 +96,8 @@ export default {
       'statDappDau',
       'statDappTx24Hr',
       'statDappVol24Hr',
-      'statPlatforms'
+      'statPlatforms',
+      'statStatuses'
     ])
   }
 }
