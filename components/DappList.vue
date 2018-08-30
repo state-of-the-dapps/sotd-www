@@ -1,9 +1,9 @@
 <template>
   <div class="component-DappList" id="component-DappList">
     <ul class="category-list">
-      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category.length ? 'is-active' : ''">All categories</nuxt-link></li>
+      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category ? 'is-active' : ''">All categories</nuxt-link></li>
       <li v-for="(dappCategory, index) in dappCategories" :key="index">
-        <nuxt-link @click.native="trackDappRankingCategory(dappCategory)" :to="{path: '/rankings/category/' + dappCategory}" class="category-link" :class="dappCategory === category[0] ? 'is-active' : ''">{{ dappCategory | formatCategory }}</nuxt-link>
+        <nuxt-link @click.native="trackDappRankingCategory(dappCategory.slug)" :to="{path: '/rankings/category/' + dappCategory.slug}" class="category-link" :class="dappCategory.slug === category ? 'is-active' : ''">{{ dappCategory.name }}</nuxt-link>
       </li>
     </ul>
     <div class="wrapper">
@@ -34,7 +34,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { trackDappRankingCategory, trackDappRankingSort } from '~/helpers/mixpanel'
-import { dappCategoryTagsMap } from '~/helpers/constants'
+import { getCategories } from '~/helpers/api'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -42,6 +42,7 @@ import LoadMore from './LoadMore'
 export default {
   data () {
     return {
+      dappCategories: [],
       fields: [
         {
           help: 'The default rank is based on DAU, or Daily Active Users (unique source addresses in transactions to ÐApp contracts)',
@@ -101,14 +102,6 @@ export default {
     LoadMore
   },
   computed: {
-    dappCategories () {
-      let categories = []
-      for (let category in dappCategoryTagsMap) {
-        categories.push(category)
-      }
-      categories.sort()
-      return categories
-    },
     ...mapGetters('dapps/rankings', [
       'category',
       'dapps',
@@ -146,9 +139,10 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  mounted () {
-    if (this.category.length) {
-      this.$router.replace({name: 'rankings-category', params: {category: this.category[0]}})
+  async mounted () {
+    this.dappCategories = await getCategories()
+    if (this.category) {
+      this.$router.replace({name: 'rankings-category', params: {category: this.category}})
     }
     if (this.dapps.length < 1) {
       this.setCategory(this.$route.params.category)

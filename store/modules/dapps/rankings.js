@@ -1,5 +1,5 @@
 import axios from '~/helpers/axios'
-import { dappCategoryTagsMap, dappListDefaultLimit, dappListDefaultSort, dappListDefaultOrder } from '~/helpers/constants'
+import { dappListDefaultLimit, dappListDefaultSort, dappListDefaultOrder } from '~/helpers/constants'
 
 const actions = {
   fetchDapps ({ commit, state }, type) {
@@ -11,7 +11,7 @@ const actions = {
           offset: state.offset,
           order: state.order,
           sort: state.sort,
-          tags: dappCategoryTagsMap[state.category]
+          category: state.category
         }
       })
       .then(response => {
@@ -80,12 +80,8 @@ const mutations = {
     state.isLoading = status
   },
   SET_CATEGORY (state, category) {
-    let categories = []
-    if (category) {
-      categories.push(category)
-    }
     state.offset = 0
-    state.category = categories
+    state.category = category
   },
   SET_SORT (state, sortOptions) {
     state.offset = 0
@@ -95,7 +91,7 @@ const mutations = {
 }
 
 const state = () => ({
-  category: [],
+  category: '',
   dapps: [],
   isLoading: true,
   limit: dappListDefaultLimit,

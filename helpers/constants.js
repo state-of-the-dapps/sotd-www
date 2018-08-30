@@ -1,22 +1,3 @@
-const dappCategoryTagsMap = Object.freeze({
-  'social': ['social', 'chat', 'message', 'messaging', 'community', 'communication', 'charity', 'donate', 'gift', 'giving', 'marriage', 'relationship', 'sexuality', 'sex'],
-  'development': ['development', 'coding', 'building', 'code', 'tools', 'deployment', 'programming', 'api', 'solidity'],
-  'energy': ['energy', 'solar', 'green', 'environment', 'sustainability'],
-  'exchanges': ['exchange', 'exchanges', 'market', 'markets', 'marketplace', 'trading', 'trade'],
-  'finance': ['crowdfund', 'crowdfunding', 'crowdsourcing', 'derivative', 'finance', 'finances', 'fundraising', 'money', 'wealth', 'loan', 'borrow'],
-  'gambling': ['casino', 'gamble', 'gambling', 'lottery', 'chance'],
-  'games': ['boardgame', 'game', 'games', 'gaming', 'collectible', 'collectibles', 'video-games'],
-  'governance': ['legal', 'dao', 'organization', 'governance', 'vote', 'voting', 'poll', 'election'],
-  'health': ['health', 'medical', 'healthcare', 'fitness'],
-  'identity': ['identity', 'kyc', 'identification', 'profiles'],
-  'insurance': ['insurance', 'claims', 'indemnity', 'provision'],
-  'media': ['music', 'music-platform', 'video', 'photography', 'media', 'art', 'publishing', 'advertising'],
-  'property': ['property', 'real-estate', 'rent', 'rental', 'provenance', 'supply', 'supply-chain'],
-  'security': ['security', 'protection', 'privacy', 'encryption', 'vpn', 'safety', 'cryptography', 'anti-fraud', 'anti-virus', 'cryptographic'],
-  'storage': ['storage', 'sharing', 'cloud', 'data', 'file', 'backup'],
-  'wallet': ['wallet', 'browser', 'lightwallet', 'multisig', 'keys']
-})
-
 const dappGameTag = 'game'
 
 const dappListDefaultLimit = 50
@@ -204,7 +185,6 @@ const feedbackComponentMap = Object.freeze({
 const myListLimit = 50
 
 export {
-  dappCategoryTagsMap,
   dappBadgeMap,
   dappGameTag,
   dappListDefaultLimit,
