@@ -23,6 +23,7 @@ export default {
   width: 100%;
   max-width: 100%;
   display: block;
+  max-height: 630px;
   @include tweakpoint('min-width', 1000px) {
     border-radius: 4px;
   } 
