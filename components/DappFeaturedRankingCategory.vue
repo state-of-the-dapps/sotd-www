@@ -21,7 +21,6 @@
 import axios from '~/helpers/axios'
 import { mapActions } from 'vuex'
 import { trackDappRankingCategory, trackDappView } from '~/helpers/mixpanel'
-import { dappCategoryTagsMap } from '~/helpers/constants'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
@@ -59,15 +58,15 @@ export default {
       this.$router.push({name: 'rankings-category', params: {category: category.slug}})
     }
   },
-  mounted () {
+  async mounted () {
     axios
       .get('dapps', {
         params: {
+          category: this.category.slug,
           limit: 5,
           offset: 0,
           order: 'asc',
-          sort: 'rank',
-          tags: dappCategoryTagsMap[this.category.slug]
+          sort: 'rank'
         }
       })
       .then((response) => {
