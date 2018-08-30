@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
+  import { dispatchErrors, testImage } from '~/helpers/mixins'
 
   var validationTimer
 
@@ -43,10 +43,15 @@
         validationTimer = setTimeout(() => {
           this.logo.length && this.logo.length < 3 ? errors.data.push(`URL can't be less than 3 characters`) : ''
           this.logo.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.dispatchErrors(errors, 'dapps')
+          this.testImage(this.logo, (url, result) => {
+            if (this.logo.length > 0 && result !== 'success') {
+              errors.data.push('URL is not a valid image')
+            }
+            this.dispatchErrors(errors, 'dapps')
+          })
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
+    mixins: [dispatchErrors, testImage]
   }
 </script>

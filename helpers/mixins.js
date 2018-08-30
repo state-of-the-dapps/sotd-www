@@ -20,6 +20,37 @@ export const getCaretPosition = {
   }
 }
 
+export const testImage = {
+  methods: {
+    testImage (url, callback, timeout) {
+      timeout = timeout || 5000
+      var timedOut = false
+      var timer
+      var img = new Image()
+      img.onerror = img.onabort = function () {
+        if (!timedOut) {
+          clearTimeout(timer)
+          callback(url, 'error')
+        }
+      }
+      img.onload = function () {
+        if (!timedOut) {
+          clearTimeout(timer)
+          callback(url, 'success')
+        }
+      }
+      img.src = url
+      timer = setTimeout(function () {
+        timedOut = true
+        // reset .src to invalid URL so it stops previous
+        // loading, but doesn't trigger new load
+        img.src = '//!!!!/test.jpg'
+        callback(url, 'timeout')
+      }, timeout)
+    }
+  }
+}
+
 export const dispatchErrors = {
   methods: {
     dispatchErrors (errors, model) {
