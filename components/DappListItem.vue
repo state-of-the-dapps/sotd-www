@@ -20,9 +20,9 @@
           <span>{{ dapp.teaser }}</span>
         </div>
       </li>
-      <li class="column -tags">
+      <li class="column -profile">
         <div class="wrapper">
-          <span v-for="(tag, index) in dapp.tags" :key="index" class="tag">{{ tag }}</span>
+          <span class="profile-percentage">{{ Math.ceil(dapp.profileScore * 100) }}%</span>
         </div>
       </li>
       <li class="column -dau">
@@ -146,13 +146,10 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  &.-tags {
-    overflow: hidden;
-    .wrapper {
-      overflow-x: auto;
-      &::-webkit-scrollbar {
-        display: none;
-      }
+  &.-profile {
+    .profile-percentage {
+      @include font-monospace;
+      margin-left: auto;
     }
   }
   &:nth-last-child(2) {

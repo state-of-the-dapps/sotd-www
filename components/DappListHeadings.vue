@@ -47,7 +47,7 @@ export default {
   display: flex;
   align-items: center;
   height: 100%;
-  &.-dau, &.-mau, &.-vol_7d, &.-dev_30d, &.-users_30d {
+  &.-dau, &.-mau, &.-vol_7d, &.-dev_30d, &.-users_30d, &.-profile {
     .field.-name {
       margin-left: auto;
     }

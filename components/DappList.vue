@@ -58,8 +58,9 @@ export default {
           id: 'tagline'
         },
         {
-          id: 'tags',
-          title: 'Tags'
+          id: 'profile',
+          title: 'Profile',
+          help: 'How complete the profile of the ÐApp is'
         },
         {
           help: 'Daily Active Users (unique source addresses in transactions to ÐApp contracts)',
