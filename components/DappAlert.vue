@@ -23,11 +23,13 @@ export default {
 .alert-wrapper {
   background: rgba($color--warning, 0.15);
   overflow: hidden;
-  padding: 0 20px;
+  padding: 0 1rem;
   font-weight: 600;
   line-height: 1.3;
+  text-align: center;
   @include tweakpoint('min-width', 1000px) {
     margin: 0px 10px 15px 10px;
+    text-align: left;
   }
 }
 </style>
