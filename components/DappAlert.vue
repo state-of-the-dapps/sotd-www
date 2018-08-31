@@ -21,16 +21,13 @@ export default {
 @import '~assets/css/settings';
 
 .alert-wrapper {
-  border: 1px solid $color--warning;
-  background: rgba($color--warning, 0.1);
-  margin: 10px 10px 0 10px;
+  background: rgba($color--warning, 0.15);
   overflow: hidden;
   padding: 0 20px;
   font-weight: 600;
   line-height: 1.3;
   @include tweakpoint('min-width', 1000px) {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 0px 10px 15px 10px;
   }
 }
 </style>
