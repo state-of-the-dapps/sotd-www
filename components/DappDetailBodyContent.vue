@@ -2,6 +2,7 @@
 <div class="component-DappDetailBodyContent">
   <div class="wrapper">
     <div class="main">
+      <DappAlert v-if="dapp.alert" :alert="dapp.alert"/>
       <DappDetailBodyContentImage v-if="dapp.productImage" :productImage="dapp.productImage"/>
       <DappDetailBodyContentDescription v-if="dapp.description" :description="dapp.description"/>
       <media :query="{maxWidth: 1000}">
@@ -34,6 +35,7 @@
 
 <script>
 import Media from 'vue-media'
+import DappAlert from './DappAlert'
 import DappDetailBodyContentBadges from './DappDetailBodyContentBadges'
 import DappDetailBodyContentCategories from './DappDetailBodyContentCategories'
 import DappDetailBodyContentCtas from './DappDetailBodyContentCtas'
@@ -48,6 +50,7 @@ import DappDetailBodyContentTools from './DappDetailBodyContentTools'
 
 export default {
   components: {
+    DappAlert,
     DappDetailBodyContentBadges,
     DappDetailBodyContentCategories,
     DappDetailBodyContentCtas,
