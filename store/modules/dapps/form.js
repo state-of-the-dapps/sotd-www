@@ -5,6 +5,7 @@ function initialState () {
   return {
     errorFields: [
       'authors',
+      'category',
       'description',
       'email',
       'license',
@@ -39,6 +40,7 @@ function initialState () {
     },
     fields: {
       authors: [],
+      category: '',
       description: '',
       contracts: {
         mainnet: { address: '' },
@@ -251,6 +253,9 @@ const getters = {
   },
   authorsErrors: state => {
     return state.errors.authors
+  },
+  category: state => {
+    return state.fields.category
   },
   contracts: state => {
     return state.fields.contracts
