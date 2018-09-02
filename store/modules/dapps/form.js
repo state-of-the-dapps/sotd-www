@@ -77,7 +77,10 @@ function initialState () {
     tagQuery: '',
     tagsResults: [],
     warnings: {
+      icon: [],
+      logo: [],
       name: [],
+      productImage: [],
       teaser: []
     }
   }
@@ -312,6 +315,9 @@ const getters = {
   iconErrors: state => {
     return state.errors.icon
   },
+  iconWarnings: state => {
+    return state.warnings.icon
+  },
   kovanErrors: state => {
     return state.errors.kovan
   },
@@ -326,6 +332,9 @@ const getters = {
   },
   logoErrors: state => {
     return state.errors.logo
+  },
+  logoWarnings: state => {
+    return state.warnings.logo
   },
   mainnetErrors: state => {
     return state.errors.mainnet
@@ -353,6 +362,9 @@ const getters = {
   },
   productImageErrors: state => {
     return state.errors.productImage
+  },
+  productImageWarnings: state => {
+    return state.warnings.productImage
   },
   rinkebyErrors: state => {
     return state.errors.rinkeby

@@ -30,13 +30,17 @@ export const testImage = {
       img.onerror = img.onabort = function () {
         if (!timedOut) {
           clearTimeout(timer)
-          callback(url, 'error')
+          callback(url, {}, 'error')
         }
       }
       img.onload = function () {
         if (!timedOut) {
           clearTimeout(timer)
-          callback(url, 'success')
+          const dimensions = {
+            width: img.width,
+            height: img.height
+          }
+          callback(url, dimensions, 'success')
         }
       }
       img.src = url
@@ -45,7 +49,7 @@ export const testImage = {
         // reset .src to invalid URL so it stops previous
         // loading, but doesn't trigger new load
         img.src = '//!!!!/test.jpg'
-        callback(url, 'timeout')
+        callback(url, {}, 'timeout')
       }, timeout)
     }
   }

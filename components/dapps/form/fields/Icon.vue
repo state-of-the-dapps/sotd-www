@@ -3,6 +3,9 @@
     <input class="text-input" :class="icon.length > 0 ? '--is-filled' : ''" type="text" maxlength="255" v-model="icon" @input="validate">
     <label class="label">Icon URL</label>
     <span class="remaining-characters">{{ 255 - icon.length }}</span>
+    <ul v-if="warnings && warnings.length > 0" class="warning-list">
+      <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
+    </ul>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
@@ -11,7 +14,7 @@
 </template>
 
 <script>
-  import { dispatchErrors, testImage } from '~/helpers/mixins'
+  import { dispatchErrors, dispatchWarnings, testImage } from '~/helpers/mixins'
 
   var validationTimer
 
@@ -31,6 +34,9 @@
       },
       errors () {
         return this.$store.getters['dapps/form/iconErrors']
+      },
+      warnings () {
+        return this.$store.getters['dapps/form/iconWarnings']
       }
     },
     methods: {
@@ -43,16 +49,29 @@
         validationTimer = setTimeout(() => {
           this.icon.length && this.icon.length < 3 ? errors.data.push(`URL can't be less than 3 characters`) : ''
           this.icon.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.testImage(this.icon, (url, result) => {
+          this.testImage(this.icon, (url, dimensions, result) => {
+            const warnings = {
+              field: 'icon',
+              data: []
+            }
             if (this.icon.length > 0 && result !== 'success') {
               errors.data.push('URL is not a valid image')
             }
+            if (result === 'success') {
+              const imgWidth = dimensions.width
+              const imgHeight = dimensions.height
+              const expectedWidth = 192
+              const expectedHeight = 192
+              if (imgWidth !== expectedWidth || imgHeight !== expectedHeight) {
+                warnings.data.push('Image dimensions are not correct. They should be 192px by 192px. This image may not display properly.')
+              }
+            }
+            this.dispatchWarnings(warnings, 'dapps')
             this.dispatchErrors(errors, 'dapps')
           })
-          this.dispatchErrors(errors, 'dapps')
         }, 750)
       }
     },
-    mixins: [dispatchErrors, testImage]
+    mixins: [dispatchErrors, dispatchWarnings, testImage]
   }
 </script>
