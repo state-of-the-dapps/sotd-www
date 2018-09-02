@@ -15,12 +15,14 @@
     <Contracts/>
     <Status/>
     <Social/>
+    <Category/>
     <Tags/>
   </div>
 </template>
 
 <script>
   import Authors from '~/components/dapps/form/fields/Authors.vue'
+  import Category from '~/components/dapps/form/fields/Category.vue'
   import Contracts from '~/components/dapps/form/fields/Contracts.vue'
   import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
   import Description from '~/components/dapps/form/fields/Description.vue'
@@ -40,6 +42,7 @@
   export default {
     components: {
       Authors,
+      Category,
       Contracts,
       DappUrl,
       Description,
