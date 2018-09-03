@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
+import { getCategories } from '~/helpers/api'
 import { dispatchErrors } from '~/helpers/mixins'
 import { directive as onClickaway } from 'vue-clickaway'
 
@@ -53,13 +53,8 @@ export default {
       this.dropdown = !this.dropdown
     }
   },
-  mounted () {
-    axios
-      .get('categories')
-      .then((response) => {
-        const categories = response.data.items
-        this.categories = categories
-      })
+  async mounted () {
+    this.categories = await getCategories()
   },
   directives: {
     onClickaway: onClickaway
