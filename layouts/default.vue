@@ -15,13 +15,6 @@ export default {
         class: this.siteModal.component ? 'has-modal' : ''
       }
     }
-  },
-  mounted () {
-    const myListString = this.$localStorage.get('myList')
-    if (myListString) {
-      const myList = myListString.split(',')
-      this.$store.dispatch('list/setItems', myList)
-    }
   }
 }
 </script>

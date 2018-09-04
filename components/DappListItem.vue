@@ -9,7 +9,7 @@
       <li class="column -dapp">
         <div class="wrapper">
           <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
-            <img v-if="dapp.iconUrl" class="dapp-icon" v-lazy="dapp.iconUrl" width="32" height="32">
+            <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
             <span v-else>{{ dapp.name | firstLetter }}</span>
           </nuxt-link>
           <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>

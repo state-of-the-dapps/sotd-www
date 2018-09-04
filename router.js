@@ -18,7 +18,6 @@ const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue'
 const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
 const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
-const MyList = () => import('~/pages/MyList.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
@@ -208,11 +207,6 @@ export function createRouter () {
         path: '/promoted-dapps',
         component: PromotedDapps,
         name: 'promoted-dapps'
-      },
-      {
-        path: '/my-list',
-        component: MyList,
-        name: 'my-list'
       },
       {
         path: '/tab/:tab',

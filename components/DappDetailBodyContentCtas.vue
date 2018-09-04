@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import { dappGameTag, dappSocialComponentMap, myListLimit } from '~/helpers/constants'
-import { trackDappSite, trackDappSocial, trackListAdd, trackListRemove } from '~/helpers/mixpanel'
+import { dappGameTag, dappSocialComponentMap } from '~/helpers/constants'
+import { trackDappSite, trackDappSocial } from '~/helpers/mixpanel'
 import SvgSocialChat from './SvgSocialChat'
 import SvgSocialBlog from './SvgSocialBlog'
 import SvgSocialFacebook from './SvgSocialFacebook'
@@ -44,9 +44,7 @@ import SvgStar from './SvgStar'
 export default {
   data () {
     return {
-      added: false,
-      dappGameTag,
-      myList: []
+      dappGameTag
     }
   },
   components: {
@@ -61,37 +59,10 @@ export default {
     SvgStar
   },
   methods: {
-    addToMyList (slug) {
-      if (this.myList.length < myListLimit) {
-        if (!this.myList.includes(slug)) {
-          this.myList.push(slug)
-          this.$localStorage.set('myList', this.myList)
-          this.$store.dispatch('list/setItems', this.myList)
-          this.added = true
-          const action = trackListAdd(this.dapp.slug)
-          this.$mixpanel.track(action.name, action.data)
-          setTimeout(() => {
-            this.added = false
-          }, 8500)
-        }
-      } else {
-        alert('You have reached the limit of 50 dapps on your list. Please remove some before you add more.')
-      }
-    },
     refString (url) {
       let refString = url.includes('?') ? '&' : '?'
       refString += 'utm_source=StateOfTheDApps'
       return refString
-    },
-    removeFromMyList (slug) {
-      if (this.myList.includes(slug)) {
-        let index = this.myList.indexOf(slug)
-        this.myList.splice(index, 1)
-        this.$localStorage.set('myList', this.myList)
-        this.$store.dispatch('list/setItems', this.myList)
-        const action = trackListRemove(this.dapp.slug)
-        this.$mixpanel.track(action.name, action.data)
-      }
     },
     svgSocialComponent (platform) {
       const socialComponent = dappSocialComponentMap[platform]
@@ -104,12 +75,6 @@ export default {
     trackDappSocial (platform, url) {
       const action = trackDappSocial(this.dapp.slug, platform, url)
       this.$mixpanel.track(action.name, action.data)
-    }
-  },
-  mounted () {
-    const myList = this.$localStorage.get('myList')
-    if (myList) {
-      this.myList = myList.split(',')
     }
   },
   props: {
