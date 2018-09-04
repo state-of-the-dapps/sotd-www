@@ -14,11 +14,11 @@
 export default {
   props: {
     'height': {
-      default: 24,
+      default: 20,
       type: Number
     },
     'width': {
-      default: 24,
+      default: 20,
       type: Number
     }
   }

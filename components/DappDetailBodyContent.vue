@@ -21,7 +21,10 @@
       <DappDetailBodyContentRecommend
         :slug="dapp.slug"
         :rating="dapp.stats.star_rating"
-        :votes="dapp.stats.votes"/>
+        :votes="dapp.stats.votes"
+        :positive="dapp.stats.positive"
+        :neutral="dapp.stats.netural"
+        :negative="dapp.stats.negative"/>
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
       <DappProfile v-if="dapp.profileScore" :profile-score="dapp.profileScore"/>
       <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>

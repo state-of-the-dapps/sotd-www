@@ -5,13 +5,13 @@
     <div class="reaction-wrapper" itemprop="ratingValue" :content="rating">
       <ul class="reaction-list" v-if="!hasSubmitted">
         <li class="reaction-item" :class="currentReaction == 'positive' ? 'is-active' : ''" @click="submitDappFeedback('positive')">
-          <SvgReactionPositive/>
+          <SvgReactionPositive/><span class="reaction-value">{{ positive || 0 }}</span>
         </li>
         <li class="reaction-item" :class="currentReaction == 'neutral' ? 'is-active' : ''" @click="submitDappFeedback('neutral')">
-          <SvgReactionNeutral/>
+          <SvgReactionNeutral/><span class="reaction-value">{{ neutral || 0 }}</span>
         </li>
         <li class="reaction-item" :class="currentReaction == 'negative' ? 'is-active' : ''" @click="submitDappFeedback('negative')">
-          <SvgReactionNegative/>
+          <SvgReactionNegative/><span class="reaction-value">{{ negative || 0 }}</span>
         </li>
       </ul>
       <p v-else class="confirmation">Thanks for your feedback!</p>
@@ -58,6 +58,15 @@ export default {
     },
     votes: {
       required: true
+    },
+    positive: {
+      required: true
+    },
+    neutral: {
+      required: true
+    },
+    negative: {
+      required: true
     }
   }
 }
@@ -85,17 +94,21 @@ export default {
 }
 
 .reaction-item {
-  padding: 3px 3px 0 3px;
+  margin-top: 3px;
+  padding: 5px;
   cursor: pointer;
-  opacity: .5;
-  transition: opacity .2s ease;
-  &:hover, &.is-active {
-    opacity: 1;
+  transition: all .2s ease;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba($color--black, .2);
+  border-radius: 4px;
+  margin-right: 4px;
+  &:hover {
+    border-color: $color--black;
   }
 }
 
 .reaction-list {
-  margin: 0 -3px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -105,8 +118,14 @@ export default {
   }
 }
 
+.reaction-value {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .reaction-wrapper {
-  height: 27px;
   overflow: hidden;
 }
 
