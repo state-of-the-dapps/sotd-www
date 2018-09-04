@@ -1,7 +1,7 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
     <input class="text-input" :class="license.length > 0 ? '--is-filled' : ''" type="text" maxlength="50" v-model="license" @input="validate">
-    <label class="label">Software license <span class="required">(required)</span></label>
+    <label class="label">Software license</label>
     <span class="remaining-characters">{{ 50 - license.length }}</span>
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
@@ -42,7 +42,6 @@
         }
         validationTimer = setTimeout(() => {
           this.license.length > 50 ? errors.data.push(`License can't be longer than 50 characters`) : ''
-          this.license.length < 2 ? errors.data.push(`License must be longer than 1 character`) : ''
           this.dispatchErrors(errors, 'dapps')
         }, 750)
       }

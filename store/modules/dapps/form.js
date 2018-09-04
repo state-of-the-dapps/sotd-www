@@ -8,7 +8,6 @@ function initialState () {
       'category',
       'description',
       'email',
-      'license',
       'name',
       'status',
       'tags',
