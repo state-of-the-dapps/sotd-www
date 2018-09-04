@@ -2,7 +2,7 @@
   <li class="component-DappCardListItem" :class="'-' + dapp.status">
     <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
       <div :class="'-' + dapp.status" class="dapp-icon-wrapper">
-        <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+        <img v-if="dapp.iconUrl" class="dapp-icon" v-lazy="dapp.iconUrl" width="32" height="32">
         <span v-else class="dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
       </div>
       <div class="info-wrapper">

@@ -98,6 +98,7 @@ module.exports = {
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },
     { src: '~/plugins/vue-filters' },
+    { src: '~/plugins/vue-lazyload' },
     { src: '~/plugins/vue-localstorage' },
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },

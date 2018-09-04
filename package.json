@@ -28,6 +28,7 @@
     "smoothscroll-polyfill": "^0.4.3",
     "vue-chartjs": "^3.3.2",
     "vue-clickaway": "^2.1.0",
+    "vue-lazyload": "^1.2.6",
     "vue-localstorage": "^0.6.2",
     "vue-media": "^1.1.1",
     "vuetrend": "^0.3.2",
