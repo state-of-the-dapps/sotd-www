@@ -4,17 +4,6 @@
     <div v-if="dapp.logoUrl" class="logo-wrapper">
       <img class="logo-image" :src="dapp.logoUrl"/>
     </div>
-    <div class="cta-wrapper">
-      <transition name="fade">
-        <div :class="added ? 'active' : ''" class="add-popover" v-if="added"><nuxt-link class="add-popover-button" :to="{ name: 'my-list' }">Go to my list</nuxt-link></div>
-      </transition>
-      <button v-if="!myList.includes(dapp.slug)" class="button -add" @click="addToMyList(dapp.slug)">
-        <span class="add-text"><SvgPlus/> Add to my list</span>
-      </button>
-      <button v-else class="button -add" @click="removeFromMyList(dapp.slug)">
-        <span class="add-text">Remove from my list</span>
-      </button>
-    </div>
     <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
       <a :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
         <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
@@ -205,7 +194,7 @@ export default {
 .logo-wrapper {
   text-align: center;
   overflow: hidden;
-  padding-bottom: 16px;
+  padding-bottom: 10px;
 }
 
 .social-item {
