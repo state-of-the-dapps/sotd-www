@@ -24,7 +24,7 @@
       </div>
     </div>
     <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
-    <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send">Send</button></div>
+    <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
   </div>
 </div>
 </template>
@@ -207,13 +207,14 @@ export default {
 
 .send {
   background: rgba($color--black, .15);
-  color: $color--white;
   text-transform: uppercase;
   font-size: .9rem;
   padding: 12px 75px;
   cursor: default;
   transition: all .2s ease;
+  font-weight: 700;
   &.--is-ready {
+    color: $color--white;
     background: $color--black;
     box-shadow: 0 17px 70px rgba($color--black, .4);
     cursor: pointer;
