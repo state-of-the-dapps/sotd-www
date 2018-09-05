@@ -4,7 +4,6 @@ import announcementsModule from './modules/announcements'
 import collectionsModule from './modules/collections'
 import dappsModule from './modules/dapps'
 import listModule from './modules/list'
-import eventsModule from './modules/events'
 import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
@@ -57,9 +56,6 @@ const getters = {
   statDappVol24Hr: state => {
     return state.stats.dappVol24Hr
   },
-  statEventCount: state => {
-    return state.stats.eventCount
-  },
   statPlatforms: state => {
     return state.stats.platforms
   },
@@ -106,7 +102,6 @@ const state = () => ({
     dappDau: 0,
     dappTx24Hr: 0,
     dappVol24Hr: 0,
-    eventCount: 0,
     platforms: [],
     statuses: []
   },
@@ -123,7 +118,6 @@ const createStore = () => {
       announcements: announcementsModule,
       collections: collectionsModule,
       dapps: dappsModule,
-      events: eventsModule,
       list: listModule,
       newsletter: newsletterModule,
       tags: tagsModule
