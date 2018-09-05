@@ -12,11 +12,6 @@ const DappDetailMeta = () => import('~/pages/DappDetailMeta.vue').then(m => m.de
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
-const Events = () => import('~/pages/events/index.vue').then(m => m.default || m)
-const EventsNew = () => import('~/pages/events/new.vue').then(m => m.default || m)
-const EventsNewConfirmation = () => import('~/pages/events/new/confirmation.vue').then(m => m.default || m)
-const EventsSlug = () => import('~/pages/events/_slug.vue').then(m => m.default || m)
-const EventsSlugPopup = () => import('~/pages/events/_slug/popup.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
@@ -116,51 +111,6 @@ export function createRouter () {
         path: '/dapps/:slug/meta',
         component: DappDetailMeta,
         name: 'dapp-detail-meta'
-      },
-      {
-        path: '/events/submit/new',
-        component: EventsNew,
-        name: 'events-new'
-      },
-      {
-        path: '/events/submit/new/confirmation',
-        component: EventsNewConfirmation,
-        name: 'events-new-confirmation'
-      },
-      {
-        path: '/events/:slug',
-        component: EventsSlug,
-        name: 'events-slug'
-      },
-      // the root /events route goes after other /events/{params} routes, so that a direct GET to any other /events/{params} will render before /events child routes
-      {
-        path: '/events',
-        component: Events,
-        name: 'events',
-        children: [
-          {
-            path: 'tagged/:tags',
-            component: Placeholder,
-            name: 'events-tagged-tags',
-            children: [
-              {
-                path: 'category/:category',
-                component: Placeholder,
-                name: 'events-tagged-tags-category-category'
-              }
-            ]
-          },
-          {
-            path: 'category/:category',
-            component: Placeholder,
-            name: 'events-category-category'
-          },
-          {
-            path: ':slug',
-            component: EventsSlugPopup,
-            name: 'events-slug-popup'
-          }
-        ]
       },
       {
         path: '/dapps/submit/new',
