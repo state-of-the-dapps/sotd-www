@@ -4,7 +4,7 @@
     :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
     class="link" 
     @click.native="trackDappView(dapp.slug)">
-    <div class="product-image-wrapper"><img class="product-image" :src="dapp.imageKeyVisual"/></div>
+    <div class="product-image-wrapper"><img class="product-image" :src="dapp.productImage || dapp.imageKeyVisual"/></div>
     <div class="info">
       <h4 class="title-4">{{ dapp.name }}</h4>   
       <p class="tagline">{{ (dapp.tagline || dapp.teaser) | truncate(50) }}</p>
