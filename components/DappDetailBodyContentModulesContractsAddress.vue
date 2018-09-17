@@ -37,6 +37,8 @@ export default {
         addressLink = 'https://' + (this.network === 'mainnet' ? '' : this.network + '.') + 'etherscan.io/address/' + this.address + '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'POA') {
         addressLink = 'https://' + (this.network === 'mainnet' ? '' : 'sokol.') + 'poaexplorer.com/address/' + (this.network === 'mainnet' ? '' : 'search/') + this.address + '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'EOS') {
+        addressLink = 'https://bloks.io/account/' + this.address + '?utm_source=StateOfTheDApps'
       }
       return addressLink
     }

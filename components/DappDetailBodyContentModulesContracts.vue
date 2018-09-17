@@ -37,6 +37,12 @@
       platform="POA"
       network="Sokol Testnet"
       :slug="slug"/>
+    <DappDetailBodyContentModulesContractsItem
+      v-if="eosMainnet.length"
+      :addresses="eosMainnet"
+      platform="EOS"
+      network="mainnet"
+      :slug="slug"/>
   </ul>
 </div>
 </template>
@@ -70,6 +76,10 @@ export default {
       required: true
     },
     poaTestnet: {
+      type: Array,
+      required: true
+    },
+    eosMainnet: {
       type: Array,
       required: true
     },
