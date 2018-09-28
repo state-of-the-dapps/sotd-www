@@ -52,7 +52,15 @@ export default {
       .get('categories')
       .then(response => {
         const items = response.data.items
-        const categories = items.slice(0, 4)
+        const categoryNum = 4
+        let categories = []
+        for (let i = 0; i < categoryNum; i++) {
+          let randomItemIndex = Math.floor(Math.random() * items.length)
+          let category = items.splice(randomItemIndex, 1)
+          console.log(category)
+          categories = categories.concat(category)
+        }
+        console.log(categories)
         this.categories = categories
       })
   }
