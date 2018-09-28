@@ -3,9 +3,6 @@
     <div class="page-dapps-detail" itemscope itemtype="http://schema.org/Product">
       <DappDetail :dapp="dapp" :direct="direct"/>
     </div>
-    <BaseModal v-if="pageModal">
-      Content
-    </BaseModal>
   </LayoutMain>
 </template>
 
@@ -14,7 +11,6 @@ import { mapGetters } from 'vuex'
 import axios from '~/helpers/axios'
 import DappDetail from '~/components/DappDetail'
 import * as constants from '~/helpers/constants'
-import BaseModal from '~/components/BaseModal'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
@@ -51,7 +47,6 @@ export default {
     }
   },
   components: {
-    BaseModal,
     DappDetail,
     LayoutMain
   }

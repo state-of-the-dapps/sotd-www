@@ -10,6 +10,23 @@
   </transition>
 </template>
 
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  methods: {
+    ...mapActions(['setPageModal'])
+  },
+  destroyed () {
+    this.setPageModal(false)
+  },
+  mounted () {
+    this.setPageModal(true)
+  }
+}
+</script>
+
+
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
@@ -31,7 +48,7 @@
   position: relative;
   max-width: 600px;
   background: $color--gray;
-  padding: 50px;
+  padding: 20px;
   border-radius: 4px;
   margin: 40px 10px;
   z-index: 110;
