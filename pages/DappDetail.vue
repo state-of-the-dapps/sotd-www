@@ -3,13 +3,18 @@
     <div class="page-dapps-detail" itemscope itemtype="http://schema.org/Product">
       <DappDetail :dapp="dapp" :direct="direct"/>
     </div>
+    <BaseModal v-if="pageModal">
+      Content
+    </BaseModal>
   </LayoutMain>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import axios from '~/helpers/axios'
 import DappDetail from '~/components/DappDetail'
 import * as constants from '~/helpers/constants'
+import BaseModal from '~/components/BaseModal'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
@@ -18,6 +23,9 @@ export default {
       dapp: constants.dappSchema,
       direct: false
     }
+  },
+  computed: {
+    ...mapGetters(['pageModal'])
   },
   asyncData ({ store, params, error }) {
     return axios
@@ -43,6 +51,7 @@ export default {
     }
   },
   components: {
+    BaseModal,
     DappDetail,
     LayoutMain
   }

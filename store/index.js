@@ -20,6 +20,9 @@ const actions = {
   setHeroLoaded ({ commit }) {
     commit('SET_HERO_LOADED')
   },
+  setPageModal ({ commit }, value) {
+    commit('SET_PAGE_MODAL', value)
+  },
   setSiteSection ({ commit }, section) {
     commit('SET_SITE_SECTION', section)
   },
@@ -31,6 +34,9 @@ const actions = {
 const getters = {
   heroHasLoaded: state => {
     return state.site.heroHasLoaded
+  },
+  pageModal: state => {
+    return state.pageModal
   },
   siteSection: state => {
     return state.site.section
@@ -71,6 +77,9 @@ const mutations = {
   SET_HERO_LOADED (state) {
     state.site.heroHasLoaded = true
   },
+  SET_PAGE_MODAL (state, value) {
+    state.pageModal = value
+  },
   SET_SITE_MODAL (state, modal) {
     state.site.modal = modal
   },
@@ -86,6 +95,7 @@ const mutations = {
 }
 
 const state = () => ({
+  pageModal: '',
   site: {
     heroHasLoaded: false,
     section: '',
