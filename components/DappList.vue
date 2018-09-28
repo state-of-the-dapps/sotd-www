@@ -63,17 +63,17 @@ export default {
           help: 'How complete the profile of the ÐApp is'
         },
         {
-          help: 'Daily Active Users (unique source addresses in transactions to ÐApp contracts)',
+          help: 'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)',
           id: 'dau',
           order: 'desc',
           sort: true,
-          title: 'DAU'
+          title: 'Users (24hr)'
         },
         {
-          help: 'Monthly Active Users (unique source addresses in transactions to ÐApp contracts)',
+          help: 'Monthly Active Users, or MAU (unique source addresses in transactions to ÐApp contracts)',
           id: 'mau',
           order: 'desc',
-          title: 'MAU'
+          title: 'Users (30d)'
         },
         {
           help: 'Transaction volume to ÐApp contracts',

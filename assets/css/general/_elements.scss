@@ -107,15 +107,13 @@ code {
   height: 100%;
 }
 
-h1, h2, h3, .value, .table-data {
+html, .wf-loading {
   visibility: hidden !important;
   opacity: 0;
 }
 
 .wf-active, .wf-inactive {
-  h1, h2, h3, .value, .table-data {
-    visibility: visible !important;
-    opacity: 1;
-    transition: opacity 0.5s;
-  }
+  visibility: visible !important;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
