@@ -57,10 +57,8 @@ export default {
         for (let i = 0; i < categoryNum; i++) {
           let randomItemIndex = Math.floor(Math.random() * items.length)
           let category = items.splice(randomItemIndex, 1)
-          console.log(category)
           categories = categories.concat(category)
         }
-        console.log(categories)
         this.categories = categories
       })
   }
