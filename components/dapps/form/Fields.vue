@@ -3,7 +3,7 @@
     :class="isEdit ? 'is-edit' : ''"
     class="list">
     <Name/>
-    <Email/>
+    <Email v-if="!isEdit"/>
     <Teaser/>
     <Description/>
     <Website/>
