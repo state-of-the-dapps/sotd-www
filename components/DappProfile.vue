@@ -16,11 +16,7 @@
     </div>
     <BaseModal v-if="modal">
       <div>
-        <button
-          @click="setModal(false)"
-          class="cancel">Cancel</button>
-      </div>
-      <div>
+        <h2 class="title">Improve {{ name }}'s profile</h2>
         <DappEdit/>
       </div>
       <div>
@@ -48,6 +44,7 @@ export default {
     DappEdit
   },
   props: {
+    name: String,
     profileScore: Number
   },
   methods: {
@@ -113,5 +110,9 @@ export default {
   display: block;
   height: 100%;
   background: $color--black;
+}
+
+.title {
+  text-align: center;
 }
 </style>
