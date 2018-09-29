@@ -1,5 +1,7 @@
 <template>
-  <div class="list">
+  <div
+    :class="isEdit ? 'is-edit' : ''"
+    class="list">
     <Name/>
     <Email/>
     <Teaser/>
@@ -58,6 +60,12 @@
       Tags,
       Teaser,
       Website
+    },
+    props: {
+      isEdit: {
+        default: false,
+        type: Boolean
+      }
     }
   }
 </script>
@@ -73,6 +81,9 @@
     @include tweakpoint('min-width', $tweakpoint--default) {
       margin-right: 20px;
       margin-left: 0;
+      &.is-edit {
+        margin: 0 auto;
+      }
     }
 
     .item {

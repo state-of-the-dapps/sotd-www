@@ -41,7 +41,6 @@ export default {
   display: flex;
   justify-content: center;
   overflow-y: scroll;
-  text-align: center;
 }
 
 .inner-wrapper {

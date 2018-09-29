@@ -21,6 +21,9 @@
           class="cancel">Cancel</button>
       </div>
       <div>
+        <DappEdit/>
+      </div>
+      <div>
         <button
           @click="setModal(false)"
           class="cancel">Cancel</button>
@@ -32,6 +35,7 @@
 
 <script>
 import BaseModal from './BaseModal'
+import DappEdit from './DappEdit'
 
 export default {
   data () {
@@ -40,7 +44,8 @@ export default {
     }
   },
   components: {
-    BaseModal
+    BaseModal,
+    DappEdit
   },
   props: {
     profileScore: Number
@@ -64,6 +69,8 @@ export default {
   text-transform: uppercase;
   font-size: .9rem;
   font-weight: 600;
+  margin: 0 auto;
+  display: block;
 }
 
 .description {
