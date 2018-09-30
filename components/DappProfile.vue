@@ -30,13 +30,15 @@
 </template>
 
 <script>
+import axios from '~/helpers/axios'
 import BaseModal from './BaseModal'
 import DappEdit from './DappEdit'
 
 export default {
   data () {
     return {
-      modal: false
+      modal: false,
+      suggestions: []
     }
   },
   components: {
@@ -45,12 +47,22 @@ export default {
   },
   props: {
     name: String,
-    profileScore: Number
+    profileScore: Number,
+    slug: String
   },
   methods: {
     setModal (value) {
       this.modal = value
     }
+  },
+  mounted () {
+    axios
+      .get(`dapps/${this.slug}/suggestions`)
+      .then(response => {
+        const profile = response.data
+        const suggestions = profile.suggestions
+        this.suggestions = suggestions
+      })
   }
 }
 </script>
