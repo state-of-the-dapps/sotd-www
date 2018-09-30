@@ -2,23 +2,23 @@
   <div
     :class="isEdit ? 'is-edit' : ''"
     class="list">
-    <Name/>
+    <Name v-if="!isEdit || missingFields.includes('name')"/>
     <Email v-if="!isEdit"/>
-    <Teaser/>
-    <Description/>
-    <Website/>
-    <DappUrl/>
-    <Authors/>
-    <License/>
-    <Logo/>
-    <Icon/>
-    <ProductImage/>
-    <Platform/>
-    <Contracts/>
-    <Status/>
-    <Social/>
-    <Category/>
-    <Tags/>
+    <Teaser v-if="!isEdit || missingFields.includes('teaser')"/>
+    <Description v-if="!isEdit || missingFields.includes('description')"/>
+    <Website v-if="!isEdit || missingFields.includes('url')"/>
+    <DappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
+    <Authors v-if="!isEdit || missingFields.includes('contact')"/>
+    <License v-if="!isEdit || missingFields.includes('license')"/>
+    <Logo v-if="!isEdit || missingFields.includes('logo_cache')"/>
+    <Icon v-if="!isEdit || missingFields.includes('icon_cache')"/>
+    <ProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>
+    <Platform v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
+    <Contracts v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
+    <Status v-if="!isEdit || missingFields.includes('status')"/>
+    <Social v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"/>
+    <Category v-if="!isEdit || missingFields.includes('category')"/>
+    <Tags v-if="!isEdit || missingFields.includes('tags')"/>
   </div>
 </template>
 
@@ -61,11 +61,23 @@
       Teaser,
       Website
     },
+    computed: {
+      missingFields () {
+        const fields = []
+        let i = 0
+        while (i < this.suggestions.length) {
+          fields.push(this.suggestions[i].attribute)
+          i++
+        }
+        return fields
+      }
+    },
     props: {
       isEdit: {
         default: false,
         type: Boolean
-      }
+      },
+      suggestions: Array
     }
   }
 </script>

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <DappFormFields :is-edit="true"/>
+    <DappFormFields
+      :is-edit="true"
+      :suggestions="suggestions"/>
   </div>
 </template>
 
@@ -10,6 +12,9 @@ import DappFormFields from './dapps/form/Fields'
 export default {
   components: {
     DappFormFields
+  },
+  props: {
+    suggestions: Array
   },
   destroyed () {
     this.$store.dispatch('dapps/form/resetForm')
