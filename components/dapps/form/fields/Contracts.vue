@@ -1,64 +1,88 @@
 <template>
   <div>
-    <p class="heading">{{ platform }} contract addresses</p>
-    <ul v-if="platform === 'Ethereum'" class="list">
-      <li class="item">
-        <div class="name">Mainnet</div>
-        <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('mainnet')" v-model="mainnet" placeholder="Enter addresses (one per line)" maxlength="11000"/>
-          <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">Ropsten</div>
-        <div class="input-wrapper" :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('ropsten')" v-model="ropsten" placeholder="Enter addresses (one per line)" maxlength="11000"/>
-          <ul v-if="ropstenErrors && ropstenErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in ropstenErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">Kovan</div>
-        <div class="input-wrapper" :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('kovan')" v-model="kovan" placeholder="Enter addresses (one per line)" maxlength="11000"/>
-          <ul v-if="kovanErrors && kovanErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in kovanErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">Rinkeby</div>
-        <div class="input-wrapper" :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('rinkeby')" v-model="rinkeby" placeholder="Enter addresses (one per line)" maxlength="11000"/>
-          <ul v-if="rinkebyErrors && rinkebyErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in rinkebyErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-    <ul v-if="platform === 'POA'" class="list">
-      <li class="item">
-        <div class="name">Mainnet</div>
-        <div class="input-wrapper" :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('poaMainnet')" v-model="poaMainnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
-          <ul v-if="poaMainnetErrors && poaMainnetErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in poaMainnetErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">Sokol Testnet</div>
-        <div class="input-wrapper" :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''">
-          <textarea class="input" @input="validate('poaTestnet')" v-model="poaTestnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
-          <ul v-if="poaTestnetErrors && poaTestnetErrors.length > 0" class="error-list -contracts">
-            <li v-for="(error, index) in poaTestnetErrors" :key="index" class="error-item">{{ error }}</li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+    <div v-if="isEdit">
+      <ul class="list">
+        <li v-if="ethIsMissing" class="item">
+          <div class="name">Ethereum Mainnet Contracts</div>
+          <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('mainnet')" v-model="mainnet" placeholder="Enter addresses (one per line)" maxlength="11000"/>
+            <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li v-if="poaIsMissing" class="item">
+          <div class="name">POA Mainnet Contracts</div>
+          <div class="input-wrapper" :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('poaMainnet')" v-model="poaMainnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
+            <ul v-if="poaMainnetErrors && poaMainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in poaMainnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div v-if="!isEdit">
+      <p class="heading">{{ platform }} contract addresses</p>
+      <ul v-if="platform === 'Ethereum'" class="list">
+        <li class="item">
+          <div class="name">Mainnet</div>
+          <div class="input-wrapper" :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('mainnet')" v-model="mainnet" placeholder="Enter addresses (one per line)" maxlength="11000"/>
+            <ul v-if="mainnetErrors && mainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in mainnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li class="item">
+          <div class="name">Ropsten</div>
+          <div class="input-wrapper" :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('ropsten')" v-model="ropsten" placeholder="Enter addresses (one per line)" maxlength="11000"/>
+            <ul v-if="ropstenErrors && ropstenErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in ropstenErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li class="item">
+          <div class="name">Kovan</div>
+          <div class="input-wrapper" :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('kovan')" v-model="kovan" placeholder="Enter addresses (one per line)" maxlength="11000"/>
+            <ul v-if="kovanErrors && kovanErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in kovanErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li class="item">
+          <div class="name">Rinkeby</div>
+          <div class="input-wrapper" :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('rinkeby')" v-model="rinkeby" placeholder="Enter addresses (one per line)" maxlength="11000"/>
+            <ul v-if="rinkebyErrors && rinkebyErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in rinkebyErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <ul v-if="platform === 'POA'" class="list">
+        <li class="item">
+          <div class="name">Mainnet</div>
+          <div class="input-wrapper" :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('poaMainnet')" v-model="poaMainnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
+            <ul v-if="poaMainnetErrors && poaMainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in poaMainnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li class="item">
+          <div class="name">Sokol Testnet</div>
+          <div class="input-wrapper" :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('poaTestnet')" v-model="poaTestnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
+            <ul v-if="poaTestnetErrors && poaTestnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in poaTestnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -68,6 +92,24 @@
   var validationTimer
 
   export default {
+    props: {
+      isEdit: {
+        type: Boolean,
+        default: false
+      },
+      ethIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      poaIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      eosIsMissing: {
+        type: Boolean,
+        default: false
+      }
+    },
     computed: {
       platform () {
         return this.$store.getters['dapps/form/platform']

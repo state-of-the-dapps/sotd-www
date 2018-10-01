@@ -13,8 +13,12 @@
     <Logo v-if="!isEdit || missingFields.includes('logo_cache')"/>
     <Icon v-if="!isEdit || missingFields.includes('icon_cache')"/>
     <ProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>
-    <Platform v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
-    <Contracts v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
+    <Platform v-if="!isEdit"/>
+    <Contracts v-if="!isEdit || (missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet'))"
+      :is-edit="isEdit"
+      :eth-is-missing="missingFields.includes('contract_address_mainnet')"
+      :poa-is-missing="missingFields.includes('poa_mainnet')"
+      :eos-is-missing="missingFields.includes('eos_mainnet')"/>
     <Status v-if="!isEdit || missingFields.includes('status')"/>
     <Social v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
       :is-edit="isEdit"
