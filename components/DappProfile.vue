@@ -22,7 +22,7 @@
             <h3 class="title-3">Your name <span class="required">required</span></h3>
             <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
             <h3 class="title-3">Your email <span class="required">required</span></h3>
-            <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" v-model="suggesterEmail"/></div>
+            <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
             <h3 class="title-3 -suggestions">Help improve these missing fields</h3>
           </div>
           <DappEdit
@@ -30,7 +30,8 @@
         </div>
         <button
           @click="submit"
-          class="submit">Submit</button>
+          :class="formIsValid ? 'is-valid' : ''"
+          class="submit"><span v-if="formIsValid">Submit</span><span v-else>Enter your name and a valid email address</span></button>
         <div>
           <button
             @click="setModal(false)"
@@ -41,7 +42,7 @@
         <p class="confirmation">Thanks! We will review your suggestions and be in touch.</p>
         <button
           @click="setModal(false)"
-          class="submit">Ok!</button>
+          class="submit is-valid">Ok!</button>
       </div>
     </BaseModal>
   </div>
@@ -49,6 +50,7 @@
 </template>
 
 <script>
+import { validateEmail } from '~/helpers/mixins'
 import axios from '~/helpers/axios'
 import BaseModal from './BaseModal'
 import DappEdit from './DappEdit'
@@ -58,12 +60,19 @@ export default {
     return {
       modal: false,
       suggesterName: '',
-      suggesterEmail: '',
+      email: '',
+      emailIsValid: false,
       suggestions: [],
       sent: false
     }
   },
   computed: {
+    suggesterEmail () {
+      return this.email
+    },
+    formIsValid () {
+      return this.emailIsValid && this.suggesterName.length && this.email.length
+    },
     fields () {
       return this.$store.getters['dapps/form/fields']
     }
@@ -77,29 +86,32 @@ export default {
     profileScore: Number,
     slug: String
   },
+  mixins: [validateEmail],
   methods: {
     setModal (value) {
       this.sent = false
       this.modal = value
     },
     submit () {
-      const data = {
-        fields: this.fields
-      }
-      data.fields.dapp = this.dapp
-      data.fields.slug = this.slug
-      data.fields.suggesterName = this.suggesterName
-      data.fields.suggesterEmail = this.suggesterEmail
-      this.sent = true
-      axios.post(`dapps/${this.slug}/suggestions`, data)
-        .then((response) => {
-          this.$mixpanel.track('Improve DApp - Submit', {
-            slug: this.slug
+      if (this.formIsValid) {
+        const data = {
+          fields: this.fields
+        }
+        data.fields.dapp = this.dapp
+        data.fields.slug = this.slug
+        data.fields.suggesterName = this.suggesterName
+        data.fields.suggesterEmail = this.suggesterEmail
+        this.sent = true
+        axios.post(`dapps/${this.slug}/suggestions`, data)
+          .then((response) => {
+            this.$mixpanel.track('Improve DApp - Submit', {
+              slug: this.slug
+            })
           })
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          .catch((error) => {
+            console.log(error)
+          })
+      }
     }
   },
   mounted () {
@@ -229,6 +241,7 @@ export default {
 }
 
 .submit {
+  opacity: .3;
   background: $color--black;
   color: $color--white;
   margin: 0 auto;
@@ -237,8 +250,13 @@ export default {
   margin-bottom: 15px;
   padding: 10px;
   position: relative;
+  cursor: not-allowed;
   &:active {
     top: 1px;
+  }
+  &.is-valid {
+    opacity: 1;
+    cursor: pointer;
   }
 }
 </style>
