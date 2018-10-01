@@ -22,7 +22,8 @@
             <h3 class="title-3">Your name <span class="required">required</span></h3>
             <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
             <h3 class="title-3">Your email <span class="required">required</span></h3>
-            <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="suggesterEmail"/></div>
+            <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" v-model="suggesterEmail"/></div>
+            <h3 class="title-3 -suggestions">Help improve the following fields</h3>
           </div>
           <DappEdit
             :suggestions="suggestions"/>
@@ -37,7 +38,7 @@
         </div>
       </div>
       <div v-else>
-        <p class="confirmation">Thanks! We will review your suggestions and get in touch with you.</p>
+        <p class="confirmation">Thanks! We will review your suggestions and be in touch.</p>
         <button
           @click="setModal(false)"
           class="submit">Ok!</button>
@@ -95,7 +96,7 @@ export default {
           })
         })
         .catch((error) => {
-          console.log(error.response.data.message)
+          console.log(error)
         })
     }
   },
@@ -152,6 +153,10 @@ export default {
   text-align: left;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
+  &.-suggestions {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 }
 
 .field {
