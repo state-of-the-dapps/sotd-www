@@ -104,6 +104,7 @@ export default {
         data.fields.slug = this.slug
         data.fields.suggesterName = this.suggesterName
         data.fields.suggesterEmail = this.suggesterEmail
+        data.fields.platform = ''
         this.sent = true
         axios.post(`dapps/${this.slug}/suggestions`, data)
           .then((response) => {
