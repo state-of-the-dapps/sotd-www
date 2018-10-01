@@ -16,7 +16,14 @@
     <Platform v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
     <Contracts v-if="!isEdit || missingFields.includes('contract_address_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') "/>
     <Status v-if="!isEdit || missingFields.includes('status')"/>
-    <Social v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"/>
+    <Social v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
+      :is-edit="isEdit"
+      :github-is-missing="missingFields.includes('github')"
+      :twitter-is-missing="missingFields.includes('twitter')"
+      :reddit-is-missing="missingFields.includes('reddit')"
+      :blog-is-missing="missingFields.includes('blog')"
+      :facebook-is-missing="missingFields.includes('facebook')"
+      :chat-is-missing="missingFields.includes('chat')"/>
     <Category v-if="!isEdit || missingFields.includes('category')"/>
     <Tags v-if="!isEdit || missingFields.includes('tags')"/>
   </div>
@@ -77,7 +84,10 @@
         default: false,
         type: Boolean
       },
-      suggestions: Array
+      suggestions: {
+        type: Array,
+        default: function () { return [] }
+      }
     }
   }
 </script>

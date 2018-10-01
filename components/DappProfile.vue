@@ -23,7 +23,7 @@
             <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
             <h3 class="title-3">Your email <span class="required">required</span></h3>
             <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" v-model="suggesterEmail"/></div>
-            <h3 class="title-3 -suggestions">Help improve the following fields</h3>
+            <h3 class="title-3 -suggestions">Help improve these missing fields</h3>
           </div>
           <DappEdit
             :suggestions="suggestions"/>
