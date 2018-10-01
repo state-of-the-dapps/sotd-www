@@ -28,7 +28,7 @@
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
       <DappProfile
         v-if="dapp.profileScore"
-        :name="dapp.name"
+        :dapp="dapp.name"
         :profile-score="dapp.profileScore"
         :slug="dapp.slug"/>
       <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>

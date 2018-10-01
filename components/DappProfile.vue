@@ -17,7 +17,7 @@
     <BaseModal v-if="modal">
       <div v-if="!sent">
         <div>
-          <h2 class="title">Improve {{ name }}'s profile</h2>
+          <h2 class="title">Improve {{ dapp }}'s profile</h2>
           <div class="basic-info">
             <h3 class="title-3">Your name <span class="required">required</span></h3>
             <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
@@ -73,7 +73,7 @@ export default {
     DappEdit
   },
   props: {
-    name: String,
+    dapp: String,
     profileScore: Number,
     slug: String
   },
@@ -86,6 +86,8 @@ export default {
       const data = {
         fields: this.fields
       }
+      data.fields.dapp = this.dapp
+      data.fields.slug = this.slug
       data.fields.suggesterName = this.suggesterName
       data.fields.suggesterEmail = this.suggesterEmail
       this.sent = true
