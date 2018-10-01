@@ -32,6 +32,8 @@ $color--dapp-unknown: #F5F5F5;
 $color--dapp-unknown-light: #FAFAFA;
 $color--dapp-abandoned: #F5F5F5;
 $color--dapp-abandoned-light: #FAFAFA;
+$color--dapp-broken: #c1c1c1;
+$color--dapp-broken-light: #c1c1c1;
 
 $color--negative: #ff005a; 
 $color--neutral: #ffb400;
@@ -42,6 +44,7 @@ $gradient--dapp-concept: linear-gradient(229deg, #b391ff 0%, #c498f7 45%, #fcc0f
 $gradient--dapp-live: linear-gradient(229deg, #acff84 0%, #98e3ff 100%);
 $gradient--dapp-prototype: linear-gradient(229deg, #ffd27e 0%, #ffedaf 100%);
 $gradient--dapp-wip: linear-gradient(229deg, #8ac3ff 0%, #97c3ff 20%, #84f7fc 100%);
+$gradient--dapp-broken: linear-gradient(229deg, #9d9d9d 0%, #f5f5f5 75%, #ffffff 100%);
 $gradient--dapp-default: linear-gradient(229deg, #bbbbbb 0%, #dddddd 100%);
 
 $gradient--main-1: linear-gradient(to right, #b391ff 0%, #8ac3ff 100%);
@@ -63,6 +66,9 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   &.-wip {
     background-image: $gradient--dapp-wip;
   }
+  &.-broken {
+    background-image: $gradient--dapp-broken;
+  }
   &.-stealth, &.-abandoned, &.-unknown {
     background: $gradient--dapp-default;
   }
@@ -83,6 +89,9 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   }
   &.-wip {
     background: $color--dapp-wip;
+  }
+  &.-broken {
+    background: $color--dapp-broken;
   }
   &.-stealth, &.-abandoned, &.-unknown {
     background: $color--white;
