@@ -7,12 +7,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['siteModal'])
+    ...mapGetters(['pageModal', 'siteModal'])
   },
   head () {
     return {
       bodyAttrs: {
-        class: this.siteModal.component ? 'has-modal' : ''
+        class: this.siteModal.component || this.pageModal ? 'has-modal' : ''
       }
     }
   }

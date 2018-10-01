@@ -26,7 +26,11 @@
         :neutral="dapp.stats.netural"
         :negative="dapp.stats.negative"/>
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
-      <DappProfile v-if="dapp.profileScore" :profile-score="dapp.profileScore"/>
+      <DappProfile
+        v-if="dapp.profileScore"
+        :dapp="dapp.name"
+        :profile-score="dapp.profileScore"
+        :slug="dapp.slug"/>
       <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
       <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>

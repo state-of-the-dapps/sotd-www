@@ -2,27 +2,27 @@
   <div>
     <p class="heading">Social media links</p>
     <ul class="list">
-      <li class="item">
+      <li v-if="(isEdit && facebookIsMissing) || !isEdit" class="item">
         <div class="input-wrapper -facebook">
           <input v-model="facebook" class="input" type="text" placeholder="/facebookpage" maxlength="100">
         </div>
       </li>
-      <li class="item">
+      <li v-if="(isEdit && twitterIsMissing) || !isEdit" class="item">
         <div class="input-wrapper -twitter">
           <input v-model="twitter" class="input" type="text" placeholder="@twitterhandle" maxlength="100">
         </div>
       </li>
-      <li class="item">
+      <li v-if="(isEdit && githubIsMissing) || !isEdit" class="item">
         <div class="input-wrapper -github">
           <input v-model="github" class="input" type="text" placeholder="/githubproject" maxlength="100">
         </div>
       </li>
-      <li class="item">
+      <li v-if="(isEdit && redditIsMissing) || !isEdit" class="item">
         <div class="input-wrapper -reddit">
           <input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100">
         </div>
       </li>
-      <li class="item" :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''">
+      <li v-if="(isEdit && chatIsMissing) || !isEdit" class="item" :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''">
         <div class="input-wrapper -chat">
           <input v-model="chat" class="input" type="text" placeholder="chat invitation url" maxlength="100" @input="validate">
         </div>
@@ -30,7 +30,7 @@
           <li v-for="(error, index) in chatErrors" :key="index" class="error-item -social">{{ error }}</li>
         </ul>
       </li>
-      <li class="item">
+      <li v-if="(isEdit && blogIsMissing) || !isEdit" class="item">
         <div class="input-wrapper -blog">
           <input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100">
         </div>
@@ -45,6 +45,36 @@
   var validationTimer
 
   export default {
+    props: {
+      isEdit: {
+        type: Boolean,
+        default: false
+      },
+      blogIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      githubIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      facebookIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      redditIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      chatIsMissing: {
+        type: Boolean,
+        default: false
+      },
+      twitterIsMissing: {
+        type: Boolean,
+        default: false
+      }
+    },
     computed: {
       blog: {
         get () {
