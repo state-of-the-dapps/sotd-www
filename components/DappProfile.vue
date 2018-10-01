@@ -67,6 +67,9 @@ export default {
     }
   },
   computed: {
+    userEntryRoute () {
+      return this.$store.getters['userEntryRoute']
+    },
     suggesterEmail () {
       return this.email
     },
@@ -106,6 +109,13 @@ export default {
           .then((response) => {
             this.$mixpanel.track('Improve DApp - Submit', {
               slug: this.slug
+            })
+            this.$mixpanel.setUser({
+              '$email': this.suggesterEmail,
+              '$name': this.suggesterName,
+              'hasWeb3': typeof web3 !== 'undefined',
+              'lastUpdated': new Date().toISOString(),
+              'lastSessionEntryRoute': this.userEntryRoute
             })
           })
           .catch((error) => {
