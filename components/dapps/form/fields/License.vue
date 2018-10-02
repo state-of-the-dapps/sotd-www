@@ -6,7 +6,7 @@
     <ul v-if="errors && errors.length > 0" class="error-list">
       <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">(e.g. MIT, GPL)</p>
+    <p class="help">(e.g. MIT, GPL, Proprietary)</p>
   </div>
 </template>
 
