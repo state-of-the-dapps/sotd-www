@@ -104,7 +104,9 @@
       </table>
     </div>
     <h2 class="heading-2">New ÐApps per Month</h2>
-    <canvas id="new-vs-total"/>
+    <div class="new-vs-total-wrapper">
+      <canvas id="new-vs-total"/>
+    </div>
     <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
       <StatsStatusBarChart
@@ -129,6 +131,7 @@ export default {
             label: 'Total DApps',
             borderColor: '#333333',
             backgroundColor: '#333333',
+            borderWidth: '2',
             fill: false,
             data: [
               0,
@@ -145,6 +148,7 @@ export default {
             label: 'New DApps',
             borderColor: '#1db200',
             backgroundColor: '#1db200',
+            borderWidth: '2',
             fill: false,
             data: [
               5,
@@ -243,6 +247,11 @@ export default {
     justify-content: center;
     text-align: left;
   }
+}
+
+.new-vs-total-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .item {
