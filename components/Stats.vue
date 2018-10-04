@@ -103,6 +103,8 @@
         </tbody>
       </table>
     </div>
+    <h2 class="heading-2">New ÐApps per Month</h2>
+    <canvas id="new-vs-total"/>
     <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
       <StatsStatusBarChart
@@ -112,11 +114,53 @@
 </template>
 
 <script>
+import Chart from 'chart.js'
 import { mapGetters } from 'vuex'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
 
 export default {
+  data () {
+    return {
+      newVsTotalData: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+          {
+            label: 'Total DApps',
+            borderColor: '#333333',
+            backgroundColor: '#333333',
+            fill: false,
+            data: [
+              0,
+              1,
+              1,
+              2,
+              3,
+              5,
+              8
+            ],
+            yAxisID: 'y-axis-1'
+          },
+          {
+            label: 'New DApps',
+            borderColor: '#1db200',
+            backgroundColor: '#1db200',
+            fill: false,
+            data: [
+              5,
+              8,
+              10,
+              12,
+              49,
+              30,
+              50
+            ],
+            yAxisID: 'y-axis-2'
+          }
+        ]
+      }
+    }
+  },
   components: {
     Help,
     StatsStatusBarChart
@@ -132,6 +176,43 @@ export default {
       'statPlatforms',
       'statStatuses'
     ])
+  },
+  methods: {
+    createChart (chartId, chartData) {
+      var ctx = document.getElementById(chartId)
+      var lineChart = new Chart(ctx, { // eslint-disable-line no-unused-vars
+        type: 'line',
+        data: chartData,
+        options: {
+          responsive: true,
+          hoverMode: 'index',
+          stacked: false,
+          title: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: 'left',
+              id: 'y-axis-1'
+            }, {
+              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+              display: true,
+              position: 'right',
+              id: 'y-axis-2',
+              // grid line settings
+              gridLines: {
+                drawOnChartArea: false // only want the grid lines for one axis to show up
+              }
+            }]
+          }
+        }
+      })
+    }
+  },
+  mounted () {
+    this.createChart('new-vs-total', this.newVsTotalData)
   }
 }
 </script>
