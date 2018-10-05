@@ -21,7 +21,7 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">
-            <span>24 hr transactions</span>
+            <span>24hr transactions</span>
             <Help text="Number of transactions to ÐApp contracts"/>
           </h2>
           <p class="value">{{ statDappTx24Hr | abbreviateNumber(2) || 0 }}</p>
@@ -105,6 +105,10 @@
     </div>
     <h2 class="heading-2">New ÐApps per Month</h2>
     <div class="new-vs-total-wrapper">
+      <div class="new-vs-total-legend">
+        <div>Total ÐApps</div>
+        <div class="new-vs-total-legend-new">New ÐApps</div>
+      </div>
       <canvas id="new-vs-total"/>
     </div>
     <h2 class="heading-2">Status</h2>
@@ -117,161 +121,136 @@
 
 <script>
 import Chart from 'chart.js'
+import formatDate from 'date-fns/format'
 import { mapGetters } from 'vuex'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
+
+const newDapps = [
+  25,
+  1,
+  7,
+  6,
+  22,
+  9,
+  6,
+  18,
+  7,
+  5,
+  11,
+  27,
+  12,
+  23,
+  17,
+  8,
+  14,
+  15,
+  11,
+  6,
+  5,
+  11,
+  22,
+  18,
+  18,
+  64,
+  78,
+  46,
+  67,
+  56,
+  84,
+  69,
+  55,
+  76,
+  141,
+  138,
+  122,
+  146,
+  131,
+  110,
+  121,
+  161
+]
+
+const labels = [
+  '2015-04-30',
+  '2015-05-31',
+  '2015-06-30',
+  '2015-07-31',
+  '2015-08-31',
+  '2015-09-30',
+  '2015-10-31',
+  '2015-11-30',
+  '2015-12-31',
+  '2016-01-31',
+  '2016-02-29',
+  '2016-03-31',
+  '2016-04-30',
+  '2016-05-31',
+  '2016-06-30',
+  '2016-07-31',
+  '2016-08-31',
+  '2016-09-30',
+  '2016-10-31',
+  '2016-11-30',
+  '2016-12-31',
+  '2017-01-31',
+  '2017-02-28',
+  '2017-03-31',
+  '2017-04-30',
+  '2017-05-31',
+  '2017-06-30',
+  '2017-07-31',
+  '2017-08-31',
+  '2017-09-30',
+  '2017-10-31',
+  '2017-11-30',
+  '2017-12-31',
+  '2018-01-31',
+  '2018-02-28',
+  '2018-03-31',
+  '2018-04-30',
+  '2018-05-31',
+  '2018-06-30',
+  '2018-07-31',
+  '2018-08-31',
+  '2018-09-30'
+]
+
+const formattedLabels = labels.map(x => formatDate(x, 'MMM \'YY'))
+
+function totalDapps () {
+  let totalDappArr = []
+  let totalDapps = 0
+  let i = 0
+  for (i; i < newDapps.length; i++) {
+    totalDapps += newDapps[i]
+    totalDappArr.push(totalDapps)
+  }
+  return totalDappArr
+}
 
 export default {
   data () {
     return {
       newVsTotalData: {
-        labels: [
-          '2015-04-30',
-          '2015-05-31',
-          '2015-06-30',
-          '2015-07-31',
-          '2015-08-31',
-          '2015-09-30',
-          '2015-10-31',
-          '2015-11-30',
-          '2015-12-31',
-          '2016-01-31',
-          '2016-02-29',
-          '2016-03-31',
-          '2016-04-30',
-          '2016-05-31',
-          '2016-06-30',
-          '2016-07-31',
-          '2016-08-31',
-          '2016-09-30',
-          '2016-10-31',
-          '2016-11-30',
-          '2016-12-31',
-          '2017-01-31',
-          '2017-02-28',
-          '2017-03-31',
-          '2017-04-30',
-          '2017-05-31',
-          '2017-06-30',
-          '2017-07-31',
-          '2017-08-31',
-          '2017-09-30',
-          '2017-10-31',
-          '2017-11-30',
-          '2017-12-31',
-          '2018-01-31',
-          '2018-02-28',
-          '2018-03-31',
-          '2018-04-30',
-          '2018-05-31',
-          '2018-06-30',
-          '2018-07-31',
-          '2018-08-31',
-          '2018-09-30'
-        ],
+        labels: formattedLabels,
         datasets: [
           {
+            type: 'line',
             label: 'Total DApps',
             borderColor: '#333333',
             backgroundColor: '#333333',
             borderWidth: '2',
             fill: false,
-            data: [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
-            ],
+            data: totalDapps(),
             yAxisID: 'y-axis-1'
           },
           {
             label: 'New DApps',
-            borderColor: '#1db200',
-            backgroundColor: '#1db200',
+            borderColor: '#bd5eff',
+            backgroundColor: '#bd5eff',
             borderWidth: '2',
-            fill: false,
-            data: [
-              25,
-              1,
-              7,
-              6,
-              22,
-              9,
-              6,
-              18,
-              7,
-              5,
-              11,
-              27,
-              12,
-              23,
-              17,
-              8,
-              14,
-              15,
-              11,
-              6,
-              5,
-              11,
-              22,
-              18,
-              18,
-              64,
-              78,
-              46,
-              67,
-              56,
-              84,
-              69,
-              55,
-              76,
-              141,
-              138,
-              122,
-              146,
-              131,
-              110,
-              121,
-              161
-            ],
+            data: newDapps,
             yAxisID: 'y-axis-2'
           }
         ]
@@ -298,9 +277,12 @@ export default {
     createChart (chartId, chartData) {
       var ctx = document.getElementById(chartId)
       var lineChart = new Chart(ctx, { // eslint-disable-line no-unused-vars
-        type: 'line',
+        type: 'bar',
         data: chartData,
         options: {
+          legend: {
+            display: false
+          },
           responsive: true,
           hoverMode: 'index',
           stacked: false,
@@ -308,13 +290,24 @@ export default {
             display: false
           },
           scales: {
+            xAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                fontFamily: 'Overpass',
+                fontStyle: 'bold'
+              }
+            }],
             yAxes: [{
               type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
               display: true,
               position: 'left',
               id: 'y-axis-1',
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                fontFamily: 'Overpass',
+                fontStyle: 'bold'
               }
             }, {
               type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
@@ -324,6 +317,11 @@ export default {
               // grid line settings
               gridLines: {
                 drawOnChartArea: false // only want the grid lines for one axis to show up
+              },
+              ticks: {
+                beginAtZero: true,
+                fontFamily: 'Overpass',
+                fontStyle: 'bold'
               }
             }]
           }
@@ -336,7 +334,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -368,6 +365,18 @@ export default {
 .new-vs-total-wrapper {
   max-width: 1300px;
   margin: 0 auto;
+}
+
+.new-vs-total-legend {
+  font-weight: 700;
+  padding: 0 5px 20px 5px;
+  font-size: 1.1rem;
+  display: flex;
+}
+
+.new-vs-total-legend-new {
+  margin-left: auto;
+  color: #bd5eff;
 }
 
 .item {
