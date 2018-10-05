@@ -370,7 +370,7 @@ export default {
 .new-vs-total-legend {
   font-weight: 700;
   padding: 0 5px 20px 5px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   display: flex;
 }
 
