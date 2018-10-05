@@ -34,6 +34,14 @@
         </div>
       </li>
     </ul>
+    <h2 class="heading-2">New ÐApps per Month</h2>
+    <div class="new-vs-total-wrapper">
+      <div class="new-vs-total-legend">
+        <div>Total ÐApps</div>
+        <div class="new-vs-total-legend-new">New ÐApps</div>
+      </div>
+      <canvas id="new-vs-total"/>
+    </div>
     <h2 class="heading-2">Categories</h2>
     <div class="table-wrapper">
       <table class="table">
@@ -102,14 +110,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <h2 class="heading-2">New ÐApps per Month</h2>
-    <div class="new-vs-total-wrapper">
-      <div class="new-vs-total-legend">
-        <div>Total ÐApps</div>
-        <div class="new-vs-total-legend-new">New ÐApps</div>
-      </div>
-      <canvas id="new-vs-total"/>
     </div>
     <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
