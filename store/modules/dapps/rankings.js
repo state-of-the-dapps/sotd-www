@@ -11,6 +11,7 @@ const actions = {
           offset: state.offset,
           order: state.order,
           sort: state.sort,
+          platform: state.platform,
           category: state.category
         }
       })
@@ -29,6 +30,9 @@ const actions = {
   },
   setCategory ({ commit }, category) {
     commit('SET_CATEGORY', category)
+  },
+  setPlatform ({ commit }, platform) {
+    commit('SET_PLATFORM', platform)
   },
   setSort ({ commit }, sortOptions) {
     commit('SET_SORT', sortOptions)
@@ -53,6 +57,9 @@ const getters = {
   },
   order: state => {
     return state.order
+  },
+  platform: state => {
+    return state.platform
   },
   sort: state => {
     return state.sort
@@ -87,6 +94,10 @@ const mutations = {
     state.offset = 0
     state.order = sortOptions.order
     state.sort = sortOptions.sort
+  },
+  SET_PLATFORM (state, platform) {
+    state.offset = 0
+    state.platform = platform
   }
 }
 
@@ -97,6 +108,7 @@ const state = () => ({
   limit: dappListDefaultLimit,
   offset: 0,
   order: dappListDefaultOrder,
+  platform: '',
   sort: dappListDefaultSort,
   total: 0
 })

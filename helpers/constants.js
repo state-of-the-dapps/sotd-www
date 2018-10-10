@@ -185,6 +185,8 @@ const feedbackComponentMap = Object.freeze({
 
 const myListLimit = 50
 
+const platformList = ['Ethereum', 'POA']
+
 export {
   dappBadgeMap,
   dappGameTag,
@@ -203,5 +205,6 @@ export {
   eventCategories,
   eventRefineCategoryOptions,
   feedbackComponentMap,
-  myListLimit
+  myListLimit,
+  platformList
 }
