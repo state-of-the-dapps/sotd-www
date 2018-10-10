@@ -187,6 +187,11 @@ const myListLimit = 50
 
 const platformList = ['Ethereum', 'POA']
 
+const platformMap = {
+  'ethereum': 'Ethereum',
+  'poa': 'POA'
+}
+
 export {
   dappBadgeMap,
   dappGameTag,
@@ -206,5 +211,6 @@ export {
   eventRefineCategoryOptions,
   feedbackComponentMap,
   myListLimit,
-  platformList
+  platformList,
+  platformMap
 }

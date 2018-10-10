@@ -1,22 +1,21 @@
 <template>
   <div class="component-DappList" id="component-DappList">
     <ul class="category-list">
-      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category ? 'is-active' : ''">All categories</nuxt-link></li>
+      <li class="category-item"><a @click="filterCategory()" class="category-link" :class="!category ? 'is-active' : ''">All categories</a></li>
       <li v-for="(dappCategory, index) in dappCategories" :key="index">
-        <nuxt-link
-          @click.native="trackDappRankingCategory(dappCategory.slug)"
-          :to="{path: '/rankings/category/' + dappCategory.slug}"
+        <a
+          @click="filterCategory(dappCategory.slug)"
           class="category-link"
-          :class="dappCategory.slug === category ? 'is-active' : ''">{{ dappCategory.name }}</nuxt-link>
+          :class="dappCategory.slug === category ? 'is-active' : ''">{{ dappCategory.name }}</a>
       </li>
     </ul>
     <ul class="platform-list">
-      <li v-for="(platformItem, index) in platforms" :key="index">
-        <nuxt-link
-          @click.native="trackDappRankingPlatform(platformItem)"
-          :to="{path: '/rankings/platform/' + platformItem}"
+      <li class="category-item"><a @click="filterPlatform()" class="category-link" :class="!platform ? 'is-active' : ''">All platforms</a></li>
+      <li v-for="(dappPlatform, index) in dappPlatforms" :key="index">
+        <a
+          @click="filterPlatform(dappPlatform)"
           class="category-link"
-          :class="platformItem === platform ? 'is-active' : ''">{{ platformItem }}</nuxt-link>
+          :class="dappPlatform === platform ? 'is-active' : ''">{{ dappPlatform }}</a>
       </li>
     </ul>
     <div class="wrapper">
@@ -56,7 +55,7 @@ import LoadMore from './LoadMore'
 export default {
   data () {
     return {
-      platforms: platformList,
+      dappPlatforms: platformList,
       dappCategories: [],
       fields: [
         {
@@ -143,6 +142,28 @@ export default {
       'setPlatform',
       'setSort'
     ]),
+    filterCategory (category) {
+      this.trackDappRankingCategory(category)
+      let path = '/rankings'
+      if (this.platform) {
+        path += `/platform/${this.platform.toLowerCase()}`
+      }
+      if (category) {
+        path += `/category/${category.toLowerCase()}`
+      }
+      this.$router.push({path})
+    },
+    filterPlatform (platform) {
+      this.trackDappRankingPlatform(platform)
+      let path = '/rankings'
+      if (platform) {
+        path += `/platform/${platform.toLowerCase()}`
+      }
+      if (this.category) {
+        path += `/category/${this.category.toLowerCase()}`
+      }
+      this.$router.push({path})
+    },
     sortDapps (sortOptions) {
       this.setSort(sortOptions)
       this.fetchDapps()

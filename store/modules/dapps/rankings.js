@@ -1,5 +1,5 @@
 import axios from '~/helpers/axios'
-import { dappListDefaultLimit, dappListDefaultSort, dappListDefaultOrder } from '~/helpers/constants'
+import { dappListDefaultLimit, dappListDefaultSort, dappListDefaultOrder, platformMap } from '~/helpers/constants'
 
 const actions = {
   fetchDapps ({ commit, state }, type) {
@@ -97,7 +97,8 @@ const mutations = {
   },
   SET_PLATFORM (state, platform) {
     state.offset = 0
-    state.platform = platform
+    const formattedPlatform = platformMap[platform]
+    state.platform = formattedPlatform
   }
 }
 
