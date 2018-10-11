@@ -213,7 +213,7 @@ export default {
             name: 'rankings-platform-category',
             params: {
               category: this.category,
-              platform: this.platform
+              platform: this.platform.toLowerCase()
             }
           }
         )
