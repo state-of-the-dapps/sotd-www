@@ -206,20 +206,24 @@ export default {
   },
   async mounted () {
     this.dappCategories = await getCategories()
-    if (this.category && this.platform) {
-      this.$router.replace(
-        {
-          name: 'rankings-platform-category',
-          params: {
-            category: this.category,
-            platform: this.platform
+    if (!this.$route.query.reload) {
+      if (this.category && this.platform) {
+        this.$router.replace(
+          {
+            name: 'rankings-platform-category',
+            params: {
+              category: this.category,
+              platform: this.platform
+            }
           }
-        }
-      )
-    } else if (this.category) {
-      this.$router.replace({name: 'rankings-category', params: {category: this.category}})
-    } else if (this.platform) {
-      this.$router.replace({name: 'rankings-platform', params: {platform: this.platform}})
+        )
+      } else if (this.category) {
+        this.$router.replace({name: 'rankings-category', params: {category: this.category}})
+      } else if (this.platform) {
+        this.$router.replace({name: 'rankings-platform', params: {platform: this.platform}})
+      }
+    } else {
+      this.$router.replace({query: {}})
     }
     if (this.dapps.length < 1) {
       this.setCategory(this.$route.params.category)

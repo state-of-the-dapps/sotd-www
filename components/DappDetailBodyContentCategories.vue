@@ -4,7 +4,7 @@
     <h4 class="subtitle">Categories</h4>
     <ul class="category-list">
       <li v-for="(category, index) in categories" :key="index" class="category-item">
-        <nuxt-link :to="{name: 'rankings-category', params: {category: category}}" @click.native="trackDappCategory($options.filters.formatCategory(category))" class="category-link">{{ category | formatCategory }}</nuxt-link>
+        <nuxt-link :to="{name: 'rankings-category', params: {category: category}, query: {reload: 'true'}}" @click.native="trackDappCategory($options.filters.formatCategory(category))" class="category-link">{{ category | formatCategory }}</nuxt-link>
       </li>
     </ul>
   </div>
