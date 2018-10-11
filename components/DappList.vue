@@ -270,10 +270,12 @@ export default {
 }
 
 .filter-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
+  @include tweakpoint('min-width', 500px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .wrapper {

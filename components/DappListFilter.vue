@@ -95,7 +95,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-dapp-list-filter {
-  margin: 0 6px;
+  margin: 10px 6px;
 }
 
 .filter-wrapper {
