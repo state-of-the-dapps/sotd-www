@@ -1,23 +1,17 @@
 <template>
   <div class="component-DappList" id="component-DappList">
-    <ul class="category-list">
-      <li class="category-item"><a @click="filterCategory()" class="category-link" :class="!category ? 'is-active' : ''">All categories</a></li>
-      <li v-for="(dappCategory, index) in dappCategories" :key="index">
-        <a
-          @click="filterCategory(dappCategory.slug)"
-          class="category-link"
-          :class="dappCategory.slug === category ? 'is-active' : ''">{{ dappCategory.name }}</a>
-      </li>
-    </ul>
-    <ul class="platform-list">
-      <li class="category-item"><a @click="filterPlatform()" class="category-link" :class="!platform ? 'is-active' : ''">All platforms</a></li>
-      <li v-for="(dappPlatform, index) in dappPlatforms" :key="index">
-        <a
-          @click="filterPlatform(dappPlatform)"
-          class="category-link"
-          :class="dappPlatform === platform ? 'is-active' : ''">{{ dappPlatform }}</a>
-      </li>
-    </ul>
+    <DappListFilter
+      :options="categoryOptions"
+      :selected="category"
+      all-text="All categories"
+      title="Choose a category"
+      @select="filterCategory"/>
+    <DappListFilter
+      :options="platformOptions"
+      :selected="platform"
+      all-text="All platforms"
+      title="Choose a platform"
+      @select="filterPlatform"/>   
     <div class="wrapper">
       <div class="wrapper-2">
         <div class="wrapper-3">
@@ -48,6 +42,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { trackDappRankingCategory, trackDappRankingSort, trackDappRankingPlatform } from '~/helpers/mixpanel'
 import { platformList } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
+import DappListFilter from './DappListFilter'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -112,6 +107,7 @@ export default {
     }
   },
   components: {
+    DappListFilter,
     DappListHeadings,
     DappListItem,
     LoadMore
@@ -127,7 +123,27 @@ export default {
       'platform',
       'sort',
       'total'
-    ])
+    ]),
+    categoryOptions () {
+      const options = this.dappCategories.map(x => {
+        const optionObj = {
+          text: x.name,
+          selection: x.slug
+        }
+        return optionObj
+      })
+      return options
+    },
+    platformOptions () {
+      const options = this.dappPlatforms.map(x => {
+        const optionObj = {
+          text: x,
+          selection: x.toLowerCase()
+        }
+        return optionObj
+      })
+      return options
+    }
   },
   methods: {
     loadMore () {
