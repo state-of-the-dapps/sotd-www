@@ -2,12 +2,14 @@
   <div class="component-DappList" id="component-DappList">
     <div class="filter-wrapper">
       <DappListFilter
+        filter="Category"
         :options="categoryOptions"
         :selected="category"
         all-text="All categories"
         title="Choose a category"
         @select="filterCategory"/>
       <DappListFilter
+        filter="Platform"
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"
