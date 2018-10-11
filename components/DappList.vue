@@ -1,17 +1,19 @@
 <template>
   <div class="component-DappList" id="component-DappList">
-    <DappListFilter
-      :options="categoryOptions"
-      :selected="category"
-      all-text="All categories"
-      title="Choose a category"
-      @select="filterCategory"/>
-    <DappListFilter
-      :options="platformOptions"
-      :selected="platform"
-      all-text="All platforms"
-      title="Choose a platform"
-      @select="filterPlatform"/>   
+    <div class="filter-wrapper">
+      <DappListFilter
+        :options="categoryOptions"
+        :selected="category"
+        all-text="All categories"
+        title="Choose a category"
+        @select="filterCategory"/>
+      <DappListFilter
+        :options="platformOptions"
+        :selected="platform"
+        all-text="All platforms"
+        title="Choose a platform"
+        @select="filterPlatform"/>
+    </div> 
     <div class="wrapper">
       <div class="wrapper-2">
         <div class="wrapper-3">
@@ -263,6 +265,13 @@ export default {
 
 .loader-wrapper {
   margin: 25px auto;
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 25px;
 }
 
 .wrapper {
