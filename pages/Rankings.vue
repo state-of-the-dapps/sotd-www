@@ -3,7 +3,6 @@
     <div class="page-rankings">
       <div class="hero-wrapper">
         <h1 class="title-1">ÐApp Rankings</h1>
-        <p class="description">Check out the hottest ÐApps on the market. ÐApps are ranked by DAU (daily active users).</p>
       </div>
       <DappList/>
     </div>

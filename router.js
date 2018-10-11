@@ -145,6 +145,16 @@ export function createRouter () {
             path: 'category/:category',
             component: Rankings,
             name: 'rankings-category'
+          },
+          {
+            path: 'platform/:platform',
+            component: Rankings,
+            name: 'rankings-platform'
+          },
+          {
+            path: 'platform/:platform/category/:category',
+            component: Rankings,
+            name: 'rankings-platform-category'
           }
         ]
       },

@@ -150,6 +150,22 @@ export const trackDappRankingCategory = function (sourceComponent, sourcePath, c
   return action
 }
 
+export const trackDappRankingPlatform = function (sourceComponent, sourcePath, platform) {
+  let name = 'DApp Ranking - Platform'
+  let data = {
+    sourceComponent,
+    sourcePath,
+    platform
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappRankingSort = function (order, sort) {
   let name = 'DApp Ranking - Sort'
   let data = {

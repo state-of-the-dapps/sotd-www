@@ -1,11 +1,22 @@
 <template>
   <div class="component-DappList" id="component-DappList">
-    <ul class="category-list">
-      <li class="category-item"><nuxt-link :to="{name: 'rankings'}" class="category-link" :class="!category ? 'is-active' : ''">All categories</nuxt-link></li>
-      <li v-for="(dappCategory, index) in dappCategories" :key="index">
-        <nuxt-link @click.native="trackDappRankingCategory(dappCategory.slug)" :to="{path: '/rankings/category/' + dappCategory.slug}" class="category-link" :class="dappCategory.slug === category ? 'is-active' : ''">{{ dappCategory.name }}</nuxt-link>
-      </li>
-    </ul>
+    <div class="filter-wrapper">
+      <DappListFilter
+        :important="true"
+        :options="categoryOptions"
+        :selected="category"
+        all-text="All categories"
+        filter="Category"
+        title="Choose a category"
+        @select="filterCategory"/>
+      <DappListFilter
+        :options="platformOptions"
+        :selected="platform"
+        all-text="All platforms"
+        filter="Platform"
+        title="Choose a platform"
+        @select="filterPlatform"/>
+    </div> 
     <div class="wrapper">
       <div class="wrapper-2">
         <div class="wrapper-3">
@@ -33,8 +44,10 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import { trackDappRankingCategory, trackDappRankingSort } from '~/helpers/mixpanel'
+import { trackDappRankingCategory, trackDappRankingSort, trackDappRankingPlatform } from '~/helpers/mixpanel'
+import { platformList } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
+import DappListFilter from './DappListFilter'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -42,6 +55,7 @@ import LoadMore from './LoadMore'
 export default {
   data () {
     return {
+      dappPlatforms: platformList,
       dappCategories: [],
       fields: [
         {
@@ -98,6 +112,7 @@ export default {
     }
   },
   components: {
+    DappListFilter,
     DappListHeadings,
     DappListItem,
     LoadMore
@@ -110,9 +125,30 @@ export default {
       'limit',
       'offset',
       'order',
+      'platform',
       'sort',
       'total'
-    ])
+    ]),
+    categoryOptions () {
+      const options = this.dappCategories.map(x => {
+        const optionObj = {
+          text: x.name,
+          selection: x.slug
+        }
+        return optionObj
+      })
+      return options
+    },
+    platformOptions () {
+      const options = this.dappPlatforms.map(x => {
+        const optionObj = {
+          text: x,
+          selection: x.toLowerCase()
+        }
+        return optionObj
+      })
+      return options
+    }
   },
   methods: {
     loadMore () {
@@ -124,8 +160,31 @@ export default {
       'fetchDapps',
       'incrementOffset',
       'setCategory',
+      'setPlatform',
       'setSort'
     ]),
+    filterCategory (category) {
+      this.trackDappRankingCategory(category)
+      let path = '/rankings'
+      if (this.platform) {
+        path += `/platform/${this.platform.toLowerCase()}`
+      }
+      if (category) {
+        path += `/category/${category.toLowerCase()}`
+      }
+      this.$router.push({path})
+    },
+    filterPlatform (platform) {
+      this.trackDappRankingPlatform(platform)
+      let path = '/rankings'
+      if (platform) {
+        path += `/platform/${platform.toLowerCase()}`
+      }
+      if (this.category) {
+        path += `/category/${this.category.toLowerCase()}`
+      }
+      this.$router.push({path})
+    },
     sortDapps (sortOptions) {
       this.setSort(sortOptions)
       this.fetchDapps()
@@ -138,21 +197,40 @@ export default {
       const sourceComponent = 'DappList'
       const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
       this.$mixpanel.track(action.name, action.data)
+    },
+    trackDappRankingPlatform (platform) {
+      const sourceComponent = 'DappList'
+      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, platform)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   async mounted () {
     this.dappCategories = await getCategories()
-    if (this.category) {
+    if (this.category && this.platform) {
+      this.$router.replace(
+        {
+          name: 'rankings-platform-category',
+          params: {
+            category: this.category,
+            platform: this.platform
+          }
+        }
+      )
+    } else if (this.category) {
       this.$router.replace({name: 'rankings-category', params: {category: this.category}})
+    } else if (this.platform) {
+      this.$router.replace({name: 'rankings-platform', params: {platform: this.platform}})
     }
     if (this.dapps.length < 1) {
       this.setCategory(this.$route.params.category)
+      this.setPlatform(this.$route.params.platform)
       this.fetchDapps()
     }
   },
   watch: {
     '$route' (to, from) {
       this.setCategory(this.$route.params.category)
+      this.setPlatform(this.$route.params.platform)
       this.fetchDapps()
     }
   }
@@ -190,6 +268,13 @@ export default {
 
 .loader-wrapper {
   margin: 25px auto;
+}
+
+.filter-wrapper {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
