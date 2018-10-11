@@ -220,7 +220,7 @@ export default {
       } else if (this.category) {
         this.$router.replace({name: 'rankings-category', params: {category: this.category}})
       } else if (this.platform) {
-        this.$router.replace({name: 'rankings-platform', params: {platform: this.platform}})
+        this.$router.replace({name: 'rankings-platform', params: {platform: this.platform.toLowerCase()}})
       }
     } else {
       this.$router.replace({query: {}})
