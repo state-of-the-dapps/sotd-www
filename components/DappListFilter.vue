@@ -7,8 +7,8 @@
         @click="open">
           <span class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
           <span class="arrow-wrapper"><SvgIconChevron
-            :width="12"
-            :height="12"/></span>
+            :width="11"
+            :height="11"/></span>
       </button>
       <transition name="fade">
         <div
@@ -95,7 +95,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-dapp-list-filter {
-  margin: 10px 6px;
+  margin: 10px 6px 5px 6px;
 }
 
 .filter-wrapper {
@@ -114,9 +114,9 @@ export default {
 }
 
 .button {
-  font-size: 1.2rem;
-  padding: 8px 12px;
-  width: 175px;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  width: 150px;
   border-radius: 4px;
   border: 1px solid $color--black;
   display: flex;
@@ -138,8 +138,8 @@ export default {
 }
 
 .dropdown-title {
-  padding: 0 10px 12px 10px;
-  margin: 12px 0 10px 0;
+  padding: 0 10px 10px 10px;
+  margin: 8px 0 8px 0;
   border-bottom: 1px solid darken($color--gray, 10%);
 }
 

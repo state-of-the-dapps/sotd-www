@@ -271,11 +271,9 @@ export default {
 
 .filter-wrapper {
   padding-bottom: 15px;
-  @include tweakpoint('min-width', 500px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
