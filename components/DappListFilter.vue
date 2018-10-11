@@ -3,6 +3,7 @@
     <h3 class="filter-title">{{ filter }}</h3>
     <div class="filter-wrapper">
       <button
+        :class="important ? 'important' : ''"
         class="button"
         @click="open">
           <span class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
@@ -55,6 +56,10 @@ export default {
     filter: {
       type: String,
       required: true
+    },
+    important: {
+      type: Boolean,
+      default: false
     },
     options: {
       type: Array,
@@ -122,6 +127,9 @@ export default {
   display: flex;
   align-items: center;
   text-align: left;
+  &.important {
+    background: $color--white;
+  }
 }
 
 .dropdown {
