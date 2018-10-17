@@ -32,7 +32,7 @@
       </ul>
     </div>
     <div v-if="!isEdit">
-      <p class="heading">{{ platform }} contract addresses</p>
+      <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS'">accounts</span><span v-else>addresses</span></p>
       <ul v-if="platform === 'Ethereum'" class="list">
         <li class="item">
           <div class="name">Mainnet</div>
