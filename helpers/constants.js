@@ -185,10 +185,11 @@ const feedbackComponentMap = Object.freeze({
 
 const myListLimit = 50
 
-const platformList = ['Ethereum', 'POA']
+const platformList = ['Ethereum', 'EOS', 'POA']
 
 const platformMap = {
   'ethereum': 'Ethereum',
+  'eos': 'EOS',
   'poa': 'POA'
 }
 

@@ -28,6 +28,7 @@ function initialState () {
       name: [],
       poaMainnet: [],
       poaTestnet: [],
+      eosMainnet: [],
       productImage: [],
       rinkeby: [],
       ropsten: [],
@@ -45,6 +46,7 @@ function initialState () {
         mainnet: { address: '' },
         poaMainnet: { address: '' },
         poaTestnet: { address: '' },
+        eosMainnet: { address: '' },
         ropsten: { address: '' },
         kovan: { address: '' },
         rinkeby: { address: '' }
@@ -289,6 +291,11 @@ const getters = {
     let contracts = contractsString.split('\n')
     return contracts
   },
+  contractsEosMainnet: state => {
+    let contractsString = state.fields.contracts.eosMainnet.address
+    let contracts = contractsString.split('\n')
+    return contracts
+  },
   dappUrl: state => {
     return state.fields.siteUrls.dapp
   },
@@ -360,6 +367,9 @@ const getters = {
   },
   poaTestnetErrors: state => {
     return state.errors.poaTestnet
+  },
+  eosMainnetErrors: state => {
+    return state.errors.eosMainnet
   },
   productImage: state => {
     return state.fields.productImage

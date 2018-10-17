@@ -7,6 +7,10 @@
         class="selection"
         @click="setPlatform('Ethereum')">Ethereum</button>
       <button
+        :class="platform === 'EOS' ? 'is-active' : ''"
+        class="selection"
+        @click="setPlatform('EOS')">EOS</button>
+      <button
         :class="platform === 'POA' ? 'is-active' : ''"
         class="selection"
         @click="setPlatform('POA')">POA</button>
