@@ -1,5 +1,5 @@
 <template>
-  <li class="component-DappListItem" v-if="dapp.rank">
+  <li class="component-DappListItem">
     <ul class="columns">
       <li class="column -rank">
         <div class="wrapper">
