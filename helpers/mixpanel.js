@@ -134,6 +134,21 @@ export const trackDappFlag = function (slug) {
   return action
 }
 
+export const trackDappPlatform = function (platform, slug) {
+  let name = 'DApp - Platform'
+  let data = {
+    platform,
+    dapp: slug
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappRankingCategory = function (sourceComponent, sourcePath, category) {
   let name = 'DApp Ranking - Category'
   let data = {

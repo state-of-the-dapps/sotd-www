@@ -33,6 +33,10 @@
         :slug="dapp.slug"/>
       <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
+      <DappDetailBodyContentPlatform
+        v-if="dapp.platform"
+        :platform="dapp.platform"
+        :slug="dapp.slug"/>
       <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
       <DappDetailBodyContentMeta :name="dapp.name" :slug="dapp.slug"/>
@@ -51,6 +55,7 @@ import DappDetailBodyContentDescription from './DappDetailBodyContentDescription
 import DappDetailBodyContentImage from './DappDetailBodyContentImage'
 import DappDetailBodyContentMeta from './DappDetailBodyContentMeta'
 import DappDetailBodyContentModules from './DappDetailBodyContentModules'
+import DappDetailBodyContentPlatform from './DappDetailBodyContentPlatform'
 import DappDetailBodyContentRank from './DappDetailBodyContentRank'
 import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
 import DappDetailBodyContentTags from './DappDetailBodyContentTags'
@@ -67,6 +72,7 @@ export default {
     DappDetailBodyContentImage,
     DappDetailBodyContentMeta,
     DappDetailBodyContentModules,
+    DappDetailBodyContentPlatform,
     DappDetailBodyContentRank,
     DappDetailBodyContentRecommend,
     DappDetailBodyContentTags,
