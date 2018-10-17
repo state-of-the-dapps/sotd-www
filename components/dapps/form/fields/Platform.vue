@@ -61,8 +61,12 @@ export default {
   text-decoration: underline;
   width: 50%;
   border: 1px solid $color--black;
+  border-left-width: 0;
   padding: 10px;
   transition: background 0.2s ease;
+  &:first-child {
+    border-left-width: 1px;
+  }
   &.is-active {
     text-decoration: none;
     background: $color--black;
