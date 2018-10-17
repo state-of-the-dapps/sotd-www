@@ -55,7 +55,7 @@ export default {
 }
 
 .field.-name {
-  .-rank &, .-dau &, .-mau &, .-dev_30d &, .-vol_7d & {
+  .-rank &, .-dau &, .-mau &, .-dev_30d & {
     border-bottom: 1px solid $color--black;
     cursor: pointer;
   }

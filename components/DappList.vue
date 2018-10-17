@@ -92,7 +92,6 @@ export default {
         {
           help: 'Transaction volume to ÐApp contracts',
           id: 'vol_7d',
-          order: 'desc',
           title: 'Vol (7d)'
         },
         {

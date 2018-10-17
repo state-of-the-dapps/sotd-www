@@ -39,7 +39,7 @@
       </li>
       <li class="column -vol_7d">
         <span v-if="dapp.stats.value_7d === undefined || dapp.stats.value_7d === null">-</span>
-        <span v-else class="field-vol -value">{{ Number(dapp.stats.value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} ETH</span>
+        <span v-else class="field-vol -value">{{ Number(dapp.stats.value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} <template v-if="dapp.platform === 'EOS'">EOS</template><template v-if="dapp.platform === 'POA'">POA</template><template v-if="dapp.platform === 'Ethereum'">ETH</template></span>
         <span v-if="dapp.stats.value_7d_pct === undefined || dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
         <span v-else class="field-vol -pct" :class="getDappStatsClass(dapp.stats.value_7d_pct)"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
