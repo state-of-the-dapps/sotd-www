@@ -20,6 +20,15 @@
             </ul>
           </div>
         </li>
+        <li v-if="eosIsMissing" class="item">
+          <div class="name">EOS Mainnet Contracts</div>
+          <div class="input-wrapper" :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('eosMainnet')" v-model="eosMainnet" placeholder="Enter EOS accounts (one per line)" maxlength="11000"/>
+            <ul v-if="eosMainnetErrors && eosMainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in eosMainnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
     <div v-if="!isEdit">
@@ -78,6 +87,17 @@
             <textarea class="input" @input="validate('poaTestnet')" v-model="poaTestnet" placeholder="Enter POA addresses (one per line)" maxlength="11000"/>
             <ul v-if="poaTestnetErrors && poaTestnetErrors.length > 0" class="error-list -contracts">
               <li v-for="(error, index) in poaTestnetErrors" :key="index" class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <ul v-if="platform === 'EOS'" class="list">
+        <li class="item">
+          <div class="name">Mainnet</div>
+          <div class="input-wrapper" :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''">
+            <textarea class="input" @input="validate('eosMainnet')" v-model="eosMainnet" placeholder="Enter EOS accounts (one per line)" maxlength="11000"/>
+            <ul v-if="eosMainnetErrors && eosMainnetErrors.length > 0" class="error-list -contracts">
+              <li v-for="(error, index) in eosMainnetErrors" :key="index" class="error-item">{{ error }}</li>
             </ul>
           </div>
         </li>
@@ -206,6 +226,21 @@
       },
       poaTestnetErrors () {
         return this.$store.getters['dapps/form/poaTestnetErrors']
+      },
+      eosMainnet: {
+        get () {
+          return this.$store.getters['dapps/form/contracts'].eosMainnet.address
+        },
+        set (value) {
+          const field = {
+            name: 'eosMainnet',
+            value: value
+          }
+          this.$store.dispatch('dapps/form/setContract', field)
+        }
+      },
+      eosMainnetErrors () {
+        return this.$store.getters['dapps/form/eosMainnetErrors']
       }
     },
     methods: {
@@ -222,8 +257,12 @@
             let contractErrors = []
             contractArray.forEach(function (element) {
               if (element.length > 0) {
-                element.length !== 42 ? contractErrors.push(`Address must be exactly 42 characters`) : ''
-                !element.startsWith('0x') ? contractErrors.push(`Address must start with 0x`) : ''
+                if (network.startsWith(`eos`)) {
+                  !element.match(/(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/) ? contractErrors.push(`Account name invalid`) : ''
+                } else {
+                  element.length !== 42 ? contractErrors.push(`Address must be exactly 42 characters`) : ''
+                  !element.startsWith('0x') ? contractErrors.push(`Address must start with 0x`) : ''
+                }
               }
             })
             if (contractErrors.length > 0) {

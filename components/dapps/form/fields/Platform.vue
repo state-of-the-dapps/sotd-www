@@ -7,6 +7,10 @@
         class="selection"
         @click="setPlatform('Ethereum')">Ethereum</button>
       <button
+        :class="platform === 'EOS' ? 'is-active' : ''"
+        class="selection"
+        @click="setPlatform('EOS')">EOS</button>
+      <button
         :class="platform === 'POA' ? 'is-active' : ''"
         class="selection"
         @click="setPlatform('POA')">POA</button>
@@ -57,8 +61,12 @@ export default {
   text-decoration: underline;
   width: 50%;
   border: 1px solid $color--black;
+  border-left-width: 0;
   padding: 10px;
   transition: background 0.2s ease;
+  &:first-child {
+    border-left-width: 1px;
+  }
   &.is-active {
     text-decoration: none;
     background: $color--black;

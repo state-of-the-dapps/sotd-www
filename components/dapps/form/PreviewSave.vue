@@ -58,6 +58,9 @@
       contractsPoaTestnet () {
         return this.$store.getters['dapps/form/contractsPoaTestnet']
       },
+      contractsEosMainnet () {
+        return this.$store.getters['dapps/form/contractsEosMainnet']
+      },
       errorFields () {
         return this.$store.getters['dapps/form/errorFields']
       },
@@ -124,6 +127,7 @@
           data.fields.contractsRinkeby = this.contractsRinkeby
           data.fields.contractsPoaMainnet = this.contractsPoaMainnet
           data.fields.contractsPoaTestnet = this.contractsPoaTestnet
+          data.fields.contractsEosMainnet = this.contractsEosMainnet
           this.sending = true
           axios.post('dapps', data)
             .then((response) => {
