@@ -32,7 +32,7 @@ export default {
   },
   head () {
     return {
-      title: 'State of the ÐApps — A List of ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum'
+      title: 'State of the ÐApps — A List of ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum, EOS & POA'
     }
   },
   mounted () {

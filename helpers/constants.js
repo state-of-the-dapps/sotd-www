@@ -26,12 +26,10 @@ const dappMetaBadges = [
 const dappSchema = Object.freeze({
   authors: [],
   badges: [],
-  contracts: [],
   contractsMainnet: [],
   contractsKovan: [],
   contractsRinkeby: [],
   contractsRopsten: [],
-  contractsAdditionalMainnet: [],
   contractsPoaMainnet: [],
   contractsPoaTestnet: [],
   contractsEosMainnet: [],
