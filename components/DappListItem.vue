@@ -38,10 +38,10 @@
         <span v-else class="field-mau -pct" :class="getDappStatsClass(dapp.stats.mau_pct)"><span v-if="dapp.stats.mau_pct > 0">+</span>{{ Number(dapp.stats.mau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -vol_7d">
-        <span v-if="dapp.stats.value_7d === undefined || dapp.stats.value_7d === null">-</span>
-        <span v-else class="field-vol -value">{{ Number(dapp.stats.value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} <template v-if="dapp.platform === 'EOS'">EOS</template><template v-if="dapp.platform === 'POA'">POA</template><template v-if="dapp.platform === 'Ethereum'">ETH</template></span>
-        <span v-if="dapp.stats.value_7d_pct === undefined || dapp.stats.value_7d_pct === null" class="field-vol -pct">-</span>
-        <span v-else class="field-vol -pct" :class="getDappStatsClass(dapp.stats.value_7d_pct)"><span v-if="dapp.stats.value_7d_pct > 0">+</span>{{ Number(dapp.stats.value_7d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+        <span v-if="volume === undefined || volume === null">-</span>
+        <span v-else class="field-vol -value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} <template v-if="dapp.platform === 'EOS'">EOS</template><template v-if="dapp.platform === 'POA'">POA</template><template v-if="dapp.platform === 'Ethereum'">ETH</template></span>
+        <span v-if="volumePct === undefined || volumePct === null" class="field-vol -pct">-</span>
+        <span v-else class="field-vol -pct" :class="getDappStatsClass(volumePct)"><span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -dev_30d">
         <span v-if="dapp.stats.dev_30d === undefined || dapp.stats.dev_30d === null">-</span>
@@ -76,6 +76,34 @@ export default {
   data () {
     return {
       sourcePath: this.$route.path
+    }
+  },
+  computed: {
+    volume () {
+      let volume
+      let stats = this.dapp.stats
+      let platform = this.dapp.platform
+      if (platform === 'Ethereum') {
+        volume = stats.value_7d
+      } else if (platform === 'EOS') {
+        volume = stats.eos_value_7d
+      } else if (platform === 'POA') {
+        volume = stats.poa_value_7d
+      }
+      return volume
+    },
+    volumePct () {
+      let volumePct
+      let stats = this.dapp.stats
+      let platform = this.dapp.platform
+      if (platform === 'Ethereum') {
+        volumePct = stats.value_7d_pct
+      } else if (platform === 'EOS') {
+        volumePct = stats.eos_value_7d_pct
+      } else if (platform === 'POA') {
+        volumePct = stats.poa_value_7d_pct
+      }
+      return volumePct
     }
   },
   methods: {
