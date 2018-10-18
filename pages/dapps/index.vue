@@ -54,7 +54,7 @@
     },
     head () {
       return {
-        title: 'State of the ÐApps — ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum'
+        title: 'State of the ÐApps — ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum, EOS & POA'
       }
     }
   }
