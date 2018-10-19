@@ -23,7 +23,7 @@
     </li>
     <li class="nav-item -search">
       <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
-      <div class="search-input-wrapper">Discover interesting dapps&hellip;</div>
+      <div class="search-input-wrapper">Discover awesome ÐApps&hellip;</div>
     </li>
     <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
@@ -157,7 +157,7 @@ export default {
     margin-left: auto;
   }
   &.-search {
-    background: rgba($color--black, .15);
+    background: rgba($color--black, .1);
     padding: 8px 12px;
     border-radius: 4px;
   }
