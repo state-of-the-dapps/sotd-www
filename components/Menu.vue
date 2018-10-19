@@ -7,7 +7,6 @@
     <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
-    <span class="tagline">The curated list of {{ statDappCount.toLocaleString() }} decentralized apps</span>
   </div>
   <ul class="nav-list" role="navigation">
     <li class="nav-item -home">
@@ -16,21 +15,22 @@
     <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">Rankings</nuxt-link>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
-    </li>
+    </li> -->
     <li class="nav-item -stats">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
-    <li class="nav-item">
+    <li class="nav-item -search">
       <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+      <div class="search-input-wrapper">Discover interesting dapps&hellip;</div>
     </li>
-    <li class="nav-item -submit">
-      <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
-    </li>
-    <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
+    <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
+    </li> -->
+    <li class="nav-item -submit">
+      <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
   </ul>
 </div>
@@ -128,7 +128,6 @@ export default {
 .nameplate {
   display: flex;
   align-items: center;
-  flex-grow: 1;
 }
 
 .nav-icon {
@@ -153,6 +152,14 @@ export default {
     @include tweakpoint('min-width', 600px) {
       display: block;
     }
+  }
+  &.-submit {
+    margin-left: auto;
+  }
+  &.-search {
+    background: rgba($color--black, .15);
+    padding: 8px 12px;
+    border-radius: 4px;
   }
 }
 
@@ -186,7 +193,7 @@ export default {
     border: 1px solid $color--black;
     padding: 5px;
     @include tweakpoint('min-width', 840px) {
-      padding: 5px 10px;
+      padding: 7px 10px;
     }
     &.is-home {
       border-color: rgba($color--white, .7);
@@ -194,9 +201,15 @@ export default {
   }
 }
 
+.search-input-wrapper {
+  padding-left: 8px;
+  opacity: 0.8;
+}
+
 .nav-list {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .tagline {
