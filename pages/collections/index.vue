@@ -32,7 +32,7 @@ export default {
 
 .hero-wrapper {
   @include margin-wrapper-main;
-  padding: 4rem 0 3rem 0;
+  padding: 3rem 0 2rem;
 }
 
 .title-1 {

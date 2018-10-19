@@ -81,7 +81,7 @@ export default {
 }
 
 .hero-wrapper {
-  padding: 4rem 0 3rem 0;
+  padding: 3rem 0 2rem;
   max-width: 600px;
   margin: 0 auto;
 }
