@@ -110,7 +110,9 @@ export default {
             const modal = {
               component: 'ModalPromotedDappsNewConfirmation',
               mpData: {},
-              props: {}
+              props: {
+                hasSubmittedDapp: this.hasSubmittedDapp
+              }
             }
             this.$store.dispatch('setSiteModal', modal)
           })

@@ -8,15 +8,20 @@
 
 <script>
 export default {
+  props: ['modalProps'],
   methods: {
     close () {
+      let routeName = 'home'
       const modal = {
         component: '',
         mpData: {},
         props: {}
       }
       this.$store.dispatch('setSiteModal', modal)
-      this.$router.push({ name: 'home' })
+      if (this.modalProps.hasSubmittedDapp === 'no') {
+        routeName = 'dapps-new'
+      }
+      this.$router.push({ name: routeName })
     }
   }
 }
