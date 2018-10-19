@@ -65,7 +65,15 @@
             v-for="(category, index) in statCategories"
             :key="index"
             class="table-row">
-            <td class="table-data -name">{{ category.category }}</td>
+            <td class="table-data -name">
+              <nuxt-link
+                :to="{
+                  name: 'rankings-category',
+                  params: { category: category.category.toLowerCase() },
+                  query: { reload: 'true' }
+                }"
+                class="table-link">{{ category.category }}</nuxt-link>
+            </td>
             <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
             <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0  }}</td>
             <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0  }}</td>
@@ -101,7 +109,15 @@
             v-for="(platform, index) in statPlatforms"
             :key="index"
             class="table-row">
-            <td class="table-data -name">{{ platform.platform }}</td>
+            <td class="table-data -name">
+              <nuxt-link
+                :to="{
+                  name: 'rankings-platform',
+                  params: { platform: platform.platform.toLowerCase() },
+                  query: { reload: 'true' }
+                }"
+                class="table-link">{{ platform.platform }}</nuxt-link>
+            </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
             <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0  }}</td>
             <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0  }}</td>
@@ -337,6 +353,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.table-link {
+  text-decoration: none;
+  border-bottom: 1px solid $color--black;
+}
 
 .chart-wrapper-bar {
   max-width: 1000px;
