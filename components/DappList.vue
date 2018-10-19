@@ -29,15 +29,15 @@
             <DappListItem v-for="(dapp, index) in dapps" :key="index"
             :dapp="dapp"/>
           </ul>
-          <LoadMore
-            @loadMore="loadMore"
-            :dapps="dapps"
-            :isLoading="isLoading"
-            :limit="limit"
-            :offset="offset"
-            :total="total"/>
         </div>
       </div>
+      <LoadMore
+        @loadMore="loadMore"
+        :dapps="dapps"
+        :isLoading="isLoading"
+        :limit="limit"
+        :offset="offset"
+        :total="total"/>
     </div>
   </div>
 </template>
