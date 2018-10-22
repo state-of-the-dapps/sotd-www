@@ -50,7 +50,7 @@
         return this.$store.getters['dapps/form/contractsRopsten']
       },
       contractsRinkeby () {
-        return this.$store.getters['dapps/form/contractRinkeby']
+        return this.$store.getters['dapps/form/contractsRinkeby']
       },
       contractsPoaMainnet () {
         return this.$store.getters['dapps/form/contractsPoaMainnet']

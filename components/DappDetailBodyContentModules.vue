@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="module-wrapper -tier-5"
-        v-if="dapp.contractsMainnet.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length">
+        v-if="dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length">
         <div class="module">
           <DappDetailBodyContentModulesContracts
             :mainnet="dapp.contractsMainnet"
