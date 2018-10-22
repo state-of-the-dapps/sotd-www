@@ -1,6 +1,6 @@
 <template>
 <div class="component-Menu" :class="'-' + color">
-  <div class="nameplate">
+  <div class="nameplate" v-if="!search.length">
     <nuxt-link class="logo-link -icon" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgIconLogo :fill="color" :width="45" :height="45" />
     </nuxt-link>
@@ -8,7 +8,7 @@
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
   </div>
-  <ul class="nav-list" role="navigation">
+  <ul class="nav-list" role="navigation" v-if="!search.length">
     <li class="nav-item -home">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
@@ -21,15 +21,20 @@
     <li class="nav-item -stats">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
-    <li class="nav-item -search">
-      <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
-      <div class="search-input-wrapper">Discover awesome ÐApps&hellip;</div>
-    </li>
     <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li> -->
-    <li class="nav-item -submit">
+  </ul>
+  <ul class="nav-list-search" :class="search.length ? 'is-searching' : ''">
+    <li class="nav-item -search">
+      <GlobalSearch
+        :color="color"
+        />
+    </li>
+  </ul>
+  <ul class="nav-list-submit">
+    <li class="nav-item -submit" v-if="!search.length">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
   </ul>
@@ -39,9 +44,9 @@
 <script>
 import { mapGetters } from 'vuex'
 import { trackMenu } from '~/helpers/mixpanel'
+import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
-import SvgIconMagnifier from './SvgIconMagnifier'
 import SvgLogotype from './SvgLogotype'
 
 export default {
@@ -52,13 +57,14 @@ export default {
     }
   },
   components: {
+    GlobalSearch,
     SvgIconLogo,
     SvgIconMail,
-    SvgIconMagnifier,
     SvgLogotype
   },
   computed: {
     ...mapGetters({
+      search: 'search',
       siteSection: 'siteSection',
       statDappCount: 'statDappCount',
       myList: 'list/items'
@@ -157,9 +163,7 @@ export default {
     margin-left: auto;
   }
   &.-search {
-    background: rgba($color--black, .1);
-    padding: 8px 12px;
-    border-radius: 4px;
+    cursor: text; 
   }
 }
 
@@ -177,9 +181,6 @@ export default {
     }
     &.-black {
       border-bottom: 1px solid $color--black;
-    }
-    &.-search {
-      border-color: transparent;
     }
   }
   &.-newsletter {
@@ -201,15 +202,19 @@ export default {
   }
 }
 
-.search-input-wrapper {
-  padding-left: 8px;
-  opacity: 0.8;
-}
-
 .nav-list {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+}
+
+.nav-list-search {
+  &.is-searching {
+    flex-grow: 1;
+  }
+}
+
+.nav-list-submit {
+  margin-left: auto;
 }
 
 .tagline {
