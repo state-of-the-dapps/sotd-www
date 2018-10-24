@@ -1,5 +1,8 @@
 <template>
-  <div class="component-global-search"
+  <div 
+    v-on-clickaway="resetSearch"
+    @click="focusInput"
+    class="component-global-search"
     :class="[
       isSearching ? 'is-searching' : '',
       results ? 'has-results is-searching' : '',
@@ -7,6 +10,7 @@
     <span class="nav-link -search" :class="'-' + color"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
       <input
+        ref="searchInput"
         :class="'-' + color"
         class="search-input"
         placeholder="Discover awesome ÐApps…"
@@ -39,6 +43,7 @@
 </template>
 
 <script>
+import { directive as onClickaway } from 'vue-clickaway'
 import SvgIconMagnifier from './SvgIconMagnifier'
 
 export default {
@@ -63,6 +68,9 @@ export default {
       ],
       suggestions: [0]
     }
+  },
+  directives: {
+    onClickaway: onClickaway
   },
   computed: {
     results () {
@@ -89,8 +97,17 @@ export default {
     }
   },
   methods: {
+    focusInput () {
+      this.$refs.searchInput.focus()
+    },
     endSearch () {
       this.searchStatus = false
+    },
+    resetSearch () {
+      this.$store.dispatch('setSearch', '')
+      this.searchStatus = false
+      this.suggestions = []
+      this.dapps = []
     },
     startSearch () {
       this.searchStatus = true
