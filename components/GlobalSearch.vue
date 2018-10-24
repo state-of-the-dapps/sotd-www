@@ -23,11 +23,12 @@
       <div class="dapps-wrapper" v-if="dapps.length">
         <h3 class="results-title">ÐApps</h3>
         <ul class="results-dapp-list">
-          <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 5)" :key="index">
+          <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 7)" :key="index">
             <nuxt-link
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
               class="results-dapp-link">
-              <img class="results-dapp-image" width="42" height="42" :src="dapp.iconUrl"/>
+              <img v-if="dapp.iconUrl" class="results-dapp-image" width="42" height="42" :src="dapp.iconUrl"/>
+              <span v-else class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
               <div class="results-dapp-info">
                 <h4 class="results-dapp-title">{{ dapp.name }}</h4>
                 <p class="results-dapp-tagline">{{ dapp.teaser }}</p>
@@ -36,14 +37,14 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
+          <nuxt-link @click.native="setSearchPage" :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
         </div>
       </div>
       <div class="suggestions-wrapper" v-if="suggestions.length && !dapps.length">
         <ul class="results-suggestions-list">
           <li
             class="results-suggestions-item"
-            v-for="(suggestion, index) in suggestions"
+            v-for="(suggestion, index) in suggestions.slice(0, 7)"
             :key="index"
             @click="resetSearch">
             <nuxt-link
@@ -121,7 +122,7 @@ export default {
         axios
           .get('tags', {
             params: {
-              text: this.search,
+              text: lastWord,
               excluded: [],
               type: 'dapps'
             }
@@ -131,8 +132,24 @@ export default {
             const items = data.items
             this.suggestions = items
           })
-        console.log(lastWord)
-        if (this.search.length > 1) {}
+        if (this.search.length > 1) {
+          axios
+            .get('dapps', {
+              params: {
+                limit: 5,
+                offset: 0,
+                tags: [],
+                text: this.search
+              }
+            })
+            .then(response => {
+              const data = response.data
+              const items = data.items
+              this.dapps = items
+            })
+        } else {
+          this.dapps = []
+        }
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('Global - Search', { query: this.search })
@@ -149,6 +166,11 @@ export default {
       this.searchStatus = false
       this.suggestions = []
       this.dapps = []
+    },
+    setSearchPage () {
+      this.$store.dispatch('dapps/search/resetQuery')
+      this.$store.dispatch('dapps/search/setTextQuery', this.search)
+      this.$store.dispatch('dapps/search/fetchItems')
     },
     startSearch () {
       this.searchStatus = true
@@ -213,6 +235,20 @@ export default {
   color: $color--black;
   padding: 12px;
   text-align: left;
+}
+
+.results-dapp-icon-placeholder {
+  display: block;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: $color--gray;
 }
 
 .results-dapp-link {

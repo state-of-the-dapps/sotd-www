@@ -21,17 +21,17 @@
     <li class="nav-item -stats">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
-    <template v-if="this.$route.path.startsWith('/dapps')">
-      <li class="nav-item">
-        <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
-      </li>
-    </template>
-    <template v-else>
+    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
       <media :query="{maxWidth: 1000}">
         <li class="nav-item">
           <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
         </li>
       </media>
+    </template>
+    <template v-else>
+      <li class="nav-item">
+        <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+      </li>
     </template>
     <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
@@ -115,8 +115,14 @@ export default {
 .component-Menu {
   display: flex;
   align-items: center;
-  padding: 18px 22px 16px 22px;
-  margin: -10px -22px 0px;
+  padding: 18px 10px 16px 10px;
+  margin: -10px -10px 0px;
+  @include tweakpoint('min-width', 640px) {
+    padding-left: 22px;
+    padding-right: 22px;
+    margin-left: -22px;
+    margin-right: -22px;
+  }
   &.-white {
     background: rgba($color--black, .2)
   }

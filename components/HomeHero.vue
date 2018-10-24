@@ -2,7 +2,9 @@
 <div class="component-HomeHero">
   <div class="wrapper">
     <Menu color="white" />
-    <HomeHeroContent/>
+    <div class="hero-wrapper">
+      <HomeHeroContent/>
+    </div>
   </div>
 </div>
 </template>
@@ -26,7 +28,6 @@ export default {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
   padding: 10px 0 20px 0;
-  overflow: hidden;
   @include tweakpoint('min-width', 575px) {
     background-image: $gradient--main-2;
     padding-top: 7px;
@@ -37,6 +38,20 @@ export default {
   }
   /deep/ .results a {
     color: $color--black;
+  }
+}
+
+.hero-wrapper {
+  overflow: hidden;
+  margin-right: -10px;
+  margin-left: -10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  @include tweakpoint('min-width', 575px) {
+    margin-right: -22px;
+    margin-left: -22px;
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }
 
