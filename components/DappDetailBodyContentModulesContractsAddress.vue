@@ -36,7 +36,7 @@ export default {
       if (this.platform === 'Ethereum') {
         addressLink = 'https://' + (this.network === 'mainnet' ? '' : this.network + '.') + 'etherscan.io/address/' + this.address + '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'POA') {
-        addressLink = 'https://' + (this.network === 'mainnet' ? '' : 'sokol.') + 'poaexplorer.com/address/' + (this.network === 'mainnet' ? '' : 'search/') + this.address + '?utm_source=StateOfTheDApps'
+        addressLink = 'https://blockscout.com/poa/' + (this.network === 'mainnet' ? 'core' : 'sokol') + '/address/' + this.address + '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink = 'https://bloks.io/account/' + this.address + '?utm_source=StateOfTheDApps'
       }
