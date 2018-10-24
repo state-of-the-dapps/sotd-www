@@ -15,6 +15,7 @@
         class="search-input"
         placeholder="Discover awesome ÐApps…"
         v-model="search"
+        @input="fetchResults"
         @focus="startSearch"
         @blur="endSearch">
     </div>
@@ -22,7 +23,7 @@
       <div class="dapps-wrapper" v-if="dapps.length">
         <h3 class="results-title">ÐApps</h3>
         <ul class="results-dapp-list">
-          <li class="results-dapp-item" v-for="(dapp, index) in dapps" :key="index">
+          <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 5)" :key="index">
             <nuxt-link
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
               class="results-dapp-link">
@@ -38,13 +39,33 @@
           <nuxt-link :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
         </div>
       </div>
+      <div class="suggestions-wrapper" v-if="suggestions.length && !dapps.length">
+        <ul class="results-suggestions-list">
+          <li
+            class="results-suggestions-item"
+            v-for="(suggestion, index) in suggestions"
+            :key="index"
+            @click="resetSearch">
+            <nuxt-link
+              :to="{ path: `/dapps/tagged/${suggestion}` }"
+              class="results-suggestions-link">
+              {{ suggestion }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from '~/helpers/axios'
 import { directive as onClickaway } from 'vue-clickaway'
+import { getCaretPosition } from '~/helpers/mixins'
 import SvgIconMagnifier from './SvgIconMagnifier'
+
+var searchTimer
+var trackTimer
 
 export default {
   props: {
@@ -58,15 +79,8 @@ export default {
   data () {
     return {
       searchStatus: false,
-      dapps: [
-        {
-          iconUrl: 'https://d3colfu6jphe2a.cloudfront.net/dapps/aragon/icon_aragon_7c71aaab4bb816906dd69cad91241b569096adefe0f183ed7cd47a20067fbe6a_opti.png',
-          name: 'Aragon',
-          slug: 'aragon',
-          teaser: 'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.'
-        }
-      ],
-      suggestions: [0]
+      dapps: [],
+      suggestions: []
     }
   },
   directives: {
@@ -97,6 +111,33 @@ export default {
     }
   },
   methods: {
+    fetchResults () {
+      clearTimeout(searchTimer)
+      clearTimeout(trackTimer)
+      var caret = this.getCaretPosition(this.search)
+      var result = /\S+$/.exec(this.search.slice(0, caret.end))
+      var lastWord = result ? result[0] : null
+      searchTimer = setTimeout(() => {
+        axios
+          .get('tags', {
+            params: {
+              text: this.search,
+              excluded: [],
+              type: 'dapps'
+            }
+          })
+          .then(response => {
+            const data = response.data
+            const items = data.items
+            this.suggestions = items
+          })
+        console.log(lastWord)
+        if (this.search.length > 1) {}
+      }, 200)
+      trackTimer = setTimeout(() => {
+        this.$mixpanel.track('Global - Search', { query: this.search })
+      }, 3000)
+    },
     focusInput () {
       this.$refs.searchInput.focus()
     },
@@ -111,8 +152,10 @@ export default {
     },
     startSearch () {
       this.searchStatus = true
+      this.fetchResults()
     }
-  }
+  },
+  mixins: [getCaretPosition]
 }
 </script>
 
@@ -213,6 +256,16 @@ export default {
   font-size: 0.9rem;
   letter-spacing: 0.25px;
   font-weight: 700;
+}
+
+.results-suggestions-link {
+  display: block;
+  padding: 7px 0;
+  text-decoration: none;
+  font-weight: 600;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .search-input-wrapper {

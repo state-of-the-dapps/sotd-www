@@ -21,18 +21,34 @@
     <li class="nav-item -stats">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
+    <template v-if="this.$route.path.startsWith('/dapps')">
+      <li class="nav-item">
+        <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+      </li>
+    </template>
+    <template v-else>
+      <media :query="{maxWidth: 1000}">
+        <li class="nav-item">
+          <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+        </li>
+      </media>
+    </template>
     <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li> -->
   </ul>
-  <ul class="nav-list-search" :class="search.length ? 'is-searching' : ''">
-    <li class="nav-item -search">
-      <GlobalSearch
-        :color="color"
-        />
-    </li>
-  </ul>
+  <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
+    <media :query="{minWidth: 1000}">
+      <ul class="nav-list-search" :class="search.length ? 'is-searching' : ''">
+        <li class="nav-item -search">
+          <GlobalSearch
+            :color="color"
+            />
+        </li>
+      </ul>
+    </media>
+  </template>
   <ul class="nav-list-submit">
     <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
@@ -42,11 +58,13 @@
 </template>
 
 <script>
+import Media from 'vue-media'
 import { mapGetters } from 'vuex'
 import { trackMenu } from '~/helpers/mixpanel'
 import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
+import SvgIconMagnifier from './SvgIconMagnifier'
 import SvgLogotype from './SvgLogotype'
 
 export default {
@@ -58,8 +76,10 @@ export default {
   },
   components: {
     GlobalSearch,
+    Media,
     SvgIconLogo,
     SvgIconMail,
+    SvgIconMagnifier,
     SvgLogotype
   },
   computed: {
@@ -180,6 +200,9 @@ export default {
     }
     &.-black {
       border-bottom: 1px solid $color--black;
+    }
+    &.-search {
+      border-color: transparent;
     }
   }
   &.-newsletter {
