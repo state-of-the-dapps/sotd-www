@@ -1,6 +1,6 @@
 <template>
 <div class="component-Menu" :class="'-' + color">
-  <div class="nameplate" v-if="!search.length">
+  <div class="nameplate">
     <nuxt-link class="logo-link -icon" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
       <SvgIconLogo :fill="color" :width="45" :height="45" />
     </nuxt-link>
@@ -8,7 +8,7 @@
       <SvgLogotype :fill="color" :width="120" :height="26" />
     </nuxt-link>
   </div>
-  <ul class="nav-list" role="navigation" v-if="!search.length">
+  <ul class="nav-list" role="navigation">
     <li class="nav-item -home">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
     </li>
@@ -34,7 +34,7 @@
     </li>
   </ul>
   <ul class="nav-list-submit">
-    <li class="nav-item -submit" v-if="!search.length">
+    <li class="nav-item -submit">
       <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
     </li>
   </ul>
@@ -153,17 +153,16 @@ export default {
       display: flex;
     }
   }
-  &.-home {
-    display: none;
-    @include tweakpoint('min-width', 600px) {
-      display: block;
-    }
-  }
   &.-submit {
     margin-left: auto;
   }
   &.-search {
-    cursor: text; 
+    cursor: text;
+    display: none;
+    margin-right: 20px;
+    @include tweakpoint('min-width', 600px) {
+      display: flex;
+    }   
   }
 }
 

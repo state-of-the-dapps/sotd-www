@@ -35,6 +35,9 @@ export default {
   /deep/ a {
     color: white;
   }
+  /deep/ .results a {
+    color: $color--black;
+  }
 }
 
 .wrapper {
