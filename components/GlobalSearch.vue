@@ -312,10 +312,19 @@ export default {
   font-weight: 700;
 }
 
+.results-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .results-suggestions-link {
   display: block;
-  padding: 7px 0;
+  padding: 5px;
   text-decoration: none;
+  background: $color--gray;
+  border-radius: 3px;
+  margin: 3px 5px;
+  margin-left: 0;
   &:hover {
     text-decoration: underline;
   }
