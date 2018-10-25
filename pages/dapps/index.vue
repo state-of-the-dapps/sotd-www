@@ -48,9 +48,7 @@
     mounted () {
       this.$store.dispatch('setSiteSection', 'dapps')
       this.$store.dispatch('dapps/search/setFriendlyQuery', this.$route.params)
-      if (this.dappCount < 1) {
-        this.$store.dispatch('dapps/search/fetchItems')
-      }
+      this.$store.dispatch('dapps/search/fetchItems')
     },
     head () {
       return {

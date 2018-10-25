@@ -39,7 +39,7 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link @click.native="setSearchPage" :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
+          <nuxt-link @click.native="setSearchPage(search)" :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
         </div>
       </div>
       <div class="suggestions-wrapper" v-if="suggestions.length && !dapps.length">
@@ -47,11 +47,11 @@
           <li
             class="results-suggestions-item"
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
-            :key="index"
-            @click="suggestionView(suggestion)">
+            :key="index">
             <nuxt-link
               :to="{ path: `/dapps/tagged/${suggestion}` }"
-              class="results-suggestions-link">
+              class="results-suggestions-link"
+              @click.native="suggestionView(suggestion)">
               {{ suggestion }}
             </nuxt-link>
           </li>
@@ -116,7 +116,7 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     },
     suggestionView (suggestion) {
-      this.resetSearch()
+      this.setSearchPage('')
       const action = trackSearchSuggestion(this.sourcePath, suggestion)
       this.$mixpanel.track(action.name, action.data)
     },
@@ -177,10 +177,11 @@ export default {
       this.suggestions = []
       this.dapps = []
     },
-    setSearchPage () {
+    setSearchPage (query) {
       this.$store.dispatch('dapps/search/resetQuery')
-      this.$store.dispatch('dapps/search/setTextQuery', this.search)
+      this.$store.dispatch('dapps/search/setTextQuery', query)
       this.$store.dispatch('dapps/search/fetchItems')
+      this.resetSearch()
     },
     startSearch () {
       this.searchStatus = true
