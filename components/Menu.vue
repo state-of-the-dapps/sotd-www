@@ -19,7 +19,7 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
     </li> -->
     <li class="nav-item -stats">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
+      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Stats</nuxt-link>
     </li>
     <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
       <media :query="{maxWidth: 975}">
