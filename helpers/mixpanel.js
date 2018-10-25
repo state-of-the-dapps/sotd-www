@@ -570,6 +570,21 @@ export const trackPublicListCreate = function (listUrl, slug) {
   return action
 }
 
+export const trackSearchSuggestion = function (sourcePath, suggestion) {
+  let name = 'Search - Suggestion'
+  let data = {
+    sourcePath,
+    suggestion
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackSocial = function (sourceComponent, sourcePageLocation, sourcePath, targetPlatform) {
   let name = 'Social'
   let data = {

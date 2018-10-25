@@ -1,9 +1,6 @@
 <template>
   <LayoutMain>
     <div class="page-rankings">
-      <div class="hero-wrapper">
-        <h1 class="title-1">ÐApp Rankings</h1>
-      </div>
       <DappList/>
     </div>
   </LayoutMain>
@@ -42,6 +39,7 @@ export default {
 }
 
 .page-rankings {
+  padding-top: 25px;
   padding-bottom: 50px;
 }
 
