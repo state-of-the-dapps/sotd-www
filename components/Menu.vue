@@ -22,7 +22,7 @@
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Statistics</nuxt-link>
     </li>
     <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
-      <media :query="{maxWidth: 1000}">
+      <media :query="{maxWidth: 975}">
         <li class="nav-item">
           <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
         </li>
@@ -39,7 +39,7 @@
     </li> -->
   </ul>
   <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
-    <media :query="{minWidth: 1000}">
+    <media :query="{minWidth: 975}">
       <ul class="nav-list-search" :class="search.length ? 'is-searching' : ''">
         <li class="nav-item -search">
           <GlobalSearch
