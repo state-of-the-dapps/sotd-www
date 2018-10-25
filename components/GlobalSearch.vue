@@ -5,7 +5,6 @@
     class="component-global-search"
     :class="[
       isSearching ? 'is-searching' : '',
-      results ? 'has-results is-searching' : '',
       search.length ? 'has-input' : '']">
     <span class="nav-link -search" :class="'-' + color"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
@@ -215,6 +214,8 @@ export default {
   &.is-searching {
     background: $color--white;
     box-shadow: 0 0 10px rgba($color--black, 0.1);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     input {
       color: $color--black;
     }
@@ -223,10 +224,6 @@ export default {
     @include tweakpoint('min-width', 975px) {
       min-width: 425px;
     }
-  }
-  &.has-results {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 }
 
