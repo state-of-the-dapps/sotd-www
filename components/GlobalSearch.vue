@@ -19,7 +19,7 @@
         @focus="startSearch"
         @blur="endSearch">
     </div>
-    <div class="results" v-if="(results || searchCompleted) && isSearching">
+    <div class="results" v-if="results || isSearching">
       <div v-if="!results && searchCompleted" class="results-none">Sorry, no results. Please try a new search</div>
       <div class="suggestions-wrapper" v-if="suggestions.length">
         <h3 class="results-title">Suggested tags</h3>
