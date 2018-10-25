@@ -222,7 +222,7 @@ export default {
   }
   &.has-input {
     @include tweakpoint('min-width', 975px) {
-      min-width: 425px;
+      min-width: 400px;
     }
   }
 }
