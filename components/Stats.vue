@@ -37,8 +37,8 @@
     <h2 class="heading-2">New ÐApps per Month</h2>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
-        <div>Total ÐApps</div>
         <div class="new-vs-total-legend-new">New ÐApps</div>
+        <div>Total ÐApps</div>
       </div>
       <canvas id="new-vs-total"/>
     </div>
@@ -259,7 +259,7 @@ export default {
             borderWidth: '2',
             fill: false,
             data: totalDapps(),
-            yAxisID: 'y-axis-1'
+            yAxisID: 'y-axis-2'
           },
           {
             label: 'New DApps',
@@ -267,7 +267,7 @@ export default {
             backgroundColor: '#bd5eff',
             borderWidth: '2',
             data: newDapps,
-            yAxisID: 'y-axis-2'
+            yAxisID: 'y-axis-1'
           }
         ]
       }
@@ -396,7 +396,7 @@ export default {
 }
 
 .new-vs-total-legend-new {
-  margin-left: auto;
+  margin-right: auto;
   color: #bd5eff;
 }
 
