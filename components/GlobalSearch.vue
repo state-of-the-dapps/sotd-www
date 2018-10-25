@@ -19,9 +19,10 @@
         @focus="startSearch"
         @blur="endSearch">
     </div>
-    <div class="results" v-if="results || search.length">
-      <div v-if="!results" class="results-none">Sorry, no results. Please try a new search</div>
+    <div class="results" v-if="(results || searchCompleted) && isSearching">
+      <div v-if="!results && searchCompleted" class="results-none">Sorry, no results. Please try a new search</div>
       <div class="suggestions-wrapper" v-if="suggestions.length">
+        <h3 class="results-title">Suggested tags</h3>
         <ul class="results-suggestions-list">
           <li
             class="results-suggestions-item"
@@ -84,6 +85,7 @@ export default {
   data () {
     return {
       dapps: [],
+      searchCompleted: false,
       searchStatus: false,
       sourcePath: this.$route.path,
       suggestions: []
@@ -124,6 +126,7 @@ export default {
     fetchResults () {
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
+      this.searchCompleted = false
       var caret = this.getCaretPosition(this.search)
       var result = /\S+$/.exec(this.search.slice(0, caret.end))
       var lastWord = result ? result[0] : null
@@ -140,6 +143,7 @@ export default {
             const data = response.data
             const items = data.items
             this.suggestions = items
+            this.searchCompleted = true
           })
         if (this.search.length > 1) {
           axios
@@ -155,6 +159,7 @@ export default {
               const data = response.data
               const items = data.items
               this.dapps = items
+              this.searchCompleted = true
             })
         } else {
           this.dapps = []
@@ -314,7 +319,6 @@ export default {
   display: block;
   padding: 7px 0;
   text-decoration: none;
-  font-weight: 600;
   &:hover {
     text-decoration: underline;
   }
