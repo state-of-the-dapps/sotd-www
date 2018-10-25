@@ -19,14 +19,16 @@
         @focus="startSearch"
         @blur="endSearch">
     </div>
-    <div class="results" v-if="results">
+    <div class="results" v-if="results || search.length">
+      <div v-if="!results" class="results-none">Sorry, no results. Please try a new search</div>
       <div class="dapps-wrapper" v-if="dapps.length">
         <h3 class="results-title">ÐApps</h3>
         <ul class="results-dapp-list">
           <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 7)" :key="index">
             <nuxt-link
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
-              class="results-dapp-link">
+              class="results-dapp-link"
+              @click.native="dappView(dapp.slug)">
               <img v-if="dapp.iconUrl" class="results-dapp-image" width="42" height="42" :src="dapp.iconUrl"/>
               <span v-else class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
               <div class="results-dapp-info">
@@ -46,7 +48,7 @@
             class="results-suggestions-item"
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
             :key="index"
-            @click="resetSearch">
+            @click="suggestionView(suggestion)">
             <nuxt-link
               :to="{ path: `/dapps/tagged/${suggestion}` }"
               class="results-suggestions-link">
@@ -61,6 +63,7 @@
 
 <script>
 import axios from '~/helpers/axios'
+import { trackDappView, trackSearchSuggestion } from '~/helpers/mixpanel'
 import { directive as onClickaway } from 'vue-clickaway'
 import { getCaretPosition } from '~/helpers/mixins'
 import SvgIconMagnifier from './SvgIconMagnifier'
@@ -79,8 +82,9 @@ export default {
   },
   data () {
     return {
-      searchStatus: false,
       dapps: [],
+      searchStatus: false,
+      sourcePath: this.$route.path,
       suggestions: []
     }
   },
@@ -89,11 +93,7 @@ export default {
   },
   computed: {
     results () {
-      if (this.dapps.length || this.suggestions.length) {
-        return true
-      } else {
-        return false
-      }
+      return Boolean(this.dapps.length || this.suggestions.length)
     },
     search: {
       get () {
@@ -104,14 +104,22 @@ export default {
       }
     },
     isSearching () {
-      if (this.searchStatus || this.search.length) {
-        return true
-      } else {
-        return false
-      }
+      return Boolean(this.searchStatus || this.search.length)
     }
   },
   methods: {
+    dappView (targetDapp) {
+      this.resetSearch()
+      const sourceCollection = ''
+      const sourceComponent = 'GlobalSearch'
+      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    suggestionView (suggestion) {
+      this.resetSearch()
+      const action = trackSearchSuggestion(this.sourcePath, suggestion)
+      this.$mixpanel.track(action.name, action.data)
+    },
     fetchResults () {
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
@@ -152,8 +160,10 @@ export default {
         }
       }, 200)
       trackTimer = setTimeout(() => {
-        this.$mixpanel.track('Global - Search', { query: this.search })
-      }, 3000)
+        if (this.search.length) {
+          this.$mixpanel.track('Global - Search', { query: this.search })
+        }
+      }, 1000)
     },
     focusInput () {
       this.$refs.searchInput.focus()
@@ -284,6 +294,10 @@ export default {
 .results-link-wrapper {
   padding-top: 10px;
   text-align: right;
+}
+
+.results-none {
+  text-align: center;
 }
 
 .results-title {
