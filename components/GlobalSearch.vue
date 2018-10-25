@@ -28,7 +28,7 @@
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
             :key="index">
             <nuxt-link
-              :to="{ path: `/dapps/tagged/${suggestion}` }"
+              :to="{ path: `/dapps/tagged/${suggestion}`, query: {q: 'suggestion'} }"
               class="results-suggestions-link"
               @click.native="suggestionView(suggestion)">
               {{ suggestion }}
@@ -55,7 +55,7 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link @click.native="setSearchPage(search)" :to="{name: 'dapps'}" class="results-link">View all ÐApp results</nuxt-link>
+          <nuxt-link @click.native="setSearchPage(search)" :to="{name: 'dapps', query: {q: search} }" class="results-link">View all ÐApp results</nuxt-link>
         </div>
       </div>
     </div>
