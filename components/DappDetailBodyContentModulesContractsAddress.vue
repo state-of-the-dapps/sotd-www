@@ -38,7 +38,7 @@ export default {
       } else if (this.platform === 'POA') {
         addressLink = 'https://blockscout.com/poa/' + (this.network === 'mainnet' ? 'core' : 'sokol') + '/address/' + this.address + '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
-        addressLink = 'https://bloks.io/account/' + this.address + '?utm_source=StateOfTheDApps'
+        addressLink = 'https://www.myeoskit.com/account/' + this.address + '?utm_source=StateOfTheDApps'
       }
       return addressLink
     }
