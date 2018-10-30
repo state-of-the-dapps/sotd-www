@@ -6,6 +6,7 @@
     </h3>
     <ul class="dapp-list">
       <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
+        <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
           <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
           <span v-else>{{ dapp.name | firstLetter }}</span>
@@ -134,6 +135,35 @@ export default {
 
 .dapp-list {
   margin-top: 5px;
+}
+
+.dapp-rank {
+  padding: 5px;
+  background: $color--purple;
+  margin: -10px 15px -10px -10px;
+  font-weight: 700;
+  height: 52px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  color: $color--white;
+  line-height: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  .dapp-item:nth-child(2) & {
+    background: rgba($color--purple, .85)
+  }
+  .dapp-item:nth-child(3) & {
+    background: rgba($color--purple, .75)
+  }
+  .dapp-item:nth-child(4) & {
+    background: rgba($color--purple, .65)
+  }
+  .dapp-item:nth-child(5) & {
+    background: rgba($color--purple, .55)
+  }
 }
 
 .label-dau {
