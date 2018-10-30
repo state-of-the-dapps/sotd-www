@@ -17,7 +17,7 @@ const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m =
 const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
 const PublicList = () => import('~/pages/PublicList.vue').then(m => m.default || m)
-const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
+const Rankings = () => import('~/pages/RankingsNew.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/What.vue').then(m => m.default || m)
