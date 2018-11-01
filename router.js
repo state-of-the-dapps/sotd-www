@@ -17,7 +17,7 @@ const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m =
 const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
 const PublicList = () => import('~/pages/PublicList.vue').then(m => m.default || m)
-const Rankings = () => import('~/pages/RankingsNew.vue').then(m => m.default || m)
+const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
 const What = () => import('~/pages/What.vue').then(m => m.default || m)
@@ -139,24 +139,22 @@ export function createRouter () {
       {
         path: '/rankings',
         component: Rankings,
-        name: 'rankings',
-        children: [
-          {
-            path: 'category/:category',
-            component: Rankings,
-            name: 'rankings-category'
-          },
-          {
-            path: 'platform/:platform',
-            component: Rankings,
-            name: 'rankings-platform'
-          },
-          {
-            path: 'platform/:platform/category/:category',
-            component: Rankings,
-            name: 'rankings-platform-category'
-          }
-        ]
+        name: 'rankings'
+      },
+      {
+        path: '/rankings/category/:category',
+        component: Rankings,
+        name: 'rankings-category'
+      },
+      {
+        path: '/rankings/platform/:platform',
+        component: Rankings,
+        name: 'rankings-platform'
+      },
+      {
+        path: '/rankings/platform/:platform/category/:category',
+        component: Rankings,
+        name: 'rankings-platform-category'
       },
       {
         path: '/promoted-dapps',

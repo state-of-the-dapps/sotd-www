@@ -1,23 +1,49 @@
 <template>
   <LayoutMain>
     <div class="page-rankings">
-      <DappList/>
+      <RankingFilters/>
+      <RankingTable :dapps="dapps"/>
     </div>
   </LayoutMain>
 </template>
 
 <script>
-import DappList from '~/components/DappList'
+import { getDapps } from '~/helpers/api'
 import LayoutMain from '~/components/LayoutMain'
+import RankingFilters from '~/components/RankingFilters'
+import RankingTable from '~/components/RankingTable'
 
 export default {
   components: {
-    DappList,
-    LayoutMain
+    LayoutMain,
+    RankingFilters,
+    RankingTable
+  },
+  data () {
+    return {
+      dapps: []
+    }
+  },
+  async asyncData ({ params, query }) {
+    const urlParams = {...params, ...query}
+    const dapps = await getDapps(urlParams)
+    return { dapps }
+  },
+  methods: {
+    async fetchDapps () {
+      const urlParams = {...this.$route.params, ...this.$route.query}
+      const dapps = await getDapps(urlParams)
+      this.dapps = dapps
+    }
   },
   head () {
     return {
-      title: 'State of the ÐApps — ÐApp List Ranked by Daily Active Users'
+      title: 'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS, and POA'
+    }
+  },
+  watch: {
+    '$route.query' () {
+      this.fetchDapps()
     }
   },
   scrollToTop: true
@@ -27,26 +53,8 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.description {
-  margin: .5rem auto 0 auto;
-  text-align: center;
-  max-width: 400px;
-}
-
-.hero-wrapper {
-  @include margin-wrapper-main;
-  padding: 3rem 0 2rem;
-}
-
 .page-rankings {
   padding-top: 25px;
   padding-bottom: 50px;
-}
-
-.title-1 {
-  @include title-1;
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 0;
 }
 </style>
