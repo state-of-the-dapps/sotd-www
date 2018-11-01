@@ -76,6 +76,20 @@ export const dispatchWarnings = {
   }
 }
 
+export const getValuePosNegClass = {
+  methods: {
+    getValuePosNegClass (value) {
+      let result = ''
+      if (value && value > 0) {
+        result = 'is-positive'
+      } else if (value && value < 0) {
+        result = 'is-negative'
+      }
+      return result
+    }
+  }
+}
+
 export const setPromotedDappsPage = {
   data () {
     return {

@@ -26,12 +26,20 @@ export default {
   },
   async asyncData ({ params, query }) {
     const urlParams = {...params, ...query}
+    if (!query.sort) {
+      urlParams.sort = 'rank'
+      urlParams.order = 'asc'
+    }
     const dapps = await getDapps(urlParams)
     return { dapps }
   },
   methods: {
     async fetchDapps () {
       const urlParams = {...this.$route.params, ...this.$route.query}
+      if (!this.$route.query.sort) {
+        urlParams.sort = 'rank'
+        urlParams.order = 'asc'
+      }
       const dapps = await getDapps(urlParams)
       this.dapps = dapps
     }
