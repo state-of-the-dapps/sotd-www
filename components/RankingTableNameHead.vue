@@ -1,5 +1,3 @@
 <template>
-  <div class="component-ranking-table-name-head">
-    <span class="label">ÐApp</span>
-  </div>
+  <div class="component-ranking-table-name-head"/>
 </template>

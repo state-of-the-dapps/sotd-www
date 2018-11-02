@@ -17,3 +17,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-ranking-table-rank-head {
+  text-align: center;
+}
+</style>

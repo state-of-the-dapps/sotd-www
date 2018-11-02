@@ -33,71 +33,75 @@
           </div>
         </media>
         <div class="table-body">
-          <div
+          <template
             v-for="(dapp, index) in dapps"
-            :key="index"
             class="table-row">
-            <div class="table-data col-rank">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableRankHead/>
-              </media>
-              <RankingTableRank :rank="dapp.rank"/>
+            <div
+              v-if="dapp.rank"
+              :key="index"
+              class="table-row">
+              <div class="table-data col-rank">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableRankHead/>
+                </media>
+                <RankingTableRank :rank="dapp.rank"/>
+              </div>
+              <div class="table-data col-name">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableNameHead/>
+                </media>
+                <RankingTableName
+                  :icon-url="dapp.iconUrl"
+                  :name="dapp.name"
+                  :slug="dapp.slug"
+                  :teaser="dapp.teaser"/>
+              </div>
+              <div class="table-data col-dau">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableDauHead/>
+                </media>
+                <RankingTableValuePct
+                  :value="dapp.stats.dau"
+                  :value_pct="dapp.stats.dau_pct"/>
+              </div>
+              <div class="table-data col-mau">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableMauHead/>
+                </media>
+                <RankingTableValuePct
+                  :value="dapp.stats.mau"
+                  :value_pct="dapp.stats.mau_pct"/>
+              </div>
+              <div class="table-data col-vol">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableVolumeHead/>
+                </media>
+                <RankingTableVolume
+                  :stats="dapp.stats"
+                  :platform="dapp.platform"/>
+              </div>
+              <div class="table-data col-dev">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableDevHead/>
+                </media>
+                <RankingTableValuePct
+                  :value="dapp.stats.dev_30d"
+                  :value_pct="dapp.stats.dev_30d_pct"/> 
+              </div>
+              <div class="table-data col-profile">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableProfileHead/>
+                </media>
+                <RankingTableProfile :score="dapp.profileScore"/>
+              </div>
+              <div class="table-data col-usage">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableUsageHead/>
+                </media>
+                <RankingTableTrend :users="dapp.sparklines.users"/>
+              </div>          
             </div>
-            <div class="table-data col-name">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableNameHead/>
-              </media>
-              <RankingTableName
-                :icon-url="dapp.iconUrl"
-                :name="dapp.name"
-                :slug="dapp.slug"
-                :teaser="dapp.teaser"/>
-            </div>
-            <div class="table-data col-dau">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableDauHead/>
-              </media>
-              <RankingTableValuePct
-                :value="dapp.stats.dau"
-                :value_pct="dapp.stats.dau_pct"/>
-            </div>
-            <div class="table-data col-mau">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableMauHead/>
-              </media>
-              <RankingTableValuePct
-                :value="dapp.stats.mau"
-                :value_pct="dapp.stats.mau_pct"/>
-            </div>
-            <div class="table-data col-vol">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableVolumeHead/>
-              </media>
-              <RankingTableVolume
-                :stats="dapp.stats"
-                :platform="dapp.platform"/>
-            </div>
-            <div class="table-data col-dev">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableDevHead/>
-              </media>
-              <RankingTableValuePct
-                :value="dapp.stats.dev_30d"
-                :value_pct="dapp.stats.dev_30d_pct"/> 
-            </div>
-            <div class="table-data col-profile">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableProfileHead/>
-              </media>
-              <RankingTableProfile :score="dapp.profileScore"/>
-            </div>
-            <div class="table-data col-usage">
-              <media :query="{maxWidth: tweakpoint}">
-                <RankingTableUsageHead/>
-              </media>
-              <RankingTableTrend :users="dapp.sparklines.users"/>
-            </div>          
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -156,6 +160,19 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.col-name {
+  @include tweakpoint('min-width', 1000px) {
+    flex: 1;
+  }
+}
+
+.col-rank {
+  @include tweakpoint('min-width', 1000px) {
+    width: 60px;
+    margin-right: 15px;
+  }
+}
+
 .col-usage {
   width: 175px;
 }
@@ -172,10 +189,9 @@ export default {
 
 .table-row {
   background: $color--white;
-  padding: 10px;
   border-radius: 4px;
-  box-shadow: 0 0 4px rgba($color--black, .1);
-  margin-bottom: 5px;
+  box-shadow: 0 0 10px rgba($color--black, .1);
+  margin-bottom: 6px;
   @include tweakpoint('min-width', 1000px) {
     display: flex;
     align-items: center;
@@ -184,5 +200,7 @@ export default {
 
 .wrapper {
   padding: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

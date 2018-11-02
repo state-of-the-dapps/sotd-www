@@ -1,16 +1,23 @@
 <template>
-  <div>
-    <div>
-      <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" :class="!iconUrl ? 'has-no-icon' : ''" @click.native="trackDappView(slug)">
-        <img v-if="iconUrl" :src="iconUrl" width="32" height="32">
-        <span v-else>{{ name | firstLetter }}</span>
+  <div class="component-ranking-table-name">
+    <div class="icon-wrapper">
+      <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" :class="!iconUrl ? 'has-no-icon' : ''" class="icon-link" @click.native="trackDappView(slug)">
+        <img
+          v-if="iconUrl" 
+          :src="iconUrl"
+          class="icon-image"
+          width="42"
+          height="42">
+        <span
+          v-else
+          class="icon-placeholder">{{ name | firstLetter }}</span>
       </nuxt-link>
     </div>
-    <div>
-      <h4>
+    <div class="name-teaser-wrapper">
+      <h4 class="name">
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
-      <p>{{ teaser }}</p>
+      <p class="teaser">{{ teaser }}</p>
     </div>
   </div>
 </template>
@@ -52,3 +59,63 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-ranking-table-name {
+  display: flex;
+  align-items: center;
+}
+
+.icon-image {
+  display: block;
+}
+
+.icon-link {
+  text-decoration: none;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.icon-image {
+  border-radius: 4px;
+  display: block;
+}
+
+.icon-placeholder {
+  background: $color--gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: .25rem;
+  font-size: 1.2rem;
+}
+
+.teaser {
+  margin: 0;
+}
+</style>
