@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <span v-if="stats.usd_value_7d">{{ stats.usd_value_7d }} USD</span>
-    <span v-else>- USD</span>
-    <span v-if="volume === undefined || volume === null">-</span>
-    <span v-else>{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} 
+  <div class="component-ranking-table-volume">
+    <span v-if="stats.usd_value_7d" class="value usd">{{ stats.usd_value_7d }} USD</span>
+    <span v-else class="value usd">- USD</span>
+    <span v-if="volume === undefined || volume === null" class="value">-</span>
+    <span v-else class="value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} 
       <template v-if="platform === 'EOS'">EOS</template>
       <template v-if="platform === 'POA'">POA</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
     </span>
-    <span v-if="volume === undefined || volumePct === null">-</span>
-    <span v-else :class="getValuePosNegClass(volumePct)">
+    <span v-if="volumePct === undefined || volumePct === null" class="pct">-</span>
+    <span v-else :class="getValuePosNegClass(volumePct)" class="pct">
       <span v-if="volumePct > 0">+</span>
       {{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%
     </span>
@@ -61,3 +61,27 @@ export default {
   mixins: [getValuePosNegClass]
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-ranking-table-volume {
+  display: flex;
+  flex-direction: column;
+  @include font-monospace;
+}
+
+.pct {
+  font-size: 0.95rem;
+  &.is-positive {
+    color: $color--positive;
+  }
+  &.is-negative {
+    color: $color--negative;
+  }
+}
+
+.value {
+  font-size: 1.1rem;
+}
+</style>

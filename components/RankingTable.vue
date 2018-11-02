@@ -2,7 +2,7 @@
   <div class="component-ranking-table">
     <div class="wrapper">
       <div class="table">
-        <media :query="{minWidth: tweakpoint}">
+        <media :query="{minWidth: tweakpoint + 1}">
           <div class="table-header">
             <div class="table-row">
               <div class="table-head col-rank">
@@ -11,20 +11,20 @@
               <div class="table-head col-name">
                 <RankingTableNameHead/>
               </div>
+              <div class="table-head col-platform">
+                <RankingTableCategoryHead/>
+              </div>
+              <div class="table-head col-platform">
+                <RankingTablePlatformHead/>
+              </div>
               <div class="table-head col-dau">
                 <RankingTableDauHead/>
-              </div>
-              <div class="table-head col-mau">
-                <RankingTableMauHead/>
               </div>
               <div class="table-head col-vol">
                 <RankingTableVolumeHead/>
               </div>
               <div class="table-head col-dev">
                 <RankingTableDevHead/>
-              </div>
-              <div class="table-head col-profile">
-                <RankingTableProfileHead/>
               </div>
               <div class="table-head col-usage">
                 <RankingTableUsageHead/>
@@ -56,6 +56,20 @@
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
               </div>
+              <div class="table-data col-category">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTableCategoryHead/>
+                </media>
+                <RankingTableCategory
+                  :category="dapp.categories[0]"/>
+              </div>
+              <div class="table-data col-platform">
+                <media :query="{maxWidth: tweakpoint}">
+                  <RankingTablePlatformHead/>
+                </media>
+                <RankingTablePlatform
+                  :platform="dapp.platform"/>
+              </div>
               <div class="table-data col-dau">
                 <media :query="{maxWidth: tweakpoint}">
                   <RankingTableDauHead/>
@@ -63,14 +77,6 @@
                 <RankingTableValuePct
                   :value="dapp.stats.dau"
                   :value_pct="dapp.stats.dau_pct"/>
-              </div>
-              <div class="table-data col-mau">
-                <media :query="{maxWidth: tweakpoint}">
-                  <RankingTableMauHead/>
-                </media>
-                <RankingTableValuePct
-                  :value="dapp.stats.mau"
-                  :value_pct="dapp.stats.mau_pct"/>
               </div>
               <div class="table-data col-vol">
                 <media :query="{maxWidth: tweakpoint}">
@@ -87,12 +93,6 @@
                 <RankingTableValuePct
                   :value="dapp.stats.dev_30d"
                   :value_pct="dapp.stats.dev_30d_pct"/> 
-              </div>
-              <div class="table-data col-profile">
-                <media :query="{maxWidth: tweakpoint}">
-                  <RankingTableProfileHead/>
-                </media>
-                <RankingTableProfile :score="dapp.profileScore"/>
               </div>
               <div class="table-data col-usage">
                 <media :query="{maxWidth: tweakpoint}">
@@ -111,11 +111,14 @@
 <script>
 import Help from './Help'
 import Media from 'vue-media'
+import RankingTableCategory from './RankingTableCategory'
+import RankingTableCategoryHead from './RankingTableCategoryHead'
 import RankingTableDauHead from './RankingTableDauHead'
 import RankingTableDevHead from './RankingTableDevHead'
-import RankingTableMauHead from './RankingTableMauHead'
 import RankingTableName from './RankingTableName'
 import RankingTableNameHead from './RankingTableNameHead'
+import RankingTablePlatform from './RankingTablePlatform'
+import RankingTablePlatformHead from './RankingTablePlatformHead'
 import RankingTableProfile from './RankingTableProfile'
 import RankingTableProfileHead from './RankingTableProfileHead'
 import RankingTableRank from './RankingTableRank'
@@ -130,11 +133,14 @@ export default {
   components: {
     Help,
     Media,
+    RankingTableCategory,
+    RankingTableCategoryHead,
     RankingTableDauHead,
     RankingTableDevHead,
-    RankingTableMauHead,
     RankingTableName,
     RankingTableNameHead,
+    RankingTablePlatform,
+    RankingTablePlatformHead,
     RankingTableProfile,
     RankingTableProfileHead,
     RankingTableRank,
@@ -151,7 +157,7 @@ export default {
   },
   data () {
     return {
-      tweakpoint: 1000
+      tweakpoint: 999
     }
   }
 }
@@ -160,30 +166,93 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.col-category {
+  @include tweakpoint('min-width', 1000px) {
+    width: 100px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
+.col-dau {
+  @include tweakpoint('min-width', 1000px) {
+    width: 130px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
+.col-dev {
+  @include tweakpoint('min-width', 1000px) {
+    width: 85px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
+.col-mau {
+  @include tweakpoint('min-width', 1000px) {
+    width: 130px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
 .col-name {
   @include tweakpoint('min-width', 1000px) {
     flex: 1;
   }
 }
 
+.col-platform {
+  @include tweakpoint('min-width', 1000px) {
+    width: 100px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
+.col-profile {
+  @include tweakpoint('min-width', 1000px) {
+    width: 85px;
+    text-align: right;
+    padding: 0 10px;
+  }
+}
+
 .col-rank {
   @include tweakpoint('min-width', 1000px) {
-    width: 60px;
+    width: 50px;
     margin-right: 15px;
   }
 }
 
 .col-usage {
-  width: 175px;
+  width: 180px;
+  @include tweakpoint('min-width', 1000px) {
+    padding: 0 10px;
+  }
+}
+
+.col-vol {
+  @include tweakpoint('min-width', 1000px) {
+    width: 130px;
+    text-align: right;
+    padding: 0 10px;
+  }
 }
 
 .table-header {
+  margin: 0 -10px;
   position: sticky;
   top: 0;
+  padding: 15px 10px;
+  background: $color--gray;
   .table-row {
     box-shadow: none;
     border-radius: 0;
     background: $color--gray;
+    margin-bottom: 0;
   }
 }
 

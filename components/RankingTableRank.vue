@@ -31,7 +31,7 @@ export default {
   }
   @include tweakpoint('min-width', 1000px) {
     display: flex;
-    height: 65px;
+    height: 70px;
     align-items: center;
     justify-content: center;
     border-top-left-radius: 4px;

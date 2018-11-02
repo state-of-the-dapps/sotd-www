@@ -78,8 +78,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 42px;
+  height: 42px;
   border-radius: 4px;
 }
 

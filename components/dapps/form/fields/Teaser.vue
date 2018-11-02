@@ -1,8 +1,8 @@
 <template>
   <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-      <textarea class="text-area" maxlength="30" :class="teaser.length > 0 ? '--is-filled' : ''" type="text" v-model="teaser" @input="validate"></textarea>
+      <textarea class="text-area" maxlength="50" :class="teaser.length > 0 ? '--is-filled' : ''" type="text" v-model="teaser" @input="validate"></textarea>
       <label class="label">Tagline <span class="required">(required)</span></label>
-      <span class="remaining-characters">{{ 30 - teaser.length }}</span>
+      <span class="remaining-characters">{{ 50 - teaser.length }}</span>
       <ul v-if="warnings && warnings.length > 0" class="warning-list">
         <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
       </ul>
@@ -57,7 +57,7 @@
           { value: 'ethereum' }
         ]
         validationTimer = setTimeout(() => {
-          this.teaser.length > 75 ? errors.data.push(`Tagline can't be longer than 75 characters`) : ''
+          this.teaser.length > 50 ? errors.data.push(`Tagline can't be longer than 50 characters`) : ''
           this.teaser.length < 4 ? errors.data.push(`Tagline must be longer than 3 characters`) : ''
           var hasWarningWords = warningWords.some((word) => {
             return this.teaser.toLowerCase().indexOf(word.value) !== -1

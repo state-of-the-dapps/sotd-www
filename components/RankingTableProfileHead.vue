@@ -1,6 +1,6 @@
 <template>
   <div class="component-ranking-table-profile-head">
-    <span class="label">Profile score</span>
+    <span class="label">Profile</span>
     <Help
       :bottom="true"
       text="How complete the profile of the ÐApp is"/>

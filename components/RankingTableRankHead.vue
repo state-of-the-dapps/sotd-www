@@ -3,7 +3,6 @@
     <span class="label">#</span>
     <Help
       :bottom="true"
-      :reversed="true"
       text="The default rank is based on DAU, or Daily Active Users (unique source addresses in transactions to ÐApp contracts)"/>
   </div>
 </template>
