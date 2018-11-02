@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component-ranking-table-rank">
     <span>{{ rank }}</span>
   </div>
 </template>

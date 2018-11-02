@@ -1,126 +1,188 @@
 <template>
   <div class="component-ranking-table">
-    <table class="table">
-      <thead class="table-header">
-        <tr class="table-row">
-          <th class="table-head">
-            <div class="table-head-wrapper rank">
-              <span class="dapp-rank-head">#</span>
-              <Help text="The default rank is based on DAU, or Daily Active Users (unique source addresses in transactions to ÐApp contracts)" :reversed="true"/>
+    <div class="wrapper">
+      <div class="table">
+        <media :query="{minWidth: tweakpoint}">
+          <div class="table-header">
+            <div class="table-row">
+              <div class="table-head col-rank">
+                <RankingTableRankHead/>
+              </div>
+              <div class="table-head col-name">
+                <RankingTableNameHead/>
+              </div>
+              <div class="table-head col-dau">
+                <RankingTableDauHead/>
+              </div>
+              <div class="table-head col-mau">
+                <RankingTableMauHead/>
+              </div>
+              <div class="table-head col-vol">
+                <RankingTableVolumeHead/>
+              </div>
+              <div class="table-head col-dev">
+                <RankingTableDevHead/>
+              </div>
+              <div class="table-head col-profile">
+                <RankingTableProfileHead/>
+              </div>
+              <div class="table-head col-usage">
+                <RankingTableUsageHead/>
+              </div>     
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper name">
-              <span class="dapp-name-head">ÐApp</span>
+          </div>
+        </media>
+        <div class="table-body">
+          <div
+            v-for="(dapp, index) in dapps"
+            :key="index"
+            class="table-row">
+            <div class="table-data col-rank">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableRankHead/>
+              </media>
+              <RankingTableRank :rank="dapp.rank"/>
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper dau">
-              <span class="dapp-name-head">Users (24hr)</span>
-              <Help text="Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)"/>
+            <div class="table-data col-name">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableNameHead/>
+              </media>
+              <RankingTableName
+                :icon-url="dapp.iconUrl"
+                :name="dapp.name"
+                :slug="dapp.slug"
+                :teaser="dapp.teaser"/>
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper dau">
-              <span class="dapp-name-head">Users (30d)</span>
-              <Help text="Monthly Active Users, or MAU (unique source addresses in transactions to ÐApp contracts)"/>
+            <div class="table-data col-dau">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableDauHead/>
+              </media>
+              <RankingTableValuePct
+                :value="dapp.stats.dau"
+                :value_pct="dapp.stats.dau_pct"/>
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper dau">
-              <span class="dapp-name-head">Volume (7d)</span>
-              <Help text="Transaction volume to ÐApp contracts"/>
+            <div class="table-data col-mau">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableMauHead/>
+              </media>
+              <RankingTableValuePct
+                :value="dapp.stats.mau"
+                :value_pct="dapp.stats.mau_pct"/>
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper dau">
-              <span class="dapp-name-head">Dev</span>
-              <Help text="The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc."/>
+            <div class="table-data col-vol">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableVolumeHead/>
+              </media>
+              <RankingTableVolume
+                :stats="dapp.stats"
+                :platform="dapp.platform"/>
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper profile">
-              <span class="dapp-name-head">Profile score</span>
-              <Help text="How complete the profile of the ÐApp is"/>
+            <div class="table-data col-dev">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableDevHead/>
+              </media>
+              <RankingTableValuePct
+                :value="dapp.stats.dev_30d"
+                :value_pct="dapp.stats.dev_30d_pct"/> 
             </div>
-          </th>
-          <th class="table-head">
-            <div class="table-head-wrapper dau">
-              <span class="dapp-name-head">Usage (30d)</span>
-              <Help text="Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days"/>
+            <div class="table-data col-profile">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableProfileHead/>
+              </media>
+              <RankingTableProfile :score="dapp.profileScore"/>
             </div>
-          </th>     
-        </tr>
-      </thead>
-      <tbody class="table-body">
-        <tr
-          v-for="(dapp, index) in dapps"
-          :key="index"
-          class="table-row">
-          <td class="table-data">
-            <RankingTableRank :rank="dapp.rank"/>
-          </td>
-          <td class="table-data">
-            <RankingTableName
-              :icon-url="dapp.iconUrl"
-              :name="dapp.name"
-              :slug="dapp.slug"
-              :teaser="dapp.teaser"/>
-          </td>
-          <td class="table-data">
-            <RankingTableValuePct
-              :value="dapp.stats.dau"
-              :value_pct="dapp.stats.dau_pct"/>
-          </td>
-          <td class="table-data">
-            <RankingTableValuePct
-              :value="dapp.stats.mau"
-              :value_pct="dapp.stats.mau_pct"/>
-          </td>
-          <td class="table-data">
-            <RankingTableVolume
-              :stats="dapp.stats"
-              :platform="dapp.platform"/>
-          </td>
-          <td class="table-data">
-            <RankingTableValuePct
-              :value="dapp.stats.dev_30d"
-              :value_pct="dapp.stats.dev_30d_pct"/> 
-          </td>
-          <td class="table-data">
-            <RankingTableProfile :score="dapp.profileScore"/>
-          </td>
-          <td class="table-data">
-            <RankingTableTrend :users="dapp.sparklines.users"/>
-          </td>          
-        </tr>
-      </tbody>
-    </table>
+            <div class="table-data col-usage">
+              <media :query="{maxWidth: tweakpoint}">
+                <RankingTableUsageHead/>
+              </media>
+              <RankingTableTrend :users="dapp.sparklines.users"/>
+            </div>          
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Help from './Help'
+import Media from 'vue-media'
+import RankingTableDauHead from './RankingTableDauHead'
+import RankingTableDevHead from './RankingTableDevHead'
+import RankingTableMauHead from './RankingTableMauHead'
 import RankingTableName from './RankingTableName'
+import RankingTableNameHead from './RankingTableNameHead'
 import RankingTableProfile from './RankingTableProfile'
+import RankingTableProfileHead from './RankingTableProfileHead'
 import RankingTableRank from './RankingTableRank'
+import RankingTableRankHead from './RankingTableRankHead'
 import RankingTableTrend from './RankingTableTrend'
+import RankingTableUsageHead from './RankingTableUsageHead'
 import RankingTableValuePct from './RankingTableValuePct'
 import RankingTableVolume from './RankingTableVolume'
+import RankingTableVolumeHead from './RankingTableVolumeHead'
 
 export default {
   components: {
     Help,
+    Media,
+    RankingTableDauHead,
+    RankingTableDevHead,
+    RankingTableMauHead,
     RankingTableName,
+    RankingTableNameHead,
     RankingTableProfile,
+    RankingTableProfileHead,
     RankingTableRank,
+    RankingTableRankHead,
     RankingTableTrend,
+    RankingTableUsageHead,
     RankingTableValuePct,
-    RankingTableVolume
+    RankingTableVolume,
+    RankingTableVolumeHead
   },
   props: {
     dapps: Array,
     required: true
+  },
+  data () {
+    return {
+      tweakpoint: 1000
+    }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.col-usage {
+  width: 175px;
+}
+
+.table-header {
+  position: sticky;
+  top: 0;
+  .table-row {
+    box-shadow: none;
+    border-radius: 0;
+    background: $color--gray;
+  }
+}
+
+.table-row {
+  background: $color--white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba($color--black, .1);
+  margin-bottom: 5px;
+  @include tweakpoint('min-width', 1000px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.wrapper {
+  padding: 10px;
+}
+</style>

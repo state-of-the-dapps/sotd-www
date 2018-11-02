@@ -23,7 +23,7 @@ export default {
   bottom: calc(1.1rem + 10px);
   font-size: 1rem;
   font-weight: normal;
-  right: 0;
+  left: 0;
   width: 150px;
   text-align: left;
   padding: 10px;
@@ -34,7 +34,7 @@ export default {
   &:after {
     content: '';
     position: absolute;
-    right: 0px;
+    left: 0px;
     bottom: -5px;
     width: 0;
     height: 0;
@@ -53,11 +53,11 @@ export default {
     }
   }
   &.is-reversed {
-    right: auto;
-    left: 0;
+    left: auto;
+    right: 0;
     &:after {
-      right: auto;
-      left: 0;
+      left: auto;
+      right: 0;
     }
   }
 }
