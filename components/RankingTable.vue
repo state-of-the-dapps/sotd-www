@@ -39,6 +39,16 @@
           </div>
         </div>
         <div class="table-body">
+          <p 
+            v-if="isLoading"
+            class="loader-wrapper">
+            <button class="loader"></button>
+          </p>
+          <p
+            v-if="!isLoading && !dapps.length"
+            class="no-results">
+            There are currently no ÐApps for this category and platform
+          </p>
           <template
             v-for="(dapp, index) in dapps"
             class="table-row">
@@ -111,6 +121,7 @@
         </div>
       </div>
       <BasePager
+        v-if="!isLoading"
         :limit="pager.limit"
         :offset="pager.offset"
         :totalCount="pager.totalCount"
@@ -168,6 +179,10 @@ export default {
   props: {
     dapps: {
       type: Array,
+      required: true
+    },
+    isLoading: {
+      type: Boolean,
       required: true
     },
     pager: {
@@ -273,6 +288,19 @@ export default {
   }
 }
 
+.loader-wrapper {
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.no-results {
+  padding: 50px 0;
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: 700;
+  color: darken($color--gray, 40%);
+}
+
 .table-header {
   margin: 0 -10px;
   position: sticky;
@@ -299,7 +327,7 @@ export default {
 }
 
 .wrapper {
-  padding: 10px;
+  padding: 0 10px;
   max-width: 1200px;
   margin: 0 auto;
 }

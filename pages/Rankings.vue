@@ -1,10 +1,13 @@
 <template>
   <LayoutMain>
-    <div class="page-rankings" ref="page">
+    <div class="page-rankings">
       <RankingFilters/>
-      <RankingTable
-        :dapps="dapps"
-        :pager="pager"/>
+      <div ref="table">
+        <RankingTable
+          :dapps="dapps"
+          :is-loading="isLoading"
+          :pager="pager"/>
+      </div>
     </div>
   </LayoutMain>
 </template>
@@ -23,32 +26,41 @@ export default {
   },
   data () {
     return {
-      dapps: []
+      dapps: [],
+      isLoading: true,
+      pager: {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
     }
   },
-  async asyncData ({ params, query }) {
-    const urlParams = {...params, ...query}
-    if (!query.sort) {
-      urlParams.sort = 'rank'
-      urlParams.order = 'asc'
-    }
-    const data = await getDapps(urlParams)
-    const dapps = data.items
-    const pager = data.pager
-    return { dapps, pager }
+  mounted () {
+    this.fetchDapps()
   },
   methods: {
     async fetchDapps () {
+      this.resetData()
+      this.isLoading = true
       const urlParams = {...this.$route.params, ...this.$route.query}
       if (!this.$route.query.sort) {
         urlParams.sort = 'rank'
         urlParams.order = 'asc'
       }
       const data = await getDapps(urlParams)
+      this.isLoading = false
       const dapps = data.items
       const pager = data.pager
       this.dapps = dapps
       this.pager = pager
+    },
+    resetData () {
+      this.dapps = []
+      this.pager = {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
     }
   },
   head () {
@@ -58,7 +70,7 @@ export default {
   },
   watch: {
     '$route.query' () {
-      this.$refs.page.scrollIntoView()
+      this.$refs.table.scrollIntoView()
       this.fetchDapps()
     }
   },
