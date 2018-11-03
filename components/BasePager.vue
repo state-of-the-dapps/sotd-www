@@ -1,15 +1,27 @@
 <template>
-  <ul class="component-base-pager">
-    <li 
-      v-for="(page, index) in pages"
-      :key="index"
-      class="item">
-      <button
-        :class="page == currentPage ? 'is-active' : ''"
+  <div class="component-base-pager">
+    <div class="first-wrapper">
+      <button 
+        v-if="currentPage !== 1"
         class="button"
-        @click="$emit('selectPage', page)">{{ page }}</button>
-    </li>
-  </ul>
+        @click="$emit('selectPage', 1)">First page</button>
+    </div>
+    <div class="next-prev-wrapper">
+      <button
+        v-if="currentPage !== 1"
+        class="button prev-next"
+        @click="$emit('selectPage', currentPage - 1)">Previous</button>
+      <button
+        v-if="currentPage < totalPages"
+        class="button prev-next"
+        @click="$emit('selectPage', currentPage + 1)">Next</button></div>
+    <div class="last-wrapper">
+      <button
+        v-if="currentPage < totalPages"
+        class="button"
+        @click="$emit('selectPage', totalPages)">Last page</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -28,19 +40,13 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      currentPage: this.$route.query.page || 1
-    }
-  },
   computed: {
-    pages () {
+    currentPage () {
+      return this.$route.query.page || 1
+    },
+    totalPages () {
       const totalPages = Math.ceil(this.totalCount / this.limit)
-      let pages = []
-      for (let i = 0; i < totalPages; i++) {
-        pages.push(i + 1)
-      }
-      return pages
+      return totalPages
     }
   }
 }
@@ -57,28 +63,42 @@ export default {
   justify-content: center;
 }
 
-.item {
-  margin: 2px;
-  display: flex;
-  align-items: center;
+.first-wrapper {
+  width: 100px;
+  text-align: left;
+}
+
+.last-wrapper {
+  width: 100px;
+  text-align: right;
+}
+
+.next-prev-wrapper {
+  flex: 1;
   justify-content: center;
+  text-align: center;
 }
 
 .button {
-  width: 40px;
-  height: 40px;
   padding: 10px;
   background: $color--white;
   border-radius: 3px;
   border: 1px solid darken($color--gray, 10%);
   line-height: 1;
+  text-align: center;
+  transition: all 0.2s ease;
   &:hover {
-    background: $color--gray;
+    background: darken($color--white, 1%);
+    border-color: $color--black;
   }
   &.is-active, &.is-active:hover {
     background: $color--black;
     color: $color--gray;
     border-color: $color--black;
+  }
+  &.prev-next {
+    width: 100px;
+    margin: 0 3px;
   }
 }
 </style>

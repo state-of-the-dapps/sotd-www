@@ -1,6 +1,6 @@
 <template>
   <LayoutMain>
-    <div class="page-rankings">
+    <div class="page-rankings" ref="page">
       <RankingFilters/>
       <RankingTable
         :dapps="dapps"
@@ -58,6 +58,7 @@ export default {
   },
   watch: {
     '$route.query' () {
+      this.$refs.page.scrollIntoView()
       this.fetchDapps()
     }
   },

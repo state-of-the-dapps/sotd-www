@@ -2,36 +2,42 @@
   <div class="component-ranking-table">
     <div class="wrapper">
       <div class="table">
-        <media :query="{minWidth: tweakpoint + 1}">
-          <div class="table-header">
-            <div class="table-row">
-              <div class="table-head col-rank">
-                <RankingTableRankHead :sort="true"/>
-              </div>
+        <div class="table-header">
+          <div class="table-row">
+            <div class="table-head col-rank">
+              <RankingTableRankHead :sort="true"/>
+            </div>
+            <media :query="{minWidth: tweakpoint + 1}">
               <div class="table-head col-name">
                 <RankingTableNameHead/>
               </div>
+            </media>
+            <media :query="{minWidth: tweakpoint + 1}">
               <div class="table-head col-platform">
                 <RankingTableCategoryHead/>
               </div>
+            </media>
+            <media :query="{minWidth: tweakpoint + 1}">
               <div class="table-head col-platform">
                 <RankingTablePlatformHead/>
               </div>
-              <div class="table-head col-dau">
-                <RankingTableDauHead :sort="true"/>
-              </div>
-              <div class="table-head col-vol">
-                <RankingTableVolumeHead :sort="true"/>
-              </div>
-              <div class="table-head col-dev">
-                <RankingTableDevHead :sort="true"/>
-              </div>
+            </media>
+            <div class="table-head col-dau">
+              <RankingTableDauHead :sort="true"/>
+            </div>
+            <div class="table-head col-vol">
+              <RankingTableVolumeHead :sort="true"/>
+            </div>
+            <div class="table-head col-dev">
+              <RankingTableDevHead :sort="true"/>
+            </div>
+            <media :query="{minWidth: tweakpoint + 1}">
               <div class="table-head col-usage">
                 <RankingTableUsageHead/>
-              </div>     
-            </div>
+              </div>  
+            </media>   
           </div>
-        </media>
+        </div>
         <div class="table-body">
           <template
             v-for="(dapp, index) in dapps"
@@ -107,7 +113,8 @@
       <BasePager
         :limit="pager.limit"
         :offset="pager.offset"
-        :totalCount="pager.totalCount"/>
+        :totalCount="pager.totalCount"
+        @selectPage="selectPage"/>
     </div>
   </div>
 </template>
@@ -170,6 +177,11 @@ export default {
   data () {
     return {
       tweakpoint: 1099
+    }
+  },
+  methods: {
+    selectPage (page) {
+      this.$router.push({query: {...this.$route.query, page: page}})
     }
   }
 }
