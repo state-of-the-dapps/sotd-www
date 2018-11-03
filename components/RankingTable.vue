@@ -212,6 +212,17 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.table-head {
+  padding: 10px 0;
+  margin: 5px 0;
+  text-align: center;
+  @include tweakpoint('min-width', 1100px) {
+    padding: 0;
+    margin: 0;
+    text-align: initial;
+  }
+}
+
 .col-category {
   @include tweakpoint('min-width', 1100px) {
     width: 100px;
@@ -303,10 +314,12 @@ export default {
 
 .table-header {
   margin: 0 -10px;
-  position: sticky;
-  top: 0;
   padding: 15px 10px;
   background: $color--gray;
+  @include tweakpoint('min-width', 1100px) {
+    position: sticky;
+    top: 0;
+  }
   .table-row {
     box-shadow: none;
     border-radius: 0;
@@ -333,10 +346,27 @@ export default {
 }
 
 /deep/ .head-link {
+  background: $color--white;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid darken($color--gray, 10%);
   text-decoration: none;
-  border-bottom: 1px solid $color--black;
   &.is-active {
     font-weight: 700;
+    border-color: $color--black;
+    background: $color--black;
+    color: $color--white;
+  }
+  @include tweakpoint('min-width', 1100px) {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid $color--black;
+    background: transparent;
+    padding: 0;
+    &.is-active {
+      background: transparent;
+      color: $color--black;
+    }
   }
 }
 </style>
