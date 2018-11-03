@@ -30,10 +30,10 @@
         <a @click="trackSocial('Medium')" href="https://blog.stateofthedapps.com/" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/medium-reverse.png" alt="Medium" class="social-icon"></a>
       </li>
       <li class="social-item">
-        <a @click="trackSocial('Slack')" href="https://slack.stateofthedapps.com/" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/slack-reverse.png" alt="Slack" class="social-icon"></a>
+        <a @click="trackSocial('Telegram')" href="https://t.me/stateofthedapps" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/chat-reverse.png" alt="Telegram" class="social-icon"></a>
       </li>
       <li class="social-item">
-        <a @click="trackSocial('Telegram')" href="https://t.me/stateofthedapps" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/chat-reverse.png" alt="Telegram" class="social-icon"></a>
+        <a @click="trackSocial('Status')" href="https://get.status.im/chat/public/stateofthedapps-com" class="social-link" target="_blank" rel="noopener noreferrer"><img src="~/assets/images/social/other2-reverse.png" alt="Status" class="social-icon"></a>
       </li>
     </ul>
   </ul>
