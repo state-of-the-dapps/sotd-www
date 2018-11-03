@@ -4,7 +4,8 @@
       v-if="sort"
       :to="{query: {}}"
       :class="!$route.query.sort ? 'is-active' : ''"
-      class="label head-link">#</nuxt-link>
+      class="label head-link"
+      @click.native="trackRankingSort('rank')">#</nuxt-link>
     <span v-else class="label">#</span>
     <Help
       :bottom="true"
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { trackDappRankingSort } from '~/helpers/mixpanel'
 import Help from './Help'
 
 export default {
@@ -23,6 +25,13 @@ export default {
     sort: {
       type: Boolean,
       default: false
+    }
+  },
+  methods: {
+    trackRankingSort (sort) {
+      const order = 'asc'
+      const action = trackDappRankingSort(order, sort)
+      this.$mixpanel.track(action.name, action.data)
     }
   }
 }

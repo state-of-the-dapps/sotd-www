@@ -1,15 +1,27 @@
 <template>
   <div>
-    <nuxt-link class="value" :to="{name: 'rankings-platform', params: { platform: platform.toLowerCase() }}">{{ platform }}</nuxt-link>
+    <nuxt-link
+      class="value"
+      :to="{name: 'rankings-platform', params: { platform: platform.toLowerCase() }}"
+      @click.native="trackRankingPlatform(platform)">{{ platform }}</nuxt-link>
   </div>
 </template>
 
 <script>
+import { trackDappRankingPlatform } from '~/helpers/mixpanel'
+
 export default {
   props: {
     platform: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    trackRankingPlatform (platform) {
+      const sourceComponent = 'RankingTablePlatform'
+      const action = trackDappRankingPlatform(sourceComponent, this.$route.path, platform)
+      this.$mixpanel.track(action.name, action.data)
     }
   }
 }

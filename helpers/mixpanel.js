@@ -164,6 +164,20 @@ export const trackDappRankingCategory = function (sourceComponent, sourcePath, c
 
   return action
 }
+export const trackDappRankingPage = function (from, to) {
+  let name = 'DApp Ranking - Page'
+  let data = {
+    from,
+    to
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
 
 export const trackDappRankingPlatform = function (sourceComponent, sourcePath, platform) {
   let name = 'DApp Ranking - Platform'

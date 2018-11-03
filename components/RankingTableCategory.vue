@@ -1,15 +1,28 @@
 <template>
   <div>
-    <nuxt-link v-if="category" class="value" :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}">{{ category | capitalize }}</nuxt-link>
+    <nuxt-link
+      v-if="category"
+      class="value"
+      :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}"
+      @click.native="trackRankingCategory(category)">{{ category | capitalize }}</nuxt-link>
   </div>
 </template>
 
 <script>
+import { trackDappRankingCategory } from '~/helpers/mixpanel'
+
 export default {
   props: {
     category: {
       type: String,
       required: true
+    }
+  },
+  methods: {
+    trackRankingCategory (category) {
+      const sourceComponent = 'RankingTableCategory'
+      const action = trackDappRankingCategory(sourceComponent, this.$route.path, category)
+      this.$mixpanel.track(action.name, action.data)
     }
   }
 }
