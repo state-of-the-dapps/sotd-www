@@ -118,7 +118,7 @@ export default {
 
 .teaser {
   margin: 0;
-  color: lighten($color--black, 10%);
+  color: lighten($color--black, 15%);
   font-size: 1.05rem;
 }
 </style>

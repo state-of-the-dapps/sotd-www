@@ -63,6 +63,7 @@ export default {
   background: $color--black;
   border: 1px solid $color--black;
   font-size: 1.15rem;
+  border-radius: 3px;
   &.-submit {
     background: transparent;
     border-color: lighten($color--white, 100%)

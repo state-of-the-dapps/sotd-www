@@ -273,7 +273,11 @@ export default {
   margin: 0 auto;
 }
 
-/deep/ .nuxt-link-exact-active {
-  font-weight: 700;
+/deep/ .head-link {
+  text-decoration: none;
+  border-bottom: 1px solid $color--black;
+  &.is-active {
+    font-weight: 700;
+  }
 }
 </style>

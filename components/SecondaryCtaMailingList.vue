@@ -100,6 +100,7 @@ export default {
   position: relative;
   opacity: .4;
   transition: all .2s ease;
+  border-radius: 3px;
   cursor: default;
   &.-is-valid {
     opacity: 1;
@@ -144,6 +145,7 @@ export default {
   background: rgba($color--black, .15);
   color: lighten($color--white, 100%);
   font-size: 1.05rem;
+  border-radius: 4px;
   &:focus::placeholder {
     color: rgba($color--white, .5);
   }

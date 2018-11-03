@@ -219,6 +219,7 @@ export default {
   &.-submit {
     border: 1px solid $color--black;
     padding: 5px;
+    border-radius: 3px;
     @include tweakpoint('min-width', 840px) {
       padding: 7px 10px;
     }

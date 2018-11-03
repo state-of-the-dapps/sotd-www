@@ -3,6 +3,7 @@
     <nuxt-link
       v-if="sort"
       :to="{query: {sort: 'usd_value_7d'}}"
+      :class="$route.query.sort === 'usd_value_7d' ? 'is-active' : ''"
       class="label head-link">Volume (7d)</nuxt-link>
     <span v-else class="label">Volume (7d)</span>
     <Help

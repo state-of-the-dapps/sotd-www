@@ -3,6 +3,7 @@
     <nuxt-link
       v-if="sort"
       :to="{query: {sort: 'dev_30d', order: 'desc'}}"
+      :class="$route.query.sort === 'dev_30d' ? 'is-active' : ''"
       class="label head-link">Github</nuxt-link>
     <span v-else class="label">Github</span>
     <Help

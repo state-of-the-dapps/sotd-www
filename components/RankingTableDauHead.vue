@@ -3,6 +3,7 @@
     <nuxt-link
       v-if="sort"
       :to="{query: {sort: 'dau', order: 'desc'}}"
+      :class="$route.query.sort === 'dau' ? 'is-active' : ''"
       class="label head-link">Users (24hr)</nuxt-link>
     <span v-else class="label">Users (24hr)</span>
     <Help 
