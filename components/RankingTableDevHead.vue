@@ -4,8 +4,8 @@
       v-if="sort"
       :to="{query: {sort: 'dev_30d', order: 'desc'}}"
       :class="$route.query.sort === 'dev_30d' ? 'is-active' : ''"
-      class="label head-link">Github</nuxt-link>
-    <span v-else class="label">Github</span>
+      class="label head-link">Dev activity</nuxt-link>
+    <span v-else class="label">Dev activity</span>
     <Help
       :bottom="true"
       text="The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc."/>

@@ -104,11 +104,16 @@
           </template>
         </div>
       </div>
+      <BasePager
+        :limit="pager.limit"
+        :offset="pager.offset"
+        :totalCount="pager.totalCount"/>
     </div>
   </div>
 </template>
 
 <script>
+import BasePager from './BasePager'
 import Help from './Help'
 import Media from 'vue-media'
 import RankingTableCategory from './RankingTableCategory'
@@ -131,6 +136,7 @@ import RankingTableVolumeHead from './RankingTableVolumeHead'
 
 export default {
   components: {
+    BasePager,
     Help,
     Media,
     RankingTableCategory,
@@ -152,8 +158,14 @@ export default {
     RankingTableVolumeHead
   },
   props: {
-    dapps: Array,
-    required: true
+    dapps: {
+      type: Array,
+      required: true
+    },
+    pager: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
@@ -184,7 +196,7 @@ export default {
 
 .col-dev {
   @include tweakpoint('min-width', 1100px) {
-    width: 85px;
+    width: 120px;
     text-align: right;
     padding: 0 10px;
   }

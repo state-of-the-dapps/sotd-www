@@ -9,5 +9,5 @@ export async function getDapps (params) {
   const payload = await axios.get(`dapps`, {
     params
   })
-  return payload.data.items
+  return payload.data
 }

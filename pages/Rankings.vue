@@ -2,7 +2,9 @@
   <LayoutMain>
     <div class="page-rankings">
       <RankingFilters/>
-      <RankingTable :dapps="dapps"/>
+      <RankingTable
+        :dapps="dapps"
+        :pager="pager"/>
     </div>
   </LayoutMain>
 </template>
@@ -30,8 +32,10 @@ export default {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
     }
-    const dapps = await getDapps(urlParams)
-    return { dapps }
+    const data = await getDapps(urlParams)
+    const dapps = data.items
+    const pager = data.pager
+    return { dapps, pager }
   },
   methods: {
     async fetchDapps () {
@@ -40,8 +44,11 @@ export default {
         urlParams.sort = 'rank'
         urlParams.order = 'asc'
       }
-      const dapps = await getDapps(urlParams)
+      const data = await getDapps(urlParams)
+      const dapps = data.items
+      const pager = data.pager
       this.dapps = dapps
+      this.pager = pager
     }
   },
   head () {
