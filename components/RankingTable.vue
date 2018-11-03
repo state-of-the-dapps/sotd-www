@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="table-body">
-          <p 
+          <p
             v-if="isLoading"
             class="loader-wrapper">
             <button class="loader"></button>
@@ -325,6 +325,26 @@ export default {
     border-radius: 0;
     background: $color--gray;
     margin-bottom: 0;
+  }
+}
+
+.table-body {
+  display: flex;
+  flex-wrap: wrap;
+  @include tweakpoint('min-width', 1100px) {
+    display: block;
+  }
+  .table-row {
+    width: 100%;
+    @include tweakpoint('min-width', 500px) {
+      width: 50%;
+    }
+    @include tweakpoint('min-width', 900px) {
+      width: 33.33%;
+    }
+    @include tweakpoint('min-width', 1100px) {
+      width: 100%;
+    }
   }
 }
 
