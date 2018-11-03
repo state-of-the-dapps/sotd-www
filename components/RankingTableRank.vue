@@ -22,14 +22,11 @@ export default {
 @import '~assets/css/settings';
 
 .component-ranking-table-rank {
-  background: rgba($color--purple, 0.55);
-  color: $color--white;
+  background: darken($color--white, 2%);
+  border-right: 1px solid darken($color--gray, 5%);
   font-weight: 700;
   text-align: center;
-  &.rank-1, &.rank-2, &.rank-3, &.rank-4, &.rank-5 {
-    background: rgba($color--purple, 1);
-  }
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     display: flex;
     height: 70px;
     align-items: center;

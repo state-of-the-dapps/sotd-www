@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nuxt-link class="value" :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}">{{ category | capitalize }}</nuxt-link>
+    <nuxt-link v-if="category" class="value" :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}">{{ category | capitalize }}</nuxt-link>
   </div>
 </template>
 

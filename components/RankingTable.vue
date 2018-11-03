@@ -6,7 +6,7 @@
           <div class="table-header">
             <div class="table-row">
               <div class="table-head col-rank">
-                <RankingTableRankHead/>
+                <RankingTableRankHead :sort="true"/>
               </div>
               <div class="table-head col-name">
                 <RankingTableNameHead/>
@@ -18,13 +18,13 @@
                 <RankingTablePlatformHead/>
               </div>
               <div class="table-head col-dau">
-                <RankingTableDauHead/>
+                <RankingTableDauHead :sort="true"/>
               </div>
               <div class="table-head col-vol">
-                <RankingTableVolumeHead/>
+                <RankingTableVolumeHead :sort="true"/>
               </div>
               <div class="table-head col-dev">
-                <RankingTableDevHead/>
+                <RankingTableDevHead :sort="true"/>
               </div>
               <div class="table-head col-usage">
                 <RankingTableUsageHead/>
@@ -61,7 +61,7 @@
                   <RankingTableCategoryHead/>
                 </media>
                 <RankingTableCategory
-                  :category="dapp.categories[0]"/>
+                  :category="dapp.categories[0] || ''"/>
               </div>
               <div class="table-data col-platform">
                 <media :query="{maxWidth: tweakpoint}">
@@ -157,7 +157,7 @@ export default {
   },
   data () {
     return {
-      tweakpoint: 999
+      tweakpoint: 1099
     }
   }
 }
@@ -167,7 +167,7 @@ export default {
 @import '~assets/css/settings';
 
 .col-category {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 100px;
     text-align: right;
     padding: 0 10px;
@@ -175,7 +175,7 @@ export default {
 }
 
 .col-dau {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 130px;
     text-align: right;
     padding: 0 10px;
@@ -183,7 +183,7 @@ export default {
 }
 
 .col-dev {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 85px;
     text-align: right;
     padding: 0 10px;
@@ -191,7 +191,7 @@ export default {
 }
 
 .col-mau {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 130px;
     text-align: right;
     padding: 0 10px;
@@ -199,13 +199,13 @@ export default {
 }
 
 .col-name {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     flex: 1;
   }
 }
 
 .col-platform {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 100px;
     text-align: right;
     padding: 0 10px;
@@ -213,7 +213,7 @@ export default {
 }
 
 .col-profile {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 85px;
     text-align: right;
     padding: 0 10px;
@@ -221,7 +221,7 @@ export default {
 }
 
 .col-rank {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 50px;
     margin-right: 15px;
   }
@@ -229,13 +229,13 @@ export default {
 
 .col-usage {
   width: 180px;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     padding: 0 10px;
   }
 }
 
 .col-vol {
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     width: 130px;
     text-align: right;
     padding: 0 10px;
@@ -261,7 +261,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0 0 10px rgba($color--black, .1);
   margin-bottom: 6px;
-  @include tweakpoint('min-width', 1000px) {
+  @include tweakpoint('min-width', 1100px) {
     display: flex;
     align-items: center;
   }
@@ -271,5 +271,9 @@ export default {
   padding: 10px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/deep/ .nuxt-link-exact-active {
+  font-weight: 700;
 }
 </style>

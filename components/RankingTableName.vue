@@ -17,7 +17,7 @@
       <h4 class="name">
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
-      <p class="teaser">{{ teaser }}</p>
+      <p class="teaser">{{ teaser | truncate(50) }}</p>
     </div>
   </div>
 </template>
@@ -66,6 +66,7 @@ export default {
 .component-ranking-table-name {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .icon-image {
@@ -117,5 +118,7 @@ export default {
 
 .teaser {
   margin: 0;
+  color: lighten($color--black, 10%);
+  font-size: 1.05rem;
 }
 </style>
