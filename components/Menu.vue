@@ -91,7 +91,7 @@ export default {
   methods: {
     scrollToMailingList (targetMenuItem) {
       document.getElementById('component-SecondaryCtaMailingList')
-              .scrollIntoView({ behavior: 'smooth' })
+              .scrollIntoView()
       this.trackMenu(targetMenuItem)
     },
     trackMenu (targetMenuItem) {
