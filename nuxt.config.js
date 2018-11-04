@@ -46,7 +46,8 @@ module.exports = {
   modules: [
     '@nuxtjs/sentry',
     '@nuxtjs/router',
-    ['@nuxtjs/google-analytics', { id: env.googleAnalytics }]
+    ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
+    '@nuxtjs/markdownit'
   ],
   serverMiddleware: [
     'redirect-ssl'
@@ -94,6 +95,11 @@ module.exports = {
     ]
   },
   loading: { color: '#333' },
+  markdownit: {
+    injected: true,
+    linkify: false,
+    breaks: true
+  },
   plugins: [
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },
