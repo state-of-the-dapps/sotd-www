@@ -1,6 +1,14 @@
 <template>
   <div class="component-ranking-table">
     <div class="wrapper">
+      <media :query="{maxWidth: 500}">
+        <BasePager
+          v-if="!isLoading"
+          :limit="pager.limit"
+          :offset="pager.offset"
+          :totalCount="pager.totalCount"
+          @selectPage="selectPage"/>
+      </media>
       <div class="table">
         <div class="table-header">
           <div class="table-row">
