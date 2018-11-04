@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       dapps: [],
-      isLoading: true,
+      isLoading: false,
       pager: {
         limit: 0,
         offset: 0,
@@ -35,8 +35,16 @@ export default {
       }
     }
   },
-  mounted () {
-    this.fetchDapps()
+  async asyncData ({ params, query }) {
+    const urlParams = {...params, ...query}
+    if (query.sort) {
+      urlParams.sort = 'rank'
+      urlParams.order = 'asc'
+    }
+    const data = await getDapps(urlParams)
+    const dapps = data.items
+    const pager = data.pager
+    return { dapps, pager }
   },
   methods: {
     async fetchDapps () {
