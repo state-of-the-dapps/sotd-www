@@ -80,7 +80,7 @@ export default {
 }
 
 .button {
-  padding: 10px;
+  padding: 8px;
   background: $color--white;
   border-radius: 3px;
   border: 1px solid darken($color--gray, 10%);
