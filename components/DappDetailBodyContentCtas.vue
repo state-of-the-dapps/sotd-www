@@ -133,6 +133,7 @@ export default {
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 3px;
   &.-add {
     display: flex;
     align-items: center;

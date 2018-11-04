@@ -1,23 +1,77 @@
 <template>
   <LayoutMain>
     <div class="page-rankings">
-      <DappList/>
+      <RankingFilters/>
+      <div ref="table">
+        <RankingTable
+          :dapps="dapps"
+          :is-loading="isLoading"
+          :pager="pager"/>
+      </div>
     </div>
   </LayoutMain>
 </template>
 
 <script>
-import DappList from '~/components/DappList'
+import { getDapps } from '~/helpers/api'
 import LayoutMain from '~/components/LayoutMain'
+import RankingFilters from '~/components/RankingFilters'
+import RankingTable from '~/components/RankingTable'
 
 export default {
   components: {
-    DappList,
-    LayoutMain
+    LayoutMain,
+    RankingFilters,
+    RankingTable
+  },
+  data () {
+    return {
+      dapps: [],
+      isLoading: true,
+      pager: {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
+    }
+  },
+  mounted () {
+    this.fetchDapps()
+  },
+  methods: {
+    async fetchDapps () {
+      this.resetData()
+      this.isLoading = true
+      const urlParams = {...this.$route.params, ...this.$route.query}
+      if (!this.$route.query.sort) {
+        urlParams.sort = 'rank'
+        urlParams.order = 'asc'
+      }
+      const data = await getDapps(urlParams)
+      this.isLoading = false
+      const dapps = data.items
+      const pager = data.pager
+      this.dapps = dapps
+      this.pager = pager
+    },
+    resetData () {
+      this.dapps = []
+      this.pager = {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
+    }
   },
   head () {
     return {
-      title: 'State of the ÐApps — ÐApp List Ranked by Daily Active Users'
+      title: 'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS, and POA'
+    }
+  },
+  watch: {
+    '$route.query' () {
+      this.$refs.table.scrollIntoView()
+      this.fetchDapps()
     }
   },
   scrollToTop: true
@@ -27,26 +81,8 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.description {
-  margin: .5rem auto 0 auto;
-  text-align: center;
-  max-width: 400px;
-}
-
-.hero-wrapper {
-  @include margin-wrapper-main;
-  padding: 3rem 0 2rem;
-}
-
 .page-rankings {
   padding-top: 25px;
   padding-bottom: 50px;
-}
-
-.title-1 {
-  @include title-1;
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 0;
 }
 </style>

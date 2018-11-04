@@ -139,24 +139,22 @@ export function createRouter () {
       {
         path: '/rankings',
         component: Rankings,
-        name: 'rankings',
-        children: [
-          {
-            path: 'category/:category',
-            component: Rankings,
-            name: 'rankings-category'
-          },
-          {
-            path: 'platform/:platform',
-            component: Rankings,
-            name: 'rankings-platform'
-          },
-          {
-            path: 'platform/:platform/category/:category',
-            component: Rankings,
-            name: 'rankings-platform-category'
-          }
-        ]
+        name: 'rankings'
+      },
+      {
+        path: '/rankings/category/:category',
+        component: Rankings,
+        name: 'rankings-category'
+      },
+      {
+        path: '/rankings/platform/:platform',
+        component: Rankings,
+        name: 'rankings-platform'
+      },
+      {
+        path: '/rankings/platform/:platform/category/:category',
+        component: Rankings,
+        name: 'rankings-platform-category'
       },
       {
         path: '/promoted-dapps',

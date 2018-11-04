@@ -74,7 +74,7 @@ export default {
   methods: {
     getStarted () {
       this.$mixpanel.track('Promoted DApps - Get Started')
-      this.$refs.getStartedEl.scrollIntoView({ behavior: 'smooth' })
+      this.$refs.getStartedEl.scrollIntoView()
     },
     selectSubmittedDapp (selection) {
       this.hasSubmittedDapp = selection

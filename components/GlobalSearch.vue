@@ -206,7 +206,7 @@ export default {
   align-items: center;
   background: rgba($color--black, .1);
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 3px;
   min-width: 250px;
   transition: all 0.2s ease;
   position: relative;
@@ -243,8 +243,8 @@ export default {
   width: 100%;
   background: $color--white;
   z-index: 50;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   box-shadow: 0 5px 10px rgba($color--black, 0.1);
   color: $color--black;
   padding: 12px;
