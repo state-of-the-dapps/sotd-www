@@ -2,6 +2,7 @@
   <div>
     <nuxt-link
       v-if="category"
+      :class="category.toLowerCase() === $route.params.category ? 'is-selected' : ''"
       class="value"
       :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}"
       @click.native="trackRankingCategory(category)">{{ category | capitalize }}</nuxt-link>
@@ -41,6 +42,13 @@ export default {
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+  }
+  &.is-selected {
+    background: transparent;
+    cursor: initial;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt-link
+      :class="platform.toLowerCase() === $route.params.platform ? 'is-selected' : ''"
       class="value"
       :to="{name: 'rankings-platform', params: { platform: platform.toLowerCase() }}"
       @click.native="trackRankingPlatform(platform)">{{ platform }}</nuxt-link>
@@ -40,6 +41,13 @@ export default {
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+  }
+  &.is-selected {
+    background: transparent;
+    cursor: initial;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 </style>
