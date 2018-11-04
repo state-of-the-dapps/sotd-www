@@ -37,7 +37,7 @@ export default {
   },
   async asyncData ({ params, query }) {
     const urlParams = {...params, ...query}
-    if (query.sort) {
+    if (!query.sort) {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
     }
