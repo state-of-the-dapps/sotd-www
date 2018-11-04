@@ -1,20 +1,12 @@
 <template>
   <div class="component-DappDetailBodyContentDescription">
-    <div class="description" itemprop="description">
-      <p v-for="(paragraph, index) in formattedDescription" :key="index" class="paragraph">{{ paragraph }}</p>
+    <div class="description" v-html="$md.render(description)">
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    formattedDescription () {
-      const value = this.description || []
-      const formattedValue = value.split('\n\n')
-      return formattedValue
-    }
-  },
   props: {
     description: {
       required: true
@@ -40,8 +32,4 @@ export default {
   }
 }
 
-.paragraph {
-  margin: 0;
-  margin-bottom: 1rem;
-}
 </style>
