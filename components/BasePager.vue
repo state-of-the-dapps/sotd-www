@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     currentPage () {
-      return this.$route.query.page || 1
+      return Number(this.$route.query.page) || 1
     },
     totalPages () {
       const totalPages = Math.ceil(this.totalCount / this.limit)
@@ -98,7 +98,12 @@ export default {
   }
   &.prev-next {
     width: 100px;
-    margin: 0 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+    @include tweakpoint('min-width', 1100px) {
+      margin-bottom: 0;
+    }
   }
 }
 </style>

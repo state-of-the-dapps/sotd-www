@@ -288,9 +288,15 @@ export default {
 }
 
 .col-usage {
-  width: 180px;
   @include tweakpoint('min-width', 1100px) {
+    width: 180px;
     padding: 0 10px;
+    text-align: right;
+  }
+  @include tweakpoint('max-width', 1100px) {
+    svg {
+      width: 180px;
+    }
   }
 }
 
@@ -347,7 +353,7 @@ export default {
   }
   .table-row {
     width: 100%;
-    @include tweakpoint('min-width', 500px) {
+    @include tweakpoint('min-width', 550px) {
       width: calc(50% - 6px);
       margin-left: 3px;
       margin-right: 3px;

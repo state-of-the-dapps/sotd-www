@@ -64,9 +64,16 @@ export default {
 @import '~assets/css/settings';
 
 .component-ranking-table-name {
+  padding-top: 10px;
   display: flex;
   align-items: center;
-  margin-right: 20px;
+  text-align: left;
+  justify-content: center;
+  @include tweakpoint('min-width', 1100px) {
+    padding-top: 0;
+    margin-right: 20px;
+    justify-content: left;
+  }
 }
 
 .icon-image {

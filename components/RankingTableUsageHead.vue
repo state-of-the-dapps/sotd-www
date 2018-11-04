@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-profile-head">
+  <div class="component-ranking-table-usage-head">
     <span class="label">User activity (30d)</span>
     <Help
       :reversed="true"
@@ -17,11 +17,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-@import '~assets/css/settings';
-
-.component-ranking-table-profile-head {
-  text-align: right;
-}
-</style>
