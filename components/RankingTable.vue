@@ -7,35 +7,39 @@
             <div class="table-head col-rank">
               <RankingTableRankHead :sort="true"/>
             </div>
-            <media :query="{minWidth: tweakpoint + 1}">
-              <div class="table-head col-name">
-                <RankingTableNameHead/>
-              </div>
-            </media>
-            <media :query="{minWidth: tweakpoint + 1}">
+            <div class="table-head col-name">
+              <RankingTableNameHead/>
+            </div>
+            <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-platform">
                 <RankingTablePlatformHead/>
               </div>
             </media>
-            <media :query="{minWidth: tweakpoint + 1}">
+            <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-category">
                 <RankingTableCategoryHead/>
               </div>
             </media>
-            <div class="table-head col-dau">
-              <RankingTableDauHead :sort="true"/>
-            </div>
-            <div class="table-head col-vol">
-              <RankingTableVolumeHead :sort="true"/>
-            </div>
-            <div class="table-head col-dev">
-              <RankingTableDevHead :sort="true"/>
-            </div>
-            <media :query="{minWidth: tweakpoint + 1}">
+            <media :query="{minWidth: tweakpoint}">
+              <div class="table-head col-dau">
+                <RankingTableDauHead :sort="true"/>
+              </div>
+            </media>
+            <media :query="{minWidth: tweakpoint}">
+              <div class="table-head col-vol">
+                <RankingTableVolumeHead :sort="true"/>
+              </div>
+            </media>
+            <media :query="{minWidth: tweakpoint}">
+              <div class="table-head col-dev">
+                <RankingTableDevHead :sort="true"/>
+              </div>
+            </media>
+            <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-usage">
                 <RankingTableUsageHead/>
               </div>  
-            </media>   
+            </media>
           </div>
         </div>
         <div class="table-body">
@@ -66,50 +70,44 @@
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
               </div>
-              <div class="table-data col-platform">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTablePlatformHead/></div>
-                </media>
-                <RankingTablePlatform
-                  :platform="dapp.platform"/>
-              </div>
-              <div class="table-data col-category">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableCategoryHead/></div>
-                </media>
-                <RankingTableCategory
-                  :category="dapp.categories[0] || ''"/>
-              </div>
-              <div class="table-data col-dau">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableDauHead/></div>
-                </media>
-                <RankingTableValuePct
-                  :value="dapp.stats.dau"
-                  :value_pct="dapp.stats.dau_pct"/>
-              </div>
-              <div class="table-data col-vol">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableVolumeHead/></div>
-                </media>
-                <RankingTableVolume
-                  :stats="dapp.stats"
-                  :platform="dapp.platform"/>
-              </div>
-              <div class="table-data col-dev">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableDevHead/></div>
-                </media>
-                <RankingTableValuePct
-                  :value="dapp.stats.dev_30d"
-                  :value_pct="dapp.stats.dev_30d_pct"/> 
-              </div>
-              <div class="table-data col-usage">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableUsageHead/></div>
-                </media>
-                <RankingTableTrend :users="dapp.sparklines.users"/>
-              </div>          
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-platform">
+                  <RankingTablePlatform
+                    :platform="dapp.platform"/>
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-category">
+                  <RankingTableCategory
+                    :category="dapp.categories[0] || ''"/>
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-dau">
+                  <RankingTableValuePct
+                    :value="dapp.stats.dau"
+                    :value_pct="dapp.stats.dau_pct"/>
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-vol">
+                  <RankingTableVolume
+                    :stats="dapp.stats"
+                    :platform="dapp.platform"/>
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-dev">
+                  <RankingTableValuePct
+                    :value="dapp.stats.dev_30d"
+                    :value_pct="dapp.stats.dev_30d_pct"/> 
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-usage">
+                  <RankingTableTrend :users="dapp.sparklines.users"/>
+                </div>
+              </media>        
             </div>
           </template>
         </div>
@@ -206,104 +204,75 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.table {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .table-data {
-  margin: 10px;
-  text-align: center;
-  @include tweakpoint('min-width', 1100px) {
-    margin: 0;
-    text-align: inherit;
-  }
+  margin: 0;
+  text-align: inherit;
 }
 
 .table-head {
-  padding: 10px 0;
-  margin: 5px 0;
-  text-align: center;
-  @include tweakpoint('min-width', 1100px) {
-    padding: 0;
-    margin: 0;
-    text-align: initial;
-  }
+  padding: 0;
+  margin: 0;
+  text-align: initial;
 }
 
 .col-category {
-  @include tweakpoint('min-width', 1100px) {
-    width: 100px;
-    padding: 0 10px;
-  }
+  width: 100px;
+  padding: 0 10px;
 }
 
 .col-dau {
-  @include tweakpoint('min-width', 1100px) {
-    width: 130px;
-    text-align: right;
-    padding: 0 10px;
-  }
+  width: 130px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .col-dev {
-  @include tweakpoint('min-width', 1100px) {
-    width: 120px;
-    text-align: right;
-    padding: 0 10px;
-  }
+  width: 120px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .col-mau {
-  @include tweakpoint('min-width', 1100px) {
-    width: 130px;
-    text-align: right;
-    padding: 0 10px;
-  }
+  width: 130px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .col-name {
-  @include tweakpoint('min-width', 1100px) {
-    flex: 1;
-  }
+  flex: 1;
 }
 
 .col-platform {
-  @include tweakpoint('min-width', 1100px) {
-    width: 100px;
-    padding: 0 10px;
-  }
+  width: 100px;
+  padding: 0 10px;
 }
 
 .col-profile {
-  @include tweakpoint('min-width', 1100px) {
-    width: 85px;
-    text-align: right;
-    padding: 0 10px;
-  }
+  width: 85px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .col-rank {
-  @include tweakpoint('min-width', 1100px) {
-    width: 50px;
-    margin-right: 15px;
-  }
+  width: 50px;
+  margin-right: 15px;
 }
 
 .col-usage {
-  @include tweakpoint('min-width', 1100px) {
     width: 180px;
     padding: 0 10px;
     text-align: right;
-  }
-  @include tweakpoint('max-width', 1100px) {
-    svg {
-      width: 180px;
-    }
-  }
 }
 
 .col-vol {
-  @include tweakpoint('min-width', 1100px) {
-    width: 160px;
-    text-align: right;
-    padding: 0 10px;
-  }
+  width: 160px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .loader-wrapper {
@@ -331,10 +300,8 @@ export default {
   margin: 0 -10px;
   padding: 15px 10px;
   background: $color--gray;
-  @include tweakpoint('min-width', 1100px) {
-    position: sticky;
-    top: 0;
-  }
+  position: sticky;
+  top: 0;
   .table-row {
     box-shadow: none;
     border-radius: 0;
@@ -343,71 +310,31 @@ export default {
   }
 }
 
-.table-body {
-  display: flex;
-  flex-wrap: wrap;
-  @include tweakpoint('min-width', 1100px) {
-    display: block;
-  }
-  .table-row {
-    width: 100%;
-    @include tweakpoint('min-width', 550px) {
-      width: calc(50% - 6px);
-      margin-left: 3px;
-      margin-right: 3px;
-    }
-    @include tweakpoint('min-width', 900px) {
-      width: calc(33.33% - 6px);
-      margin-left: 3px;
-      margin-right: 3px;
-    }
-    @include tweakpoint('min-width', 1100px) {
-      width: 100%;
-      margin-right: 0;
-      margin-left: 0;
-    }
-  }
-}
-
 .table-row {
   background: $color--white;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba($color--black, .1);
   margin-bottom: 6px;
-  @include tweakpoint('min-width', 1100px) {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
 }
 
 .wrapper {
   padding: 0 10px;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
 /deep/ .head-link {
-  background: $color--white;
-  border-radius: 3px;
-  padding: 5px;
-  border: 1px solid darken($color--gray, 10%);
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid $color--black;
+  background: transparent;
+  padding: 0;
   text-decoration: none;
   &.is-active {
-    font-weight: 700;
-    border-color: $color--black;
-    background: $color--black;
-    color: $color--white;
-  }
-  @include tweakpoint('min-width', 1100px) {
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid $color--black;
     background: transparent;
-    padding: 0;
-    &.is-active {
-      background: transparent;
-      color: $color--black;
-    }
+    color: $color--black;
+    font-weight: 700;
   }
 }
 </style>
