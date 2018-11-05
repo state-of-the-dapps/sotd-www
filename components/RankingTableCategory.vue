@@ -34,9 +34,7 @@ export default {
 
 .value {
   background: $color--gray;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: .8rem;
+  font-size: 1rem;
   padding: 5px;
   border-radius: 4px;
   text-decoration: none;
