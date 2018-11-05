@@ -1,13 +1,13 @@
 <template>
   <div class="component-ranking-table-volume">
-    <span v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null" class="value">-</span>
-    <span v-else class="value">{{ Number(stats.usd_value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} USD</span>
     <span v-if="volume === undefined || volume === null" class="value">-</span>
     <span v-else class="value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} 
       <template v-if="platform === 'EOS'">EOS</template>
       <template v-if="platform === 'POA'">POA</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
     </span>
+    <span v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null" class="value">-</span>
+    <span v-else class="value">{{ Number(stats.usd_value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} USD</span>
     <span v-if="volumePct === undefined || volumePct === null" class="pct">-</span>
     <span v-else :class="getValuePosNegClass(volumePct)" class="pct">
       <span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%

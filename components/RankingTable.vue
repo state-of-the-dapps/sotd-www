@@ -14,12 +14,12 @@
             </media>
             <media :query="{minWidth: tweakpoint + 1}">
               <div class="table-head col-platform">
-                <RankingTableCategoryHead/>
+                <RankingTablePlatformHead/>
               </div>
             </media>
             <media :query="{minWidth: tweakpoint + 1}">
-              <div class="table-head col-platform">
-                <RankingTablePlatformHead/>
+              <div class="table-head col-category">
+                <RankingTableCategoryHead/>
               </div>
             </media>
             <div class="table-head col-dau">
@@ -66,19 +66,19 @@
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
               </div>
-              <div class="table-data col-category">
-                <media :query="{maxWidth: tweakpoint}">
-                  <div class="narrow-head"><RankingTableCategoryHead/></div>
-                </media>
-                <RankingTableCategory
-                  :category="dapp.categories[0] || ''"/>
-              </div>
               <div class="table-data col-platform">
                 <media :query="{maxWidth: tweakpoint}">
                   <div class="narrow-head"><RankingTablePlatformHead/></div>
                 </media>
                 <RankingTablePlatform
                   :platform="dapp.platform"/>
+              </div>
+              <div class="table-data col-category">
+                <media :query="{maxWidth: tweakpoint}">
+                  <div class="narrow-head"><RankingTableCategoryHead/></div>
+                </media>
+                <RankingTableCategory
+                  :category="dapp.categories[0] || ''"/>
               </div>
               <div class="table-data col-dau">
                 <media :query="{maxWidth: tweakpoint}">
@@ -229,7 +229,6 @@ export default {
 .col-category {
   @include tweakpoint('min-width', 1100px) {
     width: 100px;
-    text-align: right;
     padding: 0 10px;
   }
 }
@@ -267,7 +266,6 @@ export default {
 .col-platform {
   @include tweakpoint('min-width', 1100px) {
     width: 100px;
-    text-align: right;
     padding: 0 10px;
   }
 }
@@ -302,7 +300,7 @@ export default {
 
 .col-vol {
   @include tweakpoint('min-width', 1100px) {
-    width: 130px;
+    width: 160px;
     text-align: right;
     padding: 0 10px;
   }

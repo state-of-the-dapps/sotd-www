@@ -12,14 +12,25 @@
         class="button prev-next"
         @click="$emit('selectPage', currentPage - 1)">Previous</button>
       <button
+        v-if="currentPage !== 1"
+        class="button number"
+        @click="$emit('selectPage', currentPage - 1)">{{ currentPage - 1 }}</button>
+      <button
+        class="button number selected">{{ currentPage }}</button>
+      <button
+        v-if="currentPage < totalPages"
+        class="button number"
+        @click="$emit('selectPage', currentPage + 1)">{{ currentPage + 1 }}</button>
+      <button
         v-if="currentPage < totalPages"
         class="button prev-next"
-        @click="$emit('selectPage', currentPage + 1)">Next</button></div>
+        @click="$emit('selectPage', currentPage + 1)">Next</button>
+      </div>
     <div class="last-wrapper">
       <button
         v-if="currentPage < totalPages"
         class="button"
-        @click="$emit('selectPage', totalPages)">Last page</button>
+        @click="$emit('selectPage', totalPages)">Last page ({{ totalPages }})</button>
     </div>
   </div>
 </template>
@@ -64,12 +75,12 @@ export default {
 }
 
 .first-wrapper {
-  width: 100px;
+  width: 125px;
   text-align: left;
 }
 
 .last-wrapper {
-  width: 100px;
+  width: 125px;
   text-align: right;
 }
 
@@ -96,14 +107,26 @@ export default {
     color: $color--gray;
     border-color: $color--black;
   }
-  &.prev-next {
-    width: 100px;
+  &.number {
+    width: 45px;
+    &.selected {
+      background: $color--black;
+      border-color: $color--black;
+      color: $color--gray;
+    }
+  }
+  &.prev-next, &.number {
     margin-left: 3px;
     margin-right: 3px;
     margin-bottom: 5px;
     @include tweakpoint('min-width', 1100px) {
       margin-bottom: 0;
     }
+  }
+  &.prev-next {
+    width: 75px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 </style>
