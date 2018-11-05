@@ -43,6 +43,4 @@ export default {
 .component-ranking-table-rank-head {
   text-align: center;
 }
-
-
 </style>
