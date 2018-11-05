@@ -70,7 +70,6 @@ export default {
   padding-top: 15px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
   justify-content: center;
 }
 
