@@ -2,22 +2,22 @@
 <div class="component-SecondaryCtaMetamask">
   <div class="wrapper">
     <div class="icon-wrapper">
-      <SvgBadgeMetamask fill="white" :width="35" :height="35" />
+      <SvgBadgeScatter fill="white" :width="35" :height="35" />
     </div>
     <div class="description-wrapper">
-      <h5 class="title-5">Metamask for Ethereum</h5>
-      <p class="description">Metamask lets you use Ethereum ÐApps within your browser. <a class="link" href="https://metamask.io/?ref=StateOfTheDApps" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Try it now</a></p>
+      <h5 class="title-5">Scatter for EOS</h5>
+      <p class="description">Scatter lets your use EOS ÐApps within your browser. <a class="link" href="https://get-scatter.com/?ref=StateOfTheDApps" target="_blank" rel="noopener noreferrer" @click="trackScatterCta()">Try it now</a></p>
     </div>
     <div class="cta-wrapper">
-      <a href="https://metamask.io/?ref=StateOfTheDApps" class="cta" target="_blank" rel="noopener noreferrer" @click="trackMetamaskCta()">Discover Metamask</a>
+      <a href="https://get-scatter.com/?ref=StateOfTheDApps" class="cta" target="_blank" rel="noopener noreferrer" @click="trackScatterCta()">Discover Scatter</a>
     </div>
   </div>
 </div>
 </template>
 
 <script>
-import { trackMetamaskCta } from '~/helpers/mixpanel'
-import SvgBadgeMetamask from './SvgBadgeMetamask'
+import { trackScatterCta } from '~/helpers/mixpanel'
+import SvgBadgeScatter from './SvgBadgeScatter'
 
 export default {
   data () {
@@ -26,12 +26,12 @@ export default {
     }
   },
   components: {
-    SvgBadgeMetamask
+    SvgBadgeScatter
   },
   methods: {
-    trackMetamaskCta () {
-      const sourceComponent = 'SecondaryCtaMetamask'
-      const action = trackMetamaskCta(sourceComponent, this.sourcePath)
+    trackScatterCta () {
+      const sourceComponent = 'SecondaryCtaScatter'
+      const action = trackScatterCta(sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     }
   }
@@ -44,6 +44,7 @@ export default {
 
 .component-SecondaryCtaMetamask {
   background: rgba($color--black, .5);
+  border-top: 1px solid rgba($color--black, .3);
 }
 
 .cta-wrapper {
@@ -105,4 +106,3 @@ export default {
   }
 }
 </style>
-

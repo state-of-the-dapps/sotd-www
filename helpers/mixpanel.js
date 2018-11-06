@@ -584,6 +584,21 @@ export const trackPublicListCreate = function (listUrl, slug) {
   return action
 }
 
+export const trackScatterCta = function (sourceComponent, sourcePath) {
+  let name = 'Scatter CTA'
+  let data = {
+    sourceComponent,
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackSearchSuggestion = function (sourcePath, suggestion) {
   let name = 'Search - Suggestion'
   let data = {
