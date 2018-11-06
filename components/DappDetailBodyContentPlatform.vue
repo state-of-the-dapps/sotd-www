@@ -8,12 +8,7 @@
         @click.native="trackPlatform(platform)"
         :to="{
           name: 'rankings-platform',
-          params: {
-            platform: platform.toLowerCase()},
-            query: {
-              reload: 'true'
-            }
-          }">{{ platform }}</nuxt-link>
+          params: { platform: platform.toLowerCase()} }">{{ platform }}</nuxt-link>
     </p>
   </div>
 </div>

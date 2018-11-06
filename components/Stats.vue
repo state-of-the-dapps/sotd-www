@@ -69,8 +69,7 @@
               <nuxt-link
                 :to="{
                   name: 'rankings-category',
-                  params: { category: category.category.toLowerCase() },
-                  query: { reload: 'true' }
+                  params: { category: category.category.toLowerCase() }
                 }"
                 class="table-link">{{ category.category }}</nuxt-link>
             </td>
@@ -113,8 +112,7 @@
               <nuxt-link
                 :to="{
                   name: 'rankings-platform',
-                  params: { platform: platform.platform.toLowerCase() },
-                  query: { reload: 'true' }
+                  params: { platform: platform.platform.toLowerCase() }
                 }"
                 class="table-link">{{ platform.platform }}</nuxt-link>
             </td>
