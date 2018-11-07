@@ -8,6 +8,10 @@
       <media :query="{maxWidth: 1000}">
         <div>
           <DappDetailBodyContentCtas :dapp="dapp"/>
+          <DappDetailBodyContentPlatform
+            v-if="dapp.platform"
+            :platform="dapp.platform"
+            :slug="dapp.slug"/>
         </div>
       </media>
       <DappDetailBodyContentModules :dapp="dapp"/>
@@ -16,12 +20,12 @@
       <media :query="{minWidth: 1000}">
         <div>
           <DappDetailBodyContentCtas :dapp="dapp"/>
+          <DappDetailBodyContentPlatform
+            v-if="dapp.platform"
+            :platform="dapp.platform"
+            :slug="dapp.slug"/>
         </div>
       </media>
-      <DappDetailBodyContentPlatform
-        v-if="dapp.platform"
-        :platform="dapp.platform"
-        :slug="dapp.slug"/>
       <DappDetailBodyContentRecommend
         :slug="dapp.slug"
         :rating="dapp.stats.star_rating"

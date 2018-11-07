@@ -60,8 +60,12 @@ export default {
 .software-wrapper {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px dashed $color--gray;
+  border-top: 1px dashed darken($color--gray, 3%);
   font-size: 1rem;
+  text-align: center;
+  @include tweakpoint('min-width', 1000px) {
+    text-align: left;
+  }
 }
 
 .wrapper {
