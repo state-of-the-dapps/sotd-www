@@ -18,6 +18,10 @@
           <DappDetailBodyContentCtas :dapp="dapp"/>
         </div>
       </media>
+      <DappDetailBodyContentPlatform
+        v-if="dapp.platform"
+        :platform="dapp.platform"
+        :slug="dapp.slug"/>
       <DappDetailBodyContentRecommend
         :slug="dapp.slug"
         :rating="dapp.stats.star_rating"
@@ -31,12 +35,7 @@
         :dapp="dapp.name"
         :profile-score="dapp.profileScore"
         :slug="dapp.slug"/>
-      <DappDetailBodyContentBadges v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges"/>
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
-      <DappDetailBodyContentPlatform
-        v-if="dapp.platform"
-        :platform="dapp.platform"
-        :slug="dapp.slug"/>
       <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
     </div>
@@ -47,7 +46,6 @@
 <script>
 import Media from 'vue-media'
 import DappAlert from './DappAlert'
-import DappDetailBodyContentBadges from './DappDetailBodyContentBadges'
 import DappDetailBodyContentCategories from './DappDetailBodyContentCategories'
 import DappDetailBodyContentCtas from './DappDetailBodyContentCtas'
 import DappDetailBodyContentDescription from './DappDetailBodyContentDescription'
@@ -63,7 +61,6 @@ import DappProfile from './DappProfile'
 export default {
   components: {
     DappAlert,
-    DappDetailBodyContentBadges,
     DappDetailBodyContentCategories,
     DappDetailBodyContentCtas,
     DappDetailBodyContentDescription,

@@ -191,6 +191,21 @@ const platformMap = {
   'poa': 'POA'
 }
 
+const platformSoftware = {
+  'Ethereum': {
+    name: 'Metamask',
+    url: 'https://metamask.io/'
+  },
+  'EOS': {
+    name: 'Scatter',
+    url: 'https://get-scatter.com/'
+  },
+  'POA': {
+    name: 'Nifty',
+    url: 'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid'
+  }
+}
+
 export {
   dappBadgeMap,
   dappGameTag,
@@ -211,5 +226,6 @@ export {
   feedbackComponentMap,
   myListLimit,
   platformList,
-  platformMap
+  platformMap,
+  platformSoftware
 }
