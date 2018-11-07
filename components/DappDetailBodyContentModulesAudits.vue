@@ -60,6 +60,10 @@ export default {
   padding-top: 10px;
 }
 
+.audit-item {
+  padding-bottom: 10px;
+}
+
 .audit-image {
   margin-right: 10px;
 }
