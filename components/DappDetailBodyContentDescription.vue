@@ -15,6 +15,30 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.component-DappDetailBodyContentDescription .description {
+  ol, ol li {
+    list-style-type: decimal;
+  },
+  ul, ul li {
+    list-style-type: disc;
+  }
+  ul {
+    padding-left: 1em;
+    padding-bottom: 1rem;
+  }
+  ul li {
+    margin-left: 1em;
+  }
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  strong {
+    font-weight: 700;
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -30,9 +54,4 @@ export default {
     padding: 0 10px 5px 10px;
   }
 }
-
-ol, ol li {
-  list-style-type: decimal;
-}
-
 </style>
