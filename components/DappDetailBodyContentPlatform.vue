@@ -6,6 +6,7 @@
       &nbsp;
       <nuxt-link
         @click.native="trackPlatform(platform)"
+        class="platform-name"
         :to="{
           name: 'rankings-platform',
           params: { platform: platform.toLowerCase()} }">{{ platform }}</nuxt-link>
@@ -57,10 +58,17 @@ export default {
   }
 }
 
+.platform-name {
+  text-decoration: none;
+  padding: 5px 8px;
+  margin: 4px;
+  background: lighten($color--gray, 2%);
+  border-radius: 4px;
+}
+
 .software-wrapper {
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px dashed darken($color--gray, 3%);
   font-size: 1rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {

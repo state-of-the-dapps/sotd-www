@@ -194,15 +194,15 @@ const platformMap = {
 const platformSoftware = {
   'Ethereum': {
     name: 'Metamask',
-    url: 'https://metamask.io/'
+    url: 'https://metamask.io/?utm_source=StateOfTheDApps'
   },
   'EOS': {
     name: 'Scatter',
-    url: 'https://get-scatter.com/'
+    url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
   },
   'POA': {
     name: 'Nifty',
-    url: 'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid'
+    url: 'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
   }
 }
 
