@@ -125,11 +125,12 @@ export default {
 .button {
   text-align: center;
   text-decoration: none;
-  border: 1px solid $color--black;
+  background: $color--black;
+  color: $color--white;
   display: block;
   width: 100%;
   max-width: 200px;
-  padding: 8px 5px;
+  padding: 10px 5px;
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;

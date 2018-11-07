@@ -31,4 +31,8 @@ export default {
   }
 }
 
+ol, ol li {
+  list-style-type: decimal;
+}
+
 </style>
