@@ -81,8 +81,10 @@
         </div>
       </div>
       <div class="module-wrapper -tier-5"
-        v-if="dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length">
-        <div class="module">
+        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length">
+        <div
+          :class="dapp.audits.length ? 'has-audits' : ''"
+          class="module">
           <DappDetailBodyContentModulesContracts
             :mainnet="dapp.contractsMainnet"
             :kovan="dapp.contractsKovan"
@@ -93,12 +95,20 @@
             :eos-mainnet="dapp.contractsEosMainnet"
             :slug="dapp.slug"/>
         </div>
+        <div 
+          v-if="dapp.audits.length"
+          class="module">
+          <DappDetailBodyContentModulesAudits
+            :slug="dapp.slug"
+            :audits="dapp.audits"/>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModulesCollections'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -111,6 +121,7 @@ import DappDetailBodyContentModulesUpdated from './DappDetailBodyContentModulesU
 
 export default {
   components: {
+    DappDetailBodyContentModulesAudits,
     DappDetailBodyContentModulesAuthors,
     DappDetailBodyContentModulesCollections,
     DappDetailBodyContentModulesContracts,
@@ -183,11 +194,19 @@ export default {
   }
   &.-tier-3 {
     align-items: center;
-  }
-  &.-tier-3, &.-tier-5 {
     @include tweakpoint('min-width', 800px) {
       .module {
         width: calc(100% - 10px);
+      }
+    } 
+  }
+  &.-tier-5 {
+    @include tweakpoint('min-width', 800px) {
+      .module {
+        width: calc(100% - 10px);
+      }
+      &.has-audits {
+        width: calc(50% - 10px);
       }
     }    
   }

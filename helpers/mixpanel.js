@@ -58,6 +58,23 @@ export const trackDappContract = function (address, dapp, network, platform) {
   return action
 }
 
+export const trackDappContractAudit = function (contract, slug, auditorName, learnMoreUrl) {
+  let name = 'DApp - Contract Audit'
+  let data = {
+    contract,
+    dapp: slug,
+    auditorName,
+    learnMoreUrl
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappContractCopy = function (address, dapp, network, platform) {
   let name = 'DApp - Contract Copy'
   let data = {
