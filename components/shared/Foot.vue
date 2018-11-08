@@ -14,6 +14,9 @@
       <nuxt-link @click.native="trackPromotedDappsView()" :to="{ name: 'promoted-dapps' }" class="nav-link">Promote your ÐApp</nuxt-link>
     </li>
     <li class="nav-item">
+      <nuxt-link @click.native="trackFooterLogoDownload()" :to="{ name: 'logos' }" class="nav-link">Download our logo</nuxt-link>
+    </li>
+    <li class="nav-item">
       <nuxt-link @click.native="trackPageTerms()" to="/terms" class="nav-link">Terms of use</nuxt-link>
     </li>
     <ul class="social-list">
@@ -54,6 +57,7 @@
 <script>
 import {
   trackContact,
+  trackFooterLogoDownload,
   trackFooterSubmit,
   trackPageAbout,
   trackPromotedDappsView,
@@ -77,6 +81,10 @@ export default {
   methods: {
     trackContact () {
       const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackFooterLogoDownload () {
+      const action = trackFooterLogoDownload(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
     trackFooterSubmit () {
@@ -113,9 +121,10 @@ export default {
 }
 
 .attribution-list {
-  margin-top: 5px;
+  margin-top: 20px;
   text-align: center;
   @include tweakpoint('min-width', $tweakpoint--default) {
+    margin-top: 5px;
     text-align: right;
     width: 50%;
   }
@@ -143,7 +152,7 @@ export default {
 }
 
 .nav-item {
-  padding: 2px 0;
+  padding: 3px 0;
 }
 
 .nav-link {

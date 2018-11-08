@@ -13,6 +13,7 @@ const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
+const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
 const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
@@ -135,6 +136,11 @@ export function createRouter () {
         path: '/lists/:list_url/:slug',
         component: PublicList,
         name: 'public-list-slug'
+      },
+      {
+        path: '/logos',
+        component: Logos,
+        name: 'logos'
       },
       {
         path: '/rankings',
