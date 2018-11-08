@@ -1,5 +1,4 @@
 /* eslint-disable */
-console.log(process.env.fullstory)
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
 window['_fs_org'] = process.env.fullstory;
