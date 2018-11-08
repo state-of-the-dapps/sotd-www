@@ -92,6 +92,9 @@ module.exports = {
         rel: 'manifest',
         href: '/manifest.json'
       }
+    ],
+    script: [
+      { src: '/fullstory.js' }
     ]
   },
   loading: { color: '#333' },
