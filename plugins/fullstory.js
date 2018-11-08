@@ -1,7 +1,8 @@
 /* eslint-disable */
+console.log(process.env.fullstory)
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
-window['_fs_org'] = 'G84D5';
+window['_fs_org'] = process.env.fullstory;
 window['_fs_namespace'] = 'FS';
 (function(m,n,e,t,l,o,g,y){
     if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
