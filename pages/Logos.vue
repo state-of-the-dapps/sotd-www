@@ -62,7 +62,7 @@ export default {
   display: inline-block;
   background: $color--black;
   color: $color--gray;
-  padding: 10px;
+  padding: 15px 20px;
   border-radius: 4px;
   text-decoration: none;
 }
