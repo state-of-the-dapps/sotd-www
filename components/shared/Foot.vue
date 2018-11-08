@@ -113,7 +113,7 @@ export default {
 }
 
 .attribution-list {
-  margin: 15px 0;
+  margin-top: 5px;
   text-align: center;
   @include tweakpoint('min-width', $tweakpoint--default) {
     text-align: right;
@@ -127,19 +127,23 @@ export default {
 }
 
 .component--shared-footer {
-  align-items: center;
+  align-items: top;
   background: $color--black;
   color: darken($color--gray, 25%);
   display: flex;
   flex-direction: column;
   font-size: 1rem;
   justify-content: center;
-  padding: 20px 10px;
+  padding: 20px 10px 50px 10px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     flex-direction: row;
     padding-left: 22px;
     padding-right: 22px;
   }
+}
+
+.nav-item {
+  padding: 2px 0;
 }
 
 .nav-link {
@@ -148,7 +152,6 @@ export default {
 }
 
 .nav-list {
-  margin: 15px 0;
   text-align: center;
   @include tweakpoint('min-width', $tweakpoint--default) {
     text-align: left;
@@ -157,9 +160,13 @@ export default {
 }
 
 .social-list {
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    justify-content: left;
+  }
 }
 
 .social-icon {
