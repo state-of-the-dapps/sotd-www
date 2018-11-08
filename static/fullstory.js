@@ -1,3 +1,4 @@
+/* eslint-disable */
 window['_fs_debug'] = false;
 window['_fs_host'] = 'fullstory.com';
 window['_fs_org'] = 'G84D5';
@@ -13,3 +14,4 @@ window['_fs_namespace'] = 'FS';
     g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
     g.clearUserCookie=function(){};
 })(window,document,window['_fs_namespace'],'script','user');
+/* eslint-enable */
