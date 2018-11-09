@@ -35,6 +35,33 @@ $color--dapp-abandoned-light: #FAFAFA;
 $color--dapp-broken: #c1c1c1;
 $color--dapp-broken-light: #c1c1c1;
 
+//
+$color--category-gambling: #FFAAC0;
+
+$color--category-games:#FFC8AA;
+
+$color--category-exchanges: #D6F5FF;
+$color--category-finance: #A0EBDE;
+$color--category-wallet: #BDEBC8;
+
+$color--category-development: #C4E7FF;
+
+$color--category-media: #FFF6B7;
+
+$color--category-security:#E9FFA7;
+$color--category-property: #C9D4EB;
+$color--category-storage: #C9D7FF;
+$color--category-identity: #A3ACD6;
+
+$color--category-governance: #DDEFCB;
+
+$color--category-energy: #FFEEBF;
+
+$color--category-insurance: #D7FAD5;
+$color--category-health: #C8E2C6;
+$color--category-social: #C7DAFF;
+//
+
 $color--negative: #ff005a; 
 $color--neutral: #ffb400;
 $color--positive: #1db200;
@@ -116,6 +143,57 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   }
   &.-stealth, &.-abandoned, &.-unknown {
     border-color: $color--white;
+  }
+}
+
+@mixin dapp-category-colors {
+  &.-gambling {
+    background: $color--category-gambling;    
+  }
+  &.-games {
+    background: $color--category-games;    
+  }
+  &.-social {
+    background: $color--category-social;    
+  }
+  &.-finance {
+    background: $color--category-finance;    
+  }
+  &.-exchanges {
+    background: $color--category-exchanges;    
+  }
+  &.-development {
+    background: $color--category-development;    
+  }
+  &.-media {
+    background: $color--category-media;    
+  }
+  &.-wallet {
+    background: $color--category-wallet;    
+  }
+  &.-security {
+    background: $color--category-security;    
+  }
+  &.-property {
+    background: $color--category-property;    
+  }
+  &.-governance {
+    background: $color--category-governance;    
+  }
+  &.-storage {
+    background: $color--category-storage;    
+  }
+  &.-energy {
+    background: $color--category-energy;    
+  }
+  &.-identity {
+    background: $color--category-identity;    
+  }
+  &.-insurance {
+    background: $color--category-insurance;    
+  }
+  &.-health {
+    background: $color--category-health;    
   }
 }
 

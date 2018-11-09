@@ -2,7 +2,10 @@
   <div>
     <nuxt-link
       v-if="category"
-      :class="category.toLowerCase() === $route.params.category ? 'is-selected' : ''"
+      :class="[
+        category.toLowerCase() === $route.params.category ? 'is-selected' : '',
+        '-' + category
+      ]"
       class="value"
       :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}"
       @click.native="trackRankingCategory(category)">{{ category | capitalize }}</nuxt-link>
@@ -38,9 +41,11 @@ export default {
   padding: 5px;
   border-radius: 4px;
   text-decoration: none;
+  font-weight: 600;
   &:hover {
     text-decoration: underline;
   }
+  @include dapp-category-colors;
   &.is-selected {
     background: transparent;
     cursor: initial;

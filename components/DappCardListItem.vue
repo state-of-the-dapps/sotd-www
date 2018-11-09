@@ -1,7 +1,7 @@
 <template>
-  <li class="component-DappCardListItem" :class="'-' + dapp.status">
+  <li class="component-DappCardListItem" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
     <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
-      <div :class="'-' + dapp.status" class="dapp-icon-wrapper">
+      <div :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" class="dapp-icon-wrapper">
         <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
         <span v-else class="dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
       </div>
@@ -9,15 +9,11 @@
         <h4 class="title-4">{{ dapp.name }}</h4>
         <p class="description">{{ dapp.teaser }}</p>
       </div>
-      <div class="meta" :class="'-' + dapp.status">
-        <span class="status">{{ dapp.status }}</span>
-        <DappBadgeList v-if="dapp.badges && dapp.badges.length" :badges="dapp.badges" />
+      <div class="meta" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
+        <span class="category">{{ dapp.categories.length ? dapp.categories[0] : '' }}</span>
       </div>
       <span v-if="dapp.isNew" class="new">
         New
-      </span>
-      <span v-if="dapp.categories && dapp.categories.length" class="category">
-        {{ dapp.categories[0] }}<span v-if="dapp.categories.length > 1"> +{{ dapp.categories.length - 1 }}</span>
       </span>
     </nuxt-link>
   </li>
@@ -130,10 +126,10 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 8px;
-  @include dapp-background-gradients
+  @include dapp-category-colors
 }
 
-.new, .category {
+.new {
   position: absolute;
   display: inline-block;
   top: 10px;
@@ -146,12 +142,6 @@ export default {
 }
 
 .category {
-  left: auto;
-  right: 10px;
-  font-weight: 600;
-}
-
-.status {
   text-transform: uppercase;
   font-size: .75rem;
   font-weight: 700;
