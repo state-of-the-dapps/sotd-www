@@ -19,7 +19,7 @@ export default {
 .component-DappDetailBodyContentDescription .description {
   ol, ol li {
     list-style-type: decimal;
-  },
+  }
   ul, ul li {
     list-style-type: disc;
   }
