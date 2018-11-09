@@ -197,6 +197,108 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   }
 }
 
+@mixin category-fill-colors {
+  &.-gambling {
+    fill: $color--category-gambling;    
+  }
+  &.-games {
+    fill: $color--category-games;    
+  }
+  &.-social {
+    fill: $color--category-social;    
+  }
+  &.-finance {
+    fill: $color--category-finance;    
+  }
+  &.-exchanges {
+    fill: $color--category-exchanges;    
+  }
+  &.-development {
+    fill: $color--category-development;    
+  }
+  &.-media {
+    fill: $color--category-media;    
+  }
+  &.-wallet {
+    fill: $color--category-wallet;    
+  }
+  &.-security {
+    fill: $color--category-security;    
+  }
+  &.-property {
+    fill: $color--category-property;    
+  }
+  &.-governance {
+    fill: $color--category-governance;    
+  }
+  &.-storage {
+    fill: $color--category-storage;    
+  }
+  &.-energy {
+    fill: $color--category-energy;    
+  }
+  &.-identity {
+    fill: $color--category-identity;    
+  }
+  &.-insurance {
+    fill: $color--category-insurance;    
+  }
+  &.-health {
+    fill: $color--category-health;    
+  }
+}
+
+@mixin category-border-colors {
+  &.-gambling {
+    border-color: $color--category-gambling;    
+  }
+  &.-games {
+    border-color: $color--category-games;    
+  }
+  &.-social {
+    border-color: $color--category-social;    
+  }
+  &.-finance {
+    border-color: $color--category-finance;    
+  }
+  &.-exchanges {
+    border-color: $color--category-exchanges;    
+  }
+  &.-development {
+    border-color: $color--category-development;    
+  }
+  &.-media {
+    border-color: $color--category-media;    
+  }
+  &.-wallet {
+    border-color: $color--category-wallet;    
+  }
+  &.-security {
+    border-color: $color--category-security;    
+  }
+  &.-property {
+    border-color: $color--category-property;    
+  }
+  &.-governance {
+    border-color: $color--category-governance;    
+  }
+  &.-storage {
+    border-color: $color--category-storage;    
+  }
+  &.-energy {
+    border-color: $color--category-energy;    
+  }
+  &.-identity {
+    border-color: $color--category-identity;    
+  }
+  &.-insurance {
+    border-color: $color--category-insurance;    
+  }
+  &.-health {
+    border-color: $color--category-health;    
+  }
+}
+
 @mixin dapp-text-colors {
   &.-beta {
     color: $color--dapp-beta;    

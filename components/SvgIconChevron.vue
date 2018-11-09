@@ -55,5 +55,6 @@ export default {
 
 path {
   @include dapp-fill-colors;
+  @include category-fill-colors;
 }
 </style>

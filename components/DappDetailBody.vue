@@ -1,11 +1,11 @@
 <template>
   <div class="component-DappDetailBody">
-    <div class="wrapper" :class="'-' + dapp.status">
+    <div class="wrapper" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
       <DappDetailBodyHeading
         :direct="direct"
         :iconUrl="dapp.iconUrl"
         :name="dapp.name"
-        :status="dapp.status"
+        :category="dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>
       <DappDetailBodyContent :dapp="dapp" />
     </div>
@@ -46,6 +46,6 @@ export default {
   border-radius: 4px;
   box-shadow: 0 10px 20px rgba($color--black, .1);
   border-bottom: 10px solid $color--black;
-  @include dapp-border-colors;
+  @include category-border-colors;
 }
 </style>

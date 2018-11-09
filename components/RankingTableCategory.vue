@@ -41,7 +41,6 @@ export default {
   padding: 5px;
   border-radius: 4px;
   text-decoration: none;
-  font-weight: 600;
   &:hover {
     text-decoration: underline;
   }
