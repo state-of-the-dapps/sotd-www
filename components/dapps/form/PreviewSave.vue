@@ -12,10 +12,6 @@
     </div>
     <div class="checkboxes">
       <div class="checkbox-field">
-        <input class="checkbox-input" type="checkbox" id="promotion-interest" v-model="promotionInterest">
-        <label class="checkbox-label" for="promotion-interest">I'm interested in paying to promote this ÐApp to attract more users</label>
-      </div>
-      <div class="checkbox-field">
         <input class="checkbox-input" type="checkbox" id="subscribe-newsletter-checkbox" v-model="subscribeNewsletter">
         <label class="checkbox-label" for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
       </div>
@@ -69,14 +65,6 @@
       },
       name () {
         return this.$store.getters['dapps/form/name']
-      },
-      promotionInterest: {
-        get () {
-          return this.$store.getters['dapps/form/promotionInterest']
-        },
-        set () {
-          this.$store.dispatch('dapps/form/toggleCheckbox', 'promotionInterest')
-        }
       },
       subscribeNewsletter: {
         get () {
@@ -145,19 +133,14 @@
                 name: this.fields.name,
                 email: this.fields.email,
                 author: this.fields.author,
-                promotionInterest: this.fields.promotionInterest,
                 subscribeNewsletter: this.fields.subscribeNewsletter
               })
-              if (this.promotionInterest) {
-                this.$router.push({name: 'dapps-new-confirmation'})
-              } else {
-                const modal = {
-                  component: 'ModalDappsNewConfirmation',
-                  mpData: {},
-                  props: {}
-                }
-                this.$store.dispatch('setSiteModal', modal)
+              const modal = {
+                component: 'ModalDappsNewConfirmation',
+                mpData: {},
+                props: {}
               }
+              this.$store.dispatch('setSiteModal', modal)
               this.$store.dispatch('dapps/form/resetForm')
             })
             .catch((error) => {

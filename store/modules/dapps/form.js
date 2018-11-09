@@ -58,7 +58,6 @@ function initialState () {
       name: '',
       platform: dappDefaultPlatform,
       productImage: '',
-      promotionInterest: false,
       socials: {
         facebook: { path: '' },
         twitter: { path: '' },
@@ -433,9 +432,6 @@ const getters = {
   },
   acceptedTerms: state => {
     return state.fields.acceptedTerms
-  },
-  promotionInterest: state => {
-    return state.fields.promotionInterest
   },
   websiteUrl: state => {
     return state.fields.siteUrls.website
