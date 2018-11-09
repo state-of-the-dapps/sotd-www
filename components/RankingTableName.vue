@@ -17,7 +17,7 @@
       <h4 class="name">
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
-      <p class="teaser">{{ teaser | truncate(50) }}</p>
+      <p class="teaser">{{ teaser }}</p>
     </div>
   </div>
 </template>
