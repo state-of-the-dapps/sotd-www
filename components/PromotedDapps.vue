@@ -15,6 +15,7 @@
       <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>
       <div><input class="input" v-model="country" type="text" placeholder="Your country"></div>   
       <div><input class="input" v-model="dapp" type="text" placeholder="Your ÐApp's name"></div>  
+      <div><input class="input" v-model="budget" type="text" placeholder="Daily budget (USD)"></div>
       <div class="submitted-wrapper">
         Is this ÐApp already listed on this website?
         <p>
@@ -50,6 +51,7 @@ export default {
   },
   data () {
     return {
+      budget: '',
       country: '',
       dapp: '',
       email: '',
@@ -65,7 +67,7 @@ export default {
     ]),
     formIsValid () {
       let isValid = false
-      if (this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid && !this.formIsSubmitting) {
+      if (this.budget && this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid && !this.formIsSubmitting) {
         isValid = true
       }
       return isValid
@@ -82,6 +84,7 @@ export default {
     send () {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
+        const budget = this.budget
         const country = this.country
         const email = this.email
         const dapp = this.dapp
@@ -98,6 +101,7 @@ export default {
 
         const data = {
           fields: {
+            budget,
             country,
             dapp,
             email,
@@ -117,7 +121,7 @@ export default {
             this.$store.dispatch('setSiteModal', modal)
           })
           .catch((error) => {
-            this.formtIsSubmitting = false
+            this.formIsSubmitting = false
             console.log(error)
           })
       }
