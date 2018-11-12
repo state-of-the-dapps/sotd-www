@@ -16,7 +16,8 @@
         v-model="search"
         @input="fetchResults"
         @focus="startSearch"
-        @blur="endSearch">
+        @blur="endSearch"
+        @keyup.enter="goToSearchPage">
     </div>
     <div class="results" v-if="results || isSearching">
       <div v-if="!results && searchCompleted" class="results-none">Sorry, no results. Please try a new search</div>
@@ -116,6 +117,15 @@ export default {
       const sourceComponent = 'GlobalSearch'
       const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
+    },
+    goToSearchPage () {
+      this.setSearchPage(this.search)
+      this.$router.push({
+        name: 'dapps',
+        query: {
+          q: this.search
+        }
+      })
     },
     suggestionView (suggestion) {
       this.setSearchPage('')
