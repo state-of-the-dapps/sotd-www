@@ -1,14 +1,12 @@
 <template>
   <div class="component-DappFeaturedRankingCategory">
     <h3 class="title-3">
-      <a @click="viewDappRankingCategory(category)" class="link">{{ category.name }} <SvgIconChevron :width="8" :height="8" direction="right" /></a>
+      <a @click="viewDappRankingPlatform(platform)" class="link">{{ platform }} <SvgIconChevron :width="8" :height="8" direction="right" /></a>
       <span class="label-dau">Users (24hr)</span>
     </h3>
     <ul class="dapp-list">
       <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
-        <span
-          :class="dapp.categories ? '-' + dapp.categories[0] : ''"
-          class="dapp-rank"><span>{{ index + 1 }}</span></span>
+        <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
         <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
           <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
           <span v-else>{{ dapp.name | firstLetter }}</span>
@@ -22,8 +20,7 @@
 
 <script>
 import axios from '~/helpers/axios'
-import { mapActions } from 'vuex'
-import { trackDappRankingCategory, trackDappView } from '~/helpers/mixpanel'
+import { trackDappRankingPlatform, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
@@ -38,34 +35,26 @@ export default {
     Help,
     SvgIconChevron
   },
-  props: ['category'],
+  props: ['platform'],
   methods: {
-    ...mapActions('dapps/rankings', [
-      'fetchDapps',
-      'setCategory',
-      'setSort'
-    ]),
     trackDappView (targetDapp) {
       const sourceCollection = ''
-      const sourceComponent = 'DappFeaturedRankingCategory'
+      const sourceComponent = 'DappFeaturedRankingPlatform'
       const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappRankingCategory (category) {
-      const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category.slug)
+    viewDappRankingPlatform (category) {
+      const sourceComponent = 'DappFeaturedRankingPlatform'
+      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, category.slug)
       this.$mixpanel.track(action.name, action.data)
-      this.setCategory(category.slug)
-      this.setSort({ order: 'asc', sort: 'rank' })
-      this.fetchDapps()
-      this.$router.push({name: 'rankings-category', params: {category: category.slug}})
+      this.$router.push({name: 'rankings-platform', params: { platform: this.platform.toLowerCase() }})
     }
   },
   async mounted () {
     axios
       .get('dapps', {
         params: {
-          category: this.category.slug,
+          platform: this.platform,
           limit: 5,
           offset: 0,
           order: 'asc',
@@ -90,7 +79,7 @@ export default {
     width: calc(50% - 20px);
   }
   @include tweakpoint('min-width', 1100px) {
-    width: calc(25% - 20px);
+    width: calc(33.33% - 20px);
   }
 }
 
@@ -141,6 +130,7 @@ export default {
 
 .dapp-rank {
   padding: 5px;
+  background: $color--purple;
   margin: -10px 15px -10px -10px;
   font-weight: 700;
   height: 52px;
@@ -149,12 +139,21 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: .95rem;
-  color: $color--purple;
+  color: $color--white;
   line-height: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
-  .dapp-item & {
-    @include dapp-category-colors;
+  .dapp-item:nth-child(2) & {
+    background: rgba($color--purple, .85)
+  }
+  .dapp-item:nth-child(3) & {
+    background: rgba($color--purple, .75)
+  }
+  .dapp-item:nth-child(4) & {
+    background: rgba($color--purple, .65)
+  }
+  .dapp-item:nth-child(5) & {
+    background: rgba($color--purple, .55)
   }
 }
 
