@@ -13,7 +13,7 @@
         </span>
       </li>
       <li class="tool-item">
-        <span class="tool-link" @click="viewDappEdit(['Flag'])" role="button">
+        <span class="tool-link" @click="viewDappEdit('flag')" role="button">
           <SvgIconFlag :width="14" :height="14"/> <span class="description">Flag as inappropriate</span>
         </span>
       </li>
@@ -57,25 +57,26 @@ export default {
       const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappEdit (checked = []) {
-      if (checked.includes('Flag')) {
+    viewDappEdit (flag = false) {
+      if (flag) {
         let action = trackDappFlag(this.slug)
         this.$mixpanel.track(action.name, action.data)
       } else {
         let action = trackDappEdit(this.slug)
         this.$mixpanel.track(action.name, action.data)
       }
-      const modal = {
-        component: 'ModalDappsDetailEdit',
-        mpData: {},
-        props: {
-          checked: checked,
-          dapp: this.name,
-          path: `https://www.stateofthedapps.com${this.$route.path}`,
+      let route = {
+        name: 'dapp-detail-edit',
+        params: {
           slug: this.slug
         }
       }
-      this.$store.dispatch('setSiteModal', modal)
+      if (flag) {
+        route.query = {
+          flag: true
+        }
+      }
+      this.$router.push(route)
     },
     viewDappShare () {
       const action = trackDappShare(this.slug)
