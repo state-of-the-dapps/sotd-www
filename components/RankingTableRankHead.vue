@@ -9,7 +9,7 @@
     <span v-else class="label">#</span>
     <Help
       :bottom="true"
-      text="The default rank is based on DAU, or Daily Active Users (unique source addresses in transactions to ÐApp contracts)"/>
+      text="Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs and user recommendations"/>
   </div>
 </template>
 
