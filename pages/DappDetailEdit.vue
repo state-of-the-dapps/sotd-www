@@ -116,7 +116,6 @@ export default {
               email: this.email,
               name: this.name,
               dapp: this.dapp.name,
-              path: `https://www.stateofthedapps.com/dapps/${this.dapp.name}`,
               suggestions: this.suggestions
             }
           })
