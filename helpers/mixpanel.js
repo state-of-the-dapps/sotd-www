@@ -317,6 +317,34 @@ export const trackDappEditView = function (dapp) {
   return action
 }
 
+export const trackDappImproveProfileClick = function (dapp) {
+  let name = 'DApp - Improve Profile Click'
+  let data = {
+    dapp
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappImproveProfileView = function (dapp) {
+  let name = 'DApp - Improve Profile View'
+  let data = {
+    dapp
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackDappMetaClick = function (dapp) {
   let actionName = 'DApp - Meta Click'
   let data = {

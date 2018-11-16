@@ -17,7 +17,7 @@
             slug: dapp
           }
         }"
-        @click.native="trackImprove(dapp)"
+        @click.native="trackImproveProfile(dapp)"
         class="improve">Improve this profile</nuxt-link>
     </div>
   </div>
@@ -25,11 +25,18 @@
 </template>
 
 <script>
+import { trackDappImproveProfileClick } from '~/helpers/mixpanel'
 
 export default {
   props: {
     dapp: String,
     profileScore: Number
+  },
+  methods: {
+    trackImproveProfile (dapp) {
+      const action = trackDappImproveProfileClick(dapp)
+      this.$mixpanel.track(action.name, action.data)
+    }
   }
 }
 </script>
