@@ -36,9 +36,8 @@
       <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
       <DappProfile
         v-if="dapp.profileScore"
-        :dapp="dapp.name"
-        :profile-score="dapp.profileScore"
-        :slug="dapp.slug"/>
+        :dapp="dapp.slug"
+        :profile-score="dapp.profileScore"/>
       <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
       <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
       <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>

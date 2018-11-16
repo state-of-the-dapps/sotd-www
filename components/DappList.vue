@@ -59,7 +59,7 @@ export default {
       dappCategories: [],
       fields: [
         {
-          help: 'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs and user recommendations',
+          help: 'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations',
           id: 'rank',
           order: 'asc',
           title: 'Rank'
