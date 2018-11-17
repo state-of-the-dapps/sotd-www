@@ -60,8 +60,14 @@
   .container {
     display: flex;
     flex-direction: column-reverse;
+    @include tweakpoint('min-width', 640px) {
+      margin-left: 22px;
+      margin-right: 22px;
+      padding-left: 0;
+      padding-right: 0;
+    }
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: 25px 20px 5px 20px;
+      padding: 25px 0 5px 0;
       flex-direction: row;
       align-items: center;
       > :nth-child(1) {

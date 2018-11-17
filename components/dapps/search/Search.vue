@@ -138,6 +138,12 @@
 
   .container {
     position: relative;
+    @include tweakpoint('min-width', 640px) {
+      margin-left: 22px;
+      margin-right: 22px;
+      padding-left: 0;
+      padding-right: 0;
+    }
     @include tweakpoint('min-width', $tweakpoint--default) {
       padding-top: 35px;
       padding-bottom: 10px;
