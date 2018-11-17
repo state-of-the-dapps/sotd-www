@@ -85,7 +85,7 @@
       overflow: hidden;
       z-index: 10;
       @include tweakpoint('min-width', $tweakpoint--default) {
-        top: 115px;
+        top: 95px;
         left: 75px;
         width: 500px;
       }
@@ -93,6 +93,7 @@
   }
 
   .item {
+    border-radius: 4px;
     display: block;
     padding: 7px 28px 7px 10px;
     background: lighten($color--gray,2%);

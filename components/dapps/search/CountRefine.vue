@@ -4,14 +4,6 @@
       <ul class="count-list">
         <li class="count-item">Showing <strong @click="$mixpanel.track('DApps - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('DApps - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
       </ul>
-      <ul>
-        <li>Show
-          <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
-            <StatusDropdown/>
-          </span>
-          status
-        </li>
-      </ul>
     </div>
   </section>
 </template>
@@ -69,7 +61,7 @@
     display: flex;
     flex-direction: column-reverse;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: 25px 20px;
+      padding: 25px 20px 5px 20px;
       flex-direction: row;
       align-items: center;
       > :nth-child(1) {
