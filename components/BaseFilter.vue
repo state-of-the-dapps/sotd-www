@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapp-list-filter">
+  <div class="component-base-filter">
     <h3 class="filter-title">{{ filter }}</h3>
     <div class="filter-wrapper">
       <button
@@ -99,10 +99,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-dapp-list-filter {
-  margin: 10px 6px 5px 6px;
-}
-
 .filter-wrapper {
   position: relative;
 }
@@ -113,15 +109,15 @@ export default {
 
 .filter-title {
   margin-top: 0;
-  margin-bottom: 3px;
-  font-size: .85rem;
+  margin-bottom: 5px;
+  font-size: .9rem;
   text-transform: uppercase;
 }
 
 .button {
   font-size: 1.1rem;
   padding: 5px 10px;
-  width: 150px;
+  width: 100%;
   border-radius: 4px;
   border: 1px solid $color--black;
   display: flex;

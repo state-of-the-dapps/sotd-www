@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappList" id="component-DappList">
     <div class="filter-wrapper">
-      <DappListFilter
+      <BaseFilter
         :important="true"
         :options="categoryOptions"
         :selected="category"
@@ -9,7 +9,7 @@
         filter="Category"
         title="Choose a category"
         @select="filterCategory"/>
-      <DappListFilter
+      <BaseFilter
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"
@@ -47,7 +47,7 @@ import { mapActions, mapGetters } from 'vuex'
 import { trackDappRankingCategory, trackDappRankingSort, trackDappRankingPlatform } from '~/helpers/mixpanel'
 import { platformList } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
-import DappListFilter from './DappListFilter'
+import BaseFilter from './BaseFilter'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
@@ -111,7 +111,7 @@ export default {
     }
   },
   components: {
-    DappListFilter,
+    BaseFilter,
     DappListHeadings,
     DappListItem,
     LoadMore

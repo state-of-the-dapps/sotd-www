@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-    <div class="container">
+    <div class="outer-wrapper">
       <ul class="count-list">
         <li class="count-item">Showing <strong @click="$mixpanel.track('DApps - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('DApps - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
       </ul>
@@ -57,12 +57,10 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
-  .container {
+  .outer-wrapper {
     display: flex;
     flex-direction: column-reverse;
     @include tweakpoint('min-width', 640px) {
-      margin-left: 22px;
-      margin-right: 22px;
       padding-left: 0;
       padding-right: 0;
     }

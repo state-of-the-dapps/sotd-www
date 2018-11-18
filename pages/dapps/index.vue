@@ -73,12 +73,9 @@
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.dapp-wrapper {
-  @include margin-wrapper-main;
-}
 
 .dapps-filters {
-  max-width: 2000px;
+  @include margin-wrapper-main;
   @include tweakpoint('min-width', 1200px) {
     display: flex;
   }
@@ -86,10 +83,9 @@
 
 .filters {
   padding-top: 25px;
-  @include margin-wrapper-main;
   @include tweakpoint('min-width', 1200px) {
-    margin-right: 0;
-    width: 200px;
+    margin-right: 22px;
+    width: 225px;
   }
 }
 

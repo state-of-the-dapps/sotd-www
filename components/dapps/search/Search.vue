@@ -1,6 +1,6 @@
 <template>
   <section class="section -search">
-    <div class="container">
+    <div class="wrapper-outer">
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
@@ -136,16 +136,11 @@
     }
   }
 
-  .container {
+  .wrapper-outer {
+    @include margin-wrapper-main;
     position: relative;
-    @include tweakpoint('min-width', 640px) {
-      margin-left: 22px;
-      margin-right: 22px;
-      padding-left: 0;
-      padding-right: 0;
-    }
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding-top: 35px;
+      padding-top: 25px;
       padding-bottom: 10px;
     }
   }
