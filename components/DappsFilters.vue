@@ -1,23 +1,40 @@
 <template>
   <div class="component-dapps-filters">
-    <template v-for="(filter, index) in filters">
-      <div
-        :key="index"
-        class="filter">
-        <BaseFilter
-          :all-text="filter.allText"
-          :filter="filter.name"
-          :options="filter.options"
-          :selected="filter.selected"
-          :title="filter.title"/>
-      </div>
-    </template>
+    <div class="filter">
+      <BaseFilter
+        all-text="All platforms"
+        filter="Platform"
+        :options="platformOptions"
+        :selected="formattedPlatformQuery"
+        title="Choose a platform"
+        @select="selectPlatform"/>
+    </div>
+    <div class="filter">
+      <BaseFilter
+        all-text="All categories"
+        filter="Category"
+        :options="categoryOptions"
+        :selected="categoryQuery"
+        title="Choose a category"
+        @select="selectCategory"/>
+    </div>
+    <div class="filter">
+      <BaseFilter
+        all-text="All statuses"
+        filter="Status"
+        :options="statusOptions"
+        :selected="statusQuery"
+        title="Choose a status"
+        @select="selectStatus"/>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import { getCategories } from '~/helpers/api'
-import { dappStatuses, platformList } from '~/helpers/constants'
+import { trackDappsFilter } from '~/helpers/mixpanel'
+import { dappStatuses, platformList, platformMap } from '~/helpers/constants'
 import BaseFilter from './BaseFilter'
 
 export default {
@@ -26,32 +43,28 @@ export default {
   },
   data () {
     return {
-      filters: [
-        {
-          allText: 'All platforms',
-          name: 'Platform',
-          options: this.getPlatformOptions(platformList),
-          selected: '',
-          title: 'Choose a platform'
-        },
-        {
-          allText: 'All categories',
-          name: 'Category',
-          options: [],
-          selected: '',
-          title: 'Choose a category'
-        },
-        {
-          allText: 'All statuses',
-          name: 'Status',
-          options: this.getDappStatusOptions(dappStatuses),
-          selected: '',
-          title: 'Choose a status'
-        }
-      ]
+      categoryOptions: [],
+      platformOptions: this.getPlatformOptions(platformList),
+      statusOptions: this.getDappStatusOptions(dappStatuses)
+    }
+  },
+  computed: {
+    ...mapGetters('dapps/search', [
+      'categoryQuery',
+      'platformQuery',
+      'statusQuery'
+    ]),
+    formattedPlatformQuery () {
+      return platformMap[this.platformQuery.toLowerCase()]
     }
   },
   methods: {
+    ...mapActions('dapps/search', [
+      'fetchItems',
+      'setCategoryQuery',
+      'setPlatformQuery',
+      'setStatusQuery'
+    ]),
     getDappStatusOptions (options) {
       const optionsArr = options.map(x => {
         const optionObj = {
@@ -82,11 +95,30 @@ export default {
         return optionObj
       })
       return optionsArr
+    },
+    selectCategory (category) {
+      this.setCategoryQuery(category)
+      this.fetchItems()
+      this.trackFilter('category', category)
+    },
+    selectPlatform (platform) {
+      this.setPlatformQuery(platform)
+      this.fetchItems()
+      this.trackFilter('platform', platform)
+    },
+    selectStatus (status) {
+      this.setStatusQuery(status)
+      this.fetchItems()
+      this.trackFilter('status', status)
+    },
+    trackFilter (type, option) {
+      const action = trackDappsFilter(type, option)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   async mounted () {
     const categories = await this.getCategoryOptions()
-    this.filters[1].options = categories
+    this.categoryOptions = categories
   }
 }
 </script>

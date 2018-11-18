@@ -76,17 +76,17 @@
   .container {
     &.-suggested-tags {
       position: absolute;
-      background: rgba($color--gray,.9);
+      background: rgba($color--gray,.95);
       padding: 10px;
       box-shadow: 0 17px 70px rgba($color--black,.2);
       width: 250px;
-      top: 65px;
-      left: 50px;
+      top: 50px;
+      left: 40px;
       overflow: hidden;
       z-index: 10;
       @include tweakpoint('min-width', $tweakpoint--default) {
-        top: 95px;
-        left: 75px;
+        top: 85px;
+        left: 55px;
         width: 500px;
       }
     }

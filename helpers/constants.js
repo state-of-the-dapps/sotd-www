@@ -141,7 +141,7 @@ const dappStatuses = Object.freeze([
 ])
 
 const dappRefineStatusOptions = dappStatuses.slice()
-dappRefineStatusOptions.unshift('any')
+dappRefineStatusOptions.unshift('All statuses')
 
 const dappRefineTabOptions = Object.freeze([
   'hot',
