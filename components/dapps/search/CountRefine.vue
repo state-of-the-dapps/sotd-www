@@ -1,16 +1,8 @@
 <template>
   <section class="section">
-    <div class="container">
+    <div class="outer-wrapper">
       <ul class="count-list">
         <li class="count-item">Showing <strong @click="$mixpanel.track('DApps - Results count')">{{ itemCount }}</strong> of <strong @click="$mixpanel.track('DApps - Results count')">{{ pagerTotalCount }}</strong> result{{ itemCount == 1 ? '' : 's' }}</li>
-      </ul>
-      <ul>
-        <li>Show
-          <span class="dropdown" :class="{ '--is-active': statusDropdownIsActive }" @click="toggle('status')">{{ selectedStatus }}
-            <StatusDropdown/>
-          </span>
-          status
-        </li>
       </ul>
     </div>
   </section>
@@ -65,11 +57,15 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
-  .container {
+  .outer-wrapper {
     display: flex;
     flex-direction: column-reverse;
+    @include tweakpoint('min-width', 640px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding: 25px 20px;
+      padding: 25px 0 5px 0;
       flex-direction: row;
       align-items: center;
       > :nth-child(1) {

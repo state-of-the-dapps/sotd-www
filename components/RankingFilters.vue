@@ -1,20 +1,24 @@
 <template>
   <div class="component-ranking-filters">
-    <DappListFilter
-      :important="true"
-      :options="categoryOptions"
-      :selected="category"
-      all-text="All categories"
-      filter="Category"
-      title="Choose a category"
-      @select="filterCategory"/>
-    <DappListFilter
-      :options="platformOptions"
-      :selected="platform"
-      all-text="All platforms"
-      filter="Platform"
-      title="Choose a platform"
-      @select="filterPlatform"/>
+    <div class="filter-wrapper">
+      <BaseFilter
+        :important="true"
+        :options="categoryOptions"
+        :selected="category"
+        all-text="All categories"
+        filter="Category"
+        title="Choose a category"
+        @select="filterCategory"/>
+      </div>
+    <div class="filter-wrapper">
+      <BaseFilter
+        :options="platformOptions"
+        :selected="platform"
+        all-text="All platforms"
+        filter="Platform"
+        title="Choose a platform"
+        @select="filterPlatform"/>
+    </div>
   </div>
 </template>
 
@@ -22,11 +26,11 @@
 import { platformList, platformMap } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
 import { trackDappRankingCategory, trackDappRankingPlatform } from '~/helpers/mixpanel'
-import DappListFilter from '~/components/DappListFilter'
+import BaseFilter from '~/components/BaseFilter'
 
 export default {
   components: {
-    DappListFilter
+    BaseFilter
   },
   data () {
     return {
@@ -85,12 +89,12 @@ export default {
       this.$router.push({path})
     },
     trackDappRankingCategory (category) {
-      const sourceComponent = 'DappListFilter'
+      const sourceComponent = 'RankingFilters'
       const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
       this.$mixpanel.track(action.name, action.data)
     },
     trackDappRankingPlatform (platform) {
-      const sourceComponent = 'DappListFilter'
+      const sourceComponent = 'RankingFilters'
       const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, platform)
       this.$mixpanel.track(action.name, action.data)
     }
@@ -108,10 +112,18 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-base-filter {
+  margin: 10px 6px 5px 6px;
+}
+
 .component-ranking-filters {
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.filter-wrapper {
+  width: 150px;
 }
 </style>

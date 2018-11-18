@@ -1,6 +1,6 @@
 <template>
   <section class="section -search">
-    <div class="container">
+    <div class="wrapper-outer">
       <div class="wrapper">
         <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
         <ul class="input-wrapper">
@@ -111,13 +111,6 @@
 <style lang="scss" scoped>
   @import '~assets/css/settings';
 
-  .section {
-    &.-search {
-      background: rgba(lighten($color--gray, 100%), .35);
-      background: linear-gradient(to bottom, rgba(lighten($color--gray, 100%), .35), rgba(lighten($color--gray, 100%), 0));
-    }
-  }
-
   .sub-heading {
     text-transform: uppercase;
     font-weight: 300;
@@ -143,11 +136,12 @@
     }
   }
 
-  .container {
+  .wrapper-outer {
+    @include margin-wrapper-main;
     position: relative;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      padding-top: 55px;
-      padding-bottom: 25px;
+      padding-top: 25px;
+      padding-bottom: 10px;
     }
   }
 
@@ -211,6 +205,7 @@
   }
 
   .tag {
+    border-radius: 4px;
     display: flex;
     align-items: center;
     padding: 7px 10px;
@@ -228,6 +223,8 @@
   }
 
   .wrapper {
+    border-radius: 4px;
+    overflow: hidden;
     position: relative;
     z-index: 5;
     box-shadow: 0 17px 70px 0 rgba($color--black,.22);

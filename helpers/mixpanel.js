@@ -405,6 +405,21 @@ export const trackDappView = function (sourceCollection, sourceComponent, source
   return action
 }
 
+export const trackDappsFilter = function (type, option) {
+  let name = 'DApps - Filter'
+  let data = {
+    type,
+    option
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackFooterLogoDownload = function (sourcePath) {
   let name = 'Footer - Logo Download'
   let data = {

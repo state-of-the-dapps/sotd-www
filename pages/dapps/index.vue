@@ -2,11 +2,18 @@
   <LayoutMain>
     <div>
       <Search/>
-      <CountRefine/>
-      <div class="dapp-wrapper">
-        <DappCardList :dapps="dapps" />
+      <div class="dapps-filters">
+        <div class="filters">
+          <DappsFilters/>
+        </div>
+        <div class="results">
+          <CountRefine/>
+          <div class="dapp-wrapper">
+            <DappCardList :dapps="dapps" />
+          </div>
+          <Pager/>
+        </div>
       </div>
-      <Pager/>
     </div>
   </LayoutMain>
 </template>
@@ -15,6 +22,7 @@
   import CountRefine from '~/components/dapps/search/CountRefine.vue'
   import Collections from '~/components/dapps/search/Collections.vue'
   import DappCardList from '~/components/DappCardList'
+  import DappsFilters from '~/components/DappsFilters'
   import LayoutMain from '~/components/LayoutMain'
   import Pager from '~/components/dapps/search/Pager.vue'
   import Search from '~/components/dapps/search/Search.vue'
@@ -24,6 +32,7 @@
       Collections,
       CountRefine,
       DappCardList,
+      DappsFilters,
       LayoutMain,
       Pager,
       Search
@@ -64,7 +73,23 @@
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.dapp-wrapper {
+
+.dapps-filters {
   @include margin-wrapper-main;
+  @include tweakpoint('min-width', 1200px) {
+    display: flex;
+  }
+}
+
+.filters {
+  padding-top: 25px;
+  @include tweakpoint('min-width', 1200px) {
+    margin-right: 22px;
+    width: 225px;
+  }
+}
+
+.results {
+  flex: 1;
 }
 </style>

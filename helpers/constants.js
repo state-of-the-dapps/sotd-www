@@ -135,12 +135,13 @@ const dappStatuses = Object.freeze([
   'prototype',
   'wip',
   'concept',
+  'broken',
   'stealth',
   'abandoned'
 ])
 
 const dappRefineStatusOptions = dappStatuses.slice()
-dappRefineStatusOptions.unshift('any')
+dappRefineStatusOptions.unshift('All statuses')
 
 const dappRefineTabOptions = Object.freeze([
   'hot',

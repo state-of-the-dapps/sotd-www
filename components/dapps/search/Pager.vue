@@ -45,6 +45,7 @@
   @import '~assets/css/settings';
 
   .button {
+    border-radius: 4px;
     padding: 12px 25px;
     color: $color--gray;
     background: $color--black;

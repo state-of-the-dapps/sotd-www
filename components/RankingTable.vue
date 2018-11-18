@@ -325,8 +325,7 @@ export default {
 }
 
 .wrapper {
-  padding: 0 10px;
-  margin: 0 auto;
+  @include margin-wrapper-main;
 }
 
 /deep/ .head-link {

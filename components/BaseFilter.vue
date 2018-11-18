@@ -1,12 +1,14 @@
 <template>
-  <div class="component-dapp-list-filter">
+  <div class="component-base-filter">
     <h3 class="filter-title">{{ filter }}</h3>
     <div class="filter-wrapper">
       <button
         :class="important ? 'important' : ''"
         class="button"
         @click="open">
-          <span class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
+          <span
+            :class="selected ? 'is-active' : ''"
+            class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
           <span class="arrow-wrapper"><SvgIconChevron
             :width="11"
             :height="11"/></span>
@@ -99,29 +101,28 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-dapp-list-filter {
-  margin: 10px 6px 5px 6px;
-}
-
 .filter-wrapper {
   position: relative;
 }
 
 .selected-filter {
   flex: 1;
+  &.is-active {
+    font-weight: 700;
+  }
 }
 
 .filter-title {
   margin-top: 0;
-  margin-bottom: 3px;
-  font-size: .85rem;
+  margin-bottom: 5px;
+  font-size: .9rem;
   text-transform: uppercase;
 }
 
 .button {
   font-size: 1.1rem;
   padding: 5px 10px;
-  width: 150px;
+  width: 100%;
   border-radius: 4px;
   border: 1px solid $color--black;
   display: flex;

@@ -1,12 +1,14 @@
-import { dappRefineTabOptions as tabOptions, dappRefineStatusOptions as statusOptions } from '~/helpers/constants'
+import { dappRefineTabOptions as tabOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 function initialQuery () {
   return {
+    platform: '',
+    category: '',
     tab: tabOptions[0],
     limit: 50,
     offset: 0,
-    status: statusOptions[0],
+    status: '',
     tags: [],
     text: ''
   }
@@ -29,11 +31,17 @@ const actions = {
     commit('INCREMENT_OFFSET_QUERY')
   },
   setTabQuery: ({ commit }, value) => {
-    commit('SET_CATEGORY_QUERY', value)
+    commit('SET_TAB_QUERY', value)
     commit('SET_FRIENDLY_URL')
   },
+  setCategoryQuery: ({ commit }, value) => {
+    commit('SET_CATEGORY_QUERY', value)
+  },
+  setPlatformQuery: ({ commit }, value) => {
+    commit('SET_PLATFORM_QUERY', value)
+  },
   setStatusQuery: ({ commit }, value) => {
-    commit('SET_REFINE_QUERY', value)
+    commit('SET_STATUS_QUERY', value)
   },
   addTagToQuery: ({ commit }, value) => {
     commit('ADD_TAG_TO_QUERY', value)
@@ -71,6 +79,9 @@ const getters = {
   activeItemIndex: state => {
     return state.activeItemIndex
   },
+  categoryQuery: state => {
+    return state.query.category
+  },
   tabDropdownIsActive: state => {
     return state.refine.tab.isActive
   },
@@ -91,6 +102,9 @@ const getters = {
   },
   isLoading: state => {
     return state.isLoading
+  },
+  platformQuery: state => {
+    return state.query.platform
   },
   statusDropdownIsActive: state => {
     return state.refine.status.isActive
@@ -132,6 +146,12 @@ const mutations = {
     state.activeItemIndex = index
   },
   SET_CATEGORY_QUERY (state, value) {
+    state.query.category = value
+  },
+  SET_PLATFORM_QUERY (state, value) {
+    state.query.platform = value
+  },
+  SET_TAB_QUERY (state, value) {
     var options = tabOptions || []
     if (options.indexOf(value) !== -1) {
       state.query.tab = value
@@ -195,7 +215,7 @@ const mutations = {
   SET_LOADING_STATUS (state, value) {
     state.isLoading = value
   },
-  SET_REFINE_QUERY (state, value) {
+  SET_STATUS_QUERY (state, value) {
     state.query.status = value
   },
   SET_TEXT_QUERY (state, value) {
