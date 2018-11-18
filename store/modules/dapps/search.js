@@ -1,4 +1,4 @@
-import { dappRefineTabOptions as tabOptions, dappRefineStatusOptions as statusOptions } from '~/helpers/constants'
+import { dappRefineTabOptions as tabOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
 function initialQuery () {
@@ -8,7 +8,7 @@ function initialQuery () {
     tab: tabOptions[0],
     limit: 50,
     offset: 0,
-    status: statusOptions[0],
+    status: '',
     tags: [],
     text: ''
   }

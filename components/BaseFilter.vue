@@ -6,7 +6,9 @@
         :class="important ? 'important' : ''"
         class="button"
         @click="open">
-          <span class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
+          <span
+            :class="selected ? 'is-active' : ''"
+            class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
           <span class="arrow-wrapper"><SvgIconChevron
             :width="11"
             :height="11"/></span>
@@ -105,6 +107,9 @@ export default {
 
 .selected-filter {
   flex: 1;
+  &.is-active {
+    font-weight: 700;
+  }
 }
 
 .filter-title {
