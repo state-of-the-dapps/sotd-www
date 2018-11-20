@@ -4,7 +4,7 @@
       <div class="wrapper">
         <h1 class="title-1">Download our logos</h1>
         <p>The logos and icons below can be used to link to State of the ÐApps. Please do not modify them.</p>
-        <p></p>
+        <p>Below are some examples. The <a href="/logos.zip">full set</a> has more color options.</p>
         <ul class="logo-list">
           <li class="logo-item">
             <a class="button" href="/logos.zip">Download all logos (.zip)</a>
@@ -32,11 +32,6 @@
           <li class="logo-item">
             <a href="/logos.zip">
               <img width="50" src="~/assets/images/press/rounded_square.png"/>
-            </a>
-          </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="50" src="~/assets/images/press/square_reverse.jpg"/>
             </a>
           </li>
         </ul>
