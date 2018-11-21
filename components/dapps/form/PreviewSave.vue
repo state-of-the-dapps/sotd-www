@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="item -preview" :class="'-' + status">
+    <div class="item -preview">
         <div class="info">
             <div class="description-wrapper">
                 <h3 class="title" @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
@@ -8,7 +8,10 @@
                 <p class="description" @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
             </div>
         </div>
-        <p class="status" :class="'-' + status" @click="$mixpanel.track('New DApp - Preview status')"><span v-if="status">{{ status | formatDappStatus }}</span></p>
+    </div>
+    <div class="submit-reason">
+      <label class="text-area-label" for="submitReason">So we can better serve your needs, tell us what results you hope to achieve by submitting your ÐApp, (this will not be made public).</label>
+      <textarea class="text-area" name="submitReason" v-model="submitReason"></textarea>
     </div>
     <div class="checkboxes">
       <div class="checkbox-field">
@@ -65,6 +68,18 @@
       },
       name () {
         return this.$store.getters['dapps/form/name']
+      },
+      submitReason: {
+        get () {
+          return this.$store.getters['dapps/form/submitReason']
+        },
+        set (value) {
+          const field = {
+            name: 'submitReason',
+            value: value
+          }
+          this.$store.dispatch('dapps/form/setField', field)
+        }
       },
       subscribeNewsletter: {
         get () {
@@ -238,12 +253,10 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    margin-top: -10px;
     @include tweakpoint('min-width', 900px) {
       flex-direction: column;
       justify-content: center;
       text-align: center;
-      margin-top: 25px;
     }
   }
 
@@ -253,7 +266,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 125px;
+    height: 150px;
     margin: 0 10px 10px 10px;
     background: white;
     box-shadow: 0 0 20px rgba($color--black,.1);
@@ -263,10 +276,7 @@
     }
     @include tweakpoint('min-width', 900px) {
       width: calc(33.33% - 20px);
-      height: 240px;
       justify-content: center;
-      align-items: flex-start;
-      margin-bottom: 20px;
     }
     @include tweakpoint('min-width', 1000px) {
       width: calc(25% - 20px);
@@ -329,6 +339,11 @@
     &.--unfocused {
       opacity: .6;
     }
+  }
+
+  .text-area-label {
+    display: block;
+    padding-bottom: 5px;
   }
 
   .new-banner {
@@ -437,12 +452,27 @@
     }
   }
 
+  .submit-reason {
+    width: 300px;
+    padding-top: 15px;
+    margin: 0 auto;
+    @include tweakpoint('min-width', $tweakpoint--default) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
   .title {
     margin: 0;
     font-size: 1.5rem;
-    @include tweakpoint('min-width', 900px) {
-      margin-top: 15px;
-    }
+  }
+
+  .text-area {
+    width: 100%;
+    height: 60px;
+    resize: none;
+    padding: 5px;
+    border: 1px solid rgba($color--black, 0.25);
   }
 
   .url {
