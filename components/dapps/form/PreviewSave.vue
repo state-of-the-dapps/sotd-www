@@ -10,8 +10,8 @@
         </div>
     </div>
     <div class="submit-reason">
-      <label class="text-area-label" for="submitReason">So we can better serve your needs, tell us what results you hope to achieve by submitting your ÐApp, (this will not be made public).</label>
-      <textarea class="text-area" name="submitReason" v-model="submitReason"></textarea>
+      <label class="text-area-label" for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your ÐApp (this will not be made public).</label>
+      <textarea class="text-area" name="submitReason" v-model="submitReason" placeholder="I hope that..."></textarea>
     </div>
     <div class="checkboxes">
       <div class="checkbox-field">
