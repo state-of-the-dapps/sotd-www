@@ -111,7 +111,7 @@ module.exports = {
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false },
-    { src: '~/plugins/fullstory.js', ssr: false },
+    // { src: '~/plugins/fullstory.js', ssr: false },
     { src: '~/plugins/intercom.js', ssr: false }
 
   ]
