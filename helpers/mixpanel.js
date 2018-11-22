@@ -434,6 +434,20 @@ export const trackFooterLogoDownload = function (sourcePath) {
   return action
 }
 
+export const trackFooterAppAndroid = function (sourcePath) {
+  let name = 'Footer - App Android'
+  let data = {
+    sourcePath
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackFooterSubmit = function (sourcePath) {
   let name = 'Footer - Submit'
   let data = {
@@ -509,6 +523,18 @@ export const trackListRemove = function (dapp) {
   let data = {
     dapp
   }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackLogosDownload = function () {
+  let name = 'Logos Download'
+  let data = {}
 
   const action = {
     name,

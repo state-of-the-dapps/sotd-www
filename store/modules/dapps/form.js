@@ -67,6 +67,7 @@ function initialState () {
         blog: { path: '' }
       },
       status: '',
+      submitReason: '',
       subscribeNewsletter: false,
       tags: [],
       teaser: '',
@@ -411,6 +412,9 @@ const getters = {
   },
   status: state => {
     return state.fields.status
+  },
+  submitReason: state => {
+    return state.fields.submitReason
   },
   subscribeNewsletter: state => {
     return state.fields.subscribeNewsletter

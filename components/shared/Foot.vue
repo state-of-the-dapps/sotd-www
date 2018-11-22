@@ -17,6 +17,13 @@
       <nuxt-link @click.native="trackFooterLogoDownload()" :to="{ name: 'logos' }" class="nav-link">Download our logo</nuxt-link>
     </li>
     <li class="nav-item">
+      <a
+        href="https://play.google.com/store/apps/details?id=com.stateofthedapps.android&ref=StateOfTheDapps"
+        @click="trackFooterAppAndroid()"
+        class="nav-link"
+        target="_blank">Get the Android app</a>
+    </li>
+    <li class="nav-item">
       <nuxt-link @click.native="trackPageTerms()" to="/terms" class="nav-link">Terms of use</nuxt-link>
     </li>
     <ul class="social-list">
@@ -57,6 +64,7 @@
 <script>
 import {
   trackContact,
+  trackFooterAppAndroid,
   trackFooterLogoDownload,
   trackFooterSubmit,
   trackPageAbout,
@@ -81,6 +89,10 @@ export default {
   methods: {
     trackContact () {
       const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackFooterAppAndroid () {
+      const action = trackFooterAppAndroid(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
     trackFooterLogoDownload () {

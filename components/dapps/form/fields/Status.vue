@@ -41,7 +41,7 @@
   .item {
     width: calc(50% - 10px);
     margin: 5px;
-    background: $color--black;
+    background: $color--white;
     padding: 10px;
     box-shadow: 0 0 20px rgba($color--black,.05);
     border: 1px solid transparent;
@@ -50,30 +50,6 @@
     }
     &.--is-selected {
       border-color:$color--black;
-    }
-    &.-live {
-      background: $color--dapp-live;
-    }
-    &.-beta {
-      background: $color--dapp-beta;
-    }
-    &.-prototype {
-      background: $color--dapp-prototype;
-    }
-    &.-wip {
-      background: $color--dapp-wip;
-    }
-    &.-concept {
-      background: $color--dapp-concept;
-    }
-    &.-stealth {
-      background: $color--dapp-stealth;
-    }
-    &.-unknown {
-      background: $color--dapp-unknown;
-    }
-    &.-abandoned {
-      background: $color--dapp-abandoned;
     }
   }
 
