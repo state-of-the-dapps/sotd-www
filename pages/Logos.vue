@@ -4,34 +4,24 @@
       <div class="wrapper">
         <h1 class="title-1">Download our logos</h1>
         <p>The logos and icons below can be used to link to State of the ÐApps. Please do not modify them.</p>
-        <p>Below are some examples. The <a href="/logos.zip">full set</a> has more color options.</p>
+        <p>Below are some examples. The <a href="/logos.zip" @click="trackLogosDownload" download>full set</a> has more color options.</p>
         <ul class="logo-list">
           <li class="logo-item">
-            <a class="button" href="/logos.zip">Download all logos (.zip)</a>
+            <a 
+              class="button"
+              href="/logos.zip"
+              @click="trackLogosDownload"
+              download>Download all logos (.zip)</a>
           </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="140" src="~/assets/images/press/logo-reverse.png"/>
-            </a>
-          </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="140" src="~/assets/images/press/logo.png"/>
-            </a>
-          </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="50" src="~/assets/images/press/monogram.png"/>
-            </a>
-          </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="50" src="~/assets/images/press/rounded_outlined.png"/>
-            </a>
-          </li>
-          <li class="logo-item">
-            <a href="/logos.zip">
-              <img width="50" src="~/assets/images/press/rounded_square.png"/>
+          <li
+            v-for="(logo, index) in logos"
+            :key="index"
+            class="logo-item">
+            <a
+              href="/logos.zip"
+              @click="trackLogosDownload"
+              download>
+              <img :width="logo.width" :src="require(`~/assets/images/press/${logo.url}`)"/>
             </a>
           </li>
         </ul>
@@ -42,10 +32,43 @@
 
 <script>
 import LayoutMain from '~/components/LayoutMain'
+import { trackLogosDownload } from '~/helpers/mixpanel'
 
 export default {
   components: {
     LayoutMain
+  },
+  data () {
+    return {
+      logos: [
+        {
+          width: '140',
+          url: 'logo-reverse.png'
+        },
+        {
+          width: '140',
+          url: 'logo.png'
+        },
+        {
+          width: '50',
+          url: 'monogram.png'
+        },
+        {
+          width: '50',
+          url: 'rounded-outlined.png'
+        },
+        {
+          width: '50',
+          url: 'rounded-square.png'
+        }
+      ]
+    }
+  },
+  methods: {
+    trackLogosDownload () {
+      const action = trackLogosDownload()
+      this.$mixpanel.track(action.name, action.data)
+    }
   }
 }
 </script>

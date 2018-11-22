@@ -532,6 +532,18 @@ export const trackListRemove = function (dapp) {
   return action
 }
 
+export const trackLogosDownload = function () {
+  let name = 'Logos Download'
+  let data = {}
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackMenu = function (sourcePath, targetMenuItem) {
   let name = 'Menu'
   let data = {
