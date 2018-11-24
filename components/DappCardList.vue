@@ -1,10 +1,11 @@
 <template>
-<ul class="component-DappCardList">
-  <DappCardListItem v-for="(dapp, index) in dapps"
-    :key="index"
-    :dapp="dapp"
-    :sourceCollection="sourceCollection"/>
-</ul>
+  <ul class="component-DappCardList">
+    <DappCardListItem 
+      v-for="(dapp, index) in dapps"
+      :key="index"
+      :dapp="dapp"
+      :source-collection="sourceCollection"/>
+  </ul>
 </template>
 
 <script>

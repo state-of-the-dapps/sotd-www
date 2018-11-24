@@ -2,8 +2,8 @@
   <div>
     <nuxt-link
       :class="platform.toLowerCase() === $route.params.platform ? 'is-selected' : ''"
-      class="value"
       :to="{name: 'rankings-platform', params: { platform: platform.toLowerCase() }}"
+      class="value"
       @click.native="trackRankingPlatform(platform)">{{ platform }}</nuxt-link>
   </div>
 </template>

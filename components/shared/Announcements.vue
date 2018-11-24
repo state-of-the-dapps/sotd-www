@@ -1,12 +1,26 @@
 <template>
   <transition name="fade">
-    <section v-if="Object.keys(item).length > 0 && isActive" class="section -announcement">
+    <section 
+      v-if="Object.keys(item).length > 0 && isActive" 
+      class="section -announcement">
       <div class="container">
         <span class="message">
-          {{ item.text }}<span v-if="item.link.url && item.link.text"> &nbsp; | &nbsp; <a  @click="$mixpanel.track('Announcement - Website', { url: item.link.url })" :href="item.link.url" class="link" target="_blank" rel="noopener noreferrer">{{ item.link.text }}</a></span>
+          {{ item.text }}<span v-if="item.link.url && item.link.text"> &nbsp; | &nbsp; <a 
+            :href="item.link.url" 
+            class="link" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            @click="$mixpanel.track('Announcement - Website', { url: item.link.url })">{{ item.link.text }}</a></span>
         </span>
       </div>
-      <a href="#" class="close"><img src="~/assets/images/close/small-light.png" @click.prevent="hide" class="close-image" width="9" alt="Close"></a>
+      <a 
+        href="#" 
+        class="close"><img 
+          src="~/assets/images/close/small-light.png" 
+          class="close-image" 
+          width="9" 
+          alt="Close" 
+          @click.prevent="hide"></a>
     </section>
   </transition>
 </template>
@@ -21,15 +35,15 @@
         return this.$store.getters['announcements/item']
       }
     },
+    mounted () {
+      this.$store.dispatch('announcements/fetchItem')
+    },
     methods: {
       hide () {
         this.$mixpanel.track('Announcements - Hide')
         this.$store.dispatch('announcements/hide')
       }
     },
-    mounted () {
-      this.$store.dispatch('announcements/fetchItem')
-    }
   }
 </script>
 

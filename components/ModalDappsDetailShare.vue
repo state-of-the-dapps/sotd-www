@@ -2,13 +2,20 @@
   <div class="component-ModalDappsDetailShare">
     <h1 class="title-1">Share {{ modalProps.dapp }} with a friend</h1>
     <p class="message">{{ modalProps.path }}</p>
-    <p class="cta-wrapper"><button class="cta" @click="close">I've copied this link!</button></p>
+    <p class="cta-wrapper"><button 
+      class="cta" 
+      @click="close">I've copied this link!</button></p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['modalProps'],
+  props: {
+    modalProps: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     close () {
       const modal = {

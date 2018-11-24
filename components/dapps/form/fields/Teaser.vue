@@ -1,16 +1,34 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-      <textarea class="text-area" maxlength="50" :class="teaser.length > 0 ? '--is-filled' : ''" type="text" v-model="teaser" @input="validate"></textarea>
-      <label class="label">Tagline <span class="required">(required)</span></label>
-      <span class="remaining-characters">{{ 50 - teaser.length }}</span>
-      <ul v-if="warnings && warnings.length > 0" class="warning-list">
-        <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
-      </ul>
-      <ul v-if="errors && errors.length > 0" class="error-list">
-        <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
-      </ul>
-      <p class="help">A 5-7 word description of your ÐApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
-    </div>
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <textarea 
+      :class="teaser.length > 0 ? '--is-filled' : ''" 
+      v-model="teaser" 
+      class="text-area" 
+      maxlength="50" 
+      type="text" 
+      @input="validate"/>
+    <label class="label">Tagline <span class="required">(required)</span></label>
+    <span class="remaining-characters">{{ 50 - teaser.length }}</span>
+    <ul 
+      v-if="warnings && warnings.length > 0" 
+      class="warning-list">
+      <li 
+        v-for="(warning, index) in warnings" 
+        :key="index" 
+        class="warning-item">{{ warning }}</li>
+    </ul>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
+    </ul>
+    <p class="help">A 5-7 word description of your ÐApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
+  </div>
 </template>
 
 <script>
@@ -19,6 +37,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors, dispatchWarnings],
     computed: {
       errors () {
         return this.$store.getters['dapps/form/teaserErrors']
@@ -81,6 +100,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors, dispatchWarnings]
   }
 </script>

@@ -13,14 +13,6 @@
   import StatusDropdown from '~/components/dapps/search/countRefine/StatusDropdown.vue'
 
   export default {
-    beforeDestroy () {
-      if (this.tabDropdownIsActive === true) {
-        this.toggle('categories')
-      }
-      if (this.statusDropdownIsActive === true) {
-        this.toggle('refine')
-      }
-    },
     components: {
       TabDropdown,
       StatusDropdown
@@ -43,6 +35,14 @@
       },
       pagerTotalCount () {
         return this.$store.getters['dapps/search/pagerTotalCount']
+      }
+    },
+    beforeDestroy () {
+      if (this.tabDropdownIsActive === true) {
+        this.toggle('categories')
+      }
+      if (this.statusDropdownIsActive === true) {
+        this.toggle('refine')
       }
     },
     methods: {

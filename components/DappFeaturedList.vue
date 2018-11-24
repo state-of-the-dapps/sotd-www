@@ -1,29 +1,42 @@
 <template>
-<div class="component-DappFeaturedList">
-  <div class="wrapper">
-    <h2 class="title-2">
-      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="header-cta" @click.native="trackCollectionView('featured')">
-        <SvgIconFeatured/>Featured ÐApps
-      </nuxt-link>
-      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all
-        <SvgIconChevron :width="8" :height="8" direction="right" />
-      </nuxt-link>
-      <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
-    </h2>
-    <div class="featured-wrapper">
-      <div class="featured-list-wrapper">
-        <ul class="featured-list">
-          <DappFeaturedListItem v-for="(dapp, index) in dapps"
-            :key="index"
-            :dapp="dapp"
-            :index="index"
-            :hasPromotedDapp="hasPromotedDapp"
-          />
-        </ul>
+  <div class="component-DappFeaturedList">
+    <div class="wrapper">
+      <h2 class="title-2">
+        <nuxt-link 
+          :to="{ name: 'collections-slug', params: { slug: 'featured' }}" 
+          class="header-cta" 
+          @click.native="trackCollectionView('featured')">
+          <SvgIconFeatured/>Featured ÐApps
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'collections-slug', params: { slug: 'featured' }}" 
+          class="cta" 
+          @click.native="trackCollectionView('featured')">View all
+          <SvgIconChevron 
+            :width="8" 
+            :height="8" 
+            direction="right" />
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'promoted-dapps' }" 
+          class="cta -promote" 
+          @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
+      </h2>
+      <div class="featured-wrapper">
+        <div class="featured-list-wrapper">
+          <ul class="featured-list">
+            <DappFeaturedListItem 
+              v-for="(dapp, index) in dapps"
+              :key="index"
+              :dapp="dapp"
+              :index="index"
+              :has-promoted-dapp="hasPromotedDapp"
+            />
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -40,11 +53,6 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  computed: {
-    userEntryRoute () {
-      return this.$store.getters['userEntryRoute']
-    }
-  },
   data () {
     return {
       scrollIndex: 0,
@@ -53,23 +61,9 @@ export default {
       sourcePath: this.$route.path
     }
   },
-  methods: {
-    getFeaturedDapps () {
-      return axios.get('collections/featured')
-    },
-    getPromotedDapps () {
-      return axios.get('promoted/dapps')
-    },
-    trackCollectionView (slug) {
-      const sourceComponent = 'DappFeaturedList'
-      const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    trackPromotedDappsView () {
-      const sourceComponent = 'DappFeaturedList'
-      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
-      this.$mixpanel.track(action.name, action.data)
+  computed: {
+    userEntryRoute () {
+      return this.$store.getters['userEntryRoute']
     }
   },
   mounted () {
@@ -91,7 +85,26 @@ export default {
           this.hasPromotedDapp = true
         }
       })
-  }
+  },
+  methods: {
+    getFeaturedDapps () {
+      return axios.get('collections/featured')
+    },
+    getPromotedDapps () {
+      return axios.get('promoted/dapps')
+    },
+    trackCollectionView (slug) {
+      const sourceComponent = 'DappFeaturedList'
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackPromotedDappsView () {
+      const sourceComponent = 'DappFeaturedList'
+      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
 }
 </script>
 

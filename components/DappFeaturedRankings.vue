@@ -1,22 +1,34 @@
 <template>
-<div class="component-DappFeaturedList">
-  <div class="wrapper">
-    <h2 class="title-2">
-      <nuxt-link :to="{ name: 'rankings' }" class="header-cta" @click.native="trackDappRankingCategory('all')">
-        <img src="~/assets/images/icons/categories.png" width="16" class="icon"/>Rankings by Popular Categories
-      </nuxt-link>
-      <nuxt-link :to="{ name: 'rankings' }" class="cta" @click.native="trackDappRankingCategory('all')">View all
-        <SvgIconChevron :width="8" :height="8" direction="right" />
-      </nuxt-link>
-    </h2>
-    <div class="categories">
-      <DappFeaturedRankingCategory
-        v-for="(category, index) in categories"
-        :key="index"
-        :category="category"/>
+  <div class="component-DappFeaturedList">
+    <div class="wrapper">
+      <h2 class="title-2">
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="header-cta" 
+          @click.native="trackDappRankingCategory('all')">
+          <img 
+            src="~/assets/images/icons/categories.png" 
+            width="16" 
+            class="icon">Rankings by Popular Categories
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="cta" 
+          @click.native="trackDappRankingCategory('all')">View all
+          <SvgIconChevron 
+            :width="8" 
+            :height="8" 
+            direction="right" />
+        </nuxt-link>
+      </h2>
+      <div class="categories">
+        <DappFeaturedRankingCategory
+          v-for="(category, index) in categories"
+          :key="index"
+          :category="category"/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -40,13 +52,6 @@ export default {
       sourcePath: this.$route.path
     }
   },
-  methods: {
-    trackDappRankingCategory (category) {
-      const sourceComponent = 'DappFeaturedRankings'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
-      this.$mixpanel.track(action.name, action.data)
-    }
-  },
   mounted () {
     axios
       .get('categories')
@@ -61,7 +66,14 @@ export default {
         }
         this.categories = categories
       })
-  }
+  },
+  methods: {
+    trackDappRankingCategory (category) {
+      const sourceComponent = 'DappFeaturedRankings'
+      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
 }
 </script>
 

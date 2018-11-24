@@ -1,13 +1,13 @@
 <template>
-<LayoutHome>
-  <div class="page-home">
-    <HomeHero/>
-    <DappFeaturedList/>
-    <DappFeaturedPlatforms/>
-    <DappFeaturedRankings/>
-    <HomeFeaturedCollections/>
-  </div>
-</LayoutHome>
+  <LayoutHome>
+    <div class="page-home">
+      <HomeHero/>
+      <DappFeaturedList/>
+      <DappFeaturedPlatforms/>
+      <DappFeaturedRankings/>
+      <HomeFeaturedCollections/>
+    </div>
+  </LayoutHome>
 </template>
 
 <script>

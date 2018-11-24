@@ -1,15 +1,25 @@
 <template>
-<div class="component-DappCollectionList">
-  <h3 class="title-3">
-    <nuxt-link class="link" :to="{ name: 'collections-slug', params: { slug: collection.slug } }" @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron :width="8" :height="8" direction="right" /></span></nuxt-link>
-  </h3>
-  <media :query="{minWidth: 1250}">
-    <DappCardList :dapps="dapps.slice(0,4)" :sourceCollection="collection.slug" />
-  </media>
-  <media :query="{maxWidth: 1250}">
-    <DappCardList :dapps="dapps" :sourceCollection="collection.slug" />
-  </media>
-</div>
+  <div class="component-DappCollectionList">
+    <h3 class="title-3">
+      <nuxt-link 
+        :to="{ name: 'collections-slug', params: { slug: collection.slug } }" 
+        class="link" 
+        @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron 
+          :width="8" 
+          :height="8" 
+          direction="right" /></span></nuxt-link>
+    </h3>
+    <media :query="{minWidth: 1250}">
+      <DappCardList 
+        :dapps="dapps.slice(0,4)" 
+        :source-collection="collection.slug" />
+    </media>
+    <media :query="{maxWidth: 1250}">
+      <DappCardList 
+        :dapps="dapps" 
+        :source-collection="collection.slug" />
+    </media>
+  </div>
 </template>
 
 <script>
@@ -25,18 +35,16 @@ export default {
     Media,
     SvgIconChevron
   },
+  props: {
+    collection: {
+      required: true,
+      type: Object
+    }
+  },
   data () {
     return {
       dapps: [],
       sourcePath: this.$route.path
-    }
-  },
-  methods: {
-    trackCollectionView (slug) {
-      const sourceComponent = 'DappCollectionList'
-      const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
-      this.$mixpanel.track(action.name, action.data)
     }
   },
   mounted () {
@@ -48,12 +56,14 @@ export default {
         this.dapps = dapps.slice(0, 6)
       })
   },
-  props: {
-    collection: {
-      required: true,
-      type: Object
+  methods: {
+    trackCollectionView (slug) {
+      const sourceComponent = 'DappCollectionList'
+      const targetCollection = slug
+      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      this.$mixpanel.track(action.name, action.data)
     }
-  }
+  },
 }
 </script>
 

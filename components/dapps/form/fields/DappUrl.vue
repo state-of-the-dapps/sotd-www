@@ -1,13 +1,26 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-      <input class="text-input" :class="url.length > 0 ? '--is-filled' : ''" type="text" maxlength="255" v-model="url" @input="validate">
-      <label class="label">ÐApp URL<span class="required"></span></label>
-      <span class="remaining-characters">{{ 255 - url.length }}</span>
-      <ul v-if="errors && errors.length > 0" class="error-list">
-        <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
-      </ul>
-      <p class="help">A URL that will launch this ÐApp directly</p>
-    </div>
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <input 
+      :class="url.length > 0 ? '--is-filled' : ''" 
+      v-model="url" 
+      class="text-input" 
+      type="text" 
+      maxlength="255" 
+      @input="validate">
+    <label class="label">ÐApp URL<span class="required"/></label>
+    <span class="remaining-characters">{{ 255 - url.length }}</span>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
+    </ul>
+    <p class="help">A URL that will launch this ÐApp directly</p>
+  </div>
 </template>
 
 <script>
@@ -16,6 +29,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors],
     computed: {
       errors () {
         return this.$store.getters['dapps/form/dappUrlErrors']
@@ -46,6 +60,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
   }
 </script>

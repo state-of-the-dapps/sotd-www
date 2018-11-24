@@ -1,7 +1,7 @@
 <template>
-<div class="component-DappDetailBodyContentModulesStatus">
-  Status: <strong>{{ status | capitalize }}</strong>
-</div>
+  <div class="component-DappDetailBodyContentModulesStatus">
+    Status: <strong>{{ status | capitalize }}</strong>
+  </div>
 </template>
 
 <script>

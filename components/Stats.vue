@@ -51,11 +51,15 @@
             <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
               <span>Monthly active users</span>
-              <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Transactions (30d)</span>
-              <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Number of transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading"># of contracts</th>
           </tr>
@@ -74,8 +78,8 @@
                 class="table-link">{{ category.category }}</nuxt-link>
             </td>
             <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
-            <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0 }}</td>
             <td class="table-data">{{ category.dappContractCount | abbreviateNumber(2) || 0 }}</td>
           </tr>
         </tbody>
@@ -90,15 +94,21 @@
             <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
               <span>Daily active users</span>
-              <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Transactions (24hr)</span>
-              <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Number of transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Volume (24hr)</span>
-              <Help text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly"/>
             </th>
             <th class="table-heading"># of contracts</th>
           </tr>
@@ -117,9 +127,9 @@
                 class="table-link">{{ platform.platform }}</nuxt-link>
             </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
-            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0 }}</td>
             <td class="table-data">{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</td>
           </tr>
         </tbody>
@@ -246,6 +256,10 @@ function totalDapps () {
 }
 
 export default {
+  components: {
+    Help,
+    StatsStatusBarChart
+  },
   data () {
     return {
       newVsTotalData: {
@@ -273,10 +287,6 @@ export default {
       }
     }
   },
-  components: {
-    Help,
-    StatsStatusBarChart
-  },
   computed: {
     ...mapGetters([
       'statCategories',
@@ -288,6 +298,9 @@ export default {
       'statPlatforms',
       'statStatuses'
     ])
+  },
+  mounted () {
+    this.createChart('new-vs-total', this.newVsTotalData)
   },
   methods: {
     createChart (chartId, chartData) {
@@ -345,9 +358,6 @@ export default {
       })
     }
   },
-  mounted () {
-    this.createChart('new-vs-total', this.newVsTotalData)
-  }
 }
 </script>
 

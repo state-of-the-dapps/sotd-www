@@ -1,7 +1,9 @@
 <template>
   <div class="component-DappDetailBodyContentImage">
     <div class="wrapper">
-      <img class="image" :src="productImage">
+      <img 
+        :src="productImage" 
+        class="image">
     </div>
   </div>
 </template>

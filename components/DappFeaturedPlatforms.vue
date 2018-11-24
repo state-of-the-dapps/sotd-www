@@ -1,22 +1,34 @@
 <template>
-<div class="component-DappFeaturedList">
-  <div class="wrapper">
-    <h2 class="title-2">
-      <nuxt-link :to="{ name: 'rankings' }" class="header-cta" @click.native="trackDappRankingPlatform('all')">
-        <img src="~/assets/images/icons/platforms.png" width="16" class="icon"/>Rankings by Platform
-      </nuxt-link>
-      <nuxt-link :to="{ name: 'rankings' }" class="cta" @click.native="trackDappRankingPlatform('all')">View all
-        <SvgIconChevron :width="8" :height="8" direction="right" />
-      </nuxt-link>
-    </h2>
-    <div class="platforms">
-      <DappFeaturedRankingPlatform
-        v-for="(platform, index) in platforms"
-        :key="index"
-        :platform="platform"/>
+  <div class="component-DappFeaturedList">
+    <div class="wrapper">
+      <h2 class="title-2">
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="header-cta" 
+          @click.native="trackDappRankingPlatform('all')">
+          <img 
+            src="~/assets/images/icons/platforms.png" 
+            width="16" 
+            class="icon">Rankings by Platform
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="cta" 
+          @click.native="trackDappRankingPlatform('all')">View all
+          <SvgIconChevron 
+            :width="8" 
+            :height="8" 
+            direction="right" />
+        </nuxt-link>
+      </h2>
+      <div class="platforms">
+        <DappFeaturedRankingPlatform
+          v-for="(platform, index) in platforms"
+          :key="index"
+          :platform="platform"/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

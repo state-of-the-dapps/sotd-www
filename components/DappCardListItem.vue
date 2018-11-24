@@ -1,18 +1,36 @@
 <template>
-  <li class="component-DappCardListItem" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
-    <nuxt-link class="link" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" @click.native="trackDappView(dapp.slug)">
-      <div :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" class="dapp-icon-wrapper">
-        <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
-        <span v-else class="dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+  <li 
+    :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+    class="component-DappCardListItem">
+    <nuxt-link 
+      :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+      class="link" 
+      @click.native="trackDappView(dapp.slug)">
+      <div 
+        :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+        class="dapp-icon-wrapper">
+        <img 
+          v-if="dapp.iconUrl" 
+          :src="dapp.iconUrl" 
+          class="dapp-icon" 
+          width="32" 
+          height="32">
+        <span 
+          v-else 
+          class="dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
       </div>
       <div class="info-wrapper">
         <h4 class="title-4">{{ dapp.name }}</h4>
         <p class="description">{{ dapp.teaser }}</p>
       </div>
-      <div class="meta" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
+      <div 
+        :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+        class="meta">
         <span class="category">{{ dapp.categories.length ? dapp.categories[0] : '' }}</span>
       </div>
-      <span v-if="dapp.isNew" class="new">
+      <span 
+        v-if="dapp.isNew" 
+        class="new">
         New
       </span>
     </nuxt-link>
@@ -24,21 +42,8 @@ import { trackDappView } from '~/helpers/mixpanel'
 import DappBadgeList from './DappBadgeList'
 
 export default {
-  data () {
-    return {
-      sourcePath: this.$route.path
-    }
-  },
   components: {
     DappBadgeList
-  },
-  methods: {
-    trackDappView (targetDapp) {
-      const sourceCollection = this.sourceCollection
-      const sourceComponent = 'DappCardListItem'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
-      this.$mixpanel.track(action.name, action.data)
-    }
   },
   props: {
     dapp: {
@@ -48,7 +53,20 @@ export default {
     sourceCollection: {
       type: String
     }
-  }
+  },
+  data () {
+    return {
+      sourcePath: this.$route.path
+    }
+  },
+  methods: {
+    trackDappView (targetDapp) {
+      const sourceCollection = this.sourceCollection
+      const sourceComponent = 'DappCardListItem'
+      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
 }
 </script>
 

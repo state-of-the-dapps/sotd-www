@@ -1,25 +1,27 @@
 <template>
-<div class="component-DappDetailBodyContentModulesDev">
-  <div class="wrapper">
-    <div class="field -title">
-      <h4 class="dev-title">Development activity<Help text="Code pushes, issues, pull requests, etc."/></h4>
-    </div>
-    <div class="field -data">
-      <p class="dev-data">{{ dev30d }} events<span v-if="dev30dPct" :class="getDappStatsClass(dev30dPct)" class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
-      <p class="dev-data">{{ dev90d }} events (90d)</p>
-      <div class="sparkline">
-        <trend
-          :data="sparkline"
-          :gradient="['#333']"
-          :stroke-width="1.75"
-          :padding="4"
-          auto-draw
-          smooth>
-        </trend>
+  <div class="component-DappDetailBodyContentModulesDev">
+    <div class="wrapper">
+      <div class="field -title">
+        <h4 class="dev-title">Development activity<Help text="Code pushes, issues, pull requests, etc."/></h4>
+      </div>
+      <div class="field -data">
+        <p class="dev-data">{{ dev30d }} events<span 
+          v-if="dev30dPct" 
+          :class="getDappStatsClass(dev30dPct)" 
+          class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
+        <p class="dev-data">{{ dev90d }} events (90d)</p>
+        <div class="sparkline">
+          <trend
+            :data="sparkline"
+            :gradient="['#333']"
+            :stroke-width="1.75"
+            :padding="4"
+            auto-draw
+            smooth/>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

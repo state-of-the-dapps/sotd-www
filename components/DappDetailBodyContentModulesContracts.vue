@@ -1,50 +1,50 @@
 <template>
-<div class="component-DappDetailBodyContentModulesContracts">
-  <ul class="contract-list">
-    <DappDetailBodyContentModulesContractsItem
-      v-if="mainnet.length"
-      :addresses="mainnet"
-      platform="Ethereum"
-      network="mainnet"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="kovan.length"
-      :addresses="kovan"
-      platform="Ethereum"
-      network="kovan"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="rinkeby.length"
-      :addresses="rinkeby"
-      platform="Ethereum"
-      network="rinkeby"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="ropsten.length"
-      :addresses="ropsten"
-      platform="Ethereum"
-      network="ropsten"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="poaMainnet.length"
-      :addresses="poaMainnet"
-      platform="POA"
-      network="mainnet"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="poaTestnet.length"
-      :addresses="poaTestnet"
-      platform="POA"
-      network="Sokol Testnet"
-      :slug="slug"/>
-    <DappDetailBodyContentModulesContractsItem
-      v-if="eosMainnet.length"
-      :addresses="eosMainnet"
-      platform="EOS"
-      network="mainnet"
-      :slug="slug"/>
-  </ul>
-</div>
+  <div class="component-DappDetailBodyContentModulesContracts">
+    <ul class="contract-list">
+      <DappDetailBodyContentModulesContractsItem
+        v-if="mainnet.length"
+        :addresses="mainnet"
+        :slug="slug"
+        platform="Ethereum"
+        network="mainnet"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="kovan.length"
+        :addresses="kovan"
+        :slug="slug"
+        platform="Ethereum"
+        network="kovan"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="rinkeby.length"
+        :addresses="rinkeby"
+        :slug="slug"
+        platform="Ethereum"
+        network="rinkeby"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="ropsten.length"
+        :addresses="ropsten"
+        :slug="slug"
+        platform="Ethereum"
+        network="ropsten"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="poaMainnet.length"
+        :addresses="poaMainnet"
+        :slug="slug"
+        platform="POA"
+        network="mainnet"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="poaTestnet.length"
+        :addresses="poaTestnet"
+        :slug="slug"
+        platform="POA"
+        network="Sokol Testnet"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="eosMainnet.length"
+        :addresses="eosMainnet"
+        :slug="slug"
+        platform="EOS"
+        network="mainnet"/>
+    </ul>
+  </div>
 </template>
 
 <script>

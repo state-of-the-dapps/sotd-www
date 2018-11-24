@@ -1,12 +1,12 @@
 <template>
-<div class="component-HomeHero">
-  <div class="wrapper">
-    <Menu color="white" />
-    <div class="hero-wrapper">
-      <HomeHeroContent/>
+  <div class="component-HomeHero">
+    <div class="wrapper">
+      <Menu color="white" />
+      <div class="hero-wrapper">
+        <HomeHeroContent/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

@@ -16,7 +16,9 @@
         :platform="platform"
         :network="network"
         :address="address"/>
-      <li v-if="addresses.length > 10"><span class="show-hide" @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' contracts'  : 'Show ' + this.addresses.slice(visibleLimit).length + ' more contracts'}}</span></li>     
+      <li v-if="addresses.length > 10"><span 
+        class="show-hide" 
+        @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' contracts' : 'Show ' + this.addresses.slice(visibleLimit).length + ' more contracts' }}</span></li>     
     </ul>
   </li>
 </template>
@@ -27,6 +29,20 @@ import DappDetailBodyContentModulesContractsAddress from './DappDetailBodyConten
 export default {
   components: {
     DappDetailBodyContentModulesContractsAddress
+  },
+  props: {
+    addresses: {
+      required: true
+    },
+    network: {
+      required: true
+    },
+    platform: {
+      required: true
+    },
+    slug: {
+      required: true
+    }
   },
   data () {
     return {
@@ -42,20 +58,6 @@ export default {
     hiddenAddresses () {
       const addresses = this.hiddenIsVisible ? this.addresses.slice(this.visibleLimit) : []
       return addresses
-    }
-  },
-  props: {
-    addresses: {
-      required: true
-    },
-    network: {
-      required: true
-    },
-    platform: {
-      required: true
-    },
-    slug: {
-      required: true
     }
   },
   methods: {

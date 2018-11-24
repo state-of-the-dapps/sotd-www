@@ -1,54 +1,126 @@
 <template>
   <LayoutMain>
-    <div class="page-dapp-detail-edit" ref="page">
+    <div 
+      ref="page" 
+      class="page-dapp-detail-edit">
       <div class="hero-wrapper">
         <p style="text-align: center;">Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link></p>
       </div>
-      <div v-if="!submitted" class="step-1">
+      <div 
+        v-if="!submitted" 
+        class="step-1">
         <h1 class="title-1">Request a change to {{ dapp.name }}</h1>
         <div class="fields">
           <h3 class="title-3">Your name <span class="required">required</span></h3>
-          <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="name"/></div>
+          <div class="field"><input 
+            v-model="name" 
+            class="input-text" 
+            placeholder="Enter your name here" 
+            type="text"></div>
           <h3 class="title-3">Your email <span class="required">required</span></h3>
-          <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
+          <div class="field"><input 
+            v-model="email" 
+            class="input-text" 
+            placeholder="Enter your email here" 
+            type="text" 
+            @input="validateEmail"></div>
           <h3 class="title-3">I want to...</h3>
           <div class="checkboxes">
             <div class="checkbox-field">
-              <input class="checkbox-input" id="status" value="Status" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="status">Update the status</label>
+              <input 
+                id="status" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Status" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="status">Update the status</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="other" value="Other" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="other">Update the description/author/other text</label>
+              <input 
+                id="other" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Other" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="other">Update the description/author/other text</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="links" value="Links" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="links">Report broken/missing link(s)</label>
+              <input 
+                id="links" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Links" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="links">Report broken/missing link(s)</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="tags" value="Tags" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="tags">Report incorrect tags</label>
+              <input 
+                id="tags" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Tags" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="tags">Report incorrect tags</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="contracts" value="Contracts" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="contracts">Add / update contract addresses</label>
+              <input 
+                id="contracts" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Contracts" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="contracts">Add / update contract addresses</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="image" value="Image" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="image">Add logo / icon / image URLs (<a href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" target="_blank">view image guidelines here</a>)</label>
+              <input 
+                id="image" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Image" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="image">Add logo / icon / image URLs (<a 
+                  href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" 
+                  target="_blank">view image guidelines here</a>)</label>
             </div>
             <div class="checkbox-field">
-              <input class="checkbox-input" id="flag" value="Flag" type="checkbox" v-model="checkedActions">
-              <label class="checkbox-label" for="flag">Flag this DApp as inappropriate</label>
+              <input 
+                id="flag" 
+                v-model="checkedActions" 
+                class="checkbox-input" 
+                value="Flag" 
+                type="checkbox">
+              <label 
+                class="checkbox-label" 
+                for="flag">Flag this DApp as inappropriate</label>
             </div>
           </div>
           <br>
           <h3 class="title-3">Tell us what should be changed on {{ dapp.name }}  <span class="required">required</span></h3>
-          <div class="field"><textarea class="input-textarea" placeholder="Enter your suggestions here" v-model="suggestions"/></div>
-          <p class="cta-wrapper"><button :class="formIsValid ? '' : 'not-ready'" class="cta" @click="submit">Submit</button></p>
+          <div class="field"><textarea 
+            v-model="suggestions" 
+            class="input-textarea" 
+            placeholder="Enter your suggestions here"/></div>
+          <p class="cta-wrapper"><button 
+            :class="formIsValid ? '' : 'not-ready'" 
+            class="cta" 
+            @click="submit">Submit</button></p>
         </div>
       </div>
-      <div v-if="submitted " class="step-2">
+      <div 
+        v-if="submitted " 
+        class="step-2">
         <h1 class="title-1">Thanks!</h1>
         <p class="message">We will review the changes and be in touch if we have any questions.</p>
       </div>
@@ -65,6 +137,10 @@ import { validateEmail } from '~/helpers/mixins'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
+  components: {
+    LayoutMain
+  },
+  mixins: [validateEmail],
   data () {
     return {
       checkedActions: [],
@@ -131,7 +207,6 @@ export default {
       }
     }
   },
-  mixins: [validateEmail],
   head () {
     return {
       title: this.dapp.name + ' — State of the ÐApps',
@@ -142,9 +217,6 @@ export default {
       ]
     }
   },
-  components: {
-    LayoutMain
-  }
 }
 </script>
 

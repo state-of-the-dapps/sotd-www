@@ -1,11 +1,11 @@
 <template>
-<LayoutMain>
-  <div class="page-promoted-dapps">
-    <PromotedDapps
-      :description="description"
-    />
-  </div>
-</LayoutMain>
+  <LayoutMain>
+    <div class="page-promoted-dapps">
+      <PromotedDapps
+        :description="description"
+      />
+    </div>
+  </LayoutMain>
 </template>
 
 <script>

@@ -6,8 +6,8 @@
         category.toLowerCase() === $route.params.category ? 'is-selected' : '',
         '-' + category
       ]"
-      class="value"
       :to="{name: 'rankings-category', params: { category: category.toLowerCase() }}"
+      class="value"
       @click.native="trackRankingCategory(category)">{{ category | capitalize }}</nuxt-link>
   </div>
 </template>

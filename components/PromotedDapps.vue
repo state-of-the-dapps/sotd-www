@@ -1,33 +1,71 @@
 <template>
-<div class="component-PropmotedDapps">
-  <div class="wrapper">
-    <h1 class="title-1">Promote your ÐApp to attract more users</h1>
-    <p class="description">{{ description }}</p>
-    <div class="get-started-wrapper"><button class="get-started" @click="getStarted">Get started</button></div>
-  </div>
-  <div class="preview-wrapper">
-    <img class="preview" src="~/assets/images/promoted-preview.jpg" width="1200">
-  </div>
-  <div class="wrapper">
-    <h2 class="title-2" ref="getStartedEl">Get started now!</h2>
-    <div class="fields">
-      <div><input class="input" v-model="name" ref="name" type="text" placeholder="Your name"></div>
-      <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>
-      <div><input class="input" v-model="country" type="text" placeholder="Your country"></div>   
-      <div><input class="input" v-model="dapp" type="text" placeholder="Your ÐApp's name"></div>  
-      <div><input class="input" v-model="budget" type="text" placeholder="Daily budget (USD)"></div>
-      <div class="submitted-wrapper">
-        Is this ÐApp already listed on this website?
-        <p>
-          <button class="selection" :class="hasSubmittedDapp == 'yes' ? '--active' : ''" @click="selectSubmittedDapp('yes')">Yes</button>
-          <button class="selection" :class="hasSubmittedDapp == 'no' ? '--active' : ''" @click="selectSubmittedDapp('no')">No</button>
-        </p>
-      </div>
+  <div class="component-PropmotedDapps">
+    <div class="wrapper">
+      <h1 class="title-1">Promote your ÐApp to attract more users</h1>
+      <p class="description">{{ description }}</p>
+      <div class="get-started-wrapper"><button 
+        class="get-started" 
+        @click="getStarted">Get started</button></div>
     </div>
-    <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
-    <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
+    <div class="preview-wrapper">
+      <img 
+        class="preview" 
+        src="~/assets/images/promoted-preview.jpg" 
+        width="1200">
+    </div>
+    <div class="wrapper">
+      <h2 
+        ref="getStartedEl" 
+        class="title-2">Get started now!</h2>
+      <div class="fields">
+        <div><input 
+          ref="name" 
+          v-model="name" 
+          class="input" 
+          type="text" 
+          placeholder="Your name"></div>
+        <div><input 
+          v-model="email" 
+          class="input" 
+          type="text" 
+          placeholder="Your email" 
+          @input="validateEmail"></div>
+        <div><input 
+          v-model="country" 
+          class="input" 
+          type="text" 
+          placeholder="Your country"></div>   
+        <div><input 
+          v-model="dapp" 
+          class="input" 
+          type="text" 
+          placeholder="Your ÐApp's name"></div>  
+        <div><input 
+          v-model="budget" 
+          class="input" 
+          type="text" 
+          placeholder="Daily budget (USD)"></div>
+        <div class="submitted-wrapper">
+          Is this ÐApp already listed on this website?
+          <p>
+            <button 
+              :class="hasSubmittedDapp == 'yes' ? '--active' : ''" 
+              class="selection" 
+              @click="selectSubmittedDapp('yes')">Yes</button>
+            <button 
+              :class="hasSubmittedDapp == 'no' ? '--active' : ''" 
+              class="selection" 
+              @click="selectSubmittedDapp('no')">No</button>
+          </p>
+        </div>
+      </div>
+      <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
+      <div class="send-wrapper"><button 
+        :class="formIsValid ? '--is-ready' : ''" 
+        class="send" 
+        @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -41,11 +79,14 @@ export default {
   components: {
     PromotedDapps
   },
+  mixins: [validateEmail],
   props: {
     description: {
+      type: String,
       default: ''
     },
     directView: {
+      type: Boolean,
       default: false
     }
   },
@@ -71,6 +112,15 @@ export default {
         isValid = true
       }
       return isValid
+    }
+  },
+  mounted () {
+    this.$store.dispatch('setSiteSection', 'dapps')
+    if (this.directView) {
+      const sourceComponent = ''
+      const sourcePath = ''
+      const action = trackPromotedDappsView(sourceComponent, sourcePath, this.userEntryRoute)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   methods: {
@@ -125,16 +175,6 @@ export default {
             console.log(error)
           })
       }
-    }
-  },
-  mixins: [validateEmail],
-  mounted () {
-    this.$store.dispatch('setSiteSection', 'dapps')
-    if (this.directView) {
-      const sourceComponent = ''
-      const sourcePath = ''
-      const action = trackPromotedDappsView(sourceComponent, sourcePath, this.userEntryRoute)
-      this.$mixpanel.track(action.name, action.data)
     }
   }
 }

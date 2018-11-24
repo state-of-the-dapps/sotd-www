@@ -1,11 +1,16 @@
 <template>
-<div class="component-HomeHeroContentIconsItem" :class="'-dapp-' + index + ' ' + loaded" @click="trackHomeHeroDappIcon(index)">
-  <img class="card-icon" :src="imageSrc" />
-  <div :class="'card-info -' + status">
-    <span class="status">{{ status }}</span>
-    <SvgBadgeMetamask/>
-  </div>
-</div>  
+  <div 
+    :class="'-dapp-' + index + ' ' + loaded" 
+    class="component-HomeHeroContentIconsItem" 
+    @click="trackHomeHeroDappIcon(index)">
+    <img 
+      :src="imageSrc" 
+      class="card-icon" >
+    <div :class="'card-info -' + status">
+      <span class="status">{{ status }}</span>
+      <SvgBadgeMetamask/>
+    </div>
+  </div>  
 </template>
 
 <script>
@@ -14,27 +19,37 @@ import { mapGetters } from 'vuex'
 import SvgBadgeMetamask from './SvgBadgeMetamask'
 
 export default {
+  components: {
+    SvgBadgeMetamask
+  },
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    status: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       loaded: '',
       imageSrc: ''
     }
   },
-  destroyed () {
-    this.$store.dispatch('setHeroLoaded')
-  },
-  components: {
-    SvgBadgeMetamask
-  },
   computed: {
     ...mapGetters([
       'heroHasLoaded'
     ])
   },
-  props: [
-    'index',
-    'status'
-  ],
+  destroyed () {
+    this.$store.dispatch('setHeroLoaded')
+  },
+  mounted () {
+    this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
+    this.loadImage(this.index)
+  },
   methods: {
     loadImage (index) {
       var img = new Image()
@@ -49,10 +64,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  mounted () {
-    this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
-    this.loadImage(this.index)
-  }
 }
 </script>
 

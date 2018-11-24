@@ -2,21 +2,20 @@
   <div class="component-Linkexchange">
     <linkexchange-link
       id="linkexchange"
+      :recipient-address="recipientAddress"
+      :whitelist="whitelist"
+      :till-date="tillDate"
       api-url="https://api.userfeeds.io"
       size="rectangle"
       type="text"
-      :recipient-address="recipientAddress"
-      :whitelist="whitelist"
       asset="ethereum"
       widget-title="State of the DApps"
-      :till-date="tillDate"
       description="I accept only links for projects listed on State of the DApps"
       impression="100k unique pageviews per month"
       contact-method="support@stateofthedapps.com"
       open-details="tab"
-      algorithm="links">
-    </linkexchange-link>
-    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"></script>
+      algorithm="links"/>
+    <script src="https://cdn.jsdelivr.net/npm/@linkexchange/widgets@stable"/>
   </div>
 </template>
 

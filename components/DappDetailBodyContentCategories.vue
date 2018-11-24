@@ -1,26 +1,27 @@
 <template>
-<div class="component-DappDetailBodyContentCategories">
-  <div class="wrapper">
-    <h4 class="subtitle">Categories</h4>
-    <ul class="category-list">
-      <li v-for="(category, index) in categories" :key="index" class="category-item">
-        <nuxt-link :to="{name: 'rankings-category', params: {category: category}}" @click.native="trackDappCategory($options.filters.formatCategory(category))" class="category-link" :class="'-' + category">{{ category | formatCategory }}</nuxt-link>
-      </li>
-    </ul>
+  <div class="component-DappDetailBodyContentCategories">
+    <div class="wrapper">
+      <h4 class="subtitle">Categories</h4>
+      <ul class="category-list">
+        <li 
+          v-for="(category, index) in categories" 
+          :key="index" 
+          class="category-item">
+          <nuxt-link 
+            :to="{name: 'rankings-category', params: {category: category}}" 
+            :class="'-' + category" 
+            class="category-link" 
+            @click.native="trackDappCategory($options.filters.formatCategory(category))">{{ category | formatCategory }}</nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import { trackDappCategory } from '~/helpers/mixpanel'
 
 export default {
-  methods: {
-    trackDappCategory (category) {
-      const action = trackDappCategory(category, this.slug)
-      this.$mixpanel.track(action.name, action.data)
-    }
-  },
   props: {
     slug: {
       default: '',
@@ -30,7 +31,13 @@ export default {
       default: () => [],
       required: true
     }
-  }
+  },
+  methods: {
+    trackDappCategory (category) {
+      const action = trackDappCategory(category, this.slug)
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
 }
 </script>
 

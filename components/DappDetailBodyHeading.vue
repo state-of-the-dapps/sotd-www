@@ -1,10 +1,24 @@
 <template>
   <div class="component-DappDetailBodyHeading">
-    <ul class="heading-items" :class="'-' + category">
-      <li class="heading-item" v-if="!direct"><span class="back" @click="$router.go(-1)"><SvgIconChevron :fill="'-' + category" :width="10" :height="10"/></span></li>
+    <ul 
+      :class="'-' + category" 
+      class="heading-items">
+      <li 
+        v-if="!direct" 
+        class="heading-item"><span 
+          class="back" 
+          @click="$router.go(-1)"><SvgIconChevron 
+            :fill="'-' + category" 
+            :width="10" 
+            :height="10"/></span></li>
       <li class="heading-item">
         <h1 class="heading-title">
-          <img v-if="iconUrl" class="dapp-icon" :src="iconUrl" width="30" height="30"><span itemprop="name">{{ name }}</span>
+          <img 
+            v-if="iconUrl" 
+            :src="iconUrl" 
+            class="dapp-icon" 
+            width="30" 
+            height="30"><span itemprop="name">{{ name }}</span>
         </h1>
       </li>
       <li class="heading-item"><span class="heading-tagline">{{ teaser }}</span></li>

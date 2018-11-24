@@ -1,8 +1,8 @@
 <template>
-<div class="component-HomeHeroContent">
-  <HomeHeroContentIcons/>
-  <HomeHeroContentIntro/>
-</div>
+  <div class="component-HomeHeroContent">
+    <HomeHeroContentIcons/>
+    <HomeHeroContentIntro/>
+  </div>
 </template>
 
 <script>

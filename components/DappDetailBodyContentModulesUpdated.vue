@@ -1,7 +1,7 @@
 <template>
-<div class="component-DappDetailBodyContentModulesUpdated">
-  Last updated: <strong>{{ updated | formatDate('MMM Do, YYYY') }}</strong>
-</div>
+  <div class="component-DappDetailBodyContentModulesUpdated">
+    Last updated: <strong>{{ updated | formatDate('MMM Do, YYYY') }}</strong>
+  </div>
 </template>
 
 <script>

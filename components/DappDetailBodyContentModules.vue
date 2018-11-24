@@ -20,45 +20,55 @@
           <DappDetailBodyContentModulesUpdated :updated="dapp.lastUpdated"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-3" v-if="dapp.stats.dev_30d">
+      <div 
+        v-if="dapp.stats.dev_30d" 
+        class="module-wrapper -tier-3">
         <div class="module">
           <DappDetailBodyContentModulesDev
             :dev30d="dapp.stats.dev_30d"
-            :dev30dPct="dapp.stats.dev_30d_pct"
+            :dev30d-pct="dapp.stats.dev_30d_pct"
             :dev90d="dapp.stats.dev_90d"
             :sparkline="dapp.sparklines.gh_events"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-4" v-if="stats">
-        <div class="module -dev" v-if="dapp.stats.mau">
+      <div 
+        v-if="stats" 
+        class="module-wrapper -tier-4">
+        <div 
+          v-if="dapp.stats.mau" 
+          class="module -dev">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.dau"
             :monthly="dapp.stats.mau"
             :sparkline="dapp.sparklines.users"
             :quarterly="dapp.stats.qau"
-            title="Active users"
-            :weekly="dapp.stats.wau"/>
+            :weekly="dapp.stats.wau"
+            title="Active users"/>
         </div>
-        <div class="module" v-if="dapp.stats.tx_30d">
+        <div 
+          v-if="dapp.stats.tx_30d" 
+          class="module">
           <DappDetailBodyContentModulesStats 
             :daily="dapp.stats.tx_1d"
             :monthly="dapp.stats.tx_30d"
             :sparkline="dapp.sparklines.transactions"
             :quarterly="dapp.stats.tx_90d"
+            :weekly="dapp.stats.tx_7d"
             title="Transactions"
-            type="numbers"
-            :weekly="dapp.stats.tx_7d"/>
+            type="numbers"/>
         </div>
-        <div class="module" v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.eos_value_30d">
+        <div 
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.eos_value_30d" 
+          class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d" 
             :daily="dapp.stats.value_1d"
             :monthly="dapp.stats.value_30d"
             :sparkline="dapp.sparklines.value"
             :quarterly="dapp.stats.value_90d"
+            :weekly="dapp.stats.value_7d"
             title="Volume (ETH)"
-            type="numbers"
-            :weekly="dapp.stats.value_7d"/>
+            type="numbers"/>
           <br v-if="dapp.stats.value_30d && dapp.stats.poa_value_30d">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.poa_value_30d" 
@@ -66,22 +76,23 @@
             :monthly="dapp.stats.poa_value_30d"
             :sparkline="dapp.sparklines.poa_value"
             :quarterly="dapp.stats.poa_value_90d"
+            :weekly="dapp.stats.poa_value_7d"
             title="Volume (POA)"
-            type="numbers"
-            :weekly="dapp.stats.poa_value_7d"/>
+            type="numbers"/>
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.eos_value_30d"
             :daily="dapp.stats.eos_value_1d"
             :monthly="dapp.stats.eos_value_30d"
             :sparkline="dapp.sparklines.eos_value"
             :quarterly="dapp.stats.eos_value_90d"
+            :weekly="dapp.stats.eos_value_7d"
             title="Volume (EOS)"
-            type="numbers"
-            :weekly="dapp.stats.eos_value_7d"/>
+            type="numbers"/>
         </div>
       </div>
-      <div class="module-wrapper -tier-5"
-        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length">
+      <div 
+        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length"
+        class="module-wrapper -tier-5">
         <div
           :class="dapp.audits.length ? 'has-audits' : ''"
           class="module">
@@ -132,17 +143,17 @@ export default {
     DappDetailBodyContentModulesSubmitted,
     DappDetailBodyContentModulesUpdated
   },
+  props: {
+    dapp: {
+      required: true
+    }
+  },
   computed: {
     stats () {
       let dauExists = this.dapp.stats.dau !== undefined
       return dauExists
     }
   },
-  props: {
-    dapp: {
-      required: true
-    }
-  }
 }
 </script>
 

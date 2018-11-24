@@ -1,9 +1,13 @@
 <template>
   <transition name="fade">
-    <div class="component-Modal" v-if="siteModal.component">
+    <div 
+      v-if="siteModal.component" 
+      class="component-Modal">
       <div class="outer-wrapper">
         <div class="inner-wrapper">
-          <component :is="siteModal.component" :modalProps="siteModal.props"></component>
+          <component 
+            :is="siteModal.component" 
+            :modal-props="siteModal.props"/>
         </div>
       </div>
     </div>
@@ -25,6 +29,11 @@ export default {
   computed: {
     ...mapGetters(['siteModal'])
   },
+  watch: {
+    '$route' () {
+      this.close()
+    }
+  },
   destroyed () {
     this.close()
   },
@@ -38,11 +47,6 @@ export default {
       this.$store.dispatch('setSiteModal', modal)
     }
   },
-  watch: {
-    '$route' () {
-      this.close()
-    }
-  }
 }
 </script>
 

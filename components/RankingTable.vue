@@ -46,7 +46,7 @@
           <p
             v-if="isLoading"
             class="loader-wrapper">
-            <button class="loader"></button>
+            <button class="loader"/>
           </p>
           <p
             v-if="!isLoading && !dapps.length"
@@ -116,7 +116,7 @@
         v-if="!isLoading"
         :limit="pager.limit"
         :offset="pager.offset"
-        :totalCount="pager.totalCount"
+        :total-count="pager.totalCount"
         @selectPage="selectPage"/>
     </div>
   </div>

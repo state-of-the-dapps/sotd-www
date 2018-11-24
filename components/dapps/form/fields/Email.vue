@@ -1,10 +1,23 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <input class="text-input" :class="email.length > 0 ? '--is-filled' : ''" type="text" maxlength="50" v-model="email" @input="validate">
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <input 
+      :class="email.length > 0 ? '--is-filled' : ''" 
+      v-model="email" 
+      class="text-input" 
+      type="text" 
+      maxlength="50" 
+      @input="validate">
     <label class="label">Email <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - email.length }}</span>
-    <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Email of the primary contact (this will not be made public)</p>
   </div>
@@ -17,6 +30,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors],
     computed: {
       email: {
         get () {
@@ -47,6 +61,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
   }
 </script>

@@ -4,8 +4,8 @@
       <Lead 
         :description="collection.description"
         :curator="collection.curator"
-        :linkText="collection.link.text"
-        :linkUrl="collection.link.url"
+        :link-text="collection.link.text"
+        :link-url="collection.link.url"
         :name="collection.name"
       />
       <div class="dapp-wrapper">

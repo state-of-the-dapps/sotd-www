@@ -1,33 +1,41 @@
 <template>
   <div 
     v-on-clickaway="resetSearch"
-    @click="focusInput"
-    class="component-global-search"
     :class="[
       isSearching ? 'is-searching' : '',
-      search.length ? 'has-input' : '']">
-    <span class="nav-link -search" :class="'-' + color"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
+      search.length ? 'has-input' : '']"
+    class="component-global-search"
+    @click="focusInput">
+    <span 
+      :class="'-' + color" 
+      class="nav-link -search"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
       <input
         ref="searchInput"
         :class="'-' + color"
+        v-model="search"
         class="search-input"
         placeholder="Discover awesome ÐApps…"
-        v-model="search"
         @input="fetchResults"
         @focus="startSearch"
         @blur="endSearch"
         @keyup.enter="goToSearchPage">
     </div>
-    <div class="results" v-if="results || isSearching">
-      <div v-if="!results && searchCompleted" class="results-none">Sorry, no results. Please try a new search</div>
-      <div class="suggestions-wrapper" v-if="suggestions.length">
+    <div 
+      v-if="results || isSearching" 
+      class="results">
+      <div 
+        v-if="!results && searchCompleted" 
+        class="results-none">Sorry, no results. Please try a new search</div>
+      <div 
+        v-if="suggestions.length" 
+        class="suggestions-wrapper">
         <h3 class="results-title">Suggested tags</h3>
         <ul class="results-suggestions-list">
           <li
-            class="results-suggestions-item"
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
-            :key="index">
+            :key="index"
+            class="results-suggestions-item">
             <nuxt-link
               :to="{ path: `/dapps/tagged/${suggestion}`, query: {q: 'suggestion'} }"
               class="results-suggestions-link"
@@ -37,17 +45,29 @@
           </li>
         </ul>
       </div>
-      <br v-if="suggestions.length && dapps.length"/>
-      <div class="dapps-wrapper" v-if="dapps.length">
+      <br v-if="suggestions.length && dapps.length">
+      <div 
+        v-if="dapps.length" 
+        class="dapps-wrapper">
         <h3 class="results-title">ÐApps</h3>
         <ul class="results-dapp-list">
-          <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 5)" :key="index">
+          <li 
+            v-for="(dapp, index) in dapps.slice(0, 5)" 
+            :key="index" 
+            class="results-dapp-item">
             <nuxt-link
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
               class="results-dapp-link"
               @click.native="dappView(dapp.slug)">
-              <img v-if="dapp.iconUrl" class="results-dapp-image" width="42" height="42" :src="dapp.iconUrl"/>
-              <span v-else class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+              <img 
+                v-if="dapp.iconUrl" 
+                :src="dapp.iconUrl" 
+                class="results-dapp-image" 
+                width="42" 
+                height="42">
+              <span 
+                v-else 
+                class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
               <div class="results-dapp-info">
                 <h4 class="results-dapp-title">{{ dapp.name }}</h4>
                 <p class="results-dapp-tagline">{{ dapp.teaser }}</p>
@@ -56,7 +76,10 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link @click.native="setSearchPage(search)" :to="{name: 'dapps', query: {q: search} }" class="results-link">View all ÐApp results</nuxt-link>
+          <nuxt-link 
+            :to="{name: 'dapps', query: {q: search} }" 
+            class="results-link" 
+            @click.native="setSearchPage(search)">View all ÐApp results</nuxt-link>
         </div>
       </div>
     </div>
@@ -74,13 +97,17 @@ var searchTimer
 var trackTimer
 
 export default {
+  components: {
+    SvgIconMagnifier
+  },
+  directives: {
+    onClickaway: onClickaway
+  },
+  mixins: [getCaretPosition],
   props: {
     color: {
       type: String
     }
-  },
-  components: {
-    SvgIconMagnifier
   },
   data () {
     return {
@@ -90,9 +117,6 @@ export default {
       sourcePath: this.$route.path,
       suggestions: []
     }
-  },
-  directives: {
-    onClickaway: onClickaway
   },
   computed: {
     results () {
@@ -203,7 +227,6 @@ export default {
       this.fetchResults()
     }
   },
-  mixins: [getCaretPosition]
 }
 </script>
 

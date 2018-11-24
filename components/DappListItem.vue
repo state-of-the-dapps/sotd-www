@@ -1,5 +1,7 @@
 <template>
-  <li class="component-DappListItem" v-if="dapp.rank">
+  <li 
+    v-if="dapp.rank" 
+    class="component-DappListItem">
     <ul class="columns">
       <li class="column -rank">
         <div class="wrapper">
@@ -8,11 +10,23 @@
       </li>
       <li class="column -dapp">
         <div class="wrapper">
-          <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
-            <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+          <nuxt-link 
+            :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+            :class="!dapp.iconUrl ? 'has-no-icon' : ''" 
+            class="dapp-icon-wrapper" 
+            @click.native="trackDappView(dapp.slug)">
+            <img 
+              v-if="dapp.iconUrl" 
+              :src="dapp.iconUrl" 
+              class="dapp-icon" 
+              width="32" 
+              height="32">
             <span v-else>{{ dapp.name | firstLetter }}</span>
           </nuxt-link>
-          <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" class="dapp-link" @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>
+          <nuxt-link 
+            :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+            class="dapp-link" 
+            @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link>
         </div>
       </li>
       <li class="column -tagline">
@@ -27,27 +41,55 @@
       </li>
       <li class="column -dau">
         <span v-if="dapp.stats.dau === undefined || dapp.stats.dau === null">-</span>
-        <span v-else class="field-dau -value">{{ Number(dapp.stats.dau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span v-if="dapp.stats.dau_pct === undefined || dapp.stats.dau_pct === null" class="field-dau -pct">-</span>
-        <span v-else class="field-dau -pct" :class="getDappStatsClass(dapp.stats.dau_pct)"><span v-if="dapp.stats.dau_pct > 0">+</span>{{ Number(dapp.stats.dau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+        <span 
+          v-else 
+          class="field-dau -value">{{ Number(dapp.stats.dau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span 
+          v-if="dapp.stats.dau_pct === undefined || dapp.stats.dau_pct === null" 
+          class="field-dau -pct">-</span>
+        <span 
+          v-else 
+          :class="getDappStatsClass(dapp.stats.dau_pct)" 
+          class="field-dau -pct"><span v-if="dapp.stats.dau_pct > 0">+</span>{{ Number(dapp.stats.dau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -mau">
         <span v-if="dapp.stats.mau === undefined || dapp.stats.mau === null">-</span>
-        <span v-else class="field-mau -value">{{ Number(dapp.stats.mau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span v-if="dapp.stats.mau_pct === undefined || dapp.stats.mau_pct === null" class="field-mau -pct">-</span>
-        <span v-else class="field-mau -pct" :class="getDappStatsClass(dapp.stats.mau_pct)"><span v-if="dapp.stats.mau_pct > 0">+</span>{{ Number(dapp.stats.mau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+        <span 
+          v-else 
+          class="field-mau -value">{{ Number(dapp.stats.mau || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span 
+          v-if="dapp.stats.mau_pct === undefined || dapp.stats.mau_pct === null" 
+          class="field-mau -pct">-</span>
+        <span 
+          v-else 
+          :class="getDappStatsClass(dapp.stats.mau_pct)" 
+          class="field-mau -pct"><span v-if="dapp.stats.mau_pct > 0">+</span>{{ Number(dapp.stats.mau_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -vol_7d">
         <span v-if="volume === undefined || volume === null">-</span>
-        <span v-else class="field-vol -value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} <template v-if="dapp.platform === 'EOS'">EOS</template><template v-if="dapp.platform === 'POA'">POA</template><template v-if="dapp.platform === 'Ethereum'">ETH</template></span>
-        <span v-if="volumePct === undefined || volumePct === null" class="field-vol -pct">-</span>
-        <span v-else class="field-vol -pct" :class="getDappStatsClass(volumePct)"><span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+        <span 
+          v-else 
+          class="field-vol -value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} <template v-if="dapp.platform === 'EOS'">EOS</template><template v-if="dapp.platform === 'POA'">POA</template><template v-if="dapp.platform === 'Ethereum'">ETH</template></span>
+        <span 
+          v-if="volumePct === undefined || volumePct === null" 
+          class="field-vol -pct">-</span>
+        <span 
+          v-else 
+          :class="getDappStatsClass(volumePct)" 
+          class="field-vol -pct"><span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -dev_30d">
         <span v-if="dapp.stats.dev_30d === undefined || dapp.stats.dev_30d === null">-</span>
-        <span v-else class="field-dev -value">{{ Number(dapp.stats.dev_30d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
-        <span v-if="dapp.stats.dev_30d_pct === undefined || dapp.stats.dev_30d_pct === null" class="field-dev -pct">-</span>
-        <span v-else class="field-dev -pct" :class="getDappStatsClass(dapp.stats.dev_30d_pct)"><span v-if="dapp.stats.dev_30d_pct > 0">+</span>{{ Number(dapp.stats.dev_30d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
+        <span 
+          v-else 
+          class="field-dev -value">{{ Number(dapp.stats.dev_30d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}</span>
+        <span 
+          v-if="dapp.stats.dev_30d_pct === undefined || dapp.stats.dev_30d_pct === null" 
+          class="field-dev -pct">-</span>
+        <span 
+          v-else 
+          :class="getDappStatsClass(dapp.stats.dev_30d_pct)" 
+          class="field-dev -pct"><span v-if="dapp.stats.dev_30d_pct > 0">+</span>{{ Number(dapp.stats.dev_30d_pct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span>
       </li>
       <li class="column -users_30d">
         <div class="wrapper">
@@ -57,8 +99,7 @@
             :stroke-width="3"
             :padding="4"
             auto-draw
-            smooth>
-          </trend>
+            smooth/>
         </div>
       </li>
     </ul>
@@ -72,6 +113,11 @@ import Trend from 'vuetrend'
 export default {
   components: {
     Trend
+  },
+  props: {
+    dapp: {
+      required: true
+    }
   },
   data () {
     return {
@@ -123,11 +169,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  props: {
-    dapp: {
-      required: true
-    }
-  }
 }
 </script>
 

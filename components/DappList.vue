@@ -1,5 +1,7 @@
 <template>
-  <div class="component-DappList" id="component-DappList">
+  <div 
+    id="component-DappList" 
+    class="component-DappList">
     <div class="filter-wrapper">
       <BaseFilter
         :important="true"
@@ -26,18 +28,20 @@
             :sort="sort"
             @sortDapps="sortDapps"/>
           <ul v-if="dapps.length">
-            <DappListItem v-for="(dapp, index) in dapps" :key="index"
-            :dapp="dapp"/>
+            <DappListItem 
+              v-for="(dapp, index) in dapps" 
+              :key="index"
+              :dapp="dapp"/>
           </ul>
         </div>
       </div>
       <LoadMore
-        @loadMore="loadMore"
         :dapps="dapps"
-        :isLoading="isLoading"
+        :is-loading="isLoading"
         :limit="limit"
         :offset="offset"
-        :total="total"/>
+        :total="total"
+        @loadMore="loadMore"/>
     </div>
   </div>
 </template>
@@ -53,6 +57,12 @@ import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
 
 export default {
+  components: {
+    BaseFilter,
+    DappListHeadings,
+    DappListItem,
+    LoadMore
+  },
   data () {
     return {
       dappPlatforms: platformList,
@@ -109,12 +119,6 @@ export default {
       ],
       sourcePath: this.$route.path
     }
-  },
-  components: {
-    BaseFilter,
-    DappListHeadings,
-    DappListItem,
-    LoadMore
   },
   computed: {
     ...mapGetters('dapps/rankings', [
@@ -203,6 +207,13 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
+  watch: {
+    '$route' (to, from) {
+      this.setCategory(this.$route.params.category)
+      this.setPlatform(this.$route.params.platform)
+      this.fetchDapps()
+    }
+  },
   async mounted () {
     this.dappCategories = await getCategories()
     if (!this.$route.query.reload) {
@@ -230,13 +241,6 @@ export default {
       this.fetchDapps()
     }
   },
-  watch: {
-    '$route' (to, from) {
-      this.setCategory(this.$route.params.category)
-      this.setPlatform(this.$route.params.platform)
-      this.fetchDapps()
-    }
-  }
 }
 </script>
 

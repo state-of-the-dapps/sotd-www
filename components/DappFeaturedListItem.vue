@@ -1,25 +1,31 @@
 <template>
-<li class="component-DappFeaturedListItem" :class="hasPromotedDapp ? 'has-promotion' : ''" :id="'dapp-featured-list-item-' + index">
-  <nuxt-link 
-    :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
-    class="link" 
-    @click.native="trackDappView(dapp.slug)">
-    <div
-      class="product-image-wrapper"
-      :style="`background-image: url('${dapp.productImage || dapp.imageKeyVisual}')`"/>
-    <div class="info">
-      <h4 class="title-4">{{ dapp.name }}</h4>   
-      <p class="tagline">{{ dapp.teaser | truncate(50) }}</p>
-      <span v-if="dapp.isPromoted" class="promoted">promoted</span>
-    </div>
-  </nuxt-link>
-</li>
+  <li 
+    :class="hasPromotedDapp ? 'has-promotion' : ''" 
+    :id="'dapp-featured-list-item-' + index" 
+    class="component-DappFeaturedListItem">
+    <nuxt-link 
+      :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+      class="link" 
+      @click.native="trackDappView(dapp.slug)">
+      <div
+        :style="`background-image: url('${dapp.productImage || dapp.imageKeyVisual}')`"
+        class="product-image-wrapper"/>
+      <div class="info">
+        <h4 class="title-4">{{ dapp.name }}</h4>   
+        <p class="tagline">{{ dapp.teaser | truncate(50) }}</p>
+        <span 
+          v-if="dapp.isPromoted" 
+          class="promoted">promoted</span>
+      </div>
+    </nuxt-link>
+  </li>
 </template>
 
 <script>
 import { trackDappView } from '~/helpers/mixpanel'
 
 export default {
+  props: ['dapp', 'hasPromotedDapp', 'index'],
   data () {
     return {
       sourcePath: this.$route.path
@@ -33,7 +39,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  props: ['dapp', 'hasPromotedDapp', 'index']
 }
 </script>
 

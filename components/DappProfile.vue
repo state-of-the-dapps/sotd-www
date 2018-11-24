@@ -1,27 +1,29 @@
 <template>
-<div class="component-DappProfile">
-  <div class="wrapper">
-    <p class="description"><strong>Profile strength</strong> &nbsp;{{ Math.ceil(profileScore * 100) }}%</p>
-    <div class="meter-wrapper">
-      <div class="meter">
-        <span class="score" :style="'width: ' + Math.ceil(profileScore * 100) + '%'"></span>
+  <div class="component-DappProfile">
+    <div class="wrapper">
+      <p class="description"><strong>Profile strength</strong> &nbsp;{{ Math.ceil(profileScore * 100) }}%</p>
+      <div class="meter-wrapper">
+        <div class="meter">
+          <span 
+            :style="'width: ' + Math.ceil(profileScore * 100) + '%'" 
+            class="score"/>
+        </div>
+      </div>
+      <div
+        v-if="profileScore !== 1"
+        class="improve-wrapper">
+        <nuxt-link
+          :to="{
+            name: 'dapp-detail-improve',
+            params: {
+              slug: dapp
+            }
+          }"
+          class="improve"
+          @click.native="trackImproveProfile(dapp)">Improve this profile</nuxt-link>
       </div>
     </div>
-    <div
-      v-if="profileScore !== 1"
-      class="improve-wrapper">
-      <nuxt-link
-        :to="{
-          name: 'dapp-detail-improve',
-          params: {
-            slug: dapp
-          }
-        }"
-        @click.native="trackImproveProfile(dapp)"
-        class="improve">Improve this profile</nuxt-link>
-    </div>
   </div>
-</div>
 </template>
 
 <script>

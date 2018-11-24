@@ -6,7 +6,9 @@
       :class="$route.query.sort === 'dau' ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('dau')">Users (24hr)</nuxt-link>
-    <span v-else class="label">Users (24hr)</span>
+    <span 
+      v-else 
+      class="label">Users (24hr)</span>
     <Help 
       :bottom="true"
       text="Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)"/>

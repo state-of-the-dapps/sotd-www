@@ -1,25 +1,51 @@
 <template>
   <transition name="fade">
-    <div v-if="isActive" class="wrapper -component-shared-datepicker" :class="'-' + type" v-on-clickaway="hide" @click.stop="">
+    <div 
+      v-on-clickaway="hide" 
+      v-if="isActive" 
+      :class="'-' + type" 
+      class="wrapper -component-shared-datepicker" 
+      @click.stop="">
       <ul class="list -month">
-        <li class="item -month --prev" @click="changeMonth(-1)">
-          <img class="image -month --prev" src="~/assets/images/arrows/back.png" width="10" />
+        <li 
+          class="item -month --prev" 
+          @click="changeMonth(-1)">
+          <img 
+            class="image -month --prev" 
+            src="~/assets/images/arrows/back.png" 
+            width="10" >
         </li>
         <li class="item -month --current">
           <span class="date -month">{{ startOfMonthDate | formatDate('MMMM YYYY') }}</span>
         </li>
-        <li class="item -month --next" @click="changeMonth(1)">
-          <img class="image -month --next" src="~/assets/images/arrows/next.png" width="10" />
+        <li 
+          class="item -month --next" 
+          @click="changeMonth(1)">
+          <img 
+            class="image -month --next" 
+            src="~/assets/images/arrows/next.png" 
+            width="10" >
         </li>
       </ul>
       <ul class="list -day-label">
-        <li v-for="(day, index) in daysOfTheWeek" :key="index" class="item -day-label">
+        <li 
+          v-for="(day, index) in daysOfTheWeek" 
+          :key="index" 
+          class="item -day-label">
           <span>{{ day }}</span>
         </li>
       </ul>
       <ul class="list -day">
-        <li v-for="n in daysBeforeFirstDay" :key="n" class="item -day is-not-active"></li>
-        <li v-for="(day, index) in days" :key="day.date" @click="selectDate(day.date)" class="item -day" :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }">
+        <li 
+          v-for="n in daysBeforeFirstDay" 
+          :key="n" 
+          class="item -day is-not-active"/>
+        <li 
+          v-for="(day, index) in days" 
+          :key="day.date" 
+          :class="{ 'is-today': isToday(day.date), 'is-selected': isSelected(day.date) }" 
+          class="item -day" 
+          @click="selectDate(day.date)">
           <span class="num -day">{{ index + 1 }}</span>
         </li>
       </ul>
@@ -38,6 +64,27 @@
   import { daysOfTheWeek } from '~/helpers/constants'
 
   export default {
+    directives: {
+      onClickaway: onClickaway
+    },
+    props: {
+      isActive: {
+        type: Boolean,
+        required: true
+      },
+      parent: {
+        type: String,
+        required: true
+      },
+      selectedDate: {
+        type: String,
+        required: true
+      },
+      type: {
+        type: String,
+        required: true
+      }
+    },
     data () {
       return {
         days: [],
@@ -47,25 +94,8 @@
         today: ''
       }
     },
-    props: {
-      isActive: {
-        type: Boolean,
-        required: true,
-        default: false
-      },
-      parent: {
-        type: String
-      },
-      selectedDate: {
-        type: String
-      },
-      type: {
-        type: String,
-        required: true
-      }
-    },
-    directives: {
-      onClickaway: onClickaway
+    mounted () {
+      this.initializeCalendar()
     },
     methods: {
       hide () {
@@ -108,9 +138,6 @@
         this.days = days
       }
     },
-    mounted () {
-      this.initializeCalendar()
-    }
   }
 </script>
 

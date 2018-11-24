@@ -1,13 +1,17 @@
 <template>
-  <div class="layout-default" :class="siteModal.component ? 'has-modal' : ''">
-    <div class="wrapper" :class="siteModal.component ? 'has-modal' : ''">
+  <div 
+    :class="siteModal.component ? 'has-modal' : ''" 
+    class="layout-default">
+    <div 
+      :class="siteModal.component ? 'has-modal' : ''" 
+      class="wrapper">
       <div class="main">
         <div class="menu">
           <div class="menu-wrapper">
             <Menu/>
           </div>
         </div>
-        <slot></slot>
+        <slot/>
       </div>
       <div class="footer">
         <SecondaryCta/>

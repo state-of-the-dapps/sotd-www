@@ -1,11 +1,11 @@
 <template>
   <li class="component-DappDetailBodyContentModulesContractsAddress">
     <a
-      @click="trackContract(address, network, platform)"
       :href="addressLink"
       class="contract-address-value"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+      @click="trackContract(address, network, platform)">
       <media :query="{maxWidth: 500}">
         <span>{{ address | truncate(20) }}</span>
       </media>
@@ -13,7 +13,11 @@
         <span>{{ address }}</span>
       </media>
     </a>
-    <span class="contract-address-copy" v-clipboard:copy="address" v-clipboard:success="copy" @click="trackContractCopy(address, network)">{{ copyText }}</span>
+    <span 
+      v-clipboard:copy="address" 
+      v-clipboard:success="copy" 
+      class="contract-address-copy" 
+      @click="trackContractCopy(address, network)">{{ copyText }}</span>
   </li>
 </template>
 
@@ -24,6 +28,20 @@ import Media from 'vue-media'
 export default {
   components: {
     Media
+  },
+  props: {
+    address: {
+      required: true
+    },
+    network: {
+      required: true
+    },
+    platform: {
+      required: true
+    },
+    slug: {
+      required: true
+    }
   },
   data: () => {
     return {
@@ -61,20 +79,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  props: {
-    address: {
-      required: true
-    },
-    network: {
-      required: true
-    },
-    platform: {
-      required: true
-    },
-    slug: {
-      required: true
-    }
-  }
 }
 </script>
 

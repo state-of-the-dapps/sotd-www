@@ -2,28 +2,28 @@
   <div class="component-dapps-filters">
     <div class="filter">
       <BaseFilter
-        all-text="All platforms"
-        filter="Platform"
         :options="platformOptions"
         :selected="formattedPlatformQuery"
+        all-text="All platforms"
+        filter="Platform"
         title="Choose a platform"
         @select="selectPlatform"/>
     </div>
     <div class="filter">
       <BaseFilter
-        all-text="All categories"
-        filter="Category"
         :options="categoryOptions"
         :selected="categoryQuery"
+        all-text="All categories"
+        filter="Category"
         title="Choose a category"
         @select="selectCategory"/>
     </div>
     <div class="filter">
       <BaseFilter
-        all-text="All statuses"
-        filter="Status"
         :options="statusOptions"
         :selected="statusQuery"
+        all-text="All statuses"
+        filter="Status"
         title="Choose a status"
         @select="selectStatus"/>
     </div>

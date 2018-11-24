@@ -2,21 +2,53 @@
   <div>
     <p class="heading">Tags <span class="required">(at least 1 required)</span></p>
     <div class="input-wrapper">
-      <input v-model="query" :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" type="text" class="input" @input="search" @keyup.enter="add" @click="findSuggestedTags" autocomplete="off" maxlength="20" :disabled="selected.length < 5 ? false : true">
-      <span v-if="selected.length < 5" class="add" :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
+      <input 
+        v-model="query" 
+        :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" 
+        :disabled="selected.length < 5 ? false : true" 
+        type="text" 
+        class="input" 
+        autocomplete="off" 
+        maxlength="20" 
+        @input="search" 
+        @keyup.enter="add" 
+        @click="findSuggestedTags">
+      <span 
+        v-if="selected.length < 5" 
+        :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" 
+        class="add" 
+        @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
       <transition name="fade">
-        <div class="dropdown" v-if="results.length > 0 && selected.length < 5" v-on-clickaway="resetResults">
-           <ul class="dropdown-list">
-              <li v-for="(result, key) in results" :key="key" class="dropdown-item" @click="select(result, key)">{{ result }}</li>
-           </ul>
+        <div 
+          v-on-clickaway="resetResults" 
+          v-if="results.length > 0 && selected.length < 5" 
+          class="dropdown">
+          <ul class="dropdown-list">
+            <li 
+              v-for="(result, key) in results" 
+              :key="key" 
+              class="dropdown-item" 
+              @click="select(result, key)">{{ result }}</li>
+          </ul>
         </div>
       </transition>
     </div>
-    <ul v-if="hasObviousTags" class="warning-list -tags">
+    <ul 
+      v-if="hasObviousTags" 
+      class="warning-list -tags">
       <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
     </ul>
     <ul class="list">
-      <li v-for="(tag, key) in selected" :key="key" class="item -tag" :class="hasWarning(tag) ? '--has-warning' : ''">#{{ tag }} <span @click="remove(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close"></span></li>
+      <li 
+        v-for="(tag, key) in selected" 
+        :key="key" 
+        :class="hasWarning(tag) ? '--has-warning' : ''" 
+        class="item -tag">#{{ tag }} <span 
+          class="remove" 
+          @click="remove(tag, key)"><img 
+            src="~/assets/images/close/small.png" 
+            width="9" 
+            alt="Close"></span></li>
     </ul>
   </div>
 </template>
@@ -28,6 +60,9 @@
   var trackTimer
 
   export default {
+    directives: {
+      onClickaway: onClickaway
+    },
     computed: {
       hasObviousTags () {
         return this.obviousTags.some((value) => {
@@ -60,9 +95,6 @@
       selected () {
         return this.$store.getters['dapps/form/selectedTags']
       }
-    },
-    directives: {
-      onClickaway: onClickaway
     },
     methods: {
       add () {

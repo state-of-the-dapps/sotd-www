@@ -1,12 +1,27 @@
 <template>
   <ul class="component-DappListHeadings">
-    <li v-for="(field, index) in fields" :key="index" class="column" :class="'-' + field.id">
-      <div class="field-wrapper" :class="'-' + field.id">
-        <span v-if="field.title" @click="sortDapps(field)" class="field -name">
+    <li 
+      v-for="(field, index) in fields" 
+      :key="index" 
+      :class="'-' + field.id" 
+      class="column">
+      <div 
+        :class="'-' + field.id" 
+        class="field-wrapper">
+        <span 
+          v-if="field.title" 
+          class="field -name" 
+          @click="sortDapps(field)">
           {{ field.title }}
         </span>
-        <Help v-if="field.help" :text="field.help" :bottom="true" :reversed="field.id === 'rank'"/>
-        <span v-if="sort === field.id" class="sort-arrow"/>
+        <Help 
+          v-if="field.help" 
+          :text="field.help" 
+          :bottom="true" 
+          :reversed="field.id === 'rank'"/>
+        <span 
+          v-if="sort === field.id" 
+          class="sort-arrow"/>
       </div>
     </li>
   </ul>

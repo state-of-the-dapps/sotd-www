@@ -1,8 +1,15 @@
 <template>
   <transition name="fade">
-    <div class="container -suggested-tags" v-if="items && items.length > 0" v-on-clickaway="reset">
+    <div 
+      v-on-clickaway="reset" 
+      v-if="items && items.length > 0" 
+      class="container -suggested-tags">
       <ul class="list">
-        <li v-for="(item, key) in items" :key="key" class="item" @click="select(item, key)">{{ item }}</li>
+        <li 
+          v-for="(item, key) in items" 
+          :key="key" 
+          class="item" 
+          @click="select(item, key)">{{ item }}</li>
       </ul>
     </div>
   </transition>
@@ -13,11 +20,15 @@
   import { getCaretPosition } from '~/helpers/mixins'
 
   export default {
+    directives: {
+      onClickaway: onClickaway
+    },
+    mixins: [getCaretPosition],
     props: {
       items: {
         type: Array,
         required: true,
-        default: []
+        default: () => []
       },
       textQuery: {
         type: String,
@@ -39,9 +50,6 @@
     destroyed () {
       // reset tags and hide when a new route is activated (v-on-clickaway doesn't fire on route change)
       this.reset()
-    },
-    directives: {
-      onClickaway: onClickaway
     },
     methods: {
       reset () {
@@ -66,7 +74,6 @@
         this.$mixpanel.track(this.$options.filters.capitalize(this.model) + ' - Select tag', { tag: item })
       }
     },
-    mixins: [getCaretPosition]
   }
 </script>
 

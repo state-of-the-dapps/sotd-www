@@ -1,13 +1,31 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <input class="text-input" :class="name.length > 0 ? '--is-filled' : ''" type="text" maxlength="25" v-model="name" @input="validate">
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <input 
+      :class="name.length > 0 ? '--is-filled' : ''" 
+      v-model="name" 
+      class="text-input" 
+      type="text" 
+      maxlength="25" 
+      @input="validate">
     <label class="label">ÐApp name <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 25 - name.length }}</span>
-    <ul v-if="warnings && warnings.length > 0" class="warning-list">
-      <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
+    <ul 
+      v-if="warnings && warnings.length > 0" 
+      class="warning-list">
+      <li 
+        v-for="(warning, index) in warnings" 
+        :key="index" 
+        class="warning-item">{{ warning }}</li>
     </ul>
-    <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
     </ul>
   </div>
 </template>
@@ -19,6 +37,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors, dispatchWarnings],
     computed: {
       errors () {
         return this.$store.getters['dapps/form/nameErrors']
@@ -81,6 +100,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors, dispatchWarnings]
   }
 </script>

@@ -1,15 +1,35 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <input class="text-input" :class="icon.length > 0 ? '--is-filled' : ''" type="text" maxlength="255" v-model="icon" @input="validate">
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <input 
+      :class="icon.length > 0 ? '--is-filled' : ''" 
+      v-model="icon" 
+      class="text-input" 
+      type="text" 
+      maxlength="255" 
+      @input="validate">
     <label class="label">Icon URL</label>
     <span class="remaining-characters">{{ 255 - icon.length }}</span>
-    <ul v-if="warnings && warnings.length > 0" class="warning-list">
-      <li v-for="(warning, index) in warnings" :key="index" class="warning-item">{{ warning }}</li>
+    <ul 
+      v-if="warnings && warnings.length > 0" 
+      class="warning-list">
+      <li 
+        v-for="(warning, index) in warnings" 
+        :key="index" 
+        class="warning-item">{{ warning }}</li>
     </ul>
-    <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Provide a URL to your icon <br>Dimensions must be 192px width by 192px height <br><a href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" target="_blank">View the guidelines</a></p>
+    <p class="help">Provide a URL to your icon <br>Dimensions must be 192px width by 192px height <br><a 
+      href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" 
+      target="_blank">View the guidelines</a></p>
   </div>
 </template>
 
@@ -19,6 +39,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors, dispatchWarnings, testImage],
     computed: {
       icon: {
         get () {
@@ -72,6 +93,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors, dispatchWarnings, testImage]
   }
 </script>

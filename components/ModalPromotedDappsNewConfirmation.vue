@@ -2,13 +2,20 @@
   <div class="component-ModalPromotedDappsNewConfirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
     <p class="message">Your post will be reviewed in the next 24 hours by our digital cats. Stay tuned for updates via email.</p>
-    <p class="cta-wrapper"><button class="cta" @click="close">Ok</button></p>
+    <p class="cta-wrapper"><button 
+      class="cta" 
+      @click="close">Ok</button></p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['modalProps'],
+  props: {
+    modalProps: {
+      type: Object,
+      required: true
+    }
+  },
   methods: {
     close () {
       let routeName = 'home'

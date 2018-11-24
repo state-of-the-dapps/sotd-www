@@ -5,8 +5,7 @@
     :stroke-width="3"
     :padding="4"
     auto-draw
-    smooth>
-  </trend>
+    smooth/>
 </template>
 
 <script>

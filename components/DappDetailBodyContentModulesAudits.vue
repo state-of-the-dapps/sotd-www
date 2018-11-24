@@ -1,23 +1,23 @@
 <template>
-<div class="component-DappDetailBodyContentModulesAudits">
-  <h4 class="audit-title">Contract audit<span v-if="audits.length > 1">s</span></h4>
-  <ul class="audit-list">
-    <li 
-      v-for="(audit, index) in audits"
-      class="audit-item"
-      :key="index">
-      <a
-        :href="audit.learn_more_url + '?utm_source=StateOfTheDApps'"
-        class="audit-link"
-        target="_blank"
-        @click="trackDappContractAudit(audit.address, slug, audit.auditor_name, audit.learn_more_url)">
-        <img 
-          :src="audit.auditor_logo_url"
-          class="audit-image"
-          width="35" /><span>{{ audit.text }}</span></a>
-    </li>
-  </ul>
-</div>
+  <div class="component-DappDetailBodyContentModulesAudits">
+    <h4 class="audit-title">Contract audit<span v-if="audits.length > 1">s</span></h4>
+    <ul class="audit-list">
+      <li 
+        v-for="(audit, index) in audits"
+        :key="index"
+        class="audit-item">
+        <a
+          :href="audit.learn_more_url + '?utm_source=StateOfTheDApps'"
+          class="audit-link"
+          target="_blank"
+          @click="trackDappContractAudit(audit.address, slug, audit.auditor_name, audit.learn_more_url)">
+          <img 
+            :src="audit.auditor_logo_url"
+            class="audit-image"
+            width="35" ><span>{{ audit.text }}</span></a>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

@@ -2,15 +2,42 @@
   <nav class="section -masthead">
     <div class="container">
       <ul class="nav-list">
-        <li class="nav-item" :class="siteSection === 'dapps' ? '--is-active' : ''"><nuxt-link @click.native="$mixpanel.track(`Nav - DApps`)" to="/" class="nav-link">ÐApps</nuxt-link></li>
-        <li class="nav-item" :class="siteSection === 'events' ? '--is-active' : ''"><nuxt-link @click.native="$mixpanel.track('Nav - Events')" to="/events" class="nav-link">Events</nuxt-link></li>
-        <li v-if="siteSection !== ''" class="nav-item">
-          <nuxt-link v-if="siteSection === 'dapps'" @click.native="$mixpanel.track('Nav - New DApp')" :to="{ name: 'dapps-new' }" class="nav-link -submit">Submit a ÐApp</nuxt-link>
-          <nuxt-link v-if="siteSection === 'events'" @click.native="$mixpanel.track('Nav - New event')" :to="{ name: 'events-new' }" class="nav-link -submit">Submit an event</nuxt-link>
+        <li 
+          :class="siteSection === 'dapps' ? '--is-active' : ''" 
+          class="nav-item"><nuxt-link 
+            to="/" 
+            class="nav-link" 
+            @click.native="$mixpanel.track(`Nav - DApps`)">ÐApps</nuxt-link></li>
+        <li 
+          :class="siteSection === 'events' ? '--is-active' : ''" 
+          class="nav-item"><nuxt-link 
+            to="/events" 
+            class="nav-link" 
+            @click.native="$mixpanel.track('Nav - Events')">Events</nuxt-link></li>
+        <li 
+          v-if="siteSection !== ''" 
+          class="nav-item">
+          <nuxt-link 
+            v-if="siteSection === 'dapps'" 
+            :to="{ name: 'dapps-new' }" 
+            class="nav-link -submit" 
+            @click.native="$mixpanel.track('Nav - New DApp')">Submit a ÐApp</nuxt-link>
+          <nuxt-link 
+            v-if="siteSection === 'events'" 
+            :to="{ name: 'events-new' }" 
+            class="nav-link -submit" 
+            @click.native="$mixpanel.track('Nav - New event')">Submit an event</nuxt-link>
         </li>
       </ul>
       <ul class="nameplate-list">
-        <li class="nameplate-item -logo"><nuxt-link @click.native="$mixpanel.track('Nav - Home')" to="/" class="nameplate-link -logo"><img src="~/assets/images/logo.png" width="172" alt="State of the ÐApps" class="nameplate-image"></nuxt-link></li>
+        <li class="nameplate-item -logo"><nuxt-link 
+          to="/" 
+          class="nameplate-link -logo" 
+          @click.native="$mixpanel.track('Nav - Home')"><img 
+            src="~/assets/images/logo.png" 
+            width="172" 
+            alt="State of the ÐApps" 
+            class="nameplate-image"></nuxt-link></li>
       </ul>
     </div>
   </nav>

@@ -1,9 +1,11 @@
 <template>
   <div class="component-DappDetailBody">
-    <div class="wrapper" :class="dapp.categories.length ? '-' + dapp.categories[0] : ''">
+    <div 
+      :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+      class="wrapper">
       <DappDetailBodyHeading
         :direct="direct"
-        :iconUrl="dapp.iconUrl"
+        :icon-url="dapp.iconUrl"
         :name="dapp.name"
         :category="dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>

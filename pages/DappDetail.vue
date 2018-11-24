@@ -1,7 +1,12 @@
 <template>
   <LayoutMain>
-    <div class="page-dapps-detail" itemscope itemtype="http://schema.org/Product">
-      <DappDetail :dapp="dapp" :direct="direct"/>
+    <div 
+      class="page-dapps-detail" 
+      itemscope 
+      itemtype="http://schema.org/Product">
+      <DappDetail 
+        :dapp="dapp" 
+        :direct="direct"/>
     </div>
   </LayoutMain>
 </template>
@@ -14,6 +19,10 @@ import * as constants from '~/helpers/constants'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
+  components: {
+    DappDetail,
+    LayoutMain
+  },
   data () {
     return {
       dapp: constants.dappSchema,
@@ -45,10 +54,6 @@ export default {
         { hid: 'image', property: 'og:image', content: this.dapp.productImage }
       ]
     }
-  },
-  components: {
-    DappDetail,
-    LayoutMain
   }
 }
 </script>

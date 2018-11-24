@@ -1,6 +1,8 @@
 <template>
   <LayoutMain>
-    <div class="page-dapp-detail-improve" ref="page">
+    <div 
+      ref="page" 
+      class="page-dapp-detail-improve">
       <div class="hero-wrapper">
         <p style="text-align: center;">
           Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link>
@@ -12,21 +14,29 @@
           <div class="fields">
             <div class="basic-info">
               <h3 class="title-3">Your name <span class="required">required</span></h3>
-              <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
+              <div class="field"><input 
+                v-model="suggesterName" 
+                class="input-text" 
+                placeholder="Enter your name here" 
+                type="text"></div>
               <h3 class="title-3">Your email <span class="required">required</span></h3>
-              <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
+              <div class="field"><input 
+                v-model="email" 
+                class="input-text" 
+                placeholder="Enter your email here" 
+                type="text" 
+                @input="validateEmail"></div>
               <h3 class="title-3 -suggestions">Help improve these missing fields</h3>
             </div>
             <DappEdit
               :suggestions="suggestions"/>
-              <button
-            @click="submit"
-            :class="formIsValid ? 'is-valid' : ''"
-            class="submit"><span v-if="formIsValid">Submit</span><span v-else>Enter your name and a valid email address</span></button>
+            <button
+              :class="formIsValid ? 'is-valid' : ''"
+              class="submit"
+              @click="submit"><span v-if="formIsValid">Submit</span><span v-else>Enter your name and a valid email address</span></button>
           </div>
         </div>
-        <div>
-        </div>
+        <div/>
       </div>
       <div v-else>
         <p class="confirmation">Thanks! We will review your suggestions and be in touch.</p>
@@ -47,6 +57,7 @@ export default {
     DappEdit,
     LayoutMain
   },
+  mixins: [validateEmail],
   data () {
     return {
       suggesterName: '',
@@ -84,7 +95,17 @@ export default {
         }
       })
   },
-  mixins: [validateEmail],
+  mounted () {
+    axios
+      .get(`dapps/${this.dapp.slug}/suggestions`)
+      .then(response => {
+        const profile = response.data
+        const suggestions = profile.suggestions
+        this.suggestions = suggestions
+      })
+    const action = trackDappImproveProfileView(this.dapp.slug)
+    this.$mixpanel.track(action.name, action.data)
+  },
   methods: {
     submit () {
       if (this.formIsValid) {
@@ -117,17 +138,6 @@ export default {
       }
     }
   },
-  mounted () {
-    axios
-      .get(`dapps/${this.dapp.slug}/suggestions`)
-      .then(response => {
-        const profile = response.data
-        const suggestions = profile.suggestions
-        this.suggestions = suggestions
-      })
-    const action = trackDappImproveProfileView(this.dapp.slug)
-    this.$mixpanel.track(action.name, action.data)
-  }
 }
 </script>
 

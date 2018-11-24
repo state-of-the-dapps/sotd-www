@@ -2,16 +2,40 @@
   <section class="section -search">
     <div class="wrapper-outer">
       <div class="wrapper">
-        <a @click.prevent="$mixpanel.track('DApps - Search icon')" class="search-icon" href="#"><img class="search-image" src="~/assets/images/icons/search.png" width="20"></a>
+        <a 
+          class="search-icon" 
+          href="#" 
+          @click.prevent="$mixpanel.track('DApps - Search icon')"><img 
+            class="search-image" 
+            src="~/assets/images/icons/search.png" 
+            width="20"></a>
         <ul class="input-wrapper">
-          <li v-for="(tag, key) in tags" :key="key" class="tag">#{{ tag }} <span @click="removeTag(tag, key)" class="remove"><img src="~/assets/images/close/small.png" width="9" alt="Close" class="close"></span></li>
-          <li class="input-text"><input class="input" v-model="textQuery" @input="search" @keyup.enter="blurSearch" @click="fetchSuggestedTagsWithNoQuery" id="search" placeholder="Search by ÐApp name or tag" autocomplete="off" @keydown.delete="removeLastTag"></li>
+          <li 
+            v-for="(tag, key) in tags" 
+            :key="key" 
+            class="tag">#{{ tag }} <span 
+              class="remove" 
+              @click="removeTag(tag, key)"><img 
+                src="~/assets/images/close/small.png" 
+                width="9" 
+                alt="Close" 
+                class="close"></span></li>
+          <li class="input-text"><input 
+            id="search" 
+            v-model="textQuery" 
+            class="input" 
+            placeholder="Search by ÐApp name or tag" 
+            autocomplete="off" 
+            @input="search" 
+            @keyup.enter="blurSearch" 
+            @click="fetchSuggestedTagsWithNoQuery" 
+            @keydown.delete="removeLastTag"></li>
         </ul>
       </div>
       <SuggestedTags
         :items="suggestedTags"
         :model="'dapps'"
-        :textQuery="textQuery"
+        :text-query="textQuery"
         @updateTextQuery="updateTextQuery"
       />
     </div>
@@ -30,6 +54,7 @@
     components: {
       SuggestedTags
     },
+    mixins: [getCaretPosition],
     computed: {
       suggestedTags () {
         return this.$store.getters['tags/items']
@@ -104,7 +129,6 @@
         this.textQuery = value
       }
     },
-    mixins: [getCaretPosition]
   }
 </script>
 

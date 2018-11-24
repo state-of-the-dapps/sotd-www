@@ -1,6 +1,9 @@
 <template>
   <div class="component-CollectionList">
-    <DappCollectionList v-for="(collection, index) in collections" :collection="collection" :key="index"/>
+    <DappCollectionList 
+      v-for="(collection, index) in collections" 
+      :collection="collection" 
+      :key="index"/>
   </div>
 </template>
 

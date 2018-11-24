@@ -6,17 +6,17 @@
         :class="important ? 'important' : ''"
         class="button"
         @click="open">
-          <span
-            :class="selected ? 'is-active' : ''"
-            class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
-          <span class="arrow-wrapper"><SvgIconChevron
-            :width="11"
-            :height="11"/></span>
+        <span
+          :class="selected ? 'is-active' : ''"
+          class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
+        <span class="arrow-wrapper"><SvgIconChevron
+          :width="11"
+          :height="11"/></span>
       </button>
       <transition name="fade">
         <div
-          v-if="dropdown"
           v-on-clickaway="close"
+          v-if="dropdown"
           class="dropdown">
           <h4
             class="dropdown-title"
@@ -26,7 +26,7 @@
               class="option-item"
               role="button"
               @click="select('')"
-              ><strong>{{ allText }}</strong></li>
+            ><strong>{{ allText }}</strong></li>
             <li
               v-for="(option, index) in options"
               :key="index"
@@ -49,6 +49,9 @@ import SvgIconChevron from './SvgIconChevron'
 export default {
   components: {
     SvgIconChevron
+  },
+  directives: {
+    onClickaway: onClickaway
   },
   props: {
     allText: {
@@ -92,9 +95,6 @@ export default {
       this.$emit('select', selection)
     }
   },
-  directives: {
-    onClickaway: onClickaway
-  }
 }
 </script>
 

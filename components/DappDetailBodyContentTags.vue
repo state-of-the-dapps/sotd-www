@@ -1,20 +1,33 @@
 <template>
-<div class="component-DappDetailBodyContentBadges">
-  <div class="wrapper">
-    <h4 class="subtitle">Tags</h4>
-    <ul class="tag-list">
-      <li v-for="(tag, index) in formattedTags" :key="index" class="tag-item">
-        <a class="tag-link" @click="findDappsByTag(tag)">{{ tag }}</a>
-      </li>
-    </ul>
+  <div class="component-DappDetailBodyContentBadges">
+    <div class="wrapper">
+      <h4 class="subtitle">Tags</h4>
+      <ul class="tag-list">
+        <li 
+          v-for="(tag, index) in formattedTags" 
+          :key="index" 
+          class="tag-item">
+          <a 
+            class="tag-link" 
+            @click="findDappsByTag(tag)">{{ tag }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import { trackDappTag } from '~/helpers/mixpanel'
 
 export default {
+  props: {
+    slug: {
+      required: true
+    },
+    tags: {
+      required: true
+    }
+  },
   computed: {
     formattedTags () {
       var tags
@@ -38,14 +51,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  props: {
-    slug: {
-      required: true
-    },
-    tags: {
-      required: true
-    }
-  }
 }
 </script>
 

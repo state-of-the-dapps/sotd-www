@@ -1,8 +1,16 @@
 <template>
   <transition name="fade">
-    <div class="container" v-if="isActive" v-on-clickaway="hide">
+    <div 
+      v-on-clickaway="hide" 
+      v-if="isActive" 
+      class="container">
       <ul class="list">
-        <li v-for="(option, index) in optionsWithoutSelected" :key="index" v-if="hasRelevance(option)" class="item" @click.stop="select(option)">{{ option | formatDappTabOptions }}</li>
+        <li 
+          v-for="(option, index) in optionsWithoutSelected" 
+          v-if="hasRelevance(option)" 
+          :key="index" 
+          class="item" 
+          @click.stop="select(option)">{{ option | formatDappTabOptions }}</li>
       </ul>
     </div>
   </transition>
@@ -13,6 +21,9 @@
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
+    directives: {
+      onClickaway: onClickaway
+    },
     computed: {
       isActive () {
         return this.$store.getters['dapps/search/tabDropdownIsActive']
@@ -27,9 +38,6 @@
         }
         return options
       }
-    },
-    directives: {
-      onClickaway: onClickaway
     },
     methods: {
       hasRelevance (option) {

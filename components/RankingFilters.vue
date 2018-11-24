@@ -9,7 +9,7 @@
         filter="Category"
         title="Choose a category"
         @select="filterCategory"/>
-      </div>
+    </div>
     <div class="filter-wrapper">
       <BaseFilter
         :options="platformOptions"
@@ -63,6 +63,13 @@ export default {
       return options
     }
   },
+  async mounted () {
+    const urlCategory = this.$route.params.category
+    const urlPlatform = platformMap[this.$route.params.platform]
+    this.category = urlCategory
+    this.platform = urlPlatform
+    this.dappCategories = await getCategories()
+  },
   methods: {
     filterCategory (category) {
       this.category = category
@@ -99,13 +106,6 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     }
   },
-  async mounted () {
-    const urlCategory = this.$route.params.category
-    const urlPlatform = platformMap[this.$route.params.platform]
-    this.category = urlCategory
-    this.platform = urlPlatform
-    this.dappCategories = await getCategories()
-  }
 }
 </script>
 

@@ -1,10 +1,23 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <input class="text-input" :class="authors.length > 0 ? '--is-filled' : ''" type="text" maxlength="100" v-model="authors" @input="validate">
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <input 
+      :class="authors.length > 0 ? '--is-filled' : ''" 
+      v-model="authors" 
+      class="text-input" 
+      type="text" 
+      maxlength="100" 
+      @input="validate">
     <label class="label">ÐApp author(s) <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 100 - authors.length }}</span>
-    <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Separate names or organizations with a comma</p>
   </div>
@@ -16,6 +29,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors],
     computed: {
       authors: {
         get () {
@@ -49,6 +63,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
   }
 </script>

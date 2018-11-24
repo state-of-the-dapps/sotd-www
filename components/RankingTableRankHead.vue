@@ -6,7 +6,9 @@
       :class="!$route.query.sort ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('rank')">#</nuxt-link>
-    <span v-else class="label">#</span>
+    <span 
+      v-else 
+      class="label">#</span>
     <Help
       :bottom="true"
       text="Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations"/>

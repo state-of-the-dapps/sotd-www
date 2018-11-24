@@ -1,8 +1,15 @@
 <template>
   <transition name="fade">
-    <div class="container" v-if="isActive" v-on-clickaway="hide">
+    <div 
+      v-on-clickaway="hide" 
+      v-if="isActive" 
+      class="container">
       <ul class="list">
-        <li v-for="(option, index) in optionsWithoutSelected" :key="index" class="item" @click.stop="select(option)">{{ option }}</li>
+        <li 
+          v-for="(option, index) in optionsWithoutSelected" 
+          :key="index" 
+          class="item" 
+          @click.stop="select(option)">{{ option }}</li>
       </ul>
     </div>
   </transition>
@@ -13,6 +20,9 @@
   import { directive as onClickaway } from 'vue-clickaway'
 
   export default {
+    directives: {
+      onClickaway: onClickaway
+    },
     computed: {
       isActive () {
         return this.$store.getters['dapps/search/statusDropdownIsActive']
@@ -27,9 +37,6 @@
         }
         return options
       }
-    },
-    directives: {
-      onClickaway: onClickaway
     },
     methods: {
       hide () {

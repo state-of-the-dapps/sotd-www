@@ -1,14 +1,23 @@
 <template>
-<div class="component-DappDetailBodyContentBadges">
-  <div class="wrapper">
-    <ul class="badge-list">
-      <li v-for="(badge, index) in badges" :key="index" class="badge-item">
-        <component :is="mapSvgBadge(badge, 'component')" fill="black" :width="16" :height="18"></component>
-        <span class="description" v-html="mapSvgBadge(badge, 'description')"></span>
-      </li>
-    </ul>
+  <div class="component-DappDetailBodyContentBadges">
+    <div class="wrapper">
+      <ul class="badge-list">
+        <li 
+          v-for="(badge, index) in badges" 
+          :key="index" 
+          class="badge-item">
+          <component 
+            :is="mapSvgBadge(badge, 'component')" 
+            :width="16" 
+            :height="18" 
+            fill="black"/>
+          <span 
+            class="description" 
+            v-html="mapSvgBadge(badge, 'description')"/>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -35,6 +44,11 @@ export default {
     SvgBadgeStatus,
     SvgBadgeToken
   },
+  props: {
+    badges: {
+      required: true
+    }
+  },
   methods: {
     mapSvgBadge (badge, prop) {
       const badgeObj = dappBadgeMap[badge]
@@ -43,11 +57,6 @@ export default {
       }
     }
   },
-  props: {
-    badges: {
-      required: true
-    }
-  }
 }
 </script>
 

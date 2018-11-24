@@ -19,6 +19,10 @@ import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
 
 export default {
+  components: {
+    DappCardList,
+    LayoutMain
+  },
   data () {
     return {
       dapps: [],
@@ -26,10 +30,6 @@ export default {
       sourcePath: this.$route.path,
       listUrl: ''
     }
-  },
-  components: {
-    DappCardList,
-    LayoutMain
   },
   head () {
     return {

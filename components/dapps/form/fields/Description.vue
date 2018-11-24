@@ -1,10 +1,30 @@
 <template>
-  <div class="item" :class="errors && errors.length > 0 ? '--has-errors' : ''">
-    <textarea class="text-area" maxlength="1000" style="min-height: 200px" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"  :class="description.length > 0 ? '--is-filled' : ''" type="text" v-model="description" @input="validate"></textarea>
-    <label v-if="description.length < 450" class="label">Full description <span class="required">(required)</span></label>
+  <div 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    class="item">
+    <textarea 
+      :class="description.length > 0 ? '--is-filled' : ''" 
+      v-model="description" 
+      class="text-area" 
+      maxlength="1000" 
+      style="min-height: 200px" 
+      autocomplete="off" 
+      autocorrect="off" 
+      autocapitalize="off" 
+      spellcheck="false" 
+      type="text" 
+      @input="validate"/>
+    <label 
+      v-if="description.length < 450" 
+      class="label">Full description <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 1000 - description.length }}</span>
-    <ul v-if="errors && errors.length > 0" class="error-list">
-      <li v-for="(error, index) in errors" :key="index" class="error-item">{{ error }}</li>
+    <ul 
+      v-if="errors && errors.length > 0" 
+      class="error-list">
+      <li 
+        v-for="(error, index) in errors" 
+        :key="index" 
+        class="error-item">{{ error }}</li>
     </ul>
     <p class="help">The full description of your ÐApp in English.</p>
   </div>
@@ -16,6 +36,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors],
     computed: {
       description: {
         get () {
@@ -47,6 +68,5 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
   }
 </script>

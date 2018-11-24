@@ -1,25 +1,37 @@
 <template>
-<div class="component-DappDetailBodyContentModulesCollections">
-  <h4 class="subtitle">Featured in these collections</h4>
-  <ul class="collection-list">
-    <li class="collection-item">
-      <span class="collection-icon"></span>
-      <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-    </li>
-    <li class="collection-item">
-      <span class="collection-icon"></span>
-      <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-    </li>
-    <li class="collection-item">
-      <span class="collection-icon"></span>
-      <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-    </li>
-    <li class="collection-item">
-      <span class="collection-icon"></span>
-      <span class="collection-name"><SvgBadgeFeatured fill="black" :width="12" :height="14"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
-    </li>
-  </ul>
-</div>
+  <div class="component-DappDetailBodyContentModulesCollections">
+    <h4 class="subtitle">Featured in these collections</h4>
+    <ul class="collection-list">
+      <li class="collection-item">
+        <span class="collection-icon"/>
+        <span class="collection-name"><SvgBadgeFeatured 
+          :width="12" 
+          :height="14" 
+          fill="black"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
+      </li>
+      <li class="collection-item">
+        <span class="collection-icon"/>
+        <span class="collection-name"><SvgBadgeFeatured 
+          :width="12" 
+          :height="14" 
+          fill="black"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
+      </li>
+      <li class="collection-item">
+        <span class="collection-icon"/>
+        <span class="collection-name"><SvgBadgeFeatured 
+          :width="12" 
+          :height="14" 
+          fill="black"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
+      </li>
+      <li class="collection-item">
+        <span class="collection-icon"/>
+        <span class="collection-name"><SvgBadgeFeatured 
+          :width="12" 
+          :height="14" 
+          fill="black"/> <span class="collection-name-description"><a href="#">Best games of 2018</a></span></span>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>

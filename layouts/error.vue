@@ -8,10 +8,15 @@
 
 <script>
   export default {
+    props: {
+      error: {
+        type: Object,
+        required: true
+      }
+    },
     mounted () {
       this.$mixpanel.track('Error page', { type: this.error.statusCode, resource: this.$route.fullPath })
     },
-    props: ['error']
   }
 </script>
 

@@ -1,31 +1,57 @@
 <template>
   <div class="component-LoadMore">
     <div class="wrapper">
-      <p v-if="dapps.length < total && !isLoading" class="button-wrapper">
-        <button class="button" @click="loadMore">
+      <p 
+        v-if="dapps.length < total && !isLoading" 
+        class="button-wrapper">
+        <button 
+          class="button" 
+          @click="loadMore">
           Load the <span v-if="total - dapps.length > 1"> <span v-if="total - dapps.length > limit">next {{ limit }}</span><span v-else>last {{ total - dapps.length }}</span> ÐApps</span><span v-else>last ÐApp</span>
         </button>
       </p>
-      <p v-if="dapps.length >= total && !isLoading" class="message">No {{ dapps.length > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link @click.native="$mixpanel.track('DApps - New DApp')" :to="{ name: 'dapps-new' }" class="link">submit one</nuxt-link>!</p>
-      <p v-if="isLoading" class="loader-wrapper"><button class="loader"></button></p>
+      <p 
+        v-if="dapps.length >= total && !isLoading" 
+        class="message">No {{ dapps.length > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link 
+          :to="{ name: 'dapps-new' }" 
+          class="link" 
+          @click.native="$mixpanel.track('DApps - New DApp')">submit one</nuxt-link>!</p>
+      <p 
+        v-if="isLoading" 
+        class="loader-wrapper"><button class="loader"/></p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    dapps: {
+      type: Array,
+      required: true
+    },
+    isLoading: {
+      type: Boolean,
+      required: true
+    },
+    limit: {
+      type: Number,
+      required: true
+    },
+    offset: {
+      type: Number,
+      required: true
+    },
+    total: {
+      type: Number,
+      required: true
+    }
+  },
   methods: {
     loadMore () {
       this.$emit('loadMore')
     }
   },
-  props: [
-    'dapps',
-    'isLoading',
-    'limit',
-    'offset',
-    'total'
-  ]
 }
 </script>
 

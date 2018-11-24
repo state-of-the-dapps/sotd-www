@@ -2,37 +2,86 @@
   <div>
     <p class="heading">Social media links</p>
     <ul class="list">
-      <li v-if="(isEdit && facebookIsMissing) || !isEdit" class="item">
+      <li 
+        v-if="(isEdit && facebookIsMissing) || !isEdit" 
+        class="item">
         <div class="input-wrapper -facebook">
-          <input v-model="facebook" class="input" type="text" placeholder="/facebookpage" maxlength="100">
+          <input 
+            v-model="facebook" 
+            class="input" 
+            type="text" 
+            placeholder="/facebookpage" 
+            maxlength="100">
         </div>
       </li>
-      <li v-if="(isEdit && twitterIsMissing) || !isEdit" class="item">
+      <li 
+        v-if="(isEdit && twitterIsMissing) || !isEdit" 
+        class="item">
         <div class="input-wrapper -twitter">
-          <input v-model="twitter" class="input" type="text" placeholder="@twitterhandle" maxlength="100">
+          <input 
+            v-model="twitter" 
+            class="input" 
+            type="text" 
+            placeholder="@twitterhandle" 
+            maxlength="100">
         </div>
       </li>
-      <li v-if="(isEdit && githubIsMissing) || !isEdit" class="item">
+      <li 
+        v-if="(isEdit && githubIsMissing) || !isEdit" 
+        class="item">
         <div class="input-wrapper -github">
-          <input v-model="github" class="input" type="text" placeholder="/githubproject" maxlength="100">
+          <input 
+            v-model="github" 
+            class="input" 
+            type="text" 
+            placeholder="/githubproject" 
+            maxlength="100">
         </div>
       </li>
-      <li v-if="(isEdit && redditIsMissing) || !isEdit" class="item">
+      <li 
+        v-if="(isEdit && redditIsMissing) || !isEdit" 
+        class="item">
         <div class="input-wrapper -reddit">
-          <input v-model="reddit" class="input" type="text" placeholder="/r/reddit" maxlength="100">
+          <input 
+            v-model="reddit" 
+            class="input" 
+            type="text" 
+            placeholder="/r/reddit" 
+            maxlength="100">
         </div>
       </li>
-      <li v-if="(isEdit && chatIsMissing) || !isEdit" class="item" :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''">
+      <li 
+        v-if="(isEdit && chatIsMissing) || !isEdit" 
+        :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''" 
+        class="item">
         <div class="input-wrapper -chat">
-          <input v-model="chat" class="input" type="text" placeholder="chat invitation url" maxlength="100" @input="validate">
+          <input 
+            v-model="chat" 
+            class="input" 
+            type="text" 
+            placeholder="chat invitation url" 
+            maxlength="100" 
+            @input="validate">
         </div>
-        <ul v-if="chatErrors && chatErrors.length > 0" class="error-list -social">
-          <li v-for="(error, index) in chatErrors" :key="index" class="error-item -social">{{ error }}</li>
+        <ul 
+          v-if="chatErrors && chatErrors.length > 0" 
+          class="error-list -social">
+          <li 
+            v-for="(error, index) in chatErrors" 
+            :key="index" 
+            class="error-item -social">{{ error }}</li>
         </ul>
       </li>
-      <li v-if="(isEdit && blogIsMissing) || !isEdit" class="item">
+      <li 
+        v-if="(isEdit && blogIsMissing) || !isEdit" 
+        class="item">
         <div class="input-wrapper -blog">
-          <input v-model="blog" class="input" type="text" placeholder="medium.com/blog" maxlength="100">
+          <input 
+            v-model="blog" 
+            class="input" 
+            type="text" 
+            placeholder="medium.com/blog" 
+            maxlength="100">
         </div>
       </li>
     </ul>
@@ -45,6 +94,7 @@
   var validationTimer
 
   export default {
+    mixins: [dispatchErrors],
     props: {
       isEdit: {
         type: Boolean,
@@ -166,7 +216,6 @@
         }, 750)
       }
     },
-    mixins: [dispatchErrors]
   }
 </script>
 

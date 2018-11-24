@@ -25,7 +25,7 @@
         v-if="currentPage < totalPages"
         class="button prev-next"
         @click="$emit('selectPage', currentPage + 1)">Next</button>
-      </div>
+    </div>
     <div class="last-wrapper">
       <button
         v-if="currentPage < totalPages"

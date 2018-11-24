@@ -1,18 +1,31 @@
 <template>
-<div class="component-SecondaryCtaMetamask">
-  <div class="wrapper">
-    <div class="icon-wrapper">
-      <SvgBadgeScatter fill="white" :width="35" :height="35" />
-    </div>
-    <div class="description-wrapper">
-      <h5 class="title-5">Scatter for EOS</h5>
-      <p class="description">Scatter lets your use EOS ÐApps within your browser. <a class="link" href="https://get-scatter.com/?ref=StateOfTheDApps" target="_blank" rel="noopener noreferrer" @click="trackScatterCta()">Try it now</a></p>
-    </div>
-    <div class="cta-wrapper">
-      <a href="https://get-scatter.com/?ref=StateOfTheDApps" class="cta" target="_blank" rel="noopener noreferrer" @click="trackScatterCta()">Discover Scatter</a>
+  <div class="component-SecondaryCtaMetamask">
+    <div class="wrapper">
+      <div class="icon-wrapper">
+        <SvgBadgeScatter 
+          :width="35" 
+          :height="35" 
+          fill="white" />
+      </div>
+      <div class="description-wrapper">
+        <h5 class="title-5">Scatter for EOS</h5>
+        <p class="description">Scatter lets your use EOS ÐApps within your browser. <a 
+          class="link" 
+          href="https://get-scatter.com/?ref=StateOfTheDApps" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          @click="trackScatterCta()">Try it now</a></p>
+      </div>
+      <div class="cta-wrapper">
+        <a 
+          href="https://get-scatter.com/?ref=StateOfTheDApps" 
+          class="cta" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          @click="trackScatterCta()">Discover Scatter</a>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -20,13 +33,13 @@ import { trackScatterCta } from '~/helpers/mixpanel'
 import SvgBadgeScatter from './SvgBadgeScatter'
 
 export default {
+  components: {
+    SvgBadgeScatter
+  },
   data () {
     return {
       sourcePath: this.$route.path
     }
-  },
-  components: {
-    SvgBadgeScatter
   },
   methods: {
     trackScatterCta () {

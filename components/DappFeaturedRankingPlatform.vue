@@ -1,17 +1,36 @@
 <template>
   <div class="component-DappFeaturedRankingCategory">
     <h3 class="title-3">
-      <a @click="viewDappRankingPlatform(platform)" class="link">{{ platform }} <SvgIconChevron :width="8" :height="8" direction="right" /></a>
+      <a 
+        class="link" 
+        @click="viewDappRankingPlatform(platform)">{{ platform }} <SvgIconChevron 
+          :width="8" 
+          :height="8" 
+          direction="right" /></a>
       <span class="label-dau">Users (24hr)</span>
     </h3>
     <ul class="dapp-list">
-      <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
+      <li 
+        v-for="(dapp, index) in dapps" 
+        :key="index" 
+        class="dapp-item">
         <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
-        <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
-          <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+        <nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          :class="!dapp.iconUrl ? 'has-no-icon' : ''" 
+          class="dapp-icon-wrapper" 
+          @click.native="trackDappView(dapp.slug)">
+          <img 
+            v-if="dapp.iconUrl" 
+            :src="dapp.iconUrl" 
+            class="dapp-icon" 
+            width="32" 
+            height="32">
           <span v-else>{{ dapp.name | firstLetter }}</span>
         </nuxt-link>
-        <span class="dapp-name"><nuxt-link @click.native="trackDappView(dapp.slug)" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }">{{ dapp.name }}</nuxt-link></span>
+        <span class="dapp-name"><nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link></span>
         <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
     </ul>
@@ -25,29 +44,15 @@ import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
 export default {
-  data () {
-    return {
-      dapps: [],
-      sourcePath: this.$route.path
-    }
-  },
   components: {
     Help,
     SvgIconChevron
   },
   props: ['platform'],
-  methods: {
-    trackDappView (targetDapp) {
-      const sourceCollection = ''
-      const sourceComponent = 'DappFeaturedRankingPlatform'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    viewDappRankingPlatform (category) {
-      const sourceComponent = 'DappFeaturedRankingPlatform'
-      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, category.slug)
-      this.$mixpanel.track(action.name, action.data)
-      this.$router.push({name: 'rankings-platform', params: { platform: this.platform.toLowerCase() }})
+  data () {
+    return {
+      dapps: [],
+      sourcePath: this.$route.path
     }
   },
   async mounted () {
@@ -65,7 +70,21 @@ export default {
         const dapps = response.data.items
         this.dapps = dapps
       })
-  }
+  },
+  methods: {
+    trackDappView (targetDapp) {
+      const sourceCollection = ''
+      const sourceComponent = 'DappFeaturedRankingPlatform'
+      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    viewDappRankingPlatform (category) {
+      const sourceComponent = 'DappFeaturedRankingPlatform'
+      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, category.slug)
+      this.$mixpanel.track(action.name, action.data)
+      this.$router.push({name: 'rankings-platform', params: { platform: this.platform.toLowerCase() }})
+    }
+  },
 }
 </script>
 

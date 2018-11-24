@@ -1,7 +1,14 @@
 <template>
-  <span class="component-Help" @mouseover="popoverIsActive = true" @mouseout="popoverIsActive = false">
+  <span 
+    class="component-Help" 
+    @mouseover="popoverIsActive = true" 
+    @mouseout="popoverIsActive = false">
     <span class="help-icon">?</span>
-    <Popover v-if="popoverIsActive" :bottom="bottom" :reversed="reversed" :text="text"/>
+    <Popover 
+      v-if="popoverIsActive" 
+      :bottom="bottom" 
+      :reversed="reversed" 
+      :text="text"/>
   </span>
 </template>
 
@@ -9,15 +16,15 @@
 import Popover from './Popover'
 
 export default {
+  components: {
+    Popover
+  },
+  props: ['bottom', 'reversed', 'text'],
   data () {
     return {
       popoverIsActive: false
     }
   },
-  components: {
-    Popover
-  },
-  props: ['bottom', 'reversed', 'text']
 }
 </script>
 

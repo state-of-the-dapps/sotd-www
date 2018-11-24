@@ -2,9 +2,14 @@
   <div>
     <p class="heading">Category <span class="required">(required)</span></p>
     <div class="input-wrapper">
-      <div class="input" @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
+      <div 
+        class="input" 
+        @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
       <transition name="fade">
-        <div class="dropdown" v-if="dropdown" v-on-clickaway="toggleDropdown">
+        <div 
+          v-on-clickaway="toggleDropdown" 
+          v-if="dropdown" 
+          class="dropdown">
           <ul class="categories">
             <li
               v-for="(category, index) in categories"
@@ -24,6 +29,10 @@ import { dispatchErrors } from '~/helpers/mixins'
 import { directive as onClickaway } from 'vue-clickaway'
 
 export default {
+  directives: {
+    onClickaway: onClickaway
+  },
+  mixins: [dispatchErrors],
   data () {
     return {
       categories: [],
@@ -34,6 +43,9 @@ export default {
     selectedCategory () {
       return this.$store.getters['dapps/form/category']
     }
+  },
+  async mounted () {
+    this.categories = await getCategories()
   },
   methods: {
     selectCategory (value) {
@@ -53,13 +65,6 @@ export default {
       this.dropdown = !this.dropdown
     }
   },
-  async mounted () {
-    this.categories = await getCategories()
-  },
-  directives: {
-    onClickaway: onClickaway
-  },
-  mixins: [dispatchErrors]
 }
 </script>
 

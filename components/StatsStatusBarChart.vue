@@ -1,12 +1,18 @@
 <template>
   <div class="component-StatsBarChart">
     <ul class="stat-list">
-      <li v-for="(status, index) in statuses" :key="index" class="stat-item">
+      <li 
+        v-for="(status, index) in statuses" 
+        :key="index" 
+        class="stat-item">
         <div class="stat-item-field -label">
           <h3 class="label">{{ status.status | formatDappStatus | capitalize }}</h3>
         </div>
         <div class="stat-item-field -value">
-          <div :class="'-' + status.status" class="value" :style="'width:' + (status.dappCount / maxCount) * 100 + '%;'">          
+          <div 
+            :class="'-' + status.status" 
+            :style="'width:' + (status.dappCount / maxCount) * 100 + '%;'" 
+            class="value">          
             <p class="count">{{ status.dappCount | abbreviateNumber(2) || 0 }}</p>
           </div>
         </div>
@@ -18,6 +24,12 @@
 
 <script>
 export default {
+  props: {
+    statuses: {
+      type: Array,
+      required: true
+    }
+  },
   computed: {
     maxCount () {
       let count = 0
@@ -29,9 +41,6 @@ export default {
       return count
     }
   },
-  props: {
-    statuses: Array
-  }
 }
 </script>
 

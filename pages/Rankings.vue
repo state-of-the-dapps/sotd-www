@@ -46,6 +46,12 @@ export default {
     const pager = data.pager
     return { dapps, pager }
   },
+  watch: {
+    '$route.query' () {
+      this.$refs.table.scrollIntoView()
+      this.fetchDapps()
+    }
+  },
   methods: {
     async fetchDapps () {
       this.resetData()
@@ -74,12 +80,6 @@ export default {
   head () {
     return {
       title: 'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS, and POA'
-    }
-  },
-  watch: {
-    '$route.query' () {
-      this.$refs.table.scrollIntoView()
-      this.fetchDapps()
     }
   },
   scrollToTop: true

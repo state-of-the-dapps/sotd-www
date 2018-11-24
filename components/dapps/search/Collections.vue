@@ -1,13 +1,24 @@
 <template>
-  <section class="component--dapps-list-collections" v-if="items.length">
+  <section 
+    v-if="items.length" 
+    class="component--dapps-list-collections">
     <div class="container">
       <div class="heading-wrapper">
         <h2 class="heading">Featured ÐApp Collections</h2>
         <p class="description">Start exploring decentralized applications with these collections</p>
       </div>
       <ul class="list">
-        <nuxt-link v-for="(item, index) in items" :to="{ name: 'collections-slug', params: { slug: item.slug } }" tag="li" :key="index" class="item" @click.native="trackCollection(item)">
-          <img v-if="item.slug in collectionIcons" class="image" :src="require('~/assets/images/icons/collection-' + collectionIcons[item.slug] + '.png')">{{ item.name }}
+        <nuxt-link 
+          v-for="(item, index) in items" 
+          :to="{ name: 'collections-slug', params: { slug: item.slug } }" 
+          :key="index" 
+          tag="li" 
+          class="item" 
+          @click.native="trackCollection(item)">
+          <img 
+            v-if="item.slug in collectionIcons" 
+            :src="require('~/assets/images/icons/collection-' + collectionIcons[item.slug] + '.png')" 
+            class="image">{{ item.name }}
         </nuxt-link>
       </ul>
     </div>

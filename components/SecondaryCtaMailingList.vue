@@ -1,19 +1,32 @@
 <template>
-<div class="component-SecondaryCtaMailingList" id="component-SecondaryCtaMailingList">
-  <div class="wrapper">
-    <SvgIconMail fill="white" :width="30" :height="30" />
-    <h2 class="title-2">Stay in the loop</h2>
-    <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
-    <div class="input-wrapper">
-      <input id="component-SecondaryCtaMailingList-input" v-model="email" @input="validateEmail" class="input" type="text" placeholder="Enter your email here" />
+  <div 
+    id="component-SecondaryCtaMailingList" 
+    class="component-SecondaryCtaMailingList">
+    <div class="wrapper">
+      <SvgIconMail 
+        :width="30" 
+        :height="30" 
+        fill="white" />
+      <h2 class="title-2">Stay in the loop</h2>
+      <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
+      <div class="input-wrapper">
+        <input 
+          id="component-SecondaryCtaMailingList-input" 
+          v-model="email" 
+          class="input" 
+          type="text" 
+          placeholder="Enter your email here" 
+          @input="validateEmail" >
+      </div>
+      <button 
+        :class="[emailIsValid ? '-is-valid' : '', 
+                 isSubmitting ? '-is-submitting' : '',
+                 justSubmitted ? '-just-submitted' : '']" 
+        class="cta" 
+        @click="subscribe()">{{ ctaText }}
+      </button>
     </div>
-    <button class="cta" @click="subscribe()" 
-      :class="[emailIsValid ? '-is-valid' : '', 
-               isSubmitting ? '-is-submitting' : '',
-               justSubmitted ? '-just-submitted' : '']">{{ ctaText }}
-    </button>
   </div>
-</div>
 </template>
 
 <script>
@@ -27,11 +40,7 @@ export default {
   components: {
     SvgIconMail
   },
-  computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ])
-  },
+  mixins: [validateEmail],
   data () {
     return {
       ctaText: 'Sign up',
@@ -41,6 +50,11 @@ export default {
       justSubmitted: false,
       sourcePath: this.$route.path
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userEntryRoute'
+    ])
   },
   methods: {
     subscribe () {
@@ -86,7 +100,6 @@ export default {
       this.$mixpanel.setUser(user)
     }
   },
-  mixins: [validateEmail]
 }
 </script>
 

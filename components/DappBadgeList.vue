@@ -1,10 +1,16 @@
 <template>
-<ul class="component-DappBadgeList">
-  <li class="item" v-for="(badge, index) in badges" :key="index">
-    <span class="popover">{{ badge | formatDappBadge }}</span>
-    <component :is="mapSvgBadge(badge, 'component')" :width="12" :height="14"></component>
-  </li>
-</ul>
+  <ul class="component-DappBadgeList">
+    <li 
+      v-for="(badge, index) in badges" 
+      :key="index" 
+      class="item">
+      <span class="popover">{{ badge | formatDappBadge }}</span>
+      <component 
+        :is="mapSvgBadge(badge, 'component')" 
+        :width="12" 
+        :height="14"/>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -31,6 +37,11 @@ export default {
     SvgBadgeStatus,
     SvgBadgeToken
   },
+  props: {
+    badges: {
+      type: Array
+    }
+  },
   methods: {
     mapSvgBadge (badge, prop) {
       const badgeObj = dappBadgeMap[badge]
@@ -39,11 +50,6 @@ export default {
       }
     }
   },
-  props: {
-    badges: {
-      type: Array
-    }
-  }
 }
 </script>
 
