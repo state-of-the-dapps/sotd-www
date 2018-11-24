@@ -12,29 +12,13 @@ const env = {
   linkexchangeWhitelistAddress: process.env.LINKEXCHANGE_WHITELIST_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
 }
 
-module.exports = {
+export default {
   build: {
     /*
     ** Run ESLINT on save
     */
-    extend (config, { isClient }) {
-      if (isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
-    publicPath: env.cdnPublicPath,
-    vendor: [
-      'axios',
-      'mixpanel-browser',
-      'smoothscroll-polyfill',
-      'vue-clickaway',
-      'webfontloader'
-    ]
+
+    publicPath: env.cdnPublicPath
   },
   generate: {
     routes: [
