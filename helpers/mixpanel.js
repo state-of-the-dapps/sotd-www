@@ -503,6 +503,20 @@ export const trackFooterSubmit = function(sourcePath) {
   return action
 }
 
+export const trackFeaturedCategory = function(category) {
+  let name = 'Featured Category'
+  let data = {
+    category
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackHomeEventCta = function(targetCta) {
   let name = 'Home Event CTA'
   let data = {

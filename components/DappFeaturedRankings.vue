@@ -9,12 +9,12 @@
           <img 
             src="~/assets/images/icons/categories.png" 
             width="16" 
-            class="icon">Rankings by Popular Categories
+            class="icon">Rankings by Category
         </nuxt-link>
         <nuxt-link 
           :to="{ name: 'rankings' }" 
           class="cta" 
-          @click.native="trackDappRankingCategory('all')">View all
+          @click.native="trackDappRankingCategory('all')">View all categories
           <SvgIconChevron 
             :width="8" 
             :height="8" 
