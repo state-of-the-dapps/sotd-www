@@ -53,7 +53,7 @@ export default {
   },
   props: {
     category: {
-      type: String,
+      type: Object,
       required: true
     }
   },

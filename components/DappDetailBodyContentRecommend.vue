@@ -58,7 +58,7 @@ export default {
   props: {
     rating: {
       type: Number,
-      required: true
+      default: null
     },
     slug: {
       type: String,
@@ -66,7 +66,7 @@ export default {
     },
     votes: {
       type: Number,
-      required: true
+      default: null
     },
     positive: {
       type: Number,
@@ -74,11 +74,11 @@ export default {
     },
     neutral: {
       type: Number,
-      required: true
+      default: null
     },
     negative: {
       type: Number,
-      required: true
+      default: null
     }
   },
   data () {

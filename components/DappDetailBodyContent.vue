@@ -34,7 +34,7 @@
         </media>
         <DappDetailBodyContentRecommend
           :slug="dapp.slug"
-          :rating="dapp.stats.star_rating"
+          :rating="dapp.stats.star_rating || null"
           :votes="dapp.stats.votes"
           :positive="dapp.stats.positive"
           :neutral="dapp.stats.netural"
