@@ -1,7 +1,9 @@
 <template>
   <div class="component-DappDetailBodyContentImage">
     <div class="wrapper">
-      <img class="image" :src="productImage">
+      <img 
+        :src="productImage" 
+        class="image">
     </div>
   </div>
 </template>
@@ -10,6 +12,7 @@
 export default {
   props: {
     productImage: {
+      type: String,
       required: true
     }
   }
@@ -26,13 +29,13 @@ export default {
   max-height: 630px;
   @include tweakpoint('min-width', 1000px) {
     border-radius: 4px;
-  } 
+  }
 }
 
 .wrapper {
   @include tweakpoint('min-width', 1000px) {
     margin: 0 10px;
     padding: 0 0 25px 0;
-  } 
+  }
 }
 </style>

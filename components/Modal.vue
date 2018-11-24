@@ -1,9 +1,13 @@
 <template>
   <transition name="fade">
-    <div class="component-Modal" v-if="siteModal.component">
+    <div 
+      v-if="siteModal.component" 
+      class="component-Modal">
       <div class="outer-wrapper">
         <div class="inner-wrapper">
-          <component :is="siteModal.component" :modalProps="siteModal.props"></component>
+          <component 
+            :is="siteModal.component" 
+            :modal-props="siteModal.props"/>
         </div>
       </div>
     </div>
@@ -25,22 +29,22 @@ export default {
   computed: {
     ...mapGetters(['siteModal'])
   },
-  destroyed () {
+  watch: {
+    $route() {
+      this.close()
+    }
+  },
+  destroyed() {
     this.close()
   },
   methods: {
-    close () {
+    close() {
       const modal = {
         component: '',
         mpData: {},
         props: {}
       }
       this.$store.dispatch('setSiteModal', modal)
-    }
-  },
-  watch: {
-    '$route' () {
-      this.close()
     }
   }
 }
@@ -56,7 +60,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 50;
-  background: rgba($color--black, .5);
+  background: rgba($color--black, 0.5);
   display: flex;
   justify-content: center;
   overflow-y: scroll;
@@ -71,7 +75,7 @@ export default {
   border-radius: 4px;
   margin: 40px 10px;
   z-index: 110;
-  box-shadow: 0 0 50px rgba($color--black, .25);
+  box-shadow: 0 0 50px rgba($color--black, 0.25);
   @include tweakpoint('min-width', 600px) {
     margin: 40px auto;
   }
@@ -88,4 +92,3 @@ export default {
   -webkit-overflow-scrolling: touch;
 }
 </style>
-

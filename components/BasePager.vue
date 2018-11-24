@@ -25,7 +25,7 @@
         v-if="currentPage < totalPages"
         class="button prev-next"
         @click="$emit('selectPage', currentPage + 1)">Next</button>
-      </div>
+    </div>
     <div class="last-wrapper">
       <button
         v-if="currentPage < totalPages"
@@ -52,10 +52,10 @@ export default {
     }
   },
   computed: {
-    currentPage () {
+    currentPage() {
       return Number(this.$route.query.page) || 1
     },
-    totalPages () {
+    totalPages() {
       const totalPages = Math.ceil(this.totalCount / this.limit)
       return totalPages
     }
@@ -101,7 +101,8 @@ export default {
     background: darken($color--white, 1%);
     border-color: $color--black;
   }
-  &.is-active, &.is-active:hover {
+  &.is-active,
+  &.is-active:hover {
     background: $color--black;
     color: $color--gray;
     border-color: $color--black;
@@ -114,7 +115,8 @@ export default {
       color: $color--gray;
     }
   }
-  &.prev-next, &.number {
+  &.prev-next,
+  &.number {
     margin-left: 3px;
     margin-right: 3px;
     margin-bottom: 5px;

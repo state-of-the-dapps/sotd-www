@@ -1,49 +1,65 @@
 <template>
-<div class="component-DappDetailBodyContent">
-  <div class="wrapper">
-    <div class="main">
-      <DappAlert v-if="dapp.alert" :alert="dapp.alert"/>
-      <DappDetailBodyContentImage v-if="dapp.productImage" :productImage="dapp.productImage"/>
-      <DappDetailBodyContentDescription v-if="dapp.description" :description="dapp.description"/>
-      <media :query="{maxWidth: 1000}">
-        <div>
-          <DappDetailBodyContentCtas :dapp="dapp"/>
-          <DappDetailBodyContentPlatform
-            v-if="dapp.platform"
-            :platform="dapp.platform"
-            :slug="dapp.slug"/>
-        </div>
-      </media>
-      <DappDetailBodyContentModules :dapp="dapp"/>
-    </div>
-    <div class="actions-related">
-      <media :query="{minWidth: 1000}">
-        <div>
-          <DappDetailBodyContentCtas :dapp="dapp"/>
-          <DappDetailBodyContentPlatform
-            v-if="dapp.platform"
-            :platform="dapp.platform"
-            :slug="dapp.slug"/>
-        </div>
-      </media>
-      <DappDetailBodyContentRecommend
-        :slug="dapp.slug"
-        :rating="dapp.stats.star_rating"
-        :votes="dapp.stats.votes"
-        :positive="dapp.stats.positive"
-        :neutral="dapp.stats.netural"
-        :negative="dapp.stats.negative"/>
-      <DappDetailBodyContentRank v-if="dapp.rank" :rank="dapp.rank"/>
-      <DappProfile
-        v-if="dapp.profileScore"
-        :dapp="dapp.slug"
-        :profile-score="dapp.profileScore"/>
-      <DappDetailBodyContentCategories v-if="dapp.categories && dapp.categories.length" :slug="dapp.slug" :categories="dapp.categories"/>
-      <DappDetailBodyContentTags v-if="dapp.tags && dapp.tags.length" :slug="dapp.slug" :tags="dapp.tags"/>
-      <DappDetailBodyContentTools :name="dapp.name" :slug="dapp.slug"/>
+  <div class="component-DappDetailBodyContent">
+    <div class="wrapper">
+      <div class="main">
+        <DappAlert 
+          v-if="dapp.alert" 
+          :alert="dapp.alert"/>
+        <DappDetailBodyContentImage 
+          v-if="dapp.productImage" 
+          :product-image="dapp.productImage"/>
+        <DappDetailBodyContentDescription 
+          v-if="dapp.description" 
+          :description="dapp.description"/>
+        <media :query="{maxWidth: 1000}">
+          <div>
+            <DappDetailBodyContentCtas :dapp="dapp"/>
+            <DappDetailBodyContentPlatform
+              v-if="dapp.platform"
+              :platform="dapp.platform"
+              :slug="dapp.slug"/>
+          </div>
+        </media>
+        <DappDetailBodyContentModules :dapp="dapp"/>
+      </div>
+      <div class="actions-related">
+        <media :query="{minWidth: 1000}">
+          <div>
+            <DappDetailBodyContentCtas :dapp="dapp"/>
+            <DappDetailBodyContentPlatform
+              v-if="dapp.platform"
+              :platform="dapp.platform"
+              :slug="dapp.slug"/>
+          </div>
+        </media>
+        <DappDetailBodyContentRecommend
+          :slug="dapp.slug"
+          :rating="dapp.stats.star_rating || null"
+          :votes="dapp.stats.votes"
+          :positive="dapp.stats.positive"
+          :neutral="dapp.stats.netural"
+          :negative="dapp.stats.negative"/>
+        <DappDetailBodyContentRank 
+          v-if="dapp.rank" 
+          :rank="dapp.rank"/>
+        <DappProfile
+          v-if="dapp.profileScore"
+          :dapp="dapp.slug"
+          :profile-score="dapp.profileScore"/>
+        <DappDetailBodyContentCategories 
+          v-if="dapp.categories && dapp.categories.length" 
+          :slug="dapp.slug" 
+          :categories="dapp.categories"/>
+        <DappDetailBodyContentTags 
+          v-if="dapp.tags && dapp.tags.length" 
+          :slug="dapp.slug" 
+          :tags="dapp.tags"/>
+        <DappDetailBodyContentTools 
+          :name="dapp.name" 
+          :slug="dapp.slug"/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -79,6 +95,7 @@ export default {
   },
   props: {
     dapp: {
+      type: Object,
       required: true
     }
   }
@@ -105,13 +122,13 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     flex: 1;
     padding-right: 10px;
-  }  
+  }
 }
 
 .actions-related {
   @include tweakpoint('min-width', 1000px) {
     width: 190px;
     padding-left: 10px;
-  }  
+  }
 }
 </style>

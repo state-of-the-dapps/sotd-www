@@ -1,32 +1,31 @@
 <template>
-<div class="component-DappDetailBodyContentModulesStats">
-  <h4 class="subtitle">{{ title }}</h4>
-  <div class="sparkline">
-    <trend
-      :data="sparkline"
-      :gradient="['#333']"
-      :stroke-width="1.75"
-      :padding="4"
-      auto-draw
-      smooth>
-    </trend>
-  </div>
-  <ul class="stat-list">
-    <li class="stat-item">
-      <span v-if="type === 'numbers'">1 day</span>
-      <span v-else>Daily</span>
-      <span class="stat-value">{{ daily.toLocaleString() }}</span>
-    </li>
-    <li class="stat-item">
-      <span v-if="type === 'numbers'">7 days</span>
-      <span v-else>Weekly</span>
-      <span class="stat-value">{{ weekly.toLocaleString() }}</span>
-    </li>
-    <li class="stat-item">
-      <span v-if="type === 'numbers'">30 days</span>
-      <span v-else>Monthly</span>
-      <span class="stat-value">{{ monthly.toLocaleString() }}</span>
-    </li>
+  <div class="component-DappDetailBodyContentModulesStats">
+    <h4 class="subtitle">{{ title }}</h4>
+    <div class="sparkline">
+      <trend
+        :data="sparkline"
+        :gradient="['#333']"
+        :stroke-width="1.75"
+        :padding="4"
+        auto-draw
+        smooth/>
+    </div>
+    <ul class="stat-list">
+      <li class="stat-item">
+        <span v-if="type === 'numbers'">1 day</span>
+        <span v-else>Daily</span>
+        <span class="stat-value">{{ daily.toLocaleString() }}</span>
+      </li>
+      <li class="stat-item">
+        <span v-if="type === 'numbers'">7 days</span>
+        <span v-else>Weekly</span>
+        <span class="stat-value">{{ weekly.toLocaleString() }}</span>
+      </li>
+      <li class="stat-item">
+        <span v-if="type === 'numbers'">30 days</span>
+        <span v-else>Monthly</span>
+        <span class="stat-value">{{ monthly.toLocaleString() }}</span>
+      </li>
     <!--
     <li class="stat-item">
       <span v-if="type === 'numbers'">90 days</span>
@@ -34,8 +33,8 @@
       <span class="stat-value">{{ quarterly.toLocaleString() }}</span>
     </li>
     -->
-  </ul>
-</div>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -47,27 +46,34 @@ export default {
   },
   props: {
     daily: {
+      type: Number,
       default: 0,
       required: true
     },
     monthly: {
+      type: Number,
       default: 0,
       required: true
     },
     sparkline: {
+      type: Array,
       required: true
     },
     quarterly: {
+      type: Number,
       default: 0,
       required: true
     },
     title: {
+      type: String,
       required: true
     },
     type: {
+      type: String,
       default: 'words'
     },
     weekly: {
+      type: Number,
       default: 0,
       required: true
     }
@@ -78,7 +84,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
-
 
 .sparkline {
   margin: 10px 0;

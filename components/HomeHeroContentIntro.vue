@@ -1,12 +1,23 @@
 <template>
-<div class="component-HomeHeroContentIntro" :class="'-' + loaded">
-  <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">apps built <br>on Blockchain</span>)</span></h1>
-  <p class="description">Discover the possibilities of the Ethereum, EOS &amp; POA blockchain with the definitive registry of ÐApp projects. <nuxt-link class="description-link" :to="{ name: 'what'}" @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
-  <ul class="cta-list">
-    <li class="cta-item"><nuxt-link class="cta-link" :to="{ name: 'rankings' }" @click.native="trackHomeHeroCta('rankings')">View the top ÐApps</nuxt-link></li>
-    <li class="cta-item"><nuxt-link class="cta-link -submit" :to="{ name: 'dapps-new' }" @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
-  </ul>
-</div>
+  <div 
+    :class="'-' + loaded" 
+    class="component-HomeHeroContentIntro">
+    <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">apps built <br>on Blockchain</span>)</span></h1>
+    <p class="description">Discover the possibilities of the Ethereum, EOS &amp; POA blockchain with the definitive registry of ÐApp projects. <nuxt-link 
+      :to="{ name: 'what'}" 
+      class="description-link" 
+      @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
+    <ul class="cta-list">
+      <li class="cta-item"><nuxt-link 
+        :to="{ name: 'rankings' }" 
+        class="cta-link" 
+        @click.native="trackHomeHeroCta('rankings')">View the top ÐApps</nuxt-link></li>
+      <li class="cta-item"><nuxt-link 
+        :to="{ name: 'dapps-new' }" 
+        class="cta-link -submit" 
+        @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -14,27 +25,25 @@ import { trackHomeHeroCta } from '~/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 
 export default {
-  computed: {
-    ...mapGetters([
-      'heroHasLoaded'
-    ])
-  },
-  data () {
+  data() {
     return {
       loaded: ''
     }
   },
-  destroyed () {
+  computed: {
+    ...mapGetters(['heroHasLoaded'])
+  },
+  destroyed() {
     this.$store.dispatch('setHeroLoaded')
   },
+  mounted() {
+    this.loaded = !this.heroHasLoaded ? 'first-load' : 'has-loaded'
+  },
   methods: {
-    trackHomeHeroCta (targetCta) {
+    trackHomeHeroCta(targetCta) {
       const action = trackHomeHeroCta(targetCta)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  mounted () {
-    this.loaded = (!this.heroHasLoaded) ? 'first-load' : 'has-loaded'
   }
 }
 </script>
@@ -66,7 +75,7 @@ export default {
   border-radius: 3px;
   &.-submit {
     background: transparent;
-    border-color: lighten($color--white, 100%)
+    border-color: lighten($color--white, 100%);
   }
 }
 
@@ -92,7 +101,7 @@ export default {
 .description {
   font-size: 1.2rem;
   width: 75%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   @include tweakpoint('min-width', 575px) {
     width: 80%;
   }
@@ -129,9 +138,9 @@ export default {
 
 .title-1 {
   font-size: 5.3rem;
-  line-height: .825;
+  line-height: 0.825;
   letter-spacing: 1.05px;
-  margin: 1rem 0 .75rem 0;
+  margin: 1rem 0 0.75rem 0;
   @include tweakpoint('min-width', 1400px) {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -140,8 +149,12 @@ export default {
 }
 
 @keyframes fadeInHomeHero {
-  from { opacity: 0; transform: translateY(-5px); }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
-

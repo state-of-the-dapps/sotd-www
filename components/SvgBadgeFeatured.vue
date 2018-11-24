@@ -1,21 +1,29 @@
 <template>
-<svg class="component-SvgBadgeFeatured" :width="width" :height="height" x="0px" y="0px" viewBox="0 0 914 1280">
-  <polygon :class="fill" points="914.2,1280 457,1049.7 -0.2,1280 -0.2,0 914.2,0 "/>
-</svg>
+  <svg 
+    :width="width" 
+    :height="height" 
+    class="component-SvgBadgeFeatured" 
+    x="0px" 
+    y="0px" 
+    viewBox="0 0 914 1280">
+    <polygon 
+      :class="fill" 
+      points="914.2,1280 457,1049.7 -0.2,1280 -0.2,0 914.2,0 "/>
+  </svg>
 </template>
 
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'purple',
       type: String
     },
-    'height': {
+    height: {
       default: 18,
       type: Number
     },
-    'width': {
+    width: {
       default: 16,
       type: Number
     }
@@ -34,4 +42,3 @@ export default {
   fill: $color--purple;
 }
 </style>
-

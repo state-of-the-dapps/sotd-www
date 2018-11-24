@@ -1,19 +1,32 @@
 <template>
-<div class="component-SecondaryCtaMailingList" id="component-SecondaryCtaMailingList">
-  <div class="wrapper">
-    <SvgIconMail fill="white" :width="30" :height="30" />
-    <h2 class="title-2">Stay in the loop</h2>
-    <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
-    <div class="input-wrapper">
-      <input id="component-SecondaryCtaMailingList-input" v-model="email" @input="validateEmail" class="input" type="text" placeholder="Enter your email here" />
+  <div 
+    id="component-SecondaryCtaMailingList" 
+    class="component-SecondaryCtaMailingList">
+    <div class="wrapper">
+      <SvgIconMail 
+        :width="30" 
+        :height="30" 
+        fill="white" />
+      <h2 class="title-2">Stay in the loop</h2>
+      <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
+      <div class="input-wrapper">
+        <input 
+          id="component-SecondaryCtaMailingList-input" 
+          v-model="email" 
+          class="input" 
+          type="text" 
+          placeholder="Enter your email here" 
+          @input="validateEmail" >
+      </div>
+      <button 
+        :class="[emailIsValid ? '-is-valid' : '', 
+                 isSubmitting ? '-is-submitting' : '',
+                 justSubmitted ? '-just-submitted' : '']" 
+        class="cta" 
+        @click="subscribe()">{{ ctaText }}
+      </button>
     </div>
-    <button class="cta" @click="subscribe()" 
-      :class="[emailIsValid ? '-is-valid' : '', 
-               isSubmitting ? '-is-submitting' : '',
-               justSubmitted ? '-just-submitted' : '']">{{ ctaText }}
-    </button>
   </div>
-</div>
 </template>
 
 <script>
@@ -27,12 +40,8 @@ export default {
   components: {
     SvgIconMail
   },
-  computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ])
-  },
-  data () {
+  mixins: [validateEmail],
+  data() {
     return {
       ctaText: 'Sign up',
       email: '',
@@ -42,8 +51,11 @@ export default {
       sourcePath: this.$route.path
     }
   },
+  computed: {
+    ...mapGetters(['userEntryRoute'])
+  },
   methods: {
-    subscribe () {
+    subscribe() {
       if (this.emailIsValid && !this.isSubmitting) {
         this.ctaText = 'Submitting...'
         this.isSubmitting = true
@@ -52,13 +64,14 @@ export default {
             email: this.email
           }
         }
-        axios.post('newsletter/subscribe', data)
-          .then((response) => {
+        axios
+          .post('newsletter/subscribe', data)
+          .then(response => {
             this.trackNewsletterSubscribe()
             this.email = ''
             this.justSubmitted = true
-            this.ctaText = 'Thanks! We\'ll be in touch!'
-            return new Promise((resolve) => {
+            this.ctaText = "Thanks! We'll be in touch!"
+            return new Promise(resolve => {
               setTimeout(() => {
                 this.emailIsValid = false
                 this.isSubmitting = false
@@ -71,22 +84,32 @@ export default {
           .catch(() => {
             this.isSubmitting = false
             this.ctaText = 'Sign up'
-            alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
+            alert(
+              'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com'
+            )
           })
       }
     },
-    trackNewsletterSubscribe () {
+    trackNewsletterSubscribe() {
       const sourceComponent = 'SecondaryCtaMailingList'
-      const action = trackNewsletterSubscribe(this.email, sourceComponent, this.sourcePath)
+      const action = trackNewsletterSubscribe(
+        this.email,
+        sourceComponent,
+        this.sourcePath
+      )
       this.$mixpanel.track(action.name, action.data)
 
       const hasWeb3 = typeof web3 !== 'undefined'
       const lastUpdated = new Date().toISOString()
-      const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+      const user = setUser(
+        this.email,
+        hasWeb3,
+        lastUpdated,
+        this.userEntryRoute
+      )
       this.$mixpanel.setUser(user)
     }
-  },
-  mixins: [validateEmail]
+  }
 }
 </script>
 
@@ -98,8 +121,8 @@ export default {
   padding: 4px 75px;
   border: 1px solid lighten($color--white, 100%);
   position: relative;
-  opacity: .4;
-  transition: all .2s ease;
+  opacity: 0.4;
+  transition: all 0.2s ease;
   border-radius: 3px;
   cursor: default;
   &.-is-valid {
@@ -142,12 +165,12 @@ export default {
   border: none;
   padding: 11px;
   text-align: center;
-  background: rgba($color--black, .15);
+  background: rgba($color--black, 0.15);
   color: lighten($color--white, 100%);
   font-size: 1.05rem;
   border-radius: 4px;
   &:focus::placeholder {
-    color: rgba($color--white, .5);
+    color: rgba($color--white, 0.5);
   }
   &::placeholder {
     color: lighten($color--white, 100%);
@@ -162,8 +185,8 @@ export default {
 
 .title-2 {
   font-size: 3rem;
-  margin-top: .25rem;
-  margin-bottom: .25rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .wrapper {

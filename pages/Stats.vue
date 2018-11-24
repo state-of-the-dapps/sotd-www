@@ -19,11 +19,16 @@ export default {
     LayoutMain,
     Stats
   },
-  head () {
+  head() {
     return {
       title: 'State of the ÐApps — ÐApp Statistics',
       meta: [
-        { hid: 'description', name: 'description', content: 'Total ÐApps, Daily Active Users, ÐApps by Category and more...' }
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Total ÐApps, Daily Active Users, ÐApps by Category and more...'
+        }
       ]
     }
   }
@@ -34,7 +39,7 @@ export default {
 @import '~assets/css/settings';
 
 .description {
-  margin: .5rem auto 4rem auto;
+  margin: 0.5rem auto 4rem auto;
   text-align: center;
   max-width: 400px;
 }
@@ -44,7 +49,7 @@ export default {
   padding: 3rem 0 2rem;
 }
 
-.page-stats{
+.page-stats {
   padding-bottom: 50px;
 }
 

@@ -1,58 +1,102 @@
 <template>
-<div class="component-Menu" :class="'-' + color">
-  <div class="nameplate">
-    <nuxt-link class="logo-link -icon" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
-      <SvgIconLogo :fill="color" :width="45" :height="45" />
-    </nuxt-link>
-    <nuxt-link class="logo-link -wordmark" :to="{ name: 'home' }" @click.native="trackMenu('logo')">
-      <SvgLogotype :fill="color" :width="120" :height="26" />
-    </nuxt-link>
-  </div>
-  <ul class="nav-list" role="navigation">
-    <li class="nav-item -home">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'home' }" @click.native="trackMenu('home')" exact>Home</nuxt-link>
-    </li>
-    <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
-    </li>
-    <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'rankings' }" @click.native="trackMenu('rankings')">Rankings</nuxt-link>
-    </li>
-    <!-- <li class="nav-item">
+  <div 
+    :class="'-' + color" 
+    class="component-Menu">
+    <div class="nameplate">
+      <nuxt-link 
+        :to="{ name: 'home' }" 
+        class="logo-link -icon" 
+        @click.native="trackMenu('logo')">
+        <SvgIconLogo 
+          :fill="color" 
+          :width="45" 
+          :height="45" />
+      </nuxt-link>
+      <nuxt-link 
+        :to="{ name: 'home' }" 
+        class="logo-link -wordmark" 
+        @click.native="trackMenu('logo')">
+        <SvgLogotype 
+          :fill="color" 
+          :width="120" 
+          :height="26" />
+      </nuxt-link>
+    </div>
+    <ul 
+      class="nav-list" 
+      role="navigation">
+      <li class="nav-item -home">
+        <nuxt-link 
+          :class="'-' + color" 
+          :to="{ name: 'home' }" 
+          class="nav-link" 
+          exact 
+          @click.native="trackMenu('home')">Home</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link 
+          :class="'-' + color" 
+          :to="{ name: 'dapps' }" 
+          class="nav-link" 
+          @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link 
+          :class="'-' + color" 
+          :to="{ name: 'rankings' }" 
+          class="nav-link" 
+          @click.native="trackMenu('rankings')">Rankings</nuxt-link>
+      </li>
+      <!-- <li class="nav-item">
       <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
     </li> -->
-    <li class="nav-item -stats">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'stats' }" @click.native="trackMenu('stats')" exact>Stats</nuxt-link>
-    </li>
-    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
-      <media :query="{maxWidth: 975}">
-        <li class="nav-item">
-          <nuxt-link class="nav-link -search" :class="'-' + color" :to="{ name: 'dapps' }" @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
-        </li>
-      </media>
-    </template>
+      <li class="nav-item -stats">
+        <nuxt-link 
+          :class="'-' + color" 
+          :to="{ name: 'stats' }" 
+          class="nav-link" 
+          exact 
+          @click.native="trackMenu('stats')">Stats</nuxt-link>
+      </li>
+      <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
+        <media :query="{maxWidth: 975}">
+          <li class="nav-item">
+            <nuxt-link 
+              :class="'-' + color" 
+              :to="{ name: 'dapps' }" 
+              class="nav-link -search" 
+              @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+          </li>
+        </media>
+      </template>
     <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
       <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li> -->
-  </ul>
-  <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
-    <media :query="{minWidth: 975}">
-      <ul class="nav-list-search" :class="search.length ? 'is-searching' : ''">
-        <li class="nav-item -search">
-          <GlobalSearch
-            :color="color"
+    </ul>
+    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
+      <media :query="{minWidth: 975}">
+        <ul 
+          :class="search.length ? 'is-searching' : ''" 
+          class="nav-list-search">
+          <li class="nav-item -search">
+            <GlobalSearch
+              :color="color"
             />
-        </li>
-      </ul>
-    </media>
-  </template>
-  <ul class="nav-list-submit">
-    <li class="nav-item -submit">
-      <nuxt-link @click.native="trackMenu('dapps-new')" :to="{ name: 'dapps-new' }" class="nav-link -submit" :class="$route.name === 'home' ? 'is-home' : ''">Submit a ÐApp</nuxt-link>
-    </li>
-  </ul>
-</div>
+          </li>
+        </ul>
+      </media>
+    </template>
+    <ul class="nav-list-submit">
+      <li class="nav-item -submit">
+        <nuxt-link 
+          :to="{ name: 'dapps-new' }" 
+          :class="$route.name === 'home' ? 'is-home' : ''" 
+          class="nav-link -submit" 
+          @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -66,12 +110,6 @@ import SvgIconMagnifier from './SvgIconMagnifier'
 import SvgLogotype from './SvgLogotype'
 
 export default {
-  data () {
-    return {
-      list: [],
-      sourcePath: this.$route.path
-    }
-  },
   components: {
     GlobalSearch,
     Media,
@@ -79,6 +117,18 @@ export default {
     SvgIconMail,
     SvgIconMagnifier,
     SvgLogotype
+  },
+  props: {
+    color: {
+      type: String,
+      default: 'black'
+    }
+  },
+  data() {
+    return {
+      list: [],
+      sourcePath: this.$route.path
+    }
   },
   computed: {
     ...mapGetters({
@@ -89,19 +139,15 @@ export default {
     })
   },
   methods: {
-    scrollToMailingList (targetMenuItem) {
-      document.getElementById('component-SecondaryCtaMailingList')
-              .scrollIntoView()
+    scrollToMailingList(targetMenuItem) {
+      document
+        .getElementById('component-SecondaryCtaMailingList')
+        .scrollIntoView()
       this.trackMenu(targetMenuItem)
     },
-    trackMenu (targetMenuItem) {
+    trackMenu(targetMenuItem) {
       const action = trackMenu(this.sourcePath, targetMenuItem)
       this.$mixpanel.track(action.name, action.data)
-    }
-  },
-  props: {
-    color: {
-      default: 'black'
     }
   }
 }
@@ -122,7 +168,7 @@ export default {
     margin-right: -22px;
   }
   &.-white {
-    background: rgba($color--black, .2)
+    background: rgba($color--black, 0.2);
   }
 }
 
@@ -130,12 +176,12 @@ export default {
   position: absolute;
   top: -10px;
   right: -8px;
-  background: rgba($color--black, .2);
+  background: rgba($color--black, 0.2);
   display: inline-block;
   font-weight: 600;
   padding: 2px 4px;
   border-radius: 8px;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 .logo-link {
@@ -171,7 +217,9 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  &.-newsletter, &.-submit, &.-my-list {
+  &.-newsletter,
+  &.-submit,
+  &.-my-list {
     display: none;
     @include tweakpoint('min-width', 700px) {
       display: flex;
@@ -186,7 +234,7 @@ export default {
     margin-right: 20px;
     @include tweakpoint('min-width', 600px) {
       display: flex;
-    }   
+    }
   }
 }
 
@@ -198,7 +246,8 @@ export default {
   border-left: 0;
   border-right: 0;
   position: relative;
-  &.nuxt-link-active, &.nuxt-link-exact-active {
+  &.nuxt-link-active,
+  &.nuxt-link-exact-active {
     &.-white {
       border-bottom: 1px solid $color--white;
     }
@@ -224,7 +273,7 @@ export default {
       padding: 7px 10px;
     }
     &.is-home {
-      border-color: rgba($color--white, .7);
+      border-color: rgba($color--white, 0.7);
     }
   }
 }

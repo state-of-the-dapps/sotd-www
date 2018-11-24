@@ -2,8 +2,8 @@
   <div>
     <nuxt-link
       :class="platform.toLowerCase() === $route.params.platform ? 'is-selected' : ''"
-      class="value"
       :to="{name: 'rankings-platform', params: { platform: platform.toLowerCase() }}"
+      class="value"
       @click.native="trackRankingPlatform(platform)">{{ platform }}</nuxt-link>
   </div>
 </template>
@@ -19,9 +19,13 @@ export default {
     }
   },
   methods: {
-    trackRankingPlatform (platform) {
+    trackRankingPlatform(platform) {
       const sourceComponent = 'RankingTablePlatform'
-      const action = trackDappRankingPlatform(sourceComponent, this.$route.path, platform)
+      const action = trackDappRankingPlatform(
+        sourceComponent,
+        this.$route.path,
+        platform
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }

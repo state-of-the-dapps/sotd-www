@@ -4,22 +4,34 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const About = () => import('~/pages/About.vue').then(m => m.default || m)
-const Collections = () => import('~/pages/collections/index.vue').then(m => m.default || m)
-const CollectionsSlug = () => import('~/pages/collections/_slug.vue').then(m => m.default || m)
-const DappDetail = () => import('~/pages/DappDetail.vue').then(m => m.default || m)
-const DappDetailDirect = () => import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
-const DappDetailEdit = () => import('~/pages/DappDetailEdit.vue').then(m => m.default || m)
-const DappDetailImprove = () => import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
-const DappDetailMeta = () => import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
+const Collections = () =>
+  import('~/pages/collections/index.vue').then(m => m.default || m)
+const CollectionsSlug = () =>
+  import('~/pages/collections/_slug.vue').then(m => m.default || m)
+const DappDetail = () =>
+  import('~/pages/DappDetail.vue').then(m => m.default || m)
+const DappDetailDirect = () =>
+  import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
+const DappDetailEdit = () =>
+  import('~/pages/DappDetailEdit.vue').then(m => m.default || m)
+const DappDetailImprove = () =>
+  import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
+const DappDetailMeta = () =>
+  import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
-const DappsNewConfirmation = () => import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
+const DappsNewConfirmation = () =>
+  import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
-const Placeholder = () => import('~/components/shared/Placeholder.vue').then(m => m.default || m)
-const PromotedDapps = () => import('~/pages/PromotedDapps.vue').then(m => m.default || m)
-const PromotedDappsDirect = () => import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
-const PublicList = () => import('~/pages/PublicList.vue').then(m => m.default || m)
+const Placeholder = () =>
+  import('~/components/shared/Placeholder.vue').then(m => m.default || m)
+const PromotedDapps = () =>
+  import('~/pages/PromotedDapps.vue').then(m => m.default || m)
+const PromotedDappsDirect = () =>
+  import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
+const PublicList = () =>
+  import('~/pages/PublicList.vue').then(m => m.default || m)
 const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
@@ -28,7 +40,7 @@ const What = () => import('~/pages/What.vue').then(m => m.default || m)
 if (process.client) {
   window.history.scrollRestoration = 'manual'
 }
-const scrollBehavior = function (to, from, savedPosition) {
+const scrollBehavior = function(to, from, savedPosition) {
   // if the returned position is falsy or an empty object,
   // will retain current scroll position.
   let position = false
@@ -37,7 +49,7 @@ const scrollBehavior = function (to, from, savedPosition) {
   if (to.matched.length < 2) {
     // scroll to the top of the page
     position = { x: 0, y: 0 }
-  } else if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+  } else if (to.matched.some(r => r.components.default.options.scrollToTop)) {
     // if one of the children has scrollToTop option set to true
     position = { x: 0, y: 0 }
   }
@@ -55,7 +67,10 @@ const scrollBehavior = function (to, from, savedPosition) {
       if (to.hash) {
         let hash = to.hash
         // CSS.escape() is not supported with IE and Edge.
-        if (typeof window.CSS !== 'undefined' && typeof window.CSS.escape !== 'undefined') {
+        if (
+          typeof window.CSS !== 'undefined' &&
+          typeof window.CSS.escape !== 'undefined'
+        ) {
           hash = '#' + window.CSS.escape(hash.substr(1))
         }
         try {
@@ -64,7 +79,9 @@ const scrollBehavior = function (to, from, savedPosition) {
             position = { selector: hash }
           }
         } catch (e) {
-          console.warn('Failed to save scroll position. Please add CSS.escape() polyfill (https://github.com/mathiasbynens/CSS.escape).')
+          console.warn(
+            'Failed to save scroll position. Please add CSS.escape() polyfill (https://github.com/mathiasbynens/CSS.escape).'
+          )
         }
       }
       resolve(position)
@@ -72,7 +89,7 @@ const scrollBehavior = function (to, from, savedPosition) {
   })
 }
 
-export function createRouter () {
+export function createRouter() {
   return new Router({
     mode: 'history',
     base: '/',

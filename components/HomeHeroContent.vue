@@ -1,8 +1,8 @@
 <template>
-<div class="component-HomeHeroContent">
-  <HomeHeroContentIcons/>
-  <HomeHeroContentIntro/>
-</div>
+  <div class="component-HomeHeroContent">
+    <HomeHeroContentIcons/>
+    <HomeHeroContentIntro/>
+  </div>
 </template>
 
 <script>
@@ -31,18 +31,18 @@ export default {
     }
     .component-HomeHeroContentIcons {
       flex-grow: 1;
-    } 
+    }
   }
   @include tweakpoint('min-width', 1150px) {
     .component-HomeHeroContentIntro {
       width: 500px;
-    }    
+    }
   }
   @include tweakpoint('min-width', 1250px) {
     .component-HomeHeroContentIntro {
       width: 650px;
       margin: 40px auto;
-    }    
+    }
   }
   @include tweakpoint('min-width', 1400px) {
     .component-HomeHeroContentIcons {
@@ -50,7 +50,7 @@ export default {
       top: 75px;
       left: 0;
       width: 100%;
-    }    
+    }
   }
 }
 </style>

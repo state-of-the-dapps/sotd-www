@@ -4,8 +4,8 @@
       <Lead 
         :description="collection.description"
         :curator="collection.curator"
-        :linkText="collection.link.text"
-        :linkUrl="collection.link.url"
+        :link-text="collection.link.text"
+        :link-url="collection.link.url"
         :name="collection.name"
       />
       <div class="dapp-wrapper">
@@ -29,28 +29,28 @@ export default {
     Lead
   },
   computed: {
-    ...mapGetters('collections/detail', [
-      'collection'
-    ])
+    ...mapGetters('collections/detail', ['collection'])
   },
-  fetch ({ store, params, error }) {
+  fetch({ store, params, error }) {
     store.dispatch('setSiteSection', 'collections')
-    return axios
-      .get('collections/' + params.slug)
-      .then(response => {
-        const collection = response.data
-        if (!Object.keys(collection).length > 0) {
-          error({ statusCode: 404 })
-        } else {
-          store.dispatch('collections/detail/setCollection', collection)
-        }
-      })
+    return axios.get('collections/' + params.slug).then(response => {
+      const collection = response.data
+      if (!Object.keys(collection).length > 0) {
+        error({ statusCode: 404 })
+      } else {
+        store.dispatch('collections/detail/setCollection', collection)
+      }
+    })
   },
-  head () {
+  head() {
     return {
       title: this.collection.name + ' — State of the ÐApps',
       meta: [
-        { hid: 'description', name: 'description', content: this.collection.description }
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.collection.description
+        }
       ]
     }
   }

@@ -1,14 +1,23 @@
 <template>
-<div class="component-DappDetailBodyContentBadges">
-  <div class="wrapper">
-    <ul class="badge-list">
-      <li v-for="(badge, index) in badges" :key="index" class="badge-item">
-        <component :is="mapSvgBadge(badge, 'component')" fill="black" :width="16" :height="18"></component>
-        <span class="description" v-html="mapSvgBadge(badge, 'description')"></span>
-      </li>
-    </ul>
+  <div class="component-DappDetailBodyContentBadges">
+    <div class="wrapper">
+      <ul class="badge-list">
+        <li 
+          v-for="(badge, index) in badges" 
+          :key="index" 
+          class="badge-item">
+          <component 
+            :is="mapSvgBadge(badge, 'component')" 
+            :width="16" 
+            :height="18" 
+            fill="black"/>
+          <span 
+            class="description" 
+            v-html="mapSvgBadge(badge, 'description')"/>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -35,17 +44,18 @@ export default {
     SvgBadgeStatus,
     SvgBadgeToken
   },
+  props: {
+    badges: {
+      type: Array,
+      required: true
+    }
+  },
   methods: {
-    mapSvgBadge (badge, prop) {
+    mapSvgBadge(badge, prop) {
       const badgeObj = dappBadgeMap[badge]
       if (badgeObj) {
         return badgeObj[prop]
       }
-    }
-  },
-  props: {
-    badges: {
-      required: true
     }
   }
 }
@@ -70,8 +80,8 @@ export default {
 }
 
 .subtitle {
-  font-weight: 300; 
-  margin-bottom: .75rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {
     text-align: left;

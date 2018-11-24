@@ -1,31 +1,63 @@
 <template>
-<div class="component-DappDetailBodyContentCtas">
-  <div class="wrapper">
-    <div v-if="dapp.logoUrl" class="logo-wrapper">
-      <img class="logo-image" :src="dapp.logoUrl"/>
-    </div>
-    <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
-      <a :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
-        <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-        <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-      </a>
-    </div>
-    <div v-else>
-      <a v-if="dapp.sites.dappUrl" :href="dapp.sites.dappUrl + refString(dapp.sites.dappUrl)" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
-        <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-        <span v-else>Launch ÐApp<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-      </a>
-      <a v-if="dapp.sites.websiteUrl" :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" class="button" target="_blank" :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
-    </div>
-    <ul v-if="dapp.socials.length" class="social-list">
-      <li v-for="(social, index) in dapp.socials" :key="index" class="social-item">
-        <a class="social-link" :href="social.url + refString(social.url)" target="_blank" rel="noopener noreferrer" :title="social.platform | capitalize" @click="trackDappSocial(social.platform, social.url)">
-          <component :is="svgSocialComponent(social.platform)"></component>
+  <div class="component-DappDetailBodyContentCtas">
+    <div class="wrapper">
+      <div 
+        v-if="dapp.logoUrl" 
+        class="logo-wrapper">
+        <img 
+          :src="dapp.logoUrl" 
+          class="logo-image">
+      </div>
+      <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
+        <a 
+          :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" 
+          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          class="button" 
+          target="_blank" 
+          @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
+          <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         </a>
-      </li>
-    </ul>
+      </div>
+      <div v-else>
+        <a 
+          v-if="dapp.sites.dappUrl" 
+          :href="dapp.sites.dappUrl + refString(dapp.sites.dappUrl)" 
+          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          class="button" 
+          target="_blank" 
+          @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
+          <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-else>Launch ÐApp<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+        </a>
+        <a 
+          v-if="dapp.sites.websiteUrl" 
+          :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" 
+          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          class="button" 
+          target="_blank" 
+          @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
+      </div>
+      <ul 
+        v-if="dapp.socials.length" 
+        class="social-list">
+        <li 
+          v-for="(social, index) in dapp.socials" 
+          :key="index" 
+          class="social-item">
+          <a 
+            :href="social.url + refString(social.url)" 
+            :title="social.platform | capitalize" 
+            class="social-link" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            @click="trackDappSocial(social.platform, social.url)">
+            <component :is="svgSocialComponent(social.platform)"/>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -42,11 +74,6 @@ import SvgSocialTwitter from './SvgSocialTwitter'
 import SvgStar from './SvgStar'
 
 export default {
-  data () {
-    return {
-      dappGameTag
-    }
-  },
   components: {
     SvgSocialChat,
     SvgSocialBlog,
@@ -58,28 +85,34 @@ export default {
     SvgSocialTwitter,
     SvgStar
   },
+  props: {
+    dapp: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+      dappGameTag
+    }
+  },
   methods: {
-    refString (url) {
+    refString(url) {
       let refString = url.includes('?') ? '&' : '?'
       refString += 'utm_source=StateOfTheDApps'
       return refString
     },
-    svgSocialComponent (platform) {
+    svgSocialComponent(platform) {
       const socialComponent = dappSocialComponentMap[platform]
       return socialComponent
     },
-    trackDappSite (type, url) {
+    trackDappSite(type, url) {
       const action = trackDappSite(this.dapp.slug, type, url)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappSocial (platform, url) {
+    trackDappSocial(platform, url) {
       const action = trackDappSocial(this.dapp.slug, platform, url)
       this.$mixpanel.track(action.name, action.data)
-    }
-  },
-  props: {
-    dapp: {
-      required: true
     }
   }
 }
@@ -101,7 +134,7 @@ export default {
   width: 100%;
   background: $color--black;
   border-radius: 4px;
-  box-shadow: 0 4px 50px rgba($color--black, .2);
+  box-shadow: 0 4px 50px rgba($color--black, 0.2);
   padding: 8px;
   text-align: center;
   width: 120px;

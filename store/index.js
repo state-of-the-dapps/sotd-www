@@ -8,28 +8,26 @@ import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
 const actions = {
-  nuxtServerInit ({ commit }, { route }) {
+  nuxtServerInit({ commit }, { route }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
-    return axios
-      .get('stats')
-      .then(response => {
-        const data = response.data
-        commit('SET_STATS', data)
-      })
+    return axios.get('stats').then(response => {
+      const data = response.data
+      commit('SET_STATS', data)
+    })
   },
-  setHeroLoaded ({ commit }) {
+  setHeroLoaded({ commit }) {
     commit('SET_HERO_LOADED')
   },
-  setPageModal ({ commit }, value) {
+  setPageModal({ commit }, value) {
     commit('SET_PAGE_MODAL', value)
   },
-  setSearch ({ commit }, value) {
+  setSearch({ commit }, value) {
     commit('SET_SEARCH', value)
   },
-  setSiteSection ({ commit }, section) {
+  setSiteSection({ commit }, section) {
     commit('SET_SITE_SECTION', section)
   },
-  setSiteModal ({ commit }, modal) {
+  setSiteModal({ commit }, modal) {
     commit('SET_SITE_MODAL', modal)
   }
 }
@@ -80,25 +78,25 @@ const getters = {
 }
 
 const mutations = {
-  SET_HERO_LOADED (state) {
+  SET_HERO_LOADED(state) {
     state.site.heroHasLoaded = true
   },
-  SET_PAGE_MODAL (state, value) {
+  SET_PAGE_MODAL(state, value) {
     state.pageModal = value
   },
-  SET_SEARCH (state, value) {
+  SET_SEARCH(state, value) {
     state.search = value
   },
-  SET_SITE_MODAL (state, modal) {
+  SET_SITE_MODAL(state, modal) {
     state.site.modal = modal
   },
-  SET_SITE_SECTION (state, section) {
+  SET_SITE_SECTION(state, section) {
     state.site.section = section
   },
-  SET_STATS (state, data) {
+  SET_STATS(state, data) {
     state.stats = data
   },
-  SET_USER_ENTRY_ROUTE (state, path) {
+  SET_USER_ENTRY_ROUTE(state, path) {
     state.user.entryRoute = path
   }
 }

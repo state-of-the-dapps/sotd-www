@@ -1,7 +1,11 @@
 <template>
   <div class="component-DappDetail">
-    <DappDetailBody :dapp="dapp" :direct="direct"/>
-    <DappDetailRelatedDapps v-if="dapp.relatedDapps.length" :dapps="dapp.relatedDapps"/>
+    <DappDetailBody 
+      :dapp="dapp" 
+      :direct="direct"/>
+    <DappDetailRelatedDapps 
+      v-if="dapp.relatedDapps.length" 
+      :dapps="dapp.relatedDapps"/>
   </div>
 </template>
 
@@ -15,22 +19,29 @@ export default {
     DappDetailBody,
     DappDetailRelatedDapps
   },
-  mounted () {
+  props: {
+    dapp: {
+      type: Object,
+      required: true
+    },
+    direct: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted() {
     if (this.direct) {
       const sourceCollection = ''
       const sourceComponent = ''
       const sourcePath = ''
       const targetDapp = this.dapp.slug
-      const action = trackDappView(sourceCollection, sourceComponent, sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
-    }
-  },
-  props: {
-    dapp: {
-      required: true
-    },
-    direct: {
-      default: false
     }
   }
 }

@@ -1,15 +1,27 @@
 <template>
-<div class="component-DappFeedback">
-  <div class="wrapper">
-    <h3 class="title-3">Would you recommend this ÐApp to a friend?</h3>
-    <ul v-if="!hasSubmitted" class="list">
-      <li v-for="(option, index) in options" :key="index" class="item"><span class="submit" @click="trackDappFeedback(option)"><component :is="svgFeedbackComponent(option)" :width="25" :height="25"></component></span></li>
-    </ul>
-    <transition name="fade">
-      <p v-if="hasSubmitted" class="confirmation">Thanks for your feedback!</p>
-    </transition>
+  <div class="component-DappFeedback">
+    <div class="wrapper">
+      <h3 class="title-3">Would you recommend this ÐApp to a friend?</h3>
+      <ul 
+        v-if="!hasSubmitted" 
+        class="list">
+        <li 
+          v-for="(option, index) in options" 
+          :key="index" 
+          class="item"><span 
+            class="submit" 
+            @click="trackDappFeedback(option)"><component 
+              :is="svgFeedbackComponent(option)" 
+              :width="25" 
+              :height="25"/></span></li>
+      </ul>
+      <transition name="fade">
+        <p 
+          v-if="hasSubmitted" 
+          class="confirmation">Thanks for your feedback!</p>
+      </transition>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -26,27 +38,23 @@ export default {
     SvgFeedbackNeutral,
     SvgFeedbackPositive
   },
+  data() {
+    return {
+      options: ['positive', 'neutral', 'negative'],
+      hasSubmitted: false
+    }
+  },
   computed: {
     ...mapGetters('dapps/detail', {
       dapp: 'item'
     })
   },
-  data () {
-    return {
-      options: [
-        'positive',
-        'neutral',
-        'negative'
-      ],
-      hasSubmitted: false
-    }
-  },
   methods: {
-    svgFeedbackComponent (option) {
+    svgFeedbackComponent(option) {
       const feedbackComponent = feedbackComponentMap[option]
       return feedbackComponent
     },
-    trackDappFeedback (feedback) {
+    trackDappFeedback(feedback) {
       const action = trackDappFeedback(this.dapp.slug, feedback)
       this.$mixpanel.track(action.name, action.data)
       this.hasSubmitted = true
@@ -66,7 +74,7 @@ export default {
 }
 
 .confirmation {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   line-height: 25px;
   height: 25px;
   margin: 10px 0;

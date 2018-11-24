@@ -56,24 +56,24 @@ const dappSchema = Object.freeze({
     users: []
   },
   stats: {
-    'ctr': 0,
-    'positive': 0,
-    'negative': 0,
-    'neutral': 0,
-    'impressions': 0,
-    'clicks': 0,
-    'dau': 0,
-    'mau': 0,
-    'tx_1d': 0,
-    'tx_30d': 0,
-    'tx_7d': 0,
-    'wau': 0,
-    'qau': 0,
-    'tx_90d': 0,
-    'flagged': 0,
-    'shared': 0,
-    'suggested': 0,
-    'contract_created': ''
+    ctr: 0,
+    positive: 0,
+    negative: 0,
+    neutral: 0,
+    impressions: 0,
+    clicks: 0,
+    dau: 0,
+    mau: 0,
+    tx_1d: 0,
+    tx_30d: 0,
+    tx_7d: 0,
+    wau: 0,
+    qau: 0,
+    tx_90d: 0,
+    flagged: 0,
+    shared: 0,
+    suggested: 0,
+    contract_created: ''
   },
   status: '',
   tags: [],
@@ -85,48 +85,51 @@ const dappBadgeMap = Object.freeze({
     component: 'SvgBadge0x',
     description: '0x protocol compatible'
   },
-  'complete': {
+  complete: {
     component: 'SvgBadgeComplete',
     description: 'Has a complete profile'
   },
-  'consensys': {
+  consensys: {
     component: 'SvgBadgeConsensys',
-    description: 'Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a>'
+    description:
+      'Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a>'
   },
-  'featured': {
+  featured: {
     component: 'SvgBadgeFeatured',
     description: 'Currently featured'
   },
-  'hot': {
+  hot: {
     component: 'SvgBadgeHot',
     description: 'Currently hot'
   },
-  'metamask': {
+  metamask: {
     component: 'SvgBadgeMetamask',
-    description: 'Works with <a href="https://www.metamask.io" target="_blank">Metamask</a>'
+    description:
+      'Works with <a href="https://www.metamask.io" target="_blank">Metamask</a>'
   },
-  'solidified': {
+  solidified: {
     component: 'SvgBadgeSolidified',
-    description: 'Audited by <a href="https://solidified.io/" target="_blank">Solidified</a>'
+    description:
+      'Audited by <a href="https://solidified.io/" target="_blank">Solidified</a>'
   },
   'status-im': {
     component: 'SvgBadgeStatus',
     description: 'On <a href="https://status.im/" target="_blank">Status.im</a>'
   },
-  'token': {
+  token: {
     component: 'SvgBadgeToken',
     description: 'Has a token'
   }
 })
 
 const dappSocialComponentMap = Object.freeze({
-  'chat': 'SvgSocialChat',
-  'blog': 'SvgSocialBlog',
-  'facebook': 'SvgSocialFacebook',
-  'github': 'SvgSocialGithub',
-  'gitter': 'SvgSocialGitter',
-  'reddit': 'SvgSocialReddit',
-  'twitter': 'SvgSocialTwitter'
+  chat: 'SvgSocialChat',
+  blog: 'SvgSocialBlog',
+  facebook: 'SvgSocialFacebook',
+  github: 'SvgSocialGithub',
+  gitter: 'SvgSocialGitter',
+  reddit: 'SvgSocialReddit',
+  twitter: 'SvgSocialTwitter'
 })
 
 const dappStatuses = Object.freeze([
@@ -177,9 +180,9 @@ const eventRefineCategoryOptions = eventCategories.slice()
 eventRefineCategoryOptions.unshift('all')
 
 const feedbackComponentMap = Object.freeze({
-  'negative': 'SvgFeedbackNegative',
-  'neutral': 'SvgFeedbackNeutral',
-  'positive': 'SvgFeedbackPositive'
+  negative: 'SvgFeedbackNegative',
+  neutral: 'SvgFeedbackNeutral',
+  positive: 'SvgFeedbackPositive'
 })
 
 const myListLimit = 50
@@ -187,23 +190,24 @@ const myListLimit = 50
 const platformList = ['Ethereum', 'EOS', 'POA']
 
 const platformMap = {
-  'ethereum': 'Ethereum',
-  'eos': 'EOS',
-  'poa': 'POA'
+  ethereum: 'Ethereum',
+  eos: 'EOS',
+  poa: 'POA'
 }
 
 const platformSoftware = {
-  'Ethereum': {
+  Ethereum: {
     name: 'Metamask',
     url: 'https://metamask.io/?utm_source=StateOfTheDApps'
   },
-  'EOS': {
+  EOS: {
     name: 'Scatter',
     url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
   },
-  'POA': {
+  POA: {
     name: 'Nifty',
-    url: 'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
+    url:
+      'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
   }
 }
 

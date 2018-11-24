@@ -1,7 +1,14 @@
 <template>
-  <span class="component-Help" @mouseover="popoverIsActive = true" @mouseout="popoverIsActive = false">
+  <span 
+    class="component-Help" 
+    @mouseover="popoverIsActive = true" 
+    @mouseout="popoverIsActive = false">
     <span class="help-icon">?</span>
-    <Popover v-if="popoverIsActive" :bottom="bottom" :reversed="reversed" :text="text"/>
+    <Popover 
+      v-if="popoverIsActive" 
+      :bottom="bottom" 
+      :reversed="reversed" 
+      :text="text"/>
   </span>
 </template>
 
@@ -9,15 +16,28 @@
 import Popover from './Popover'
 
 export default {
-  data () {
-    return {
-      popoverIsActive: false
-    }
-  },
   components: {
     Popover
   },
-  props: ['bottom', 'reversed', 'text']
+  props: {
+    bottom: {
+      type: Boolean,
+      default: false
+    },
+    reversed: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      popoverIsActive: false
+    }
+  }
 }
 </script>
 
@@ -33,9 +53,9 @@ export default {
 
 .help-icon {
   display: inline-block;
-  background: rgba($color--black, .15);
+  background: rgba($color--black, 0.15);
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 1.1rem;
   height: 1.1rem;
   line-height: 1.1rem;
@@ -44,4 +64,3 @@ export default {
   cursor: help;
 }
 </style>
-

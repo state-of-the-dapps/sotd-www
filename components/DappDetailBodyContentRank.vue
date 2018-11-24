@@ -1,14 +1,19 @@
 <template>
-<div class="component-DappDetailBodyContentRank">
-  <div class="wrapper">
-    <p class="description"><strong>Current rank</strong> &nbsp;#{{ rank.toLocaleString() }}</p>
+  <div class="component-DappDetailBodyContentRank">
+    <div class="wrapper">
+      <p class="description"><strong>Current rank</strong> &nbsp;#{{ rank.toLocaleString() }}</p>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  props: ['rank']
+  props: {
+    rank: {
+      type: Number,
+      required: true
+    }
+  }
 }
 </script>
 

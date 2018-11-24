@@ -14,12 +14,15 @@ export default {
     DappFormFields
   },
   props: {
-    suggestions: Array
+    suggestions: {
+      type: Array,
+      required: true
+    }
   },
-  destroyed () {
+  destroyed() {
     this.$store.dispatch('dapps/form/resetForm')
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('dapps/form/resetForm')
   }
 }

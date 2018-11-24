@@ -1,18 +1,22 @@
 <template>
-<div class="component-HomeHeroContentIcons">
-  <HomeHeroContentIconsItem v-for="(status, index) in cards" 
-    :key="index"
-    :index="index"
-    :status="status"
-  />
-</div>
+  <div class="component-HomeHeroContentIcons">
+    <HomeHeroContentIconsItem 
+      v-for="(status, index) in cards" 
+      :key="index"
+      :index="index"
+      :status="status"
+    />
+  </div>
 </template>
 
 <script>
 import HomeHeroContentIconsItem from './HomeHeroContentIconsItem'
 
 export default {
-  data () {
+  components: {
+    HomeHeroContentIconsItem
+  },
+  data() {
     return {
       cards: [
         'live',
@@ -31,9 +35,6 @@ export default {
         'wip'
       ]
     }
-  },
-  components: {
-    HomeHeroContentIconsItem
   }
 }
 </script>
@@ -61,7 +62,7 @@ export default {
   position: absolute;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 7px 7px 40px rgba($color--black, .3);
+  box-shadow: 7px 7px 40px rgba($color--black, 0.3);
   transform-origin: bottom left;
   z-index: 5;
   color: $color--purple;
@@ -74,7 +75,7 @@ export default {
     opacity: 0;
   }
   &.-dapp-0 {
-    transform: scale(.55);
+    transform: scale(0.55);
     bottom: 50px;
     left: 0;
     z-index: 1;
@@ -89,7 +90,7 @@ export default {
     }
   }
   &.-dapp-1 {
-    transform: scale(.4);
+    transform: scale(0.4);
     bottom: 130px;
     left: 77px;
     z-index: 2;
@@ -104,7 +105,7 @@ export default {
     }
   }
   &.-dapp-2 {
-    transform: scale(.4);
+    transform: scale(0.4);
     bottom: 37px;
     left: 125px;
     z-index: 4;
@@ -118,7 +119,7 @@ export default {
     }
   }
   &.-dapp-3 {
-    transform: scale(.57);
+    transform: scale(0.57);
     bottom: 114px;
     left: 157px;
     z-index: 3;
@@ -133,7 +134,7 @@ export default {
     }
   }
   &.-dapp-4 {
-    transform: scale(.29);
+    transform: scale(0.29);
     bottom: 45px;
     left: 216px;
     z-index: 3;
@@ -141,13 +142,13 @@ export default {
       left: auto;
       right: auto;
       left: 340px;
-    } 
+    }
     &.is-active {
       transition-delay: 2.75s;
     }
   }
   &.-dapp-5 {
-    transform: scale(.46);
+    transform: scale(0.46);
     bottom: 83px;
     left: 257px;
     z-index: 3;
@@ -156,16 +157,16 @@ export default {
       right: auto;
       right: 310px;
       bottom: 70px;
-      transform: scale(.35);
+      transform: scale(0.35);
       transform-origin: bottom right;
       z-index: 5;
-    } 
+    }
     &.is-active {
       transition-delay: 2s;
     }
   }
   &.-dapp-6 {
-    transform: scale(.35);
+    transform: scale(0.35);
     bottom: 5px;
     left: 298px;
     z-index: 3;
@@ -298,4 +299,3 @@ export default {
   }
 }
 </style>
-

@@ -18,6 +18,7 @@ export default {
   },
   props: {
     dapps: {
+      type: Array,
       required: true
     }
   }
@@ -30,7 +31,7 @@ export default {
 .title-2 {
   @include title-2;
   font-size: 2.5rem;
-  margin-top: 0
+  margin-top: 0;
 }
 
 .wrapper-inner {
@@ -42,4 +43,3 @@ export default {
   @include margin-wrapper-main;
 }
 </style>
-

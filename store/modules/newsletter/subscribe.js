@@ -1,30 +1,33 @@
 import axios from '~/helpers/axios'
 
 const actions = {
-  submit ({ commit }, email) {
+  submit({ commit }, email) {
     const data = {
       fields: {
         email: email
       }
     }
     commit('SET_LOADING_IS_ACTIVE', true)
-    axios.post('newsletter/subscribe', data)
-      .then((response) => {
+    axios
+      .post('newsletter/subscribe', data)
+      .then(response => {
         commit('SUBMIT')
         commit('SET_LOADING_IS_ACTIVE', false)
       })
       .catch(() => {
         commit('SET_LOADING_IS_ACTIVE', false)
-        alert('There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com')
+        alert(
+          'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com'
+        )
       })
   },
-  toggleDropdown ({ commit }) {
+  toggleDropdown({ commit }) {
     commit('TOGGLE_DROPDOWN')
   },
-  setEmail ({ commit }, value) {
+  setEmail({ commit }, value) {
     commit('SET_EMAIL', value)
   },
-  setEmailIsValid ({ commit }, status) {
+  setEmailIsValid({ commit }, status) {
     commit('SET_EMAIL_VALID_STATUS', status)
   }
 }
@@ -48,13 +51,13 @@ const getters = {
 }
 
 const mutations = {
-  SET_LOADING_IS_ACTIVE (state, status) {
+  SET_LOADING_IS_ACTIVE(state, status) {
     state.isLoading = status
   },
-  SUBMIT (state) {
+  SUBMIT(state) {
     state.confirmation = true
   },
-  TOGGLE_DROPDOWN (state) {
+  TOGGLE_DROPDOWN(state) {
     state.dropdownIsActive = !state.dropdownIsActive
     var newState = {
       confirmation: false,
@@ -63,10 +66,10 @@ const mutations = {
     }
     Object.assign(state, newState)
   },
-  SET_EMAIL (state, value) {
+  SET_EMAIL(state, value) {
     state.email = value
   },
-  SET_EMAIL_VALID_STATUS (state, status) {
+  SET_EMAIL_VALID_STATUS(state, status) {
     state.emailIsValid = status
   }
 }

@@ -1,19 +1,38 @@
 <template>
   <div class="component-DappFeaturedRankingCategory">
     <h3 class="title-3">
-      <a @click="viewDappRankingCategory(category)" class="link">{{ category.name }} <SvgIconChevron :width="8" :height="8" direction="right" /></a>
+      <a 
+        class="link" 
+        @click="viewDappRankingCategory(category)">{{ category.name }} <SvgIconChevron 
+          :width="8" 
+          :height="8" 
+          direction="right" /></a>
       <span class="label-dau">Users (24hr)</span>
     </h3>
     <ul class="dapp-list">
-      <li class="dapp-item" v-for="(dapp, index) in dapps" :key="index">
+      <li 
+        v-for="(dapp, index) in dapps" 
+        :key="index" 
+        class="dapp-item">
         <span
           :class="dapp.categories ? '-' + dapp.categories[0] : ''"
           class="dapp-rank"><span>{{ index + 1 }}</span></span>
-        <nuxt-link :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" :class="!dapp.iconUrl ? 'has-no-icon' : ''" class="dapp-icon-wrapper" @click.native="trackDappView(dapp.slug)">
-          <img v-if="dapp.iconUrl" class="dapp-icon" :src="dapp.iconUrl" width="32" height="32">
+        <nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          :class="!dapp.iconUrl ? 'has-no-icon' : ''" 
+          class="dapp-icon-wrapper" 
+          @click.native="trackDappView(dapp.slug)">
+          <img 
+            v-if="dapp.iconUrl" 
+            :src="dapp.iconUrl" 
+            class="dapp-icon" 
+            width="32" 
+            height="32">
           <span v-else>{{ dapp.name | firstLetter }}</span>
         </nuxt-link>
-        <span class="dapp-name"><nuxt-link @click.native="trackDappView(dapp.slug)" :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }">{{ dapp.name }}</nuxt-link></span>
+        <span class="dapp-name"><nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link></span>
         <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
     </ul>
@@ -28,40 +47,23 @@ import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
 export default {
-  data () {
+  components: {
+    Help,
+    SvgIconChevron
+  },
+  props: {
+    category: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
     return {
       dapps: [],
       sourcePath: this.$route.path
     }
   },
-  components: {
-    Help,
-    SvgIconChevron
-  },
-  props: ['category'],
-  methods: {
-    ...mapActions('dapps/rankings', [
-      'fetchDapps',
-      'setCategory',
-      'setSort'
-    ]),
-    trackDappView (targetDapp) {
-      const sourceCollection = ''
-      const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    viewDappRankingCategory (category) {
-      const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category.slug)
-      this.$mixpanel.track(action.name, action.data)
-      this.setCategory(category.slug)
-      this.setSort({ order: 'asc', sort: 'rank' })
-      this.fetchDapps()
-      this.$router.push({name: 'rankings-category', params: {category: category.slug}})
-    }
-  },
-  async mounted () {
+  async mounted() {
     axios
       .get('dapps', {
         params: {
@@ -72,10 +74,40 @@ export default {
           sort: 'rank'
         }
       })
-      .then((response) => {
+      .then(response => {
         const dapps = response.data.items
         this.dapps = dapps
       })
+  },
+  methods: {
+    ...mapActions('dapps/rankings', ['fetchDapps', 'setCategory', 'setSort']),
+    trackDappView(targetDapp) {
+      const sourceCollection = ''
+      const sourceComponent = 'DappFeaturedRankingCategory'
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
+      this.$mixpanel.track(action.name, action.data)
+    },
+    viewDappRankingCategory(category) {
+      const sourceComponent = 'DappFeaturedRankingCategory'
+      const action = trackDappRankingCategory(
+        sourceComponent,
+        this.sourcePath,
+        category.slug
+      )
+      this.$mixpanel.track(action.name, action.data)
+      this.setCategory(category.slug)
+      this.setSort({ order: 'asc', sort: 'rank' })
+      this.fetchDapps()
+      this.$router.push({
+        name: 'rankings-category',
+        params: { category: category.slug }
+      })
+    }
   }
 }
 </script>
@@ -106,7 +138,7 @@ export default {
   align-items: center;
   background: $color--white;
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba($color--black, .05);
+  box-shadow: 0 5px 10px rgba($color--black, 0.05);
   margin-bottom: 7px;
   padding: 10px;
 }
@@ -148,7 +180,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .95rem;
+  font-size: 0.95rem;
   color: $color--purple;
   line-height: 0;
   border-top-left-radius: 4px;
@@ -160,7 +192,7 @@ export default {
 
 .label-dau {
   font-weight: 300;
-  font-size: .95rem;
+  font-size: 0.95rem;
   position: absolute;
   right: 0;
   top: 3px;
@@ -180,7 +212,7 @@ export default {
 .view {
   display: inline-block;
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: 300;

@@ -19,60 +19,62 @@
 </template>
 
 <script>
-  import CountRefine from '~/components/dapps/search/CountRefine.vue'
-  import Collections from '~/components/dapps/search/Collections.vue'
-  import DappCardList from '~/components/DappCardList'
-  import DappsFilters from '~/components/DappsFilters'
-  import LayoutMain from '~/components/LayoutMain'
-  import Pager from '~/components/dapps/search/Pager.vue'
-  import Search from '~/components/dapps/search/Search.vue'
+import CountRefine from '~/components/dapps/search/CountRefine.vue'
+import Collections from '~/components/dapps/search/Collections.vue'
+import DappCardList from '~/components/DappCardList'
+import DappsFilters from '~/components/DappsFilters'
+import LayoutMain from '~/components/LayoutMain'
+import Pager from '~/components/dapps/search/Pager.vue'
+import Search from '~/components/dapps/search/Search.vue'
 
-  export default {
-    components: {
-      Collections,
-      CountRefine,
-      DappCardList,
-      DappsFilters,
-      LayoutMain,
-      Pager,
-      Search
+export default {
+  components: {
+    Collections,
+    CountRefine,
+    DappCardList,
+    DappsFilters,
+    LayoutMain,
+    Pager,
+    Search
+  },
+  computed: {
+    dapps() {
+      return this.$store.getters['dapps/search/items']
     },
-    computed: {
-      dapps () {
-        return this.$store.getters['dapps/search/items']
-      },
-      dappCount () {
-        return this.$store.getters['dapps/search/itemCount']
-      },
-      tabQuery () {
-        return this.$store.getters['dapps/search/tabQuery']
-      },
-      statDappCount () {
-        return this.$store.getters['statDappCount']
-      },
-      tagQuery () {
-        return this.$store.getters['dapps/search/tagQuery']
-      }
+    dappCount() {
+      return this.$store.getters['dapps/search/itemCount']
     },
-    mounted () {
-      this.$store.dispatch('setSiteSection', 'dapps')
-      this.$store.dispatch('dapps/search/setFriendlyQuery', this.$route.params)
-      if (this.dappCount < 1 || this.$route.query.q) {
-        this.$store.dispatch('dapps/search/fetchItems')
-      }
-      this.$router.replace({query: {}})
+    tabQuery() {
+      return this.$store.getters['dapps/search/tabQuery']
     },
-    head () {
-      return {
-        title: 'State of the ÐApps — ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum, EOS & POA'
-      }
+    statDappCount() {
+      return this.$store.getters['statDappCount']
+    },
+    tagQuery() {
+      return this.$store.getters['dapps/search/tagQuery']
+    }
+  },
+  mounted() {
+    this.$store.dispatch('setSiteSection', 'dapps')
+    this.$store.dispatch('dapps/search/setFriendlyQuery', this.$route.params)
+    if (this.dappCount < 1 || this.$route.query.q) {
+      this.$store.dispatch('dapps/search/fetchItems')
+    }
+    this.$router.replace({ query: {} })
+  },
+  head() {
+    return {
+      title:
+        'State of the ÐApps — ' +
+        this.statDappCount.toLocaleString() +
+        ' Projects Built on Ethereum, EOS & POA'
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
-
 
 .dapps-filters {
   @include margin-wrapper-main;

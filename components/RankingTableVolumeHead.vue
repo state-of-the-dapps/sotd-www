@@ -6,7 +6,9 @@
       :class="$route.query.sort === 'usd_value_7d' ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('usd_value_7d')">Volume (7d)</nuxt-link>
-    <span v-else class="label">Volume (7d)</span>
+    <span 
+      v-else 
+      class="label">Volume (7d)</span>
     <Help
       :bottom="true"
       text="Transaction volume to ÐApp contracts"/>
@@ -28,7 +30,7 @@ export default {
     }
   },
   methods: {
-    trackRankingSort (sort) {
+    trackRankingSort(sort) {
       const order = 'desc'
       const action = trackDappRankingSort(order, sort)
       this.$mixpanel.track(action.name, action.data)
@@ -36,4 +38,3 @@ export default {
   }
 }
 </script>
-

@@ -46,7 +46,7 @@
           <p
             v-if="isLoading"
             class="loader-wrapper">
-            <button class="loader"></button>
+            <button class="loader"/>
           </p>
           <p
             v-if="!isLoading && !dapps.length"
@@ -116,7 +116,7 @@
         v-if="!isLoading"
         :limit="pager.limit"
         :offset="pager.offset"
-        :totalCount="pager.totalCount"
+        :total-count="pager.totalCount"
         @selectPage="selectPage"/>
     </div>
   </div>
@@ -182,18 +182,18 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       tweakpoint: 1099
     }
   },
   methods: {
-    selectPage (page) {
+    selectPage(page) {
       const oldPage = this.$route.query.page || 1
       this.trackRankingPage(oldPage, page)
-      this.$router.push({query: {...this.$route.query, page: page}})
+      this.$router.push({ query: { ...this.$route.query, page: page } })
     },
-    trackRankingPage (oldPage, targetPage) {
+    trackRankingPage(oldPage, targetPage) {
       const action = trackDappRankingPage(oldPage, targetPage)
       this.$mixpanel.track(action.name, action.data)
     }
@@ -269,9 +269,9 @@ export default {
 }
 
 .col-usage {
-    width: 180px;
-    padding: 0 10px;
-    text-align: right;
+  width: 180px;
+  padding: 0 10px;
+  text-align: right;
 }
 
 .col-vol {
@@ -318,7 +318,7 @@ export default {
 .table-row {
   background: $color--white;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba($color--black, .1);
+  box-shadow: 0 0 10px rgba($color--black, 0.1);
   margin-bottom: 6px;
   display: flex;
   align-items: center;

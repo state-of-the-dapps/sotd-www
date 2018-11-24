@@ -1,34 +1,41 @@
 <template>
-<div class="component-DappDetailBodyContentCategories">
-  <div class="wrapper">
-    <h4 class="subtitle">Categories</h4>
-    <ul class="category-list">
-      <li v-for="(category, index) in categories" :key="index" class="category-item">
-        <nuxt-link :to="{name: 'rankings-category', params: {category: category}}" @click.native="trackDappCategory($options.filters.formatCategory(category))" class="category-link" :class="'-' + category">{{ category | formatCategory }}</nuxt-link>
-      </li>
-    </ul>
+  <div class="component-DappDetailBodyContentCategories">
+    <div class="wrapper">
+      <h4 class="subtitle">Categories</h4>
+      <ul class="category-list">
+        <li 
+          v-for="(category, index) in categories" 
+          :key="index" 
+          class="category-item">
+          <nuxt-link 
+            :to="{name: 'rankings-category', params: {category: category}}" 
+            :class="'-' + category" 
+            class="category-link" 
+            @click.native="trackDappCategory($options.filters.formatCategory(category))">{{ category | formatCategory }}</nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import { trackDappCategory } from '~/helpers/mixpanel'
 
 export default {
-  methods: {
-    trackDappCategory (category) {
-      const action = trackDappCategory(category, this.slug)
-      this.$mixpanel.track(action.name, action.data)
-    }
-  },
   props: {
     slug: {
-      default: '',
+      type: String,
       required: true
     },
     categories: {
-      default: () => [],
+      type: Array,
       required: true
+    }
+  },
+  methods: {
+    trackDappCategory(category) {
+      const action = trackDappCategory(category, this.slug)
+      this.$mixpanel.track(action.name, action.data)
     }
   }
 }
@@ -39,8 +46,8 @@ export default {
 @import '~assets/css/settings';
 
 .subtitle {
-  font-weight: 300; 
-  margin-bottom: .75rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {
     text-align: left;

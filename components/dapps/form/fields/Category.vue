@@ -2,9 +2,14 @@
   <div>
     <p class="heading">Category <span class="required">(required)</span></p>
     <div class="input-wrapper">
-      <div class="input" @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
+      <div 
+        class="input" 
+        @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
       <transition name="fade">
-        <div class="dropdown" v-if="dropdown" v-on-clickaway="toggleDropdown">
+        <div 
+          v-on-clickaway="toggleDropdown" 
+          v-if="dropdown" 
+          class="dropdown">
           <ul class="categories">
             <li
               v-for="(category, index) in categories"
@@ -24,19 +29,26 @@ import { dispatchErrors } from '~/helpers/mixins'
 import { directive as onClickaway } from 'vue-clickaway'
 
 export default {
-  data () {
+  directives: {
+    onClickaway: onClickaway
+  },
+  mixins: [dispatchErrors],
+  data() {
     return {
       categories: [],
       dropdown: false
     }
   },
   computed: {
-    selectedCategory () {
+    selectedCategory() {
       return this.$store.getters['dapps/form/category']
     }
   },
+  async mounted() {
+    this.categories = await getCategories()
+  },
   methods: {
-    selectCategory (value) {
+    selectCategory(value) {
       const field = {
         name: 'category',
         value: value
@@ -49,17 +61,10 @@ export default {
       this.$store.dispatch('dapps/form/setField', field)
       this.toggleDropdown()
     },
-    toggleDropdown () {
+    toggleDropdown() {
       this.dropdown = !this.dropdown
     }
-  },
-  async mounted () {
-    this.categories = await getCategories()
-  },
-  directives: {
-    onClickaway: onClickaway
-  },
-  mixins: [dispatchErrors]
+  }
 }
 </script>
 
@@ -69,7 +74,7 @@ export default {
 .category {
   cursor: pointer;
   font-weight: 700;
-  font-size: .85rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   padding: 5px 10px;
   margin: 0 -10px;
@@ -82,7 +87,7 @@ export default {
   position: absolute;
   background: $color--white;
   padding: 10px;
-  box-shadow: 0 17px 70px rgba($color--black,.2);
+  box-shadow: 0 17px 70px rgba($color--black, 0.2);
   border-top: 1px solid $color--gray;
   width: 320px;
   top: 36px;
@@ -97,7 +102,7 @@ export default {
 .heading {
   text-align: center;
   margin-top: 1.25rem;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .input {
@@ -108,16 +113,16 @@ export default {
     color: $color--black;
   }
   &:focus::placeholder {
-    color: rgba($color--black,.5);
+    color: rgba($color--black, 0.5);
   }
 }
 
 .input-wrapper {
-  background: rgba(lighten($color--gray, 100%),.9);
+  background: rgba(lighten($color--gray, 100%), 0.9);
   display: flex;
   width: 100%;
   padding: 10px;
-  box-shadow: 0 0 20px rgba($color--black,.05);
+  box-shadow: 0 0 20px rgba($color--black, 0.05);
   margin-bottom: 10px;
   position: relative;
 }

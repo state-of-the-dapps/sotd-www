@@ -1,44 +1,58 @@
 <template>
-<div class="component-DappDetailBodyContentRank">
-  <div class="wrapper">
-    <p class="description">
-      <strong>Platform</strong> 
-      &nbsp;
-      <nuxt-link
-        @click.native="trackPlatform(platform)"
-        class="platform-name"
-        :to="{
-          name: 'rankings-platform',
-          params: { platform: platform.toLowerCase()} }">{{ platform }}</nuxt-link>
-    </p>
-    <div class="software-wrapper" v-if="platform">
-      To use {{ platform }} ÐApps on the web, you'll need a browser add-on such as 
-      <a
-        :href="platformSoftware[platform].url"
-        target="_blank"
-        @click="trackDappPlatformSoftware(platformSoftware[platform].name, slug)">{{ platformSoftware[platform].name }}</a>
+  <div class="component-DappDetailBodyContentRank">
+    <div class="wrapper">
+      <p class="description">
+        <strong>Platform</strong> 
+        &nbsp;
+        <nuxt-link
+          :to="{
+            name: 'rankings-platform',
+            params: { platform: platform.toLowerCase()} }"
+          class="platform-name"
+          @click.native="trackPlatform(platform)">{{ platform }}</nuxt-link>
+      </p>
+      <div 
+        v-if="platform" 
+        class="software-wrapper">
+        To use {{ platform }} ÐApps on the web, you'll need a browser add-on such as 
+        <a
+          :href="platformSoftware[platform].url"
+          target="_blank"
+          @click="trackDappPlatformSoftware(platformSoftware[platform].name, slug)">{{ platformSoftware[platform].name }}</a>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 import { platformSoftware } from '~/helpers/constants'
-import { trackDappPlatform, trackDappPlatformSoftware } from '~/helpers/mixpanel'
+import {
+  trackDappPlatform,
+  trackDappPlatformSoftware
+} from '~/helpers/mixpanel'
 
 export default {
-  props: ['platform', 'slug'],
-  data () {
+  props: {
+    platform: {
+      type: String,
+      required: true
+    },
+    slug: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
     return {
       platformSoftware
     }
   },
   methods: {
-    trackPlatform (platform) {
+    trackPlatform(platform) {
       const action = trackDappPlatform(platform, this.slug)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappPlatformSoftware (platform, slug) {
+    trackDappPlatformSoftware(platform, slug) {
       const action = trackDappPlatformSoftware(platform, slug)
       this.$mixpanel.track(action.name, action.data)
     }

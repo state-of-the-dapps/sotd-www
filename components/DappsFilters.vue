@@ -2,28 +2,28 @@
   <div class="component-dapps-filters">
     <div class="filter">
       <BaseFilter
-        all-text="All platforms"
-        filter="Platform"
         :options="platformOptions"
         :selected="formattedPlatformQuery"
+        all-text="All platforms"
+        filter="Platform"
         title="Choose a platform"
         @select="selectPlatform"/>
     </div>
     <div class="filter">
       <BaseFilter
-        all-text="All categories"
-        filter="Category"
         :options="categoryOptions"
         :selected="categoryQuery"
+        all-text="All categories"
+        filter="Category"
         title="Choose a category"
         @select="selectCategory"/>
     </div>
     <div class="filter">
       <BaseFilter
-        all-text="All statuses"
-        filter="Status"
         :options="statusOptions"
         :selected="statusQuery"
+        all-text="All statuses"
+        filter="Status"
         title="Choose a status"
         @select="selectStatus"/>
     </div>
@@ -41,7 +41,7 @@ export default {
   components: {
     BaseFilter
   },
-  data () {
+  data() {
     return {
       categoryOptions: [],
       platformOptions: this.getPlatformOptions(platformList),
@@ -54,9 +54,13 @@ export default {
       'platformQuery',
       'statusQuery'
     ]),
-    formattedPlatformQuery () {
+    formattedPlatformQuery() {
       return platformMap[this.platformQuery.toLowerCase()]
     }
+  },
+  async mounted() {
+    const categories = await this.getCategoryOptions()
+    this.categoryOptions = categories
   },
   methods: {
     ...mapActions('dapps/search', [
@@ -65,7 +69,7 @@ export default {
       'setPlatformQuery',
       'setStatusQuery'
     ]),
-    getDappStatusOptions (options) {
+    getDappStatusOptions(options) {
       const optionsArr = options.map(x => {
         const optionObj = {
           text: this.$options.filters.capitalize(x),
@@ -75,7 +79,7 @@ export default {
       })
       return optionsArr
     },
-    getPlatformOptions (options) {
+    getPlatformOptions(options) {
       const optionsArr = options.map(x => {
         const optionObj = {
           text: x,
@@ -85,7 +89,7 @@ export default {
       })
       return optionsArr
     },
-    async getCategoryOptions () {
+    async getCategoryOptions() {
       const categories = await getCategories()
       const optionsArr = categories.map(x => {
         const optionObj = {
@@ -96,29 +100,25 @@ export default {
       })
       return optionsArr
     },
-    selectCategory (category) {
+    selectCategory(category) {
       this.setCategoryQuery(category)
       this.fetchItems()
       this.trackFilter('category', category)
     },
-    selectPlatform (platform) {
+    selectPlatform(platform) {
       this.setPlatformQuery(platform)
       this.fetchItems()
       this.trackFilter('platform', platform)
     },
-    selectStatus (status) {
+    selectStatus(status) {
       this.setStatusQuery(status)
       this.fetchItems()
       this.trackFilter('status', status)
     },
-    trackFilter (type, option) {
+    trackFilter(type, option) {
       const action = trackDappsFilter(type, option)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  async mounted () {
-    const categories = await this.getCategoryOptions()
-    this.categoryOptions = categories
   }
 }
 </script>

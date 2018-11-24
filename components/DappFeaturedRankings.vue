@@ -1,22 +1,34 @@
 <template>
-<div class="component-DappFeaturedList">
-  <div class="wrapper">
-    <h2 class="title-2">
-      <nuxt-link :to="{ name: 'rankings' }" class="header-cta" @click.native="trackDappRankingCategory('all')">
-        <img src="~/assets/images/icons/categories.png" width="16" class="icon"/>Rankings by Popular Categories
-      </nuxt-link>
-      <nuxt-link :to="{ name: 'rankings' }" class="cta" @click.native="trackDappRankingCategory('all')">View all
-        <SvgIconChevron :width="8" :height="8" direction="right" />
-      </nuxt-link>
-    </h2>
-    <div class="categories">
-      <DappFeaturedRankingCategory
-        v-for="(category, index) in categories"
-        :key="index"
-        :category="category"/>
+  <div class="component-DappFeaturedList">
+    <div class="wrapper">
+      <h2 class="title-2">
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="header-cta" 
+          @click.native="trackDappRankingCategory('all')">
+          <img 
+            src="~/assets/images/icons/categories.png" 
+            width="16" 
+            class="icon">Rankings by Popular Categories
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'rankings' }" 
+          class="cta" 
+          @click.native="trackDappRankingCategory('all')">View all
+          <SvgIconChevron 
+            :width="8" 
+            :height="8" 
+            direction="right" />
+        </nuxt-link>
+      </h2>
+      <div class="categories">
+        <DappFeaturedRankingCategory
+          v-for="(category, index) in categories"
+          :key="index"
+          :category="category"/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -34,33 +46,35 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  data () {
+  data() {
     return {
       categories: [],
       sourcePath: this.$route.path
     }
   },
+  mounted() {
+    axios.get('categories').then(response => {
+      const items = response.data.items
+      const categoryNum = 4
+      let categories = []
+      for (let i = 0; i < categoryNum; i++) {
+        let randomItemIndex = Math.floor(Math.random() * items.length)
+        let category = items.splice(randomItemIndex, 1)
+        categories = categories.concat(category)
+      }
+      this.categories = categories
+    })
+  },
   methods: {
-    trackDappRankingCategory (category) {
+    trackDappRankingCategory(category) {
       const sourceComponent = 'DappFeaturedRankings'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
+      const action = trackDappRankingCategory(
+        sourceComponent,
+        this.sourcePath,
+        category
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  mounted () {
-    axios
-      .get('categories')
-      .then(response => {
-        const items = response.data.items
-        const categoryNum = 4
-        let categories = []
-        for (let i = 0; i < categoryNum; i++) {
-          let randomItemIndex = Math.floor(Math.random() * items.length)
-          let category = items.splice(randomItemIndex, 1)
-          categories = categories.concat(category)
-        }
-        this.categories = categories
-      })
   }
 }
 </script>
@@ -122,7 +136,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
   &.-promote {
@@ -136,10 +150,10 @@ export default {
 .title-2 {
   position: relative;
   font-size: 2.5rem;
-  margin-top: .75rem;
+  margin-top: 0.75rem;
   margin-bottom: 0rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba($color--black, .15);
+  border-bottom: 1px solid rgba($color--black, 0.15);
 }
 
 .wrapper {

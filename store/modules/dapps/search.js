@@ -1,7 +1,7 @@
 import { dappRefineTabOptions as tabOptions } from '~/helpers/constants'
 import axios from '~/helpers/axios'
 
-function initialQuery () {
+function initialQuery() {
   return {
     platform: '',
     category: '',
@@ -55,7 +55,7 @@ const actions = {
     commit('REMOVE_TAG_FROM_QUERY', index)
     commit('SET_FRIENDLY_URL')
   },
-  resetQuery ({ commit }) {
+  resetQuery({ commit }) {
     commit('RESET_QUERY')
   },
   setTextQuery: ({ commit }, value) => {
@@ -127,31 +127,31 @@ const getters = {
 }
 
 const mutations = {
-  ADD_TAG_TO_QUERY (state, value) {
+  ADD_TAG_TO_QUERY(state, value) {
     state.query.tags.push(value)
   },
-  INCREMENT_OFFSET_QUERY (state) {
+  INCREMENT_OFFSET_QUERY(state) {
     state.query.offset = state.pager.offset + state.query.limit
   },
-  REMOVE_LAST_TAG_FROM_QUERY (state) {
+  REMOVE_LAST_TAG_FROM_QUERY(state) {
     state.query.tags.pop()
   },
-  REMOVE_TAG_FROM_QUERY (state, index) {
+  REMOVE_TAG_FROM_QUERY(state, index) {
     state.query.tags.splice(index, 1)
   },
-  RESET_QUERY (state) {
+  RESET_QUERY(state) {
     state.query = initialQuery()
   },
-  SET_ACTIVE_ITEM_INDEX (state, index) {
+  SET_ACTIVE_ITEM_INDEX(state, index) {
     state.activeItemIndex = index
   },
-  SET_CATEGORY_QUERY (state, value) {
+  SET_CATEGORY_QUERY(state, value) {
     state.query.category = value
   },
-  SET_PLATFORM_QUERY (state, value) {
+  SET_PLATFORM_QUERY(state, value) {
     state.query.platform = value
   },
-  SET_TAB_QUERY (state, value) {
+  SET_TAB_QUERY(state, value) {
     var options = tabOptions || []
     if (options.indexOf(value) !== -1) {
       state.query.tab = value
@@ -159,18 +159,21 @@ const mutations = {
       state.query.tab = options[0]
     }
   },
-  SET_FRIENDLY_QUERY (state, params) {
+  SET_FRIENDLY_QUERY(state, params) {
     var tags = params.tags
     var tab = params.tab
     if (tags !== undefined) {
-      tags = tags.split('+').slice(0, 3).map(decodeURIComponent)
+      tags = tags
+        .split('+')
+        .slice(0, 3)
+        .map(decodeURIComponent)
       state.query.tags = tags
     }
     if (tab !== undefined) {
       state.query.tab = tab
     }
   },
-  SET_FRIENDLY_URL (state) {
+  SET_FRIENDLY_URL(state) {
     var tags = state.query.tags.filter(entry => entry.trim() !== '') || ''
     if (tags.length > 0) {
       tags = tags.map(encodeURIComponent)
@@ -200,7 +203,7 @@ const mutations = {
     }
     this.$router.replace(routerObj)
   },
-  SET_ITEMS (state, data) {
+  SET_ITEMS(state, data) {
     const items = data.items
     const pager = data.pager
     state.pager.totalCount = pager.totalCount
@@ -212,16 +215,16 @@ const mutations = {
     }
     state.query.offset = 0
   },
-  SET_LOADING_STATUS (state, value) {
+  SET_LOADING_STATUS(state, value) {
     state.isLoading = value
   },
-  SET_STATUS_QUERY (state, value) {
+  SET_STATUS_QUERY(state, value) {
     state.query.status = value
   },
-  SET_TEXT_QUERY (state, value) {
+  SET_TEXT_QUERY(state, value) {
     state.query.text = value
   },
-  TOGGLE_REFINE_DROPDOWN (state, type) {
+  TOGGLE_REFINE_DROPDOWN(state, type) {
     state.refine[type].isActive = !state.refine[type].isActive
   }
 }

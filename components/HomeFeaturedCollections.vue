@@ -1,15 +1,29 @@
 <template>
-<div class="component-HomeFeaturedCollections">
-  <h2 class="title-2">
-    <nuxt-link :to="{ name: 'collections'}" class="header-cta" @click.native="trackCollectionView('home')">
-      <SvgIconCollection :width="16" :height="16"/>ÐApp Collections
-    </nuxt-link>
-    <nuxt-link :to="{ name: 'collections'}" class="cta" @click.native="trackCollectionView('home')">View all
-      <SvgIconChevron :width="8" :height="8" direction="right" />
-    </nuxt-link>
-  </h2>
-  <DappCollectionList v-for="(collection, index) in collections" :collection="collection" :key="index"/>
-</div>
+  <div class="component-HomeFeaturedCollections">
+    <h2 class="title-2">
+      <nuxt-link 
+        :to="{ name: 'collections'}" 
+        class="header-cta" 
+        @click.native="trackCollectionView('home')">
+        <SvgIconCollection 
+          :width="16" 
+          :height="16"/>ÐApp Collections
+      </nuxt-link>
+      <nuxt-link 
+        :to="{ name: 'collections'}" 
+        class="cta" 
+        @click.native="trackCollectionView('home')">View all
+        <SvgIconChevron 
+          :width="8" 
+          :height="8" 
+          direction="right" />
+      </nuxt-link>
+    </h2>
+    <DappCollectionList 
+      v-for="(collection, index) in collections" 
+      :collection="collection" 
+      :key="index"/>
+  </div>
 </template>
 
 <script>
@@ -25,27 +39,29 @@ export default {
     SvgIconChevron,
     SvgIconCollection
   },
-  data () {
+  data() {
     return {
       collections: [],
       sourcePath: this.$route.path
     }
   },
+  mounted() {
+    axios.get('collections/list/featured').then(response => {
+      const collections = response.data
+      this.collections = collections.slice(1, 4)
+    })
+  },
   methods: {
-    trackCollectionView (slug) {
+    trackCollectionView(slug) {
       const sourceComponent = 'HomeFeaturedCollections'
       const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      const action = trackCollectionView(
+        sourceComponent,
+        this.sourcePath,
+        targetCollection
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  mounted () {
-    axios
-      .get('collections/list/featured')
-      .then(response => {
-        const collections = response.data
-        this.collections = collections.slice(1, 4)
-      })
   }
 }
 </script>
@@ -67,7 +83,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
   &.-promote {
@@ -83,7 +99,7 @@ export default {
 }
 
 .title-2 {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   font-size: 2.5rem;
 }

@@ -3,7 +3,7 @@ import DappDetail from './DappDetail'
 
 export default {
   extends: DappDetail,
-  data () {
+  data() {
     return {
       direct: true
     }

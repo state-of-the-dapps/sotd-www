@@ -1,39 +1,81 @@
 <template>
-<div class="component-PropmotedDapps">
-  <div class="wrapper">
-    <h1 class="title-1">Promote your ÐApp to attract more users</h1>
-    <p class="description">{{ description }}</p>
-    <div class="get-started-wrapper"><button class="get-started" @click="getStarted">Get started</button></div>
-  </div>
-  <div class="preview-wrapper">
-    <img class="preview" src="~/assets/images/promoted-preview.jpg" width="1200">
-  </div>
-  <div class="wrapper">
-    <h2 class="title-2" ref="getStartedEl">Get started now!</h2>
-    <div class="fields">
-      <div><input class="input" v-model="name" ref="name" type="text" placeholder="Your name"></div>
-      <div><input class="input" v-model="email" @input="validateEmail" type="text" placeholder="Your email"></div>
-      <div><input class="input" v-model="country" type="text" placeholder="Your country"></div>   
-      <div><input class="input" v-model="dapp" type="text" placeholder="Your ÐApp's name"></div>  
-      <div><input class="input" v-model="budget" type="text" placeholder="Daily budget (USD)"></div>
-      <div class="submitted-wrapper">
-        Is this ÐApp already listed on this website?
-        <p>
-          <button class="selection" :class="hasSubmittedDapp == 'yes' ? '--active' : ''" @click="selectSubmittedDapp('yes')">Yes</button>
-          <button class="selection" :class="hasSubmittedDapp == 'no' ? '--active' : ''" @click="selectSubmittedDapp('no')">No</button>
-        </p>
-      </div>
+  <div class="component-PropmotedDapps">
+    <div class="wrapper">
+      <h1 class="title-1">Promote your ÐApp to attract more users</h1>
+      <p class="description">{{ description }}</p>
+      <div class="get-started-wrapper"><button 
+        class="get-started" 
+        @click="getStarted">Get started</button></div>
     </div>
-    <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
-    <div class="send-wrapper"><button class="send" :class="formIsValid ? '--is-ready' : ''" @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
+    <div class="preview-wrapper">
+      <img 
+        class="preview" 
+        src="~/assets/images/promoted-preview.jpg" 
+        width="1200">
+    </div>
+    <div class="wrapper">
+      <h2 
+        ref="getStartedEl" 
+        class="title-2">Get started now!</h2>
+      <div class="fields">
+        <div><input 
+          ref="name" 
+          v-model="name" 
+          class="input" 
+          type="text" 
+          placeholder="Your name"></div>
+        <div><input 
+          v-model="email" 
+          class="input" 
+          type="text" 
+          placeholder="Your email" 
+          @input="validateEmail"></div>
+        <div><input 
+          v-model="country" 
+          class="input" 
+          type="text" 
+          placeholder="Your country"></div>   
+        <div><input 
+          v-model="dapp" 
+          class="input" 
+          type="text" 
+          placeholder="Your ÐApp's name"></div>  
+        <div><input 
+          v-model="budget" 
+          class="input" 
+          type="text" 
+          placeholder="Daily budget (USD)"></div>
+        <div class="submitted-wrapper">
+          Is this ÐApp already listed on this website?
+          <p>
+            <button 
+              :class="hasSubmittedDapp == 'yes' ? '--active' : ''" 
+              class="selection" 
+              @click="selectSubmittedDapp('yes')">Yes</button>
+            <button 
+              :class="hasSubmittedDapp == 'no' ? '--active' : ''" 
+              class="selection" 
+              @click="selectSubmittedDapp('no')">No</button>
+          </p>
+        </div>
+      </div>
+      <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
+      <div class="send-wrapper"><button 
+        :class="formIsValid ? '--is-ready' : ''" 
+        class="send" 
+        @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import axios from '~/helpers/axios'
 import { mapGetters } from 'vuex'
-import { setUser, trackPromotedDappSubmit, trackPromotedDappsView } from '~/helpers/mixpanel'
+import {
+  setUser,
+  trackPromotedDappSubmit,
+  trackPromotedDappsView
+} from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 import PromotedDapps from '~/components/PromotedDapps'
 
@@ -41,15 +83,18 @@ export default {
   components: {
     PromotedDapps
   },
+  mixins: [validateEmail],
   props: {
     description: {
+      type: String,
       default: ''
     },
     directView: {
+      type: Boolean,
       default: false
     }
   },
-  data () {
+  data() {
     return {
       budget: '',
       country: '',
@@ -62,26 +107,46 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ]),
-    formIsValid () {
+    ...mapGetters(['userEntryRoute']),
+    formIsValid() {
       let isValid = false
-      if (this.budget && this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid && !this.formIsSubmitting) {
+      if (
+        this.budget &&
+        this.country &&
+        this.email &&
+        this.dapp &&
+        this.name &&
+        this.hasSubmittedDapp &&
+        this.emailIsValid &&
+        !this.formIsSubmitting
+      ) {
         isValid = true
       }
       return isValid
     }
   },
+  mounted() {
+    this.$store.dispatch('setSiteSection', 'dapps')
+    if (this.directView) {
+      const sourceComponent = ''
+      const sourcePath = ''
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        sourcePath,
+        this.userEntryRoute
+      )
+      this.$mixpanel.track(action.name, action.data)
+    }
+  },
   methods: {
-    getStarted () {
+    getStarted() {
       this.$mixpanel.track('Promoted DApps - Get Started')
       this.$refs.getStartedEl.scrollIntoView()
     },
-    selectSubmittedDapp (selection) {
+    selectSubmittedDapp(selection) {
       this.hasSubmittedDapp = selection
     },
-    send () {
+    send() {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
         const budget = this.budget
@@ -96,7 +161,12 @@ export default {
 
         const hasWeb3 = typeof web3 !== 'undefined'
         const lastUpdated = new Date().toISOString()
-        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        const user = setUser(
+          this.email,
+          hasWeb3,
+          lastUpdated,
+          this.userEntryRoute
+        )
         this.$mixpanel.setUser(user)
 
         const data = {
@@ -109,8 +179,9 @@ export default {
             hasSubmittedDapp
           }
         }
-        axios.post('promoted/dapps', data)
-          .then((response) => {
+        axios
+          .post('promoted/dapps', data)
+          .then(response => {
             const modal = {
               component: 'ModalPromotedDappsNewConfirmation',
               mpData: {},
@@ -120,21 +191,11 @@ export default {
             }
             this.$store.dispatch('setSiteModal', modal)
           })
-          .catch((error) => {
+          .catch(error => {
             this.formIsSubmitting = false
             console.log(error)
           })
       }
-    }
-  },
-  mixins: [validateEmail],
-  mounted () {
-    this.$store.dispatch('setSiteSection', 'dapps')
-    if (this.directView) {
-      const sourceComponent = ''
-      const sourcePath = ''
-      const action = trackPromotedDappsView(sourceComponent, sourcePath, this.userEntryRoute)
-      this.$mixpanel.track(action.name, action.data)
     }
   }
 }
@@ -176,7 +237,7 @@ export default {
 .preview-wrapper {
   margin-top: 20px;
   text-align: center;
-  background: rgba($color--black, .075);
+  background: rgba($color--black, 0.075);
 }
 
 .preview {
@@ -187,7 +248,7 @@ export default {
 
 .input {
   border: none;
-  background: rgba($color--white,.9);
+  background: rgba($color--white, 0.9);
   width: 100%;
   padding: 10px 5px;
   margin-bottom: 8px;
@@ -198,31 +259,31 @@ export default {
   display: inline-block;
   padding: 5px 10px;
   margin: 0 2px;
-  background: rgba($color--white,.9);
+  background: rgba($color--white, 0.9);
   width: 45px;
   text-align: center;
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   &:hover {
-    background: rgba($color--black, .1);  
+    background: rgba($color--black, 0.1);
   }
   &.--active {
-    background: $color--black;  
-    color: $color--white;  
+    background: $color--black;
+    color: $color--white;
   }
 }
 
 .send {
-  background: rgba($color--black, .15);
+  background: rgba($color--black, 0.15);
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 12px 75px;
   cursor: default;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   font-weight: 700;
   &.--is-ready {
     color: $color--white;
     background: $color--black;
-    box-shadow: 0 17px 70px rgba($color--black, .4);
+    box-shadow: 0 17px 70px rgba($color--black, 0.4);
     cursor: pointer;
   }
 }
@@ -240,7 +301,7 @@ export default {
   font-size: 3rem;
   text-transform: initial;
   text-align: center;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .title-2 {

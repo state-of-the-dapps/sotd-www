@@ -1,8 +1,13 @@
 import axios from '~/helpers/axios'
-import { dappListDefaultLimit, dappListDefaultSort, dappListDefaultOrder, platformMap } from '~/helpers/constants'
+import {
+  dappListDefaultLimit,
+  dappListDefaultSort,
+  dappListDefaultOrder,
+  platformMap
+} from '~/helpers/constants'
 
 const actions = {
-  fetchDapps ({ commit, state }, type) {
+  fetchDapps({ commit, state }, type) {
     commit('SET_LOADING_STATUS', true)
     axios
       .get('dapps', {
@@ -25,16 +30,16 @@ const actions = {
         commit('SET_LOADING_STATUS', false)
       })
   },
-  incrementOffset ({ commit }) {
+  incrementOffset({ commit }) {
     commit('INCREMENT_OFFSET')
   },
-  setCategory ({ commit }, category) {
+  setCategory({ commit }, category) {
     commit('SET_CATEGORY', category)
   },
-  setPlatform ({ commit }, platform) {
+  setPlatform({ commit }, platform) {
     commit('SET_PLATFORM', platform)
   },
-  setSort ({ commit }, sortOptions) {
+  setSort({ commit }, sortOptions) {
     commit('SET_SORT', sortOptions)
   }
 }
@@ -70,32 +75,32 @@ const getters = {
 }
 
 const mutations = {
-  APPEND_DAPPS (state, data) {
+  APPEND_DAPPS(state, data) {
     state.dapps = state.dapps.concat(data.items)
     state.offset = data.pager.offset
     state.total = data.pager.totalCount
   },
-  INCREMENT_OFFSET (state) {
+  INCREMENT_OFFSET(state) {
     state.offset += 50
   },
-  SET_DAPPS (state, data) {
+  SET_DAPPS(state, data) {
     state.dapps = data.items
     state.offset = data.pager.offset
     state.total = data.pager.totalCount
   },
-  SET_LOADING_STATUS (state, status) {
+  SET_LOADING_STATUS(state, status) {
     state.isLoading = status
   },
-  SET_CATEGORY (state, category) {
+  SET_CATEGORY(state, category) {
     state.offset = 0
     state.category = category
   },
-  SET_SORT (state, sortOptions) {
+  SET_SORT(state, sortOptions) {
     state.offset = 0
     state.order = sortOptions.order
     state.sort = sortOptions.sort
   },
-  SET_PLATFORM (state, platform) {
+  SET_PLATFORM(state, platform) {
     state.offset = 0
     const formattedPlatform = platformMap[platform]
     state.platform = formattedPlatform

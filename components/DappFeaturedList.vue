@@ -1,29 +1,42 @@
 <template>
-<div class="component-DappFeaturedList">
-  <div class="wrapper">
-    <h2 class="title-2">
-      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="header-cta" @click.native="trackCollectionView('featured')">
-        <SvgIconFeatured/>Featured ÐApps
-      </nuxt-link>
-      <nuxt-link :to="{ name: 'collections-slug', params: { slug: 'featured' }}" class="cta" @click.native="trackCollectionView('featured')">View all
-        <SvgIconChevron :width="8" :height="8" direction="right" />
-      </nuxt-link>
-      <nuxt-link class="cta -promote" :to="{ name: 'promoted-dapps' }" @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
-    </h2>
-    <div class="featured-wrapper">
-      <div class="featured-list-wrapper">
-        <ul class="featured-list">
-          <DappFeaturedListItem v-for="(dapp, index) in dapps"
-            :key="index"
-            :dapp="dapp"
-            :index="index"
-            :hasPromotedDapp="hasPromotedDapp"
-          />
-        </ul>
+  <div class="component-DappFeaturedList">
+    <div class="wrapper">
+      <h2 class="title-2">
+        <nuxt-link 
+          :to="{ name: 'collections-slug', params: { slug: 'featured' }}" 
+          class="header-cta" 
+          @click.native="trackCollectionView('featured')">
+          <SvgIconFeatured/>Featured ÐApps
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'collections-slug', params: { slug: 'featured' }}" 
+          class="cta" 
+          @click.native="trackCollectionView('featured')">View all
+          <SvgIconChevron 
+            :width="8" 
+            :height="8" 
+            direction="right" />
+        </nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'promoted-dapps' }" 
+          class="cta -promote" 
+          @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
+      </h2>
+      <div class="featured-wrapper">
+        <div class="featured-list-wrapper">
+          <ul class="featured-list">
+            <DappFeaturedListItem 
+              v-for="(dapp, index) in dapps"
+              :key="index"
+              :dapp="dapp"
+              :index="index"
+              :has-promoted-dapp="hasPromotedDapp"
+            />
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -40,12 +53,7 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  computed: {
-    userEntryRoute () {
-      return this.$store.getters['userEntryRoute']
-    }
-  },
-  data () {
+  data() {
     return {
       scrollIndex: 0,
       dapps: [],
@@ -53,34 +61,20 @@ export default {
       sourcePath: this.$route.path
     }
   },
-  methods: {
-    getFeaturedDapps () {
-      return axios.get('collections/featured')
-    },
-    getPromotedDapps () {
-      return axios.get('promoted/dapps')
-    },
-    trackCollectionView (slug) {
-      const sourceComponent = 'DappFeaturedList'
-      const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
-      this.$mixpanel.track(action.name, action.data)
-    },
-    trackPromotedDappsView () {
-      const sourceComponent = 'DappFeaturedList'
-      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
-      this.$mixpanel.track(action.name, action.data)
+  computed: {
+    userEntryRoute() {
+      return this.$store.getters['userEntryRoute']
     }
   },
-  mounted () {
-    Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()])
-      .then(([featured, promoted]) => {
+  mounted() {
+    Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()]).then(
+      ([featured, promoted]) => {
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
         const slots = dappPromotedSlots
         const promotedDapps = promoted.data.slice(0, slots).reverse()
         if (featuredDapps && featuredDapps.length) {
-          this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
+          this.dapps = featuredDapps.slice(0, 4 - promotedDapps.length)
         }
         if (promotedDapps && promotedDapps.length) {
           for (var i = 0; i < promotedDapps.length; i++) {
@@ -90,7 +84,35 @@ export default {
           }
           this.hasPromotedDapp = true
         }
-      })
+      }
+    )
+  },
+  methods: {
+    getFeaturedDapps() {
+      return axios.get('collections/featured')
+    },
+    getPromotedDapps() {
+      return axios.get('promoted/dapps')
+    },
+    trackCollectionView(slug) {
+      const sourceComponent = 'DappFeaturedList'
+      const targetCollection = slug
+      const action = trackCollectionView(
+        sourceComponent,
+        this.sourcePath,
+        targetCollection
+      )
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackPromotedDappsView() {
+      const sourceComponent = 'DappFeaturedList'
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
+      this.$mixpanel.track(action.name, action.data)
+    }
   }
 }
 </script>
@@ -142,7 +164,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
   &.-promote {
@@ -163,4 +185,3 @@ export default {
   position: relative;
 }
 </style>
-

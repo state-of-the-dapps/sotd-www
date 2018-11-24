@@ -1,7 +1,11 @@
 <template>
   <div class="component-ranking-table-name">
     <div class="icon-wrapper">
-      <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" :class="!iconUrl ? 'has-no-icon' : ''" class="icon-link" @click.native="trackDappView(slug)">
+      <nuxt-link 
+        :to="{ name: 'dapp-detail', params: { slug } }" 
+        :class="!iconUrl ? 'has-no-icon' : ''" 
+        class="icon-link" 
+        @click.native="trackDappView(slug)">
         <img
           v-if="iconUrl" 
           :src="iconUrl"
@@ -15,7 +19,9 @@
     </div>
     <div class="name-teaser-wrapper">
       <h4 class="name">
-        <nuxt-link :to="{ name: 'dapp-detail', params: { slug } }" @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
+        <nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug } }" 
+          @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
       <p class="teaser">{{ teaser }}</p>
     </div>
@@ -44,16 +50,21 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   methods: {
-    trackDappView (targetDapp) {
+    trackDappView(targetDapp) {
       const sourceCollection = ''
       const sourceComponent = 'RankingTable'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }
@@ -115,7 +126,7 @@ export default {
 
 .name {
   margin: 0;
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
   font-size: 1.2rem;
 }
 

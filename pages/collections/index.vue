@@ -26,7 +26,7 @@ export default {
 @import '~assets/css/settings';
 
 .description {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   text-align: center;
 }
 

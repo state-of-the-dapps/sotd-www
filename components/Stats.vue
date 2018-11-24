@@ -51,11 +51,15 @@
             <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
               <span>Monthly active users</span>
-              <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Transactions (30d)</span>
-              <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Number of transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading"># of contracts</th>
           </tr>
@@ -74,8 +78,8 @@
                 class="table-link">{{ category.category }}</nuxt-link>
             </td>
             <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
-            <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ category.dappTx30D | abbreviateNumber(2) || 0 }}</td>
             <td class="table-data">{{ category.dappContractCount | abbreviateNumber(2) || 0 }}</td>
           </tr>
         </tbody>
@@ -90,15 +94,21 @@
             <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
               <span>Daily active users</span>
-              <Help text="Unique source addresses in transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Transactions (24hr)</span>
-              <Help text="Number of transactions to ÐApp contracts" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Number of transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
               <span>Volume (24hr)</span>
-              <Help text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly" :bottom="true"/>
+              <Help 
+                :bottom="true" 
+                text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly"/>
             </th>
             <th class="table-heading"># of contracts</th>
           </tr>
@@ -117,9 +127,9 @@
                 class="table-link">{{ platform.platform }}</nuxt-link>
             </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
-            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0  }}</td>
-            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0  }}</td>
+            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0 }}</td>
             <td class="table-data">{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</td>
           </tr>
         </tbody>
@@ -232,9 +242,9 @@ const labels = [
   '2018-10-31'
 ]
 
-const formattedLabels = labels.map(x => formatDate(x, 'MMM \'YY'))
+const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
 
-function totalDapps () {
+function totalDapps() {
   let totalDappArr = []
   let totalDapps = 0
   let i = 0
@@ -246,7 +256,11 @@ function totalDapps () {
 }
 
 export default {
-  data () {
+  components: {
+    Help,
+    StatsStatusBarChart
+  },
+  data() {
     return {
       newVsTotalData: {
         labels: formattedLabels,
@@ -273,10 +287,6 @@ export default {
       }
     }
   },
-  components: {
-    Help,
-    StatsStatusBarChart
-  },
   computed: {
     ...mapGetters([
       'statCategories',
@@ -289,10 +299,14 @@ export default {
       'statStatuses'
     ])
   },
+  mounted() {
+    this.createChart('new-vs-total', this.newVsTotalData)
+  },
   methods: {
-    createChart (chartId, chartData) {
+    createChart(chartId, chartData) {
       var ctx = document.getElementById(chartId)
-      var lineChart = new Chart(ctx, { // eslint-disable-line no-unused-vars
+      var lineChart = new Chart(ctx, {
+        // eslint-disable-line no-unused-vars
         type: 'bar',
         data: chartData,
         options: {
@@ -306,47 +320,49 @@ export default {
             display: false
           },
           scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
+              }
+            ],
+            yAxes: [
+              {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
               },
-              ticks: {
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
+              {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                // grid line settings
+                gridLines: {
+                  drawOnChartArea: false // only want the grid lines for one axis to show up
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
               }
-            }],
-            yAxes: [{
-              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-              display: true,
-              position: 'left',
-              id: 'y-axis-1',
-              ticks: {
-                beginAtZero: true,
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
-              }
-            }, {
-              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-              display: true,
-              position: 'right',
-              id: 'y-axis-2',
-              // grid line settings
-              gridLines: {
-                drawOnChartArea: false // only want the grid lines for one axis to show up
-              },
-              ticks: {
-                beginAtZero: true,
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
-              }
-            }]
+            ]
           }
         }
       })
     }
-  },
-  mounted () {
-    this.createChart('new-vs-total', this.newVsTotalData)
   }
 }
 </script>
@@ -437,7 +453,8 @@ export default {
   border-bottom: 1px solid $color--black;
 }
 
-.table-heading, .table-data {
+.table-heading,
+.table-data {
   padding: 5px 15px;
   &.-name {
     text-align: left;
@@ -470,7 +487,7 @@ export default {
 }
 
 .table-row {
-  border-bottom: 1px solid rgba($color--black, .2);
+  border-bottom: 1px solid rgba($color--black, 0.2);
 }
 
 .value {
@@ -485,7 +502,7 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     margin-right: 40px;
     padding-right: 40px;
-    border-right: 1px solid rgba($color--black, .2);
+    border-right: 1px solid rgba($color--black, 0.2);
   }
 }
 </style>

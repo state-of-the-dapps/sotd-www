@@ -1,9 +1,9 @@
 <template>
-<div class="component-SecondaryCta">
-  <SecondaryCtaMailingList/>
-  <SecondaryCtaMetamask/>
-  <SecondaryCtaScatter/>
-</div>
+  <div class="component-SecondaryCta">
+    <SecondaryCtaMailingList/>
+    <SecondaryCtaMetamask/>
+    <SecondaryCtaScatter/>
+  </div>
 </template>
 
 <script>

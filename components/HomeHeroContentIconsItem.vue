@@ -1,11 +1,16 @@
 <template>
-<div class="component-HomeHeroContentIconsItem" :class="'-dapp-' + index + ' ' + loaded" @click="trackHomeHeroDappIcon(index)">
-  <img class="card-icon" :src="imageSrc" />
-  <div :class="'card-info -' + status">
-    <span class="status">{{ status }}</span>
-    <SvgBadgeMetamask/>
-  </div>
-</div>  
+  <div 
+    :class="'-dapp-' + index + ' ' + loaded" 
+    class="component-HomeHeroContentIconsItem" 
+    @click="trackHomeHeroDappIcon(index)">
+    <img 
+      :src="imageSrc" 
+      class="card-icon" >
+    <div :class="'card-info -' + status">
+      <span class="status">{{ status }}</span>
+      <SvgBadgeMetamask/>
+    </div>
+  </div>  
 </template>
 
 <script>
@@ -14,29 +19,37 @@ import { mapGetters } from 'vuex'
 import SvgBadgeMetamask from './SvgBadgeMetamask'
 
 export default {
-  data () {
+  components: {
+    SvgBadgeMetamask
+  },
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    status: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
     return {
       loaded: '',
       imageSrc: ''
     }
   },
-  destroyed () {
+  computed: {
+    ...mapGetters(['heroHasLoaded'])
+  },
+  destroyed() {
     this.$store.dispatch('setHeroLoaded')
   },
-  components: {
-    SvgBadgeMetamask
+  mounted() {
+    this.loaded = !this.heroHasLoaded ? 'is-waiting' : 'is-active'
+    this.loadImage(this.index)
   },
-  computed: {
-    ...mapGetters([
-      'heroHasLoaded'
-    ])
-  },
-  props: [
-    'index',
-    'status'
-  ],
   methods: {
-    loadImage (index) {
+    loadImage(index) {
       var img = new Image()
       img.src = require('~/assets/images/dapp-icons/' + index + '.jpg')
       img.onload = () => {
@@ -44,14 +57,10 @@ export default {
       }
       this.imageSrc = img.src
     },
-    trackHomeHeroDappIcon (targetIndex) {
+    trackHomeHeroDappIcon(targetIndex) {
       const action = trackHomeHeroDappIcon(targetIndex)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  mounted () {
-    this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
-    this.loadImage(this.index)
   }
 }
 </script>
@@ -65,7 +74,7 @@ export default {
   width: 200px;
   margin-top: -20px;
   margin-bottom: -20px;
-  z-index: 1
+  z-index: 1;
 }
 
 .card-info {
@@ -83,7 +92,7 @@ export default {
   }
   &.-concept {
     background: $color--dapp-concept;
-  }  
+  }
   &.-live {
     background: $color--dapp-live;
   }

@@ -1,4 +1,4 @@
-function item () {
+function item() {
   return {
     contracts: [],
     socials: [],
@@ -7,28 +7,28 @@ function item () {
       transactions: []
     },
     stats: {
-      'dau': 0,
-      'mau': 0,
-      'tx_1d': 0,
-      'tx_30d': 0,
-      'tx_7d': 0,
-      'wau': 0
+      dau: 0,
+      mau: 0,
+      tx_1d: 0,
+      tx_30d: 0,
+      tx_7d: 0,
+      wau: 0
     },
     tags: []
   }
 }
 
 const actions = {
-  setItem ({ commit }, item) {
+  setItem({ commit }, item) {
     commit('SET_ITEM', item)
   },
-  resetItem ({ commit }) {
+  resetItem({ commit }) {
     commit('RESET_ITEM')
   },
-  resetViewMethod ({ commit }) {
+  resetViewMethod({ commit }) {
     commit('RESET_VIEW_METHOD')
   },
-  setViewMethod ({ commit }, method) {
+  setViewMethod({ commit }, method) {
     commit('SET_VIEW_METHOD', method)
   }
 }
@@ -46,16 +46,16 @@ const getters = {
 }
 
 const mutations = {
-  SET_ITEM (state, item) {
+  SET_ITEM(state, item) {
     state.item = item
   },
-  RESET_ITEM (state) {
+  RESET_ITEM(state) {
     state.item = item()
   },
-  RESET_VIEW_METHOD (state) {
+  RESET_VIEW_METHOD(state) {
     state.viewMethod = ''
   },
-  SET_VIEW_METHOD (state, method) {
+  SET_VIEW_METHOD(state, method) {
     state.viewMethod = method
   }
 }

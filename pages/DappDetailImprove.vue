@@ -1,6 +1,8 @@
 <template>
   <LayoutMain>
-    <div class="page-dapp-detail-improve" ref="page">
+    <div 
+      ref="page" 
+      class="page-dapp-detail-improve">
       <div class="hero-wrapper">
         <p style="text-align: center;">
           Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link>
@@ -12,21 +14,29 @@
           <div class="fields">
             <div class="basic-info">
               <h3 class="title-3">Your name <span class="required">required</span></h3>
-              <div class="field"><input class="input-text" placeholder="Enter your name here" type="text" v-model="suggesterName"/></div>
+              <div class="field"><input 
+                v-model="suggesterName" 
+                class="input-text" 
+                placeholder="Enter your name here" 
+                type="text"></div>
               <h3 class="title-3">Your email <span class="required">required</span></h3>
-              <div class="field"><input class="input-text" placeholder="Enter your email here" type="text" @input="validateEmail" v-model="email"/></div>
+              <div class="field"><input 
+                v-model="email" 
+                class="input-text" 
+                placeholder="Enter your email here" 
+                type="text" 
+                @input="validateEmail"></div>
               <h3 class="title-3 -suggestions">Help improve these missing fields</h3>
             </div>
             <DappEdit
               :suggestions="suggestions"/>
-              <button
-            @click="submit"
-            :class="formIsValid ? 'is-valid' : ''"
-            class="submit"><span v-if="formIsValid">Submit</span><span v-else>Enter your name and a valid email address</span></button>
+            <button
+              :class="formIsValid ? 'is-valid' : ''"
+              class="submit"
+              @click="submit"><span v-if="formIsValid">Submit</span><span v-else>Enter your name and a valid email address</span></button>
           </div>
         </div>
-        <div>
-        </div>
+        <div/>
       </div>
       <div v-else>
         <p class="confirmation">Thanks! We will review your suggestions and be in touch.</p>
@@ -47,7 +57,8 @@ export default {
     DappEdit,
     LayoutMain
   },
-  data () {
+  mixins: [validateEmail],
+  data() {
     return {
       suggesterName: '',
       email: '',
@@ -57,36 +68,42 @@ export default {
     }
   },
   computed: {
-    userEntryRoute () {
+    userEntryRoute() {
       return this.$store.getters['userEntryRoute']
     },
-    suggesterEmail () {
+    suggesterEmail() {
       return this.email
     },
-    formIsValid () {
+    formIsValid() {
       return this.emailIsValid && this.suggesterName.length && this.email.length
     },
-    fields () {
+    fields() {
       return this.$store.getters['dapps/form/fields']
     }
   },
-  asyncData ({ store, params, error }) {
-    return axios
-      .get('dapps/' + params.slug)
-      .then(response => {
-        const data = response.data
-        const dapp = data.item
-        if (!Object.keys(dapp).length > 0) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapp
-        }
-      })
+  asyncData({ store, params, error }) {
+    return axios.get('dapps/' + params.slug).then(response => {
+      const data = response.data
+      const dapp = data.item
+      if (!Object.keys(dapp).length > 0) {
+        error({ statusCode: 404 })
+      }
+      return {
+        dapp
+      }
+    })
   },
-  mixins: [validateEmail],
+  mounted() {
+    axios.get(`dapps/${this.dapp.slug}/suggestions`).then(response => {
+      const profile = response.data
+      const suggestions = profile.suggestions
+      this.suggestions = suggestions
+    })
+    const action = trackDappImproveProfileView(this.dapp.slug)
+    this.$mixpanel.track(action.name, action.data)
+  },
   methods: {
-    submit () {
+    submit() {
       if (this.formIsValid) {
         const data = {
           fields: this.fields
@@ -98,35 +115,25 @@ export default {
         data.fields.platform = ''
         this.sent = true
         this.$refs.page.scrollIntoView()
-        axios.post(`dapps/${this.dapp.slug}/suggestions`, data)
-          .then((response) => {
+        axios
+          .post(`dapps/${this.dapp.slug}/suggestions`, data)
+          .then(response => {
             this.$mixpanel.track('Improve DApp - Submit', {
               slug: this.dapp.slug
             })
             this.$mixpanel.setUser({
-              '$email': this.suggesterEmail,
-              '$name': this.suggesterName,
-              'hasWeb3': typeof web3 !== 'undefined',
-              'lastUpdated': new Date().toISOString(),
-              'lastSessionEntryRoute': this.userEntryRoute
+              $email: this.suggesterEmail,
+              $name: this.suggesterName,
+              hasWeb3: typeof web3 !== 'undefined',
+              lastUpdated: new Date().toISOString(),
+              lastSessionEntryRoute: this.userEntryRoute
             })
           })
-          .catch((error) => {
+          .catch(error => {
             console.log(error)
           })
       }
     }
-  },
-  mounted () {
-    axios
-      .get(`dapps/${this.dapp.slug}/suggestions`)
-      .then(response => {
-        const profile = response.data
-        const suggestions = profile.suggestions
-        this.suggestions = suggestions
-      })
-    const action = trackDappImproveProfileView(this.dapp.slug)
-    this.$mixpanel.track(action.name, action.data)
   }
 }
 </script>
@@ -209,7 +216,7 @@ export default {
   padding: 7px 12px;
   text-transform: uppercase;
   text-decoration: underline;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 0 auto;
   display: block;
@@ -242,13 +249,13 @@ export default {
 }
 
 .improve-wrapper {
-  padding-top: 5px; 
+  padding-top: 5px;
 }
 
 .improve {
   text-align: left;
   text-decoration: underline;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
 .score {
@@ -262,7 +269,7 @@ export default {
 }
 
 .submit {
-  opacity: .3;
+  opacity: 0.3;
   background: $color--black;
   color: $color--white;
   margin: 0 auto;

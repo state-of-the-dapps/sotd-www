@@ -1,33 +1,41 @@
 <template>
   <div 
     v-on-clickaway="resetSearch"
-    @click="focusInput"
-    class="component-global-search"
     :class="[
       isSearching ? 'is-searching' : '',
-      search.length ? 'has-input' : '']">
-    <span class="nav-link -search" :class="'-' + color"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
+      search.length ? 'has-input' : '']"
+    class="component-global-search"
+    @click="focusInput">
+    <span 
+      :class="'-' + color" 
+      class="nav-link -search"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
       <input
         ref="searchInput"
         :class="'-' + color"
+        v-model="search"
         class="search-input"
         placeholder="Discover awesome ÐApps…"
-        v-model="search"
         @input="fetchResults"
         @focus="startSearch"
         @blur="endSearch"
         @keyup.enter="goToSearchPage">
     </div>
-    <div class="results" v-if="results || isSearching">
-      <div v-if="!results && searchCompleted" class="results-none">Sorry, no results. Please try a new search</div>
-      <div class="suggestions-wrapper" v-if="suggestions.length">
+    <div 
+      v-if="results || isSearching" 
+      class="results">
+      <div 
+        v-if="!results && searchCompleted" 
+        class="results-none">Sorry, no results. Please try a new search</div>
+      <div 
+        v-if="suggestions.length" 
+        class="suggestions-wrapper">
         <h3 class="results-title">Suggested tags</h3>
         <ul class="results-suggestions-list">
           <li
-            class="results-suggestions-item"
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
-            :key="index">
+            :key="index"
+            class="results-suggestions-item">
             <nuxt-link
               :to="{ path: `/dapps/tagged/${suggestion}`, query: {q: 'suggestion'} }"
               class="results-suggestions-link"
@@ -37,17 +45,29 @@
           </li>
         </ul>
       </div>
-      <br v-if="suggestions.length && dapps.length"/>
-      <div class="dapps-wrapper" v-if="dapps.length">
+      <br v-if="suggestions.length && dapps.length">
+      <div 
+        v-if="dapps.length" 
+        class="dapps-wrapper">
         <h3 class="results-title">ÐApps</h3>
         <ul class="results-dapp-list">
-          <li class="results-dapp-item" v-for="(dapp, index) in dapps.slice(0, 5)" :key="index">
+          <li 
+            v-for="(dapp, index) in dapps.slice(0, 5)" 
+            :key="index" 
+            class="results-dapp-item">
             <nuxt-link
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
               class="results-dapp-link"
               @click.native="dappView(dapp.slug)">
-              <img v-if="dapp.iconUrl" class="results-dapp-image" width="42" height="42" :src="dapp.iconUrl"/>
-              <span v-else class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+              <img 
+                v-if="dapp.iconUrl" 
+                :src="dapp.iconUrl" 
+                class="results-dapp-image" 
+                width="42" 
+                height="42">
+              <span 
+                v-else 
+                class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
               <div class="results-dapp-info">
                 <h4 class="results-dapp-title">{{ dapp.name }}</h4>
                 <p class="results-dapp-tagline">{{ dapp.teaser }}</p>
@@ -56,7 +76,10 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link @click.native="setSearchPage(search)" :to="{name: 'dapps', query: {q: search} }" class="results-link">View all ÐApp results</nuxt-link>
+          <nuxt-link 
+            :to="{name: 'dapps', query: {q: search} }" 
+            class="results-link" 
+            @click.native="setSearchPage(search)">View all ÐApp results</nuxt-link>
         </div>
       </div>
     </div>
@@ -74,15 +97,20 @@ var searchTimer
 var trackTimer
 
 export default {
-  props: {
-    color: {
-      type: String
-    }
-  },
   components: {
     SvgIconMagnifier
   },
-  data () {
+  directives: {
+    onClickaway: onClickaway
+  },
+  mixins: [getCaretPosition],
+  props: {
+    color: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
     return {
       dapps: [],
       searchCompleted: false,
@@ -91,34 +119,36 @@ export default {
       suggestions: []
     }
   },
-  directives: {
-    onClickaway: onClickaway
-  },
   computed: {
-    results () {
+    results() {
       return Boolean(this.dapps.length || this.suggestions.length)
     },
     search: {
-      get () {
+      get() {
         return this.$store.getters['search']
       },
-      set (value) {
+      set(value) {
         this.$store.dispatch('setSearch', value)
       }
     },
-    isSearching () {
+    isSearching() {
       return Boolean(this.searchStatus || this.search.length)
     }
   },
   methods: {
-    dappView (targetDapp) {
+    dappView(targetDapp) {
       this.resetSearch()
       const sourceCollection = ''
       const sourceComponent = 'GlobalSearch'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    goToSearchPage () {
+    goToSearchPage() {
       this.setSearchPage(this.search)
       this.$router.push({
         name: 'dapps',
@@ -127,12 +157,12 @@ export default {
         }
       })
     },
-    suggestionView (suggestion) {
+    suggestionView(suggestion) {
       this.setSearchPage('')
       const action = trackSearchSuggestion(this.sourcePath, suggestion)
       this.$mixpanel.track(action.name, action.data)
     },
-    fetchResults () {
+    fetchResults() {
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
       this.searchCompleted = false
@@ -180,30 +210,29 @@ export default {
         }
       }, 1000)
     },
-    focusInput () {
+    focusInput() {
       this.$refs.searchInput.focus()
     },
-    endSearch () {
+    endSearch() {
       this.searchStatus = false
     },
-    resetSearch () {
+    resetSearch() {
       this.$store.dispatch('setSearch', '')
       this.searchStatus = false
       this.suggestions = []
       this.dapps = []
     },
-    setSearchPage (query) {
+    setSearchPage(query) {
       this.$store.dispatch('dapps/search/resetQuery')
       this.$store.dispatch('dapps/search/setTextQuery', query)
       this.$store.dispatch('dapps/search/fetchItems')
       this.resetSearch()
     },
-    startSearch () {
+    startSearch() {
       this.searchStatus = true
       this.fetchResults()
     }
-  },
-  mixins: [getCaretPosition]
+  }
 }
 </script>
 
@@ -214,7 +243,7 @@ export default {
 .component-global-search {
   display: flex;
   align-items: center;
-  background: rgba($color--black, .1);
+  background: rgba($color--black, 0.1);
   padding: 8px 12px;
   border-radius: 3px;
   min-width: 250px;
@@ -315,7 +344,7 @@ export default {
 }
 
 .results-title {
-  margin: 0 0 .5rem 0;
+  margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.25px;

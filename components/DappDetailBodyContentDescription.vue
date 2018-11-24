@@ -1,7 +1,8 @@
 <template>
   <div class="component-DappDetailBodyContentDescription">
-    <div class="description" v-html="$md.render(description)">
-    </div>
+    <div 
+      class="description" 
+      v-html="$md.render(description)"/>
   </div>
 </template>
 
@@ -9,6 +10,7 @@
 export default {
   props: {
     description: {
+      type: String,
       required: true
     }
   }
@@ -17,10 +19,12 @@ export default {
 
 <style lang="scss">
 .component-DappDetailBodyContentDescription .description {
-  ol, ol li {
+  ol,
+  ol li {
     list-style-type: decimal;
   }
-  ul, ul li {
+  ul,
+  ul li {
     list-style-type: disc;
   }
   ul {
