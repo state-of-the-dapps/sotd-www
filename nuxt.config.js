@@ -18,18 +18,22 @@ const env = {
 
 export default {
   build: {
-    /*
-    ** Run ESLINT on save
-    */
-
+    extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    },
     publicPath: env.cdnPublicPath
   },
   generate: {
     routes: ['/']
   },
-  /*
-  ** mode: 'spa' is the other option: https://nuxtjs.org/api/configuration-mode
-  */
   mode: env.mode,
   modules: [
     '@nuxtjs/sentry',

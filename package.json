@@ -12,11 +12,6 @@
       "babel-register"
     ]
   },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "dependencies": {
     "@nuxtjs/google-analytics": "^2.0.2",
     "@nuxtjs/markdownit": "^1.2.2",
