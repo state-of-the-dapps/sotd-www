@@ -31,8 +31,14 @@ import { trackDappImproveProfileClick } from '~/helpers/mixpanel'
 
 export default {
   props: {
-    dapp: String,
-    profileScore: Number
+    dapp: {
+      type: String,
+      required: true
+    },
+    profileScore: {
+      type: Number,
+      required: true
+    }
   },
   methods: {
     trackImproveProfile (dapp) {

@@ -106,7 +106,8 @@ export default {
   mixins: [getCaretPosition],
   props: {
     color: {
-      type: String
+      type: String,
+      required: true
     }
   },
   data () {

@@ -58,6 +58,10 @@ export default {
       return platformMap[this.platformQuery.toLowerCase()]
     }
   },
+  async mounted () {
+    const categories = await this.getCategoryOptions()
+    this.categoryOptions = categories
+  },
   methods: {
     ...mapActions('dapps/search', [
       'fetchItems',
@@ -115,10 +119,6 @@ export default {
       const action = trackDappsFilter(type, option)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  async mounted () {
-    const categories = await this.getCategoryOptions()
-    this.categoryOptions = categories
   }
 }
 </script>
