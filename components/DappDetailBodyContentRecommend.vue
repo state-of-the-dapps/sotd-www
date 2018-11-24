@@ -57,21 +57,27 @@ export default {
   },
   props: {
     rating: {
+      type: Number,
       required: true
     },
     slug: {
+      type: String,
       required: true
     },
     votes: {
+      type: Number,
       required: true
     },
     positive: {
+      type: Number,
       required: true
     },
     neutral: {
+      type: Number,
       required: true
     },
     negative: {
+      type: Number,
       required: true
     }
   },

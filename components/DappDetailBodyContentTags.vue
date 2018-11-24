@@ -22,9 +22,11 @@ import { trackDappTag } from '~/helpers/mixpanel'
 export default {
   props: {
     slug: {
+      type: String,
       required: true
     },
     tags: {
+      type: Array,
       required: true
     }
   },

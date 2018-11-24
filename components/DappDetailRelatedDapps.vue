@@ -18,6 +18,7 @@ export default {
   },
   props: {
     dapps: {
+      type: Array,
       required: true
     }
   }

@@ -63,9 +63,11 @@ export default {
   },
   props: {
     name: {
+      type: String,
       required: true
     },
     slug: {
+      type: String,
       required: true
     }
   },

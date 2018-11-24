@@ -35,18 +35,23 @@ export default {
   },
   props: {
     direct: {
+      type: Boolean,
       default: false
     },
     iconUrl: {
+      type: String,
       required: true
     },
     name: {
+      type: String,
       required: true
     },
     category: {
+      type: String,
       required: true
     },
     teaser: {
+      type: String,
       required: true
     }
   }

@@ -8,7 +8,12 @@
 
 <script>
 export default {
-  props: ['rank']
+  props: {
+    rank: {
+      type: Number,
+      required: true
+    }
+  }
 }
 </script>
 
