@@ -24,42 +24,44 @@
 </template>
 
 <script>
-  import { isValidEmail } from '~/helpers/validators'
-  import { dispatchErrors } from '~/helpers/mixins'
+import { isValidEmail } from '~/helpers/validators'
+import { dispatchErrors } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors],
-    computed: {
-      email: {
-        get () {
-          return this.$store.getters['dapps/form/email']
-        },
-        set (value) {
-          const field = {
-            name: 'email',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setField', field)
-        }
+export default {
+  mixins: [dispatchErrors],
+  computed: {
+    email: {
+      get() {
+        return this.$store.getters['dapps/form/email']
       },
-      errors () {
-        return this.$store.getters['dapps/form/emailErrors']
-      }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'email',
-          data: []
+      set(value) {
+        const field = {
+          name: 'email',
+          value: value
         }
-        validationTimer = setTimeout(() => {
-          isValidEmail(this.email) ? '' : errors.data.push(`Please enter a valid email address`)
-          this.dispatchErrors(errors, 'dapps')
-        }, 750)
+        this.$store.dispatch('dapps/form/setField', field)
       }
     },
+    errors() {
+      return this.$store.getters['dapps/form/emailErrors']
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'email',
+        data: []
+      }
+      validationTimer = setTimeout(() => {
+        isValidEmail(this.email)
+          ? ''
+          : errors.data.push(`Please enter a valid email address`)
+        this.dispatchErrors(errors, 'dapps')
+      }, 750)
+    }
   }
+}
 </script>

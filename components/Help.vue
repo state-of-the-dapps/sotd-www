@@ -33,11 +33,11 @@ export default {
       default: ''
     }
   },
-  data () {
+  data() {
     return {
       popoverIsActive: false
     }
-  },
+  }
 }
 </script>
 
@@ -53,9 +53,9 @@ export default {
 
 .help-icon {
   display: inline-block;
-  background: rgba($color--black, .15);
+  background: rgba($color--black, 0.15);
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 1.1rem;
   height: 1.1rem;
   line-height: 1.1rem;
@@ -64,4 +64,3 @@ export default {
   cursor: help;
 }
 </style>
-

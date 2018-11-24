@@ -25,14 +25,17 @@
 <script>
 import { platformList, platformMap } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
-import { trackDappRankingCategory, trackDappRankingPlatform } from '~/helpers/mixpanel'
+import {
+  trackDappRankingCategory,
+  trackDappRankingPlatform
+} from '~/helpers/mixpanel'
 import BaseFilter from '~/components/BaseFilter'
 
 export default {
   components: {
     BaseFilter
   },
-  data () {
+  data() {
     return {
       category: '',
       dappPlatforms: platformList,
@@ -42,7 +45,7 @@ export default {
     }
   },
   computed: {
-    categoryOptions () {
+    categoryOptions() {
       const options = this.dappCategories.map(x => {
         const optionObj = {
           text: x.name,
@@ -52,7 +55,7 @@ export default {
       })
       return options
     },
-    platformOptions () {
+    platformOptions() {
       const options = this.dappPlatforms.map(x => {
         const optionObj = {
           text: x,
@@ -63,7 +66,7 @@ export default {
       return options
     }
   },
-  async mounted () {
+  async mounted() {
     const urlCategory = this.$route.params.category
     const urlPlatform = platformMap[this.$route.params.platform]
     this.category = urlCategory
@@ -71,7 +74,7 @@ export default {
     this.dappCategories = await getCategories()
   },
   methods: {
-    filterCategory (category) {
+    filterCategory(category) {
       this.category = category
       this.trackDappRankingCategory(category)
       let path = '/rankings'
@@ -81,9 +84,9 @@ export default {
       if (category) {
         path += `/category/${category.toLowerCase()}`
       }
-      this.$router.push({path})
+      this.$router.push({ path })
     },
-    filterPlatform (platform) {
+    filterPlatform(platform) {
       this.platform = platformMap[platform]
       this.trackDappRankingPlatform(platform)
       let path = '/rankings'
@@ -93,19 +96,27 @@ export default {
       if (this.category) {
         path += `/category/${this.category.toLowerCase()}`
       }
-      this.$router.push({path})
+      this.$router.push({ path })
     },
-    trackDappRankingCategory (category) {
+    trackDappRankingCategory(category) {
       const sourceComponent = 'RankingFilters'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category)
+      const action = trackDappRankingCategory(
+        sourceComponent,
+        this.sourcePath,
+        category
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappRankingPlatform (platform) {
+    trackDappRankingPlatform(platform) {
       const sourceComponent = 'RankingFilters'
-      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, platform)
+      const action = trackDappRankingPlatform(
+        sourceComponent,
+        this.sourcePath,
+        platform
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 

@@ -31,7 +31,7 @@ export default {
     }
   },
   computed: {
-    maxCount () {
+    maxCount() {
       let count = 0
       let statusCounts = []
       for (var status of this.statuses) {
@@ -40,7 +40,7 @@ export default {
       count = Math.max(...statusCounts)
       return count
     }
-  },
+  }
 }
 </script>
 
@@ -83,17 +83,17 @@ export default {
 }
 
 .stat-item-field {
-   &.-label {
+  &.-label {
     @include tweakpoint('min-width', 1000px) {
       width: 150px;
-    }    
-  } 
+    }
+  }
   &.-value {
     @include tweakpoint('min-width', 1000px) {
       flex: 1;
       border-left: 1px solid $color--black;
       padding: 10px 0;
-    }    
+    }
   }
 }
 

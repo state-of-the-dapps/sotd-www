@@ -38,13 +38,9 @@ export default {
     SvgFeedbackNeutral,
     SvgFeedbackPositive
   },
-  data () {
+  data() {
     return {
-      options: [
-        'positive',
-        'neutral',
-        'negative'
-      ],
+      options: ['positive', 'neutral', 'negative'],
       hasSubmitted: false
     }
   },
@@ -54,11 +50,11 @@ export default {
     })
   },
   methods: {
-    svgFeedbackComponent (option) {
+    svgFeedbackComponent(option) {
       const feedbackComponent = feedbackComponentMap[option]
       return feedbackComponent
     },
-    trackDappFeedback (feedback) {
+    trackDappFeedback(feedback) {
       const action = trackDappFeedback(this.dapp.slug, feedback)
       this.$mixpanel.track(action.name, action.data)
       this.hasSubmitted = true
@@ -78,7 +74,7 @@ export default {
 }
 
 .confirmation {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   line-height: 25px;
   height: 25px;
   margin: 10px 0;

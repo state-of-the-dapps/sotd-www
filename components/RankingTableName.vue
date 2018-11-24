@@ -50,16 +50,21 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   methods: {
-    trackDappView (targetDapp) {
+    trackDappView(targetDapp) {
       const sourceCollection = ''
       const sourceComponent = 'RankingTable'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }
@@ -121,7 +126,7 @@ export default {
 
 .name {
   margin: 0;
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
   font-size: 1.2rem;
 }
 

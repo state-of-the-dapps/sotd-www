@@ -32,26 +32,24 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       loaded: '',
       imageSrc: ''
     }
   },
   computed: {
-    ...mapGetters([
-      'heroHasLoaded'
-    ])
+    ...mapGetters(['heroHasLoaded'])
   },
-  destroyed () {
+  destroyed() {
     this.$store.dispatch('setHeroLoaded')
   },
-  mounted () {
-    this.loaded = (!this.heroHasLoaded) ? 'is-waiting' : 'is-active'
+  mounted() {
+    this.loaded = !this.heroHasLoaded ? 'is-waiting' : 'is-active'
     this.loadImage(this.index)
   },
   methods: {
-    loadImage (index) {
+    loadImage(index) {
       var img = new Image()
       img.src = require('~/assets/images/dapp-icons/' + index + '.jpg')
       img.onload = () => {
@@ -59,11 +57,11 @@ export default {
       }
       this.imageSrc = img.src
     },
-    trackHomeHeroDappIcon (targetIndex) {
+    trackHomeHeroDappIcon(targetIndex) {
       const action = trackHomeHeroDappIcon(targetIndex)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -76,7 +74,7 @@ export default {
   width: 200px;
   margin-top: -20px;
   margin-bottom: -20px;
-  z-index: 1
+  z-index: 1;
 }
 
 .card-info {
@@ -94,7 +92,7 @@ export default {
   }
   &.-concept {
     background: $color--dapp-concept;
-  }  
+  }
   &.-live {
     background: $color--dapp-live;
   }

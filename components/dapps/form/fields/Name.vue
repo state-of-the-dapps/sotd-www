@@ -31,74 +31,78 @@
 </template>
 
 <script>
-  import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-  import axios from '~/helpers/axios'
+import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
+import axios from '~/helpers/axios'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors, dispatchWarnings],
-    computed: {
-      errors () {
-        return this.$store.getters['dapps/form/nameErrors']
+export default {
+  mixins: [dispatchErrors, dispatchWarnings],
+  computed: {
+    errors() {
+      return this.$store.getters['dapps/form/nameErrors']
+    },
+    name: {
+      get() {
+        return this.$store.getters['dapps/form/name']
       },
-      name: {
-        get () {
-          return this.$store.getters['dapps/form/name']
-        },
-        set (value) {
-          const field = {
-            name: 'name',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setField', field)
+      set(value) {
+        const field = {
+          name: 'name',
+          value: value
         }
-      },
-      warnings () {
-        return this.$store.getters['dapps/form/nameWarnings']
+        this.$store.dispatch('dapps/form/setField', field)
       }
     },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'name',
-          data: []
-        }
-        const warnings = {
-          field: 'name',
-          data: []
-        }
-        const warningWords = [
-          '.'
-        ]
-        validationTimer = setTimeout(() => {
-          this.name.length > 25 ? errors.data.push(`Name can't be longer than 25 characters`) : ''
-          this.name.length < 2 ? errors.data.push(`Name must be longer than 1 character`) : ''
-          var hasWarningWords = warningWords.some((word) => {
-            return this.name.toLowerCase().includes(word)
+    warnings() {
+      return this.$store.getters['dapps/form/nameWarnings']
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'name',
+        data: []
+      }
+      const warnings = {
+        field: 'name',
+        data: []
+      }
+      const warningWords = ['.']
+      validationTimer = setTimeout(() => {
+        this.name.length > 25
+          ? errors.data.push(`Name can't be longer than 25 characters`)
+          : ''
+        this.name.length < 2
+          ? errors.data.push(`Name must be longer than 1 character`)
+          : ''
+        var hasWarningWords = warningWords.some(word => {
+          return this.name.toLowerCase().includes(word)
+        })
+        hasWarningWords === true
+          ? warnings.data.push(`Your ÐApp name should not be a URL`)
+          : null
+        axios
+          .get('dapps/lookup', {
+            params: {
+              name: this.name
+            }
           })
-          hasWarningWords === true ? warnings.data.push(`Your ÐApp name should not be a URL`) : null
-          axios
-            .get('dapps/lookup', {
-              params: {
-                name: this.name
-              }
-            })
-            .then(response => {
-              const data = response.data
-              const item = data.item
-              if (item.slug) {
-                errors.data.push(`Name has already been taken`)
-              }
-              this.dispatchErrors(errors, 'dapps')
-              this.dispatchWarnings(warnings, 'dapps')
-            })
-            .catch((error) => {
-              console.log(error)
-            })
-        }, 750)
-      }
-    },
+          .then(response => {
+            const data = response.data
+            const item = data.item
+            if (item.slug) {
+              errors.data.push(`Name has already been taken`)
+            }
+            this.dispatchErrors(errors, 'dapps')
+            this.dispatchWarnings(warnings, 'dapps')
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }, 750)
+    }
   }
+}
 </script>

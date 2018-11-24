@@ -19,19 +19,19 @@ c23.9-22.9,62.8-22.9,86.8,0c24,22.9,23.9,60.1,0,82.9L683.4,653.3C671.9,664.3,656
 <script>
 export default {
   props: {
-    'direction': {
+    direction: {
       default: 'down',
       type: String
     },
-    'fill': {
+    fill: {
       default: 'black',
       type: String
     },
-    'height': {
+    height: {
       default: 16,
       type: Number
     },
-    'width': {
+    width: {
       default: 16,
       type: Number
     }

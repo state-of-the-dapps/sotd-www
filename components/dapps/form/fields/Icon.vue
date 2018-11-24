@@ -34,64 +34,70 @@
 </template>
 
 <script>
-  import { dispatchErrors, dispatchWarnings, testImage } from '~/helpers/mixins'
+import { dispatchErrors, dispatchWarnings, testImage } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors, dispatchWarnings, testImage],
-    computed: {
-      icon: {
-        get () {
-          return this.$store.getters['dapps/form/icon']
-        },
-        set (value) {
-          const field = {
-            name: 'icon',
-            value: value
+export default {
+  mixins: [dispatchErrors, dispatchWarnings, testImage],
+  computed: {
+    icon: {
+      get() {
+        return this.$store.getters['dapps/form/icon']
+      },
+      set(value) {
+        const field = {
+          name: 'icon',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setField', field)
+      }
+    },
+    errors() {
+      return this.$store.getters['dapps/form/iconErrors']
+    },
+    warnings() {
+      return this.$store.getters['dapps/form/iconWarnings']
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'icon',
+        data: []
+      }
+      validationTimer = setTimeout(() => {
+        this.icon.length && this.icon.length < 3
+          ? errors.data.push(`URL can't be less than 3 characters`)
+          : ''
+        this.icon.length > 255
+          ? errors.data.push(`URL can't be longer than 255 characters`)
+          : ''
+        this.testImage(this.icon, (url, dimensions, result) => {
+          const warnings = {
+            field: 'icon',
+            data: []
           }
-          this.$store.dispatch('dapps/form/setField', field)
-        }
-      },
-      errors () {
-        return this.$store.getters['dapps/form/iconErrors']
-      },
-      warnings () {
-        return this.$store.getters['dapps/form/iconWarnings']
-      }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'icon',
-          data: []
-        }
-        validationTimer = setTimeout(() => {
-          this.icon.length && this.icon.length < 3 ? errors.data.push(`URL can't be less than 3 characters`) : ''
-          this.icon.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.testImage(this.icon, (url, dimensions, result) => {
-            const warnings = {
-              field: 'icon',
-              data: []
+          if (this.icon.length > 0 && result !== 'success') {
+            errors.data.push('URL is not a valid image')
+          }
+          if (result === 'success') {
+            const imgWidth = dimensions.width
+            const imgHeight = dimensions.height
+            const expectedWidth = 192
+            const expectedHeight = 192
+            if (imgWidth !== expectedWidth || imgHeight !== expectedHeight) {
+              warnings.data.push(
+                'Image dimensions are not correct. They should be 192px by 192px. This image may not display properly.'
+              )
             }
-            if (this.icon.length > 0 && result !== 'success') {
-              errors.data.push('URL is not a valid image')
-            }
-            if (result === 'success') {
-              const imgWidth = dimensions.width
-              const imgHeight = dimensions.height
-              const expectedWidth = 192
-              const expectedHeight = 192
-              if (imgWidth !== expectedWidth || imgHeight !== expectedHeight) {
-                warnings.data.push('Image dimensions are not correct. They should be 192px by 192px. This image may not display properly.')
-              }
-            }
-            this.dispatchWarnings(warnings, 'dapps')
-            this.dispatchErrors(errors, 'dapps')
-          })
-        }, 750)
-      }
-    },
+          }
+          this.dispatchWarnings(warnings, 'dapps')
+          this.dispatchErrors(errors, 'dapps')
+        })
+      }, 750)
+    }
   }
+}
 </script>

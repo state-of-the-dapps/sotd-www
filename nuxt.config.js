@@ -7,9 +7,13 @@ const env = {
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
   mode: process.env.MODE || 'universal',
-  linkexchangeRecipientAddress: process.env.LINKEXCHANGE_RECIPIENT_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
+  linkexchangeRecipientAddress:
+    process.env.LINKEXCHANGE_RECIPIENT_ADDRESS ||
+    '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
   linkexchangeTillDate: process.env.LINKEXCHANGE_TILL_DATE || '5/31/2018',
-  linkexchangeWhitelistAddress: process.env.LINKEXCHANGE_WHITELIST_ADDRESS || '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
+  linkexchangeWhitelistAddress:
+    process.env.LINKEXCHANGE_WHITELIST_ADDRESS ||
+    '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
 }
 
 export default {
@@ -21,9 +25,7 @@ export default {
     publicPath: env.cdnPublicPath
   },
   generate: {
-    routes: [
-      '/'
-    ]
+    routes: ['/']
   },
   /*
   ** mode: 'spa' is the other option: https://nuxtjs.org/api/configuration-mode
@@ -35,12 +37,8 @@ export default {
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
     '@nuxtjs/markdownit'
   ],
-  serverMiddleware: [
-    'redirect-ssl'
-  ],
-  css: [
-    { src: '~/assets/css/main.scss', lang: 'scss' }
-  ],
+  serverMiddleware: ['redirect-ssl'],
+  css: [{ src: '~/assets/css/main.scss', lang: 'scss' }],
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
@@ -55,8 +53,16 @@ export default {
     title: 'State of the ÐApps — Projects Built on Ethereum, EOS & POA',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
-      { hid: 'description', name: 'description', content: 'The curated list of decentralized applications' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'The curated list of decentralized applications'
+      },
       { hid: 'image', property: 'og:image', content: '/og-default.png' },
       { name: 'theme-color', content: '#222' }
     ],
@@ -97,6 +103,5 @@ export default {
     { src: '~/plugins/clipboard', ssr: false },
     { src: '~/plugins/fullstory.js', ssr: false },
     { src: '~/plugins/intercom.js', ssr: false }
-
   ]
 }

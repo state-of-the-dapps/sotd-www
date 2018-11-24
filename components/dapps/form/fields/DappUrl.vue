@@ -24,41 +24,43 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
+import { dispatchErrors } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors],
-    computed: {
-      errors () {
-        return this.$store.getters['dapps/form/dappUrlErrors']
+export default {
+  mixins: [dispatchErrors],
+  computed: {
+    errors() {
+      return this.$store.getters['dapps/form/dappUrlErrors']
+    },
+    url: {
+      get() {
+        return this.$store.getters['dapps/form/dappUrl']
       },
-      url: {
-        get () {
-          return this.$store.getters['dapps/form/dappUrl']
-        },
-        set (value) {
-          const field = {
-            name: 'dapp',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setSiteUrl', field)
+      set(value) {
+        const field = {
+          name: 'dapp',
+          value: value
         }
+        this.$store.dispatch('dapps/form/setSiteUrl', field)
       }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'dappUrl',
-          data: []
-        }
-        validationTimer = setTimeout(() => {
-          this.url.length > 0 && this.url.length < 3 ? errors.data.push(`ÐApp URL must be longer than 2 characters`) : ''
-          this.dispatchErrors(errors, 'dapps')
-        }, 750)
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'dappUrl',
+        data: []
       }
-    },
+      validationTimer = setTimeout(() => {
+        this.url.length > 0 && this.url.length < 3
+          ? errors.data.push(`ÐApp URL must be longer than 2 characters`)
+          : ''
+        this.dispatchErrors(errors, 'dapps')
+      }, 750)
+    }
   }
+}
 </script>

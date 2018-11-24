@@ -17,18 +17,16 @@ export default {
     DappCollectionList,
     SvgIconCollection
   },
-  data () {
+  data() {
     return {
       collections: []
     }
   },
-  mounted () {
-    axios
-      .get('collections/list/featured')
-      .then(response => {
-        const collections = response.data
-        this.collections = collections
-      })
+  mounted() {
+    axios.get('collections/list/featured').then(response => {
+      const collections = response.data
+      this.collections = collections
+    })
   }
 }
 </script>
@@ -45,7 +43,7 @@ export default {
 }
 
 .title-2 {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 </style>

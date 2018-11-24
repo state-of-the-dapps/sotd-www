@@ -26,71 +26,71 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      itemCount () {
-        return this.$store.getters['dapps/search/itemCount']
-      },
-      itemQueryLimit () {
-        return this.$store.getters['dapps/search/itemQueryLimit']
-      },
-      offset () {
-        return this.$store.getters['dapps/search/pagerOffset']
-      },
-      totalCount () {
-        return this.$store.getters['dapps/search/pagerTotalCount']
-      },
-      isLoading () {
-        return this.$store.getters['dapps/search/isLoading']
-      }
+export default {
+  computed: {
+    itemCount() {
+      return this.$store.getters['dapps/search/itemCount']
     },
-    methods: {
-      loadMore () {
-        this.$store.dispatch('dapps/search/incrementOffsetQuery')
-        this.$store.dispatch('dapps/search/fetchItems')
-        this.$mixpanel.track('DApps - Load more', { offset: this.offset })
-      }
+    itemQueryLimit() {
+      return this.$store.getters['dapps/search/itemQueryLimit']
+    },
+    offset() {
+      return this.$store.getters['dapps/search/pagerOffset']
+    },
+    totalCount() {
+      return this.$store.getters['dapps/search/pagerTotalCount']
+    },
+    isLoading() {
+      return this.$store.getters['dapps/search/isLoading']
+    }
+  },
+  methods: {
+    loadMore() {
+      this.$store.dispatch('dapps/search/incrementOffsetQuery')
+      this.$store.dispatch('dapps/search/fetchItems')
+      this.$mixpanel.track('DApps - Load more', { offset: this.offset })
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/css/settings';
+@import '~assets/css/settings';
 
-  .button {
-    border-radius: 4px;
-    padding: 12px 25px;
-    color: $color--gray;
-    background: $color--black;
-    box-shadow: 0 17px 70px rgba($color--black,.2);
-    cursor: pointer;
-    position: relative;
-    &:active {
-      top: 1px;
-    }
+.button {
+  border-radius: 4px;
+  padding: 12px 25px;
+  color: $color--gray;
+  background: $color--black;
+  box-shadow: 0 17px 70px rgba($color--black, 0.2);
+  cursor: pointer;
+  position: relative;
+  &:active {
+    top: 1px;
   }
+}
 
-  .button-wrapper {
-    text-align: center;
-    height: 65px;
-    margin: .5rem auto 10rem;
-  }
+.button-wrapper {
+  text-align: center;
+  height: 65px;
+  margin: 0.5rem auto 10rem;
+}
 
-  .link {
-    text-decoration: none;
-    border-bottom: 1px solid $color--black;
-  }
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid $color--black;
+}
 
-  .loader-wrapper {
-    height: 65px;
-    margin: .5rem auto 10rem;
-  }
+.loader-wrapper {
+  height: 65px;
+  margin: 0.5rem auto 10rem;
+}
 
-  .message {
-    margin: 8rem 0;
-    padding-bottom: 20px;
-    text-align: center;
-    font-size: 2rem;
-    color: lighten($color--black,30%);
-  }
+.message {
+  margin: 8rem 0;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  color: lighten($color--black, 30%);
+}
 </style>

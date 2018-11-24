@@ -44,13 +44,13 @@ export default {
     }
   },
   methods: {
-    mapSvgBadge (badge, prop) {
+    mapSvgBadge(badge, prop) {
       const badgeObj = dappBadgeMap[badge]
       if (badgeObj) {
         return badgeObj[prop]
       }
     }
-  },
+  }
 }
 </script>
 
@@ -76,15 +76,15 @@ export default {
   bottom: 20px;
   white-space: nowrap;
   text-transform: uppercase;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 600;
   height: 25px;
   line-height: 26px;
   padding: 0 10px;
   border-radius: 4px;
-  background: rgba($color--white, .85);
-  transition: opacity .3s ease;
-  box-shadow: 0 5px 10px rgba($color--black, .15);
+  background: rgba($color--white, 0.85);
+  transition: opacity 0.3s ease;
+  box-shadow: 0 5px 10px rgba($color--black, 0.15);
   &:after {
     content: '';
     position: absolute;
@@ -94,7 +94,7 @@ export default {
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid rgba($color--white, .9);
+    border-top: 5px solid rgba($color--white, 0.9);
   }
   .item:hover & {
     opacity: 1;

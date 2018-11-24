@@ -239,219 +239,229 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
+import { dispatchErrors } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors],
-    props: {
-      isEdit: {
-        type: Boolean,
-        default: false
+export default {
+  mixins: [dispatchErrors],
+  props: {
+    isEdit: {
+      type: Boolean,
+      default: false
+    },
+    ethIsMissing: {
+      type: Boolean,
+      default: false
+    },
+    poaIsMissing: {
+      type: Boolean,
+      default: false
+    },
+    eosIsMissing: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    platform() {
+      return this.$store.getters['dapps/form/platform']
+    },
+    contracts() {
+      return this.$store.getters['dapps/form/contracts']
+    },
+    mainnet: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].mainnet.address
       },
-      ethIsMissing: {
-        type: Boolean,
-        default: false
-      },
-      poaIsMissing: {
-        type: Boolean,
-        default: false
-      },
-      eosIsMissing: {
-        type: Boolean,
-        default: false
+      set(value) {
+        const field = {
+          name: 'mainnet',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setContract', field)
       }
     },
-    computed: {
-      platform () {
-        return this.$store.getters['dapps/form/platform']
+    mainnetErrors() {
+      return this.$store.getters['dapps/form/mainnetErrors']
+    },
+    ropsten: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].ropsten.address
       },
-      contracts () {
-        return this.$store.getters['dapps/form/contracts']
-      },
-      mainnet: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].mainnet.address
-        },
-        set (value) {
-          const field = {
-            name: 'mainnet',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
+      set(value) {
+        const field = {
+          name: 'ropsten',
+          value: value
         }
-      },
-      mainnetErrors () {
-        return this.$store.getters['dapps/form/mainnetErrors']
-      },
-      ropsten: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].ropsten.address
-        },
-        set (value) {
-          const field = {
-            name: 'ropsten',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      ropstenErrors () {
-        return this.$store.getters['dapps/form/ropstenErrors']
-      },
-      kovan: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].kovan.address
-        },
-        set (value) {
-          const field = {
-            name: 'kovan',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      kovanErrors () {
-        return this.$store.getters['dapps/form/kovanErrors']
-      },
-      rinkeby: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].rinkeby.address
-        },
-        set (value) {
-          const field = {
-            name: 'rinkeby',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      rinkebyErrors () {
-        return this.$store.getters['dapps/form/rinkebyErrors']
-      },
-      poaMainnet: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].poaMainnet.address
-        },
-        set (value) {
-          const field = {
-            name: 'poaMainnet',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      poaMainnetErrors () {
-        return this.$store.getters['dapps/form/poaMainnetErrors']
-      },
-      poaTestnet: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].poaTestnet.address
-        },
-        set (value) {
-          const field = {
-            name: 'poaTestnet',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      poaTestnetErrors () {
-        return this.$store.getters['dapps/form/poaTestnetErrors']
-      },
-      eosMainnet: {
-        get () {
-          return this.$store.getters['dapps/form/contracts'].eosMainnet.address
-        },
-        set (value) {
-          const field = {
-            name: 'eosMainnet',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setContract', field)
-        }
-      },
-      eosMainnetErrors () {
-        return this.$store.getters['dapps/form/eosMainnetErrors']
+        this.$store.dispatch('dapps/form/setContract', field)
       }
     },
-    methods: {
-      validate (network) {
-        const field = network
-        clearTimeout(validationTimer)
-        const errors = {
-          field: field,
-          data: []
+    ropstenErrors() {
+      return this.$store.getters['dapps/form/ropstenErrors']
+    },
+    kovan: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].kovan.address
+      },
+      set(value) {
+        const field = {
+          name: 'kovan',
+          value: value
         }
-        validationTimer = setTimeout(() => {
-          if (this[field].length > 0) {
-            let contractArray = this[field].split('\n')
-            let contractErrors = []
-            contractArray.forEach(function (element) {
-              if (element.length > 0) {
-                if (network.startsWith(`eos`)) {
-                  !element.match(/(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/) ? contractErrors.push(`Account name invalid`) : ''
-                } else {
-                  element.length !== 42 ? contractErrors.push(`Address must be exactly 42 characters`) : ''
-                  !element.startsWith('0x') ? contractErrors.push(`Address must start with 0x`) : ''
-                }
+        this.$store.dispatch('dapps/form/setContract', field)
+      }
+    },
+    kovanErrors() {
+      return this.$store.getters['dapps/form/kovanErrors']
+    },
+    rinkeby: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].rinkeby.address
+      },
+      set(value) {
+        const field = {
+          name: 'rinkeby',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setContract', field)
+      }
+    },
+    rinkebyErrors() {
+      return this.$store.getters['dapps/form/rinkebyErrors']
+    },
+    poaMainnet: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].poaMainnet.address
+      },
+      set(value) {
+        const field = {
+          name: 'poaMainnet',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setContract', field)
+      }
+    },
+    poaMainnetErrors() {
+      return this.$store.getters['dapps/form/poaMainnetErrors']
+    },
+    poaTestnet: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].poaTestnet.address
+      },
+      set(value) {
+        const field = {
+          name: 'poaTestnet',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setContract', field)
+      }
+    },
+    poaTestnetErrors() {
+      return this.$store.getters['dapps/form/poaTestnetErrors']
+    },
+    eosMainnet: {
+      get() {
+        return this.$store.getters['dapps/form/contracts'].eosMainnet.address
+      },
+      set(value) {
+        const field = {
+          name: 'eosMainnet',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setContract', field)
+      }
+    },
+    eosMainnetErrors() {
+      return this.$store.getters['dapps/form/eosMainnetErrors']
+    }
+  },
+  methods: {
+    validate(network) {
+      const field = network
+      clearTimeout(validationTimer)
+      const errors = {
+        field: field,
+        data: []
+      }
+      validationTimer = setTimeout(() => {
+        if (this[field].length > 0) {
+          let contractArray = this[field].split('\n')
+          let contractErrors = []
+          contractArray.forEach(function(element) {
+            if (element.length > 0) {
+              if (network.startsWith(`eos`)) {
+                !element.match(
+                  /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
+                )
+                  ? contractErrors.push(`Account name invalid`)
+                  : ''
+              } else {
+                element.length !== 42
+                  ? contractErrors.push(`Address must be exactly 42 characters`)
+                  : ''
+                !element.startsWith('0x')
+                  ? contractErrors.push(`Address must start with 0x`)
+                  : ''
               }
-            })
-            if (contractErrors.length > 0) {
-              errors.data.push(`One or more of your contract addresses are invalid`)
             }
+          })
+          if (contractErrors.length > 0) {
+            errors.data.push(
+              `One or more of your contract addresses are invalid`
+            )
           }
-          this.dispatchErrors(errors, 'dapps')
-        }, 750)
-      }
-    },
+        }
+        this.dispatchErrors(errors, 'dapps')
+      }, 750)
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/css/settings';
+@import '~assets/css/settings';
 
-  .error-list {
-    &.-contracts {
-      padding: 10px;
-    }
+.error-list {
+  &.-contracts {
+    padding: 10px;
   }
+}
 
-  .heading {
-    text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: .5rem;
-  }
+.heading {
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
 
-  .input-wrapper {
-    &.--has-errors {
-      border-color: $color--error;
-    }
+.input-wrapper {
+  &.--has-errors {
+    border-color: $color--error;
   }
+}
 
-  .item {
-    margin-bottom: 5px;
-  }
+.item {
+  margin-bottom: 5px;
+}
 
-  .name {
-    padding: 8px 0 8px 20px;
-  }
+.name {
+  padding: 8px 0 8px 20px;
+}
 
-  .input-wrapper {
-    flex-grow: 1;
-    box-shadow: 0 0 20px rgba($color--black,.05);
-    border: 1px solid transparent;
-    background: rgba(lighten($color--gray, 100%),.9);
-  }
+.input-wrapper {
+  flex-grow: 1;
+  box-shadow: 0 0 20px rgba($color--black, 0.05);
+  border: 1px solid transparent;
+  background: rgba(lighten($color--gray, 100%), 0.9);
+}
 
-  .input {
-    @include font-monospace;
-    display: block;
-    resize: none;
-    min-height: 75px;
-    width: 100%;
-    padding: 10px 20px;
-    border: none;
-  }
+.input {
+  @include font-monospace;
+  display: block;
+  resize: none;
+  min-height: 75px;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+}
 </style>

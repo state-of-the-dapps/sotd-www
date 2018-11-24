@@ -1,4 +1,4 @@
-export const setUser = function ($email, hasWeb3, lastUpdated, userEntryRoute) {
+export const setUser = function($email, hasWeb3, lastUpdated, userEntryRoute) {
   let user = {
     $email,
     hasWeb3,
@@ -9,13 +9,21 @@ export const setUser = function ($email, hasWeb3, lastUpdated, userEntryRoute) {
   return user
 }
 
-export const trackCollectionView = function (sourceComponent, sourcePath, targetCollection) {
+export const trackCollectionView = function(
+  sourceComponent,
+  sourcePath,
+  targetCollection
+) {
   let name = 'Collection - View'
   let data = {
     targetCollection
   }
-  if (sourceComponent) { data = { ...data, sourceComponent } }
-  if (sourcePath) { data = { ...data, sourcePath } }
+  if (sourceComponent) {
+    data = { ...data, sourceComponent }
+  }
+  if (sourcePath) {
+    data = { ...data, sourcePath }
+  }
 
   const action = {
     name,
@@ -25,7 +33,11 @@ export const trackCollectionView = function (sourceComponent, sourcePath, target
   return action
 }
 
-export const trackContact = function (sourceComponent, sourcePageLocation, sourcePath) {
+export const trackContact = function(
+  sourceComponent,
+  sourcePageLocation,
+  sourcePath
+) {
   let name = 'Contact'
   let data = {
     sourceComponent,
@@ -41,7 +53,7 @@ export const trackContact = function (sourceComponent, sourcePageLocation, sourc
   return action
 }
 
-export const trackDappContract = function (address, dapp, network, platform) {
+export const trackDappContract = function(address, dapp, network, platform) {
   let name = 'DApp - Contract'
   let data = {
     address,
@@ -58,7 +70,12 @@ export const trackDappContract = function (address, dapp, network, platform) {
   return action
 }
 
-export const trackDappContractAudit = function (contract, slug, auditorName, learnMoreUrl) {
+export const trackDappContractAudit = function(
+  contract,
+  slug,
+  auditorName,
+  learnMoreUrl
+) {
   let name = 'DApp - Contract Audit'
   let data = {
     contract,
@@ -75,7 +92,12 @@ export const trackDappContractAudit = function (contract, slug, auditorName, lea
   return action
 }
 
-export const trackDappContractCopy = function (address, dapp, network, platform) {
+export const trackDappContractCopy = function(
+  address,
+  dapp,
+  network,
+  platform
+) {
   let name = 'DApp - Contract Copy'
   let data = {
     address,
@@ -92,7 +114,7 @@ export const trackDappContractCopy = function (address, dapp, network, platform)
   return action
 }
 
-export const trackDappEdit = function (slug) {
+export const trackDappEdit = function(slug) {
   let name = 'DApp - Suggest a change'
   let data = {
     slug
@@ -106,7 +128,7 @@ export const trackDappEdit = function (slug) {
   return action
 }
 
-export const trackDappEditSubmit = function (changes, email, slug) {
+export const trackDappEditSubmit = function(changes, email, slug) {
   let name = 'DApp - Submit a change'
   let data = {
     changes,
@@ -122,7 +144,7 @@ export const trackDappEditSubmit = function (changes, email, slug) {
   return action
 }
 
-export const trackDappFeedback = function (dapp, feedback) {
+export const trackDappFeedback = function(dapp, feedback) {
   let name = 'DApp - Feedback'
   let data = {
     dapp,
@@ -137,7 +159,7 @@ export const trackDappFeedback = function (dapp, feedback) {
   return action
 }
 
-export const trackDappFlag = function (slug) {
+export const trackDappFlag = function(slug) {
   let name = 'DApp - Flag as inappropriate'
   let data = {
     slug
@@ -151,7 +173,7 @@ export const trackDappFlag = function (slug) {
   return action
 }
 
-export const trackDappPlatform = function (platform, slug) {
+export const trackDappPlatform = function(platform, slug) {
   let name = 'DApp - Platform'
   let data = {
     platform,
@@ -166,7 +188,7 @@ export const trackDappPlatform = function (platform, slug) {
   return action
 }
 
-export const trackDappPlatformSoftware = function (platform, slug) {
+export const trackDappPlatformSoftware = function(platform, slug) {
   let name = 'DApp - Platform Software'
   let data = {
     platform,
@@ -181,7 +203,11 @@ export const trackDappPlatformSoftware = function (platform, slug) {
   return action
 }
 
-export const trackDappRankingCategory = function (sourceComponent, sourcePath, category) {
+export const trackDappRankingCategory = function(
+  sourceComponent,
+  sourcePath,
+  category
+) {
   let name = 'DApp Ranking - Category'
   let data = {
     sourceComponent,
@@ -196,7 +222,7 @@ export const trackDappRankingCategory = function (sourceComponent, sourcePath, c
 
   return action
 }
-export const trackDappRankingPage = function (from, to) {
+export const trackDappRankingPage = function(from, to) {
   let name = 'DApp Ranking - Page'
   let data = {
     from,
@@ -211,7 +237,11 @@ export const trackDappRankingPage = function (from, to) {
   return action
 }
 
-export const trackDappRankingPlatform = function (sourceComponent, sourcePath, platform) {
+export const trackDappRankingPlatform = function(
+  sourceComponent,
+  sourcePath,
+  platform
+) {
   let name = 'DApp Ranking - Platform'
   let data = {
     sourceComponent,
@@ -227,7 +257,7 @@ export const trackDappRankingPlatform = function (sourceComponent, sourcePath, p
   return action
 }
 
-export const trackDappRankingSort = function (order, sort) {
+export const trackDappRankingSort = function(order, sort) {
   let name = 'DApp Ranking - Sort'
   let data = {
     order,
@@ -242,7 +272,7 @@ export const trackDappRankingSort = function (order, sort) {
   return action
 }
 
-export const trackDappShare = function (slug) {
+export const trackDappShare = function(slug) {
   let name = 'DApp - Share'
   let data = {
     slug
@@ -256,7 +286,7 @@ export const trackDappShare = function (slug) {
   return action
 }
 
-export const trackDappSite = function (dapp, type, url) {
+export const trackDappSite = function(dapp, type, url) {
   let name = 'DApp - Site'
   let data = {
     dapp,
@@ -272,7 +302,7 @@ export const trackDappSite = function (dapp, type, url) {
   return action
 }
 
-export const trackDappSocial = function (dapp, platform, url) {
+export const trackDappSocial = function(dapp, platform, url) {
   let name = 'DApp - Social'
   let data = {
     dapp,
@@ -288,7 +318,7 @@ export const trackDappSocial = function (dapp, platform, url) {
   return action
 }
 
-export const trackDappCategory = function (category, slug) {
+export const trackDappCategory = function(category, slug) {
   let actionName = 'DApp - Category'
   let data = {
     category,
@@ -303,7 +333,7 @@ export const trackDappCategory = function (category, slug) {
   return action
 }
 
-export const trackDappEditView = function (dapp) {
+export const trackDappEditView = function(dapp) {
   let actionName = 'DApp - Edit View'
   let data = {
     dapp
@@ -317,7 +347,7 @@ export const trackDappEditView = function (dapp) {
   return action
 }
 
-export const trackDappImproveProfileClick = function (dapp) {
+export const trackDappImproveProfileClick = function(dapp) {
   let name = 'DApp - Improve Profile Click'
   let data = {
     dapp
@@ -331,7 +361,7 @@ export const trackDappImproveProfileClick = function (dapp) {
   return action
 }
 
-export const trackDappImproveProfileView = function (dapp) {
+export const trackDappImproveProfileView = function(dapp) {
   let name = 'DApp - Improve Profile View'
   let data = {
     dapp
@@ -345,7 +375,7 @@ export const trackDappImproveProfileView = function (dapp) {
   return action
 }
 
-export const trackDappMetaClick = function (dapp) {
+export const trackDappMetaClick = function(dapp) {
   let actionName = 'DApp - Meta Click'
   let data = {
     dapp
@@ -359,7 +389,7 @@ export const trackDappMetaClick = function (dapp) {
   return action
 }
 
-export const trackDappMetaView = function (dapp) {
+export const trackDappMetaView = function(dapp) {
   let actionName = 'DApp - Meta View'
   let data = {
     dapp
@@ -373,7 +403,7 @@ export const trackDappMetaView = function (dapp) {
   return action
 }
 
-export const trackDappTag = function (name, slug) {
+export const trackDappTag = function(name, slug) {
   let actionName = 'DApp - Site'
   let data = {
     name,
@@ -388,14 +418,25 @@ export const trackDappTag = function (name, slug) {
   return action
 }
 
-export const trackDappView = function (sourceCollection, sourceComponent, sourcePath, targetDapp) {
+export const trackDappView = function(
+  sourceCollection,
+  sourceComponent,
+  sourcePath,
+  targetDapp
+) {
   let name = 'DApp - View'
   let data = {
     targetDapp
   }
-  if (sourceCollection) { data = { ...data, sourceCollection } }
-  if (sourceComponent) { data = { ...data, sourceComponent } }
-  if (sourcePath) { data = { ...data, sourcePath } }
+  if (sourceCollection) {
+    data = { ...data, sourceCollection }
+  }
+  if (sourceComponent) {
+    data = { ...data, sourceComponent }
+  }
+  if (sourcePath) {
+    data = { ...data, sourcePath }
+  }
 
   const action = {
     name,
@@ -405,7 +446,7 @@ export const trackDappView = function (sourceCollection, sourceComponent, source
   return action
 }
 
-export const trackDappsFilter = function (type, option) {
+export const trackDappsFilter = function(type, option) {
   let name = 'DApps - Filter'
   let data = {
     type,
@@ -420,7 +461,7 @@ export const trackDappsFilter = function (type, option) {
   return action
 }
 
-export const trackFooterLogoDownload = function (sourcePath) {
+export const trackFooterLogoDownload = function(sourcePath) {
   let name = 'Footer - Logo Download'
   let data = {
     sourcePath
@@ -434,7 +475,7 @@ export const trackFooterLogoDownload = function (sourcePath) {
   return action
 }
 
-export const trackFooterAppAndroid = function (sourcePath) {
+export const trackFooterAppAndroid = function(sourcePath) {
   let name = 'Footer - App Android'
   let data = {
     sourcePath
@@ -448,7 +489,7 @@ export const trackFooterAppAndroid = function (sourcePath) {
   return action
 }
 
-export const trackFooterSubmit = function (sourcePath) {
+export const trackFooterSubmit = function(sourcePath) {
   let name = 'Footer - Submit'
   let data = {
     sourcePath
@@ -462,7 +503,7 @@ export const trackFooterSubmit = function (sourcePath) {
   return action
 }
 
-export const trackHomeEventCta = function (targetCta) {
+export const trackHomeEventCta = function(targetCta) {
   let name = 'Home Event CTA'
   let data = {
     targetCta
@@ -476,7 +517,7 @@ export const trackHomeEventCta = function (targetCta) {
   return action
 }
 
-export const trackHomeHeroCta = function (targetCta) {
+export const trackHomeHeroCta = function(targetCta) {
   let name = 'Home Hero CTA'
   let data = {
     targetCta
@@ -490,7 +531,7 @@ export const trackHomeHeroCta = function (targetCta) {
   return action
 }
 
-export const trackHomeHeroDappIcon = function (targetIndex) {
+export const trackHomeHeroDappIcon = function(targetIndex) {
   let name = 'Home Hero DApp Icon'
   let data = {
     targetIndex
@@ -504,7 +545,7 @@ export const trackHomeHeroDappIcon = function (targetIndex) {
   return action
 }
 
-export const trackListAdd = function (dapp) {
+export const trackListAdd = function(dapp) {
   let name = 'My List - Add'
   let data = {
     dapp
@@ -518,7 +559,7 @@ export const trackListAdd = function (dapp) {
   return action
 }
 
-export const trackListRemove = function (dapp) {
+export const trackListRemove = function(dapp) {
   let name = 'My List - Remove'
   let data = {
     dapp
@@ -532,7 +573,7 @@ export const trackListRemove = function (dapp) {
   return action
 }
 
-export const trackLogosDownload = function () {
+export const trackLogosDownload = function() {
   let name = 'Logos Download'
   let data = {}
 
@@ -544,7 +585,7 @@ export const trackLogosDownload = function () {
   return action
 }
 
-export const trackMenu = function (sourcePath, targetMenuItem) {
+export const trackMenu = function(sourcePath, targetMenuItem) {
   let name = 'Menu'
   let data = {
     sourcePath,
@@ -559,7 +600,7 @@ export const trackMenu = function (sourcePath, targetMenuItem) {
   return action
 }
 
-export const trackMetamaskCta = function (sourceComponent, sourcePath) {
+export const trackMetamaskCta = function(sourceComponent, sourcePath) {
   let name = 'Metamask CTA'
   let data = {
     sourceComponent,
@@ -574,7 +615,7 @@ export const trackMetamaskCta = function (sourceComponent, sourcePath) {
   return action
 }
 
-export const trackMyListView = function (dapps) {
+export const trackMyListView = function(dapps) {
   let name = 'My List - View'
   let data = {
     dapps
@@ -588,7 +629,7 @@ export const trackMyListView = function (dapps) {
   return action
 }
 
-export const trackMyListShare = function (dapps) {
+export const trackMyListShare = function(dapps) {
   let name = 'My List - Share'
   let data = {
     dapps
@@ -602,7 +643,11 @@ export const trackMyListShare = function (dapps) {
   return action
 }
 
-export const trackNewsletterSubscribe = function (email, sourceComponent, sourcePath) {
+export const trackNewsletterSubscribe = function(
+  email,
+  sourceComponent,
+  sourcePath
+) {
   let name = 'Newsletter - Subscribe'
   let data = {
     email,
@@ -618,7 +663,11 @@ export const trackNewsletterSubscribe = function (email, sourceComponent, source
   return action
 }
 
-export const trackPageAbout = function (sourceComponent, sourcePageLocation, sourcePath) {
+export const trackPageAbout = function(
+  sourceComponent,
+  sourcePageLocation,
+  sourcePath
+) {
   let name = 'About page'
   let data = {
     sourceComponent,
@@ -634,14 +683,22 @@ export const trackPageAbout = function (sourceComponent, sourcePageLocation, sou
   return action
 }
 
-export const trackPromotedDappsView = function (sourceComponent, sourcePath, userEntryRoute) {
+export const trackPromotedDappsView = function(
+  sourceComponent,
+  sourcePath,
+  userEntryRoute
+) {
   let name = 'Promoted DApps - View'
   let data = {
     userEntryRoute
   }
 
-  if (sourceComponent) { data = { ...data, sourceComponent } }
-  if (sourcePath) { data = { ...data, sourcePath } }
+  if (sourceComponent) {
+    data = { ...data, sourceComponent }
+  }
+  if (sourcePath) {
+    data = { ...data, sourcePath }
+  }
 
   const action = {
     name,
@@ -651,7 +708,11 @@ export const trackPromotedDappsView = function (sourceComponent, sourcePath, use
   return action
 }
 
-export const trackPageTerms = function (sourceComponent, sourcePageLocation, sourcePath) {
+export const trackPageTerms = function(
+  sourceComponent,
+  sourcePageLocation,
+  sourcePath
+) {
   let name = 'Terms page'
   let data = {
     sourceComponent,
@@ -667,7 +728,7 @@ export const trackPageTerms = function (sourceComponent, sourcePageLocation, sou
   return action
 }
 
-export const trackPromotedDappSubmit = function (dapp, email, hasSubmittedDapp) {
+export const trackPromotedDappSubmit = function(dapp, email, hasSubmittedDapp) {
   let name = 'Promoted DApp - Submit'
   let data = {
     dapp,
@@ -683,7 +744,7 @@ export const trackPromotedDappSubmit = function (dapp, email, hasSubmittedDapp) 
   return action
 }
 
-export const trackPublicListView = function (listUrl, sourcePath) {
+export const trackPublicListView = function(listUrl, sourcePath) {
   let name = 'Public List - View'
   let data = {
     listUrl,
@@ -698,7 +759,7 @@ export const trackPublicListView = function (listUrl, sourcePath) {
   return action
 }
 
-export const trackPublicListCreate = function (listUrl, slug) {
+export const trackPublicListCreate = function(listUrl, slug) {
   let name = 'Public List - Create'
   let data = {
     listUrl,
@@ -713,7 +774,7 @@ export const trackPublicListCreate = function (listUrl, slug) {
   return action
 }
 
-export const trackScatterCta = function (sourceComponent, sourcePath) {
+export const trackScatterCta = function(sourceComponent, sourcePath) {
   let name = 'Scatter CTA'
   let data = {
     sourceComponent,
@@ -728,7 +789,7 @@ export const trackScatterCta = function (sourceComponent, sourcePath) {
   return action
 }
 
-export const trackSearchSuggestion = function (sourcePath, suggestion) {
+export const trackSearchSuggestion = function(sourcePath, suggestion) {
   let name = 'Search - Suggestion'
   let data = {
     sourcePath,
@@ -743,7 +804,12 @@ export const trackSearchSuggestion = function (sourcePath, suggestion) {
   return action
 }
 
-export const trackSocial = function (sourceComponent, sourcePageLocation, sourcePath, targetPlatform) {
+export const trackSocial = function(
+  sourceComponent,
+  sourcePageLocation,
+  sourcePath,
+  targetPlatform
+) {
   let name = 'Social'
   let data = {
     sourceComponent,

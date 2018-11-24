@@ -35,8 +35,13 @@ export default {
     }
   },
   methods: {
-    trackDappContractAudit (contract, slug, auditorName, learnMoreUrl) {
-      const action = trackDappContractAudit(contract, slug, auditorName, learnMoreUrl)
+    trackDappContractAudit(contract, slug, auditorName, learnMoreUrl) {
+      const action = trackDappContractAudit(
+        contract,
+        slug,
+        auditorName,
+        learnMoreUrl
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }

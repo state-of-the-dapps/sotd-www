@@ -5,18 +5,16 @@ const state = () => ({
 })
 
 const actions = {
-  fetchItems ({ commit, state }) {
-    axios
-      .get('collections/list/featured')
-      .then(response => {
-        const data = response.data
-        commit('SET_ITEMS', data)
-      })
+  fetchItems({ commit, state }) {
+    axios.get('collections/list/featured').then(response => {
+      const data = response.data
+      commit('SET_ITEMS', data)
+    })
   }
 }
 
 const mutations = {
-  SET_ITEMS (state, data) {
+  SET_ITEMS(state, data) {
     state.items = data
   }
 }

@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    trackRankingSort (sort) {
+    trackRankingSort(sort) {
       const order = 'desc'
       const action = trackDappRankingSort(order, sort)
       this.$mixpanel.track(action.name, action.data)

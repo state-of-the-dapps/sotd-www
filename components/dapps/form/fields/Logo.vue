@@ -34,62 +34,68 @@
 </template>
 
 <script>
-  import { dispatchErrors, dispatchWarnings, testImage } from '~/helpers/mixins'
+import { dispatchErrors, dispatchWarnings, testImage } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors, dispatchWarnings, testImage],
-    computed: {
-      logo: {
-        get () {
-          return this.$store.getters['dapps/form/logo']
-        },
-        set (value) {
-          const field = {
-            name: 'logo',
-            value: value
+export default {
+  mixins: [dispatchErrors, dispatchWarnings, testImage],
+  computed: {
+    logo: {
+      get() {
+        return this.$store.getters['dapps/form/logo']
+      },
+      set(value) {
+        const field = {
+          name: 'logo',
+          value: value
+        }
+        this.$store.dispatch('dapps/form/setField', field)
+      }
+    },
+    errors() {
+      return this.$store.getters['dapps/form/logoErrors']
+    },
+    warnings() {
+      return this.$store.getters['dapps/form/logoWarnings']
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'logo',
+        data: []
+      }
+      validationTimer = setTimeout(() => {
+        this.logo.length && this.logo.length < 3
+          ? errors.data.push(`URL can't be less than 3 characters`)
+          : ''
+        this.logo.length > 255
+          ? errors.data.push(`URL can't be longer than 255 characters`)
+          : ''
+        this.testImage(this.logo, (url, dimensions, result) => {
+          const warnings = {
+            field: 'logo',
+            data: []
           }
-          this.$store.dispatch('dapps/form/setField', field)
-        }
-      },
-      errors () {
-        return this.$store.getters['dapps/form/logoErrors']
-      },
-      warnings () {
-        return this.$store.getters['dapps/form/logoWarnings']
-      }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'logo',
-          data: []
-        }
-        validationTimer = setTimeout(() => {
-          this.logo.length && this.logo.length < 3 ? errors.data.push(`URL can't be less than 3 characters`) : ''
-          this.logo.length > 255 ? errors.data.push(`URL can't be longer than 255 characters`) : ''
-          this.testImage(this.logo, (url, dimensions, result) => {
-            const warnings = {
-              field: 'logo',
-              data: []
+          if (this.logo.length > 0 && result !== 'success') {
+            errors.data.push('URL is not a valid image')
+          }
+          if (result === 'success') {
+            const imgWidth = dimensions.width
+            const expectedWidth = 400
+            if (imgWidth !== expectedWidth) {
+              warnings.data.push(
+                'Image dimensions are not correct. The logo should be 400px wide. This image may not display properly.'
+              )
             }
-            if (this.logo.length > 0 && result !== 'success') {
-              errors.data.push('URL is not a valid image')
-            }
-            if (result === 'success') {
-              const imgWidth = dimensions.width
-              const expectedWidth = 400
-              if (imgWidth !== expectedWidth) {
-                warnings.data.push('Image dimensions are not correct. The logo should be 400px wide. This image may not display properly.')
-              }
-            }
-            this.dispatchWarnings(warnings, 'dapps')
-            this.dispatchErrors(errors, 'dapps')
-          })
-        }, 750)
-      }
-    },
+          }
+          this.dispatchWarnings(warnings, 'dapps')
+          this.dispatchErrors(errors, 'dapps')
+        })
+      }, 750)
+    }
   }
+}
 </script>

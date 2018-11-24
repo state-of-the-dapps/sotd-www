@@ -59,4 +59,3 @@ export default {
   @include margin-wrapper-main;
 }
 </style>
-

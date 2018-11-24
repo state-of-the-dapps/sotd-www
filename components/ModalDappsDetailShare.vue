@@ -17,7 +17,7 @@ export default {
     }
   },
   methods: {
-    close () {
+    close() {
       const modal = {
         component: '',
         mpData: {},
@@ -36,7 +36,7 @@ export default {
   background: $color--black;
   color: $color--white;
   padding: 12px 50px;
-  box-shadow: 0 5px 20px rgba($color--black, .2);
+  box-shadow: 0 5px 20px rgba($color--black, 0.2);
   cursor: pointer;
 }
 

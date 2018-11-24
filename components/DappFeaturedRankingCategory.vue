@@ -57,13 +57,13 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       dapps: [],
       sourcePath: this.$route.path
     }
   },
-  async mounted () {
+  async mounted() {
     axios
       .get('dapps', {
         params: {
@@ -74,31 +74,39 @@ export default {
           sort: 'rank'
         }
       })
-      .then((response) => {
+      .then(response => {
         const dapps = response.data.items
         this.dapps = dapps
       })
   },
   methods: {
-    ...mapActions('dapps/rankings', [
-      'fetchDapps',
-      'setCategory',
-      'setSort'
-    ]),
-    trackDappView (targetDapp) {
+    ...mapActions('dapps/rankings', ['fetchDapps', 'setCategory', 'setSort']),
+    trackDappView(targetDapp) {
       const sourceCollection = ''
       const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappRankingCategory (category) {
+    viewDappRankingCategory(category) {
       const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappRankingCategory(sourceComponent, this.sourcePath, category.slug)
+      const action = trackDappRankingCategory(
+        sourceComponent,
+        this.sourcePath,
+        category.slug
+      )
       this.$mixpanel.track(action.name, action.data)
       this.setCategory(category.slug)
       this.setSort({ order: 'asc', sort: 'rank' })
       this.fetchDapps()
-      this.$router.push({name: 'rankings-category', params: {category: category.slug}})
+      this.$router.push({
+        name: 'rankings-category',
+        params: { category: category.slug }
+      })
     }
   }
 }
@@ -130,7 +138,7 @@ export default {
   align-items: center;
   background: $color--white;
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba($color--black, .05);
+  box-shadow: 0 5px 10px rgba($color--black, 0.05);
   margin-bottom: 7px;
   padding: 10px;
 }
@@ -172,7 +180,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .95rem;
+  font-size: 0.95rem;
   color: $color--purple;
   line-height: 0;
   border-top-left-radius: 4px;
@@ -184,7 +192,7 @@ export default {
 
 .label-dau {
   font-weight: 300;
-  font-size: .95rem;
+  font-size: 0.95rem;
   position: absolute;
   right: 0;
   top: 3px;
@@ -204,7 +212,7 @@ export default {
 .view {
   display: inline-block;
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: 300;

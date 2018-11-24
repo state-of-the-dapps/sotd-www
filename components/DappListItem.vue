@@ -120,13 +120,13 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   computed: {
-    volume () {
+    volume() {
       let volume
       let stats = this.dapp.stats
       let platform = this.dapp.platform
@@ -139,7 +139,7 @@ export default {
       }
       return volume
     },
-    volumePct () {
+    volumePct() {
       let volumePct
       let stats = this.dapp.stats
       let platform = this.dapp.platform
@@ -154,7 +154,7 @@ export default {
     }
   },
   methods: {
-    getDappStatsClass (value) {
+    getDappStatsClass(value) {
       let result = ''
       if (value && value > 0) {
         result = 'is-positive'
@@ -163,13 +163,18 @@ export default {
       }
       return result
     },
-    trackDappView (targetDapp) {
+    trackDappView(targetDapp) {
       const sourceCollection = this.sourceCollection
       const sourceComponent = 'DappListItem'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -180,9 +185,9 @@ export default {
 
 .tag {
   display: inline-block;
-  font-size: .95rem;
+  font-size: 0.95rem;
   padding: 3px 6px;
-  background: rgba($color--gray, .6);
+  background: rgba($color--gray, 0.6);
   border-radius: 4px;
   margin-right: 4px;
   white-space: nowrap;
@@ -204,7 +209,11 @@ export default {
 }
 
 .column {
-  &.-rank, &.-dau, &.-mau, &.-vol_7d, &.-dev_30d {
+  &.-rank,
+  &.-dau,
+  &.-mau,
+  &.-vol_7d,
+  &.-dev_30d {
     font-size: 1.05rem;
     @include font-monospace;
   }
@@ -212,7 +221,9 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  &.-vol_7d, &.-mau, &.-dev_30d {
+  &.-vol_7d,
+  &.-mau,
+  &.-dev_30d {
     display: flex;
     flex-direction: column;
   }
@@ -233,7 +244,7 @@ export default {
     &:last-child {
       border-right: none;
     }
-  } 
+  }
 }
 
 .dapp-icon {
@@ -264,7 +275,10 @@ export default {
   font-weight: 700;
 }
 
-.field-dau, .field-vol, .field-mau, .field-dev {
+.field-dau,
+.field-vol,
+.field-mau,
+.field-dev {
   flex: 1;
   &.-pct {
     font-size: 1rem;

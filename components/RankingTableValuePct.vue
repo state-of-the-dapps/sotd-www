@@ -30,7 +30,7 @@ export default {
       type: Number,
       default: null
     }
-  },
+  }
 }
 </script>
 

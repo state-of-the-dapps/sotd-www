@@ -16,15 +16,15 @@
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'black',
       type: String
     },
-    'height': {
+    height: {
       default: 16,
       type: Number
     },
-    'width': {
+    width: {
       default: 16,
       type: Number
     }
@@ -43,4 +43,3 @@ export default {
   fill: lighten($color--white, 100%);
 }
 </style>
-

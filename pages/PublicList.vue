@@ -23,7 +23,7 @@ export default {
     DappCardList,
     LayoutMain
   },
-  data () {
+  data() {
     return {
       dapps: [],
       name: '',
@@ -31,33 +31,36 @@ export default {
       listUrl: ''
     }
   },
-  head () {
+  head() {
     return {
       title: 'State of the ÐApps — ' + this.name + ' | A List of ÐApps',
       meta: [
-        {hid: 'description', name: 'description', content: 'A list of ÐApps made by a member of the community. You can make your own list too!'}
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A list of ÐApps made by a member of the community. You can make your own list too!'
+        }
       ]
     }
   },
-  asyncData ({ params, error }) {
-    return axios
-      .get('lists/' + params.list_url)
-      .then(response => {
-        const data = response.data
-        const dapps = data.dapps
-        const name = data.name
-        const listUrl = data.listUrl
-        if (!dapps) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapps,
-          listUrl,
-          name
-        }
-      })
+  asyncData({ params, error }) {
+    return axios.get('lists/' + params.list_url).then(response => {
+      const data = response.data
+      const dapps = data.dapps
+      const name = data.name
+      const listUrl = data.listUrl
+      if (!dapps) {
+        error({ statusCode: 404 })
+      }
+      return {
+        dapps,
+        listUrl,
+        name
+      }
+    })
   },
-  mounted () {
+  mounted() {
     const action = trackPublicListView(this.listUrl, this.sourcePath)
     this.$mixpanel.track(action.name, action.data)
   }
@@ -68,7 +71,7 @@ export default {
 @import '~assets/css/settings';
 
 .description {
-  margin: .5rem auto 0 auto;
+  margin: 0.5rem auto 0 auto;
   text-align: center;
   max-width: 700px;
 }
@@ -79,10 +82,11 @@ export default {
   margin: 0 auto;
   display: block;
   border-radius: 4px;
-  box-shadow: 0 10px 30px rgba($color--black, .15);
+  box-shadow: 0 10px 30px rgba($color--black, 0.15);
 }
 
-.wrapper, .heading-wrapper {
+.wrapper,
+.heading-wrapper {
   @include margin-wrapper-main;
 }
 
@@ -96,7 +100,7 @@ export default {
 
 .notice {
   border-radius: 4px;
-  box-shadow: 0 5px 20px rgba($color--black, .1);
+  box-shadow: 0 5px 20px rgba($color--black, 0.1);
   line-height: 1.4;
   font-size: 1rem;
   text-align: center;

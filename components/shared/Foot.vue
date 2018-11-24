@@ -147,7 +147,7 @@ import {
 } from '~/helpers/mixpanel'
 
 export default {
-  data () {
+  data() {
     return {
       sourceComponent: '/shared/foot',
       sourcePageLocation: 'footer',
@@ -155,41 +155,62 @@ export default {
     }
   },
   computed: {
-    userEntryRoute () {
+    userEntryRoute() {
       return this.$store.getters['userEntryRoute']
     }
   },
   methods: {
-    trackContact () {
-      const action = trackContact(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackContact() {
+      const action = trackContact(
+        this.sourceComponent,
+        this.sourcePageLocation,
+        this.sourcePath
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackFooterAppAndroid () {
+    trackFooterAppAndroid() {
       const action = trackFooterAppAndroid(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackFooterLogoDownload () {
+    trackFooterLogoDownload() {
       const action = trackFooterLogoDownload(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackFooterSubmit () {
+    trackFooterSubmit() {
       const action = trackFooterSubmit(this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPageAbout () {
-      const action = trackPageAbout(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackPageAbout() {
+      const action = trackPageAbout(
+        this.sourceComponent,
+        this.sourcePageLocation,
+        this.sourcePath
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPromotedDappsView () {
-      const action = trackPromotedDappsView(this.sourceComponent, this.sourcePath, this.userEntryRoute)
+    trackPromotedDappsView() {
+      const action = trackPromotedDappsView(
+        this.sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPageTerms () {
-      const action = trackPageTerms(this.sourceComponent, this.sourcePageLocation, this.sourcePath)
+    trackPageTerms() {
+      const action = trackPageTerms(
+        this.sourceComponent,
+        this.sourcePageLocation,
+        this.sourcePath
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackSocial (platform) {
-      const action = trackSocial(this.sourceComponent, this.sourcePageLocation, this.sourcePath, platform)
+    trackSocial(platform) {
+      const action = trackSocial(
+        this.sourceComponent,
+        this.sourcePageLocation,
+        this.sourcePath,
+        platform
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }

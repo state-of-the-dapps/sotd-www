@@ -48,12 +48,12 @@ export default {
   components: {
     LayoutMain
   },
-  head () {
+  head() {
     return {
       title: 'State of the ÐApps — Terms of Use'
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('setSiteSection', '')
   }
 }

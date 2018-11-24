@@ -36,13 +36,13 @@ export default {
   components: {
     SvgBadgeScatter
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   methods: {
-    trackScatterCta () {
+    trackScatterCta() {
       const sourceComponent = 'SecondaryCtaScatter'
       const action = trackScatterCta(sourceComponent, this.sourcePath)
       this.$mixpanel.track(action.name, action.data)
@@ -56,8 +56,8 @@ export default {
 @import '~assets/css/settings';
 
 .component-SecondaryCtaMetamask {
-  background: rgba($color--black, .5);
-  border-top: 1px solid rgba($color--black, .3);
+  background: rgba($color--black, 0.5);
+  border-top: 1px solid rgba($color--black, 0.3);
 }
 
 .cta-wrapper {
@@ -78,7 +78,7 @@ export default {
 }
 
 .description {
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   margin-bottom: 0;
 }
 
@@ -87,7 +87,7 @@ export default {
   flex-grow: 1;
   @include tweakpoint('min-width', 840px) {
     margin: 0;
-  }  
+  }
 }
 
 .icon-wrapper {

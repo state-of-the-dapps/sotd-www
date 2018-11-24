@@ -19,9 +19,13 @@ export default {
     }
   },
   methods: {
-    trackRankingPlatform (platform) {
+    trackRankingPlatform(platform) {
       const sourceComponent = 'RankingTablePlatform'
-      const action = trackDappRankingPlatform(sourceComponent, this.$route.path, platform)
+      const action = trackDappRankingPlatform(
+        sourceComponent,
+        this.$route.path,
+        platform
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }

@@ -18,7 +18,7 @@ export default {
   props: {
     dapps: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     sourceCollection: {
       type: String,

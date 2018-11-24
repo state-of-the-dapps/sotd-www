@@ -21,11 +21,11 @@
 <script>
 export default {
   props: {
-    'height': {
+    height: {
       default: 20,
       type: Number
     },
-    'width': {
+    width: {
       default: 20,
       type: Number
     }
@@ -37,6 +37,7 @@ export default {
 @import '~assets/css/settings';
 
 path {
-	pointer-events: all;
-	fill: $color--black;}
+  pointer-events: all;
+  fill: $color--black;
+}
 </style>

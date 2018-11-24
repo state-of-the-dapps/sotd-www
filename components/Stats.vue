@@ -242,9 +242,9 @@ const labels = [
   '2018-10-31'
 ]
 
-const formattedLabels = labels.map(x => formatDate(x, 'MMM \'YY'))
+const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
 
-function totalDapps () {
+function totalDapps() {
   let totalDappArr = []
   let totalDapps = 0
   let i = 0
@@ -260,7 +260,7 @@ export default {
     Help,
     StatsStatusBarChart
   },
-  data () {
+  data() {
     return {
       newVsTotalData: {
         labels: formattedLabels,
@@ -299,13 +299,14 @@ export default {
       'statStatuses'
     ])
   },
-  mounted () {
+  mounted() {
     this.createChart('new-vs-total', this.newVsTotalData)
   },
   methods: {
-    createChart (chartId, chartData) {
+    createChart(chartId, chartData) {
       var ctx = document.getElementById(chartId)
-      var lineChart = new Chart(ctx, { // eslint-disable-line no-unused-vars
+      var lineChart = new Chart(ctx, {
+        // eslint-disable-line no-unused-vars
         type: 'bar',
         data: chartData,
         options: {
@@ -319,45 +320,50 @@ export default {
             display: false
           },
           scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
+              }
+            ],
+            yAxes: [
+              {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'left',
+                id: 'y-axis-1',
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
               },
-              ticks: {
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
+              {
+                type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                display: true,
+                position: 'right',
+                id: 'y-axis-2',
+                // grid line settings
+                gridLines: {
+                  drawOnChartArea: false // only want the grid lines for one axis to show up
+                },
+                ticks: {
+                  beginAtZero: true,
+                  fontFamily: 'Overpass',
+                  fontStyle: 'bold'
+                }
               }
-            }],
-            yAxes: [{
-              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-              display: true,
-              position: 'left',
-              id: 'y-axis-1',
-              ticks: {
-                beginAtZero: true,
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
-              }
-            }, {
-              type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-              display: true,
-              position: 'right',
-              id: 'y-axis-2',
-              // grid line settings
-              gridLines: {
-                drawOnChartArea: false // only want the grid lines for one axis to show up
-              },
-              ticks: {
-                beginAtZero: true,
-                fontFamily: 'Overpass',
-                fontStyle: 'bold'
-              }
-            }]
+            ]
           }
         }
       })
     }
-  },
+  }
 }
 </script>
 
@@ -447,7 +453,8 @@ export default {
   border-bottom: 1px solid $color--black;
 }
 
-.table-heading, .table-data {
+.table-heading,
+.table-data {
   padding: 5px 15px;
   &.-name {
     text-align: left;
@@ -480,7 +487,7 @@ export default {
 }
 
 .table-row {
-  border-bottom: 1px solid rgba($color--black, .2);
+  border-bottom: 1px solid rgba($color--black, 0.2);
 }
 
 .value {
@@ -495,7 +502,7 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     margin-right: 40px;
     padding-right: 40px;
-    border-right: 1px solid rgba($color--black, .2);
+    border-right: 1px solid rgba($color--black, 0.2);
   }
 }
 </style>

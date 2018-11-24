@@ -31,42 +31,46 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
+import { dispatchErrors } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors],
-    computed: {
-      description: {
-        get () {
-          return this.$store.getters['dapps/form/description']
-        },
-        set (value) {
-          const field = {
-            name: 'description',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setField', field)
-        }
+export default {
+  mixins: [dispatchErrors],
+  computed: {
+    description: {
+      get() {
+        return this.$store.getters['dapps/form/description']
       },
-      errors () {
-        return this.$store.getters['dapps/form/descriptionErrors']
-      }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'description',
-          data: []
+      set(value) {
+        const field = {
+          name: 'description',
+          value: value
         }
-        validationTimer = setTimeout(() => {
-          this.description.length > 1000 ? errors.data.push(`Description can't be longer than 1000 characters`) : ''
-          this.description.length < 50 ? errors.data.push(`Description must be longer than 50 characters`) : ''
-          this.dispatchErrors(errors, 'dapps')
-        }, 750)
+        this.$store.dispatch('dapps/form/setField', field)
       }
     },
+    errors() {
+      return this.$store.getters['dapps/form/descriptionErrors']
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'description',
+        data: []
+      }
+      validationTimer = setTimeout(() => {
+        this.description.length > 1000
+          ? errors.data.push(`Description can't be longer than 1000 characters`)
+          : ''
+        this.description.length < 50
+          ? errors.data.push(`Description must be longer than 50 characters`)
+          : ''
+        this.dispatchErrors(errors, 'dapps')
+      }, 750)
+    }
   }
+}
 </script>

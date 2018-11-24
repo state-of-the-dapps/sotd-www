@@ -71,7 +71,11 @@
 <script>
 import axios from '~/helpers/axios'
 import { mapGetters } from 'vuex'
-import { setUser, trackPromotedDappSubmit, trackPromotedDappsView } from '~/helpers/mixpanel'
+import {
+  setUser,
+  trackPromotedDappSubmit,
+  trackPromotedDappsView
+} from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 import PromotedDapps from '~/components/PromotedDapps'
 
@@ -90,7 +94,7 @@ export default {
       default: false
     }
   },
-  data () {
+  data() {
     return {
       budget: '',
       country: '',
@@ -103,35 +107,46 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ]),
-    formIsValid () {
+    ...mapGetters(['userEntryRoute']),
+    formIsValid() {
       let isValid = false
-      if (this.budget && this.country && this.email && this.dapp && this.name && this.hasSubmittedDapp && this.emailIsValid && !this.formIsSubmitting) {
+      if (
+        this.budget &&
+        this.country &&
+        this.email &&
+        this.dapp &&
+        this.name &&
+        this.hasSubmittedDapp &&
+        this.emailIsValid &&
+        !this.formIsSubmitting
+      ) {
         isValid = true
       }
       return isValid
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('setSiteSection', 'dapps')
     if (this.directView) {
       const sourceComponent = ''
       const sourcePath = ''
-      const action = trackPromotedDappsView(sourceComponent, sourcePath, this.userEntryRoute)
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        sourcePath,
+        this.userEntryRoute
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   },
   methods: {
-    getStarted () {
+    getStarted() {
       this.$mixpanel.track('Promoted DApps - Get Started')
       this.$refs.getStartedEl.scrollIntoView()
     },
-    selectSubmittedDapp (selection) {
+    selectSubmittedDapp(selection) {
       this.hasSubmittedDapp = selection
     },
-    send () {
+    send() {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
         const budget = this.budget
@@ -146,7 +161,12 @@ export default {
 
         const hasWeb3 = typeof web3 !== 'undefined'
         const lastUpdated = new Date().toISOString()
-        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        const user = setUser(
+          this.email,
+          hasWeb3,
+          lastUpdated,
+          this.userEntryRoute
+        )
         this.$mixpanel.setUser(user)
 
         const data = {
@@ -159,8 +179,9 @@ export default {
             hasSubmittedDapp
           }
         }
-        axios.post('promoted/dapps', data)
-          .then((response) => {
+        axios
+          .post('promoted/dapps', data)
+          .then(response => {
             const modal = {
               component: 'ModalPromotedDappsNewConfirmation',
               mpData: {},
@@ -170,7 +191,7 @@ export default {
             }
             this.$store.dispatch('setSiteModal', modal)
           })
-          .catch((error) => {
+          .catch(error => {
             this.formIsSubmitting = false
             console.log(error)
           })
@@ -216,7 +237,7 @@ export default {
 .preview-wrapper {
   margin-top: 20px;
   text-align: center;
-  background: rgba($color--black, .075);
+  background: rgba($color--black, 0.075);
 }
 
 .preview {
@@ -227,7 +248,7 @@ export default {
 
 .input {
   border: none;
-  background: rgba($color--white,.9);
+  background: rgba($color--white, 0.9);
   width: 100%;
   padding: 10px 5px;
   margin-bottom: 8px;
@@ -238,31 +259,31 @@ export default {
   display: inline-block;
   padding: 5px 10px;
   margin: 0 2px;
-  background: rgba($color--white,.9);
+  background: rgba($color--white, 0.9);
   width: 45px;
   text-align: center;
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   &:hover {
-    background: rgba($color--black, .1);  
+    background: rgba($color--black, 0.1);
   }
   &.--active {
-    background: $color--black;  
-    color: $color--white;  
+    background: $color--black;
+    color: $color--white;
   }
 }
 
 .send {
-  background: rgba($color--black, .15);
+  background: rgba($color--black, 0.15);
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: 0.9rem;
   padding: 12px 75px;
   cursor: default;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   font-weight: 700;
   &.--is-ready {
     color: $color--white;
     background: $color--black;
-    box-shadow: 0 17px 70px rgba($color--black, .4);
+    box-shadow: 0 17px 70px rgba($color--black, 0.4);
     cursor: pointer;
   }
 }
@@ -280,7 +301,7 @@ export default {
   font-size: 3rem;
   text-transform: initial;
   text-align: center;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .title-2 {

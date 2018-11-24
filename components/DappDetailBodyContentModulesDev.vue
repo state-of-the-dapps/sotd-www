@@ -52,7 +52,7 @@ export default {
     }
   },
   methods: {
-    getDappStatsClass (value) {
+    getDappStatsClass(value) {
       let result = ''
       if (value && value > 0) {
         result = 'is-positive'

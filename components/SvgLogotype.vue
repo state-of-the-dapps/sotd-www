@@ -41,15 +41,15 @@
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'black',
       type: String
     },
-    'height': {
+    height: {
       default: 18,
       type: Number
     },
-    'width': {
+    width: {
       default: 18,
       type: Number
     }

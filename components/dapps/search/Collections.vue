@@ -29,35 +29,31 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  data () {
+  data() {
     return {
       collectionIcons: {
         'best-of-metamask': 'metamask',
         'collectibles-hypetrain': 'collectibles-hypetrain',
-        'featured': 'featured',
-        'hottest': 'hottest',
+        featured: 'featured',
+        hottest: 'hottest',
         'mobile-friendly': 'mobile',
         'recently-added': 'recently-added',
-        'cryptogaming': 'cryptogaming',
-        'finance': 'finance',
+        cryptogaming: 'cryptogaming',
+        finance: 'finance',
         'top-weekly-users': 'top-weekly-users',
         'top-weekly-value': 'top-weekly-value'
       }
     }
   },
   computed: {
-    ...mapGetters('collections/featured', [
-      'items'
-    ])
+    ...mapGetters('collections/featured', ['items'])
   },
-  mounted () {
+  mounted() {
     this.fetchItems()
   },
   methods: {
-    ...mapActions('collections/featured', [
-      'fetchItems'
-    ]),
-    trackCollection (collection) {
+    ...mapActions('collections/featured', ['fetchItems']),
+    trackCollection(collection) {
       this.$mixpanel.track('Collections - View', {
         collection: collection.name,
         collectionSlug: collection.slug,
@@ -70,50 +66,50 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/css/settings';
+@import '~assets/css/settings';
 
-  .heading-wrapper {
-    padding: 10px;
-    padding-top: 0;
-  }
+.heading-wrapper {
+  padding: 10px;
+  padding-top: 0;
+}
 
-  .description {
-    margin-top: 0;
-  }
+.description {
+  margin-top: 0;
+}
 
-  .heading {
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
+.heading {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+.container {
+  padding: 15px 10px;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    flex-direction: row;
   }
-  .container {
-    padding: 15px 10px;
+}
+.item {
+  flex: 1;
+  margin: 0 10px;
+  background: rgba(white, 0.25);
+  padding: 0 7px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 5px 25px 0 rgba($color--black, 0.12);
+  overflow: hidden;
+  font-size: 1.075rem;
+  &:hover {
+    cursor: pointer;
   }
-  .list {
-    display: flex;
-    flex-direction: column;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      flex-direction: row;
-    }
-  }
-  .item {
-    flex: 1;
-    margin: 0 10px;
-    background: rgba(white, .25);
-    padding: 0 7px;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 5px 25px 0 rgba($color--black, .12);
-    overflow: hidden;
-    font-size: 1.075rem;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  .image {
-    height: 61px;
-    margin-right: 10px;
-  }
+}
+.image {
+  height: 61px;
+  margin-right: 10px;
+}
 </style>

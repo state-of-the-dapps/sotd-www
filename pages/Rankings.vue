@@ -24,7 +24,7 @@ export default {
     RankingFilters,
     RankingTable
   },
-  data () {
+  data() {
     return {
       dapps: [],
       isLoading: false,
@@ -35,8 +35,8 @@ export default {
       }
     }
   },
-  async asyncData ({ params, query }) {
-    const urlParams = {...params, ...query}
+  async asyncData({ params, query }) {
+    const urlParams = { ...params, ...query }
     if (!query.sort) {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
@@ -47,16 +47,16 @@ export default {
     return { dapps, pager }
   },
   watch: {
-    '$route.query' () {
+    '$route.query'() {
       this.$refs.table.scrollIntoView()
       this.fetchDapps()
     }
   },
   methods: {
-    async fetchDapps () {
+    async fetchDapps() {
       this.resetData()
       this.isLoading = true
-      const urlParams = {...this.$route.params, ...this.$route.query}
+      const urlParams = { ...this.$route.params, ...this.$route.query }
       if (!this.$route.query.sort) {
         urlParams.sort = 'rank'
         urlParams.order = 'asc'
@@ -68,7 +68,7 @@ export default {
       this.dapps = dapps
       this.pager = pager
     },
-    resetData () {
+    resetData() {
       this.dapps = []
       this.pager = {
         limit: 0,
@@ -77,9 +77,10 @@ export default {
       }
     }
   },
-  head () {
+  head() {
     return {
-      title: 'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS, and POA'
+      title:
+        'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS, and POA'
     }
   },
   scrollToTop: true

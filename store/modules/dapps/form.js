@@ -1,7 +1,7 @@
 import axios from '~/helpers/axios'
 import { dappDefaultPlatform } from '~/helpers/constants'
 
-function initialState () {
+function initialState() {
   return {
     errorFields: [
       'authors',
@@ -90,10 +90,10 @@ function initialState () {
 }
 
 const actions = {
-  addErrorField ({ commit }, field) {
+  addErrorField({ commit }, field) {
     commit('ADD_ERROR_FIELD', field)
   },
-  addTag ({ commit }, value) {
+  addTag({ commit }, value) {
     commit('ADD_TAG', value)
   },
   fetchTags: ({ commit, state }, value) => {
@@ -111,59 +111,59 @@ const actions = {
         commit('SET_TAG_RESULTS', items)
       })
   },
-  removeErrorField ({ commit }, field) {
+  removeErrorField({ commit }, field) {
     commit('REMOVE_ERROR_FIELD', field)
   },
-  removeTag ({ commit }, index) {
+  removeTag({ commit }, index) {
     commit('REMOVE_TAG', index)
   },
-  resetForm ({ commit }) {
+  resetForm({ commit }) {
     commit('RESET_FORM')
   },
-  resetTagResults ({ commit }) {
+  resetTagResults({ commit }) {
     commit('RESET_TAG_RESULTS')
   },
-  selectTag ({ commit }, index) {
+  selectTag({ commit }, index) {
     commit('SELECT_TAG', index)
   },
-  setContract ({ commit }, field) {
+  setContract({ commit }, field) {
     commit('SET_CONTRACT', field)
   },
-  setErrors ({ commit }, errors) {
+  setErrors({ commit }, errors) {
     commit('SET_ERRORS', errors)
   },
-  setField ({ commit }, field) {
+  setField({ commit }, field) {
     commit('SET_FIELD', field)
   },
-  setSiteUrl ({ commit }, field) {
+  setSiteUrl({ commit }, field) {
     commit('SET_SITE_URL', field)
   },
-  setSocial ({ commit }, field) {
+  setSocial({ commit }, field) {
     commit('SET_SOCIAL', field)
   },
-  setStatus ({ commit }, value) {
+  setStatus({ commit }, value) {
     commit('SET_STATUS', value)
   },
-  setTagQuery ({ commit }, value) {
+  setTagQuery({ commit }, value) {
     commit('SET_TAG_QUERY', value)
   },
-  setWarnings ({ commit }, warnings) {
+  setWarnings({ commit }, warnings) {
     commit('SET_WARNINGS', warnings)
   },
-  toggleCheckbox ({ commit }, field) {
+  toggleCheckbox({ commit }, field) {
     commit('TOGGLE_CHECKBOX', field)
   }
 }
 
 const mutations = {
-  ADD_ERROR_FIELD (state, field) {
+  ADD_ERROR_FIELD(state, field) {
     const index = state.errorFields.indexOf(field)
     if (index > -1) {
       state.errorFields.splice(index, 1)
     }
     state.errorFields.push(field)
   },
-  ADD_TAG (state, value) {
+  ADD_TAG(state, value) {
     if (state.fields.tags.indexOf(value) === -1) {
       state.fields.tags.push(value)
     }
@@ -174,13 +174,13 @@ const mutations = {
       }
     }
   },
-  REMOVE_ERROR_FIELD (state, field) {
+  REMOVE_ERROR_FIELD(state, field) {
     const index = state.errorFields.indexOf(field)
     if (index > -1) {
       state.errorFields.splice(index, 1)
     }
   },
-  REMOVE_TAG (state, index) {
+  REMOVE_TAG(state, index) {
     state.fields.tags.splice(index, 1)
     let errorIndex = state.errorFields.indexOf('tags')
     if (state.fields.tags.length > 0) {
@@ -193,14 +193,14 @@ const mutations = {
       }
     }
   },
-  RESET_FORM (state) {
+  RESET_FORM(state) {
     Object.assign(state, initialState())
   },
-  RESET_TAG_RESULTS (state) {
+  RESET_TAG_RESULTS(state) {
     state.tagsResults = []
     state.tagQuery = ''
   },
-  SELECT_TAG (state, index) {
+  SELECT_TAG(state, index) {
     if (state.fields.tags.indexOf(state.tagsResults[index]) === -1) {
       state.fields.tags.push(state.tagsResults[index])
     }
@@ -212,38 +212,38 @@ const mutations = {
     }
     state.tagsResults.splice(index, 1)
   },
-  SET_TAG_RESULTS (state, items) {
+  SET_TAG_RESULTS(state, items) {
     state.tagsResults = items
   },
-  SET_CONTRACT (state, field) {
+  SET_CONTRACT(state, field) {
     state.fields.contracts[field.name]['address'] = field.value
   },
-  SET_ERRORS (state, errors) {
+  SET_ERRORS(state, errors) {
     state.errors[errors.field] = errors.data
   },
-  SET_FIELD (state, field) {
+  SET_FIELD(state, field) {
     state.fields[field.name] = field.value
   },
-  SET_SITE_URL (state, field) {
+  SET_SITE_URL(state, field) {
     state.fields.siteUrls[field.name] = field.value
   },
-  SET_SOCIAL (state, field) {
+  SET_SOCIAL(state, field) {
     state.fields.socials[field.name]['path'] = field.value
   },
-  SET_STATUS (state, value) {
+  SET_STATUS(state, value) {
     const index = state.errorFields.indexOf('status')
     if (index > -1) {
       state.errorFields.splice(index, 1)
     }
     state.fields.status = value
   },
-  SET_TAG_QUERY (state, value) {
+  SET_TAG_QUERY(state, value) {
     state.tagQuery = value
   },
-  SET_WARNINGS (state, warnings) {
+  SET_WARNINGS(state, warnings) {
     state.warnings[warnings.field] = warnings.data
   },
-  TOGGLE_CHECKBOX (state, field) {
+  TOGGLE_CHECKBOX(state, field) {
     state.fields[field] = !state.fields[field]
   }
 }

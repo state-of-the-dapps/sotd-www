@@ -3,13 +3,13 @@ const state = () => ({
 })
 
 const actions = {
-  setCollection ({ commit }, collection) {
+  setCollection({ commit }, collection) {
     commit('SET_COLLECTION', collection)
   }
 }
 
 const mutations = {
-  SET_COLLECTION (state, collection) {
+  SET_COLLECTION(state, collection) {
     state.collection = collection
   }
 }

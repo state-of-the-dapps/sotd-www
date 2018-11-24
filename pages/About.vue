@@ -40,12 +40,12 @@ export default {
   components: {
     LayoutMain
   },
-  head () {
+  head() {
     return {
       title: 'State of the ÐApps — About'
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('setSiteSection', '')
   }
 }

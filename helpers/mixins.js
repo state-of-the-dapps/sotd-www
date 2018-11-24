@@ -2,7 +2,7 @@ import { isValidEmail } from '~/helpers/validators'
 
 export const getCaretPosition = {
   methods: {
-    getCaretPosition (ctrl) {
+    getCaretPosition(ctrl) {
       var start, end
       if (ctrl.setSelectionRange) {
         start = ctrl.selectionStart
@@ -22,18 +22,18 @@ export const getCaretPosition = {
 
 export const testImage = {
   methods: {
-    testImage (url, callback, timeout) {
+    testImage(url, callback, timeout) {
       timeout = timeout || 5000
       var timedOut = false
       var timer
       var img = new Image()
-      img.onerror = img.onabort = function () {
+      img.onerror = img.onabort = function() {
         if (!timedOut) {
           clearTimeout(timer)
           callback(url, {}, 'error')
         }
       }
-      img.onload = function () {
+      img.onload = function() {
         if (!timedOut) {
           clearTimeout(timer)
           const dimensions = {
@@ -44,7 +44,7 @@ export const testImage = {
         }
       }
       img.src = url
-      timer = setTimeout(function () {
+      timer = setTimeout(function() {
         timedOut = true
         // reset .src to invalid URL so it stops previous
         // loading, but doesn't trigger new load
@@ -57,7 +57,7 @@ export const testImage = {
 
 export const dispatchErrors = {
   methods: {
-    dispatchErrors (errors, model) {
+    dispatchErrors(errors, model) {
       if (errors.data.length > 0) {
         this.$store.dispatch(model + '/form/addErrorField', errors.field)
       } else {
@@ -70,7 +70,7 @@ export const dispatchErrors = {
 
 export const dispatchWarnings = {
   methods: {
-    dispatchWarnings (warnings, model) {
+    dispatchWarnings(warnings, model) {
       this.$store.dispatch(model + '/form/setWarnings', warnings)
     }
   }
@@ -78,7 +78,7 @@ export const dispatchWarnings = {
 
 export const getValuePosNegClass = {
   methods: {
-    getValuePosNegClass (value) {
+    getValuePosNegClass(value) {
       let result = ''
       if (value && value > 0) {
         result = 'is-positive'
@@ -91,12 +91,13 @@ export const getValuePosNegClass = {
 }
 
 export const setPromotedDappsPage = {
-  data () {
+  data() {
     return {
-      description: 'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.'
+      description:
+        'Show off your amazing decentralized application to thousands of crypto investors, thought leaders, blockchain innovators, and technologists.'
     }
   },
-  head () {
+  head() {
     return {
       title: 'State of the ÐApps — Promote your ÐApp',
       meta: [
@@ -108,7 +109,7 @@ export const setPromotedDappsPage = {
 
 export const validateEmail = {
   methods: {
-    validateEmail () {
+    validateEmail() {
       let isValid = false
       if (this.email.length > 0) {
         isValid = isValidEmail(this.email)

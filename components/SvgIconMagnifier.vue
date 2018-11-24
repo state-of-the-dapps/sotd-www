@@ -18,15 +18,15 @@
 <script>
 export default {
   props: {
-    'theme': {
+    theme: {
       default: 'black',
       type: String
     },
-    'height': {
+    height: {
       default: 17,
       type: Number
     },
-    'width': {
+    width: {
       default: 17,
       type: Number
     }

@@ -41,7 +41,7 @@ export default {
     }
   },
   methods: {
-    trackImproveProfile (dapp) {
+    trackImproveProfile(dapp) {
       const action = trackDappImproveProfileClick(dapp)
       this.$mixpanel.track(action.name, action.data)
     }
@@ -80,13 +80,13 @@ export default {
 }
 
 .improve-wrapper {
-  padding-top: 5px; 
+  padding-top: 5px;
 }
 
 .improve {
   text-align: left;
   text-decoration: underline;
-  font-size: .95rem;
+  font-size: 0.95rem;
 }
 
 .score {

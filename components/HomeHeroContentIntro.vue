@@ -25,28 +25,26 @@ import { trackHomeHeroCta } from '~/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 
 export default {
-  data () {
+  data() {
     return {
       loaded: ''
     }
   },
   computed: {
-    ...mapGetters([
-      'heroHasLoaded'
-    ])
+    ...mapGetters(['heroHasLoaded'])
   },
-  destroyed () {
+  destroyed() {
     this.$store.dispatch('setHeroLoaded')
   },
-  mounted () {
-    this.loaded = (!this.heroHasLoaded) ? 'first-load' : 'has-loaded'
+  mounted() {
+    this.loaded = !this.heroHasLoaded ? 'first-load' : 'has-loaded'
   },
   methods: {
-    trackHomeHeroCta (targetCta) {
+    trackHomeHeroCta(targetCta) {
       const action = trackHomeHeroCta(targetCta)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -77,7 +75,7 @@ export default {
   border-radius: 3px;
   &.-submit {
     background: transparent;
-    border-color: lighten($color--white, 100%)
+    border-color: lighten($color--white, 100%);
   }
 }
 
@@ -103,7 +101,7 @@ export default {
 .description {
   font-size: 1.2rem;
   width: 75%;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   @include tweakpoint('min-width', 575px) {
     width: 80%;
   }
@@ -140,9 +138,9 @@ export default {
 
 .title-1 {
   font-size: 5.3rem;
-  line-height: .825;
+  line-height: 0.825;
   letter-spacing: 1.05px;
-  margin: 1rem 0 .75rem 0;
+  margin: 1rem 0 0.75rem 0;
   @include tweakpoint('min-width', 1400px) {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -151,8 +149,12 @@ export default {
 }
 
 @keyframes fadeInHomeHero {
-  from { opacity: 0; transform: translateY(-5px); }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
-

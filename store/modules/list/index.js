@@ -11,7 +11,7 @@ const getters = {
 }
 
 const mutations = {
-  SET_ITEMS (state, items) {
+  SET_ITEMS(state, items) {
     state.items = items
   }
 }

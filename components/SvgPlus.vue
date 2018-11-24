@@ -17,15 +17,15 @@
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'white',
       type: String
     },
-    'height': {
+    height: {
       default: 10,
       type: Number
     },
-    'width': {
+    width: {
       default: 10,
       type: Number
     }
@@ -37,7 +37,7 @@ export default {
 @import '~assets/css/settings';
 
 .white {
-    fill: $color--white;
+  fill: $color--white;
 }
 
 .black {

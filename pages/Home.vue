@@ -29,16 +29,17 @@ export default {
     LayoutHome
   },
   computed: {
-    ...mapGetters([
-      'statDappCount'
-    ])
+    ...mapGetters(['statDappCount'])
   },
-  head () {
+  head() {
     return {
-      title: 'State of the ÐApps — A List of ' + this.statDappCount.toLocaleString() + ' Projects Built on Ethereum, EOS & POA'
+      title:
+        'State of the ÐApps — A List of ' +
+        this.statDappCount.toLocaleString() +
+        ' Projects Built on Ethereum, EOS & POA'
     }
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('setSiteSection', '')
   }
 }

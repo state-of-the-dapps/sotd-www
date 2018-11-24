@@ -41,29 +41,31 @@ export default {
       type: Object
     }
   },
-  data () {
+  data() {
     return {
       dapps: [],
       sourcePath: this.$route.path
     }
   },
-  mounted () {
-    axios
-      .get('collections/' + this.collection.slug)
-      .then(response => {
-        const collection = response.data
-        const dapps = collection.items
-        this.dapps = dapps.slice(0, 6)
-      })
+  mounted() {
+    axios.get('collections/' + this.collection.slug).then(response => {
+      const collection = response.data
+      const dapps = collection.items
+      this.dapps = dapps.slice(0, 6)
+    })
   },
   methods: {
-    trackCollectionView (slug) {
+    trackCollectionView(slug) {
       const sourceComponent = 'DappCollectionList'
       const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      const action = trackCollectionView(
+        sourceComponent,
+        this.sourcePath,
+        targetCollection
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -72,7 +74,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-DappCollectionList {
-  border-top: 1px solid rgba($color--black, .15);
+  border-top: 1px solid rgba($color--black, 0.15);
   padding-bottom: 20px;
 }
 
@@ -80,7 +82,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: 300;
@@ -94,8 +96,7 @@ export default {
   font-size: 1.35rem;
   font-weight: 600;
   margin-top: 2.2rem;
-  margin-bottom: .2rem;
-  letter-spacing: -.5px;
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.5px;
 }
 </style>
-

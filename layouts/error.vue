@@ -7,23 +7,26 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      error: {
-        type: Object,
-        default: () => {}
-      }
-    },
-    mounted () {
-      this.$mixpanel.track('Error page', { type: this.error.statusCode, resource: this.$route.fullPath })
-    },
+export default {
+  props: {
+    error: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  mounted() {
+    this.$mixpanel.track('Error page', {
+      type: this.error.statusCode,
+      resource: this.$route.fullPath
+    })
   }
+}
 </script>
 
 <style lang="scss" scoped>
-  .content {
-    min-height: 100%;
-    text-align: center;
-    padding-top: 50px;
-  }
+.content {
+  min-height: 100%;
+  text-align: center;
+  padding-top: 50px;
+}
 </style>

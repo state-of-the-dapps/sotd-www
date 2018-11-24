@@ -122,13 +122,13 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     flex: 1;
     padding-right: 10px;
-  }  
+  }
 }
 
 .actions-related {
   @include tweakpoint('min-width', 1000px) {
     width: 190px;
     padding-left: 10px;
-  }  
+  }
 }
 </style>

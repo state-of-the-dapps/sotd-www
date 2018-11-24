@@ -91,30 +91,30 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       dappGameTag
     }
   },
   methods: {
-    refString (url) {
+    refString(url) {
       let refString = url.includes('?') ? '&' : '?'
       refString += 'utm_source=StateOfTheDApps'
       return refString
     },
-    svgSocialComponent (platform) {
+    svgSocialComponent(platform) {
       const socialComponent = dappSocialComponentMap[platform]
       return socialComponent
     },
-    trackDappSite (type, url) {
+    trackDappSite(type, url) {
       const action = trackDappSite(this.dapp.slug, type, url)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappSocial (platform, url) {
+    trackDappSocial(platform, url) {
       const action = trackDappSocial(this.dapp.slug, platform, url)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -134,7 +134,7 @@ export default {
   width: 100%;
   background: $color--black;
   border-radius: 4px;
-  box-shadow: 0 4px 50px rgba($color--black, .2);
+  box-shadow: 0 4px 50px rgba($color--black, 0.2);
   padding: 8px;
   text-align: center;
   width: 120px;

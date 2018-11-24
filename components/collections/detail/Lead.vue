@@ -39,28 +39,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .component--collections-detail-lead {
-    padding: 0 20px;
-    text-align: center;
-    margin: 3rem 0 3.5rem 0;
-  }
-  .heading {
-    font-size: 2rem;
-    font-weight: 700;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .sub-heading {
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
-    margin-bottom: 1.5rem;
-  }
-  .description {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+.component--collections-detail-lead {
+  padding: 0 20px;
+  text-align: center;
+  margin: 3rem 0 3.5rem 0;
+}
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sub-heading {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+.description {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
 </style>

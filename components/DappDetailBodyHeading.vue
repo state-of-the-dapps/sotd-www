@@ -92,7 +92,7 @@ export default {
 .heading-item {
   @include tweakpoint('min-width', 750px) {
     margin-right: 10px;
-  }  
+  }
 }
 
 .heading-items {
@@ -117,4 +117,3 @@ export default {
   text-transform: initial;
 }
 </style>
-

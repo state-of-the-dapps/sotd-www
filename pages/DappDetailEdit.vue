@@ -132,7 +132,11 @@
 import axios from '~/helpers/axios'
 import * as constants from '~/helpers/constants'
 import { mapGetters } from 'vuex'
-import { setUser, trackDappEditSubmit, trackDappEditView } from '~/helpers/mixpanel'
+import {
+  setUser,
+  trackDappEditSubmit,
+  trackDappEditView
+} from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 import LayoutMain from '~/components/LayoutMain'
 
@@ -141,7 +145,7 @@ export default {
     LayoutMain
   },
   mixins: [validateEmail],
-  data () {
+  data() {
     return {
       checkedActions: [],
       dapp: constants.dappSchema,
@@ -154,28 +158,24 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ]),
-    formIsValid () {
+    ...mapGetters(['userEntryRoute']),
+    formIsValid() {
       return this.emailIsValid && this.name.length && this.suggestions.length
     }
   },
-  asyncData ({ store, params, error }) {
-    return axios
-      .get('dapps/' + params.slug)
-      .then(response => {
-        const data = response.data
-        const dapp = data.item
-        if (!Object.keys(dapp).length > 0) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapp
-        }
-      })
+  asyncData({ store, params, error }) {
+    return axios.get('dapps/' + params.slug).then(response => {
+      const data = response.data
+      const dapp = data.item
+      if (!Object.keys(dapp).length > 0) {
+        error({ statusCode: 404 })
+      }
+      return {
+        dapp
+      }
+    })
   },
-  mounted () {
+  mounted() {
     if (this.$route.query.flag) {
       this.checkedActions.push('Flag')
     }
@@ -183,7 +183,7 @@ export default {
     this.$mixpanel.track(action.name, action.data)
   },
   methods: {
-    submit () {
+    submit() {
       if (this.formIsValid) {
         axios
           .put(`dapps/${this.dapp.slug}`, {
@@ -197,17 +197,26 @@ export default {
           })
           .then(response => {})
         this.submitted = true
-        const action = trackDappEditSubmit(this.checkedActions, this.email, this.dapp.slug)
+        const action = trackDappEditSubmit(
+          this.checkedActions,
+          this.email,
+          this.dapp.slug
+        )
         this.$mixpanel.track(action.name, action.data)
         const hasWeb3 = typeof web3 !== 'undefined'
         const lastUpdated = new Date().toISOString()
-        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        const user = setUser(
+          this.email,
+          hasWeb3,
+          lastUpdated,
+          this.userEntryRoute
+        )
         this.$mixpanel.setUser(user)
         this.$refs.page.scrollIntoView()
       }
     }
   },
-  head () {
+  head() {
     return {
       title: this.dapp.name + ' — State of the ÐApps',
       meta: [
@@ -216,7 +225,7 @@ export default {
         { hid: 'robots', name: 'robots', content: 'noindex' }
       ]
     }
-  },
+  }
 }
 </script>
 
@@ -267,7 +276,7 @@ export default {
     content: '';
     display: block;
     background: $color--black;
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
     transform: scale(0);
     width: 9px;
     height: 9px;
@@ -281,8 +290,8 @@ export default {
   background: $color--black;
   color: $color--white;
   padding: 12px 50px;
-  box-shadow: 0 5px 20px rgba($color--black, .2);
-  transition: opacity .2s ease;
+  box-shadow: 0 5px 20px rgba($color--black, 0.2);
+  transition: opacity 0.2s ease;
   cursor: pointer;
   &.not-ready {
     opacity: 0.3;

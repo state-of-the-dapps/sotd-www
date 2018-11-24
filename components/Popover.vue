@@ -44,7 +44,7 @@ export default {
   padding: 10px;
   border-radius: 4px;
   background: $color--white;
-  box-shadow: 0 5px 10px rgba($color--black, .15);
+  box-shadow: 0 5px 10px rgba($color--black, 0.15);
   z-index: 100;
   &:after {
     content: '';
@@ -64,7 +64,7 @@ export default {
       bottom: auto;
       border-top: none;
       border-bottom: 8px solid $color--white;
-      top: -5px
+      top: -5px;
     }
   }
   &.is-reversed {

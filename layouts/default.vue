@@ -9,7 +9,7 @@ export default {
   computed: {
     ...mapGetters(['pageModal', 'siteModal'])
   },
-  head () {
+  head() {
     return {
       bodyAttrs: {
         class: this.siteModal.component || this.pageModal ? 'has-modal' : ''
@@ -20,9 +20,9 @@ export default {
 </script>
 
 <style lang="scss">
-  body {
-    &.has-modal {
-      overflow: hidden;
-    }
+body {
+  &.has-modal {
+    overflow: hidden;
   }
+}
 </style>

@@ -81,14 +81,14 @@ export default {
       default: null
     }
   },
-  data () {
+  data() {
     return {
       currentReaction: '',
       hasSubmitted: false
     }
   },
   methods: {
-    submitDappFeedback (feedback) {
+    submitDappFeedback(feedback) {
       const action = trackDappFeedback(this.slug, feedback)
       this.$mixpanel.track(action.name, action.data)
       this.hasSubmitted = true
@@ -97,7 +97,7 @@ export default {
         this.hasSubmitted = false
       }, 3000)
     }
-  },
+  }
 }
 </script>
 
@@ -126,10 +126,10 @@ export default {
   margin-top: 3px;
   padding: 5px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  border: 1px solid rgba($color--black, .2);
+  border: 1px solid rgba($color--black, 0.2);
   border-radius: 4px;
   margin-right: 4px;
   &:hover {

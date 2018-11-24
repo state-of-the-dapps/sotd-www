@@ -19,10 +19,12 @@ export default {
 
 <style lang="scss">
 .component-DappDetailBodyContentDescription .description {
-  ol, ol li {
+  ol,
+  ol li {
     list-style-type: decimal;
   }
-  ul, ul li {
+  ul,
+  ul li {
     list-style-type: disc;
   }
   ul {

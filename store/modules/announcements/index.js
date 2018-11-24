@@ -2,8 +2,7 @@ import axios from '~/helpers/axios'
 
 const actions = {
   fetchItem: ({ commit }) => {
-    axios.get('announcement')
-    .then(response => {
+    axios.get('announcement').then(response => {
       const data = response.data
       const item = data.item
       commit('SET_ITEMS', item)
@@ -21,10 +20,10 @@ const getters = {
 }
 
 const mutations = {
-  HIDE (state) {
+  HIDE(state) {
     state.status = false
   },
-  SET_ITEMS (state, item) {
+  SET_ITEMS(state, item) {
     state.item = item
   }
 }

@@ -26,12 +26,12 @@ export default {
     SvgBadgeComplete
   },
   computed: {
-    platform () {
+    platform() {
       return this.$store.getters['dapps/form/platform']
     }
   },
   methods: {
-    setPlatform (value) {
+    setPlatform(value) {
       const field = {
         name: 'platform',
         value: value

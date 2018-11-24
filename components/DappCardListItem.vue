@@ -55,19 +55,24 @@ export default {
       default: ''
     }
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   methods: {
-    trackDappView (targetDapp) {
+    trackDappView(targetDapp) {
       const sourceCollection = this.sourceCollection
       const sourceComponent = 'DappCardListItem'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -77,8 +82,8 @@ export default {
 .component-DappCardListItem {
   position: relative;
   margin: 10px;
-  box-shadow: 0 10px 30px rgba($color--black, .1);
-  transition: all .4s ease;
+  box-shadow: 0 10px 30px rgba($color--black, 0.1);
+  transition: all 0.4s ease;
   border-radius: 4px;
   overflow: hidden;
   &:hover {
@@ -145,7 +150,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 8px;
-  @include dapp-category-colors
+  @include dapp-category-colors;
 }
 
 .new {
@@ -154,7 +159,7 @@ export default {
   top: 10px;
   left: 10px;
   text-transform: uppercase;
-  font-size: .8rem;
+  font-size: 0.8rem;
   z-index: 2;
   font-weight: 700;
   color: $color--purple;
@@ -162,7 +167,7 @@ export default {
 
 .category {
   text-transform: uppercase;
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-weight: 700;
   flex-grow: 1;
   text-align: left;
@@ -173,5 +178,4 @@ export default {
   font-size: 1.3rem;
   margin: 0;
 }
-
 </style>

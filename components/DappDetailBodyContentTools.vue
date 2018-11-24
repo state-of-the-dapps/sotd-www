@@ -48,7 +48,12 @@
 </template>
 
 <script>
-import { trackDappEdit, trackDappShare, trackDappFlag, trackPromotedDappsView } from '~/helpers/mixpanel'
+import {
+  trackDappEdit,
+  trackDappShare,
+  trackDappFlag,
+  trackPromotedDappsView
+} from '~/helpers/mixpanel'
 import SvgIconEdit from './SvgIconEdit'
 import SvgIconFeatured from './SvgIconFeatured'
 import SvgIconFlag from './SvgIconFlag'
@@ -71,23 +76,27 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       sourcePath: this.$route.path
     }
   },
   computed: {
-    userEntryRoute () {
+    userEntryRoute() {
       return this.$store.getters['userEntryRoute']
     }
   },
   methods: {
-    trackPromotedDappsView () {
+    trackPromotedDappsView() {
       const sourceComponent = 'DappDetailBodyContentTools'
-      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappEdit (flag = false) {
+    viewDappEdit(flag = false) {
       if (flag) {
         let action = trackDappFlag(this.slug)
         this.$mixpanel.track(action.name, action.data)
@@ -108,7 +117,7 @@ export default {
       }
       this.$router.push(route)
     },
-    viewDappShare () {
+    viewDappShare() {
       const action = trackDappShare(this.slug)
       this.$mixpanel.track(action.name, action.data)
       const modal = {
@@ -121,7 +130,7 @@ export default {
       }
       this.$store.dispatch('setSiteModal', modal)
     }
-  },
+  }
 }
 </script>
 

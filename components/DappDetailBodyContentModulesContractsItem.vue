@@ -48,24 +48,26 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       hiddenIsVisible: false,
       visibleLimit: 10
     }
   },
   computed: {
-    visibleAddresses () {
+    visibleAddresses() {
       const addresses = this.addresses.slice(0, this.visibleLimit)
       return addresses
     },
-    hiddenAddresses () {
-      const addresses = this.hiddenIsVisible ? this.addresses.slice(this.visibleLimit) : []
+    hiddenAddresses() {
+      const addresses = this.hiddenIsVisible
+        ? this.addresses.slice(this.visibleLimit)
+        : []
       return addresses
     }
   },
   methods: {
-    toggleHidden () {
+    toggleHidden() {
       this.hiddenIsVisible = !this.hiddenIsVisible
     }
   }

@@ -33,11 +33,11 @@ export default {
     }
   },
   methods: {
-    trackDappCategory (category) {
+    trackDappCategory(category) {
       const action = trackDappCategory(category, this.slug)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -46,8 +46,8 @@ export default {
 @import '~assets/css/settings';
 
 .subtitle {
-  font-weight: 300; 
-  margin-bottom: .75rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {
     text-align: left;

@@ -23,9 +23,13 @@ export default {
     }
   },
   methods: {
-    trackRankingCategory (category) {
+    trackRankingCategory(category) {
       const sourceComponent = 'RankingTableCategory'
-      const action = trackDappRankingCategory(sourceComponent, this.$route.path, category)
+      const action = trackDappRankingCategory(
+        sourceComponent,
+        this.$route.path,
+        category
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }
@@ -54,4 +58,3 @@ export default {
   }
 }
 </style>
-

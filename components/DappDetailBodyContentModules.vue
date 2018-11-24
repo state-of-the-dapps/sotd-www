@@ -150,11 +150,11 @@ export default {
     }
   },
   computed: {
-    stats () {
+    stats() {
       let dauExists = this.dapp.stats.dau !== undefined
       return dauExists
     }
-  },
+  }
 }
 </script>
 
@@ -197,7 +197,8 @@ export default {
       }
     }
   }
-  &.-tier-2, &.-tier-4 {
+  &.-tier-2,
+  &.-tier-4 {
     @include tweakpoint('min-width', 800px) {
       .module {
         width: calc(50% - 10px);
@@ -210,7 +211,7 @@ export default {
       .module {
         width: calc(100% - 10px);
       }
-    } 
+    }
   }
   &.-tier-5 {
     @include tweakpoint('min-width', 800px) {
@@ -220,7 +221,7 @@ export default {
       &.has-audits {
         width: calc(50% - 10px);
       }
-    }    
+    }
   }
 }
 </style>

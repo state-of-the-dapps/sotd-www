@@ -124,7 +124,7 @@ export default {
       default: 'black'
     }
   },
-  data () {
+  data() {
     return {
       list: [],
       sourcePath: this.$route.path
@@ -139,12 +139,13 @@ export default {
     })
   },
   methods: {
-    scrollToMailingList (targetMenuItem) {
-      document.getElementById('component-SecondaryCtaMailingList')
-              .scrollIntoView()
+    scrollToMailingList(targetMenuItem) {
+      document
+        .getElementById('component-SecondaryCtaMailingList')
+        .scrollIntoView()
       this.trackMenu(targetMenuItem)
     },
-    trackMenu (targetMenuItem) {
+    trackMenu(targetMenuItem) {
       const action = trackMenu(this.sourcePath, targetMenuItem)
       this.$mixpanel.track(action.name, action.data)
     }
@@ -167,7 +168,7 @@ export default {
     margin-right: -22px;
   }
   &.-white {
-    background: rgba($color--black, .2)
+    background: rgba($color--black, 0.2);
   }
 }
 
@@ -175,12 +176,12 @@ export default {
   position: absolute;
   top: -10px;
   right: -8px;
-  background: rgba($color--black, .2);
+  background: rgba($color--black, 0.2);
   display: inline-block;
   font-weight: 600;
   padding: 2px 4px;
   border-radius: 8px;
-  font-size: .7rem;
+  font-size: 0.7rem;
 }
 
 .logo-link {
@@ -216,7 +217,9 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
-  &.-newsletter, &.-submit, &.-my-list {
+  &.-newsletter,
+  &.-submit,
+  &.-my-list {
     display: none;
     @include tweakpoint('min-width', 700px) {
       display: flex;
@@ -231,7 +234,7 @@ export default {
     margin-right: 20px;
     @include tweakpoint('min-width', 600px) {
       display: flex;
-    }   
+    }
   }
 }
 
@@ -243,7 +246,8 @@ export default {
   border-left: 0;
   border-right: 0;
   position: relative;
-  &.nuxt-link-active, &.nuxt-link-exact-active {
+  &.nuxt-link-active,
+  &.nuxt-link-exact-active {
     &.-white {
       border-bottom: 1px solid $color--white;
     }
@@ -269,7 +273,7 @@ export default {
       padding: 7px 10px;
     }
     &.is-home {
-      border-color: rgba($color--white, .7);
+      border-color: rgba($color--white, 0.7);
     }
   }
 }

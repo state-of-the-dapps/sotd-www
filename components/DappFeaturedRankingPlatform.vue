@@ -54,13 +54,13 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       dapps: [],
       sourcePath: this.$route.path
     }
   },
-  async mounted () {
+  async mounted() {
     axios
       .get('dapps', {
         params: {
@@ -71,25 +71,37 @@ export default {
           sort: 'rank'
         }
       })
-      .then((response) => {
+      .then(response => {
         const dapps = response.data.items
         this.dapps = dapps
       })
   },
   methods: {
-    trackDappView (targetDapp) {
+    trackDappView(targetDapp) {
       const sourceCollection = ''
       const sourceComponent = 'DappFeaturedRankingPlatform'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    viewDappRankingPlatform (category) {
+    viewDappRankingPlatform(category) {
       const sourceComponent = 'DappFeaturedRankingPlatform'
-      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, category.slug)
+      const action = trackDappRankingPlatform(
+        sourceComponent,
+        this.sourcePath,
+        category.slug
+      )
       this.$mixpanel.track(action.name, action.data)
-      this.$router.push({name: 'rankings-platform', params: { platform: this.platform.toLowerCase() }})
+      this.$router.push({
+        name: 'rankings-platform',
+        params: { platform: this.platform.toLowerCase() }
+      })
     }
-  },
+  }
 }
 </script>
 
@@ -119,7 +131,7 @@ export default {
   align-items: center;
   background: $color--white;
   border-radius: 4px;
-  box-shadow: 0 5px 10px rgba($color--black, .05);
+  box-shadow: 0 5px 10px rgba($color--black, 0.05);
   margin-bottom: 7px;
   padding: 10px;
 }
@@ -162,28 +174,28 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .95rem;
+  font-size: 0.95rem;
   color: $color--white;
   line-height: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   .dapp-item:nth-child(2) & {
-    background: rgba($color--purple, .85)
+    background: rgba($color--purple, 0.85);
   }
   .dapp-item:nth-child(3) & {
-    background: rgba($color--purple, .75)
+    background: rgba($color--purple, 0.75);
   }
   .dapp-item:nth-child(4) & {
-    background: rgba($color--purple, .65)
+    background: rgba($color--purple, 0.65);
   }
   .dapp-item:nth-child(5) & {
-    background: rgba($color--purple, .55)
+    background: rgba($color--purple, 0.55);
   }
 }
 
 .label-dau {
   font-weight: 300;
-  font-size: .95rem;
+  font-size: 0.95rem;
   position: absolute;
   right: 0;
   top: 3px;
@@ -203,7 +215,7 @@ export default {
 .view {
   display: inline-block;
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: 300;

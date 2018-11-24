@@ -30,15 +30,15 @@ export default {
     ...mapGetters(['siteModal'])
   },
   watch: {
-    '$route' () {
+    $route() {
       this.close()
     }
   },
-  destroyed () {
+  destroyed() {
     this.close()
   },
   methods: {
-    close () {
+    close() {
       const modal = {
         component: '',
         mpData: {},
@@ -46,7 +46,7 @@ export default {
       }
       this.$store.dispatch('setSiteModal', modal)
     }
-  },
+  }
 }
 </script>
 
@@ -60,7 +60,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 50;
-  background: rgba($color--black, .5);
+  background: rgba($color--black, 0.5);
   display: flex;
   justify-content: center;
   overflow-y: scroll;
@@ -75,7 +75,7 @@ export default {
   border-radius: 4px;
   margin: 40px 10px;
   z-index: 110;
-  box-shadow: 0 0 50px rgba($color--black, .25);
+  box-shadow: 0 0 50px rgba($color--black, 0.25);
   @include tweakpoint('min-width', 600px) {
     margin: 40px auto;
   }
@@ -92,4 +92,3 @@ export default {
   -webkit-overflow-scrolling: touch;
 }
 </style>
-

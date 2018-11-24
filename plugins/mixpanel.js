@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import mixpanel from 'mixpanel-browser'
 
-const mp = function (Vue) {
+const mp = function(Vue) {
   if (process.env.mixpanel) {
     mixpanel.init(process.env.mixpanel)
 
@@ -9,19 +9,19 @@ const mp = function (Vue) {
       mixpanel.set_config({ debug: true })
     }
 
-    window.addEventListener('load', function () {
+    window.addEventListener('load', function() {
       let hasWeb3 = false
       if (typeof web3 !== 'undefined') {
         hasWeb3 = true
       }
       mixpanel.register({
-        'hasWeb3': hasWeb3
+        hasWeb3: hasWeb3
       })
     })
   }
 
   Vue.prototype.$mixpanel = {
-    track (name, data) {
+    track(name, data) {
       if (process.env.mixpanel) {
         name = name || 'Undefined'
         data = data || {}
@@ -31,7 +31,7 @@ const mp = function (Vue) {
         console.log('Mixpanel Data: ', data)
       }
     },
-    setUser (personData) {
+    setUser(personData) {
       let data = personData || {}
       if (process.env.mixpanel) {
         if (data.$email) {

@@ -16,15 +16,15 @@
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'purple',
       type: String
     },
-    'height': {
+    height: {
       default: 18,
       type: Number
     },
-    'width': {
+    width: {
       default: 16,
       type: Number
     }
@@ -43,4 +43,3 @@ export default {
   fill: $color--purple;
 }
 </style>
-

@@ -53,7 +53,7 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  data () {
+  data() {
     return {
       scrollIndex: 0,
       dapps: [],
@@ -62,19 +62,19 @@ export default {
     }
   },
   computed: {
-    userEntryRoute () {
+    userEntryRoute() {
       return this.$store.getters['userEntryRoute']
     }
   },
-  mounted () {
-    Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()])
-      .then(([featured, promoted]) => {
+  mounted() {
+    Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()]).then(
+      ([featured, promoted]) => {
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
         const slots = dappPromotedSlots
         const promotedDapps = promoted.data.slice(0, slots).reverse()
         if (featuredDapps && featuredDapps.length) {
-          this.dapps = featuredDapps.slice(0, 4 - (promotedDapps.length))
+          this.dapps = featuredDapps.slice(0, 4 - promotedDapps.length)
         }
         if (promotedDapps && promotedDapps.length) {
           for (var i = 0; i < promotedDapps.length; i++) {
@@ -84,27 +84,36 @@ export default {
           }
           this.hasPromotedDapp = true
         }
-      })
+      }
+    )
   },
   methods: {
-    getFeaturedDapps () {
+    getFeaturedDapps() {
       return axios.get('collections/featured')
     },
-    getPromotedDapps () {
+    getPromotedDapps() {
       return axios.get('promoted/dapps')
     },
-    trackCollectionView (slug) {
+    trackCollectionView(slug) {
       const sourceComponent = 'DappFeaturedList'
       const targetCollection = slug
-      const action = trackCollectionView(sourceComponent, this.sourcePath, targetCollection)
+      const action = trackCollectionView(
+        sourceComponent,
+        this.sourcePath,
+        targetCollection
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackPromotedDappsView () {
+    trackPromotedDappsView() {
       const sourceComponent = 'DappFeaturedList'
-      const action = trackPromotedDappsView(sourceComponent, this.sourcePath, this.userEntryRoute)
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -155,7 +164,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
   &.-promote {
@@ -176,4 +185,3 @@ export default {
   position: relative;
 }
 </style>
-

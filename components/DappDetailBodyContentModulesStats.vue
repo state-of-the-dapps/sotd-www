@@ -85,7 +85,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-
 .sparkline {
   margin: 10px 0;
 }

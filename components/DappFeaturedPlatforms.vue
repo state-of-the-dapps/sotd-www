@@ -46,16 +46,20 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  data () {
+  data() {
     return {
       platforms: platformList,
       sourcePath: this.$route.path
     }
   },
   methods: {
-    trackDappRankingPlatform (category) {
+    trackDappRankingPlatform(category) {
       const sourceComponent = 'DappFeaturedPlatform'
-      const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, category)
+      const action = trackDappRankingPlatform(
+        sourceComponent,
+        this.sourcePath,
+        category
+      )
       this.$mixpanel.track(action.name, action.data)
     }
   }
@@ -80,7 +84,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -.25px;
+  letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
   &.-promote {
@@ -133,10 +137,10 @@ export default {
 .title-2 {
   position: relative;
   font-size: 2.5rem;
-  margin-top: .75rem;
+  margin-top: 0.75rem;
   margin-bottom: 0rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba($color--black, .15);
+  border-bottom: 1px solid rgba($color--black, 0.15);
 }
 
 .wrapper {

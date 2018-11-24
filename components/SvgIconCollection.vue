@@ -21,15 +21,15 @@ V817.2z M1175.6,572.8h-120.9V297c0-29-23.5-52.5-52.5-52.5H555.4V105.1h620.2V572.
 <script>
 export default {
   props: {
-    'fill': {
+    fill: {
       default: 'black',
       type: String
     },
-    'height': {
+    height: {
       default: 18,
       type: Number
     },
-    'width': {
+    width: {
       default: 18,
       type: Number
     }

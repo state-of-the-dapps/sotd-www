@@ -110,7 +110,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       dapps: [],
       searchCompleted: false,
@@ -120,30 +120,35 @@ export default {
     }
   },
   computed: {
-    results () {
+    results() {
       return Boolean(this.dapps.length || this.suggestions.length)
     },
     search: {
-      get () {
+      get() {
         return this.$store.getters['search']
       },
-      set (value) {
+      set(value) {
         this.$store.dispatch('setSearch', value)
       }
     },
-    isSearching () {
+    isSearching() {
       return Boolean(this.searchStatus || this.search.length)
     }
   },
   methods: {
-    dappView (targetDapp) {
+    dappView(targetDapp) {
       this.resetSearch()
       const sourceCollection = ''
       const sourceComponent = 'GlobalSearch'
-      const action = trackDappView(sourceCollection, sourceComponent, this.sourcePath, targetDapp)
+      const action = trackDappView(
+        sourceCollection,
+        sourceComponent,
+        this.sourcePath,
+        targetDapp
+      )
       this.$mixpanel.track(action.name, action.data)
     },
-    goToSearchPage () {
+    goToSearchPage() {
       this.setSearchPage(this.search)
       this.$router.push({
         name: 'dapps',
@@ -152,12 +157,12 @@ export default {
         }
       })
     },
-    suggestionView (suggestion) {
+    suggestionView(suggestion) {
       this.setSearchPage('')
       const action = trackSearchSuggestion(this.sourcePath, suggestion)
       this.$mixpanel.track(action.name, action.data)
     },
-    fetchResults () {
+    fetchResults() {
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
       this.searchCompleted = false
@@ -205,29 +210,29 @@ export default {
         }
       }, 1000)
     },
-    focusInput () {
+    focusInput() {
       this.$refs.searchInput.focus()
     },
-    endSearch () {
+    endSearch() {
       this.searchStatus = false
     },
-    resetSearch () {
+    resetSearch() {
       this.$store.dispatch('setSearch', '')
       this.searchStatus = false
       this.suggestions = []
       this.dapps = []
     },
-    setSearchPage (query) {
+    setSearchPage(query) {
       this.$store.dispatch('dapps/search/resetQuery')
       this.$store.dispatch('dapps/search/setTextQuery', query)
       this.$store.dispatch('dapps/search/fetchItems')
       this.resetSearch()
     },
-    startSearch () {
+    startSearch() {
       this.searchStatus = true
       this.fetchResults()
     }
-  },
+  }
 }
 </script>
 
@@ -238,7 +243,7 @@ export default {
 .component-global-search {
   display: flex;
   align-items: center;
-  background: rgba($color--black, .1);
+  background: rgba($color--black, 0.1);
   padding: 8px 12px;
   border-radius: 3px;
   min-width: 250px;
@@ -339,7 +344,7 @@ export default {
 }
 
 .results-title {
-  margin: 0 0 .5rem 0;
+  margin: 0 0 0.5rem 0;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.25px;

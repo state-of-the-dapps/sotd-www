@@ -31,31 +31,29 @@ export default {
   components: {
     LayoutMain
   },
-  data () {
+  data() {
     return {
       dapp: constants.dappSchema,
       badges: constants.dappMetaBadges
     }
   },
-  asyncData ({ store, params, error }) {
-    return axios
-      .get('dapps/' + params.slug)
-      .then(response => {
-        const data = response.data
-        const dapp = data.item
-        if (!Object.keys(dapp).length > 0) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapp
-        }
-      })
+  asyncData({ store, params, error }) {
+    return axios.get('dapps/' + params.slug).then(response => {
+      const data = response.data
+      const dapp = data.item
+      if (!Object.keys(dapp).length > 0) {
+        error({ statusCode: 404 })
+      }
+      return {
+        dapp
+      }
+    })
   },
-  mounted () {
+  mounted() {
     const action = trackDappMetaView(this.dapp.slug)
     this.$mixpanel.track(action.name, action.data)
   },
-  head () {
+  head() {
     return {
       title: this.dapp.name + ' — State of the ÐApps',
       meta: [
@@ -64,7 +62,7 @@ export default {
         { hid: 'robots', name: 'robots', content: 'noindex' }
       ]
     }
-  },
+  }
 }
 </script>
 
@@ -73,13 +71,13 @@ export default {
 
 .badge-wrapper {
   padding: 10px;
-  background: rgba($color--black, .075);
+  background: rgba($color--black, 0.075);
   border-radius: 4px;
   margin-bottom: 10px;
 }
 
 .description {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   text-align: center;
 }
 

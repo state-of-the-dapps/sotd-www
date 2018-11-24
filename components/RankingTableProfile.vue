@@ -21,5 +21,4 @@ export default {
 .component-ranking-table-profile {
   @include font-monospace;
 }
-
 </style>

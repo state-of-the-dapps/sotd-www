@@ -24,41 +24,43 @@
 </template>
 
 <script>
-  import { dispatchErrors } from '~/helpers/mixins'
+import { dispatchErrors } from '~/helpers/mixins'
 
-  var validationTimer
+var validationTimer
 
-  export default {
-    mixins: [dispatchErrors],
-    computed: {
-      errors () {
-        return this.$store.getters['dapps/form/licenseErrors']
+export default {
+  mixins: [dispatchErrors],
+  computed: {
+    errors() {
+      return this.$store.getters['dapps/form/licenseErrors']
+    },
+    license: {
+      get() {
+        return this.$store.getters['dapps/form/license']
       },
-      license: {
-        get () {
-          return this.$store.getters['dapps/form/license']
-        },
-        set (value) {
-          const field = {
-            name: 'license',
-            value: value
-          }
-          this.$store.dispatch('dapps/form/setField', field)
+      set(value) {
+        const field = {
+          name: 'license',
+          value: value
         }
+        this.$store.dispatch('dapps/form/setField', field)
       }
-    },
-    methods: {
-      validate () {
-        clearTimeout(validationTimer)
-        const errors = {
-          field: 'license',
-          data: []
-        }
-        validationTimer = setTimeout(() => {
-          this.license.length > 50 ? errors.data.push(`License can't be longer than 50 characters`) : ''
-          this.dispatchErrors(errors, 'dapps')
-        }, 750)
+    }
+  },
+  methods: {
+    validate() {
+      clearTimeout(validationTimer)
+      const errors = {
+        field: 'license',
+        data: []
       }
-    },
+      validationTimer = setTimeout(() => {
+        this.license.length > 50
+          ? errors.data.push(`License can't be longer than 50 characters`)
+          : ''
+        this.dispatchErrors(errors, 'dapps')
+      }, 750)
+    }
   }
+}
 </script>

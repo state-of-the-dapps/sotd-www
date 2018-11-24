@@ -43,7 +43,7 @@ export default {
   components: {
     LayoutMain
   },
-  data () {
+  data() {
     return {
       logos: [
         {
@@ -70,7 +70,7 @@ export default {
     }
   },
   methods: {
-    trackLogosDownload () {
+    trackLogosDownload() {
       const action = trackLogosDownload()
       this.$mixpanel.track(action.name, action.data)
     }
@@ -109,7 +109,7 @@ export default {
   font-size: 3rem;
   text-transform: initial;
   text-align: center;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .wrapper {

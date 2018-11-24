@@ -19,10 +19,10 @@ export default {
       required: true
     }
   },
-  destroyed () {
+  destroyed() {
     this.$store.dispatch('dapps/form/resetForm')
   },
-  mounted () {
+  mounted() {
     this.$store.dispatch('dapps/form/resetForm')
   }
 }

@@ -48,47 +48,47 @@ export default {
     }
   },
   methods: {
-    loadMore () {
+    loadMore() {
       this.$emit('loadMore')
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/css/settings';
+@import '~assets/css/settings';
 
-  .component-LoadMore {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 75px;
-  }
+.component-LoadMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+}
 
-  .button {
-    padding: 9px 18px;
-    color: $color--gray;
-    background: $color--black;
-    box-shadow: 0 17px 70px rgba($color--black,.2);
-    cursor: pointer;
-    position: relative;
-    &:active {
-      top: 1px;
-    }
+.button {
+  padding: 9px 18px;
+  color: $color--gray;
+  background: $color--black;
+  box-shadow: 0 17px 70px rgba($color--black, 0.2);
+  cursor: pointer;
+  position: relative;
+  &:active {
+    top: 1px;
   }
+}
 
-  .button-wrapper {
-    text-align: center;
-    margin: 0;
-  }
+.button-wrapper {
+  text-align: center;
+  margin: 0;
+}
 
-  .loading-wrapper {
-    padding-top: 20px;
-  }
+.loading-wrapper {
+  padding-top: 20px;
+}
 
-  .message {
-    text-align: center;
-    font-size: 1.25rem;
-    color: $color--black;
-  }
+.message {
+  text-align: center;
+  font-size: 1.25rem;
+  color: $color--black;
+}
 </style>

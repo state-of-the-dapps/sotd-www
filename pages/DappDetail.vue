@@ -23,7 +23,7 @@ export default {
     DappDetail,
     LayoutMain
   },
-  data () {
+  data() {
     return {
       dapp: constants.dappSchema,
       direct: false
@@ -32,21 +32,19 @@ export default {
   computed: {
     ...mapGetters(['pageModal'])
   },
-  asyncData ({ store, params, error }) {
-    return axios
-      .get('dapps/' + params.slug)
-      .then(response => {
-        const data = response.data
-        const dapp = data.item
-        if (!Object.keys(dapp).length > 0) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapp
-        }
-      })
+  asyncData({ store, params, error }) {
+    return axios.get('dapps/' + params.slug).then(response => {
+      const data = response.data
+      const dapp = data.item
+      if (!Object.keys(dapp).length > 0) {
+        error({ statusCode: 404 })
+      }
+      return {
+        dapp
+      }
+    })
   },
-  head () {
+  head() {
     return {
       title: this.dapp.name + ' — State of the ÐApps',
       meta: [
@@ -57,4 +55,3 @@ export default {
   }
 }
 </script>
-

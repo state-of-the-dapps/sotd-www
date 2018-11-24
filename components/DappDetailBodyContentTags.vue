@@ -31,28 +31,28 @@ export default {
     }
   },
   computed: {
-    formattedTags () {
+    formattedTags() {
       var tags
       tags = this.tags || []
       return this.$options.filters.removeEmptyArrayItems(tags)
     }
   },
   methods: {
-    findDappsByTag (tag) {
+    findDappsByTag(tag) {
       this.trackDappTag(tag)
       this.$store.dispatch('dapps/search/resetQuery')
       this.$store.dispatch('tags/selectItem', tag)
       this.$store.dispatch('dapps/search/addTagToQuery', tag)
       this.$store.dispatch('dapps/search/fetchItems')
-      this.$store.dispatch('dapps/search/setFriendlyUrl').then((response) => {
+      this.$store.dispatch('dapps/search/setFriendlyUrl').then(response => {
         document.getElementById('__nuxt').scrollIntoView()
       })
     },
-    trackDappTag (name) {
+    trackDappTag(name) {
       const action = trackDappTag(name, this.slug)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -61,8 +61,8 @@ export default {
 @import '~assets/css/settings';
 
 .subtitle {
-  font-weight: 300; 
-  margin-bottom: .75rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {
     text-align: left;

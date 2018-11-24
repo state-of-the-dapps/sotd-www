@@ -79,23 +79,23 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       dropdown: false
     }
   },
   methods: {
-    open () {
+    open() {
       this.dropdown = true
     },
-    close () {
+    close() {
       this.dropdown = false
     },
-    select (selection) {
+    select(selection) {
       this.close()
       this.$emit('select', selection)
     }
-  },
+  }
 }
 </script>
 
@@ -116,7 +116,7 @@ export default {
 .filter-title {
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
 }
 
@@ -141,7 +141,7 @@ export default {
   background: $color--gray;
   width: 100%;
   z-index: 10;
-  box-shadow: 0 0 20px rgba($color--black, .1);
+  box-shadow: 0 0 20px rgba($color--black, 0.1);
   border: 1px solid $color--black;
   border-radius: 4px;
   padding-bottom: 10px;

@@ -53,36 +53,49 @@ export default {
     }
   },
   computed: {
-    addressLink () {
+    addressLink() {
       let addressLink = ''
       if (this.platform === 'Ethereum') {
-        addressLink = 'https://' + (this.network === 'mainnet' ? '' : this.network + '.') + 'etherscan.io/address/' + this.address + '?utm_source=StateOfTheDApps'
+        addressLink =
+          'https://' +
+          (this.network === 'mainnet' ? '' : this.network + '.') +
+          'etherscan.io/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'POA') {
-        addressLink = 'https://blockscout.com/poa/' + (this.network === 'mainnet' ? 'core' : 'sokol') + '/address/' + this.address + '?utm_source=StateOfTheDApps'
+        addressLink =
+          'https://blockscout.com/poa/' +
+          (this.network === 'mainnet' ? 'core' : 'sokol') +
+          '/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
-        addressLink = 'https://www.myeoskit.com/account/' + this.address + '?utm_source=StateOfTheDApps'
+        addressLink =
+          'https://www.myeoskit.com/account/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       }
       return addressLink
     }
   },
   methods: {
-    copy () {
+    copy() {
       this.copyText = 'Copied!'
       setTimeout(() => {
         this.copyText = 'Copy'
       }, 1500)
     },
-    trackContract (address, network, platform) {
+    trackContract(address, network, platform) {
       const dapp = this.slug
       const action = trackDappContract(address, dapp, network, platform)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackContractCopy (address, network, platform) {
+    trackContractCopy(address, network, platform) {
       const dapp = this.slug
       const action = trackDappContractCopy(address, dapp, network, platform)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
+  }
 }
 </script>
 
@@ -100,7 +113,7 @@ export default {
 
 .contract-address-copy {
   margin-left: 8px;
-  font-size: .7rem;
+  font-size: 0.7rem;
   color: $color--white;
   background: $color--black;
   padding: 2px 5px;

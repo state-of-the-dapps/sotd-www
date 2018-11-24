@@ -51,13 +51,13 @@ export default {
     }
   },
   methods: {
-    mapSvgBadge (badge, prop) {
+    mapSvgBadge(badge, prop) {
       const badgeObj = dappBadgeMap[badge]
       if (badgeObj) {
         return badgeObj[prop]
       }
     }
-  },
+  }
 }
 </script>
 
@@ -80,8 +80,8 @@ export default {
 }
 
 .subtitle {
-  font-weight: 300; 
-  margin-bottom: .75rem;
+  font-weight: 300;
+  margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {
     text-align: left;

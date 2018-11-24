@@ -26,7 +26,10 @@
 
 <script>
 import { platformSoftware } from '~/helpers/constants'
-import { trackDappPlatform, trackDappPlatformSoftware } from '~/helpers/mixpanel'
+import {
+  trackDappPlatform,
+  trackDappPlatformSoftware
+} from '~/helpers/mixpanel'
 
 export default {
   props: {
@@ -39,17 +42,17 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       platformSoftware
     }
   },
   methods: {
-    trackPlatform (platform) {
+    trackPlatform(platform) {
       const action = trackDappPlatform(platform, this.slug)
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappPlatformSoftware (platform, slug) {
+    trackDappPlatformSoftware(platform, slug) {
       const action = trackDappPlatformSoftware(platform, slug)
       this.$mixpanel.track(action.name, action.data)
     }

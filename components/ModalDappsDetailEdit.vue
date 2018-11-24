@@ -140,7 +140,7 @@ export default {
       required: true
     }
   },
-  data () {
+  data() {
     return {
       checkedActions: [],
       email: '',
@@ -152,18 +152,16 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'userEntryRoute'
-    ]),
-    formIsValid () {
+    ...mapGetters(['userEntryRoute']),
+    formIsValid() {
       return this.emailIsValid && this.name.length && this.suggestions.length
     }
   },
-  mounted () {
+  mounted() {
     this.checkedActions = this.modalProps.checked
   },
   methods: {
-    close () {
+    close() {
       const modal = {
         component: '',
         mpData: {},
@@ -171,7 +169,7 @@ export default {
       }
       this.$store.dispatch('setSiteModal', modal)
     },
-    submit () {
+    submit() {
       if (this.formIsValid) {
         axios
           .put(`dapps/${this.modalProps.slug}`, {
@@ -186,15 +184,24 @@ export default {
           })
           .then(response => {})
         this.submitted = true
-        const action = trackDappEditSubmit(this.checkedActions, this.email, this.modalProps.slug)
+        const action = trackDappEditSubmit(
+          this.checkedActions,
+          this.email,
+          this.modalProps.slug
+        )
         this.$mixpanel.track(action.name, action.data)
         const hasWeb3 = typeof web3 !== 'undefined'
         const lastUpdated = new Date().toISOString()
-        const user = setUser(this.email, hasWeb3, lastUpdated, this.userEntryRoute)
+        const user = setUser(
+          this.email,
+          hasWeb3,
+          lastUpdated,
+          this.userEntryRoute
+        )
         this.$mixpanel.setUser(user)
       }
     }
-  },
+  }
 }
 </script>
 
@@ -245,7 +252,7 @@ export default {
     content: '';
     display: block;
     background: $color--black;
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
     transform: scale(0);
     width: 9px;
     height: 9px;
@@ -259,8 +266,8 @@ export default {
   background: $color--black;
   color: $color--white;
   padding: 12px 50px;
-  box-shadow: 0 5px 20px rgba($color--black, .2);
-  transition: opacity .2s ease;
+  box-shadow: 0 5px 20px rgba($color--black, 0.2);
+  transition: opacity 0.2s ease;
   cursor: pointer;
   &.not-ready {
     opacity: 0.3;

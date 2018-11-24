@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    volume () {
+    volume() {
       let volume
       let stats = this.stats
       let platform = this.platform
@@ -57,7 +57,7 @@ export default {
       }
       return volume
     },
-    volumePct () {
+    volumePct() {
       let volumePct
       let stats = this.stats
       let platform = this.platform
@@ -70,7 +70,7 @@ export default {
       }
       return volumePct
     }
-  },
+  }
 }
 </script>
 
