@@ -51,12 +51,33 @@ export default {
     Help,
     SvgIconChevron
   },
-  props: ['category'],
+  props: {
+    category: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       dapps: [],
       sourcePath: this.$route.path
     }
+  },
+  async mounted () {
+    axios
+      .get('dapps', {
+        params: {
+          category: this.category.slug,
+          limit: 5,
+          offset: 0,
+          order: 'asc',
+          sort: 'rank'
+        }
+      })
+      .then((response) => {
+        const dapps = response.data.items
+        this.dapps = dapps
+      })
   },
   methods: {
     ...mapActions('dapps/rankings', [
@@ -79,22 +100,6 @@ export default {
       this.fetchDapps()
       this.$router.push({name: 'rankings-category', params: {category: category.slug}})
     }
-  },
-  async mounted () {
-    axios
-      .get('dapps', {
-        params: {
-          category: this.category.slug,
-          limit: 5,
-          offset: 0,
-          order: 'asc',
-          sort: 'rank'
-        }
-      })
-      .then((response) => {
-        const dapps = response.data.items
-        this.dapps = dapps
-      })
   }
 }
 </script>

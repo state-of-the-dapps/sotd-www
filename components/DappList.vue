@@ -153,6 +153,40 @@ export default {
       return options
     }
   },
+  watch: {
+    '$route' (to, from) {
+      this.setCategory(this.$route.params.category)
+      this.setPlatform(this.$route.params.platform)
+      this.fetchDapps()
+    }
+  },
+  async mounted () {
+    this.dappCategories = await getCategories()
+    if (!this.$route.query.reload) {
+      if (this.category && this.platform) {
+        this.$router.replace(
+          {
+            name: 'rankings-platform-category',
+            params: {
+              category: this.category,
+              platform: this.platform.toLowerCase()
+            }
+          }
+        )
+      } else if (this.category) {
+        this.$router.replace({name: 'rankings-category', params: {category: this.category}})
+      } else if (this.platform) {
+        this.$router.replace({name: 'rankings-platform', params: {platform: this.platform.toLowerCase()}})
+      }
+    } else {
+      this.$router.replace({query: {}})
+    }
+    if (this.dapps.length < 1) {
+      this.setCategory(this.$route.params.category)
+      this.setPlatform(this.$route.params.platform)
+      this.fetchDapps()
+    }
+  },
   methods: {
     loadMore () {
       this.incrementOffset()
@@ -206,41 +240,7 @@ export default {
       const action = trackDappRankingPlatform(sourceComponent, this.sourcePath, platform)
       this.$mixpanel.track(action.name, action.data)
     }
-  },
-  watch: {
-    '$route' (to, from) {
-      this.setCategory(this.$route.params.category)
-      this.setPlatform(this.$route.params.platform)
-      this.fetchDapps()
-    }
-  },
-  async mounted () {
-    this.dappCategories = await getCategories()
-    if (!this.$route.query.reload) {
-      if (this.category && this.platform) {
-        this.$router.replace(
-          {
-            name: 'rankings-platform-category',
-            params: {
-              category: this.category,
-              platform: this.platform.toLowerCase()
-            }
-          }
-        )
-      } else if (this.category) {
-        this.$router.replace({name: 'rankings-category', params: {category: this.category}})
-      } else if (this.platform) {
-        this.$router.replace({name: 'rankings-platform', params: {platform: this.platform.toLowerCase()}})
-      }
-    } else {
-      this.$router.replace({query: {}})
-    }
-    if (this.dapps.length < 1) {
-      this.setCategory(this.$route.params.category)
-      this.setPlatform(this.$route.params.platform)
-      this.fetchDapps()
-    }
-  },
+  }
 }
 </script>
 

@@ -48,7 +48,12 @@ export default {
     Help,
     SvgIconChevron
   },
-  props: ['platform'],
+  props: {
+    platform: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       dapps: [],

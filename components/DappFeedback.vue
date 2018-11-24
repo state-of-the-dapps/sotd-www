@@ -38,11 +38,6 @@ export default {
     SvgFeedbackNeutral,
     SvgFeedbackPositive
   },
-  computed: {
-    ...mapGetters('dapps/detail', {
-      dapp: 'item'
-    })
-  },
   data () {
     return {
       options: [
@@ -52,6 +47,11 @@ export default {
       ],
       hasSubmitted: false
     }
+  },
+  computed: {
+    ...mapGetters('dapps/detail', {
+      dapp: 'item'
+    })
   },
   methods: {
     svgFeedbackComponent (option) {

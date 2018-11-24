@@ -34,7 +34,20 @@ export default {
   components: {
     Help
   },
-  props: ['fields', 'order', 'sort'],
+  props: {
+    fields: {
+      type: Array,
+      required: true
+    },
+    order: {
+      type: Number,
+      required: true
+    },
+    sort: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     sortDapps (field) {
       if (field.order) {
