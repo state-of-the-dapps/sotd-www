@@ -11,7 +11,7 @@
     props: {
       error: {
         type: Object,
-        required: true
+        default: () => {}
       }
     },
     mounted () {
