@@ -46,27 +46,34 @@ export default {
   },
   props: {
     daily: {
+      type: Number,
       default: 0,
       required: true
     },
     monthly: {
+      type: Number,
       default: 0,
       required: true
     },
     sparkline: {
+      type: Array,
       required: true
     },
     quarterly: {
+      type: Number,
       default: 0,
       required: true
     },
     title: {
+      type: String,
       required: true
     },
     type: {
+      type: String,
       default: 'words'
     },
     weekly: {
+      type: Number,
       default: 0,
       required: true
     }

@@ -13,13 +13,28 @@
 
 <script>
 export default {
-  props: [
-    'curator',
-    'description',
-    'linkUrl',
-    'linkText',
-    'name'
-  ]
+  props: {
+    curator: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    linkUrl: {
+      type: String,
+      default: ''
+    },
+    linkText: {
+      type: String,
+      default: ''
+    },
+    name: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

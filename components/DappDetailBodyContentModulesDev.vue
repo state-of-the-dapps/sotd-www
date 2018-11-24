@@ -33,12 +33,24 @@ export default {
     Help,
     Trend
   },
-  props: [
-    'dev30d',
-    'dev30dPct',
-    'dev90d',
-    'sparkline'
-  ],
+  props: {
+    dev30d: {
+      type: Number,
+      required: true
+    },
+    dev30dPct: {
+      type: Number,
+      required: true
+    },
+    dev90d: {
+      type: Number,
+      required: true
+    },
+    sparkline: {
+      type: Array,
+      required: true
+    }
+  },
   methods: {
     getDappStatsClass (value) {
       let result = ''

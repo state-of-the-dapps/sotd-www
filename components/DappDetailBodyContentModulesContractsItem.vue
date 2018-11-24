@@ -18,7 +18,7 @@
         :address="address"/>
       <li v-if="addresses.length > 10"><span 
         class="show-hide" 
-        @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + this.addresses.slice(visibleLimit).length + ' contracts' : 'Show ' + this.addresses.slice(visibleLimit).length + ' more contracts' }}</span></li>     
+        @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + addresses.slice(visibleLimit).length + ' contracts' : 'Show ' + addresses.slice(visibleLimit).length + ' more contracts' }}</span></li>     
     </ul>
   </li>
 </template>
@@ -32,15 +32,19 @@ export default {
   },
   props: {
     addresses: {
+      type: Array,
       required: true
     },
     network: {
+      type: String,
       required: true
     },
     platform: {
+      type: String,
       required: true
     },
     slug: {
+      type: String,
       required: true
     }
   },

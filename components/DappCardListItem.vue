@@ -47,11 +47,12 @@ export default {
   },
   props: {
     dapp: {
-      required: true,
-      type: Object
+      type: Object,
+      required: true
     },
     sourceCollection: {
-      type: String
+      type: String,
+      default: ''
     }
   },
   data () {

@@ -10,6 +10,7 @@
 export default {
   props: {
     alert: {
+      type: String,
       required: true
     }
   }

@@ -17,13 +17,12 @@ export default {
   },
   props: {
     dapps: {
-      default () {
-        return []
-      },
-      type: Array
+      type: Array,
+      default: () => [],
     },
     sourceCollection: {
-      type: String
+      type: String,
+      default: ''
     }
   }
 }

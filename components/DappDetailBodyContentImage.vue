@@ -12,6 +12,7 @@
 export default {
   props: {
     productImage: {
+      type: String,
       required: true
     }
   }

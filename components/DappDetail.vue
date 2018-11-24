@@ -21,9 +21,11 @@ export default {
   },
   props: {
     dapp: {
+      type: Object,
       required: true
     },
     direct: {
+      type: Boolean,
       default: false
     }
   },

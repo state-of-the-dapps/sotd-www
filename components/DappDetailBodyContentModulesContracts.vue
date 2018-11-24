@@ -84,6 +84,7 @@ export default {
       required: true
     },
     slug: {
+      type: String,
       required: true
     }
   }

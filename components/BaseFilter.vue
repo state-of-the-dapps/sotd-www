@@ -71,11 +71,12 @@ export default {
       required: true
     },
     selected: {
-      type: String
+      type: String,
+      default: ''
     },
     title: {
       type: String,
-      requied: true
+      required: true
     }
   },
   data () {

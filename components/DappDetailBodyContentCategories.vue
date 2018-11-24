@@ -24,11 +24,11 @@ import { trackDappCategory } from '~/helpers/mixpanel'
 export default {
   props: {
     slug: {
-      default: '',
+      type: String,
       required: true
     },
     categories: {
-      default: () => [],
+      type: Array,
       required: true
     }
   },

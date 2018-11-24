@@ -8,6 +8,7 @@
 export default {
   props: {
     submitted: {
+      type: String,
       required: true
     }
   }

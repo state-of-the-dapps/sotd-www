@@ -14,6 +14,7 @@
 export default {
   props: {
     license: {
+      type: String,
       required: true
     }
   }

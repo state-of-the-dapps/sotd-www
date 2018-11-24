@@ -95,6 +95,7 @@ export default {
   },
   props: {
     dapp: {
+      type: Object,
       required: true
     }
   }

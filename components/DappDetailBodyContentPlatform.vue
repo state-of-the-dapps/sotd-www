@@ -29,7 +29,16 @@ import { platformSoftware } from '~/helpers/constants'
 import { trackDappPlatform, trackDappPlatformSoftware } from '~/helpers/mixpanel'
 
 export default {
-  props: ['platform', 'slug'],
+  props: {
+    platform: {
+      type: String,
+      required: true
+    },
+    slug: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       platformSoftware

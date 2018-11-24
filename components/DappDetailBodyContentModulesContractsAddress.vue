@@ -31,15 +31,19 @@ export default {
   },
   props: {
     address: {
+      type: String,
       required: true
     },
     network: {
+      type: String,
       required: true
     },
     platform: {
+      type: String,
       required: true
     },
     slug: {
+      type: String,
       required: true
     }
   },

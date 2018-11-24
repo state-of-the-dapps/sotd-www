@@ -46,6 +46,7 @@ export default {
   },
   props: {
     badges: {
+      type: Array,
       required: true
     }
   },
