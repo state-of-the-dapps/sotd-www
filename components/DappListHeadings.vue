@@ -40,7 +40,7 @@ export default {
       required: true
     },
     order: {
-      type: Number,
+      type: String,
       required: true
     },
     sort: {

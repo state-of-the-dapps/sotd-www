@@ -14,14 +14,14 @@
 import { mapActions } from 'vuex'
 
 export default {
-  methods: {
-    ...mapActions(['setPageModal'])
-  },
   destroyed () {
     this.setPageModal(false)
   },
   mounted () {
     this.setPageModal(true)
+  },
+  methods: {
+    ...mapActions(['setPageModal'])
   }
 }
 </script>

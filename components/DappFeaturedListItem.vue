@@ -25,7 +25,20 @@
 import { trackDappView } from '~/helpers/mixpanel'
 
 export default {
-  props: ['dapp', 'hasPromotedDapp', 'index'],
+  props: {
+    dapp: {
+      type: Object,
+      required: true
+    },
+    hasPromotedDapp: {
+      type: Boolean,
+      default: false
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
       sourcePath: this.$route.path
