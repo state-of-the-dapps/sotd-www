@@ -281,31 +281,31 @@ export default {
     height: 21px;
   }
   &.-facebook:before {
-    background: url('~/assets/images/social/facebook.png') center left no-repeat;
+    background: url('~assets/images/social/facebook.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-twitter:before {
-    background: url('~/assets/images/social/twitter.png') center left no-repeat;
+    background: url('~assets/images/social/twitter.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-github:before {
-    background: url('~/assets/images/social/github.png') center left no-repeat;
+    background: url('~assets/images/social/github.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-chat:before {
-    background: url('~/assets/images/social/chat.png') center left no-repeat;
+    background: url('~assets/images/social/chat.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-reddit:before {
-    background: url('~/assets/images/social/reddit.png') center left no-repeat;
+    background: url('~assets/images/social/reddit.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-blog:before {
-    background: url('~/assets/images/social/blog.png') center left no-repeat;
+    background: url('~assets/images/social/blog.png') center left no-repeat;
     background-size: 21px 21px;
   }
   &.-etherian:before {
-    background: url('~/assets/images/social/etherian.png') center left no-repeat;
+    background: url('~assets/images/social/etherian.png') center left no-repeat;
     background-size: 21px 21px;
   }
 }

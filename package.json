@@ -22,7 +22,7 @@
     "@nuxtjs/markdownit": "^1.2.2",
     "@nuxtjs/router": "^1.1.0",
     "@nuxtjs/sentry": "^2.0.0",
-    "axios": "^0.16.2",
+    "axios": "^0.18.2",
     "camelcase": "^5.0.0",
     "chart.js": "^2.7.2",
     "clipboard": "^1.5.16",

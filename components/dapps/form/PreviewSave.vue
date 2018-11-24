@@ -403,7 +403,7 @@ export default {
   left: 0;
   width: 47px;
   height: 47px;
-  background: url('~/assets/images/ribbon.png') top left no-repeat;
+  background: url('~assets/images/ribbon.png') top left no-repeat;
   background-size: 47px 47px;
   margin: 0;
   z-index: 5;

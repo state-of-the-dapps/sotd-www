@@ -88,7 +88,7 @@ export default {
   &:after {
     position: absolute;
     content: '';
-    background: url('~/assets/images/arrows/dropdown.png') center center
+    background: url('~assets/images/arrows/dropdown.png') center center
       no-repeat;
     background-size: 13px 8px;
     transition: transform 0.3s ease;

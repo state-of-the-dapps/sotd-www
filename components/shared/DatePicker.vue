@@ -150,7 +150,7 @@ export default {
   &.wrapper {
     position: absolute;
     // wrapper top/left/bottom/right positioning should be declared in the parent component
-    background: url('~/assets/images/bg.jpg') center center;
+    background: url('~assets/images/bg.jpg') center center;
     background-size: 100px 100px;
     box-shadow: 0 0 20px rgba($color--black, 0.1);
     padding: 20px;

@@ -197,7 +197,7 @@ export default {
     position: absolute;
     right: 10px;
     bottom: 9px;
-    background: url('~/assets/images/close/small.png') center center no-repeat;
+    background: url('~assets/images/close/small.png') center center no-repeat;
     background-size: 9px 9px;
     width: 9px;
     height: 9px;

@@ -40,4 +40,4 @@ jobs:
       - run: yarn run lint
 
       # run tests!
-      - run: yarn run test
+      # - run: yarn run test

@@ -81,7 +81,7 @@ export default {
 }
 
 #linkexchange .LX__banner__options {
-  background: url('~/assets/images/bg.jpg') center center !important;
+  background: url('~assets/images/bg.jpg') center center !important;
   background-size: 100px 100px !important;
   box-shadow: none !important;
   align-items: center !important;
