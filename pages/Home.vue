@@ -4,6 +4,7 @@
       <HomeHero/>
       <DappFeaturedList/>
       <DappFeaturedPlatforms/>
+      <DappFeaturedCategories/>
       <DappFeaturedRankings/>
       <HomeFeaturedCollections/>
     </div>
@@ -13,6 +14,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import DappFeaturedList from '~/components/DappFeaturedList'
+import DappFeaturedCategories from '~/components/DappFeaturedCategories'
 import DappFeaturedPlatforms from '~/components/DappFeaturedPlatforms'
 import DappFeaturedRankings from '~/components/DappFeaturedRankings'
 import HomeFeaturedCollections from '~/components/HomeFeaturedCollections'
@@ -23,6 +25,7 @@ export default {
   components: {
     HomeFeaturedCollections,
     DappFeaturedList,
+    DappFeaturedCategories,
     DappFeaturedPlatforms,
     DappFeaturedRankings,
     HomeHero,
