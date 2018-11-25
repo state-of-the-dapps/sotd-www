@@ -42,9 +42,7 @@ export default {
     '@nuxtjs/markdownit'
   ],
   sentry: {
-    config: {
-      defaultIntegrations: true
-    }
+    defaultIntegrations: true
   },
   serverMiddleware: ['redirect-ssl'],
   css: [{ src: '~/assets/css/main.scss', lang: 'scss' }],
