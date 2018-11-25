@@ -7,7 +7,8 @@
           :alert="dapp.alert"/>
         <DappDetailBodyContentImage 
           v-if="dapp.productImage" 
-          :product-image="dapp.productImage"/>
+          :product-image="dapp.productImage"
+          :title="dapp.name + ' - ' + dapp.teaser"/>
         <DappDetailBodyContentDescription 
           v-if="dapp.description" 
           :description="dapp.description"/>
