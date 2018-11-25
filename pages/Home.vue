@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('setSiteSection', '')
+    this.$sentry.captureException(new Error('Test error'))
   }
 }
 </script>
