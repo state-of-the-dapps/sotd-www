@@ -41,6 +41,11 @@ export default {
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
     '@nuxtjs/markdownit'
   ],
+  sentry: {
+    config: {
+      defaultIntegrations: true
+    }
+  },
   serverMiddleware: ['redirect-ssl'],
   css: [{ src: '~/assets/css/main.scss', lang: 'scss' }],
   env: {
