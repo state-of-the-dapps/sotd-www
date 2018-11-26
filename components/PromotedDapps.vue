@@ -58,12 +58,17 @@
               @click="selectSubmittedDapp('no')">No</button>
           </p>
         </div>
+        <div v-if="hasSubmittedDapp === 'no'"><input 
+          v-model="website" 
+          class="input" 
+          type="text" 
+          placeholder="Your ÐApp's website"></div>
       </div>
       <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
       <div class="send-wrapper"><button 
         :class="formIsValid ? '--is-ready' : ''" 
         class="send" 
-        @click="send"><span v-if="formIsValid">Send</span><span v-else>Please fill out all fields</span></button></div>
+        @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
     </div>
   </div>
 </template>
@@ -103,7 +108,8 @@ export default {
       emailIsValid: false,
       formIsSubmitting: false,
       name: '',
-      hasSubmittedDapp: ''
+      hasSubmittedDapp: '',
+      website: ''
     }
   },
   computed: {
@@ -155,6 +161,7 @@ export default {
         const dapp = this.dapp
         const name = this.name
         const hasSubmittedDapp = this.hasSubmittedDapp
+        const website = this.website
 
         const action = trackPromotedDappSubmit(dapp, email, hasSubmittedDapp)
         this.$mixpanel.track(action.name, action.data)
@@ -176,7 +183,8 @@ export default {
             dapp,
             email,
             name,
-            hasSubmittedDapp
+            hasSubmittedDapp,
+            website
           }
         }
         axios
