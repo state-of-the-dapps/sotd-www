@@ -211,7 +211,9 @@ export default {
       }, 1000)
     },
     focusInput() {
-      this.$refs.searchInput.focus()
+      if (this.$refs.searchInput) {
+        this.$refs.searchInput.focus()
+      }
     },
     endSearch() {
       this.searchStatus = false
