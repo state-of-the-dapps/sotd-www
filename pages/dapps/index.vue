@@ -7,7 +7,14 @@
           <DappsFilters/>
         </div>
         <div class="results">
-          <CountRefine/>
+          <div class="count-sort">
+            <div class="count">
+              <CountRefine/>
+            </div>
+            <div class="sort">
+              <BaseDropdown/>
+            </div>
+          </div>
           <div class="dapp-wrapper">
             <DappCardList :dapps="dapps" />
           </div>
@@ -19,6 +26,7 @@
 </template>
 
 <script>
+import BaseDropdown from '~/components/BaseDropdown'
 import CountRefine from '~/components/dapps/search/CountRefine.vue'
 import Collections from '~/components/dapps/search/Collections.vue'
 import DappCardList from '~/components/DappCardList'
@@ -29,6 +37,7 @@ import Search from '~/components/dapps/search/Search.vue'
 
 export default {
   components: {
+    BaseDropdown,
     Collections,
     CountRefine,
     DappCardList,

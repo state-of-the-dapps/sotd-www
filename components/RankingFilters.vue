@@ -1,7 +1,7 @@
 <template>
   <div class="component-ranking-filters">
     <div class="filter-wrapper">
-      <BaseFilter
+      <BaseDropdown
         :important="true"
         :options="categoryOptions"
         :selected="category"
@@ -11,7 +11,7 @@
         @select="filterCategory"/>
     </div>
     <div class="filter-wrapper">
-      <BaseFilter
+      <BaseDropdown
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"
@@ -29,11 +29,11 @@ import {
   trackDappRankingCategory,
   trackDappRankingPlatform
 } from '~/helpers/mixpanel'
-import BaseFilter from '~/components/BaseFilter'
+import BaseDropdown from '~/components/BaseDropdown'
 
 export default {
   components: {
-    BaseFilter
+    BaseDropdown
   },
   data() {
     return {
