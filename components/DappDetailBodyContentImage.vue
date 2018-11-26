@@ -2,7 +2,8 @@
   <div class="component-DappDetailBodyContentImage">
     <div class="wrapper">
       <img 
-        :src="productImage" 
+        :src="productImage"
+        :alt="title"
         class="image">
     </div>
   </div>
@@ -12,6 +13,10 @@
 export default {
   props: {
     productImage: {
+      type: String,
+      required: true
+    },
+    title: {
       type: String,
       required: true
     }
