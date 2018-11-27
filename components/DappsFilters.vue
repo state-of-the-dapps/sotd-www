@@ -1,29 +1,29 @@
 <template>
   <div class="component-dapps-filters">
     <div class="filter">
-      <BaseFilter
+      <BaseDropdown
         :options="platformOptions"
         :selected="formattedPlatformQuery"
         all-text="All platforms"
-        filter="Platform"
+        name="Platform"
         title="Choose a platform"
         @select="selectPlatform"/>
     </div>
     <div class="filter">
-      <BaseFilter
+      <BaseDropdown
         :options="categoryOptions"
         :selected="categoryQuery"
         all-text="All categories"
-        filter="Category"
+        name="Category"
         title="Choose a category"
         @select="selectCategory"/>
     </div>
     <div class="filter">
-      <BaseFilter
+      <BaseDropdown
         :options="statusOptions"
         :selected="statusQuery"
         all-text="All statuses"
-        filter="Status"
+        name="Status"
         title="Choose a status"
         @select="selectStatus"/>
     </div>
@@ -35,11 +35,11 @@ import { mapActions, mapGetters } from 'vuex'
 import { getCategories } from '~/helpers/api'
 import { trackDappsFilter } from '~/helpers/mixpanel'
 import { dappStatuses, platformList, platformMap } from '~/helpers/constants'
-import BaseFilter from './BaseFilter'
+import BaseDropdown from './BaseDropdown'
 
 export default {
   components: {
-    BaseFilter
+    BaseDropdown
   },
   data() {
     return {

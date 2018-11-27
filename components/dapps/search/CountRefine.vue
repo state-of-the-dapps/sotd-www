@@ -65,7 +65,7 @@ export default {
     padding-right: 0;
   }
   @include tweakpoint('min-width', $tweakpoint--default) {
-    padding: 25px 0 5px 0;
+    padding: 17px 0 5px 0;
     flex-direction: row;
     align-items: center;
     > :nth-child(1) {

@@ -461,6 +461,20 @@ export const trackDappsFilter = function(type, option) {
   return action
 }
 
+export const trackDappsSort = function(option) {
+  let name = 'DApps - Sort'
+  let data = {
+    option
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackFooterLogoDownload = function(sourcePath) {
   let name = 'Footer - Logo Download'
   let data = {

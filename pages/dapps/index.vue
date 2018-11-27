@@ -7,7 +7,14 @@
           <DappsFilters/>
         </div>
         <div class="results">
-          <CountRefine/>
+          <div class="count-sort">
+            <div class="count">
+              <CountRefine/>
+            </div>
+            <div class="sort">
+              <DappsSort/>
+            </div>
+          </div>
           <div class="dapp-wrapper">
             <DappCardList :dapps="dapps" />
           </div>
@@ -23,6 +30,7 @@ import CountRefine from '~/components/dapps/search/CountRefine.vue'
 import Collections from '~/components/dapps/search/Collections.vue'
 import DappCardList from '~/components/DappCardList'
 import DappsFilters from '~/components/DappsFilters'
+import DappsSort from '~/components/DappsSort'
 import LayoutMain from '~/components/LayoutMain'
 import Pager from '~/components/dapps/search/Pager.vue'
 import Search from '~/components/dapps/search/Search.vue'
@@ -33,6 +41,7 @@ export default {
     CountRefine,
     DappCardList,
     DappsFilters,
+    DappsSort,
     LayoutMain,
     Pager,
     Search
@@ -76,6 +85,13 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.count-sort {
+  @include tweakpoint('min-width', 350px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .dapps-filters {
   @include margin-wrapper-main;
   @include tweakpoint('min-width', 1200px) {
@@ -91,7 +107,15 @@ export default {
   }
 }
 
+.count {
+  flex: 1;
+}
+
 .results {
   flex: 1;
+}
+
+.sort {
+  padding-top: 15px;
 }
 </style>

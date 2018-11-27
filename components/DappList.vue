@@ -3,19 +3,19 @@
     id="component-DappList" 
     class="component-DappList">
     <div class="filter-wrapper">
-      <BaseFilter
+      <BaseDropdown
         :important="true"
         :options="categoryOptions"
         :selected="category"
         all-text="All categories"
-        filter="Category"
+        name="Category"
         title="Choose a category"
         @select="filterCategory"/>
-      <BaseFilter
+      <BaseDropdown
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"
-        filter="Platform"
+        name="Platform"
         title="Choose a platform"
         @select="filterPlatform"/>
     </div> 
@@ -55,14 +55,14 @@ import {
 } from '~/helpers/mixpanel'
 import { platformList } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
-import BaseFilter from './BaseFilter'
+import BaseDropdown from './BaseDropdown'
 import DappListHeadings from './DappListHeadings'
 import DappListItem from './DappListItem'
 import LoadMore from './LoadMore'
 
 export default {
   components: {
-    BaseFilter,
+    BaseDropdown,
     DappListHeadings,
     DappListItem,
     LoadMore

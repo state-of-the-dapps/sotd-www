@@ -153,6 +153,23 @@ const dappRefineTabOptions = Object.freeze([
   'most-relevant'
 ])
 
+const dappSortOptions = Object.freeze([
+  {
+    text: 'Hottest',
+    selection: 'hot'
+  },
+  {
+    text: 'Newest',
+    selection: 'new'
+  }
+])
+
+const dappSortOptionsMap = {
+  new: 'Newest',
+  hot: 'Hottest',
+  'most-relevant': 'Hottest'
+}
+
 const daysOfTheWeek = Object.freeze([
   'Sun',
   'Mon',
@@ -223,6 +240,8 @@ export {
   dappRefineTabOptions,
   dappSchema,
   dappSocialComponentMap,
+  dappSortOptions,
+  dappSortOptionsMap,
   dappStatuses,
   daysOfTheWeek,
   dappDefaultPlatform,
