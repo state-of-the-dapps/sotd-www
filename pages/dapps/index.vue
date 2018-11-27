@@ -107,16 +107,15 @@ export default {
   }
 }
 
+.count {
+  flex: 1;
+}
+
 .results {
   flex: 1;
 }
 
 .sort {
   padding-top: 15px;
-  width: 50%;
-  @include tweakpoint('min-width', 600px) {
-    margin-left: auto;
-    width: 100px;
-  }
 }
 </style>

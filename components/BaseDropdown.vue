@@ -1,5 +1,7 @@
 <template>
-  <div class="component-base-dropdown">
+  <div
+    :class="theme"
+    class="component-base-dropdown">
     <h3
       v-if="name"
       class="dropdown-title">{{ name }}</h3>
@@ -79,6 +81,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    theme: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -104,8 +110,20 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-base-dropdown {
+  &.inline {
+    display: flex;
+    align-items: center;
+    .dropdown-title {
+      margin: 0;
+      padding-right: 8px;
+    }
+  }
+}
+
 .dropdown-wrapper {
   position: relative;
+  min-width: 100px;
 }
 
 .selected-option {
