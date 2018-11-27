@@ -136,5 +136,6 @@ export default {
 
 .filter-wrapper {
   width: 150px;
+  margin: 0 5px;
 }
 </style>
