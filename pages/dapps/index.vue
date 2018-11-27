@@ -86,7 +86,7 @@ export default {
 @import '~assets/css/settings';
 
 .count-sort {
-  @include tweakpoint('min-width', 350px) {
+  @include tweakpoint('min-width', 600px) {
     display: flex;
     align-items: center;
   }
