@@ -91,7 +91,7 @@
               <label 
                 class="checkbox-label" 
                 for="image">Add logo / icon / image URLs (<a 
-                  href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" 
+                  href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
                   target="_blank">view image guidelines here</a>)</label>
             </div>
             <div class="checkbox-field">

@@ -28,7 +28,7 @@
         class="error-item">{{ error }}</li>
     </ul>
     <p class="help">Provide a URL to your icon <br>Dimensions must be 192px width by 192px height <br><a 
-      href="https://d3colfu6jphe2a.cloudfront.net/image_guidelines_08152018.png" 
+      href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines</a></p>
   </div>
 </template>
