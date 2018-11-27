@@ -12,7 +12,7 @@
               <CountRefine/>
             </div>
             <div class="sort">
-              <BaseDropdown/>
+              <DappsSort/>
             </div>
           </div>
           <div class="dapp-wrapper">
@@ -26,22 +26,22 @@
 </template>
 
 <script>
-import BaseDropdown from '~/components/BaseDropdown'
 import CountRefine from '~/components/dapps/search/CountRefine.vue'
 import Collections from '~/components/dapps/search/Collections.vue'
 import DappCardList from '~/components/DappCardList'
 import DappsFilters from '~/components/DappsFilters'
+import DappsSort from '~/components/DappsSort'
 import LayoutMain from '~/components/LayoutMain'
 import Pager from '~/components/dapps/search/Pager.vue'
 import Search from '~/components/dapps/search/Search.vue'
 
 export default {
   components: {
-    BaseDropdown,
     Collections,
     CountRefine,
     DappCardList,
     DappsFilters,
+    DappsSort,
     LayoutMain,
     Pager,
     Search
@@ -85,6 +85,13 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.count-sort {
+  @include tweakpoint('min-width', 600px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .dapps-filters {
   @include margin-wrapper-main;
   @include tweakpoint('min-width', 1200px) {
@@ -102,5 +109,14 @@ export default {
 
 .results {
   flex: 1;
+}
+
+.sort {
+  padding-top: 15px;
+  width: 50%;
+  @include tweakpoint('min-width', 600px) {
+    margin-left: auto;
+    width: 100px;
+  }
 }
 </style>

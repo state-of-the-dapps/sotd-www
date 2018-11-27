@@ -8,14 +8,14 @@
         :options="categoryOptions"
         :selected="category"
         all-text="All categories"
-        filter="Category"
+        name="Category"
         title="Choose a category"
         @select="filterCategory"/>
       <BaseDropdown
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"
-        filter="Platform"
+        name="Platform"
         title="Choose a platform"
         @select="filterPlatform"/>
     </div> 

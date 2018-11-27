@@ -5,7 +5,7 @@
         :options="platformOptions"
         :selected="formattedPlatformQuery"
         all-text="All platforms"
-        filter="Platform"
+        name="Platform"
         title="Choose a platform"
         @select="selectPlatform"/>
     </div>
@@ -14,7 +14,7 @@
         :options="categoryOptions"
         :selected="categoryQuery"
         all-text="All categories"
-        filter="Category"
+        name="Category"
         title="Choose a category"
         @select="selectCategory"/>
     </div>
@@ -23,7 +23,7 @@
         :options="statusOptions"
         :selected="statusQuery"
         all-text="All statuses"
-        filter="Status"
+        name="Status"
         title="Choose a status"
         @select="selectStatus"/>
     </div>

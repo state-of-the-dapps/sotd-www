@@ -1,14 +1,16 @@
 <template>
-  <div class="component-base-filter">
-    <h3 class="filter-title">{{ filter }}</h3>
-    <div class="filter-wrapper">
+  <div class="component-base-dropdown">
+    <h3
+      v-if="name"
+      class="dropdown-title">{{ name }}</h3>
+    <div class="dropdown-wrapper">
       <button
         :class="important ? 'important' : ''"
         class="button"
         @click="open">
         <span
           :class="selected ? 'is-active' : ''"
-          class="selected-filter">{{ $options.filters.capitalize(selected) || allText }}</span>
+          class="selected-option">{{ $options.filters.capitalize(selected) || allText }}</span>
         <span class="arrow-wrapper"><SvgIconChevron
           :width="11"
           :height="11"/></span>
@@ -17,9 +19,9 @@
         <div
           v-on-clickaway="close"
           v-if="dropdown"
-          class="dropdown">
+          class="dropdown-content">
           <h4
-            class="dropdown-title"
+            class="dropdown-content-title"
             @click="close">{{ title }}</h4>
           <ul class="option-list">
             <li
@@ -56,11 +58,11 @@ export default {
   props: {
     allText: {
       type: String,
-      required: true
+      default: ''
     },
-    filter: {
+    name: {
       type: String,
-      required: true
+      default: ''
     },
     important: {
       type: Boolean,
@@ -102,18 +104,18 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.filter-wrapper {
+.dropdown-wrapper {
   position: relative;
 }
 
-.selected-filter {
+.selected-option {
   flex: 1;
   &.is-active {
     font-weight: 700;
   }
 }
 
-.filter-title {
+.dropdown-title {
   margin-top: 0;
   margin-bottom: 5px;
   font-size: 0.9rem;
@@ -134,7 +136,7 @@ export default {
   }
 }
 
-.dropdown {
+.dropdown-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -147,7 +149,7 @@ export default {
   padding-bottom: 10px;
 }
 
-.dropdown-title {
+.dropdown-content-title {
   padding: 0 10px 10px 10px;
   margin: 8px 0 8px 0;
   border-bottom: 1px solid darken($color--gray, 10%);
