@@ -25,7 +25,15 @@
       <li 
         v-for="(error, index) in errors" 
         :key="index" 
-        class="error-item">{{ error }}</li>
+        class="error-item">{{ error }}
+      </li>
+      <li
+        v-if="existingDapp"
+        class="error-item">You can 
+        <nuxt-link 
+          :to="{ name: 'dapp-detail', params: { slug: existingDapp } }"
+          class="error-link">review or submit edits to that ÐApp</nuxt-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -38,6 +46,11 @@ var validationTimer
 
 export default {
   mixins: [dispatchErrors, dispatchWarnings],
+  data() {
+    return {
+      existingDapp: ''
+    }
+  },
   computed: {
     errors() {
       return this.$store.getters['dapps/form/nameErrors']
@@ -90,10 +103,14 @@ export default {
             }
           })
           .then(response => {
+            this.existingName = ''
             const data = response.data
             const item = data.item
             if (item.slug) {
-              errors.data.push(`Name has already been taken`)
+              errors.data.push(`That name has already been taken`)
+              if (!item.queue) {
+                this.existingDapp = item.slug
+              }
             }
             this.dispatchErrors(errors, 'dapps')
             this.dispatchWarnings(warnings, 'dapps')
