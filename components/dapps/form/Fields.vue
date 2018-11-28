@@ -225,5 +225,9 @@ export default {
   /deep/ .warning-item {
     margin: 0.2rem 0;
   }
+
+  /deep/ .error-link {
+    color: lighten($color--white, 100%);
+  }
 }
 </style>
