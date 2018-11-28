@@ -16,7 +16,9 @@
             </div>
           </div>
           <div class="dapp-wrapper">
-            <DappCardList :dapps="dapps" />
+            <DappCardList
+              :dapps="dapps"
+              :optional-attribute="optionalCardAttribute"/>
           </div>
           <Pager/>
         </div>
@@ -52,6 +54,9 @@ export default {
     },
     dappCount() {
       return this.$store.getters['dapps/search/itemCount']
+    },
+    optionalCardAttribute() {
+      return this.tabQuery || ''
     },
     tabQuery() {
       return this.$store.getters['dapps/search/tabQuery']

@@ -4,6 +4,7 @@
       v-for="(dapp, index) in dapps"
       :key="index"
       :dapp="dapp"
+      :optional-attribute="optionalAttribute"
       :source-collection="sourceCollection"/>
   </ul>
 </template>
@@ -19,6 +20,10 @@ export default {
     dapps: {
       type: Array,
       default: () => []
+    },
+    optionalAttribute: {
+      type: String,
+      default: ''
     },
     sourceCollection: {
       type: String,

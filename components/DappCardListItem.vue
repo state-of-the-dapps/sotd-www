@@ -33,11 +33,17 @@
         class="new">
         New
       </span>
+      <span 
+        v-if="optionalAttribute" 
+        class="optional-text">
+        {{ optionalText }}
+      </span>
     </nuxt-link>
   </li>
 </template>
 
 <script>
+import formatDate from 'date-fns/format'
 import { trackDappView } from '~/helpers/mixpanel'
 import DappBadgeList from './DappBadgeList'
 
@@ -50,6 +56,10 @@ export default {
       type: Object,
       required: true
     },
+    optionalAttribute: {
+      type: String,
+      default: ''
+    },
     sourceCollection: {
       type: String,
       default: ''
@@ -58,6 +68,15 @@ export default {
   data() {
     return {
       sourcePath: this.$route.path
+    }
+  },
+  computed: {
+    optionalText() {
+      let text = ''
+      if (this.optionalAttribute === 'new' && this.dapp.created) {
+        text = formatDate(this.dapp.created, 'MMM DD, YYYY')
+      }
+      return text
     }
   },
   methods: {
@@ -153,7 +172,8 @@ export default {
   @include dapp-category-colors;
 }
 
-.new {
+.new,
+.optional-text {
   position: absolute;
   display: inline-block;
   top: 10px;
@@ -163,6 +183,11 @@ export default {
   z-index: 2;
   font-weight: 700;
   color: $color--purple;
+}
+
+.optional-text {
+  left: auto;
+  right: 10px;
 }
 
 .category {
