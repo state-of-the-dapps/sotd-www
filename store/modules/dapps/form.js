@@ -38,6 +38,7 @@ function initialState() {
       acceptedTerms: [],
       websiteUrl: []
     },
+    existingDapp: '',
     fields: {
       authors: [],
       category: '',
@@ -132,6 +133,9 @@ const actions = {
   setErrors({ commit }, errors) {
     commit('SET_ERRORS', errors)
   },
+  setExistingDapp({ commit }, dapp) {
+    commit('SET_EXISTING_DAPP', dapp)
+  },
   setField({ commit }, field) {
     commit('SET_FIELD', field)
   },
@@ -220,6 +224,9 @@ const mutations = {
   },
   SET_ERRORS(state, errors) {
     state.errors[errors.field] = errors.data
+  },
+  SET_EXISTING_DAPP(state, dapp) {
+    state.existingDapp = dapp
   },
   SET_FIELD(state, field) {
     state.fields[field.name] = field.value
@@ -316,6 +323,9 @@ const getters = {
   },
   errorFields: state => {
     return state.errorFields
+  },
+  existingDapp: state => {
+    return state.existingDapp
   },
   fields: state => {
     return state.fields

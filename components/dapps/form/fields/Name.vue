@@ -46,14 +46,12 @@ var validationTimer
 
 export default {
   mixins: [dispatchErrors, dispatchWarnings],
-  data() {
-    return {
-      existingDapp: ''
-    }
-  },
   computed: {
     errors() {
       return this.$store.getters['dapps/form/nameErrors']
+    },
+    existingDapp() {
+      return this.$store.getters['dapps/form/existingDapp']
     },
     name: {
       get() {
@@ -103,13 +101,13 @@ export default {
             }
           })
           .then(response => {
-            this.existingName = ''
+            this.$store.dispatch('dapps/form/setExistingDapp', '')
             const data = response.data
             const item = data.item
             if (item.slug) {
               errors.data.push(`That name has already been taken`)
               if (!item.queue) {
-                this.existingDapp = item.slug
+                this.$store.dispatch('dapps/form/setExistingDapp', item.slug)
               }
             }
             this.dispatchErrors(errors, 'dapps')
