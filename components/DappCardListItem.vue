@@ -74,7 +74,7 @@ export default {
     optionalText() {
       let text = ''
       if (this.optionalAttribute === 'new' && this.dapp.created) {
-        text = formatDate(this.dapp.created, 'MMM DD, YYYY')
+        text = formatDate(this.dapp.created, 'MMM D, YYYY')
       }
       return text
     }
