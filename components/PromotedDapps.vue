@@ -17,6 +17,7 @@
       <h2 
         ref="getStartedEl" 
         class="title-2">Get started now!</h2>
+      <p class="get-started-note">Please note: We do not accept promotion requests for gambling ÐApps, or ÐApps that are ponzi or pyramid schemes.</p>
       <div class="fields">
         <div><input 
           ref="name" 
@@ -220,8 +221,7 @@ export default {
 }
 
 .disclaimer {
-  text-align: center;
-  max-width: 375px;
+  max-width: 300px;
   margin: 0 auto 10px;
 }
 
@@ -240,6 +240,11 @@ export default {
   background: $color--black;
   color: $color--white;
   padding: 8px 30px;
+}
+
+.get-started-note {
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .preview-wrapper {
@@ -281,10 +286,12 @@ export default {
 }
 
 .send {
+  width: 100%;
+  max-width: 300px;
   background: rgba($color--black, 0.15);
   text-transform: uppercase;
   font-size: 0.9rem;
-  padding: 12px 75px;
+  padding: 12px 0;
   cursor: default;
   transition: all 0.2s ease;
   font-weight: 700;
