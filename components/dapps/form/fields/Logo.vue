@@ -27,7 +27,7 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Provide a URL to your logo <br>Logo must be 400px width<br><a 
+    <p class="help">Provide a URL to your logo <br>Logo must be 400px width (between 200px-400px height recommended)<br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines</a></p>
   </div>
