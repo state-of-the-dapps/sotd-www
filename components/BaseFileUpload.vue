@@ -25,7 +25,7 @@ export default {
       // See https://rowanwins.github.io/vue-dropzone/docs/dist/index.html#/props
       options: {
         acceptedFiles: '.jpg,.jpeg,.JPG,.JPEG',
-        url: 'http://httpbin.org/anything',
+        url: process.env.imageUploadUrl,
         dictDefaultMessage: this.message,
         maxFiles: 1,
         thumbnailWidth: '300',
