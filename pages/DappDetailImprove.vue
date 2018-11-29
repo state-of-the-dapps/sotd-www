@@ -106,7 +106,9 @@ export default {
     submit() {
       if (this.formIsValid) {
         const data = {
-          fields: this.fields
+          fields: this.fields,
+          visitorId:
+            typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
         }
         data.fields.dapp = this.dapp.name
         data.fields.slug = this.dapp.slug

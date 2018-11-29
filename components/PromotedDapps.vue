@@ -186,7 +186,9 @@ export default {
             name,
             hasSubmittedDapp,
             website
-          }
+          },
+          visitorId:
+            typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
         }
         axios
           .post('promoted/dapps', data)
