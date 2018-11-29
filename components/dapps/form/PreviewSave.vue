@@ -523,7 +523,9 @@ export default {
   height: 60px;
   resize: none;
   padding: 5px;
-  border: 1px solid rgba($color--black, 0.25);
+  border: none;
+  margin-top: 5px;
+  box-shadow: 0 0 20px rgba($color--black, 0.05);
 }
 
 .url {
