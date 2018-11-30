@@ -8,7 +8,7 @@
     </div>
     <p class="help">Dimensions must be 1200px width by 630px height <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
-      target="_blank">View the guidelines</a></p>
+      target="_blank">View the guidelines/examples</a></p>
   </div>
 </template>
 
@@ -18,20 +18,6 @@ import BaseFileUpload from '~/components/BaseFileUpload'
 export default {
   components: {
     BaseFileUpload
-  },
-  computed: {
-    productImage: {
-      get() {
-        return this.$store.getters['dapps/form/productImage']
-      },
-      set(value) {
-        const field = {
-          name: 'productImage',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
-    }
   },
   methods: {
     setProductImage(url) {

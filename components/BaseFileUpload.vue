@@ -45,8 +45,6 @@ export default {
         dictDefaultMessage: this.message,
         maxFiles: 1,
         maxFilesize: 2,
-        resizeWidth: 1200,
-        resizeHeight: 630,
         thumbnailWidth: 300,
         thumbnailMethod: 'contain'
       }
