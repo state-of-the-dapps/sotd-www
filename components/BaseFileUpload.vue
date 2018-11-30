@@ -42,7 +42,6 @@ export default {
         withCredentials: false
       },
       options: {
-        url: process.env.apiUrl + 'images/sign_s3/url',
         dictDefaultMessage: this.message,
         maxFiles: 1,
         maxFilesize: 2,
