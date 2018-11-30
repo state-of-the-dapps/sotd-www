@@ -1,9 +1,20 @@
 <template>
-  <dropzone
-    id="dropzone"
-    ref="el"
-    :options="options"
-    :destroy-dropzone="true"/>
+  <div class="component-base-file-upload">
+    <dropzone
+      id="dropzone"
+      ref="el"
+      :awss3="awss3"
+      :options="options"
+      :destroy-dropzone="true"
+      :duplicate-check="true"
+      @vdropzone-queue-complete="disable"
+      @vdropzone-s3-upload-error="s3UploadError"
+      @vdropzone-s3-upload-success="s3UploadSuccess"/>
+    <div
+      v-if="disabled"
+      class="disable"
+      @click="enable">Remove this image or add a new one</div>
+  </div>
 </template>
 
 <script>
@@ -22,20 +33,45 @@ export default {
   },
   data() {
     return {
-      // See https://rowanwins.github.io/vue-dropzone/docs/dist/index.html#/props
+      disabled: false,
+      awss3: {
+        signingURL: process.env.apiUrl + 'images/sign_s3',
+        headers: {},
+        params: {},
+        sendFileToServer: true,
+        withCredentials: false
+      },
       options: {
-        acceptedFiles: '.jpg,.jpeg,.JPG,.JPEG',
-        url: process.env.imageUploadUrl,
+        url: process.env.apiUrl + 'images/sign_s3/url',
         dictDefaultMessage: this.message,
         maxFiles: 1,
-        thumbnailWidth: '300',
+        maxFilesize: 2,
+        resizeWidth: 1200,
+        resizeHeight: 630,
+        thumbnailWidth: 300,
         thumbnailMethod: 'contain'
       }
     }
   },
   mounted() {
-    // Everything is mounted and you can access the dropzone instance
     const instance = this.$refs.el.dropzone
+  },
+  methods: {
+    disable() {
+      this.$refs.el.dropzone.disable()
+      this.disabled = true
+    },
+    enable() {
+      this.$refs.el.dropzone.removeAllFiles()
+      this.$refs.el.dropzone.enable()
+      this.disabled = false
+    },
+    s3UploadError(errorMessage) {
+      console.log(errorMessage)
+    },
+    s3UploadSuccess(s3ObjectLocation) {
+      console.log(s3ObjectLocation)
+    }
   }
 }
 </script>
@@ -44,11 +80,25 @@ export default {
 @import '~assets/css/settings';
 
 #dropzone {
+  display: flex;
+  justify-content: center;
   letter-spacing: 0.2px;
   font-family: 'Overpass';
   color: $color--black;
   transition: background-color 0.2s linear;
   padding: 5px;
-  border: 2px dashed darken($color--gray, 15%);
+  border: 2px solid transparent;
+  &.dz-clickable {
+    border: 2px dashed darken($color--gray, 15%);
+  }
+}
+
+.disable {
+  text-align: center;
+  text-decoration: underline;
+  background: $color--purple;
+  color: $color--white;
+  padding: 10px;
+  cursor: pointer;
 }
 </style>

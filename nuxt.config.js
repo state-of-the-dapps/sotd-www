@@ -3,7 +3,6 @@ const env = {
   cdnPublicPath: process.env.CDN_PUBLIC_PATH || '/_nuxt/',
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-000000-1',
   fullstory: process.env.FULLSTORY,
-  imageUploadUrl: process.env.IMAGE_UPLOAD_URL,
   intercom: process.env.INTERCOM,
   mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
@@ -47,7 +46,6 @@ export default {
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
-    imageUploadUrl: env.imageUploadUrl,
     intercom: env.intercom,
     mapboxKey: env.mapboxKey,
     linkexchangeRecipientAddress: env.linkexchangeRecipientAddress,
