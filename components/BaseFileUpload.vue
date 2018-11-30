@@ -80,8 +80,7 @@ export default {
 @import '~assets/css/settings';
 
 .vue-dropzone .dz-preview .dz-details,
-.dropzone .dz-preview.dz-image-preview .dz-details
- {
+.dropzone .dz-preview.dz-image-preview .dz-details {
   background-color: rgba($color--black, 0.8);
 }
 
