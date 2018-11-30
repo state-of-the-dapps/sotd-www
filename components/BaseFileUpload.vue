@@ -32,7 +32,7 @@ export default {
     },
     resizeWidth: {
       type: Number,
-      default: null
+      default: 200
     }
   },
   data() {
@@ -48,7 +48,7 @@ export default {
       options: {
         autoProcessQueue: true,
         dictDefaultMessage: this.message,
-        resizeWidth: 200,
+        resizeWidth: this.resizeWidth,
         resizeMethod: 'contain',
         maxFiles: 1,
         maxFilesize: 2,
