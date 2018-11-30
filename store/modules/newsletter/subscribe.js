@@ -7,6 +7,9 @@ const actions = {
         email: email
       }
     }
+    if (typeof Intercom !== 'undefined') {
+      data.visitorId = Intercom('getVisitorId')
+    }
     commit('SET_LOADING_IS_ACTIVE', true)
     axios
       .post('newsletter/subscribe', data)

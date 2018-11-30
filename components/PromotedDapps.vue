@@ -188,6 +188,9 @@ export default {
             website
           }
         }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
+        }
         axios
           .post('promoted/dapps', data)
           .then(response => {

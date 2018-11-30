@@ -64,6 +64,9 @@ export default {
             email: this.email
           }
         }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
+        }
         axios
           .post('newsletter/subscribe', data)
           .then(response => {

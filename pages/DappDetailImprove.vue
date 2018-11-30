@@ -108,6 +108,9 @@ export default {
         const data = {
           fields: this.fields
         }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
+        }
         data.fields.dapp = this.dapp.name
         data.fields.slug = this.dapp.slug
         data.fields.suggesterName = this.suggesterName

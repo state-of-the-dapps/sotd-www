@@ -173,6 +173,9 @@ export default {
         const data = {
           fields: this.fields
         }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
+        }
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsKovan = this.contractsKovan
         data.fields.contractsRopsten = this.contractsRopsten
