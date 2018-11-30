@@ -212,7 +212,7 @@ export default {
 }
 
 .heading {
-  margin-top: 1.25rem !important;
+  margin-top: 1.45rem !important;
   margin-bottom: 1rem !important;
 }
 
