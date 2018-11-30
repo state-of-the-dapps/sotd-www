@@ -47,7 +47,6 @@ export default {
 @import '~assets/css/settings';
 
 .heading {
-  text-align: center;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }

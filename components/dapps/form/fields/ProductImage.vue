@@ -3,7 +3,7 @@
     <p class="heading">Product image</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="Drop your product image here, or click to browse your computer (.jpg)"
+        message="Drop your product image here, or click to browse your computer (JPG)"
         @uploadSuccess="setProductImage"/>
     </div>
     <p class="help">Dimensions must be 1200px width by 630px height <br><a 
@@ -39,7 +39,6 @@ export default {
 }
 
 .heading {
-  text-align: center;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }

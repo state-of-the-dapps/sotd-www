@@ -3,7 +3,7 @@
     <p class="heading">Product logo</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="Drop your logo here, or click to browse your computer (.jpg, .png)"
+        message="Drop your logo here, or click to browse your computer (JPG, PNG)"
         @uploadSuccess="setIcon"/>
     </div>
     <p class="help">Dimensions must be 400px width by 200-400px height <br><a 
@@ -39,7 +39,6 @@ export default {
 }
 
 .heading {
-  text-align: center;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }

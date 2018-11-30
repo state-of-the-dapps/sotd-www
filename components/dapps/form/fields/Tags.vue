@@ -212,7 +212,6 @@ export default {
 }
 
 .heading {
-  text-align: center;
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
 }
