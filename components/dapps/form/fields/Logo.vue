@@ -3,7 +3,7 @@
     <p class="heading">Product logo</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="Drop your icon image here, or click to browse your computer (.jpg, .png)"
+        message="Drop your logo here, or click to browse your computer (.jpg, .png)"
         @uploadSuccess="setIcon"/>
     </div>
     <p class="help">Dimensions must be 400px width by 200-400px height <br><a 
