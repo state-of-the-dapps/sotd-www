@@ -3,10 +3,10 @@
     <p class="heading">Product image</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="Drop your product image here, or click to browse your computer (JPG)"
+        message="<span class=dropzone-plus>+</span><br>Drop your product image here, or click to select"
         @uploadSuccess="setProductImage"/>
     </div>
-    <p class="help">Dimensions must be 1200px width by 630px height <br><a 
+    <p class="help">Dimensions must be 1200px width by 630px height <br>(JPEG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines/examples</a></p>
   </div>

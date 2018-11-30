@@ -3,10 +3,10 @@
     <p class="heading">Product logo</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="Drop your logo here, or click to browse your computer (JPG, PNG)"
+        message="<span class=dropzone-plus>+</span><br>Drop your logo here, or click to select"
         @uploadSuccess="setIcon"/>
     </div>
-    <p class="help">Dimensions must be 400px width by 200-400px height <br><a 
+    <p class="help">Dimensions must be 400px width by 200-400px height <br>(JPEG or PNG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines/examples</a></p>
   </div>

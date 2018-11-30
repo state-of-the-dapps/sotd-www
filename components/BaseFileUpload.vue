@@ -85,6 +85,13 @@ export default {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.dropzone-plus {
+  line-height: 1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: darken($color--gray, 20%);
+}
 </style>
 
 <style lang="scss" scoped>
