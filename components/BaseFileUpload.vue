@@ -76,6 +76,14 @@ export default {
 }
 </script>
 
+<style lang="scss">
+@import '~assets/css/settings';
+
+.vue-dropzone .dz-preview .dz-details {
+  background-color: rgba($color--black, 0.8);
+}
+</style>
+
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
