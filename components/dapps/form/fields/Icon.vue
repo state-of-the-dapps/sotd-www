@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Product icon</p>
+    <p class="heading">Icon</p>
     <div class="file-upload">
       <BaseFileUpload
         message="<span class=dropzone-plus>+</span><br>Drop your icon here, or click to select"

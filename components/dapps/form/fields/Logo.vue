@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Product logo</p>
+    <p class="heading">Logo</p>
     <div class="file-upload">
       <BaseFileUpload
         message="<span class=dropzone-plus>+</span><br>Drop your logo here, or click to select"
