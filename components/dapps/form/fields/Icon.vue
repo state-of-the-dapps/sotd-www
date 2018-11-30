@@ -37,9 +37,4 @@ export default {
 .file-upload {
   box-shadow: 0 0 20px rgba($color--black, 0.05);
 }
-
-.heading {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
 </style>

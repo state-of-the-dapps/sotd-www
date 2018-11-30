@@ -207,6 +207,12 @@ export default {
     line-height: 1.45;
   }
 
+  /deep/ .heading {
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
   /deep/ .error-list,
   /deep/ .warning-list {
     padding: 10px 20px;

@@ -39,6 +39,7 @@ export default {
 }
 
 .heading {
+  font-weight: 700;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }

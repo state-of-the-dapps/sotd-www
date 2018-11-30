@@ -239,8 +239,8 @@ export default {
 }
 
 .heading {
-  margin-top: 1.25rem;
-  margin-bottom: 0.75rem;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1rem !important;
 }
 
 .input {
