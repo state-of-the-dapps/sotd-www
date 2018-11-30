@@ -13,7 +13,7 @@
     <div
       v-if="disabled"
       class="disable"
-      @click="enable">Remove this image or add a new one</div>
+      @click="enable">Remove or change this image</div>
   </div>
 </template>
 
