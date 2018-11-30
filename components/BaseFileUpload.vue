@@ -70,7 +70,7 @@ export default {
       console.log(errorMessage)
     },
     s3UploadSuccess(s3ObjectLocation) {
-      console.log(s3ObjectLocation)
+      this.$emit('uploadSuccess', s3ObjectLocation)
     }
   }
 }
@@ -82,14 +82,21 @@ export default {
 .vue-dropzone .dz-preview .dz-details {
   background-color: rgba($color--black, 0.8);
 }
+
+.dz-message {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 </style>
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
 #dropzone {
+  overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   letter-spacing: 0.2px;
   font-family: 'Overpass';
   color: $color--black;

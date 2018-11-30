@@ -522,7 +522,7 @@ export default {
   width: 100%;
   height: 60px;
   resize: none;
-  padding: 5px;
+  padding: 10px;
   border: none;
   margin-top: 5px;
   box-shadow: 0 0 20px rgba($color--black, 0.05);
