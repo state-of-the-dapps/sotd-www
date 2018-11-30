@@ -1,9 +1,9 @@
 <template>
   <div class="item">
-    <p class="heading">Product image</p>
+    <p class="heading">Product screenshot</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="<span class=dropzone-plus>+</span><br>Drop your product image here, or click to select"
+        message="<span class=dropzone-plus>+</span><br>Drop a product screenshot here, or click to select"
         @uploadSuccess="setProductImage"/>
     </div>
     <p class="help">Dimensions must be 1200px width by 630px height <br>(JPEG format) <br><a 
