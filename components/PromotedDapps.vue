@@ -186,9 +186,10 @@ export default {
             name,
             hasSubmittedDapp,
             website
-          },
-          visitorId:
-            typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
+          }
+        }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
         }
         axios
           .post('promoted/dapps', data)

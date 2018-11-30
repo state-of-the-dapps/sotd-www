@@ -171,9 +171,10 @@ export default {
     submit() {
       if (this.honeypot === null) {
         const data = {
-          fields: this.fields,
-          visitorId:
-            typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
+          fields: this.fields
+        }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
         }
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsKovan = this.contractsKovan

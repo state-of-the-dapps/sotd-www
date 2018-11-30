@@ -5,9 +5,10 @@ const actions = {
     const data = {
       fields: {
         email: email
-      },
-      visitorId:
-        typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
+      }
+    }
+    if (typeof Intercom !== 'undefined') {
+      data.visitorId = Intercom('getVisitorId')
     }
     commit('SET_LOADING_IS_ACTIVE', true)
     axios

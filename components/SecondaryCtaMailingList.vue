@@ -62,9 +62,10 @@ export default {
         const data = {
           fields: {
             email: this.email
-          },
-          visitorId:
-            typeof Intercom !== 'undefined' ? Intercom('getVisitorId') : null
+          }
+        }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
         }
         axios
           .post('newsletter/subscribe', data)
