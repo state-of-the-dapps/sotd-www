@@ -185,17 +185,19 @@ export default {
   methods: {
     submit() {
       if (this.formIsValid) {
-        axios
-          .put(`dapps/${this.dapp.slug}`, {
-            fields: {
-              checkedActions: this.checkedActions,
-              email: this.email,
-              name: this.name,
-              dapp: this.dapp.name,
-              suggestions: this.suggestions
-            }
-          })
-          .then(response => {})
+        const data = {
+          fields: {
+            checkedActions: this.checkedActions,
+            email: this.email,
+            name: this.name,
+            dapp: this.dapp.name,
+            suggestions: this.suggestions
+          }
+        }
+        if (typeof Intercom !== 'undefined') {
+          data.visitorId = Intercom('getVisitorId')
+        }
+        axios.put(`dapps/${this.dapp.slug}`, data).then(response => {})
         this.submitted = true
         const action = trackDappEditSubmit(
           this.checkedActions,
