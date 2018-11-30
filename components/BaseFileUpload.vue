@@ -29,6 +29,10 @@ export default {
     message: {
       type: String,
       default: 'Drop file here'
+    },
+    resizeWidth: {
+      type: Number,
+      default: null
     }
   },
   data() {
@@ -42,7 +46,10 @@ export default {
         withCredentials: false
       },
       options: {
+        autoProcessQueue: true,
         dictDefaultMessage: this.message,
+        resizeWidth: 200,
+        resizeMethod: 'contain',
         maxFiles: 1,
         maxFilesize: 2,
         thumbnailWidth: 300,
