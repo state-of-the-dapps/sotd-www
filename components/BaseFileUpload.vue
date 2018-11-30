@@ -38,7 +38,7 @@ export default {
         signingURL: process.env.apiUrl + 'images/sign_s3',
         headers: {},
         params: {},
-        sendFileToServer: true,
+        sendFileToServer: false,
         withCredentials: false
       },
       options: {
