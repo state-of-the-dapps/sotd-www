@@ -91,6 +91,9 @@ export default {
   font-size: 2.5rem;
   font-weight: 700;
   color: darken($color--gray, 20%);
+  img {
+    padding-bottom: 5px;
+  }
 }
 </style>
 

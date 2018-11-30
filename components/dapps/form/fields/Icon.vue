@@ -3,7 +3,7 @@
     <p class="heading">Icon</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="<span class=dropzone-plus>+</span><br>Drop your icon here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop your icon here, or click to select"
         @uploadSuccess="setIcon"/>
     </div>
     <p class="help">Dimensions must be 192px width by 192px height <br>(JPEG or PNG format) <br><a 

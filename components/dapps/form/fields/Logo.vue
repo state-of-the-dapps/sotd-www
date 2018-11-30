@@ -3,7 +3,7 @@
     <p class="heading">Logo</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="<span class=dropzone-plus>+</span><br>Drop your logo here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop your logo here, or click to select"
         @uploadSuccess="setIcon"/>
     </div>
     <p class="help">Dimensions must be 400px width by 200-400px height <br>(JPEG or PNG format) <br><a 

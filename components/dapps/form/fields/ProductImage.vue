@@ -3,7 +3,7 @@
     <p class="heading">Product screenshot</p>
     <div class="file-upload">
       <BaseFileUpload
-        message="<span class=dropzone-plus>+</span><br>Drop a product screenshot here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a product screenshot here, or click to select"
         @uploadSuccess="setProductImage"/>
     </div>
     <p class="help">Dimensions must be 1200px width by 630px height <br>(JPEG format) <br><a 
