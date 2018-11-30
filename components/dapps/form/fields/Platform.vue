@@ -46,12 +46,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.heading {
-  text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-
 .selection-wrapper {
   display: flex;
   align-items: center;
