@@ -25,7 +25,7 @@
     "date-fns": "^1.29.0",
     "mixpanel-browser": "^2.13.0",
     "number-abbreviate": "^2.0.0",
-    "nuxt": "2.3.2",
+    "nuxt": "2.3.4",
     "nuxt-dropzone": "^0.2.8",
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.3",
