@@ -21,7 +21,6 @@ const actions = {
         params: state.query
       })
       .then(response => {
-        throw 'Test error'
         const data = response.data
         commit('SET_ITEMS', data)
         commit('SET_LOADING_STATUS', false)
