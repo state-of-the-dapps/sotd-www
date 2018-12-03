@@ -183,7 +183,9 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        this.$axios.put(`dapps/${this.modalProps.slug}`, data).then(response => {})
+        this.$axios
+          .put(`dapps/${this.modalProps.slug}`, data)
+          .then(response => {})
         this.submitted = true
         const action = trackDappEditSubmit(
           this.checkedActions,
