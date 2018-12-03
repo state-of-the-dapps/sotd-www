@@ -108,6 +108,7 @@ export default {
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false },
-    { src: '~/plugins/intercom.js', ssr: false }
+    { src: '~/plugins/intercom.js', ssr: false },
+    { src: '~/plugins/axios' }
   ]
 }
