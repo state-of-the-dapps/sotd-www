@@ -23,6 +23,7 @@ const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () =>
   import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
+const LandingMetamask = () => import('~/pages/LandingMetamask.vue').then(m => m.default || m)
 const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
 const Placeholder = () =>
   import('~/components/shared/Placeholder.vue').then(m => m.default || m)
@@ -241,6 +242,11 @@ export function createRouter() {
             name: 'dapps-tab-tags'
           }
         ]
+      },
+      {
+        path: '/landing/metamask',
+        component: LandingMetamask,
+        name: '/landing/metamask'
       },
       {
         path: '/stats',
