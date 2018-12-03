@@ -8,7 +8,7 @@ import tagsModule from './modules/tags'
 
 const actions = {
   nuxtServerInit({ commit }, { app, route, req }) {
-    console.log(req.headers.referrer)
+    console.log(req.headers)
     commit('SET_USER_ENTRY_ROUTE', route.path)
     return app.$axios.get('stats').then(response => {
       const data = response.data
