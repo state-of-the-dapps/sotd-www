@@ -8,7 +8,6 @@
       class="card-icon" >
     <div :class="'card-info -' + status">
       <span class="status">{{ status }}</span>
-      <SvgBadgeMetamask/>
     </div>
   </div>  
 </template>
