@@ -127,7 +127,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import { mapGetters } from 'vuex'
 import { setUser, trackDappEditSubmit } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
@@ -184,7 +183,7 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        axios.put(`dapps/${this.modalProps.slug}`, data).then(response => {})
+        this.$axios.put(`dapps/${this.modalProps.slug}`, data).then(response => {})
         this.submitted = true
         const action = trackDappEditSubmit(
           this.checkedActions,

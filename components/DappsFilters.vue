@@ -90,7 +90,7 @@ export default {
       return optionsArr
     },
     async getCategoryOptions() {
-      const categories = await getCategories()
+      const categories = await getCategories(this.$axios)
       const optionsArr = categories.map(x => {
         const optionObj = {
           text: x.name,

@@ -129,7 +129,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import * as constants from '~/helpers/constants'
 import { mapGetters } from 'vuex'
 import {
@@ -163,8 +162,8 @@ export default {
       return this.emailIsValid && this.name.length && this.suggestions.length
     }
   },
-  asyncData({ store, params, error }) {
-    return axios.get('dapps/' + params.slug).then(response => {
+  asyncData({ store, params, error, app }) {
+    return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
       const dapp = data.item
       if (!Object.keys(dapp).length > 0) {
@@ -197,7 +196,7 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        axios.put(`dapps/${this.dapp.slug}`, data).then(response => {})
+        this.$axios.put(`dapps/${this.dapp.slug}`, data).then(response => {})
         this.submitted = true
         const action = trackDappEditSubmit(
           this.checkedActions,

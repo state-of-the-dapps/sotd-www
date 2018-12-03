@@ -87,7 +87,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import { trackDappView, trackSearchSuggestion } from '~/helpers/mixpanel'
 import { directive as onClickaway } from 'vue-clickaway'
 import { getCaretPosition } from '~/helpers/mixins'
@@ -170,7 +169,7 @@ export default {
       var result = /\S+$/.exec(this.search.slice(0, caret.end))
       var lastWord = result ? result[0] : null
       searchTimer = setTimeout(() => {
-        axios
+        this.$axios
           .get('tags', {
             params: {
               text: lastWord,
@@ -185,7 +184,7 @@ export default {
             this.searchCompleted = true
           })
         if (this.search.length > 1) {
-          axios
+          this.$axios
             .get('dapps', {
               params: {
                 limit: 5,

@@ -14,7 +14,6 @@
 
 <script>
 import { trackPublicListView } from '~/helpers/mixpanel'
-import axios from '~/helpers/axios'
 import DappCardList from '~/components/DappCardList'
 import LayoutMain from '~/components/LayoutMain'
 
@@ -44,8 +43,8 @@ export default {
       ]
     }
   },
-  asyncData({ params, error }) {
-    return axios.get('lists/' + params.list_url).then(response => {
+  asyncData({ params, error, app }) {
+    return app.$axios.get('lists/' + params.list_url).then(response => {
       const data = response.data
       const dapps = data.dapps
       const name = data.name

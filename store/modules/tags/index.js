@@ -1,8 +1,6 @@
-import axios from '~/helpers/axios'
-
 const actions = {
-  fetchItems: ({ commit, state, rootState }, query) => {
-    axios
+  fetchItems({ commit, rootState }, query) {
+    this.$axios
       .get('tags', {
         params: {
           text: query.value,
@@ -16,10 +14,10 @@ const actions = {
         commit('SET_ITEMS', items)
       })
   },
-  resetItems: ({ commit }) => {
+  resetItems({ commit }) {
     commit('RESET_ITEMS')
   },
-  selectItem: ({ commit }, index) => {
+  selectItem({ commit }, index) {
     commit('SELECT_ITEM', index)
   }
 }

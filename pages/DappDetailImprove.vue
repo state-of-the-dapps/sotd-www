@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import DappEdit from '~/components/DappEdit'
 import LayoutMain from '~/components/LayoutMain'
 import { trackDappImproveProfileView } from '~/helpers/mixpanel'
@@ -81,8 +80,8 @@ export default {
       return this.$store.getters['dapps/form/fields']
     }
   },
-  asyncData({ store, params, error }) {
-    return axios.get('dapps/' + params.slug).then(response => {
+  asyncData({ store, params, error, app }) {
+    return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
       const dapp = data.item
       if (!Object.keys(dapp).length > 0) {
@@ -94,7 +93,7 @@ export default {
     })
   },
   mounted() {
-    axios.get(`dapps/${this.dapp.slug}/suggestions`).then(response => {
+    this.$axios.get(`dapps/${this.dapp.slug}/suggestions`).then(response => {
       const profile = response.data
       const suggestions = profile.suggestions
       this.suggestions = suggestions
@@ -118,7 +117,7 @@ export default {
         data.fields.platform = ''
         this.sent = true
         this.$refs.page.scrollIntoView()
-        axios
+        this.$axios
           .post(`dapps/${this.dapp.slug}/suggestions`, data)
           .then(response => {
             this.$mixpanel.track('Improve DApp - Submit', {

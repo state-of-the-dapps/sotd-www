@@ -170,7 +170,7 @@ export default {
     }
   },
   async mounted() {
-    this.dappCategories = await getCategories()
+    this.dappCategories = await getCategories(this.$axios)
     if (!this.$route.query.reload) {
       if (this.category && this.platform) {
         this.$router.replace({

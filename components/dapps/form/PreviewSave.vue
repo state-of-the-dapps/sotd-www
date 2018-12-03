@@ -81,8 +81,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
-
 export default {
   data: () => {
     return {
@@ -184,7 +182,7 @@ export default {
         data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         this.sending = true
-        axios
+        this.$axios
           .post('dapps', data)
           .then(response => {
             this.sending = false

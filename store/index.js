@@ -1,5 +1,4 @@
 import Vuex from 'vuex'
-import axios from '~/helpers/axios'
 import announcementsModule from './modules/announcements'
 import collectionsModule from './modules/collections'
 import dappsModule from './modules/dapps'
@@ -8,9 +7,9 @@ import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
 const actions = {
-  nuxtServerInit({ commit }, { route }) {
+  nuxtServerInit({ commit }, { app, route }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
-    return axios.get('stats').then(response => {
+    return app.$axios.get('stats').then(response => {
       const data = response.data
       commit('SET_STATS', data)
     })

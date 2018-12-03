@@ -1,5 +1,4 @@
 import { dappRefineTabOptions as tabOptions } from '~/helpers/constants'
-import axios from '~/helpers/axios'
 
 function initialQuery() {
   return {
@@ -15,9 +14,9 @@ function initialQuery() {
 }
 
 const actions = {
-  fetchItems: ({ commit, state }) => {
+  fetchItems({ commit, state }) {
     commit('SET_LOADING_STATUS', true)
-    axios
+    this.$axios
       .get('dapps', {
         params: state.query
       })
@@ -27,50 +26,50 @@ const actions = {
         commit('SET_LOADING_STATUS', false)
       })
   },
-  incrementOffsetQuery: ({ commit }) => {
+  incrementOffsetQuery({ commit }) {
     commit('INCREMENT_OFFSET_QUERY')
   },
-  setTabQuery: ({ commit }, value) => {
+  setTabQuery({ commit }, value) {
     commit('SET_TAB_QUERY', value)
     commit('SET_FRIENDLY_URL')
   },
-  setCategoryQuery: ({ commit }, value) => {
+  setCategoryQuery({ commit }, value) {
     commit('SET_CATEGORY_QUERY', value)
   },
-  setPlatformQuery: ({ commit }, value) => {
+  setPlatformQuery({ commit }, value) {
     commit('SET_PLATFORM_QUERY', value)
   },
-  setStatusQuery: ({ commit }, value) => {
+  setStatusQuery({ commit }, value) {
     commit('SET_STATUS_QUERY', value)
   },
-  addTagToQuery: ({ commit }, value) => {
+  addTagToQuery({ commit }, value) {
     commit('ADD_TAG_TO_QUERY', value)
     commit('SET_FRIENDLY_URL')
   },
-  removeLastTagFromQuery: ({ commit }) => {
+  removeLastTagFromQuery({ commit }) {
     commit('REMOVE_LAST_TAG_FROM_QUERY')
     commit('SET_FRIENDLY_URL')
   },
-  removeTagFromQuery: ({ commit }, index) => {
+  removeTagFromQuery({ commit }, index) {
     commit('REMOVE_TAG_FROM_QUERY', index)
     commit('SET_FRIENDLY_URL')
   },
   resetQuery({ commit }) {
     commit('RESET_QUERY')
   },
-  setTextQuery: ({ commit }, value) => {
+  setTextQuery({ commit }, value) {
     commit('SET_TEXT_QUERY', value)
   },
-  setActiveItemIndex: ({ commit }, index) => {
+  setActiveItemIndex({ commit }, index) {
     commit('SET_ACTIVE_ITEM_INDEX', index)
   },
-  setFriendlyQuery: ({ commit }, params) => {
+  setFriendlyQuery({ commit }, params) {
     commit('SET_FRIENDLY_QUERY', params)
   },
-  setFriendlyUrl: ({ commit }) => {
+  setFriendlyUrl({ commit }) {
     commit('SET_FRIENDLY_URL')
   },
-  toggleRefineDropdown: ({ commit }, type) => {
+  toggleRefineDropdown({ commit }, type) {
     commit('TOGGLE_REFINE_DROPDOWN', type)
   }
 }

@@ -31,16 +31,19 @@ export default {
     },
     publicPath: env.cdnPublicPath
   },
-  generate: {
-    routes: ['/']
-  },
   mode: env.mode,
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/sentry',
     '@nuxtjs/router',
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
     '@nuxtjs/markdownit'
   ],
+  axios: {
+    baseUrl: env.apiUrl,
+    proxyHeaders: false,
+    retry: true
+  },
   serverMiddleware: ['redirect-ssl'],
   css: [{ src: '~/assets/css/main.scss', lang: 'scss' }],
   env: {
@@ -105,7 +108,6 @@ export default {
     { src: '~/plugins/mixpanel', ssr: false },
     { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false },
-    // { src: '~/plugins/fullstory.js', ssr: false },
     { src: '~/plugins/intercom.js', ssr: false }
   ]
 }

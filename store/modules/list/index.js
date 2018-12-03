@@ -1,5 +1,5 @@
 const actions = {
-  setItems: ({ commit }, items) => {
+  setItems({ commit }, items) {
     commit('SET_ITEMS', items)
   }
 }

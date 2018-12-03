@@ -28,7 +28,6 @@
 
 <script>
 import { trackCollectionView } from '~/helpers/mixpanel'
-import axios from '~/helpers/axios'
 import DappCollectionList from './DappCollectionList'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconCollection from './SvgIconCollection'
@@ -46,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('collections/list/featured').then(response => {
+    this.$axios.get('collections/list/featured').then(response => {
       const collections = response.data
       this.collections = collections.slice(1, 4)
     })

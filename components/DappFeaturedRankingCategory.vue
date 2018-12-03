@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import { mapActions } from 'vuex'
 import { trackDappRankingCategory, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
@@ -64,7 +63,7 @@ export default {
     }
   },
   async mounted() {
-    axios
+    this.$axios
       .get('dapps', {
         params: {
           category: this.category.slug,

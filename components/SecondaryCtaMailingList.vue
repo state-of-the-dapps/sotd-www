@@ -33,7 +33,6 @@
 import { mapGetters } from 'vuex'
 import { validateEmail } from '~/helpers/mixins'
 import { setUser, trackNewsletterSubscribe } from '~/helpers/mixpanel'
-import axios from '~/helpers/axios'
 import SvgIconMail from './SvgIconMail'
 
 export default {
@@ -67,7 +66,7 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        axios
+        this.$axios
           .post('newsletter/subscribe', data)
           .then(response => {
             this.trackNewsletterSubscribe()
