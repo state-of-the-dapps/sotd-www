@@ -1,4 +1,3 @@
-import axios from '~/helpers/axios'
 import { dappDefaultPlatform } from '~/helpers/constants'
 
 function initialState() {
@@ -97,8 +96,8 @@ const actions = {
   addTag({ commit }, value) {
     commit('ADD_TAG', value)
   },
-  fetchTags: ({ commit, state }, value) => {
-    axios
+  fetchTags({ commit, state }, value) {
+    this.$axios
       .get('tags', {
         params: {
           text: value,

@@ -1,12 +1,10 @@
-import axios from '~/helpers/axios'
-
 const state = () => ({
   items: []
 })
 
 const actions = {
-  fetchItems({ commit, state }) {
-    axios.get('collections/list/featured').then(response => {
+  fetchItems({ commit }) {
+    this.$axios.get('collections/list/featured').then(response => {
       const data = response.data
       commit('SET_ITEMS', data)
     })

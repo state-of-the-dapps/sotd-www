@@ -1,11 +1,9 @@
-import axios from '~/helpers/axios'
-
-export async function getCategories() {
+export async function getCategories(axios) {
   const payload = await axios.get(`categories`)
   return payload.data.items
 }
 
-export async function getDapps(params) {
+export async function getDapps(axios, params) {
   const payload = await axios.get(`dapps`, {
     params
   })

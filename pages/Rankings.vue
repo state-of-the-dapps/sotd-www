@@ -35,13 +35,13 @@ export default {
       }
     }
   },
-  async asyncData({ params, query }) {
+  async asyncData({ params, query, app }) {
     const urlParams = { ...params, ...query }
     if (!query.sort) {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
     }
-    const data = await getDapps(urlParams)
+    const data = await getDapps(app.$axios, urlParams)
     const dapps = data.items
     const pager = data.pager
     return { dapps, pager }
@@ -61,7 +61,7 @@ export default {
         urlParams.sort = 'rank'
         urlParams.order = 'asc'
       }
-      const data = await getDapps(urlParams)
+      const data = await getDapps(this.$axios, urlParams)
       this.isLoading = false
       const dapps = data.items
       const pager = data.pager

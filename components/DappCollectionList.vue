@@ -24,7 +24,6 @@
 
 <script>
 import { trackCollectionView } from '~/helpers/mixpanel'
-import axios from '~/helpers/axios'
 import Media from 'vue-media'
 import DappCardList from './DappCardList'
 import SvgIconChevron from './SvgIconChevron'
@@ -48,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('collections/' + this.collection.slug).then(response => {
+    this.$axios.get('collections/' + this.collection.slug).then(response => {
       const collection = response.data
       const dapps = collection.items
       this.dapps = dapps.slice(0, 6)

@@ -45,7 +45,7 @@ export default {
     }
   },
   async mounted() {
-    this.categories = await getCategories()
+    this.categories = await getCategories(this.$axios)
   },
   methods: {
     selectCategory(value) {

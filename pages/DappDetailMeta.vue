@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import * as constants from '~/helpers/constants'
 import { trackDappMetaView } from '~/helpers/mixpanel'
 import LayoutMain from '~/components/LayoutMain'
@@ -37,8 +36,8 @@ export default {
       badges: constants.dappMetaBadges
     }
   },
-  asyncData({ store, params, error }) {
-    return axios.get('dapps/' + params.slug).then(response => {
+  asyncData({ store, params, error, app }) {
+    return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
       const dapp = data.item
       if (!Object.keys(dapp).length > 0) {

@@ -40,7 +40,6 @@
 
 <script>
 import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-import axios from '~/helpers/axios'
 
 var validationTimer
 
@@ -94,7 +93,7 @@ export default {
         hasWarningWords === true
           ? warnings.data.push(`Your ÐApp name should not be a URL`)
           : null
-        axios
+        this.$axios
           .get('dapps/lookup', {
             params: {
               name: this.name

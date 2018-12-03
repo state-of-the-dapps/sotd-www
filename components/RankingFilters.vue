@@ -71,7 +71,7 @@ export default {
     const urlPlatform = platformMap[this.$route.params.platform]
     this.category = urlCategory
     this.platform = urlPlatform
-    this.dappCategories = await getCategories()
+    this.dappCategories = await getCategories(this.$axios)
   },
   methods: {
     filterCategory(category) {

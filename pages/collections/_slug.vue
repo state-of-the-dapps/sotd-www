@@ -17,7 +17,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from '~/helpers/axios'
 import LayoutMain from '~/components/LayoutMain'
 import Lead from '~/components/collections/detail/Lead'
 import DappCardList from '~/components/DappCardList'
@@ -31,9 +30,9 @@ export default {
   computed: {
     ...mapGetters('collections/detail', ['collection'])
   },
-  fetch({ store, params, error }) {
+  fetch({ store, params, error, app }) {
     store.dispatch('setSiteSection', 'collections')
-    return axios.get('collections/' + params.slug).then(response => {
+    return app.$axios.get('collections/' + params.slug).then(response => {
       const collection = response.data
       if (!Object.keys(collection).length > 0) {
         error({ statusCode: 404 })

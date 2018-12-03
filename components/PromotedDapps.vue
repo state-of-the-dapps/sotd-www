@@ -75,7 +75,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import { mapGetters } from 'vuex'
 import {
   setUser,
@@ -191,7 +190,7 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        axios
+        this.$axios
           .post('promoted/dapps', data)
           .then(response => {
             const modal = {

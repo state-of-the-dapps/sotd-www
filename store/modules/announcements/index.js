@@ -1,14 +1,12 @@
-import axios from '~/helpers/axios'
-
 const actions = {
-  fetchItem: ({ commit }) => {
-    axios.get('announcement').then(response => {
+  fetchItem({ commit }) {
+    this.$axios.get('announcement').then(response => {
       const data = response.data
       const item = data.item
       commit('SET_ITEMS', item)
     })
   },
-  hide: ({ commit }) => {
+  hide({ commit }) {
     commit('HIDE')
   }
 }

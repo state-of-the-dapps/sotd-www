@@ -1,4 +1,3 @@
-import axios from '~/helpers/axios'
 import {
   dappListDefaultLimit,
   dappListDefaultSort,
@@ -9,7 +8,7 @@ import {
 const actions = {
   fetchDapps({ commit, state }, type) {
     commit('SET_LOADING_STATUS', true)
-    axios
+    this.$axios
       .get('dapps', {
         params: {
           limit: state.limit,

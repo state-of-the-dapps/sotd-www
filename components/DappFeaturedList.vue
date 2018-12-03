@@ -42,7 +42,6 @@
 <script>
 import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
 import { dappPromotedSlots } from '~/helpers/constants'
-import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
@@ -89,10 +88,10 @@ export default {
   },
   methods: {
     getFeaturedDapps() {
-      return axios.get('collections/featured')
+      return this.$axios.get('collections/featured')
     },
     getPromotedDapps() {
-      return axios.get('promoted/dapps')
+      return this.$axios.get('promoted/dapps')
     },
     trackCollectionView(slug) {
       const sourceComponent = 'DappFeaturedList'

@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import DappCollectionList from './DappCollectionList'
 import SvgIconCollection from './SvgIconCollection'
 
@@ -23,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('collections/list/featured').then(response => {
+    this.$axios.get('collections/list/featured').then(response => {
       const collections = response.data
       this.collections = collections
     })

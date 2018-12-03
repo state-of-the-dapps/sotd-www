@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import axios from '~/helpers/axios'
 import { trackDappRankingPlatform, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
@@ -61,7 +60,7 @@ export default {
     }
   },
   async mounted() {
-    axios
+    this.$axios
       .get('dapps', {
         params: {
           platform: this.platform,

@@ -13,7 +13,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import axios from '~/helpers/axios'
 import DappDetail from '~/components/DappDetail'
 import * as constants from '~/helpers/constants'
 import LayoutMain from '~/components/LayoutMain'
@@ -32,8 +31,8 @@ export default {
   computed: {
     ...mapGetters(['pageModal'])
   },
-  asyncData({ store, params, error }) {
-    return axios.get('dapps/' + params.slug).then(response => {
+  asyncData({ store, params, error, app }) {
+    return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
       const dapp = data.item
       if (!Object.keys(dapp).length > 0) {

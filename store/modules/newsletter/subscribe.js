@@ -1,5 +1,3 @@
-import axios from '~/helpers/axios'
-
 const actions = {
   submit({ commit }, email) {
     const data = {
@@ -11,7 +9,7 @@ const actions = {
       data.visitorId = Intercom('getVisitorId')
     }
     commit('SET_LOADING_IS_ACTIVE', true)
-    axios
+    this.$axios
       .post('newsletter/subscribe', data)
       .then(response => {
         commit('SUBMIT')

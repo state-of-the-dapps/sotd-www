@@ -33,7 +33,6 @@
 
 <script>
 import { trackDappRankingCategory } from '~/helpers/mixpanel'
-import axios from '~/helpers/axios'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import DappFeaturedRankingCategory from './DappFeaturedRankingCategory'
 import SvgIconChevron from './SvgIconChevron'
@@ -53,7 +52,7 @@ export default {
     }
   },
   mounted() {
-    axios.get('categories').then(response => {
+    this.$axios.get('categories').then(response => {
       const items = response.data.items
       const categoryNum = 4
       let categories = []

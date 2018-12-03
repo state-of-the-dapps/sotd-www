@@ -40,7 +40,7 @@ export default {
     },
     dev30dPct: {
       type: Number,
-      required: true
+      default: null
     },
     dev90d: {
       type: Number,
