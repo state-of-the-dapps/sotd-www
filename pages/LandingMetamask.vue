@@ -1,6 +1,6 @@
 <template>
   <LayoutMain>
-    <div>
+    <div class="page-landing-metamask">
       <section class="section">
         <div class="text-container">
           <div class="icon-wrapper">
@@ -12,10 +12,32 @@
           <h1 class="title-1">Welcome, Metamask Friends!</h1>
           <p class="intro">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
           <div class="option-wrapper">
-            <div class="option-description">
-              <p class="">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+            <div class="option-description-wrapper">
+              <h3 class="option-title">Title here</h3>
+              <p class="option-description">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
             </div>
-            <div class="option-cta"><button class="cta">CTA</button></div>
+            <div class="option-cta-wrapper"><button class="option-cta">CTA</button></div>
+          </div>
+          <div class="option-wrapper">
+            <div class="option-description-wrapper">
+              <h3 class="option-title">Title here</h3>
+              <p class="option-description">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+            </div>
+            <div class="option-cta-wrapper"><button class="option-cta">CTA</button></div>
+          </div>
+          <div class="option-wrapper">
+            <div class="option-description-wrapper">
+              <h3 class="option-title">Title here</h3>
+              <p class="option-description">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+            </div>
+            <div class="option-cta-wrapper"><button class="option-cta">CTA</button></div>
+          </div>
+          <div class="option-wrapper">
+            <div class="option-description-wrapper">
+              <h3 class="option-title">Title here</h3>
+              <p class="option-description">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+            </div>
+            <div class="option-cta-wrapper"><button class="option-cta">CTA</button></div>
           </div>
         </div>
       </section>
@@ -39,10 +61,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.cta {
-  @include button;
-}
-
 .icon-wrapper {
   text-align: center;
   padding-bottom: 5px;
@@ -50,9 +68,43 @@ export default {
 
 .intro {
   margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
 }
 
-.page-tech-metamask {
+.option-description {
+  margin-top: 0;
+}
+
+.option-description-wrapper {
+  @include tweakpoint('min-width', 600px) {
+    flex: 1;
+  }
+}
+
+.option-cta {
+  @include button;
+  width: 100%;
+}
+
+.option-cta-wrapper {
+  @include tweakpoint('min-width', 600px) {
+    width: 150px;
+    padding-left: 20px;
+  }
+}
+
+.option-wrapper {
+  padding-bottom: 1.5rem;
+  @include tweakpoint('min-width', 600px) {
+    display: flex;
+  }
+}
+
+.option-title {
+  margin: 0;
+}
+
+.page-landing-metamask {
   padding-bottom: 50px;
 }
 
