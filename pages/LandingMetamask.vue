@@ -9,7 +9,7 @@
               :height="36"
               fill="black"/>
           </div>
-          <h1 class="title-1">Welcome, Metamask Friends!</h1>
+          <h1 class="title-1">Hello, Metamask Friends!</h1>
           <p class="intro">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
           <div class="option-wrapper">
             <div class="option-description-wrapper">
