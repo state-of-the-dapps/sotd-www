@@ -22,7 +22,7 @@ export default {
         'live',
         'concept',
         'live',
-        'beta',
+        'live',
         'live',
         'live',
         'live',
