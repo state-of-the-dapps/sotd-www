@@ -9,7 +9,7 @@ import tagsModule from './modules/tags'
 const actions = {
   nuxtServerInit({ commit }, { app, route, req, redirect }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
-    const referrer = req.headers.referrer || req.headers.referer
+    const referrer = req.headers.referer || ''
     if (referrer.length && referrer.includes('metamask.io')) {
       redirect(301, '/landing/metamask')
     }

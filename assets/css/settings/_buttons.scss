@@ -1,0 +1,12 @@
+@mixin button {
+  padding: 9px 18px;
+  color: $color--gray;
+  background: $color--black;
+  box-shadow: 0 17px 70px rgba($color--black, 0.2);
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
+  &:active {
+    top: 1px;
+  }
+}

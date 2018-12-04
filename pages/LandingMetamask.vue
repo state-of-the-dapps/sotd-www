@@ -3,7 +3,20 @@
     <div>
       <section class="section">
         <div class="text-container">
-          <h1 class="title-1">It looks like you came from Metamask!</h1>
+          <div class="icon-wrapper">
+            <SvgBadgeMetamask
+              :width="36"
+              :height="36"
+              fill="black"/>
+          </div>
+          <h1 class="title-1">Welcome, Metamask Friends!</h1>
+          <p class="intro">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+          <div class="option-wrapper">
+            <div class="option-description">
+              <p class="">Cake pie candy candy canes dragée cake jujubes. Danish dragée danish fruitcake. Lemon drops gummi bears toffee jelly-o. Caramels bonbon chocolate sweet sweet apple pie candy pudding.</p>
+            </div>
+            <div class="option-cta"><button class="cta">CTA</button></div>
+          </div>
         </div>
       </section>
     </div>
@@ -12,10 +25,12 @@
 
 <script>
 import LayoutMain from '~/components/LayoutMain'
+import SvgBadgeMetamask from '~/components/SvgBadgeMetamask'
 
 export default {
   components: {
-    LayoutMain
+    LayoutMain,
+    SvgBadgeMetamask
   }
 }
 </script>
@@ -24,6 +39,19 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.cta {
+  @include button;
+}
+
+.icon-wrapper {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.intro {
+  margin-top: 0.5rem;
+}
+
 .page-tech-metamask {
   padding-bottom: 50px;
 }
@@ -31,6 +59,7 @@ export default {
 .text-container p {
   max-width: 100%;
   font-size: 1.2rem;
+  line-height: 1.275;
 }
 
 .title-1 {
