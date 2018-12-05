@@ -70,9 +70,9 @@
           <p>If it’s your first time purchasing ether, your exchange will need to verify your identify; that can take a day or two, so it’ll leave you time for a cat nap. In addition, if you need to link a bank account to your exchange (rather than a credit card), your bank may need a few more days to verify the charges.</p>
           <h2 class="title-2">Other questions?</h2>
           <p>Do you have any questions not yet covered here? 
-            <a
-              href="#"
-              @click.prevent="openIntercom">Ask us, maybe we can help!</a>
+            <span
+              class="link"
+              @click.prevent="openIntercom">Ask us, maybe we can help!</span>
           </p>
           <p class="button-wrapper">
             <nuxt-link
@@ -95,11 +95,13 @@ export default {
   },
   methods: {
     openIntercom() {
-      if (typeof Intercom !== 'undefined') {
-        Intercom('showNewMessage', '')
-      } else {
-        location.href = 'mailto:support@stateofthedapps.com'
-      }
+      this.$axios.get('https://widget.intercom.io').then(response => {
+        if (response.data) {
+          Intercom('showNewMessage', '')
+        } else {
+          location.href = 'mailto:support@stateofthedapps.com'
+        }
+      })
     }
   }
 }
@@ -125,6 +127,11 @@ export default {
 
 .intro {
   margin-top: 0.5rem;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .list {
