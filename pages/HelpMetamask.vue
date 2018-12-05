@@ -72,7 +72,7 @@
           <p>Do you have any questions not yet covered here? 
             <span
               class="link"
-              @click.prevent="openIntercom">Ask us, maybe we can help!</span>
+              @click="openIntercom">Ask us, maybe we can help!</span>
           </p>
           <p class="button-wrapper">
             <nuxt-link
