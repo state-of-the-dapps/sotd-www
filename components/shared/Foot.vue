@@ -40,9 +40,9 @@
       </li>
       <li class="nav-item">
         <nuxt-link 
-          :to="{ name: 'faq-metamask' }" 
+          :to="{ name: 'help-metamask' }" 
           class="nav-link"
-          @click.native="trackFooterLink('faq-metamask')">FAQ for Metamask</nuxt-link>
+          @click.native="trackFooterLink('help-metamask')">Help for Metamask</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
