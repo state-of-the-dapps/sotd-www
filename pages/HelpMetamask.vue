@@ -74,6 +74,10 @@
               href="#"
               @click.prevent="openIntercom">Ask us, maybe we can help!</a>
           </p>
+          <p class="button-wrapper">
+            <nuxt-link
+              :to="{name: 'rankings-platform', params: {platform: 'ethereum'}}"
+              class="button">Explore Ethereum ÐApps</nuxt-link></p>
         </div>
       </section>
     </div>
@@ -103,6 +107,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.button {
+  @include button;
+  padding: 10px 15px;
+}
+
+.button-wrapper {
+  padding: 3rem 0;
+  text-align: center;
+}
 
 .icon-wrapper {
   text-align: center;
