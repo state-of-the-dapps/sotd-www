@@ -95,13 +95,17 @@ export default {
   },
   methods: {
     openIntercom() {
-      this.$axios.get('https://widget.intercom.io').then(response => {
-        if (response.data) {
+      const fallbackUrl = 'mailto:support@stateofthedapps.com'
+      if (typeof Intercom !== 'undefined') {
+        const visitorId = Intercom('getVisitorId')
+        if (typeof visitorId !== 'undefined') {
           Intercom('showNewMessage', '')
         } else {
-          location.href = 'mailto:support@stateofthedapps.com'
+          location.href = fallbackUrl
         }
-      })
+      } else {
+        location.href = fallbackUrl
+      }
     }
   }
 }
