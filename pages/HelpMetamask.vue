@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     openIntercom() {
-      if (window.Intercom) {
+      if (typeof Intercom !== 'undefined') {
         Intercom('showNewMessage', '')
       } else {
         location.href = 'mailto:support@stateofthedapps.com'
