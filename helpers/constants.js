@@ -202,6 +202,8 @@ const feedbackComponentMap = Object.freeze({
   positive: 'SvgFeedbackPositive'
 })
 
+const homeFeaturedCollections = 3
+
 const myListLimit = 50
 
 const platformList = ['Ethereum', 'EOS', 'POA']
@@ -248,6 +250,7 @@ export {
   eventCategories,
   eventRefineCategoryOptions,
   feedbackComponentMap,
+  homeFeaturedCollections,
   myListLimit,
   platformList,
   platformMap,

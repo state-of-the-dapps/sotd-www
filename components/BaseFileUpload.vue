@@ -49,6 +49,7 @@ export default {
         autoProcessQueue: true,
         dictDefaultMessage: this.message,
         resizeWidth: this.resizeWidth,
+        resizeQuality: 1,
         maxFiles: 1,
         maxFilesize: 2,
         thumbnailWidth: 300,
