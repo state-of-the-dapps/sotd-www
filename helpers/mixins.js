@@ -20,6 +20,24 @@ export const getCaretPosition = {
   }
 }
 
+export const openIntercom = {
+  methods: {
+    openIntercom() {
+      const fallbackUrl = 'mailto:support@stateofthedapps.com'
+      if (typeof Intercom !== 'undefined') {
+        const visitorId = Intercom('getVisitorId')
+        if (typeof visitorId !== 'undefined') {
+          Intercom('showNewMessage', '')
+        } else {
+          location.href = fallbackUrl
+        }
+      } else {
+        location.href = fallbackUrl
+      }
+    }
+  }
+}
+
 export const testImage = {
   methods: {
     testImage(url, callback, timeout) {

@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import { openIntercom } from '~/helpers/mixins'
 import LayoutMain from '~/components/LayoutMain'
 import SvgBadgeMetamask from '~/components/SvgBadgeMetamask'
 
@@ -93,21 +94,7 @@ export default {
     LayoutMain,
     SvgBadgeMetamask
   },
-  methods: {
-    openIntercom() {
-      const fallbackUrl = 'mailto:support@stateofthedapps.com'
-      if (typeof Intercom !== 'undefined') {
-        const visitorId = Intercom('getVisitorId')
-        if (typeof visitorId !== 'undefined') {
-          Intercom('showNewMessage', '')
-        } else {
-          location.href = fallbackUrl
-        }
-      } else {
-        location.href = fallbackUrl
-      }
-    }
-  }
+  mixins: [openIntercom]
 }
 </script>
 
