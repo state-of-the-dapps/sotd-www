@@ -23,8 +23,8 @@ const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () =>
   import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
-const FaqEthereum = () =>
-  import('~/pages/FaqEthereum.vue').then(m => m.default || m)
+const FaqMetamask = () =>
+  import('~/pages/FaqMetamask.vue').then(m => m.default || m)
 const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
 const Placeholder = () =>
   import('~/components/shared/Placeholder.vue').then(m => m.default || m)
@@ -151,7 +151,7 @@ export function createRouter() {
       },
       {
         path: '/dapps/new/form',
-        redirect: { name: 'faq-ethereum' }
+        redirect: { name: 'faq-metamask' }
       },
       {
         path: '/dapps/submit/new/confirmation',
@@ -211,7 +211,7 @@ export function createRouter() {
       },
       {
         path: '/tagged/metamask',
-        redirect: { name: 'faq-ethereum' }
+        redirect: { name: 'faq-metamask' }
       },
       {
         path: '/tagged/:tags',
@@ -249,9 +249,9 @@ export function createRouter() {
         ]
       },
       {
-        path: '/faq/ethereum',
-        component: FaqEthereum,
-        name: 'faq-ethereum'
+        path: '/faq/metamask',
+        component: FaqMetamask,
+        name: 'faq-metmask'
       },
       {
         path: '/stats',

@@ -3,7 +3,15 @@
     <div class="page-landing-metamask">
       <section class="section">
         <div class="text-container">
-          <h1 class="title-1">Welcome to the land of ÐApps and Ethereum</h1>
+          <div class="icon-wrapper">
+            <SvgBadgeMetamask
+              :width="36"
+              :height="36"
+              fill="black"/>
+          </div>
+          <h1 class="title-1">Welcome Metamask Friends!</h1>
+          <br>
+          <p><strong>Welcome to the land of ÐApps and Ethereum.</strong></p>
           <p>Are you confused? We understand and are here to help you! The world of Decentralized Applications (ÐApps) on the Ethereum Blockchain can be quite overwhelming. There are many new confusing terms to understand. The learning curve can be pretty steep. Hang in there, the journey is exciting.</p>
           <h2 class="title-2">Digital wallets</h2>
           <h3>Installing your digital wallet</h3>
