@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { homeFeaturedCollections } from '~/helpers/constants'
 import { trackCollectionView } from '~/helpers/mixpanel'
 import DappCollectionList from './DappCollectionList'
 import SvgIconChevron from './SvgIconChevron'
@@ -47,7 +48,7 @@ export default {
   mounted() {
     this.$axios.get('collections/list/featured').then(response => {
       const collections = response.data
-      this.collections = collections.slice(1, 4)
+      this.collections = collections.slice(1, homeFeaturedCollections)
     })
   },
   methods: {
