@@ -9,10 +9,6 @@ import tagsModule from './modules/tags'
 const actions = {
   nuxtServerInit({ commit }, { app, route, req, redirect }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
-    const referrer = req.headers.referer || ''
-    if (referrer.length && referrer.includes('metamask.io')) {
-      redirect(301, '/landing/metamask')
-    }
     return app.$axios.get('stats').then(response => {
       const data = response.data
       commit('SET_STATS', data)
