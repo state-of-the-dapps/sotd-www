@@ -93,6 +93,8 @@ export default {
     openIntercom() {
       if (window.Intercom) {
         Intercom('showNewMessage', '')
+      } else {
+        location.href = 'mailto:support@stateofthedapps.com'
       }
     }
   }
