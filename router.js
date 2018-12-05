@@ -251,7 +251,7 @@ export function createRouter() {
       {
         path: '/faq/metamask',
         component: FaqMetamask,
-        name: 'faq-metmask'
+        name: 'faq-metamask'
       },
       {
         path: '/stats',
