@@ -475,6 +475,21 @@ export const trackDappsSort = function(option) {
   return action
 }
 
+export const trackFooterLink = function(sourcePath, link) {
+  let name = 'Footer - Logo Download'
+  let data = {
+    sourcePath,
+    link
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackFooterLogoDownload = function(sourcePath) {
   let name = 'Footer - Logo Download'
   let data = {

@@ -40,6 +40,12 @@
       </li>
       <li class="nav-item">
         <nuxt-link 
+          :to="{ name: 'faq-ethereum' }" 
+          class="nav-link"
+          @click.native="trackFooterLink('faq-ethereum')">FAQ for Ethereum</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link 
           to="/terms" 
           class="nav-link" 
           @click.native="trackPageTerms()">Terms of use</nuxt-link>
@@ -138,6 +144,7 @@
 import {
   trackContact,
   trackFooterAppAndroid,
+  trackFooterLink,
   trackFooterLogoDownload,
   trackFooterSubmit,
   trackPageAbout,
@@ -170,6 +177,10 @@ export default {
     },
     trackFooterAppAndroid() {
       const action = trackFooterAppAndroid(this.sourcePath)
+      this.$mixpanel.track(action.name, action.data)
+    },
+    trackFooterLink(link) {
+      const action = trackFooterLink(this.sourcePath, link)
       this.$mixpanel.track(action.name, action.data)
     },
     trackFooterLogoDownload() {

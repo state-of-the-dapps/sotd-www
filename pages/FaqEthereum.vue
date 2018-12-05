@@ -84,8 +84,7 @@ export default {
   methods: {
     openIntercom() {
       if (window.Intercom) {
-        console.log('Opening intercom')
-        Intercom('showNewMessage', 'FAQ Ethereum Question:')
+        Intercom('showNewMessage', '')
       }
     }
   }
