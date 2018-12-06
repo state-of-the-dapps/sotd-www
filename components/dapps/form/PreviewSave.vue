@@ -1,19 +1,13 @@
 <template>
   <div class="wrapper">
-    <div class="item -preview">
-      <div class="info">
-        <div class="description-wrapper">
-          <h3 
-            class="title" 
-            @click="$mixpanel.track('New DApp - Preview title')"><span v-if="name">{{ name | truncate(25) }}</span><span v-else>Your ÐApp</span></h3>
-          <p 
-            class="attribution" 
-            @click="$mixpanel.track('New DApp - Preview author')">by <strong><span v-if="authors.length > 0">{{ authors[0] }}</span><span v-else>the founder</span></strong><span v-if="authors.length > 1"> +{{ authors.length - 1 }}</span></p>
-          <p 
-            class="description" 
-            @click="$mixpanel.track('New DApp - Preview teaser')"><span v-if="teaser">{{ teaser | truncate(75) }}</span><span v-else>Teaser description</span></p>
-        </div>
+    <div class="profile-score-wrapper">
+      <h3 class="profile-score-title">Current profile strength <span class="profile-score-title-pct">{{ Math.ceil(profileScore * 100) }}%</span></h3>
+      <div class="profile-score-bar">
+        <div
+          :style="'width: ' + Math.ceil(profileScore * 100) + '%'"
+          class="profile-score-bar-pct"/>
       </div>
+      <p class="profile-score-note">Complete your profile boost your rank</p>
     </div>
     <div class="submit-reason">
       <label 
@@ -61,7 +55,7 @@
       @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
     <input 
       v-else-if="errorFields.length > 0 && errorFields.length !== 1" 
-      :value="errorFields.length + ' fields need your attention'" 
+      :value="errorFields.length + ' fields require your attention'" 
       class="submit" 
       type="submit" 
       @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
@@ -84,6 +78,7 @@
 export default {
   data: () => {
     return {
+      profileScoreTimer: '',
       sending: false,
       honeypot: null
     }
@@ -121,6 +116,9 @@ export default {
     },
     name() {
       return this.$store.getters['dapps/form/name']
+    },
+    profileScore() {
+      return this.$store.getters['dapps/form/profileScore']
     },
     submitReason: {
       get() {
@@ -165,7 +163,24 @@ export default {
       return this.$store.getters['userEntryRoute']
     }
   },
+  watch: {
+    fields: {
+      handler(fields) {
+        this.setProfileScore(fields)
+      },
+      deep: true
+    }
+  },
   methods: {
+    setProfileScore(fields) {
+      clearTimeout(this.profileScoreTimer)
+      this.profileScoreTimer = setTimeout(() => {
+        this.$axios.$post('profile/score', { fields }).then(response => {
+          const score = response.score || 0
+          this.$store.dispatch('dapps/form/setProfileScore', score)
+        })
+      }, 750)
+    },
     submit() {
       if (this.honeypot === null) {
         const data = {
@@ -224,18 +239,6 @@ export default {
 
 .attribution {
   margin: 0;
-}
-
-.badge-item {
-  margin-left: 2px;
-}
-
-.badge-list {
-  position: absolute;
-  display: flex;
-  right: 10px;
-  top: -2px;
-  z-index: 8;
 }
 
 .checkboxes {
@@ -311,85 +314,44 @@ export default {
   }
 }
 
-.item {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+.profile-score-bar {
   width: 100%;
-  height: 150px;
-  margin: 0 10px 10px 10px;
-  background: white;
-  box-shadow: 0 0 20px rgba($color--black, 0.1);
-  transition: background 0.2s ease, opacity 0.4s ease;
-  @include tweakpoint('min-width', 750px) {
-    width: calc(50% - 20px);
-  }
-  @include tweakpoint('min-width', 900px) {
-    width: calc(33.33% - 20px);
-    justify-content: center;
-  }
-  @include tweakpoint('min-width', 1000px) {
-    width: calc(25% - 20px);
-  }
-  @include tweakpoint('min-width', 1150px) {
-    width: calc(20% - 20px);
-  }
-  @include tweakpoint('min-width', 1450px) {
-    width: calc(16.66667% - 20px);
-  }
-  @include tweakpoint('min-width', 1750px) {
-    width: calc(14.2857142857% - 20px);
-  }
-  &:hover {
-    cursor: pointer;
-    transform: scale3d(1.015, 1.015, 1);
-  }
-  &.-live {
-    background: $color--dapp-live-light;
-  }
-  &.-beta {
-    background: $color--dapp-beta-light;
-  }
-  &.-prototype {
-    background: $color--dapp-prototype-light;
-  }
-  &.-wip {
-    background: $color--dapp-wip-light;
-  }
-  &.-concept {
-    background: $color--dapp-concept-light;
-  }
-  &.-stealth {
-    background: $color--dapp-stealth-light;
-  }
-  &.-abandoned,
-  &.-unknown {
-    background: $color--dapp-abandoned-light;
-    &:after {
-      content: ' ';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(white, 0.7);
-      pointer-events: none;
-    }
-  }
-  &.-preview {
-    width: 300px;
-    margin: 0 auto;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      margin-left: 0;
-    }
-    &:hover {
-      transform: none;
-      cursor: default;
-    }
-  }
-  &.--unfocused {
-    opacity: 0.6;
+  height: 15px;
+  background: $color--white;
+  box-shadow: 0 0 20px rgba($color--black, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.profile-score-bar-pct {
+  height: 100%;
+  background: $color--black;
+  transition: all 0.2s ease;
+}
+
+.profile-score-note {
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.profile-score-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.profile-score-title-pct {
+  font-weight: 300;
+  padding-left: 5px;
+}
+
+.profile-score-wrapper {
+  width: 300px;
+  margin: 0 auto;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -398,80 +360,10 @@ export default {
   padding-bottom: 5px;
 }
 
-.new-banner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 47px;
-  height: 47px;
-  background: url('~assets/images/ribbon.png') top left no-repeat;
-  background-size: 47px 47px;
-  margin: 0;
-  z-index: 5;
-}
-
-.new-message {
-  color: $color--gray;
-  display: inline-block;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  margin-top: 6px;
-  margin-left: 6px;
-  transition: color 0.2s ease;
-  &.-live {
-    color: $color--dapp-live-light;
-  }
-  &.-beta {
-    color: $color--dapp-beta-light;
-  }
-  &.-prototype {
-    color: $color--dapp-prototype-light;
-  }
-  &.-wip {
-    color: $color--dapp-wip-light;
-  }
-  &.-concept {
-    color: $color--dapp-concept-light;
-  }
-  &.-inactive {
-    color: $color--dapp-unknown-light;
-  }
-}
-
 .required {
   display: inline-block;
   padding-left: 2px;
   color: $color--error;
-}
-
-.status {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  margin: 0;
-  padding: 10px 5px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: border 0.2s ease;
-  color: rgba($color--black, 0.75);
-  &.-live {
-    background: $color--dapp-live;
-  }
-  &.-beta {
-    background: $color--dapp-beta;
-  }
-  &.-prototype {
-    background: $color--dapp-prototype;
-  }
-  &.-wip {
-    background: $color--dapp-wip;
-  }
-  &.-concept {
-    background: $color--dapp-concept;
-  }
 }
 
 .submit {
@@ -506,7 +398,7 @@ export default {
 
 .submit-reason {
   width: 300px;
-  padding-top: 15px;
+  padding-top: 20px;
   margin: 0 auto;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-left: 0;

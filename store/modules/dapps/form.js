@@ -77,6 +77,7 @@ function initialState() {
         website: ''
       }
     },
+    profileScore: 0,
     tagQuery: '',
     tagsResults: [],
     warnings: {
@@ -137,6 +138,9 @@ const actions = {
   },
   setField({ commit }, field) {
     commit('SET_FIELD', field)
+  },
+  setProfileScore({ commit }, score) {
+    commit('SET_PROFILE_SCORE', score)
   },
   setSiteUrl({ commit }, field) {
     commit('SET_SITE_URL', field)
@@ -229,6 +233,9 @@ const mutations = {
   },
   SET_FIELD(state, field) {
     state.fields[field.name] = field.value
+  },
+  SET_PROFILE_SCORE(state, score) {
+    state.profileScore = score
   },
   SET_SITE_URL(state, field) {
     state.fields.siteUrls[field.name] = field.value
@@ -388,6 +395,9 @@ const getters = {
   },
   productImageWarnings: state => {
     return state.warnings.productImage
+  },
+  profileScore: state => {
+    return state.profileScore
   },
   rinkebyErrors: state => {
     return state.errors.rinkeby
