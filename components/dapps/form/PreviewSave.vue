@@ -175,14 +175,12 @@ export default {
     setProfileScore(fields) {
       clearTimeout(this.profileScoreTimer)
       this.profileScoreTimer = setTimeout(() => {
+        // clean this up
         const data = { fields }
         data.fields.contractsMainnet = this.contractsMainnet
-        data.fields.contractsKovan = this.contractsKovan
-        data.fields.contractsRopsten = this.contractsRopsten
-        data.fields.contractsRinkeby = this.contractsRinkeby
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
-        data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
+        console.log(data)
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$store.dispatch('dapps/form/setProfileScore', score)
@@ -197,6 +195,7 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
+        // clean this up
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsKovan = this.contractsKovan
         data.fields.contractsRopsten = this.contractsRopsten

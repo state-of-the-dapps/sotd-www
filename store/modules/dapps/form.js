@@ -275,38 +275,38 @@ const getters = {
     return state.fields.contracts
   },
   contractsMainnet: state => {
-    let contractsString = state.fields.contracts.mainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.mainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsKovan: state => {
-    let contractsString = state.fields.contracts.kovan.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.kovan.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsRopsten: state => {
-    let contractsString = state.fields.contracts.ropsten.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.ropsten.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsRinkeby: state => {
-    let contractsString = state.fields.contracts.rinkeby.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.rinkeby.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsPoaMainnet: state => {
-    let contractsString = state.fields.contracts.poaMainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.poaMainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsPoaTestnet: state => {
-    let contractsString = state.fields.contracts.poaTestnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.poaTestnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsEosMainnet: state => {
-    let contractsString = state.fields.contracts.eosMainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.eosMainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   dappUrl: state => {
