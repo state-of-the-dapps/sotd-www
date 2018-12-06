@@ -5,7 +5,8 @@
       <BaseFileUpload
         :resize-width="192"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop your icon here, or click to select"
-        @uploadSuccess="setIcon"/>
+        @uploadSuccess="setIcon"
+        @removeFile="removeIcon"/>
     </div>
     <p class="help">Dimensions must be 192px width by 192px height <br>(JPEG or PNG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
@@ -25,6 +26,13 @@ export default {
       const field = {
         name: 'icon',
         value: url
+      }
+      this.$store.dispatch('dapps/form/setField', field)
+    },
+    removeIcon() {
+      const field = {
+        name: 'icon',
+        value: ''
       }
       this.$store.dispatch('dapps/form/setField', field)
     }

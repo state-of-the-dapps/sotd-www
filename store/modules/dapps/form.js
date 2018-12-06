@@ -77,6 +77,7 @@ function initialState() {
         website: ''
       }
     },
+    profileScore: 0,
     tagQuery: '',
     tagsResults: [],
     warnings: {
@@ -137,6 +138,9 @@ const actions = {
   },
   setField({ commit }, field) {
     commit('SET_FIELD', field)
+  },
+  setProfileScore({ commit }, score) {
+    commit('SET_PROFILE_SCORE', score)
   },
   setSiteUrl({ commit }, field) {
     commit('SET_SITE_URL', field)
@@ -230,6 +234,9 @@ const mutations = {
   SET_FIELD(state, field) {
     state.fields[field.name] = field.value
   },
+  SET_PROFILE_SCORE(state, score) {
+    state.profileScore = score
+  },
   SET_SITE_URL(state, field) {
     state.fields.siteUrls[field.name] = field.value
   },
@@ -268,38 +275,38 @@ const getters = {
     return state.fields.contracts
   },
   contractsMainnet: state => {
-    let contractsString = state.fields.contracts.mainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.mainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsKovan: state => {
-    let contractsString = state.fields.contracts.kovan.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.kovan.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsRopsten: state => {
-    let contractsString = state.fields.contracts.ropsten.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.ropsten.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsRinkeby: state => {
-    let contractsString = state.fields.contracts.rinkeby.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.rinkeby.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsPoaMainnet: state => {
-    let contractsString = state.fields.contracts.poaMainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.poaMainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsPoaTestnet: state => {
-    let contractsString = state.fields.contracts.poaTestnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.poaTestnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   contractsEosMainnet: state => {
-    let contractsString = state.fields.contracts.eosMainnet.address
-    let contracts = contractsString.split('\n')
+    let contractsString = state.fields.contracts.eosMainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
   dappUrl: state => {
@@ -388,6 +395,9 @@ const getters = {
   },
   productImageWarnings: state => {
     return state.warnings.productImage
+  },
+  profileScore: state => {
+    return state.profileScore
   },
   rinkebyErrors: state => {
     return state.errors.rinkeby
