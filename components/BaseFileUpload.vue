@@ -13,7 +13,7 @@
     <div
       v-if="disabled"
       class="disable"
-      @click="enable">Remove or change this image</div>
+      @click="remove">Remove or change this image</div>
   </div>
 </template>
 
@@ -65,10 +65,11 @@ export default {
       this.$refs.el.dropzone.disable()
       this.disabled = true
     },
-    enable() {
+    remove() {
       this.$refs.el.dropzone.removeAllFiles()
       this.$refs.el.dropzone.enable()
       this.disabled = false
+      this.$emit('removeFile')
     },
     s3UploadError(errorMessage) {
       console.log(errorMessage)

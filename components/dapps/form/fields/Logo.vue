@@ -5,7 +5,8 @@
       <BaseFileUpload
         :resize-width="400"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop your logo here, or click to select"
-        @uploadSuccess="setIcon"/>
+        @uploadSuccess="setLogo"
+        @removeFile="removeLogo"/>
     </div>
     <p class="help">Dimensions must be 400px width by 200-400px height <br>(JPEG or PNG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
@@ -21,10 +22,17 @@ export default {
     BaseFileUpload
   },
   methods: {
-    setIcon(url) {
+    setLogo(url) {
       const field = {
         name: 'logo',
         value: url
+      }
+      this.$store.dispatch('dapps/form/setField', field)
+    },
+    removeLogo() {
+      const field = {
+        name: 'logo',
+        value: ''
       }
       this.$store.dispatch('dapps/form/setField', field)
     }

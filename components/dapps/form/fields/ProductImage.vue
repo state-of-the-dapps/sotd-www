@@ -5,7 +5,8 @@
       <BaseFileUpload
         :resize-width="1200"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a product screenshot here, or click to select"
-        @uploadSuccess="setProductImage"/>
+        @uploadSuccess="setProductImage"
+        @removeFile="removeProductImage"/>
     </div>
     <p class="help">Dimensions must be 1200px width by 630px height <br>(JPEG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
@@ -25,6 +26,13 @@ export default {
       const field = {
         name: 'productImage',
         value: url
+      }
+      this.$store.dispatch('dapps/form/setField', field)
+    },
+    removeProductImage() {
+      const field = {
+        name: 'productImage',
+        value: ''
       }
       this.$store.dispatch('dapps/form/setField', field)
     }

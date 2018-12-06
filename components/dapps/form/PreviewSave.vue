@@ -7,7 +7,7 @@
           :style="'width: ' + Math.ceil(profileScore * 100) + '%'"
           class="profile-score-bar-pct"/>
       </div>
-      <p class="profile-score-note">Complete your profile boost your rank</p>
+      <p class="profile-score-note">Complete your profile to boost your rank</p>
     </div>
     <div class="submit-reason">
       <label 
@@ -175,7 +175,15 @@ export default {
     setProfileScore(fields) {
       clearTimeout(this.profileScoreTimer)
       this.profileScoreTimer = setTimeout(() => {
-        this.$axios.$post('profile/score', { fields }).then(response => {
+        const data = { fields }
+        data.fields.contractsMainnet = this.contractsMainnet
+        data.fields.contractsKovan = this.contractsKovan
+        data.fields.contractsRopsten = this.contractsRopsten
+        data.fields.contractsRinkeby = this.contractsRinkeby
+        data.fields.contractsPoaMainnet = this.contractsPoaMainnet
+        data.fields.contractsPoaTestnet = this.contractsPoaTestnet
+        data.fields.contractsEosMainnet = this.contractsEosMainnet
+        this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$store.dispatch('dapps/form/setProfileScore', score)
         })
@@ -368,6 +376,7 @@ export default {
 
 .submit {
   display: block;
+  border-radius: 4px;
   margin: 0 auto;
   width: 300px;
   margin-top: 15px;
@@ -397,9 +406,10 @@ export default {
 }
 
 .submit-reason {
+  background: darken($color--gray, 5%);
   width: 300px;
-  padding-top: 20px;
-  margin: 0 auto;
+  padding: 10px;
+  margin: 15px auto 0 auto;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-left: 0;
     margin-right: 0;
