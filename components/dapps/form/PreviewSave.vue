@@ -180,7 +180,6 @@ export default {
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
-        console.log(data)
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$store.dispatch('dapps/form/setProfileScore', score)
