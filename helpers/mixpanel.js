@@ -658,6 +658,18 @@ export const trackMetamaskCta = function(sourceComponent, sourcePath) {
   return action
 }
 
+export const trackMetamaskHelp = function() {
+  let name = 'Metamask Help'
+  let data = {}
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
 export const trackMyListView = function(dapps) {
   let name = 'My List - View'
   let data = {

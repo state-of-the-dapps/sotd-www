@@ -77,7 +77,8 @@
           <p class="button-wrapper">
             <nuxt-link
               :to="{name: 'rankings-platform', params: {platform: 'ethereum'}}"
-              class="button">Explore Ethereum ÐApps</nuxt-link></p>
+              class="button"
+              @click.native="trackMetamaskHelp">Explore Ethereum ÐApps</nuxt-link></p>
         </div>
       </section>
     </div>
@@ -85,6 +86,7 @@
 </template>
 
 <script>
+import { trackMetamaskHelp } from '~/helpers/mixpanel'
 import { openIntercom } from '~/helpers/mixins'
 import LayoutMain from '~/components/LayoutMain'
 import SvgBadgeMetamask from '~/components/SvgBadgeMetamask'
@@ -94,7 +96,13 @@ export default {
     LayoutMain,
     SvgBadgeMetamask
   },
-  mixins: [openIntercom]
+  mixins: [openIntercom],
+  methods: {
+    trackMetamaskHelp() {
+      const action = trackMetamaskHelp()
+      this.$mixpanel.track(action.name, action.data)
+    }
+  }
 }
 </script>
 
