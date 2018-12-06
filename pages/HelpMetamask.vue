@@ -9,12 +9,17 @@
               :height="36"
               fill="black"/>
           </div>
-          <h1 class="title-1">Welcome Metamask Friends!</h1>
+          <h1 class="title-1">Welcome MetaMask Friends!</h1>
           <br>
           <p><strong>Welcome to the land of ÐApps and Ethereum.</strong></p>
           <p>Are you confused? We understand and are here to help you! The world of Decentralized Applications (ÐApps) on the Ethereum Blockchain can be quite overwhelming. There are many new confusing terms to understand. The learning curve can be pretty steep. Hang in there, the journey is exciting.</p>
+          <p class="button-wrapper">
+            <nuxt-link
+              :to="{name: 'rankings-platform', params: {platform: 'ethereum'}}"
+              class="button"
+              @click.native="trackMetamaskHelp">I'm ready to Explore Ethereum ÐApps</nuxt-link></p>
           <h2 class="title-2">Digital wallets</h2>
-          <h3>Installing your digital wallet</h3>
+          <h3>Installing a digital wallet like MetaMask</h3>
           <ul class="list">
             <li>
               To use most ÐApps, you need a digital wallet. Commonly supported are digital wallets, like 
@@ -31,7 +36,7 @@
             <li>
               After you install one of these wallets, it will guide you to to create an accounts. You can have multiple accounts for different purposes.</li>
             <li>
-              You’ll need to put money in your wallet to make your first purchase. We can show you how to do that, too.
+              You’ll need to put money in your wallet to make your first transaction. We can show you how to do that, too.
             </li>
             <li>
               Note: A digital wallet acts like a bank account — treat it with respect and make sure you don’t forget your password and seed words.
@@ -112,10 +117,11 @@ export default {
 .button {
   @include button;
   padding: 10px 15px;
+  font-size: 1.15rem;
 }
 
 .button-wrapper {
-  padding: 3rem 0;
+  padding: 3rem 0 0 0;
   text-align: center;
 }
 
