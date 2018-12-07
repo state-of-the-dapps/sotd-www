@@ -4,16 +4,8 @@ const env = {
   googleAnalytics: process.env.GOOGLE_ANALYTICS || 'UA-000000-1',
   fullstory: process.env.FULLSTORY,
   intercom: process.env.INTERCOM,
-  mapboxKey: process.env.MAPBOX_KEY,
   mixpanel: process.env.MIXPANEL,
-  mode: process.env.MODE || 'universal',
-  linkexchangeRecipientAddress:
-    process.env.LINKEXCHANGE_RECIPIENT_ADDRESS ||
-    '0x65bCF0A60B3974931a4459c32ef4043262bc370c',
-  linkexchangeTillDate: process.env.LINKEXCHANGE_TILL_DATE || '5/31/2018',
-  linkexchangeWhitelistAddress:
-    process.env.LINKEXCHANGE_WHITELIST_ADDRESS ||
-    '0x65bCF0A60B3974931a4459c32ef4043262bc370c'
+  mode: process.env.MODE || 'universal'
 }
 
 export default {
@@ -51,10 +43,6 @@ export default {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
     intercom: env.intercom,
-    mapboxKey: env.mapboxKey,
-    linkexchangeRecipientAddress: env.linkexchangeRecipientAddress,
-    linkexchangeTillDate: env.linkexchangeTillDate,
-    linkexchangeWhitelistAddress: env.linkexchangeWhitelistAddress,
     mixpanel: env.mixpanel
   },
   head: {
