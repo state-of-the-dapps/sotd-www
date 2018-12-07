@@ -225,28 +225,25 @@ export function createRouter() {
           name: 'dapps-tab-tags'
         }
       },
-      // the root /dapps route goes after other /dapps/{params} routes, so that a direct GET to any other /dapps/{params} will render before /dapps child routes
       {
         path: '/dapps',
         component: Dapps,
-        name: 'dapps',
-        children: [
-          {
-            path: 'tab/:tab',
-            component: Placeholder,
-            name: 'dapps-tab'
-          },
-          {
-            path: 'tagged/:tags',
-            component: Placeholder,
-            name: 'dapps-tags'
-          },
-          {
-            path: 'tagged/:tags/tab/:tab',
-            component: Placeholder,
-            name: 'dapps-tab-tags'
-          }
-        ]
+        name: 'dapps'
+      },
+      {
+        path: '/dapps/category/:category',
+        component: Dapps,
+        name: 'dapps-category'
+      },
+      {
+        path: '/dapps/platform/:platform',
+        component: Dapps,
+        name: 'dapps-platform'
+      },
+      {
+        path: '/dapps/platform/:platform/category/:category',
+        component: Dapps,
+        name: 'dapps-platform-category'
       },
       {
         path: '/help/metamask',
