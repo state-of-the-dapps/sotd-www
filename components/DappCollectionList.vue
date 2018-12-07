@@ -24,6 +24,7 @@
 
 <script>
 import { trackCollectionView } from '~/helpers/mixpanel'
+import { homeCollectionSlots } from '~/helpers/constants'
 import Media from 'vue-media'
 import DappCardList from './DappCardList'
 import SvgIconChevron from './SvgIconChevron'
@@ -47,11 +48,15 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get('collections/' + this.collection.slug).then(response => {
-      const collection = response.data
-      const dapps = collection.items
-      this.dapps = dapps.slice(0, 6)
-    })
+    this.$axios
+      .get(
+        'collections/' + this.collection.slug + '?limit=' + homeCollectionSlots
+      )
+      .then(response => {
+        const collection = response.data
+        const dapps = collection.items
+        this.dapps = dapps.slice(0, homeCollectionSlots)
+      })
   },
   methods: {
     trackCollectionView(slug) {

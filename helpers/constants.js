@@ -6,6 +6,8 @@ const dappListDefaultSort = 'rank'
 
 const dappListDefaultOrder = 'asc'
 
+const dappFeaturedSlots = 4
+
 const dappPromotedSlots = 3
 
 const dappMetaBadges = [
@@ -204,6 +206,8 @@ const feedbackComponentMap = Object.freeze({
 
 const homeFeaturedCollections = 3
 
+const homeCollectionSlots = 6
+
 const myListLimit = 50
 
 const platformList = ['Ethereum', 'EOS', 'POA']
@@ -237,6 +241,7 @@ export {
   dappListDefaultSort,
   dappListDefaultOrder,
   dappMetaBadges,
+  dappFeaturedSlots,
   dappPromotedSlots,
   dappRefineStatusOptions,
   dappRefineTabOptions,
@@ -250,6 +255,7 @@ export {
   eventCategories,
   eventRefineCategoryOptions,
   feedbackComponentMap,
+  homeCollectionSlots,
   homeFeaturedCollections,
   myListLimit,
   platformList,

@@ -41,7 +41,7 @@
 
 <script>
 import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
-import { dappPromotedSlots } from '~/helpers/constants'
+import { dappFeaturedSlots, dappPromotedSlots } from '~/helpers/constants'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
@@ -88,7 +88,7 @@ export default {
   },
   methods: {
     getFeaturedDapps() {
-      return this.$axios.get('collections/featured')
+      return this.$axios.get('collections/featured?limit=' + dappFeaturedSlots)
     },
     getPromotedDapps() {
       return this.$axios.get('promoted/dapps')
