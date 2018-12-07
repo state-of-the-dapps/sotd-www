@@ -799,21 +799,6 @@ export const trackPromotedDappSubmit = function(dapp, email, hasSubmittedDapp) {
   return action
 }
 
-export const trackPublicListView = function(listUrl, sourcePath) {
-  let name = 'Public List - View'
-  let data = {
-    listUrl,
-    sourcePath
-  }
-
-  const action = {
-    name,
-    data
-  }
-
-  return action
-}
-
 export const trackPublicListCreate = function(listUrl, slug) {
   let name = 'Public List - Create'
   let data = {

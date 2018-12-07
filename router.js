@@ -30,8 +30,6 @@ const PromotedDapps = () =>
   import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () =>
   import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
-const PublicList = () =>
-  import('~/pages/PublicList.vue').then(m => m.default || m)
 const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
@@ -155,16 +153,6 @@ export function createRouter() {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
         name: 'dapps-new-confirmation'
-      },
-      {
-        path: '/lists/:list_url',
-        component: PublicList,
-        name: 'public-list'
-      },
-      {
-        path: '/lists/:list_url/:slug',
-        component: PublicList,
-        name: 'public-list-slug'
       },
       {
         path: '/logos',
