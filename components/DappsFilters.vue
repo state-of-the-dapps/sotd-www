@@ -98,18 +98,28 @@ export default {
       return optionsArr
     },
     selectCategory(category) {
-      this.setCategoryQuery(category)
-      this.fetchItems()
+      const routeName = this.$route.params.platform
+        ? 'dapps-platform-category'
+        : 'dapps-category'
+      this.$router.push({
+        name: routeName,
+        params: { ...this.$route.params, category },
+        query: { ...this.$route.query }
+      })
       this.trackFilter('category', category)
     },
     selectPlatform(platform) {
-      this.setPlatformQuery(platform)
-      this.fetchItems()
+      const routeName = this.$route.params.category
+        ? 'dapps-platform-category'
+        : 'dapps-platform'
+      this.$router.push({
+        name: routeName,
+        params: { ...this.$route.params, platform },
+        query: { ...this.$route.query }
+      })
       this.trackFilter('platform', platform)
     },
     selectStatus(status) {
-      this.setStatusQuery(status)
-      this.fetchItems()
       this.trackFilter('status', status)
     },
     trackFilter(type, option) {
