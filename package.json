@@ -27,6 +27,7 @@
     "number-abbreviate": "^2.0.0",
     "nuxt": "2.3.4",
     "nuxt-dropzone": "^0.2.8",
+    "pluralize": "^7.0.0",
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.3",
     "vue-clickaway": "^2.1.0",

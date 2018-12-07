@@ -2,16 +2,19 @@
   <LayoutMain>
     <div>
       <DappsSearch/>
-      <nuxt-link
-        :to="{ name: 'dapps', query: { status: 'wip' } }">Test link</nuxt-link>
       <div class="dapps-filters">
         <div class="filters">
           <DappsFilters/>
         </div>
-        <div class="results">
+        <div
+          ref="list"
+          class="results">
           <div class="count-sort">
             <div class="count">
-              <DappsResultCount/>
+              <DappsResultCount
+                :end="pager.offset + pager.limit"
+                :start="pager.offset + 1"
+                :total="pager.totalCount"/>
             </div>
             <div class="sort">
               <DappsSort/>
@@ -22,7 +25,9 @@
               :dapps="dapps"
               :optional-attribute="optionalCardAttribute"/>
           </div>
-          <DappsLoadMore/>
+          <p 
+            v-if="isLoading" 
+            class="loader-wrapper"><button class="loader"/></p>
         </div>
       </div>
     </div>
@@ -54,7 +59,6 @@ export default {
     return {
       dapps: [],
       isLoading: false,
-      optionalCardAttribute: '',
       pager: {
         limit: 0,
         offset: 0,
@@ -63,7 +67,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['statDappCount'])
+    ...mapGetters(['statDappCount']),
+    optionalCardAttribute() {
+      return this.$route.query.tab || ''
+    }
   },
   async asyncData({ params, query, app }) {
     const urlParams = { ...params, ...query }
@@ -77,7 +84,6 @@ export default {
   },
   watch: {
     $route() {
-      this.$refs.table.scrollIntoView()
       this.fetchDapps()
     }
   },
@@ -144,6 +150,10 @@ export default {
 
 .count {
   flex: 1;
+}
+
+.loader-wrapper {
+  padding-top: 25px;
 }
 
 .results {

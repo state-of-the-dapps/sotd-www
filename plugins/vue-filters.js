@@ -2,6 +2,7 @@ import Vue from 'vue'
 import NumAbbr from 'number-abbreviate'
 import formatDate from 'date-fns/format'
 import addMonths from 'date-fns/add_months'
+import pluralize from 'pluralize'
 import * as constants from '~/helpers/constants'
 
 Vue.filter('abbreviateNumber', (value, decimals) => {
@@ -47,6 +48,12 @@ Vue.filter('capitalize', value => {
 Vue.filter('firstLetter', value => {
   if (value) {
     return value.charAt(0)
+  }
+})
+
+Vue.filter('pluralize', (value, num) => {
+  if (value) {
+    return pluralize(value, num)
   }
 })
 
