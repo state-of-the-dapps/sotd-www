@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 import { getCategories } from '~/helpers/api'
 import { trackDappsFilter } from '~/helpers/mixpanel'
 import { dappStatuses, platformList, platformMap } from '~/helpers/constants'
@@ -49,11 +48,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('dapps/search', [
-      'categoryQuery',
-      'platformQuery',
-      'statusQuery'
-    ]),
+    categoryQuery() {
+      return this.$route.params.category || ''
+    },
+    platformQuery() {
+      return this.$route.params.platform || ''
+    },
+    statusQuery() {
+      return this.$route.query.status || ''
+    },
     formattedPlatformQuery() {
       return platformMap[this.platformQuery.toLowerCase()]
     }
@@ -63,12 +66,6 @@ export default {
     this.categoryOptions = categories
   },
   methods: {
-    ...mapActions('dapps/search', [
-      'fetchItems',
-      'setCategoryQuery',
-      'setPlatformQuery',
-      'setStatusQuery'
-    ]),
     getDappStatusOptions(options) {
       const optionsArr = options.map(x => {
         const optionObj = {

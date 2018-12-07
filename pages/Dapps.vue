@@ -1,7 +1,9 @@
 <template>
   <LayoutMain>
     <div>
-      <Search/>
+      <DappsSearch/>
+      <nuxt-link
+        :to="{ name: 'dapps', query: { status: 'wip' } }">Test link</nuxt-link>
       <div class="dapps-filters">
         <div class="filters">
           <DappsFilters/>
@@ -9,7 +11,7 @@
         <div class="results">
           <div class="count-sort">
             <div class="count">
-              <CountRefine/>
+              <DappsResultCount/>
             </div>
             <div class="sort">
               <DappsSort/>
@@ -20,7 +22,7 @@
               :dapps="dapps"
               :optional-attribute="optionalCardAttribute"/>
           </div>
-          <Pager/>
+          <DappsLoadMore/>
         </div>
       </div>
     </div>
@@ -28,53 +30,80 @@
 </template>
 
 <script>
-import CountRefine from '~/components/dapps/search/CountRefine.vue'
-import Collections from '~/components/dapps/search/Collections.vue'
+import { mapGetters } from 'vuex'
+import { getDapps } from '~/helpers/api'
 import DappCardList from '~/components/DappCardList'
 import DappsFilters from '~/components/DappsFilters'
+import DappsLoadMore from '~/components/DappsLoadMore.vue'
+import DappsResultCount from '~/components/DappsResultCount.vue'
+import DappsSearch from '~/components/DappsSearch.vue'
 import DappsSort from '~/components/DappsSort'
 import LayoutMain from '~/components/LayoutMain'
-import Pager from '~/components/dapps/search/Pager.vue'
-import Search from '~/components/dapps/search/Search.vue'
 
 export default {
   components: {
-    Collections,
-    CountRefine,
+    DappsResultCount,
     DappCardList,
     DappsFilters,
+    DappsLoadMore,
+    DappsSearch,
     DappsSort,
-    LayoutMain,
-    Pager,
-    Search
+    LayoutMain
+  },
+  data() {
+    return {
+      dapps: [],
+      isLoading: false,
+      optionalCardAttribute: '',
+      pager: {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
+    }
   },
   computed: {
-    dapps() {
-      return this.$store.getters['dapps/search/items']
-    },
-    dappCount() {
-      return this.$store.getters['dapps/search/itemCount']
-    },
-    optionalCardAttribute() {
-      return this.tabQuery || ''
-    },
-    tabQuery() {
-      return this.$store.getters['dapps/search/tabQuery']
-    },
-    statDappCount() {
-      return this.$store.getters['statDappCount']
-    },
-    tagQuery() {
-      return this.$store.getters['dapps/search/tagQuery']
+    ...mapGetters(['statDappCount'])
+  },
+  async asyncData({ params, query, app }) {
+    const urlParams = { ...params, ...query }
+    if (!query.tab) {
+      urlParams.tab = 'hot'
+    }
+    const data = await getDapps(app.$axios, urlParams)
+    const dapps = data.items
+    const pager = data.pager
+    return { dapps, pager }
+  },
+  watch: {
+    $route() {
+      this.$refs.table.scrollIntoView()
+      this.fetchDapps()
     }
   },
-  mounted() {
-    this.$store.dispatch('setSiteSection', 'dapps')
-    this.$store.dispatch('dapps/search/setFriendlyQuery', this.$route.params)
-    if (this.dappCount < 1 || this.$route.query.q) {
-      this.$store.dispatch('dapps/search/fetchItems')
+  methods: {
+    async fetchDapps() {
+      this.resetData()
+      this.isLoading = true
+      const urlParams = { ...this.$route.params, ...this.$route.query }
+      if (!this.$route.query.tab) {
+        urlParams.tab = 'hot'
+      }
+      const data = await getDapps(this.$axios, urlParams)
+      this.isLoading = false
+      const dapps = data.items
+      const pager = data.pager
+      this.dapps = dapps
+      this.pager = pager
+    },
+    resetData() {
+      this.dapps = []
+      this.pager = {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
     }
-    this.$router.replace({ query: {} })
   },
   head() {
     return {
@@ -83,7 +112,8 @@ export default {
         this.statDappCount.toLocaleString() +
         ' Projects Built on Ethereum, EOS & POA'
     }
-  }
+  },
+  scrollToTop: true
 }
 </script>
 

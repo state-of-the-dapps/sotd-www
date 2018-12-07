@@ -18,7 +18,7 @@ const DappDetailImprove = () =>
   import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
 const DappDetailMeta = () =>
   import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
-const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
+const Dapps = () => import('~/pages/Dapps.vue').then(m => m.default || m)
 const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
 const DappsNewConfirmation = () =>
   import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
@@ -26,8 +26,6 @@ const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const HelpMetamask = () =>
   import('~/pages/HelpMetamask.vue').then(m => m.default || m)
 const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
-const Placeholder = () =>
-  import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () =>
   import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () =>
