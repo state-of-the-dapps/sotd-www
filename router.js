@@ -5,9 +5,9 @@ Vue.use(Router)
 
 const About = () => import('~/pages/About.vue').then(m => m.default || m)
 const Collections = () =>
-  import('~/pages/collections/index.vue').then(m => m.default || m)
-const CollectionsSlug = () =>
-  import('~/pages/collections/_slug.vue').then(m => m.default || m)
+  import('~/pages/Collections.vue').then(m => m.default || m)
+const CollectionDetail = () =>
+  import('~/pages/CollectionDetail.vue').then(m => m.default || m)
 const DappDetail = () =>
   import('~/pages/DappDetail.vue').then(m => m.default || m)
 const DappDetailDirect = () =>
@@ -19,9 +19,9 @@ const DappDetailImprove = () =>
 const DappDetailMeta = () =>
   import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
 const Dapps = () => import('~/pages/Dapps.vue').then(m => m.default || m)
-const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
+const DappsNew = () => import('~/pages/DappsNew.vue').then(m => m.default || m)
 const DappsNewConfirmation = () =>
-  import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
+  import('~/pages/DappsNewConfirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const HelpMetamask = () =>
   import('~/pages/HelpMetamask.vue').then(m => m.default || m)
@@ -114,8 +114,8 @@ export function createRouter() {
       },
       {
         path: '/collections/:slug',
-        component: CollectionsSlug,
-        name: 'collections-slug'
+        component: CollectionDetail,
+        name: 'collection-detail'
       },
       {
         path: '/dapps/:slug',

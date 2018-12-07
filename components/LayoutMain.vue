@@ -15,7 +15,7 @@
       </div>
       <div class="footer">
         <SecondaryCta/>
-        <Foot/>
+        <BaseFooter/>
       </div>
     </div>
     <Modal/>
@@ -24,14 +24,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Foot from '~/components/shared/Foot'
+import BaseFooter from '~/components/BaseFooter'
 import Menu from '~/components/Menu'
 import Modal from '~/components/Modal'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
-    Foot,
+    BaseFooter,
     Menu,
     Modal,
     SecondaryCta

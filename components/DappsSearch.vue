@@ -45,7 +45,7 @@
 <script>
 import { dappRefineTabOptions } from '~/helpers/constants'
 import { getCaretPosition } from '~/helpers/mixins'
-import SuggestedTags from '~/components/shared/SuggestedTags.vue'
+import SuggestedTags from '~/components/SuggestedTags.vue'
 
 var searchTimer
 var trackTimer

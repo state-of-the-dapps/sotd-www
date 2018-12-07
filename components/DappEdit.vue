@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import DappFormFields from './dapps/form/Fields'
+import DappFormFields from './DappFormFields'
 
 export default {
   components: {

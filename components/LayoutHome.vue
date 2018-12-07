@@ -5,18 +5,18 @@
     </main>
     <footer class="footer">
       <SecondaryCta/>
-      <Foot/>
+      <BaseFooter/>
     </footer>
   </div>
 </template>
 
 <script>
-import Foot from '~/components/shared/Foot.vue'
+import BaseFooter from '~/components/BaseFooter.vue'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
-    Foot,
+    BaseFooter,
     SecondaryCta
   }
 }

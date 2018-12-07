@@ -2,26 +2,26 @@
   <div
     :class="isEdit ? 'is-edit' : ''"
     class="list">
-    <Name v-if="!isEdit || missingFields.includes('name')"/>
-    <Email v-if="!isEdit"/>
-    <Teaser v-if="!isEdit || missingFields.includes('teaser')"/>
-    <Description v-if="!isEdit || missingFields.includes('description')"/>
-    <Website v-if="!isEdit || missingFields.includes('url')"/>
-    <DappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
-    <Authors v-if="!isEdit || missingFields.includes('contact')"/>
-    <License v-if="!isEdit || missingFields.includes('license')"/>
-    <Logo v-if="!isEdit || missingFields.includes('logo_cache')"/>
-    <Icon v-if="!isEdit || missingFields.includes('icon_cache')"/>
-    <ProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>
-    <Platform v-if="!isEdit"/>
-    <Contracts 
+    <DappFormFieldsName v-if="!isEdit || missingFields.includes('name')"/>
+    <DappFormFieldsEmail v-if="!isEdit"/>
+    <DappFormFieldsTeaser v-if="!isEdit || missingFields.includes('teaser')"/>
+    <DappFormFieldsDescription v-if="!isEdit || missingFields.includes('description')"/>
+    <DappFormFieldsWebsite v-if="!isEdit || missingFields.includes('url')"/>
+    <DappFormFieldsDappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
+    <DappFormFieldsAuthors v-if="!isEdit || missingFields.includes('contact')"/>
+    <DappFormFieldsLicense v-if="!isEdit || missingFields.includes('license')"/>
+    <DappFormFieldsLogo v-if="!isEdit || missingFields.includes('logo_cache')"/>
+    <DappFormFieldsIcon v-if="!isEdit || missingFields.includes('icon_cache')"/>
+    <DappFormFieldsProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>
+    <DappFormFieldsPlatform v-if="!isEdit"/>
+    <DappFormFieldsContracts 
       v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet'))"
       :is-edit="isEdit"
       :eth-is-missing="missingFields.includes('contract_addresses_mainnet')"
       :poa-is-missing="missingFields.includes('poa_mainnet')"
       :eos-is-missing="missingFields.includes('eos_mainnet')"/>
-    <Status v-if="!isEdit || missingFields.includes('status')"/>
-    <Social 
+    <DappFormFieldsStatus v-if="!isEdit || missingFields.includes('status')"/>
+    <DappFormFieldsSocial 
       v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
       :is-edit="isEdit"
       :github-is-missing="missingFields.includes('github')"
@@ -30,49 +30,49 @@
       :blog-is-missing="missingFields.includes('blog')"
       :facebook-is-missing="missingFields.includes('facebook')"
       :chat-is-missing="missingFields.includes('chat')"/>
-    <Category v-if="!isEdit || missingFields.includes('category')"/>
-    <Tags v-if="!isEdit || missingFields.includes('tags')"/>
+    <DappFormFieldsCategory v-if="!isEdit || missingFields.includes('category')"/>
+    <DappFormFieldsTags v-if="!isEdit || missingFields.includes('tags')"/>
   </div>
 </template>
 
 <script>
-import Authors from '~/components/dapps/form/fields/Authors.vue'
-import Category from '~/components/dapps/form/fields/Category.vue'
-import Contracts from '~/components/dapps/form/fields/Contracts.vue'
-import DappUrl from '~/components/dapps/form/fields/DappUrl.vue'
-import Description from '~/components/dapps/form/fields/Description.vue'
-import Email from '~/components/dapps/form/fields/Email.vue'
-import Icon from '~/components/dapps/form/fields/Icon.vue'
-import License from '~/components/dapps/form/fields/License.vue'
-import Logo from '~/components/dapps/form/fields/Logo.vue'
-import Name from '~/components/dapps/form/fields/Name.vue'
-import Platform from '~/components/dapps/form/fields/Platform.vue'
-import ProductImage from '~/components/dapps/form/fields/ProductImage.vue'
-import Social from '~/components/dapps/form/fields/Social.vue'
-import Status from '~/components/dapps/form/fields/Status.vue'
-import Tags from '~/components/dapps/form/fields/Tags.vue'
-import Teaser from '~/components/dapps/form/fields/Teaser.vue'
-import Website from '~/components/dapps/form/fields/Website.vue'
+import DappFormFieldsAuthors from '~/components/DappFormFieldsAuthors.vue'
+import DappFormFieldsCategory from '~/components/DappFormFieldsCategory.vue'
+import DappFormFieldsContracts from '~/components/DappFormFieldsContracts.vue'
+import DappFormFieldsDappUrl from '~/components/DappFormFieldsDappUrl.vue'
+import DappFormFieldsDescription from '~/components/DappFormFieldsDescription.vue'
+import DappFormFieldsEmail from '~/components/DappFormFieldsEmail.vue'
+import DappFormFieldsIcon from '~/components/DappFormFieldsIcon.vue'
+import DappFormFieldsLicense from '~/components/DappFormFieldsLicense.vue'
+import DappFormFieldsLogo from '~/components/DappFormFieldsLogo.vue'
+import DappFormFieldsName from '~/components/DappFormFieldsName.vue'
+import DappFormFieldsPlatform from '~/components/DappFormFieldsPlatform.vue'
+import DappFormFieldsProductImage from '~/components/DappFormFieldsProductImage.vue'
+import DappFormFieldsSocial from '~/components/DappFormFieldsSocial.vue'
+import DappFormFieldsStatus from '~/components/DappFormFieldsStatus.vue'
+import DappFormFieldsTags from '~/components/DappFormFieldsTags.vue'
+import DappFormFieldsTeaser from '~/components/DappFormFieldsTeaser.vue'
+import DappFormFieldsWebsite from '~/components/DappFormFieldsWebsite.vue'
 
 export default {
   components: {
-    Authors,
-    Category,
-    Contracts,
-    DappUrl,
-    Description,
-    Email,
-    Icon,
-    License,
-    Logo,
-    Name,
-    Platform,
-    ProductImage,
-    Social,
-    Status,
-    Tags,
-    Teaser,
-    Website
+    DappFormFieldsAuthors,
+    DappFormFieldsCategory,
+    DappFormFieldsContracts,
+    DappFormFieldsDappUrl,
+    DappFormFieldsDescription,
+    DappFormFieldsEmail,
+    DappFormFieldsIcon,
+    DappFormFieldsLicense,
+    DappFormFieldsLogo,
+    DappFormFieldsName,
+    DappFormFieldsPlatform,
+    DappFormFieldsProductImage,
+    DappFormFieldsSocial,
+    DappFormFieldsStatus,
+    DappFormFieldsTags,
+    DappFormFieldsTeaser,
+    DappFormFieldsWebsite
   },
   props: {
     isEdit: {

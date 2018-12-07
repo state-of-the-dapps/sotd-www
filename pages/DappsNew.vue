@@ -27,8 +27,8 @@
       </section>
       <section class="section -form">
         <div class="container">
-          <Fields/>
-          <PreviewSave/>
+          <DappFormFields/>
+          <DappFormSave/>
         </div>
       </section>
     </div>
@@ -37,16 +37,16 @@
 
 <script>
 import { openIntercom } from '~/helpers/mixins'
-import Fields from '~/components/dapps/form/Fields'
+import DappFormFields from '~/components/DappFormFields'
+import DappFormSave from '~/components/DappFormSave'
 import LayoutMain from '~/components/LayoutMain'
-import PreviewSave from '~/components/dapps/form/PreviewSave'
 import TitlePage from '~/components/TitlePage'
 
 export default {
   components: {
-    Fields,
+    DappFormFields,
+    DappFormSave,
     LayoutMain,
-    PreviewSave,
     TitlePage
   },
   mixins: [openIntercom],
