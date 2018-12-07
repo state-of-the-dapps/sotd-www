@@ -70,7 +70,7 @@ export default {
     },
     positive: {
       type: Number,
-      required: true
+      default: null
     },
     neutral: {
       type: Number,
