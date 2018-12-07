@@ -41,6 +41,7 @@ export default {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
     }
+    urlParams.view = 'rankings'
     const data = await getDapps(app.$axios, urlParams)
     const dapps = data.items
     const pager = data.pager
@@ -61,6 +62,7 @@ export default {
         urlParams.sort = 'rank'
         urlParams.order = 'asc'
       }
+      urlParams.view = 'rankings'
       const data = await getDapps(this.$axios, urlParams)
       this.isLoading = false
       const dapps = data.items
