@@ -42,6 +42,7 @@
             to="/terms" 
             @click.native="$mixpanel.track('New DApp - Terms of Service')">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
       </div>
+      <p>Submissions are free and typically processed by the next business day.</p>
     </div>
     <input 
       v-model="honeypot" 
