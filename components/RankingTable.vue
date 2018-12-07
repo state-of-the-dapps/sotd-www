@@ -123,7 +123,7 @@
 </template>
 
 <script>
-import { trackDappRankingPage } from '~/helpers/mixpanel'
+import { trackDappRankingPager } from '~/helpers/mixpanel'
 import BasePager from './BasePager'
 import Help from './Help'
 import Media from 'vue-media'
@@ -194,7 +194,7 @@ export default {
       this.$router.push({ query: { ...this.$route.query, page: page } })
     },
     trackRankingPage(oldPage, targetPage) {
-      const action = trackDappRankingPage(oldPage, targetPage)
+      const action = trackDappRankingPager(oldPage, targetPage)
       this.$mixpanel.track(action.name, action.data)
     }
   }

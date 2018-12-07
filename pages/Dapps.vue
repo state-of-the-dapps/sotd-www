@@ -28,6 +28,18 @@
           <p 
             v-if="isLoading" 
             class="loader-wrapper"><button class="loader"/></p>
+          <div
+            v-if="!isLoading && pager.totalCount > 0"
+            class="pager-wrapper">
+            <BasePager
+              :limit="pager.limit"
+              :offset="pager.offset"
+              :total-count="pager.totalCount"
+              @selectPage="selectPage"/>
+          </div>
+          <p
+            v-if="!isLoading && pager.totalCount === 0"
+            class="no-results">There are currently no ÐApps here. Please try another search.</p>
         </div>
       </div>
     </div>
@@ -37,6 +49,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import { getDapps } from '~/helpers/api'
+import { trackDappPager } from '~/helpers/mixpanel'
+import BasePager from '~/components/BasePager'
 import DappCardList from '~/components/DappCardList'
 import DappsFilters from '~/components/DappsFilters'
 import DappsLoadMore from '~/components/DappsLoadMore.vue'
@@ -47,6 +61,7 @@ import LayoutMain from '~/components/LayoutMain'
 
 export default {
   components: {
+    BasePager,
     DappsResultCount,
     DappCardList,
     DappsFilters,
@@ -109,6 +124,16 @@ export default {
         offset: 0,
         totalCount: 0
       }
+    },
+    selectPage(page) {
+      const oldPage = this.$route.query.page || 1
+      this.trackPager(oldPage, page)
+      this.$refs.list.scrollIntoView()
+      this.$router.push({ query: { ...this.$route.query, page: page } })
+    },
+    trackPager(oldPage, targetPage) {
+      const action = trackDappPager(oldPage, targetPage)
+      this.$mixpanel.track(action.name, action.data)
     }
   },
   head() {
@@ -154,6 +179,15 @@ export default {
 
 .loader-wrapper {
   padding-top: 25px;
+}
+
+.pager-wrapper {
+  padding: 1rem 0 2rem;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.3rem;
 }
 
 .results {

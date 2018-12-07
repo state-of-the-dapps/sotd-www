@@ -34,7 +34,13 @@ export default {
   },
   methods: {
     selectSort(selected) {
-      this.$router.push({ query: { ...this.$route.query, tab: selected } })
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tab: selected,
+          page: 1
+        }
+      })
       this.trackSort(selected)
     },
     trackSort(sort) {

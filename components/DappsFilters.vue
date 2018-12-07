@@ -108,7 +108,7 @@ export default {
       this.$router.push({
         name: routeName,
         params: { ...this.$route.params, category },
-        query: { ...this.$route.query }
+        query: { ...this.$route.query, page: 1 }
       })
       this.trackFilter('category', category)
     },
@@ -117,20 +117,20 @@ export default {
       if (platform) {
         routeName += '-platform'
       }
-      if (this.$route.category) {
+      if (this.$route.params.category) {
         routeName += '-category'
       }
       this.$router.push({
         name: routeName,
         params: { ...this.$route.params, platform },
-        query: { ...this.$route.query }
+        query: { ...this.$route.query, page: 1 }
       })
       this.trackFilter('platform', platform)
     },
     selectStatus(status) {
       this.$router.push({
         params: { ...this.$route.params },
-        query: { ...this.$route.query, status }
+        query: { ...this.$route.query, status, page: 1 }
       })
       this.trackFilter('status', status)
     },

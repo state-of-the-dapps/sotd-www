@@ -222,8 +222,24 @@ export const trackDappRankingCategory = function(
 
   return action
 }
-export const trackDappRankingPage = function(from, to) {
-  let name = 'DApp Ranking - Page'
+
+export const trackDappPager = function(from, to) {
+  let name = 'DApp Ranking - Pager'
+  let data = {
+    from,
+    to
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappRankingPager = function(from, to) {
+  let name = 'DApp Ranking - Pager'
   let data = {
     from,
     to

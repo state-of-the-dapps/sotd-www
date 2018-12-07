@@ -93,7 +93,7 @@ export default {
   padding: 8px;
   background: $color--white;
   border-radius: 3px;
-  border: 1px solid darken($color--gray, 10%);
+  box-shadow: 0 5px 10px rgba($color--black, 0.075);
   line-height: 1;
   text-align: center;
   transition: all 0.2s ease;
