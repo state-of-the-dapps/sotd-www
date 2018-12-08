@@ -31,11 +31,12 @@
             @click="fetchSuggestedTagsWithNoQuery" 
             @keydown.delete="removeLastTag"></li>
         </ul>
+        <DappsSearchSuggestedTags
+          :text-query="textQuery"
+          :tags="suggestedTags"
+          @resetSuggestedTags="resetSuggestedTags"
+          @updateTextQuery="updateTextQuery"/>
       </div>
-      <DappsSearchSuggestedTags
-        :text-query="textQuery"
-        @updateTextQuery="updateTextQuery"
-      />
     </div>
   </section>
 </template>
@@ -55,6 +56,7 @@ export default {
   mixins: [getCaretPosition],
   data() {
     return {
+      suggestedTags: [],
       textQuery: ''
     }
   },
@@ -63,34 +65,47 @@ export default {
       return this.$route.query.tags ? this.$route.query.tags.split(',') : []
     }
   },
+  mounted() {
+    this.textQuery = this.$route.query.text
+  },
   methods: {
     blurSearch() {
       this.$refs.search.blur()
     },
+    fetchSuggestedTags(tagsQuery) {
+      this.$axios
+        .get('tags', {
+          params: {
+            text: tagsQuery.value,
+            excluded: this.suggestedTags,
+            type: 'dapps'
+          }
+        })
+        .then(response => {
+          const data = response.data
+          const items = data.items
+          this.suggestedTags = items
+        })
+    },
     fetchSuggestedTagsWithNoQuery() {
       if (this.textQuery.length === 0 && this.tags.length === 0) {
-        let tagsQuery = {
-          value: '',
-          model: 'dapps'
-        }
-        this.$store.dispatch('tags/fetchItems', tagsQuery)
+        let tagsQuery = { value: '' }
+        this.fetchSuggestedTags(tagsQuery)
       }
     },
     removeLastTag() {
       if (this.textQuery.length < 1 && this.tags.length > 0) {
         this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-        this.$store.dispatch('dapps/search/removeLastTagFromQuery')
-        this.$store.dispatch('dapps/search/fetchItems')
         this.fetchSuggestedTagsWithNoQuery()
       }
     },
     removeTag(tag, key) {
       document.getElementById('search').focus()
       this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
-      this.$store.dispatch('dapps/search/removeTagFromQuery', key)
-      this.$store.dispatch('tags/resetItems')
-      this.$store.dispatch('dapps/search/fetchItems')
       this.fetchSuggestedTagsWithNoQuery()
+    },
+    resetSuggestedTags() {
+      this.suggestedTags = []
     },
     search(event) {
       clearTimeout(searchTimer)
@@ -100,21 +115,28 @@ export default {
       var lastWord = result ? result[0] : null
       searchTimer = setTimeout(() => {
         if (this.tags.length < 3 && this.textQuery.length > 1) {
-          this.$store.dispatch('dapps/search/setTabQuery', 'most-relevant')
-          let tagsQuery = {
-            value: lastWord,
-            model: 'dapps'
-          }
-          this.$store.dispatch('tags/fetchItems', tagsQuery)
+          let tagsQuery = { value: lastWord }
+          this.fetchSuggestedTags(tagsQuery)
         }
         if (this.textQuery.length === 0) {
-          this.$store.dispatch(
-            'dapps/search/setTabQuery',
-            dappRefineTabOptions[0]
-          )
           this.fetchSuggestedTagsWithNoQuery()
         }
-        this.$store.dispatch('dapps/search/fetchItems')
+        let routeName = 'dapps'
+        if (this.$route.params.platform) {
+          routeName += '-platform'
+        }
+        if (this.$route.params.category) {
+          routeName += '-category'
+        }
+        this.$router.push({
+          name: routeName,
+          params: { ...this.$route.params },
+          query: {
+            ...this.$route.query,
+            page: 1,
+            text: this.textQuery || undefined
+          }
+        })
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })
@@ -172,6 +194,8 @@ export default {
   height: 50px;
   width: 40px;
   background: $color--black;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
   &:hover {
     cursor: default;
   }
@@ -244,7 +268,6 @@ export default {
 
 .wrapper {
   border-radius: 4px;
-  overflow: hidden;
   position: relative;
   z-index: 5;
   box-shadow: 0 17px 70px 0 rgba($color--black, 0.22);

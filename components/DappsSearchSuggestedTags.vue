@@ -60,12 +60,11 @@ export default {
     padding: 10px;
     box-shadow: 0 17px 70px rgba($color--black, 0.2);
     width: 250px;
-    top: 50px;
+    top: 100%;
     left: 40px;
     overflow: hidden;
     z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      top: 85px;
       left: 55px;
       width: 500px;
     }

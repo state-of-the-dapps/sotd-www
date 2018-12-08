@@ -107,7 +107,7 @@ export default {
       }
       this.$router.push({
         name: routeName,
-        params: { ...this.$route.params, category },
+        params: { ...this.$route.params, category: category || undefined },
         query: { ...this.$route.query, page: 1 }
       })
       this.trackFilter('category', category)
@@ -122,7 +122,7 @@ export default {
       }
       this.$router.push({
         name: routeName,
-        params: { ...this.$route.params, platform },
+        params: { ...this.$route.params, platform: platform || undefined },
         query: { ...this.$route.query, page: 1 }
       })
       this.trackFilter('platform', platform)
@@ -130,7 +130,11 @@ export default {
     selectStatus(status) {
       this.$router.push({
         params: { ...this.$route.params },
-        query: { ...this.$route.query, status, page: 1 }
+        query: {
+          ...this.$route.query,
+          status: status || undefined,
+          page: 1
+        }
       })
       this.trackFilter('status', status)
     },
