@@ -152,6 +152,9 @@ export default {
   &.important {
     background: $color--white;
   }
+  .inline & {
+    padding: 3px 10px;
+  }
 }
 
 .dropdown-content {

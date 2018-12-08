@@ -40,13 +40,7 @@ export default {
   methods: {
     findDappsByTag(tag) {
       this.trackDappTag(tag)
-      this.$store.dispatch('dapps/search/resetQuery')
-      this.$store.dispatch('tags/selectItem', tag)
-      this.$store.dispatch('dapps/search/addTagToQuery', tag)
-      this.$store.dispatch('dapps/search/fetchItems')
-      this.$store.dispatch('dapps/search/setFriendlyUrl').then(response => {
-        document.getElementById('__nuxt').scrollIntoView()
-      })
+      this.$router.push({ name: 'dapps', query: { tags: tag } })
     },
     trackDappTag(name) {
       const action = trackDappTag(name, this.slug)

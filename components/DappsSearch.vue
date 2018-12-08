@@ -13,7 +13,7 @@
           <li 
             v-for="(tag, key) in tags" 
             :key="key" 
-            class="tag">#{{ tag }} <span 
+            class="tag">{{ tag }} <span 
               class="remove" 
               @click="removeTag(tag, key)"><img 
                 src="~/assets/images/close/small.png" 
@@ -21,7 +21,7 @@
                 alt="Close" 
                 class="close"></span></li>
           <li class="input-text"><input 
-            id="search" 
+            ref="search" 
             v-model="textQuery" 
             class="input" 
             placeholder="Search by ÐApp name or tag" 
@@ -32,9 +32,7 @@
             @keydown.delete="removeLastTag"></li>
         </ul>
       </div>
-      <SuggestedTags
-        :items="suggestedTags"
-        :model="'dapps'"
+      <DappsSearchSuggestedTags
         :text-query="textQuery"
         @updateTextQuery="updateTextQuery"
       />
@@ -45,35 +43,29 @@
 <script>
 import { dappRefineTabOptions } from '~/helpers/constants'
 import { getCaretPosition } from '~/helpers/mixins'
-import SuggestedTags from '~/components/SuggestedTags.vue'
+import DappsSearchSuggestedTags from '~/components/DappsSearchSuggestedTags'
 
 var searchTimer
 var trackTimer
 
 export default {
   components: {
-    SuggestedTags
+    DappsSearchSuggestedTags
   },
   mixins: [getCaretPosition],
+  data() {
+    return {
+      textQuery: ''
+    }
+  },
   computed: {
-    suggestedTags() {
-      return this.$store.getters['tags/items']
-    },
     tags() {
-      return this.$store.getters['dapps/search/tagQuery']
-    },
-    textQuery: {
-      get() {
-        return this.$store.getters['dapps/search/textQuery']
-      },
-      set(value) {
-        this.$store.dispatch('dapps/search/setTextQuery', value)
-      }
+      return this.$route.query.tags ? this.$route.query.tags.split(',') : []
     }
   },
   methods: {
     blurSearch() {
-      document.getElementById('search').blur()
+      this.$refs.search.blur()
     },
     fetchSuggestedTagsWithNoQuery() {
       if (this.textQuery.length === 0 && this.tags.length === 0) {
@@ -130,6 +122,7 @@ export default {
     },
     updateTextQuery(value) {
       this.textQuery = value
+      this.$refs.search.focus()
     }
   }
 }
