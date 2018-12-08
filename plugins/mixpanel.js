@@ -33,19 +33,8 @@ const mp = function(Vue) {
     },
     setUser(personData) {
       let data = personData || {}
-      if (process.env.mixpanel) {
-        if (data.$email) {
-          mixpanel.alias(data.$email)
-          mixpanel.people.set(data)
-        }
-      } else {
-        if (data.$email) {
-          console.log('Mixpanel Alias: ', data.$email)
-          console.log('Mixpanel Data:', data)
-        } else {
-          console.log('Email address is missing')
-        }
-      }
+      // TODO further remove all $mixpanel.setUser calls
+      console.log('Mixpanel setUser Data:', data)
     }
   }
 }
