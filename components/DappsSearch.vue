@@ -66,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    this.textQuery = this.$route.query.text
+    this.textQuery = this.$route.query.text || ''
   },
   methods: {
     blurSearch() {
