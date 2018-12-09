@@ -138,6 +138,7 @@ export default {
   margin-bottom: 5px;
   font-size: 0.9rem;
   text-transform: uppercase;
+  letter-spacing: 0.35px;
 }
 
 .button {
