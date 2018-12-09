@@ -208,14 +208,6 @@ export default {
           .post('dapps', data)
           .then(response => {
             this.sending = false
-            this.$mixpanel.setUser({
-              $email: this.fields.email,
-              $name: this.fields.authors,
-              hasWeb3: typeof web3 !== 'undefined',
-              lastUpdated: new Date().toISOString(),
-              lastDappSubmitted: this.fields.name,
-              lastSessionEntryRoute: this.userEntryRoute
-            })
             this.$mixpanel.track('New DApp - Submit', {
               disabled: false,
               name: this.fields.name,

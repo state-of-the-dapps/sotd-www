@@ -206,13 +206,6 @@ export default {
         this.$mixpanel.track(action.name, action.data)
         const hasWeb3 = typeof web3 !== 'undefined'
         const lastUpdated = new Date().toISOString()
-        const user = setUser(
-          this.email,
-          hasWeb3,
-          lastUpdated,
-          this.userEntryRoute
-        )
-        this.$mixpanel.setUser(user)
         this.$refs.page.scrollIntoView()
       }
     }

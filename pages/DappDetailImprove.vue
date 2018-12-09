@@ -123,13 +123,6 @@ export default {
             this.$mixpanel.track('Improve DApp - Submit', {
               slug: this.dapp.slug
             })
-            this.$mixpanel.setUser({
-              $email: this.suggesterEmail,
-              $name: this.suggesterName,
-              hasWeb3: typeof web3 !== 'undefined',
-              lastUpdated: new Date().toISOString(),
-              lastSessionEntryRoute: this.userEntryRoute
-            })
           })
           .catch(error => {
             console.log(error)
