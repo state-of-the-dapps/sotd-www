@@ -1,7 +1,7 @@
 <template>
   <LayoutMain>
     <div>
-      <Lead 
+      <CollectionLead 
         :description="collection.description"
         :curator="collection.curator"
         :link-text="collection.link.text"
@@ -18,14 +18,14 @@
 <script>
 import { mapGetters } from 'vuex'
 import LayoutMain from '~/components/LayoutMain'
-import Lead from '~/components/collections/detail/Lead'
+import CollectionLead from '~/components/CollectionLead'
 import DappCardList from '~/components/DappCardList'
 
 export default {
   components: {
+    CollectionLead,
     DappCardList,
-    LayoutMain,
-    Lead
+    LayoutMain
   },
   computed: {
     ...mapGetters('collections/detail', ['collection'])

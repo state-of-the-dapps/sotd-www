@@ -2,14 +2,14 @@
   <transition name="fade">
     <div 
       v-on-clickaway="reset" 
-      v-if="items && items.length > 0" 
+      v-if="tags.length" 
       class="container -suggested-tags">
       <ul class="list">
         <li 
-          v-for="(item, key) in items" 
+          v-for="(tag, key) in tags" 
           :key="key" 
           class="item" 
-          @click="select(item, key)">{{ item }}</li>
+          @click="select(tag, key)">{{ tag }}</li>
       </ul>
     </div>
   </transition>
@@ -25,53 +25,35 @@ export default {
   },
   mixins: [getCaretPosition],
   props: {
-    items: {
+    tags: {
       type: Array,
-      required: true,
       default: () => []
     },
     textQuery: {
       type: String,
-      required: true,
       default: ''
-    },
-    model: {
-      type: String,
-      required: true,
-      validator: function(value) {
-        const allowedValues = ['events', 'dapps']
-        return allowedValues.includes(value)
-      }
     }
-  },
-  destroyed() {
-    // reset tags and hide when a new route is activated (v-on-clickaway doesn't fire on route change)
-    this.reset()
   },
   methods: {
     reset() {
-      this.$store.dispatch('tags/resetItems')
+      this.$emit('resetSuggestedTags')
     },
     select(item, key) {
-      var caret = this.getCaretPosition(this.textQuery)
-      var result = /\S+$/.exec(this.textQuery.slice(0, caret.end))
-      var lastWord = result ? result[0] : null
-      this.$emit('updateTextQuery', this.textQuery.replace(lastWord, ''))
-      document.getElementById('search').focus()
-      this.$store.dispatch('tags/selectItem', key)
-      this.$store.dispatch('tags/resetItems')
-      // contextually dispatch actions based on the model
-      if (this.model === 'dapps') {
-        this.$store.dispatch(this.model + '/search/addTagToQuery', item)
-        this.$store.dispatch(this.model + '/search/fetchItems')
-      } else if (this.model === 'events') {
-        this.$store.dispatch(this.model + '/list/addTagToQuery', item)
-        this.$store.dispatch(this.model + '/list/fetchItems')
-      }
-      this.$mixpanel.track(
-        this.$options.filters.capitalize(this.model) + ' - Select tag',
-        { tag: item }
-      )
+      let tags = this.$route.query.tags || ''
+      tags = tags.split(',').filter(Boolean)
+      tags.push(item)
+      tags = tags.join(',')
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tags: tags || undefined,
+          text: undefined,
+          page: 1
+        }
+      })
+      this.$emit('resetTextQuery')
+      this.reset()
+      this.$mixpanel.track('DApps - Select tag', { tag: item })
     }
   }
 }
@@ -87,12 +69,11 @@ export default {
     padding: 10px;
     box-shadow: 0 17px 70px rgba($color--black, 0.2);
     width: 250px;
-    top: 50px;
+    top: 100%;
     left: 40px;
     overflow: hidden;
     z-index: 10;
     @include tweakpoint('min-width', $tweakpoint--default) {
-      top: 85px;
       left: 55px;
       width: 500px;
     }

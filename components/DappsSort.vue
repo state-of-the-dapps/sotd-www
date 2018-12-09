@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 import { trackDappsSort } from '~/helpers/mixpanel'
 import { dappSortOptions, dappSortOptionsMap } from '~/helpers/constants'
 import BaseDropdown from './BaseDropdown'
@@ -26,21 +25,22 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('dapps/search', {
-      sortQuery: 'tabQuery'
-    }),
+    sortQuery() {
+      return this.$route.query.tab || 'hot'
+    },
     formattedSortQuery() {
       return dappSortOptionsMap[this.sortQuery]
     }
   },
   methods: {
-    ...mapActions('dapps/search', {
-      setSortQuery: 'setTabQuery',
-      fetchItems: 'fetchItems'
-    }),
     selectSort(selected) {
-      this.setSortQuery(selected)
-      this.fetchItems()
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tab: selected || undefined,
+          page: 1
+        }
+      })
       this.trackSort(selected)
     },
     trackSort(sort) {

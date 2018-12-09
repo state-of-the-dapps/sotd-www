@@ -13,7 +13,7 @@
           <li 
             v-for="(tag, key) in tags" 
             :key="key" 
-            class="tag">#{{ tag }} <span 
+            class="tag">{{ tag }} <span 
               class="remove" 
               @click="removeTag(tag, key)"><img 
                 src="~/assets/images/close/small.png" 
@@ -21,23 +21,22 @@
                 alt="Close" 
                 class="close"></span></li>
           <li class="input-text"><input 
-            id="search" 
+            ref="search" 
             v-model="textQuery" 
             class="input" 
             placeholder="Search by ÐApp name or tag" 
             autocomplete="off" 
             @input="search" 
-            @keyup.enter="blurSearch" 
+            @keyup.enter="blurTextInput" 
             @click="fetchSuggestedTagsWithNoQuery" 
             @keydown.delete="removeLastTag"></li>
         </ul>
+        <DappsSearchSuggestedTags
+          :text-query="textQuery"
+          :tags="suggestedTags"
+          @resetSuggestedTags="resetSuggestedTags"
+          @resetTextQuery="resetTextQuery"/>
       </div>
-      <SuggestedTags
-        :items="suggestedTags"
-        :model="'dapps'"
-        :text-query="textQuery"
-        @updateTextQuery="updateTextQuery"
-      />
     </div>
   </section>
 </template>
@@ -45,60 +44,87 @@
 <script>
 import { dappRefineTabOptions } from '~/helpers/constants'
 import { getCaretPosition } from '~/helpers/mixins'
-import SuggestedTags from '~/components/shared/SuggestedTags.vue'
+import DappsSearchSuggestedTags from '~/components/DappsSearchSuggestedTags'
 
 var searchTimer
 var trackTimer
 
 export default {
   components: {
-    SuggestedTags
+    DappsSearchSuggestedTags
   },
   mixins: [getCaretPosition],
-  computed: {
-    suggestedTags() {
-      return this.$store.getters['tags/items']
-    },
-    tags() {
-      return this.$store.getters['dapps/search/tagQuery']
-    },
-    textQuery: {
-      get() {
-        return this.$store.getters['dapps/search/textQuery']
-      },
-      set(value) {
-        this.$store.dispatch('dapps/search/setTextQuery', value)
-      }
+  data() {
+    return {
+      suggestedTags: [],
+      textQuery: ''
     }
   },
+  computed: {
+    tags() {
+      return this.$route.query.tags ? this.$route.query.tags.split(',') : []
+    }
+  },
+  mounted() {
+    this.textQuery = this.$route.query.text || ''
+  },
   methods: {
-    blurSearch() {
-      document.getElementById('search').blur()
+    blurTextInput() {
+      this.$refs.search.blur()
+    },
+    fetchSuggestedTags(tagsQuery) {
+      this.$axios
+        .get('tags', {
+          params: {
+            text: tagsQuery.value,
+            excluded: this.$route.query.tags || undefined,
+            type: 'dapps'
+          }
+        })
+        .then(response => {
+          const data = response.data
+          const items = data.items
+          this.suggestedTags = items
+        })
     },
     fetchSuggestedTagsWithNoQuery() {
-      if (this.textQuery.length === 0 && this.tags.length === 0) {
-        let tagsQuery = {
-          value: '',
-          model: 'dapps'
-        }
-        this.$store.dispatch('tags/fetchItems', tagsQuery)
+      if (!this.textQuery && this.tags.length === 0) {
+        let tagsQuery = { value: '' }
+        this.fetchSuggestedTags(tagsQuery)
       }
     },
+    removeTagQuery() {
+      let tags = this.$route.query.tags || ''
+      tags = tags.split(',').filter(Boolean)
+      tags.pop()
+      tags = tags.join(',')
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tags: tags || undefined,
+          text: undefined,
+          page: 1
+        }
+      })
+    },
     removeLastTag() {
-      if (this.textQuery.length < 1 && this.tags.length > 0) {
+      if (!this.textQuery && this.tags.length > 0) {
+        this.removeTagQuery()
         this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-        this.$store.dispatch('dapps/search/removeLastTagFromQuery')
-        this.$store.dispatch('dapps/search/fetchItems')
-        this.fetchSuggestedTagsWithNoQuery()
       }
     },
     removeTag(tag, key) {
-      document.getElementById('search').focus()
+      this.focusTextInput()
+      this.removeTagQuery()
       this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
-      this.$store.dispatch('dapps/search/removeTagFromQuery', key)
-      this.$store.dispatch('tags/resetItems')
-      this.$store.dispatch('dapps/search/fetchItems')
       this.fetchSuggestedTagsWithNoQuery()
+    },
+    resetSuggestedTags() {
+      this.suggestedTags = []
+    },
+    resetTextQuery() {
+      this.textQuery = ''
+      this.focusTextInput()
     },
     search(event) {
       clearTimeout(searchTimer)
@@ -108,28 +134,35 @@ export default {
       var lastWord = result ? result[0] : null
       searchTimer = setTimeout(() => {
         if (this.tags.length < 3 && this.textQuery.length > 1) {
-          this.$store.dispatch('dapps/search/setTabQuery', 'most-relevant')
-          let tagsQuery = {
-            value: lastWord,
-            model: 'dapps'
-          }
-          this.$store.dispatch('tags/fetchItems', tagsQuery)
+          let tagsQuery = { value: lastWord }
+          this.fetchSuggestedTags(tagsQuery)
         }
         if (this.textQuery.length === 0) {
-          this.$store.dispatch(
-            'dapps/search/setTabQuery',
-            dappRefineTabOptions[0]
-          )
           this.fetchSuggestedTagsWithNoQuery()
         }
-        this.$store.dispatch('dapps/search/fetchItems')
+        let routeName = 'dapps'
+        if (this.$route.params.platform) {
+          routeName += '-platform'
+        }
+        if (this.$route.params.category) {
+          routeName += '-category'
+        }
+        this.$router.push({
+          name: routeName,
+          params: { ...this.$route.params },
+          query: {
+            ...this.$route.query,
+            page: 1,
+            text: this.textQuery || undefined
+          }
+        })
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })
       }, 10000)
     },
-    updateTextQuery(value) {
-      this.textQuery = value
+    focusTextInput() {
+      this.$refs.search.focus()
     }
   }
 }
@@ -179,6 +212,8 @@ export default {
   height: 50px;
   width: 40px;
   background: $color--black;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
   &:hover {
     cursor: default;
   }
@@ -251,7 +286,6 @@ export default {
 
 .wrapper {
   border-radius: 4px;
-  overflow: hidden;
   position: relative;
   z-index: 5;
   box-shadow: 0 17px 70px 0 rgba($color--black, 0.22);

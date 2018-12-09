@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
 import { getCategories } from '~/helpers/api'
 import { trackDappsFilter } from '~/helpers/mixpanel'
 import { dappStatuses, platformList, platformMap } from '~/helpers/constants'
@@ -49,11 +48,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('dapps/search', [
-      'categoryQuery',
-      'platformQuery',
-      'statusQuery'
-    ]),
+    categoryQuery() {
+      return this.$route.params.category || ''
+    },
+    platformQuery() {
+      return this.$route.params.platform || ''
+    },
+    statusQuery() {
+      return this.$route.query.status || ''
+    },
     formattedPlatformQuery() {
       return platformMap[this.platformQuery.toLowerCase()]
     }
@@ -63,12 +66,6 @@ export default {
     this.categoryOptions = categories
   },
   methods: {
-    ...mapActions('dapps/search', [
-      'fetchItems',
-      'setCategoryQuery',
-      'setPlatformQuery',
-      'setStatusQuery'
-    ]),
     getDappStatusOptions(options) {
       const optionsArr = options.map(x => {
         const optionObj = {
@@ -101,18 +98,43 @@ export default {
       return optionsArr
     },
     selectCategory(category) {
-      this.setCategoryQuery(category)
-      this.fetchItems()
+      let routeName = 'dapps'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (category) {
+        routeName += '-category'
+      }
+      this.$router.push({
+        name: routeName,
+        params: { ...this.$route.params, category: category || undefined },
+        query: { ...this.$route.query, page: 1 }
+      })
       this.trackFilter('category', category)
     },
     selectPlatform(platform) {
-      this.setPlatformQuery(platform)
-      this.fetchItems()
+      let routeName = 'dapps'
+      if (platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
+      this.$router.push({
+        name: routeName,
+        params: { ...this.$route.params, platform: platform || undefined },
+        query: { ...this.$route.query, page: 1 }
+      })
       this.trackFilter('platform', platform)
     },
     selectStatus(status) {
-      this.setStatusQuery(status)
-      this.fetchItems()
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          status: status || undefined,
+          page: 1
+        }
+      })
       this.trackFilter('status', status)
     },
     trackFilter(type, option) {

@@ -5,9 +5,9 @@ Vue.use(Router)
 
 const About = () => import('~/pages/About.vue').then(m => m.default || m)
 const Collections = () =>
-  import('~/pages/collections/index.vue').then(m => m.default || m)
-const CollectionsSlug = () =>
-  import('~/pages/collections/_slug.vue').then(m => m.default || m)
+  import('~/pages/Collections.vue').then(m => m.default || m)
+const CollectionDetail = () =>
+  import('~/pages/CollectionDetail.vue').then(m => m.default || m)
 const DappDetail = () =>
   import('~/pages/DappDetail.vue').then(m => m.default || m)
 const DappDetailDirect = () =>
@@ -18,22 +18,18 @@ const DappDetailImprove = () =>
   import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
 const DappDetailMeta = () =>
   import('~/pages/DappDetailMeta.vue').then(m => m.default || m)
-const Dapps = () => import('~/pages/dapps/index.vue').then(m => m.default || m)
-const DappsNew = () => import('~/pages/dapps/new.vue').then(m => m.default || m)
+const Dapps = () => import('~/pages/Dapps.vue').then(m => m.default || m)
+const DappsNew = () => import('~/pages/DappsNew.vue').then(m => m.default || m)
 const DappsNewConfirmation = () =>
-  import('~/pages/dapps/new/confirmation.vue').then(m => m.default || m)
+  import('~/pages/DappsNewConfirmation.vue').then(m => m.default || m)
 const Home = () => import('~/pages/Home.vue').then(m => m.default || m)
 const HelpMetamask = () =>
   import('~/pages/HelpMetamask.vue').then(m => m.default || m)
 const Logos = () => import('~/pages/Logos.vue').then(m => m.default || m)
-const Placeholder = () =>
-  import('~/components/shared/Placeholder.vue').then(m => m.default || m)
 const PromotedDapps = () =>
   import('~/pages/PromotedDapps.vue').then(m => m.default || m)
 const PromotedDappsDirect = () =>
   import('~/pages/PromotedDappsDirect.vue').then(m => m.default || m)
-const PublicList = () =>
-  import('~/pages/PublicList.vue').then(m => m.default || m)
 const Rankings = () => import('~/pages/Rankings.vue').then(m => m.default || m)
 const Stats = () => import('~/pages/Stats.vue').then(m => m.default || m)
 const Terms = () => import('~/pages/Terms.vue').then(m => m.default || m)
@@ -116,8 +112,8 @@ export function createRouter() {
       },
       {
         path: '/collections/:slug',
-        component: CollectionsSlug,
-        name: 'collections-slug'
+        component: CollectionDetail,
+        name: 'collection-detail'
       },
       {
         path: '/dapps/:slug',
@@ -157,16 +153,6 @@ export function createRouter() {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
         name: 'dapps-new-confirmation'
-      },
-      {
-        path: '/lists/:list_url',
-        component: PublicList,
-        name: 'public-list'
-      },
-      {
-        path: '/lists/:list_url/:slug',
-        component: PublicList,
-        name: 'public-list-slug'
       },
       {
         path: '/logos',
@@ -225,28 +211,25 @@ export function createRouter() {
           name: 'dapps-tab-tags'
         }
       },
-      // the root /dapps route goes after other /dapps/{params} routes, so that a direct GET to any other /dapps/{params} will render before /dapps child routes
       {
         path: '/dapps',
         component: Dapps,
-        name: 'dapps',
-        children: [
-          {
-            path: 'tab/:tab',
-            component: Placeholder,
-            name: 'dapps-tab'
-          },
-          {
-            path: 'tagged/:tags',
-            component: Placeholder,
-            name: 'dapps-tags'
-          },
-          {
-            path: 'tagged/:tags/tab/:tab',
-            component: Placeholder,
-            name: 'dapps-tab-tags'
-          }
-        ]
+        name: 'dapps'
+      },
+      {
+        path: '/dapps/category/:category',
+        component: Dapps,
+        name: 'dapps-category'
+      },
+      {
+        path: '/dapps/platform/:platform',
+        component: Dapps,
+        name: 'dapps-platform'
+      },
+      {
+        path: '/dapps/platform/:platform/category/:category',
+        component: Dapps,
+        name: 'dapps-platform-category'
       },
       {
         path: '/help/metamask',

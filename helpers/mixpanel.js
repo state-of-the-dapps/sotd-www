@@ -222,8 +222,24 @@ export const trackDappRankingCategory = function(
 
   return action
 }
-export const trackDappRankingPage = function(from, to) {
-  let name = 'DApp Ranking - Page'
+
+export const trackDappPager = function(from, to) {
+  let name = 'DApp Ranking - Pager'
+  let data = {
+    from,
+    to
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackDappRankingPager = function(from, to) {
+  let name = 'DApp Ranking - Pager'
   let data = {
     from,
     to
@@ -789,21 +805,6 @@ export const trackPromotedDappSubmit = function(dapp, email, hasSubmittedDapp) {
     dapp,
     email,
     hasSubmittedDapp
-  }
-
-  const action = {
-    name,
-    data
-  }
-
-  return action
-}
-
-export const trackPublicListView = function(listUrl, sourcePath) {
-  let name = 'Public List - View'
-  let data = {
-    listUrl,
-    sourcePath
   }
 
   const action = {

@@ -1,42 +1,69 @@
 <template>
   <div class="component-base-pager">
     <div class="first-wrapper">
-      <button 
-        v-if="currentPage !== 1"
+      <button
+        :class="currentPage !== 1 ? '' : 'hidden'"
         class="button"
-        @click="$emit('selectPage', 1)">First page</button>
+        @click="$emit('selectPage', currentPage - 1)">
+        <span class="button-inner">
+          <SvgIconChevron
+            :width="13"
+            :height="13"
+            direction="left"/>
+        </span>
+      </button>
     </div>
     <div class="next-prev-wrapper">
+      <button 
+        :class="currentPage > 2 ? '' : 'hidden'"
+        class="button number first"
+        @click="$emit('selectPage', 1)">
+        <span class="button-inner">1</span>
+      </button>
       <button
-        v-if="currentPage !== 1"
-        class="button prev-next"
-        @click="$emit('selectPage', currentPage - 1)">Previous</button>
-      <button
-        v-if="currentPage !== 1"
+        :class="currentPage !== 1 ? '' : 'hidden'"
         class="button number"
-        @click="$emit('selectPage', currentPage - 1)">{{ currentPage - 1 }}</button>
+        @click="$emit('selectPage', currentPage - 1)">
+        <span class="button-inner">{{ currentPage - 1 }}</span>
+      </button>
       <button
-        class="button number selected">{{ currentPage }}</button>
+        class="button number selected">
+        <span class="button-inner">{{ currentPage }}</span>
+      </button>
       <button
-        v-if="currentPage < totalPages"
+        :class="currentPage < totalPages ? '' : 'hidden'"
         class="button number"
-        @click="$emit('selectPage', currentPage + 1)">{{ currentPage + 1 }}</button>
+        @click="$emit('selectPage', currentPage + 1)">
+        <span class="button-inner">{{ currentPage + 1 }}</span>
+      </button>
       <button
-        v-if="currentPage < totalPages"
-        class="button prev-next"
-        @click="$emit('selectPage', currentPage + 1)">Next</button>
+        :class="currentPage < totalPages - 1 ? '' : 'hidden'"
+        class="button number last"
+        @click="$emit('selectPage', totalPages)">
+        <span class="button-inner">{{ totalPages }}</span>
+      </button>
     </div>
     <div class="last-wrapper">
       <button
-        v-if="currentPage < totalPages"
+        :class="currentPage < totalPages ? '' : 'hidden'"
         class="button"
-        @click="$emit('selectPage', totalPages)">Last page ({{ totalPages }})</button>
+        @click="$emit('selectPage', currentPage + 1)">
+        <span class="button-inner"><SvgIconChevron
+          :width="12"
+          :height="12"
+          direction="right"/></span>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import SvgIconChevron from './SvgIconChevron'
+
 export default {
+  components: {
+    SvgIconChevron
+  },
   props: {
     limit: {
       type: Number,
@@ -74,13 +101,13 @@ export default {
 }
 
 .first-wrapper {
-  width: 125px;
   text-align: left;
+  margin-right: 15px;
 }
 
 .last-wrapper {
-  width: 125px;
   text-align: right;
+  margin-left: 15px;
 }
 
 .next-prev-wrapper {
@@ -90,10 +117,9 @@ export default {
 }
 
 .button {
-  padding: 8px;
   background: $color--white;
   border-radius: 3px;
-  border: 1px solid darken($color--gray, 10%);
+  box-shadow: 0 5px 10px rgba($color--black, 0.075);
   line-height: 1;
   text-align: center;
   transition: all 0.2s ease;
@@ -108,14 +134,36 @@ export default {
     border-color: $color--black;
   }
   &.number {
-    width: 45px;
     &.selected {
       background: $color--black;
       border-color: $color--black;
       color: $color--gray;
     }
+    &.first,
+    &.last {
+      position: relative;
+      :after {
+        content: '';
+        position: absolute;
+        bottom: calc(50% - 1px);
+        width: 3px;
+        height: 3px;
+        background: rgba($color--black, 0.5);
+      }
+    }
+    &.first {
+      margin-right: 15px;
+      :after {
+        right: -12px;
+      }
+    }
+    &.last {
+      margin-left: 15px;
+      :after {
+        left: -12px;
+      }
+    }
   }
-  &.prev-next,
   &.number {
     margin-left: 3px;
     margin-right: 3px;
@@ -124,10 +172,16 @@ export default {
       margin-bottom: 0;
     }
   }
-  &.prev-next {
-    width: 75px;
-    margin-left: 10px;
-    margin-right: 10px;
+  &.hidden {
+    visibility: hidden;
   }
+}
+
+.button-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 </style>

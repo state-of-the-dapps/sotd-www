@@ -58,7 +58,7 @@
           exact 
           @click.native="trackMenu('stats')">Stats</nuxt-link>
       </li>
-      <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
+      <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-category' && this.$route.name != 'dapps-platform' && this.$route.name != 'dapps-platform-category'">
         <media :query="{maxWidth: 975}">
           <li class="nav-item">
             <nuxt-link 
@@ -74,7 +74,7 @@
       <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
     </li> -->
     </ul>
-    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-tab' && this.$route.name != 'dapps-tags' && this.$route.name != 'dapps-tab-tags'">
+    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-category' && this.$route.name != 'dapps-platform' && this.$route.name != 'dapps-platform-category'">
       <media :query="{minWidth: 975}">
         <ul 
           :class="search.length ? 'is-searching' : ''" 
