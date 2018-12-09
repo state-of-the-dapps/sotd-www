@@ -72,7 +72,9 @@ export default {
       this.$emit('removeFile')
     },
     s3UploadError(errorMessage) {
-      console.log(errorMessage)
+      if (typeof this.$sentry !== 'undefined') {
+        this.$sentry.captureException(errorMessage)
+      }
     },
     s3UploadSuccess(s3ObjectLocation) {
       this.$emit('uploadSuccess', s3ObjectLocation)
