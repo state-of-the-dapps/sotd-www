@@ -37,7 +37,7 @@ export default {
       this.$router.push({
         query: {
           ...this.$route.query,
-          tab: selected,
+          tab: selected || undefined,
           page: 1
         }
       })

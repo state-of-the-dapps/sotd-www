@@ -31,7 +31,7 @@ export default {
     },
     textQuery: {
       type: String,
-      required: true
+      default: ''
     }
   },
   methods: {
@@ -39,11 +39,20 @@ export default {
       this.$emit('resetSuggestedTags')
     },
     select(item, key) {
-      var caret = this.getCaretPosition(this.textQuery)
-      var result = /\S+$/.exec(this.textQuery.slice(0, caret.end))
-      var lastWord = result ? result[0] : null
-      this.$emit('updateTextQuery', this.textQuery.replace(lastWord, ''))
-      // push route to new tag
+      let tags = this.$route.query.tags || ''
+      tags = tags.split(',').filter(Boolean)
+      tags.push(item)
+      tags = tags.join(',')
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tags: tags || undefined,
+          text: undefined,
+          page: 1
+        }
+      })
+      this.$emit('resetTextQuery')
+      this.reset()
       this.$mixpanel.track('DApps - Select tag', { tag: item })
     }
   }

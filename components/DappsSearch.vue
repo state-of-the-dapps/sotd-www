@@ -27,7 +27,7 @@
             placeholder="Search by ÐApp name or tag" 
             autocomplete="off" 
             @input="search" 
-            @keyup.enter="blurSearch" 
+            @keyup.enter="blurTextInput" 
             @click="fetchSuggestedTagsWithNoQuery" 
             @keydown.delete="removeLastTag"></li>
         </ul>
@@ -35,7 +35,7 @@
           :text-query="textQuery"
           :tags="suggestedTags"
           @resetSuggestedTags="resetSuggestedTags"
-          @updateTextQuery="updateTextQuery"/>
+          @resetTextQuery="resetTextQuery"/>
       </div>
     </div>
   </section>
@@ -69,7 +69,7 @@ export default {
     this.textQuery = this.$route.query.text || ''
   },
   methods: {
-    blurSearch() {
+    blurTextInput() {
       this.$refs.search.blur()
     },
     fetchSuggestedTags(tagsQuery) {
@@ -77,7 +77,7 @@ export default {
         .get('tags', {
           params: {
             text: tagsQuery.value,
-            excluded: this.suggestedTags,
+            excluded: this.$route.query.tags || undefined,
             type: 'dapps'
           }
         })
@@ -88,24 +88,43 @@ export default {
         })
     },
     fetchSuggestedTagsWithNoQuery() {
-      if (this.textQuery.length === 0 && this.tags.length === 0) {
+      if (!this.textQuery && this.tags.length === 0) {
         let tagsQuery = { value: '' }
         this.fetchSuggestedTags(tagsQuery)
       }
     },
+    removeTagQuery() {
+      let tags = this.$route.query.tags || ''
+      tags = tags.split(',').filter(Boolean)
+      tags.pop()
+      tags = tags.join(',')
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          tags: tags || undefined,
+          text: undefined,
+          page: 1
+        }
+      })
+    },
     removeLastTag() {
-      if (this.textQuery.length < 1 && this.tags.length > 0) {
+      if (!this.textQuery && this.tags.length > 0) {
+        this.removeTagQuery()
         this.$mixpanel.track('DApps - Remove tag', { method: 'delete' })
-        this.fetchSuggestedTagsWithNoQuery()
       }
     },
     removeTag(tag, key) {
-      document.getElementById('search').focus()
+      this.focusTextInput()
+      this.removeTagQuery()
       this.$mixpanel.track('DApps - Remove tag', { method: 'click' })
       this.fetchSuggestedTagsWithNoQuery()
     },
     resetSuggestedTags() {
       this.suggestedTags = []
+    },
+    resetTextQuery() {
+      this.textQuery = ''
+      this.focusTextInput()
     },
     search(event) {
       clearTimeout(searchTimer)
@@ -142,8 +161,7 @@ export default {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })
       }, 10000)
     },
-    updateTextQuery(value) {
-      this.textQuery = value
+    focusTextInput() {
       this.$refs.search.focus()
     }
   }

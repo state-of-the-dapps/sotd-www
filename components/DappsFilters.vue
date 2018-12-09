@@ -129,7 +129,6 @@ export default {
     },
     selectStatus(status) {
       this.$router.push({
-        params: { ...this.$route.params },
         query: {
           ...this.$route.query,
           status: status || undefined,
