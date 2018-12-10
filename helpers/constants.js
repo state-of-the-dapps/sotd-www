@@ -25,6 +25,8 @@ const dappMetaBadges = [
   'feedback'
 ]
 
+const dappFallbackRedirectPath = '/dapps'
+
 const dappSchema = Object.freeze({
   authors: [],
   badges: [],
@@ -236,6 +238,7 @@ const platformSoftware = {
 
 export {
   dappBadgeMap,
+  dappFallbackRedirectPath,
   dappGameTag,
   dappListDefaultLimit,
   dappListDefaultSort,

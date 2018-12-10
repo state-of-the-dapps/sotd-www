@@ -31,15 +31,22 @@ export default {
   computed: {
     ...mapGetters(['pageModal'])
   },
-  asyncData({ store, params, error, app }) {
+  asyncData({ store, params, error, app, redirect }) {
     return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
-      const dapp = data.item
-      if (!Object.keys(dapp).length > 0) {
-        error({ statusCode: 404 })
-      }
-      return {
-        dapp
+      const status = response.status
+      if (status === 301) {
+        const redirectPath =
+          response.headers.location || constants.dappFallbackRedirectPath
+        redirect(301, redirectPath)
+      } else {
+        const dapp = data.item
+        if (!Object.keys(dapp).length > 0) {
+          error({ statusCode: 404 })
+        }
+        return {
+          dapp
+        }
       }
     })
   },
