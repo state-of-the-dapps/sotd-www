@@ -62,7 +62,7 @@ export default {
 
 .label {
   font-family: 'Dharma-Gothic-Regular';
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 300;
   margin: 5px 0;
   letter-spacing: normal;
@@ -80,7 +80,7 @@ export default {
 
 .spacer {
   @include tweakpoint('min-width', 1000px) {
-    width: 150px;
+    width: 175px;
   }
 }
 
@@ -96,7 +96,7 @@ export default {
 .stat-item-field {
   &.-label {
     @include tweakpoint('min-width', 1000px) {
-      width: 150px;
+      width: 175px;
     }
   }
   &.-value {
