@@ -26,6 +26,10 @@ export default {
     Dropzone
   },
   props: {
+    acceptedFiles: {
+      type: String,
+      default: '.jpg,.jpeg,.svg,.gif,.png'
+    },
     message: {
       type: String,
       default: 'Drop file here'
@@ -46,6 +50,7 @@ export default {
         withCredentials: false
       },
       options: {
+        acceptedFiles: this.acceptedFiles,
         autoProcessQueue: true,
         dictDefaultMessage: this.message,
         resizeWidth: this.resizeWidth,

@@ -41,6 +41,9 @@ export default {
   strong {
     font-weight: 700;
   }
+  pre {
+    white-space: pre-wrap;
+  }
 }
 </style>
 
