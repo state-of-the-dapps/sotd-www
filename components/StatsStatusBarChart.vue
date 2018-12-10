@@ -101,6 +101,6 @@ export default {
   color: $color--white;
   min-width: 30px;
   height: 50px;
-  background: $color--light-purple;
+  background: $gradient--main-1;
 }
 </style>
