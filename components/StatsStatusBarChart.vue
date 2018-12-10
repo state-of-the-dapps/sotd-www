@@ -6,7 +6,7 @@
         :key="index" 
         class="stat-item">
         <div class="stat-item-field -label">
-          <h3 class="label">{{ status.status | formatDappStatus | capitalize }}</h3>
+          <h3 class="label"><nuxt-link :to="{ name: 'dapps', query: { status: status.status }}">{{ status.status | formatDappStatus | capitalize }}</nuxt-link></h3>
         </div>
         <div class="stat-item-field -value">
           <div 
@@ -98,8 +98,9 @@ export default {
 }
 
 .value {
+  color: $color--white;
   min-width: 30px;
   height: 50px;
-  @include dapp-background-gradients;
+  background: $color--light-purple;
 }
 </style>
