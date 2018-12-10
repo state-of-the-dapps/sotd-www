@@ -6,7 +6,11 @@
         :key="index" 
         class="stat-item">
         <div class="stat-item-field -label">
-          <h3 class="label"><nuxt-link :to="{ name: 'dapps', query: { status: status.status }}">{{ status.status | formatDappStatus | capitalize }}</nuxt-link></h3>
+          <h3 class="label">
+            <nuxt-link
+              :to="{ name: 'dapps', query: { status: status.status }}"
+              class="link">{{ status.status }}</nuxt-link>
+          </h3>
         </div>
         <div class="stat-item-field -value">
           <div 
@@ -57,14 +61,21 @@ export default {
 }
 
 .label {
+  font-family: 'Dharma-Gothic-Regular';
+  font-size: 2.5rem;
   font-weight: 300;
   margin: 5px 0;
-  font-size: 1.2rem;
   letter-spacing: normal;
+  text-transform: uppercase;
   @include tweakpoint('min-width', 1000px) {
     text-align: right;
     padding-right: 10px;
   }
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid $color--black;
 }
 
 .spacer {
