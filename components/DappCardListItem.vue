@@ -10,8 +10,8 @@
         :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
         class="dapp-icon-wrapper">
         <img 
-          v-if="dapp.iconUrl" 
-          :src="dapp.iconUrl" 
+          v-if="dapp.iconSmallUrl" 
+          :src="dapp.iconSmallUrl" 
           class="dapp-icon" 
           width="32" 
           height="32">

@@ -59,15 +59,17 @@
               :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
               class="results-dapp-link"
               @click.native="dappView(dapp.slug)">
-              <img 
-                v-if="dapp.iconUrl" 
-                :src="dapp.iconUrl" 
-                class="results-dapp-image" 
-                width="42" 
-                height="42">
-              <span 
-                v-else 
-                class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+              <span class="results-dapp-icon-wrapper">
+                <img 
+                  v-if="dapp.iconUrl" 
+                  :src="dapp.iconUrl" 
+                  class="results-dapp-image" 
+                  width="42" 
+                  height="42">
+                <span 
+                  v-else 
+                  class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
+              </span>
               <div class="results-dapp-info">
                 <h4 class="results-dapp-title">{{ dapp.name }}</h4>
                 <p class="results-dapp-tagline">{{ dapp.teaser }}</p>
@@ -296,6 +298,11 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   background: $color--gray;
+}
+
+.results-dapp-icon-wrapper {
+  width: 42px;
+  height: 42px;
 }
 
 .results-dapp-link {

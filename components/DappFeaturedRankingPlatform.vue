@@ -17,12 +17,12 @@
         <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
         <nuxt-link 
           :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
-          :class="!dapp.iconUrl ? 'has-no-icon' : ''" 
+          :class="!dapp.iconSmallUrl ? 'has-no-icon' : ''" 
           class="dapp-icon-wrapper" 
           @click.native="trackDappView(dapp.slug)">
           <img 
-            v-if="dapp.iconUrl" 
-            :src="dapp.iconUrl" 
+            v-if="dapp.iconSmallUrl" 
+            :src="dapp.iconSmallUrl" 
             class="dapp-icon" 
             width="32" 
             height="32">

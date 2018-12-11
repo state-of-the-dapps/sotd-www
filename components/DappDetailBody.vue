@@ -5,7 +5,7 @@
       class="wrapper">
       <DappDetailBodyHeading
         :direct="direct"
-        :icon-url="dapp.iconUrl"
+        :icon-small-url="dapp.iconSmallUrl"
         :name="dapp.name"
         :category="dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>

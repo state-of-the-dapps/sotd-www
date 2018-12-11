@@ -14,8 +14,8 @@
       <li class="heading-item">
         <h1 class="heading-title">
           <img 
-            v-if="iconUrl" 
-            :src="iconUrl" 
+            v-if="iconSmallUrl" 
+            :src="iconSmallUrl" 
             class="dapp-icon" 
             width="30" 
             height="30"><span itemprop="name">{{ name }}</span>
@@ -38,7 +38,7 @@ export default {
       type: Boolean,
       default: false
     },
-    iconUrl: {
+    iconSmallUrl: {
       type: String,
       required: true
     },
