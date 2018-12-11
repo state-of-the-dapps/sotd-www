@@ -7,15 +7,15 @@
           :key="index"
           class="category-item">
           <nuxt-link 
-            :to="{name: 'rankings-category', params: {category}}"
-            :class="'-' + category.toLowerCase()"
+            :to="{name: 'rankings-category', params: {category: category.name}}"
+            :class="'-' + category.name.toLowerCase()"
             class="category-link"
-            @click.native="trackFeaturedCategory(category)">{{ category | capitalize }}</nuxt-link>
+            @click.native="trackFeaturedCategory(category.name)"><component :is="category.iconComponent"/><span class="category-text">{{ category.name | capitalize }}</span></nuxt-link>
         </li>
-        <li class="category-item">
+        <li class="category-item all">
           <nuxt-link
             :to="{name: 'rankings'}"
-            class="category-link"
+            class="category-link all"
             @click.native="trackFeaturedCategory('all')">All categories</nuxt-link>
         </li>
       </ul>
@@ -25,11 +25,32 @@
 
 <script>
 import { trackFeaturedCategory } from '~/helpers/mixpanel'
+import SvgCategoryExchanges from './SvgCategoryExchanges'
+import SvgCategoryFinance from './SvgCategoryFinance'
+import SvgCategoryGames from './SvgCategoryGames'
 
 export default {
+  components: {
+    SvgCategoryExchanges,
+    SvgCategoryFinance,
+    SvgCategoryGames
+  },
   data() {
     return {
-      categories: ['games', 'finance', 'exchanges']
+      categories: [
+        {
+          name: 'games',
+          iconComponent: 'SvgCategoryGames'
+        },
+        {
+          name: 'finance',
+          iconComponent: 'SvgCategoryFinance'
+        },
+        {
+          name: 'exchanges',
+          iconComponent: 'SvgCategoryExchanges'
+        }
+      ]
     }
   },
   methods: {
@@ -46,22 +67,23 @@ export default {
 
 .category-item {
   margin: 10px;
-  font-size: 1.4rem;
+  font-size: 1.325rem;
   font-weight: 600;
-  text-align: center;
-  @include tweakpoint('min-width', 640px) {
+  @include tweakpoint('min-width', 750px) {
     width: calc(25% - 20px);
   }
 }
 
 .category-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  display: block;
   width: 100%;
   height: 100%;
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;
-  padding: 2rem 0;
+  padding: 1.5rem 20px;
   border-radius: 4px;
   color: $color--purple;
   @include dapp-category-colors;
@@ -69,9 +91,13 @@ export default {
 
 .category-list {
   margin: 0 -10px;
-  @include tweakpoint('min-width', 640px) {
+  @include tweakpoint('min-width', 750px) {
     display: flex;
   }
+}
+
+.category-text {
+  padding-left: 10px;
 }
 
 .wrapper {
