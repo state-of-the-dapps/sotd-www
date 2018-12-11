@@ -8,7 +8,7 @@
       class="link" 
       @click.native="trackDappView(dapp.slug)">
       <div
-        :style="`background-image: url('${dapp.productImage || dapp.imageKeyVisualSmall}')`"
+        :style="`background-image: url('${dapp.productImageSmall || dapp.imageKeyVisualSmall}')`"
         class="product-image-wrapper"/>
       <div class="info">
         <h4 class="title-4">{{ dapp.name }}</h4>   
