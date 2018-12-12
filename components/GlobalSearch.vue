@@ -61,8 +61,8 @@
               @click.native="dappView(dapp.slug)">
               <span class="results-dapp-icon-wrapper">
                 <img 
-                  v-if="dapp.iconUrl" 
-                  :src="dapp.iconUrl" 
+                  v-if="dapp.iconSmallUrl" 
+                  :src="dapp.iconSmallUrl" 
                   class="results-dapp-image" 
                   width="42" 
                   height="42">
@@ -284,6 +284,7 @@ export default {
   color: $color--black;
   padding: 12px;
   text-align: left;
+  overflow: hidden;
 }
 
 .results-dapp-icon-placeholder {
@@ -311,6 +312,13 @@ export default {
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin: 0 -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  transition: background 0.05s ease;
+  &:hover {
+    background: lighten($color--gray, 2%);
+  }
 }
 
 .results-dapp-image {

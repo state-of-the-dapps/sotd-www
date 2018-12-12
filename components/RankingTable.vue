@@ -65,7 +65,7 @@
               </div>
               <div class="table-data col-name">
                 <RankingTableName
-                  :icon-url="dapp.iconUrl"
+                  :icon-small-url="dapp.iconSmallUrl"
                   :name="dapp.name"
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>

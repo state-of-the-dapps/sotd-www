@@ -3,12 +3,12 @@
     <div class="icon-wrapper">
       <nuxt-link 
         :to="{ name: 'dapp-detail', params: { slug } }" 
-        :class="!iconUrl ? 'has-no-icon' : ''" 
+        :class="!iconSmallUrl ? 'has-no-icon' : ''" 
         class="icon-link" 
         @click.native="trackDappView(slug)">
         <img
-          v-if="iconUrl" 
-          :src="iconUrl"
+          v-if="iconSmallUrl" 
+          :src="iconSmallUrl"
           class="icon-image"
           width="42"
           height="42">
@@ -33,7 +33,7 @@ import { trackDappView } from '~/helpers/mixpanel'
 
 export default {
   props: {
-    iconUrl: {
+    iconSmallUrl: {
       type: String,
       required: true
     },
