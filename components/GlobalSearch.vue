@@ -284,6 +284,7 @@ export default {
   color: $color--black;
   padding: 12px;
   text-align: left;
+  overflow: hidden;
 }
 
 .results-dapp-icon-placeholder {
@@ -311,6 +312,13 @@ export default {
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin: 0 -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  transition: background 0.1s ease;
+  &:hover {
+    background: lighten($color--gray, 2%);
+  }
 }
 
 .results-dapp-image {
