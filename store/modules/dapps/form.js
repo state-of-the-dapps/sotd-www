@@ -327,6 +327,9 @@ const getters = {
   emailErrors: state => {
     return state.errors.email
   },
+  errors: state => {
+    return state.errors
+  },
   errorFields: state => {
     return state.errorFields
   },
@@ -455,6 +458,9 @@ const getters = {
   },
   acceptedTerms: state => {
     return state.fields.acceptedTerms
+  },
+  warnings: state => {
+    return state.warnings
   },
   websiteUrl: state => {
     return state.fields.siteUrls.website

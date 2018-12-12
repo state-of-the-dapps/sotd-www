@@ -4,11 +4,11 @@
     class="item">
     <input 
       :class="name.length > 0 ? '--is-filled' : ''" 
-      v-model="name" 
+      :value="name"
       class="text-input" 
       type="text" 
       maxlength="25" 
-      @input="validate">
+      @input="updateAndValidate($event.target.value)">
     <label class="label">ÐApp name <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 25 - name.length }}</span>
     <ul 
@@ -39,38 +39,34 @@
 </template>
 
 <script>
-import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors, dispatchWarnings],
-  computed: {
-    errors() {
-      return this.$store.getters['dapps/form/nameErrors']
+  props: {
+    errors: {
+      type: Array,
+      required: true
     },
-    existingDapp() {
-      return this.$store.getters['dapps/form/existingDapp']
+    existingDapp: {
+      type: String,
+      required: true
     },
     name: {
-      get() {
-        return this.$store.getters['dapps/form/name']
-      },
-      set(value) {
-        const field = {
-          name: 'name',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+      type: String,
+      required: true
     },
-    warnings() {
-      return this.$store.getters['dapps/form/nameWarnings']
+    warnings: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateField', 'name', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'name',
         data: []
@@ -80,7 +76,7 @@ export default {
         data: []
       }
       const warningWords = ['.']
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.name.length > 25
           ? errors.data.push(`Name can't be longer than 25 characters`)
           : ''
@@ -100,17 +96,17 @@ export default {
             }
           })
           .then(response => {
-            this.$store.dispatch('dapps/form/setExistingDapp', '')
+            this.$emit('updateExistingDapp', '')
             const data = response.data
             const item = data.item
             if (item.slug) {
               errors.data.push(`That name has already been taken`)
               if (!item.queue) {
-                this.$store.dispatch('dapps/form/setExistingDapp', item.slug)
+                this.$emit('updateExistingDapp', item.slug)
               }
             }
-            this.dispatchErrors(errors, 'dapps')
-            this.dispatchWarnings(warnings, 'dapps')
+            this.$emit('updateErrors', errors)
+            this.$emit('updateWarnings', warnings)
           })
           .catch(error => {
             console.log(error)
