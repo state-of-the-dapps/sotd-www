@@ -315,7 +315,7 @@ export default {
   margin: 0 -12px;
   padding-left: 12px;
   padding-right: 12px;
-  transition: background 0.1s ease;
+  transition: background 0.05s ease;
   &:hover {
     background: lighten($color--gray, 2%);
   }
