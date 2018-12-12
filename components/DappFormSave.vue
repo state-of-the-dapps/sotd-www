@@ -397,7 +397,7 @@ export default {
 }
 
 .submit-reason {
-  background: darken($color--gray, 5%);
+  background: darken($color--gray, 4%);
   width: 300px;
   padding: 10px;
   margin: 15px auto 0 auto;

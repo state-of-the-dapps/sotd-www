@@ -2,7 +2,16 @@
   <div
     :class="isEdit ? 'is-edit' : ''"
     class="list">
-    <DappFormFieldsName v-if="!isEdit || missingFields.includes('name')"/>
+    <DappFormFieldsName
+      v-if="!isEdit || missingFields.includes('name')"
+      :errors="errors.name"
+      :existing-dapp="existingDapp"
+      :name="fields.name"
+      :warnings="warnings.name"
+      @updateExistingDapp="updateExistingDapp"
+      @updateErrors="updateErrors"
+      @updateField="updateField"
+      @updateWarnings="updateWarnings"/>
     <DappFormFieldsEmail v-if="!isEdit"/>
     <DappFormFieldsTeaser v-if="!isEdit || missingFields.includes('teaser')"/>
     <DappFormFieldsDescription v-if="!isEdit || missingFields.includes('description')"/>
@@ -75,6 +84,18 @@ export default {
     DappFormFieldsWebsite
   },
   props: {
+    errors: {
+      type: Object,
+      required: true
+    },
+    existingDapp: {
+      type: String,
+      required: true
+    },
+    fields: {
+      type: Object,
+      required: true
+    },
     isEdit: {
       default: false,
       type: Boolean
@@ -84,6 +105,10 @@ export default {
       default: function() {
         return []
       }
+    },
+    warnings: {
+      type: Object,
+      required: true
     }
   },
   computed: {
@@ -95,6 +120,20 @@ export default {
         i++
       }
       return fields
+    }
+  },
+  methods: {
+    updateExistingDapp(dapp) {
+      this.$emit('updateExistingDapp', dapp)
+    },
+    updateField(field, value) {
+      this.$emit('updateField', field, value)
+    },
+    updateErrors(errors) {
+      this.$emit('updateErrors', errors)
+    },
+    updateWarnings(warnings) {
+      this.$emit('updateWarnings', warnings)
     }
   }
 }

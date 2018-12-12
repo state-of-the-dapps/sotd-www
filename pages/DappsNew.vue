@@ -27,7 +27,15 @@
       </section>
       <section class="section -form">
         <div class="container">
-          <DappFormFields/>
+          <DappFormFields
+            :errors="errors"
+            :existing-dapp="existingDapp"
+            :fields="fields"
+            :warnings="warnings"
+            @updateErrors="updateErrors"
+            @updateField="updateField"
+            @updateWarnings="updateWarnings"
+            @updateExistingDapp="updateExistingDapp"/>
           <DappFormSave/>
         </div>
       </section>
@@ -36,6 +44,8 @@
 </template>
 
 <script>
+import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
+import { mapActions, mapGetters } from 'vuex'
 import { openIntercom } from '~/helpers/mixins'
 import DappFormFields from '~/components/DappFormFields'
 import DappFormSave from '~/components/DappFormSave'
@@ -49,14 +59,41 @@ export default {
     LayoutMain,
     TitlePage
   },
-  mixins: [openIntercom],
+  mixins: [dispatchErrors, dispatchWarnings, openIntercom],
+  computed: {
+    ...mapGetters('dapps/form', [
+      'fields',
+      'errors',
+      'existingDapp',
+      'warnings'
+    ])
+  },
+  mounted() {
+    this.$store.dispatch('setSiteSection', 'dapps')
+  },
+  methods: {
+    ...mapActions('dapps/form', ['setExistingDapp', 'setField']),
+    updateExistingDapp(dapp) {
+      this.setExistingDapp(dapp)
+    },
+    updateErrors(errors) {
+      this.dispatchErrors(errors, 'dapps')
+    },
+    updateField(field, value) {
+      const fieldObj = {
+        name: field,
+        value: value
+      }
+      this.setField(fieldObj)
+    },
+    updateWarnings(warnings) {
+      this.dispatchWarnings(warnings, 'dapps')
+    }
+  },
   head() {
     return {
       title: 'State of the ÐApps — Submit a ÐApp'
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', 'dapps')
   }
 }
 </script>
