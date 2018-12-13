@@ -4,11 +4,11 @@
     class="item">
     <input 
       :class="url.length > 0 ? '--is-filled' : ''" 
-      v-model="url" 
+      :value="url" 
       class="text-input" 
       type="text" 
       maxlength="255" 
-      @input="validate">
+      @input="updateAndValidate($event.target.value)">
     <label class="label">ÐApp URL<span class="required"/></label>
     <span class="remaining-characters">{{ 255 - url.length }}</span>
     <ul 
@@ -24,41 +24,35 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
-  computed: {
-    errors() {
-      return this.$store.getters['dapps/form/dappUrlErrors']
+  props: {
+    errors: {
+      type: Array,
+      required: true
     },
     url: {
-      get() {
-        return this.$store.getters['dapps/form/dappUrl']
-      },
-      set(value) {
-        const field = {
-          name: 'dapp',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSiteUrl', field)
-      }
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateSiteUrl', 'dapp', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'dappUrl',
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.url.length > 0 && this.url.length < 3
           ? errors.data.push(`ÐApp URL must be longer than 2 characters`)
           : ''
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }

@@ -38,7 +38,12 @@
       :url="fields.siteUrls.website"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
-    <DappFormFieldsDappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
+    <DappFormFieldsDappUrl
+      v-if="!isEdit || missingFields.includes('dapp_url')"
+      :errors="errors.dappUrl"
+      :url="fields.siteUrls.dapp"
+      @updateErrors="updateErrors"
+      @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsAuthors v-if="!isEdit || missingFields.includes('contact')"/>
     <DappFormFieldsLicense v-if="!isEdit || missingFields.includes('license')"/>
     <DappFormFieldsLogo v-if="!isEdit || missingFields.includes('logo_cache')"/>
