@@ -44,7 +44,12 @@
       :url="fields.siteUrls.dapp"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
-    <DappFormFieldsAuthors v-if="!isEdit || missingFields.includes('contact')"/>
+    <DappFormFieldsAuthors
+      v-if="!isEdit || missingFields.includes('contact')"
+      :authors="fields.authors"
+      :errors="errors.authors"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsLicense v-if="!isEdit || missingFields.includes('license')"/>
     <DappFormFieldsLogo v-if="!isEdit || missingFields.includes('logo_cache')"/>
     <DappFormFieldsIcon v-if="!isEdit || missingFields.includes('icon_cache')"/>

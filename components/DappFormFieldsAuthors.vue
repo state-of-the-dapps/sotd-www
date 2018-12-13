@@ -3,14 +3,14 @@
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
     <input 
-      :class="authors.length > 0 ? '--is-filled' : ''" 
-      v-model="authors" 
+      :class="formattedAuthors.length > 0 ? '--is-filled' : ''" 
+      :value="formattedAuthors" 
       class="text-input" 
       type="text" 
       maxlength="100" 
-      @input="validate">
+      @input="updateAndValidate($event.target.value)">
     <label class="label">ÐApp author(s) <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 100 - authors.length }}</span>
+    <span class="remaining-characters">{{ 100 - formattedAuthors.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">
@@ -24,46 +24,45 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
-  computed: {
+  props: {
     authors: {
-      get() {
-        const values = this.$store.getters['dapps/form/authors'].slice()
-        return values.join(', ')
-      },
-      set(value) {
-        const values = value.split(', ')
-        const field = {
-          name: 'authors',
-          value: values
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+      type: Array,
+      required: true
     },
-    errors() {
-      return this.$store.getters['dapps/form/authorsErrors']
+    errors: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
+    }
+  },
+  computed: {
+    formattedAuthors() {
+      const values = this.authors.slice()
+      return values.join(', ')
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      const values = value.split(', ')
+      this.$emit('updateField', 'authors', values)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'authors',
         data: []
       }
-      validationTimer = setTimeout(() => {
-        this.authors.length > 100
+      this.validationTimer = setTimeout(() => {
+        this.formattedAuthors.length > 100
           ? errors.data.push(`Authors can't be longer than 100 characters`)
           : ''
-        this.authors.length < 2
+        this.formattedAuthors.length < 2
           ? errors.data.push(`Authors must be longer than 1 character`)
           : ''
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }
