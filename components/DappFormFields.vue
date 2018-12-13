@@ -12,7 +12,12 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
-    <DappFormFieldsEmail v-if="!isEdit"/>
+    <DappFormFieldsEmail
+      v-if="!isEdit"
+      :email="fields.email"
+      :errors="errors.email"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsTeaser v-if="!isEdit || missingFields.includes('teaser')"/>
     <DappFormFieldsDescription v-if="!isEdit || missingFields.includes('description')"/>
     <DappFormFieldsWebsite v-if="!isEdit || missingFields.includes('url')"/>

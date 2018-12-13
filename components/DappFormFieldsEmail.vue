@@ -4,11 +4,11 @@
     class="item">
     <input 
       :class="email.length > 0 ? '--is-filled' : ''" 
-      v-model="email" 
+      :value="email" 
       class="text-input" 
       type="text" 
       maxlength="50" 
-      @input="validate">
+      @input="updateAndValidate($event.target.value)">
     <label class="label">Email <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - email.length }}</span>
     <ul 
@@ -25,41 +25,36 @@
 
 <script>
 import { isValidEmail } from '~/helpers/validators'
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
 
 export default {
-  mixins: [dispatchErrors],
-  computed: {
+  props: {
     email: {
-      get() {
-        return this.$store.getters['dapps/form/email']
-      },
-      set(value) {
-        const field = {
-          name: 'email',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+      type: String,
+      required: true
     },
-    errors() {
-      return this.$store.getters['dapps/form/emailErrors']
+    errors: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateField', 'email', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'email',
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         isValidEmail(this.email)
           ? ''
           : errors.data.push(`Please enter a valid email address`)
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }
