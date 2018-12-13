@@ -4,11 +4,11 @@
     class="item">
     <textarea 
       :class="teaser.length > 0 ? '--is-filled' : ''" 
-      v-model="teaser" 
+      :value="teaser" 
       class="text-area" 
       maxlength="50" 
       type="text" 
-      @input="validate"/>
+      @input="updateAndValidate($event.target.value)"/>
     <label class="label">Tagline <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - teaser.length }}</span>
     <ul 
@@ -32,35 +32,30 @@
 </template>
 
 <script>
-import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors, dispatchWarnings],
-  computed: {
-    errors() {
-      return this.$store.getters['dapps/form/teaserErrors']
+  props: {
+    errors: {
+      type: Array,
+      required: true
     },
     teaser: {
-      get() {
-        return this.$store.getters['dapps/form/teaser']
-      },
-      set(value) {
-        const field = {
-          name: 'teaser',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+      type: String,
+      required: true
     },
-    warnings() {
-      return this.$store.getters['dapps/form/teaserWarnings']
+    warnings: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateField', 'teaser', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'teaser',
         data: []
@@ -75,7 +70,7 @@ export default {
         { value: 'decentralized' },
         { value: 'ethereum' }
       ]
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.teaser.length > 50
           ? errors.data.push(`Tagline can't be longer than 50 characters`)
           : ''
@@ -103,8 +98,8 @@ export default {
             `Please don't use obvious words such as ` + warningWordString
           )
         }
-        this.dispatchErrors(errors, 'dapps')
-        this.dispatchWarnings(warnings, 'dapps')
+        this.$emit('updateErrors', errors)
+        this.$emit('updateWarnings', warnings)
       }, 750)
     }
   }

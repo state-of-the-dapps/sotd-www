@@ -18,7 +18,14 @@
       :errors="errors.email"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsTeaser v-if="!isEdit || missingFields.includes('teaser')"/>
+    <DappFormFieldsTeaser
+      v-if="!isEdit || missingFields.includes('teaser')"
+      :errors="errors.teaser"
+      :teaser="fields.teaser"
+      :warnings="warnings.teaser"
+      @updateErrors="updateErrors"
+      @updateField="updateField"
+      @updateWarnings="updateWarnings"/>
     <DappFormFieldsDescription v-if="!isEdit || missingFields.includes('description')"/>
     <DappFormFieldsWebsite v-if="!isEdit || missingFields.includes('url')"/>
     <DappFormFieldsDappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
