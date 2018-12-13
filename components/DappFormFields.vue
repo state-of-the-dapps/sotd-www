@@ -50,7 +50,12 @@
       :errors="errors.authors"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsLicense v-if="!isEdit || missingFields.includes('license')"/>
+    <DappFormFieldsLicense
+      v-if="!isEdit || missingFields.includes('license')"
+      :errors="errors.authors"
+      :license="fields.license"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsLogo v-if="!isEdit || missingFields.includes('logo_cache')"/>
     <DappFormFieldsIcon v-if="!isEdit || missingFields.includes('icon_cache')"/>
     <DappFormFieldsProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>

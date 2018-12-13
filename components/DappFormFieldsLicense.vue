@@ -4,11 +4,11 @@
     class="item">
     <input 
       :class="license.length > 0 ? '--is-filled' : ''" 
-      v-model="license" 
+      :value="license" 
       class="text-input" 
       type="text" 
       maxlength="50" 
-      @input="validate">
+      @input="updateAndValidate($event.target.value)">
     <label class="label">Software license</label>
     <span class="remaining-characters">{{ 50 - license.length }}</span>
     <ul 
@@ -24,41 +24,35 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
-  computed: {
-    errors() {
-      return this.$store.getters['dapps/form/licenseErrors']
+  props: {
+    errors: {
+      type: Array,
+      required: true
     },
     license: {
-      get() {
-        return this.$store.getters['dapps/form/license']
-      },
-      set(value) {
-        const field = {
-          name: 'license',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateField', 'license', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'license',
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.license.length > 50
           ? errors.data.push(`License can't be longer than 50 characters`)
           : ''
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }
