@@ -65,7 +65,10 @@
     <DappFormFieldsProductImage
       v-if="!isEdit || missingFields.includes('product_image_cache')"
       @updateField="updateField"/>
-    <DappFormFieldsPlatform v-if="!isEdit"/>
+    <DappFormFieldsPlatform
+      v-if="!isEdit"
+      :platform="fields.platform"
+      @updateField="updateField"/>
     <DappFormFieldsContracts 
       v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet'))"
       :is-edit="isEdit"

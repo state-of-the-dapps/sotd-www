@@ -25,18 +25,15 @@ export default {
   components: {
     SvgBadgeComplete
   },
-  computed: {
-    platform() {
-      return this.$store.getters['dapps/form/platform']
+  props: {
+    platform: {
+      type: String,
+      required: true
     }
   },
   methods: {
     setPlatform(value) {
-      const field = {
-        name: 'platform',
-        value: value
-      }
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateField', 'platform', value)
     }
   }
 }
