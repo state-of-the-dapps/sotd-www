@@ -23,18 +23,10 @@ export default {
   },
   methods: {
     setProductImage(url) {
-      const field = {
-        name: 'productImage',
-        value: url
-      }
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateField', 'productImage', url)
     },
     removeProductImage() {
-      const field = {
-        name: 'productImage',
-        value: ''
-      }
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateField', 'productImage', '')
     }
   }
 }

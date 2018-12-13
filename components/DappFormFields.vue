@@ -56,9 +56,15 @@
       :license="fields.license"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsLogo v-if="!isEdit || missingFields.includes('logo_cache')"/>
-    <DappFormFieldsIcon v-if="!isEdit || missingFields.includes('icon_cache')"/>
-    <DappFormFieldsProductImage v-if="!isEdit || missingFields.includes('product_image_cache')"/>
+    <DappFormFieldsLogo
+      v-if="!isEdit || missingFields.includes('logo_cache')"
+      @updateField="updateField"/>
+    <DappFormFieldsIcon
+      v-if="!isEdit || missingFields.includes('icon_cache')"
+      @updateField="updateField"/>
+    <DappFormFieldsProductImage
+      v-if="!isEdit || missingFields.includes('product_image_cache')"
+      @updateField="updateField"/>
     <DappFormFieldsPlatform v-if="!isEdit"/>
     <DappFormFieldsContracts 
       v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet'))"

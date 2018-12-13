@@ -23,18 +23,10 @@ export default {
   },
   methods: {
     setIcon(url) {
-      const field = {
-        name: 'icon',
-        value: url
-      }
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateField', 'icon', url)
     },
     removeIcon() {
-      const field = {
-        name: 'icon',
-        value: ''
-      }
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateField', 'icon', '')
     }
   }
 }
