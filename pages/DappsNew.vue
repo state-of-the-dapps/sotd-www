@@ -36,6 +36,7 @@
             @updateErrors="updateErrors"
             @updateField="updateField"
             @updateSiteUrl="updateSiteUrl"
+            @updateStatus="updateStatus"
             @updateWarnings="updateWarnings"
             @updateExistingDapp="updateExistingDapp"/>
           <DappFormSave/>
@@ -78,10 +79,10 @@ export default {
       'setContract',
       'setExistingDapp',
       'setField',
-      'setSiteUrl'
+      'setSiteUrl',
+      'setStatus'
     ]),
     updateContract(field, value) {
-      console.log('ran')
       const fieldObj = {
         name: field,
         value: value
@@ -107,6 +108,9 @@ export default {
         value: value
       }
       this.setSiteUrl(fieldObj)
+    },
+    updateStatus(value) {
+      this.setStatus(value)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')

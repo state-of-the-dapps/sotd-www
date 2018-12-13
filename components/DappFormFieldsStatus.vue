@@ -15,19 +15,20 @@
 import { dappStatuses as statusList } from '~/helpers/constants'
 
 export default {
+  props: {
+    status: {
+      type: String,
+      required: true
+    }
+  },
   data: () => {
     return {
       items: statusList
     }
   },
-  computed: {
-    status() {
-      return this.$store.getters['dapps/form/status']
-    }
-  },
   methods: {
     select(value) {
-      this.$store.dispatch('dapps/form/setStatus', value)
+      this.$emit('updateStatus', value)
     }
   }
 }

@@ -93,7 +93,10 @@
       :eos-mainnet-errors="errors.eosMainnet"
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
-    <DappFormFieldsStatus v-if="!isEdit || missingFields.includes('status')"/>
+    <DappFormFieldsStatus
+      v-if="!isEdit || missingFields.includes('status')"
+      :status="fields.status"
+      @updateStatus="updateStatus"/>
     <DappFormFieldsSocial 
       v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
       :is-edit="isEdit"
@@ -201,6 +204,9 @@ export default {
     },
     updateSiteUrl(field, value) {
       this.$emit('updateSiteUrl', field, value)
+    },
+    updateStatus(value) {
+      this.$emit('updateStatus', value)
     },
     updateWarnings(warnings) {
       this.$emit('updateWarnings', warnings)

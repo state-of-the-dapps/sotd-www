@@ -11,6 +11,7 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateSiteUrl="updateSiteUrl"
+      @updateStatus="updateStatus"
       @updateWarnings="updateWarnings"
       @updateExistingDapp="updateExistingDapp"/>
   </div>
@@ -51,7 +52,8 @@ export default {
       'setContract',
       'setExistingDapp',
       'setField',
-      'setSiteUrl'
+      'setSiteUrl',
+      'setStatus'
     ]),
     updateContract(network, value) {
       const fieldObj = {
@@ -79,6 +81,9 @@ export default {
         value: value
       }
       this.setSiteUrl(fieldObj)
+    },
+    updateStatus(value) {
+      this.setStatus(value)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')
