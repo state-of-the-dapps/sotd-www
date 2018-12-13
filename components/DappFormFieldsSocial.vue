@@ -7,11 +7,12 @@
         class="item">
         <div class="input-wrapper -facebook">
           <input 
-            v-model="facebook" 
+            :value="facebook" 
             class="input" 
             type="text" 
             placeholder="/facebookpage" 
-            maxlength="100">
+            maxlength="100"
+            @input="updateSocial('facebook', $event.target.value)">
         </div>
       </li>
       <li 
@@ -19,11 +20,12 @@
         class="item">
         <div class="input-wrapper -twitter">
           <input 
-            v-model="twitter" 
+            :value="twitter" 
             class="input" 
             type="text" 
             placeholder="@twitterhandle" 
-            maxlength="100">
+            maxlength="100"
+            @input="updateSocial('twitter', $event.target.value)">
         </div>
       </li>
       <li 
@@ -31,11 +33,12 @@
         class="item">
         <div class="input-wrapper -github">
           <input 
-            v-model="github" 
+            :value="github" 
             class="input" 
             type="text" 
             placeholder="/githubproject" 
-            maxlength="100">
+            maxlength="100"
+            @input="updateSocial('github', $event.target.value)">
         </div>
       </li>
       <li 
@@ -43,11 +46,12 @@
         class="item">
         <div class="input-wrapper -reddit">
           <input 
-            v-model="reddit" 
+            :value="reddit" 
             class="input" 
             type="text" 
             placeholder="/r/reddit" 
-            maxlength="100">
+            maxlength="100"
+            @input="updateSocial('reddit', $event.target.value)">
         </div>
       </li>
       <li 
@@ -56,12 +60,12 @@
         class="item">
         <div class="input-wrapper -chat">
           <input 
-            v-model="chat" 
+            :value="chat" 
             class="input" 
             type="text" 
             placeholder="chat invitation url" 
             maxlength="100" 
-            @input="validate">
+            @input="updateAndValidate('chat', $event.target.value)">
         </div>
         <ul 
           v-if="chatErrors && chatErrors.length > 0" 
@@ -77,11 +81,12 @@
         class="item">
         <div class="input-wrapper -blog">
           <input 
-            v-model="blog" 
+            :value="blog" 
             class="input" 
             type="text" 
             placeholder="medium.com/blog" 
-            maxlength="100">
+            maxlength="100"
+            @input="updateSocial('blog', $event.target.value)">
         </div>
       </li>
     </ul>
@@ -89,127 +94,82 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
   props: {
     isEdit: {
       type: Boolean,
       default: false
     },
+    blog: {
+      type: String,
+      required: true
+    },
     blogIsMissing: {
       type: Boolean,
       default: false
+    },
+    github: {
+      type: String,
+      required: true
     },
     githubIsMissing: {
       type: Boolean,
       default: false
     },
+    facebook: {
+      type: String,
+      required: true
+    },
     facebookIsMissing: {
       type: Boolean,
       default: false
+    },
+    reddit: {
+      type: String,
+      required: true
     },
     redditIsMissing: {
       type: Boolean,
       default: false
     },
+    chat: {
+      type: String,
+      required: true
+    },
+    chatErrors: {
+      type: Array,
+      required: true
+    },
     chatIsMissing: {
       type: Boolean,
       default: false
+    },
+    twitter: {
+      type: String,
+      required: true
     },
     twitterIsMissing: {
       type: Boolean,
       default: false
     }
   },
-  computed: {
-    blog: {
-      get() {
-        return this.$store.getters['dapps/form/socialBlog']
-      },
-      set(value) {
-        const field = {
-          name: 'blog',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
-    },
-    github: {
-      get() {
-        return this.$store.getters['dapps/form/socialGithub']
-      },
-      set(value) {
-        const field = {
-          name: 'github',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
-    },
-    facebook: {
-      get() {
-        return this.$store.getters['dapps/form/socialFacebook']
-      },
-      set(value) {
-        const field = {
-          name: 'facebook',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
-    },
-    reddit: {
-      get() {
-        return this.$store.getters['dapps/form/socialReddit']
-      },
-      set(value) {
-        const field = {
-          name: 'reddit',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
-    },
-    chat: {
-      get() {
-        return this.$store.getters['dapps/form/socialChat']
-      },
-      set(value) {
-        const field = {
-          name: 'chat',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
-    },
-    chatErrors() {
-      return this.$store.getters['dapps/form/socialChatErrors']
-    },
-    twitter: {
-      get() {
-        return this.$store.getters['dapps/form/socialTwitter']
-      },
-      set(value) {
-        const field = {
-          name: 'twitter',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setSocial', field)
-      }
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateSocial(field, value) {
+      this.$emit('updateSocial', field, value)
+    },
+    updateAndValidate(field, value) {
+      this.$emit('updateSocial', field, value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'socialChat',
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.chat.endsWith('.slack.com')
           ? errors.data.push(
               `Slack invitation url should not contain .slack.com`
@@ -218,7 +178,7 @@ export default {
         this.chat.length > 0 && !this.chat.includes('.')
           ? errors.data.push(`This should be a url`)
           : ''
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }

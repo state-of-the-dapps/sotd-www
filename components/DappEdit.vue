@@ -19,6 +19,7 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateSiteUrl="updateSiteUrl"
+      @updateSocial="updateSocial"
       @updateStatus="updateStatus"
       @updateTagQuery="updateTagQuery"
       @updateWarnings="updateWarnings"
@@ -70,6 +71,7 @@ export default {
       'setExistingDapp',
       'setField',
       'setSiteUrl',
+      'setSocial',
       'setStatus',
       'setTagQuery'
     ]),
@@ -114,6 +116,13 @@ export default {
         value: value
       }
       this.setSiteUrl(fieldObj)
+    },
+    updateSocial(field, value) {
+      const fieldObj = {
+        name: field,
+        value: value
+      }
+      this.setSocial(fieldObj)
     },
     updateStatus(value) {
       this.setStatus(value)

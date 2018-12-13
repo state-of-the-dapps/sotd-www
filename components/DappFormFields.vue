@@ -100,12 +100,21 @@
     <DappFormFieldsSocial 
       v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
       :is-edit="isEdit"
+      :github="fields.socials.github.path"
       :github-is-missing="missingFields.includes('github')"
+      :twitter="fields.socials.twitter.path"
       :twitter-is-missing="missingFields.includes('twitter')"
+      :reddit="fields.socials.reddit.path"
       :reddit-is-missing="missingFields.includes('reddit')"
+      :blog="fields.socials.blog.path"
       :blog-is-missing="missingFields.includes('blog')"
+      :facebook="fields.socials.facebook.path"
       :facebook-is-missing="missingFields.includes('facebook')"
-      :chat-is-missing="missingFields.includes('chat')"/>
+      :chat="fields.socials.chat.path"
+      :chat-errors="errors.socialChat"
+      :chat-is-missing="missingFields.includes('chat')"
+      @updateErrors="updateErrors"
+      @updateSocial="updateSocial"/>
     <DappFormFieldsCategory
       v-if="!isEdit || missingFields.includes('category')"
       :selected-category="fields.category"
@@ -246,6 +255,9 @@ export default {
     },
     updateSiteUrl(field, value) {
       this.$emit('updateSiteUrl', field, value)
+    },
+    updateSocial(field, value) {
+      this.$emit('updateSocial', field, value)
     },
     updateStatus(value) {
       this.$emit('updateStatus', value)
