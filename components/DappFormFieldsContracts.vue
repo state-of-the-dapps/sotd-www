@@ -10,11 +10,11 @@
             :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="mainnet" 
+              :value="mainnet" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('mainnet')"/>
+              @input="updateAndValidate('mainnet', $event.target.value)"/>
             <ul 
               v-if="mainnetErrors && mainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -33,11 +33,11 @@
             :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="poaMainnet" 
+              :value="poaMainnet" 
               class="input" 
               placeholder="Enter POA addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('poaMainnet')"/>
+              @input="updateAndValidate('poaMainnet', $event.target.value)"/>
             <ul 
               v-if="poaMainnetErrors && poaMainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -56,11 +56,11 @@
             :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="eosMainnet" 
+              :value="eosMainnet" 
               class="input" 
               placeholder="Enter EOS accounts (one per line)" 
               maxlength="11000" 
-              @input="validate('eosMainnet')"/>
+              @input="updateAndValidate('eosMainnet', $event.target.value)"/>
             <ul 
               v-if="eosMainnetErrors && eosMainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -84,11 +84,11 @@
             :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="mainnet" 
-              class="input" 
+              :value="mainnet" 
+              class="input"
               placeholder="Enter addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('mainnet')"/>
+              @input="updateAndValidate('mainnet', $event.target.value)"/>
             <ul 
               v-if="mainnetErrors && mainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -105,11 +105,11 @@
             :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="ropsten" 
+              :value="ropsten" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('ropsten')"/>
+              @input="updateAndValidate('ropsten', $event.target.value)"/>
             <ul 
               v-if="ropstenErrors && ropstenErrors.length > 0" 
               class="error-list -contracts">
@@ -126,11 +126,11 @@
             :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="kovan" 
+              :value="kovan" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('kovan')"/>
+              @input="updateAndValidate('kovan', $event.target.value)"/>
             <ul 
               v-if="kovanErrors && kovanErrors.length > 0" 
               class="error-list -contracts">
@@ -147,11 +147,11 @@
             :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="rinkeby" 
+              :value="rinkeby" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('rinkeby')"/>
+              @input="updateAndValidate('rinkeby', $event.target.value)"/>
             <ul 
               v-if="rinkebyErrors && rinkebyErrors.length > 0" 
               class="error-list -contracts">
@@ -172,11 +172,11 @@
             :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="poaMainnet" 
+              :value="poaMainnet" 
               class="input" 
               placeholder="Enter POA addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('poaMainnet')"/>
+              @input="updateAndValidate('poaMainnet', $event.target.value)"/>
             <ul 
               v-if="poaMainnetErrors && poaMainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -193,11 +193,11 @@
             :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="poaTestnet" 
+              :value="poaTestnet" 
               class="input" 
               placeholder="Enter POA addresses (one per line)" 
               maxlength="11000" 
-              @input="validate('poaTestnet')"/>
+              @input="updateAndValidate('poaTestnet', $event.target.value)"/>
             <ul 
               v-if="poaTestnetErrors && poaTestnetErrors.length > 0" 
               class="error-list -contracts">
@@ -218,11 +218,11 @@
             :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              v-model="eosMainnet" 
+              :value="eosMainnet" 
               class="input" 
               placeholder="Enter EOS accounts (one per line)" 
               maxlength="11000" 
-              @input="validate('eosMainnet')"/>
+              @input="updateAndValidate('eosMainnet', $event.target.value)"/>
             <ul 
               v-if="eosMainnetErrors && eosMainnetErrors.length > 0" 
               class="error-list -contracts">
@@ -239,13 +239,16 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
   props: {
+    platform: {
+      type: String,
+      required: true
+    },
+    contracts: {
+      type: Object,
+      required: true
+    },
     isEdit: {
       type: Boolean,
       default: false
@@ -261,130 +264,79 @@ export default {
     eosIsMissing: {
       type: Boolean,
       default: false
-    }
-  },
-  computed: {
-    platform() {
-      return this.$store.getters['dapps/form/platform']
-    },
-    contracts() {
-      return this.$store.getters['dapps/form/contracts']
     },
     mainnet: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].mainnet.address
-      },
-      set(value) {
-        const field = {
-          name: 'mainnet',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    mainnetErrors() {
-      return this.$store.getters['dapps/form/mainnetErrors']
+    mainnetErrors: {
+      type: Array,
+      required: true
     },
     ropsten: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].ropsten.address
-      },
-      set(value) {
-        const field = {
-          name: 'ropsten',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    ropstenErrors() {
-      return this.$store.getters['dapps/form/ropstenErrors']
+    ropstenErrors: {
+      type: Array,
+      required: true
     },
     kovan: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].kovan.address
-      },
-      set(value) {
-        const field = {
-          name: 'kovan',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    kovanErrors() {
-      return this.$store.getters['dapps/form/kovanErrors']
+    kovanErrors: {
+      type: Array,
+      required: true
     },
     rinkeby: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].rinkeby.address
-      },
-      set(value) {
-        const field = {
-          name: 'rinkeby',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    rinkebyErrors() {
-      return this.$store.getters['dapps/form/rinkebyErrors']
+    rinkebyErrors: {
+      type: Array,
+      required: true
     },
     poaMainnet: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].poaMainnet.address
-      },
-      set(value) {
-        const field = {
-          name: 'poaMainnet',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    poaMainnetErrors() {
-      return this.$store.getters['dapps/form/poaMainnetErrors']
+    poaMainnetErrors: {
+      type: Array,
+      required: true
     },
     poaTestnet: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].poaTestnet.address
-      },
-      set(value) {
-        const field = {
-          name: 'poaTestnet',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    poaTestnetErrors() {
-      return this.$store.getters['dapps/form/poaTestnetErrors']
+    poaTestnetErrors: {
+      type: Array,
+      required: true
     },
     eosMainnet: {
-      get() {
-        return this.$store.getters['dapps/form/contracts'].eosMainnet.address
-      },
-      set(value) {
-        const field = {
-          name: 'eosMainnet',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setContract', field)
-      }
+      type: String,
+      required: true
     },
-    eosMainnetErrors() {
-      return this.$store.getters['dapps/form/eosMainnetErrors']
+    eosMainnetErrors: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate(network) {
+    updateAndValidate(network, value) {
+      this.$emit('updateContract', network, value)
       const field = network
-      clearTimeout(validationTimer)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: field,
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         if (this[field].length > 0) {
           let contractArray = this[field].split('\n')
           let contractErrors = []
@@ -412,7 +364,7 @@ export default {
             )
           }
         }
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }

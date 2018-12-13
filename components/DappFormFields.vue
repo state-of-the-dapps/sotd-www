@@ -74,7 +74,25 @@
       :is-edit="isEdit"
       :eth-is-missing="missingFields.includes('contract_addresses_mainnet')"
       :poa-is-missing="missingFields.includes('poa_mainnet')"
-      :eos-is-missing="missingFields.includes('eos_mainnet')"/>
+      :eos-is-missing="missingFields.includes('eos_mainnet')"
+      :platform="fields.platform"
+      :contracts="fields.contracts"
+      :mainnet="fields.contracts.mainnet.address"
+      :mainnet-errors="errors.mainnet"
+      :kovan="fields.contracts.kovan.address"
+      :kovan-errors="errors.kovan"
+      :ropsten="fields.contracts.ropsten.address"
+      :ropsten-errors="errors.ropsten"
+      :rinkeby="fields.contracts.rinkeby.address"
+      :rinkeby-errors="errors.rinkeby"
+      :poa-mainnet="fields.contracts.poaMainnet.address"
+      :poa-mainnet-errors="errors.poaMainnet"
+      :poa-testnet="fields.contracts.poaTestnet.address"
+      :poa-testnet-errors="errors.poaTestnet"
+      :eos-mainnet="fields.contracts.eosMainnet.address"
+      :eos-mainnet-errors="errors.eosMainnet"
+      @updateContract="updateContract"
+      @updateErrors="updateErrors"/>
     <DappFormFieldsStatus v-if="!isEdit || missingFields.includes('status')"/>
     <DappFormFieldsSocial 
       v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
@@ -169,6 +187,9 @@ export default {
     }
   },
   methods: {
+    updateContract(network, value) {
+      this.$emit('updateContract', network, value)
+    },
     updateExistingDapp(dapp) {
       this.$emit('updateExistingDapp', dapp)
     },

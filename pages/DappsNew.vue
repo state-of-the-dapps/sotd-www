@@ -32,6 +32,7 @@
             :existing-dapp="existingDapp"
             :fields="fields"
             :warnings="warnings"
+            @updateContract="updateContract"
             @updateErrors="updateErrors"
             @updateField="updateField"
             @updateSiteUrl="updateSiteUrl"
@@ -73,7 +74,20 @@ export default {
     this.$store.dispatch('setSiteSection', 'dapps')
   },
   methods: {
-    ...mapActions('dapps/form', ['setExistingDapp', 'setField', 'setSiteUrl']),
+    ...mapActions('dapps/form', [
+      'setContract',
+      'setExistingDapp',
+      'setField',
+      'setSiteUrl'
+    ]),
+    updateContract(field, value) {
+      console.log('ran')
+      const fieldObj = {
+        name: field,
+        value: value
+      }
+      this.setContract(fieldObj)
+    },
     updateExistingDapp(dapp) {
       this.setExistingDapp(dapp)
     },

@@ -7,6 +7,7 @@
       :is-edit="true"
       :suggestions="suggestions"
       :warnings="warnings"
+      @updateContract="updateContract"
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateSiteUrl="updateSiteUrl"
@@ -46,7 +47,19 @@ export default {
     this.$store.dispatch('dapps/form/resetForm')
   },
   methods: {
-    ...mapActions('dapps/form', ['setExistingDapp', 'setField', 'setSiteUrl']),
+    ...mapActions('dapps/form', [
+      'setContract',
+      'setExistingDapp',
+      'setField',
+      'setSiteUrl'
+    ]),
+    updateContract(network, value) {
+      const fieldObj = {
+        name: network,
+        value: value
+      }
+      this.setContract(fieldObj)
+    },
     updateExistingDapp(dapp) {
       this.setExistingDapp(dapp)
     },
