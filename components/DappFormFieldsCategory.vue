@@ -25,23 +25,22 @@
 
 <script>
 import { getCategories } from '~/helpers/api'
-import { dispatchErrors } from '~/helpers/mixins'
 import { directive as onClickaway } from 'vue-clickaway'
 
 export default {
   directives: {
     onClickaway: onClickaway
   },
-  mixins: [dispatchErrors],
+  props: {
+    selectedCategory: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       categories: [],
       dropdown: false
-    }
-  },
-  computed: {
-    selectedCategory() {
-      return this.$store.getters['dapps/form/category']
     }
   },
   async mounted() {
@@ -49,16 +48,12 @@ export default {
   },
   methods: {
     selectCategory(value) {
-      const field = {
-        name: 'category',
-        value: value
-      }
+      this.$emit('updateField', 'category', value)
       const errors = {
         field: 'category',
         data: []
       }
-      this.dispatchErrors(errors, 'dapps')
-      this.$store.dispatch('dapps/form/setField', field)
+      this.$emit('updateErrors', errors)
       this.toggleDropdown()
     },
     toggleDropdown() {

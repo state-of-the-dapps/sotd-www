@@ -106,7 +106,11 @@
       :blog-is-missing="missingFields.includes('blog')"
       :facebook-is-missing="missingFields.includes('facebook')"
       :chat-is-missing="missingFields.includes('chat')"/>
-    <DappFormFieldsCategory v-if="!isEdit || missingFields.includes('category')"/>
+    <DappFormFieldsCategory
+      v-if="!isEdit || missingFields.includes('category')"
+      :selected-category="fields.category"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsTags v-if="!isEdit || missingFields.includes('tags')"/>
   </div>
 </template>
