@@ -31,12 +31,21 @@
             :errors="errors"
             :existing-dapp="existingDapp"
             :fields="fields"
+            :selected-tags="selectedTags"
+            :tag-query="tagQuery"
+            :tags-results="tagsResults"
             :warnings="warnings"
+            @addNewTag="addNewTag"
+            @fetchNewTags="fetchNewTags"
+            @removeTag="removeOldTag"
+            @resetExistingTagResults="resetExistingTagResults"
+            @selectTag="selectNewTag"
             @updateContract="updateContract"
             @updateErrors="updateErrors"
             @updateField="updateField"
             @updateSiteUrl="updateSiteUrl"
             @updateStatus="updateStatus"
+            @updateTagQuery="updateTagQuery"
             @updateWarnings="updateWarnings"
             @updateExistingDapp="updateExistingDapp"/>
           <DappFormSave/>
@@ -68,6 +77,9 @@ export default {
       'fields',
       'errors',
       'existingDapp',
+      'selectedTags',
+      'tagQuery',
+      'tagsResults',
       'warnings'
     ])
   },
@@ -76,12 +88,33 @@ export default {
   },
   methods: {
     ...mapActions('dapps/form', [
+      'addTag',
+      'fetchTags',
+      'removeTag',
+      'resetTagResults',
+      'selectTag',
       'setContract',
       'setExistingDapp',
       'setField',
       'setSiteUrl',
-      'setStatus'
+      'setStatus',
+      'setTagQuery'
     ]),
+    addNewTag(tag) {
+      this.addTag(tag)
+    },
+    fetchNewTags(query) {
+      this.fetchTags(query)
+    },
+    removeOldTag(key) {
+      this.removeTag(key)
+    },
+    resetExistingTagResults() {
+      this.resetTagResults()
+    },
+    selectNewTag(key) {
+      this.selectTag(key)
+    },
     updateContract(field, value) {
       const fieldObj = {
         name: field,
@@ -111,6 +144,9 @@ export default {
     },
     updateStatus(value) {
       this.setStatus(value)
+    },
+    updateTagQuery(value) {
+      this.setTagQuery(value)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')

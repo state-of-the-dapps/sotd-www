@@ -3,14 +3,14 @@
     <p class="heading">Tags <span class="required">(at least 1 required)</span></p>
     <div class="input-wrapper">
       <input 
-        v-model="query" 
+        :value="query" 
         :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" 
         :disabled="selected.length < 5 ? false : true" 
         type="text" 
         class="input" 
         autocomplete="off" 
         maxlength="20" 
-        @input="search" 
+        @input="search($event.target.value)" 
         @keyup.enter="add" 
         @click="findSuggestedTags">
       <span 
@@ -34,7 +34,7 @@
       </transition>
     </div>
     <ul 
-      v-if="hasObviousTags" 
+      v-if="hasObviousTags"
       class="warning-list -tags">
       <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
     </ul>
@@ -56,21 +56,40 @@
 <script>
 import { directive as onClickaway } from 'vue-clickaway'
 
-var searchTimer
-var trackTimer
-
 export default {
   directives: {
     onClickaway: onClickaway
+  },
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    query: {
+      type: String,
+      required: true
+    },
+    results: {
+      type: Array,
+      required: true
+    },
+    selected: {
+      type: Array,
+      required: true
+    }
+  },
+  data() {
+    return {
+      searchTimer: '',
+      sourcePath: this.$route.path,
+      trackTimer: ''
+    }
   },
   computed: {
     hasObviousTags() {
       return this.obviousTags.some(value => {
         return this.selected.map(item => item.toLowerCase()).indexOf(value) >= 0
       })
-    },
-    name() {
-      return this.$store.getters['dapps/form/name']
     },
     obviousTags() {
       return [
@@ -80,20 +99,6 @@ export default {
         'ethereum',
         this.name
       ].map(item => item.toLowerCase())
-    },
-    query: {
-      get() {
-        return this.$store.getters['dapps/form/tagQuery']
-      },
-      set(value) {
-        this.$store.dispatch('dapps/form/setTagQuery', value)
-      }
-    },
-    results() {
-      return this.$store.getters['dapps/form/tagsResults']
-    },
-    selected() {
-      return this.$store.getters['dapps/form/selectedTags']
     }
   },
   methods: {
@@ -103,9 +108,12 @@ export default {
         this.selected.length < 5 &&
         this.selected.indexOf(this.query) === -1
       ) {
-        this.$store.dispatch('dapps/form/addTag', this.query)
-        this.$store.dispatch('dapps/form/resetTagResults')
-        this.$mixpanel.track('New DApp - Add tag', { tag: this.query })
+        this.$emit('addNewTag', this.query)
+        this.$emit('resetExistingTagResults')
+        this.$mixpanel.track('DApp Form - Add tag', {
+          tag: this.query,
+          path: this.sourcePath
+        })
       }
     },
     hasWarning(tag) {
@@ -113,32 +121,42 @@ export default {
     },
     findSuggestedTags() {
       if (this.query.length === 0 && this.selected.length === 0) {
-        this.$store.dispatch('dapps/form/fetchTags')
+        this.$emit('fetchNewTags')
       }
     },
     remove(tag, key) {
-      this.$store.dispatch('dapps/form/removeTag', key)
-      this.$mixpanel.track('New DApp - Remove tag', { tag: tag })
+      this.$emit('removeTag', key)
+      this.$mixpanel.track('DApp Form - Remove tag', {
+        tag: tag,
+        path: this.sourcePath
+      })
     },
     resetResults() {
-      this.$store.dispatch('dapps/form/resetTagResults')
+      this.$emit('resetExistingTagResults')
     },
-    search() {
-      clearTimeout(searchTimer)
-      clearTimeout(trackTimer)
-      searchTimer = setTimeout(() => {
+    search(value) {
+      this.$emit('updateTagQuery', value)
+      clearTimeout(this.searchTimer)
+      clearTimeout(this.trackTimer)
+      this.searchTimer = setTimeout(() => {
         if (this.selected.length < 6) {
-          this.$store.dispatch('dapps/form/fetchTags', this.query)
+          this.$emit('fetchNewTags', this.query)
         }
       }, 100)
-      trackTimer = setTimeout(() => {
-        this.$mixpanel.track('New DApp - Search tags', { query: this.query })
+      this.trackTimer = setTimeout(() => {
+        this.$mixpanel.track('DApp Form - Search tags', {
+          query: this.query,
+          path: this.sourcePath
+        })
       }, 5000)
     },
     select(item, key) {
-      this.$store.dispatch('dapps/form/selectTag', key)
-      this.$store.dispatch('dapps/form/resetTagResults')
-      this.$mixpanel.track('New DApp - Select tag', { tag: item })
+      this.$emit('selectTag', key)
+      this.$emit('resetExistingTagResults')
+      this.$mixpanel.track('DApp Form - Select tag', {
+        tag: item,
+        path: this.sourcePath
+      })
     }
   }
 }

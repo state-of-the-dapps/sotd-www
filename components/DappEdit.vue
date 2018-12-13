@@ -5,13 +5,22 @@
       :existing-dapp="existingDapp"
       :fields="fields"
       :is-edit="true"
+      :selected-tags="selectedTags"
       :suggestions="suggestions"
+      :tag-query="tagQuery"
+      :tags-results="tagsResults"
       :warnings="warnings"
+      @addNewTag="addNewTag"
+      @fetchNewTags="fetchNewTags"
+      @removeTag="removeOldTag"
+      @resetExistingTagResults="resetExistingTagResults"
+      @selectTag="selectNewTag"
       @updateContract="updateContract"
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateSiteUrl="updateSiteUrl"
       @updateStatus="updateStatus"
+      @updateTagQuery="updateTagQuery"
       @updateWarnings="updateWarnings"
       @updateExistingDapp="updateExistingDapp"/>
   </div>
@@ -38,6 +47,9 @@ export default {
       'fields',
       'errors',
       'existingDapp',
+      'selectedTags',
+      'tagQuery',
+      'tagsResults',
       'warnings'
     ])
   },
@@ -49,12 +61,33 @@ export default {
   },
   methods: {
     ...mapActions('dapps/form', [
+      'addTag',
+      'fetchTags',
+      'removeTag',
+      'resetTagResults',
+      'selectTag',
       'setContract',
       'setExistingDapp',
       'setField',
       'setSiteUrl',
-      'setStatus'
+      'setStatus',
+      'setTagQuery'
     ]),
+    addNewTag(tag) {
+      this.addTag(tag)
+    },
+    fetchNewTags(query) {
+      this.fetchTags(query)
+    },
+    removeOldTag(key) {
+      this.removeTag(key)
+    },
+    resetExistingTagResults() {
+      this.resetExistingTagResults()
+    },
+    selectNewTag(key) {
+      this.selectTag(key)
+    },
     updateContract(network, value) {
       const fieldObj = {
         name: network,
@@ -84,6 +117,9 @@ export default {
     },
     updateStatus(value) {
       this.setStatus(value)
+    },
+    updateTagQuery(value) {
+      this.setTagQuery(value)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')

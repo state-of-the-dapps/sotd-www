@@ -111,7 +111,18 @@
       :selected-category="fields.category"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsTags v-if="!isEdit || missingFields.includes('tags')"/>
+    <DappFormFieldsTags
+      v-if="!isEdit || missingFields.includes('tags')"
+      :name="fields.name"
+      :query="tagQuery"
+      :results="tagsResults"
+      :selected="selectedTags"
+      @addNewTag="addNewTag"
+      @fetchNewTags="fetchNewTags"
+      @removeTag="removeTag"
+      @resetExistingTagResults="resetExistingTagResults"
+      @selectTag="selectTag"
+      @updateTagQuery="updateTagQuery"/>
   </div>
 </template>
 
@@ -171,11 +182,23 @@ export default {
       default: false,
       type: Boolean
     },
+    selectedTags: {
+      type: Array,
+      required: true
+    },
     suggestions: {
       type: Array,
       default: function() {
         return []
       }
+    },
+    tagsResults: {
+      type: Array,
+      required: true
+    },
+    tagQuery: {
+      type: String,
+      required: true
     },
     warnings: {
       type: Object,
@@ -194,6 +217,21 @@ export default {
     }
   },
   methods: {
+    addNewTag(tag) {
+      this.$emit('addNewTag', tag)
+    },
+    fetchNewTags(query) {
+      this.$emit('fetchNewTags', query)
+    },
+    removeTag(key) {
+      this.$emit('removeTag', key)
+    },
+    resetExistingTagResults() {
+      this.$emit('resetExistingTagResults')
+    },
+    selectTag(key) {
+      this.$emit('selectTag', key)
+    },
     updateContract(network, value) {
       this.$emit('updateContract', network, value)
     },
@@ -211,6 +249,9 @@ export default {
     },
     updateStatus(value) {
       this.$emit('updateStatus', value)
+    },
+    updateTagQuery(value) {
+      this.$emit('updateTagQuery', value)
     },
     updateWarnings(warnings) {
       this.$emit('updateWarnings', warnings)
