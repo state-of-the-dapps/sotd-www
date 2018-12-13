@@ -26,7 +26,12 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
-    <DappFormFieldsDescription v-if="!isEdit || missingFields.includes('description')"/>
+    <DappFormFieldsDescription
+      v-if="!isEdit || missingFields.includes('description')"
+      :errors="errors.description"
+      :description="fields.description"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsWebsite v-if="!isEdit || missingFields.includes('url')"/>
     <DappFormFieldsDappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
     <DappFormFieldsAuthors v-if="!isEdit || missingFields.includes('contact')"/>

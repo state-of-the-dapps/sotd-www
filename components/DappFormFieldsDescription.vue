@@ -4,7 +4,7 @@
     class="item">
     <textarea 
       :class="description.length > 0 ? '--is-filled' : ''" 
-      v-model="description" 
+      :value="description" 
       class="text-area" 
       maxlength="1000" 
       style="min-height: 200px" 
@@ -13,7 +13,7 @@
       autocapitalize="off" 
       spellcheck="false" 
       type="text" 
-      @input="validate"/>
+      @input="updateAndValidate($event.target.value)"/>
     <label 
       v-if="description.length < 450" 
       class="label">Full description <span class="required">(required)</span></label>
@@ -31,44 +31,38 @@
 </template>
 
 <script>
-import { dispatchErrors } from '~/helpers/mixins'
-
-var validationTimer
-
 export default {
-  mixins: [dispatchErrors],
-  computed: {
-    description: {
-      get() {
-        return this.$store.getters['dapps/form/description']
-      },
-      set(value) {
-        const field = {
-          name: 'description',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
+  props: {
+    errors: {
+      type: Array,
+      required: true
     },
-    errors() {
-      return this.$store.getters['dapps/form/descriptionErrors']
+    description: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      validationTimer: ''
     }
   },
   methods: {
-    validate() {
-      clearTimeout(validationTimer)
+    updateAndValidate(value) {
+      this.$emit('updateField', 'description', value)
+      clearTimeout(this.validationTimer)
       const errors = {
         field: 'description',
         data: []
       }
-      validationTimer = setTimeout(() => {
+      this.validationTimer = setTimeout(() => {
         this.description.length > 1000
           ? errors.data.push(`Description can't be longer than 1000 characters`)
           : ''
         this.description.length < 50
           ? errors.data.push(`Description must be longer than 50 characters`)
           : ''
-        this.dispatchErrors(errors, 'dapps')
+        this.$emit('updateErrors', errors)
       }, 750)
     }
   }
