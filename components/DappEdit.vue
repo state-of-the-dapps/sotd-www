@@ -9,6 +9,7 @@
       :warnings="warnings"
       @updateErrors="updateErrors"
       @updateField="updateField"
+      @updateSiteUrl="updateSiteUrl"
       @updateWarnings="updateWarnings"
       @updateExistingDapp="updateExistingDapp"/>
   </div>
@@ -45,7 +46,7 @@ export default {
     this.$store.dispatch('dapps/form/resetForm')
   },
   methods: {
-    ...mapActions('dapps/form', ['setExistingDapp', 'setField']),
+    ...mapActions('dapps/form', ['setExistingDapp', 'setField', 'setSiteUrl']),
     updateExistingDapp(dapp) {
       this.setExistingDapp(dapp)
     },
@@ -58,6 +59,13 @@ export default {
         value: value
       }
       this.setField(fieldObj)
+    },
+    updateSiteUrl(field, value) {
+      const fieldObj = {
+        name: field,
+        value: value
+      }
+      this.setSiteUrl(fieldObj)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')

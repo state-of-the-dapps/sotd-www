@@ -32,7 +32,12 @@
       :description="fields.description"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsWebsite v-if="!isEdit || missingFields.includes('url')"/>
+    <DappFormFieldsWebsite
+      v-if="!isEdit || missingFields.includes('url')"
+      :errors="errors.websiteUrl"
+      :url="fields.siteUrls.website"
+      @updateErrors="updateErrors"
+      @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsDappUrl v-if="!isEdit || missingFields.includes('dapp_url')"/>
     <DappFormFieldsAuthors v-if="!isEdit || missingFields.includes('contact')"/>
     <DappFormFieldsLicense v-if="!isEdit || missingFields.includes('license')"/>
@@ -148,6 +153,9 @@ export default {
     },
     updateErrors(errors) {
       this.$emit('updateErrors', errors)
+    },
+    updateSiteUrl(field, value) {
+      this.$emit('updateSiteUrl', field, value)
     },
     updateWarnings(warnings) {
       this.$emit('updateWarnings', warnings)

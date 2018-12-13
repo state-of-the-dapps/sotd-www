@@ -3,7 +3,7 @@
     <div>
       <section class="section -intro">
         <div class="container">
-          <TitlePage title="Submit a ÐApp"/>
+          <PageTitle title="Submit a ÐApp"/>
           <div class="help-wrapper">
             <div class="icon-wrapper">
               <img
@@ -34,6 +34,7 @@
             :warnings="warnings"
             @updateErrors="updateErrors"
             @updateField="updateField"
+            @updateSiteUrl="updateSiteUrl"
             @updateWarnings="updateWarnings"
             @updateExistingDapp="updateExistingDapp"/>
           <DappFormSave/>
@@ -50,14 +51,14 @@ import { openIntercom } from '~/helpers/mixins'
 import DappFormFields from '~/components/DappFormFields'
 import DappFormSave from '~/components/DappFormSave'
 import LayoutMain from '~/components/LayoutMain'
-import TitlePage from '~/components/TitlePage'
+import PageTitle from '~/components/PageTitle'
 
 export default {
   components: {
     DappFormFields,
     DappFormSave,
     LayoutMain,
-    TitlePage
+    PageTitle
   },
   mixins: [dispatchErrors, dispatchWarnings, openIntercom],
   computed: {
@@ -72,7 +73,7 @@ export default {
     this.$store.dispatch('setSiteSection', 'dapps')
   },
   methods: {
-    ...mapActions('dapps/form', ['setExistingDapp', 'setField']),
+    ...mapActions('dapps/form', ['setExistingDapp', 'setField', 'setSiteUrl']),
     updateExistingDapp(dapp) {
       this.setExistingDapp(dapp)
     },
@@ -85,6 +86,13 @@ export default {
         value: value
       }
       this.setField(fieldObj)
+    },
+    updateSiteUrl(field, value) {
+      const fieldObj = {
+        name: field,
+        value: value
+      }
+      this.setSiteUrl(fieldObj)
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')
