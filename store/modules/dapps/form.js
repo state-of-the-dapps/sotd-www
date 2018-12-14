@@ -1,9 +1,5 @@
 import { dappFormState } from '~/helpers/constants'
 
-function initialState() {
-  return dappFormState
-}
-
 const actions = {
   addErrorField({ commit }, field) {
     commit('ADD_ERROR_FIELD', field)
@@ -115,7 +111,8 @@ const mutations = {
     }
   },
   RESET_FORM(state) {
-    Object.assign(state, {}, initialState())
+    const newState = dappFormState()
+    Object.assign(state, newState)
   },
   RESET_TAG_RESULTS(state) {
     state.tagsResults = []
@@ -389,5 +386,5 @@ export default {
   getters,
   mutations,
   namespaced: true,
-  state: initialState()
+  state: dappFormState()
 }
