@@ -35,18 +35,17 @@ export default {
     return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data
       const status = response.status
-      if (status === 301) {
+      const dapp = data.item
+      if (!Object.keys(dapp).length > 0) {
+        error({ statusCode: 404 })
+      }
+      if (dapp.slug && dapp.slug !== params.slug) {
         const redirectPath =
-          response.headers.location || constants.dappFallbackRedirectPath
+          `/dapps/${dapp.slug}` || constants.dappFallbackRedirectPath
         redirect(301, redirectPath)
-      } else {
-        const dapp = data.item
-        if (!Object.keys(dapp).length > 0) {
-          error({ statusCode: 404 })
-        }
-        return {
-          dapp
-        }
+      }
+      return {
+        dapp
       }
     })
   },
