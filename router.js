@@ -197,7 +197,7 @@ export function createRouter() {
         path: '/tagged/:tags',
         redirect: to => {
           const { params } = to
-          return { 
+          return {
             name: 'dapps',
             query: { tags: params.tags }
           }
@@ -207,9 +207,9 @@ export function createRouter() {
         path: '/tagged/:tags/tab/:tab',
         redirect: to => {
           const { params } = to
-          return { 
+          return {
             name: 'dapps',
-            query: { 
+            query: {
               tags: params.tags,
               tab: params.tab
             }
@@ -220,7 +220,7 @@ export function createRouter() {
         path: '/dapps/tagged/:tags',
         redirect: to => {
           const { params } = to
-          return { 
+          return {
             name: 'dapps',
             query: { tags: params.tags }
           }
@@ -230,9 +230,9 @@ export function createRouter() {
         path: '/dapps/tagged/:tags/tab/:tab',
         redirect: to => {
           const { params } = to
-          return { 
+          return {
             name: 'dapps',
-            query: { 
+            query: {
               tags: params.tags,
               tab: params.tab
             }
@@ -263,7 +263,7 @@ export function createRouter() {
         path: '/dapps/tab/:tab',
         redirect: to => {
           const { params } = to
-          return { 
+          return {
             name: 'dapps',
             query: { tab: params.tab }
           }
