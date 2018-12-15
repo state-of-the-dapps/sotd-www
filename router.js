@@ -116,6 +116,20 @@ export function createRouter() {
         name: 'collection-detail'
       },
       {
+        path: '/dapps/submit/new',
+        component: DappsNew,
+        name: 'dapps-new'
+      },
+      {
+        path: '/dapps/new/form',
+        redirect: { name: 'help-metamask' }
+      },
+      {
+        path: '/dapps/submit/new/confirmation',
+        component: DappsNewConfirmation,
+        name: 'dapps-new-confirmation'
+      },
+      {
         path: '/dapps/:slug',
         component: DappDetailDirect,
         name: 'dapp-detail-direct'
@@ -139,20 +153,6 @@ export function createRouter() {
         path: '/dapps/:slug/meta',
         component: DappDetailMeta,
         name: 'dapp-detail-meta'
-      },
-      {
-        path: '/dapps/submit/new',
-        component: DappsNew,
-        name: 'dapps-new'
-      },
-      {
-        path: '/dapps/new/form',
-        redirect: { name: 'help-metamask' }
-      },
-      {
-        path: '/dapps/submit/new/confirmation',
-        component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation'
       },
       {
         path: '/logos',
@@ -190,25 +190,53 @@ export function createRouter() {
         name: 'promoted-dapps'
       },
       {
-        path: '/tab/:tab',
-        redirect: {
-          name: 'dapps-tab'
-        }
-      },
-      {
         path: '/tagged/metamask',
         redirect: { name: 'help-metamask' }
       },
       {
         path: '/tagged/:tags',
-        redirect: {
-          name: 'dapps-tags'
+        redirect: to => {
+          const { params } = to
+          return { 
+            name: 'dapps',
+            query: { tags: params.tags }
+          }
         }
       },
       {
         path: '/tagged/:tags/tab/:tab',
-        redirect: {
-          name: 'dapps-tab-tags'
+        redirect: to => {
+          const { params } = to
+          return { 
+            name: 'dapps',
+            query: { 
+              tags: params.tags,
+              tab: params.tab
+            }
+          }
+        }
+      },
+      {
+        path: '/dapps/tagged/:tags',
+        redirect: to => {
+          const { params } = to
+          return { 
+            name: 'dapps',
+            query: { tags: params.tags }
+          }
+        }
+      },
+      {
+        path: '/dapps/tagged/:tags/tab/:tab',
+        redirect: to => {
+          const { params } = to
+          return { 
+            name: 'dapps',
+            query: { 
+              tags: params.tags,
+              tab: params.tab
+            }
+          }
         }
       },
       {
@@ -230,6 +258,16 @@ export function createRouter() {
         path: '/dapps/platform/:platform/category/:category',
         component: Dapps,
         name: 'dapps-platform-category'
+      },
+      {
+        path: '/dapps/tab/:tab',
+        redirect: to => {
+          const { params } = to
+          return { 
+            name: 'dapps',
+            query: { tab: params.tab }
+          }
+        }
       },
       {
         path: '/help/metamask',
