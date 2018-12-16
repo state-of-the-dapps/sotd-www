@@ -332,12 +332,13 @@ export default {
 }
 
 .col-variable {
-  width: 165px;
+  max-width: 160px;
   margin: 0 15px;
   &.table-data {
     text-align: right;
   }
   &.table-head {
+    width: 160px;
     margin-right: 0;
   }
 }

@@ -353,7 +353,7 @@ const rankingColumns = Object.freeze([
   },
   {
     selection: 'dev_30d',
-    text: 'Dev activity',
+    text: 'Dev (30d)',
     sort: true
   },
   {
