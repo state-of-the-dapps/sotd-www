@@ -12,7 +12,7 @@
           @click.native="trackPlatform(platform)">{{ platform }}</nuxt-link>
       </p>
       <div 
-        v-if="platform" 
+        v-if="platform && platform in platformSoftware"
         class="software-wrapper">
         To use {{ platform }} ÐApps on the web, you'll need a browser add-on such as 
         <a
