@@ -330,6 +330,39 @@ function dappFormState() {
   }
 }
 
+const rankingColumns = Object.freeze([
+  {
+    selection: 'dau',
+    text: 'Users (24h)',
+    sort: true
+  },
+  {
+    selection: 'platform',
+    text: 'Platform',
+    sort: false
+  },
+  {
+    selection: 'category',
+    text: 'Category',
+    sort: false
+  },
+  {
+    selection: 'usd_value_7d',
+    text: 'Volume (7d)',
+    sort: true
+  },
+  {
+    selection: 'dev_30d',
+    text: 'Dev (30d)',
+    sort: true
+  },
+  {
+    selection: 'user_activity_30d',
+    text: 'User activity (30d)',
+    sort: false
+  }
+])
+
 export {
   dappBadgeMap,
   dappFallbackRedirectPath,
@@ -358,5 +391,6 @@ export {
   myListLimit,
   platformList,
   platformMap,
-  platformSoftware
+  platformSoftware,
+  rankingColumns
 }

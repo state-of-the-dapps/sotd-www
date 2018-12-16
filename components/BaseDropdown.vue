@@ -124,6 +124,7 @@ export default {
 .dropdown-wrapper {
   position: relative;
   min-width: 100px;
+  flex: 1;
 }
 
 .selected-option {
