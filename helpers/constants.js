@@ -212,12 +212,13 @@ const homeCollectionSlots = 6
 
 const myListLimit = 50
 
-const platformList = ['Ethereum', 'EOS', 'POA']
+const platformList = ['Ethereum', 'EOS', 'POA', 'Steem']
 
 const platformMap = {
   ethereum: 'Ethereum',
   eos: 'EOS',
-  poa: 'POA'
+  poa: 'POA',
+  steem: 'Steem'
 }
 
 const platformSoftware = {
