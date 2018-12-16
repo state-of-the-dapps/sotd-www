@@ -4,9 +4,11 @@
       <div class="table">
         <div class="table-header">
           <div class="table-row">
-            <div class="table-head col-rank">
-              <RankingTableRankHead :sort="true"/>
-            </div>
+            <media :query="{minWidth: 600}">
+              <div class="table-head col-rank">
+                <RankingTableRankHead :sort="true"/>
+              </div>
+            </media>
             <div class="table-head col-name">
               <RankingTableNameHead/>
             </div>
@@ -40,6 +42,16 @@
                 <RankingTableUsageHead/>
               </div>  
             </media>
+            <media :query="{maxWidth: tweakpoint - 1}">
+              <div class="table-head col-variable">
+                <BaseDropdown
+                  :options="columnOptions"
+                  :selected="selectedColumn.text"
+                  title="Choose a column"
+                  theme="inline"
+                  @select="selectColumn"/>
+              </div>
+            </media>
           </div>
         </div>
         <div class="table-body">
@@ -60,9 +72,11 @@
               v-if="dapp.rank"
               :key="index"
               class="table-row">
-              <div class="table-data col-rank">
-                <RankingTableRank :rank="dapp.rank"/>
-              </div>
+              <media :query="{minWidth: 600}">
+                <div class="table-data col-rank">
+                  <RankingTableRank :rank="dapp.rank"/>
+                </div>
+              </media>
               <div class="table-data col-name">
                 <RankingTableName
                   :icon-small-url="dapp.iconSmallUrl"
@@ -107,7 +121,32 @@
                 <div class="table-data col-usage">
                   <RankingTableTrend :users="dapp.sparklines.users"/>
                 </div>
-              </media>        
+              </media>
+              <media :query="{maxWidth: tweakpoint - 1}">
+                <div class="table-data col-variable">
+                  <RankingTablePlatform
+                    v-if="selectedColumn.selection === 'platform'"
+                    :platform="dapp.platform"/>
+                  <RankingTableCategory
+                    v-if="selectedColumn.selection === 'category'"
+                    :category="dapp.categories[0] || ''"/>
+                  <RankingTableValuePct
+                    v-if="selectedColumn.selection === 'users_24h'"
+                    :value="dapp.stats.dau"
+                    :value_pct="dapp.stats.dau_pct"/>
+                  <RankingTableVolume
+                    v-if="selectedColumn.selection === 'vol_7d'"
+                    :stats="dapp.stats"
+                    :platform="dapp.platform"/>
+                  <RankingTableValuePct
+                    v-if="selectedColumn.selection === 'dev_30d'"
+                    :value="dapp.stats.dev_30d"
+                    :value_pct="dapp.stats.dev_30d_pct"/> 
+                  <RankingTableTrend 
+                    v-if="selectedColumn.selection === 'user_activity_30d'"
+                    :users="dapp.sparklines.users"/>
+                </div>
+              </media>
             </div>
           </template>
         </div>
@@ -124,6 +163,7 @@
 
 <script>
 import { trackDappRankingPager } from '~/helpers/mixpanel'
+import BaseDropdown from './BaseDropdown'
 import BasePager from './BasePager'
 import Help from './Help'
 import Media from 'vue-media'
@@ -147,6 +187,7 @@ import RankingTableVolumeHead from './RankingTableVolumeHead'
 
 export default {
   components: {
+    BaseDropdown,
     BasePager,
     Help,
     Media,
@@ -180,6 +221,14 @@ export default {
     pager: {
       type: Object,
       required: true
+    },
+    columnOptions: {
+      type: Array,
+      required: true
+    },
+    selectedColumn: {
+      type: Object,
+      required: true
     }
   },
   data() {
@@ -188,6 +237,9 @@ export default {
     }
   },
   methods: {
+    selectColumn(column) {
+      this.$emit('selectColumn', column)
+    },
     selectPage(page) {
       const oldPage = this.$route.query.page || 1
       this.trackRankingPage(oldPage, page)
@@ -278,6 +330,17 @@ export default {
   width: 160px;
   text-align: right;
   padding: 0 10px;
+}
+
+.col-variable {
+  width: 165px;
+  margin: 0 15px;
+  &.table-data {
+    text-align: right;
+  }
+  &.table-head {
+    margin-right: 0;
+  }
 }
 
 .loader-wrapper {

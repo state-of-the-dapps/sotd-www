@@ -6,13 +6,17 @@
         <RankingTable
           :dapps="dapps"
           :is-loading="isLoading"
-          :pager="pager"/>
+          :pager="pager"
+          :column-options="columnOptions"
+          :selected-column="selectedColumn"
+          @selectColumn="selectColumn"/>
       </div>
     </div>
   </LayoutMain>
 </template>
 
 <script>
+import { rankingColumns } from '~/helpers/constants'
 import { getDapps } from '~/helpers/api'
 import LayoutMain from '~/components/LayoutMain'
 import RankingFilters from '~/components/RankingFilters'
@@ -32,7 +36,9 @@ export default {
         limit: 0,
         offset: 0,
         totalCount: 0
-      }
+      },
+      columnOptions: rankingColumns,
+      selectedColumn: rankingColumns[0]
     }
   },
   async asyncData({ params, query, app }) {
@@ -77,6 +83,16 @@ export default {
         offset: 0,
         totalCount: 0
       }
+    },
+    selectColumn(column) {
+      const columnsObj = {}
+      rankingColumns.map(x => {
+        columnsObj[x.selection] = {
+          selection: x.selection,
+          text: x.text
+        }
+      })
+      this.selectedColumn = columnsObj[column]
     }
   },
   head() {

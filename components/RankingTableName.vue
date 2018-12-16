@@ -23,15 +23,21 @@
           :to="{ name: 'dapp-detail', params: { slug } }" 
           @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
-      <p class="teaser">{{ teaser }}</p>
+      <media :query="{minWidth: 600}">
+        <p class="teaser">{{ teaser }}</p>
+      </media>
     </div>
   </div>
 </template>
 
 <script>
+import Media from 'vue-media'
 import { trackDappView } from '~/helpers/mixpanel'
 
 export default {
+  components: {
+    Media
+  },
   props: {
     iconSmallUrl: {
       type: String,
@@ -81,6 +87,9 @@ export default {
   text-align: left;
   margin-right: 20px;
   justify-content: left;
+  @include tweakpoint('max-width', 600px) {
+    padding: 7px 0 7px 15px;
+  }
 }
 
 .icon-image {
