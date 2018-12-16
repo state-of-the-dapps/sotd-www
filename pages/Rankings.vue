@@ -89,10 +89,20 @@ export default {
       rankingColumns.map(x => {
         columnsObj[x.selection] = {
           selection: x.selection,
-          text: x.text
+          text: x.text,
+          sort: x.sort
         }
       })
-      this.selectedColumn = columnsObj[column]
+      const selectedColumn = columnsObj[column]
+      this.selectedColumn = selectedColumn
+      if (selectedColumn.sort) {
+        this.$router.push({
+          query: {
+            sort: selectedColumn.selection,
+            order: 'desc'
+          }
+        })
+      }
     }
   },
   head() {

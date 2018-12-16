@@ -79,6 +79,7 @@
                 <RankingTableName
                   :icon-small-url="dapp.iconSmallUrl"
                   :name="dapp.name"
+                  :rank="dapp.rank"
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
               </div>
@@ -129,11 +130,11 @@
                     v-if="selectedColumn.selection === 'category'"
                     :category="dapp.categories[0] || ''"/>
                   <RankingTableValuePct
-                    v-if="selectedColumn.selection === 'users_24h'"
+                    v-if="selectedColumn.selection === 'dau'"
                     :value="dapp.stats.dau"
                     :value_pct="dapp.stats.dau_pct"/>
                   <RankingTableVolume
-                    v-if="selectedColumn.selection === 'vol_7d'"
+                    v-if="selectedColumn.selection === 'usd_value_7d'"
                     :stats="dapp.stats"
                     :platform="dapp.platform"/>
                   <RankingTableValuePct

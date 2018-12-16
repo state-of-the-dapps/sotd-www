@@ -16,6 +16,9 @@
       </nuxt-link>
     </div>
     <div class="name-teaser-wrapper">
+      <media :query="{maxWidth: 599}">
+        <p class="rank">#{{ rank }}</p>
+      </media>
       <h4 class="name">
         <nuxt-link 
           :to="{ name: 'dapp-detail', params: { slug } }" 
@@ -43,6 +46,10 @@ export default {
     },
     name: {
       type: String,
+      required: true
+    },
+    rank: {
+      type: Number,
       required: true
     },
     slug: {
@@ -85,7 +92,7 @@ export default {
   text-align: left;
   margin-right: 20px;
   justify-content: left;
-  @include tweakpoint('max-width', 600px) {
+  @include tweakpoint('max-width', 599px) {
     padding: 10px 0 10px 15px;
   }
 }
@@ -103,7 +110,7 @@ export default {
   width: 42px;
   height: 42px;
   border-radius: 4px;
-  @include tweakpoint('max-width', 600px) {
+  @include tweakpoint('max-width', 599px) {
     width: 30px;
     height: 30px;
   }
@@ -114,7 +121,7 @@ export default {
   display: block;
   width: 42px;
   height: 42px;
-  @include tweakpoint('max-width', 600px) {
+  @include tweakpoint('max-width', 599px) {
     width: 30px;
     height: 30px;
   }
@@ -139,7 +146,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  @include tweakpoint('max-width', 600px) {
+  @include tweakpoint('max-width', 599px) {
     width: 30px;
     height: 30px;
   }
@@ -149,10 +156,21 @@ export default {
   margin: 0;
   margin-bottom: 0.25rem;
   font-size: 1.2rem;
-  @include tweakpoint('max-width', 600px) {
+  @include tweakpoint('max-width', 599px) {
     margin-bottom: 0;
     font-size: 1.1rem;
   }
+}
+
+.rank {
+  margin: 0;
+  margin-bottom: 2px;
+  padding: 1px 3px;
+  border-radius: 3px;
+  background: $color--gray;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
 }
 
 .teaser {

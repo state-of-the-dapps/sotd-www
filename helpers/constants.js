@@ -328,28 +328,34 @@ function dappFormState() {
 
 const rankingColumns = Object.freeze([
   {
-    selection: 'users_24h',
-    text: 'Users (24h)'
+    selection: 'dau',
+    text: 'Users (24h)',
+    sort: true
   },
   {
     selection: 'platform',
-    text: 'Platform'
+    text: 'Platform',
+    sort: false
   },
   {
     selection: 'category',
-    text: 'Category'
+    text: 'Category',
+    sort: false
   },
   {
-    selection: 'vol_7d',
-    text: 'Volume (7d)'
+    selection: 'usd_value_7d',
+    text: 'Volume (7d)',
+    sort: true
   },
   {
     selection: 'dev_30d',
-    text: 'Dev activity'
+    text: 'Dev activity',
+    sort: true
   },
   {
     selection: 'user_activity_30d',
-    text: 'User activity (30d)'
+    text: 'User activity (30d)',
+    sort: false
   }
 ])
 
