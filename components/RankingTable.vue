@@ -4,11 +4,9 @@
       <div class="table">
         <div class="table-header">
           <div class="table-row">
-            <media :query="{minWidth: 600}">
-              <div class="table-head col-rank">
-                <RankingTableRankHead :sort="true"/>
-              </div>
-            </media>
+            <div class="table-head col-rank">
+              <RankingTableRankHead :sort="true"/>
+            </div>
             <div class="table-head col-name">
               <RankingTableNameHead/>
             </div>

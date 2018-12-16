@@ -9,9 +9,7 @@
         <img
           v-if="iconSmallUrl" 
           :src="iconSmallUrl"
-          class="icon-image"
-          width="42"
-          height="42">
+          class="icon-image">
         <span
           v-else
           class="icon-placeholder">{{ name | firstLetter }}</span>
@@ -88,7 +86,7 @@ export default {
   margin-right: 20px;
   justify-content: left;
   @include tweakpoint('max-width', 600px) {
-    padding: 7px 0 7px 15px;
+    padding: 10px 0 10px 15px;
   }
 }
 
@@ -105,11 +103,21 @@ export default {
   width: 42px;
   height: 42px;
   border-radius: 4px;
+  @include tweakpoint('max-width', 600px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .icon-image {
   border-radius: 4px;
   display: block;
+  width: 42px;
+  height: 42px;
+  @include tweakpoint('max-width', 600px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .icon-placeholder {
@@ -131,12 +139,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  @include tweakpoint('max-width', 600px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .name {
   margin: 0;
   margin-bottom: 0.25rem;
   font-size: 1.2rem;
+  @include tweakpoint('max-width', 600px) {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+  }
 }
 
 .teaser {
