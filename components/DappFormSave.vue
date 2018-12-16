@@ -109,6 +109,9 @@ export default {
     contractsEosMainnet() {
       return this.$store.getters['dapps/form/contractsEosMainnet']
     },
+    contractsSteemMainnet() {
+      return this.$store.getters['dapps/form/contractsSteemMainnet']
+    },
     errorFields() {
       return this.$store.getters['dapps/form/errorFields']
     },
@@ -181,6 +184,7 @@ export default {
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
+        data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$store.dispatch('dapps/form/setProfileScore', score)
@@ -203,6 +207,7 @@ export default {
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
         data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
+        data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.sending = true
         this.$axios
           .post('dapps', data)

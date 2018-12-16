@@ -74,6 +74,9 @@ export default {
           'https://www.myeoskit.com/account/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'Steem') {
+        addressLink =
+          'https://steemdb.com/@' + this.address + '?utm_source=StateOfTheDApps'
       }
       return addressLink
     }
