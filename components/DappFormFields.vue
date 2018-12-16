@@ -70,11 +70,12 @@
       :platform="fields.platform"
       @updateField="updateField"/>
     <DappFormFieldsContracts 
-      v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet'))"
+      v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') || missingFields.includes('steem_mainnet'))"
       :is-edit="isEdit"
       :eth-is-missing="missingFields.includes('contract_addresses_mainnet')"
       :poa-is-missing="missingFields.includes('poa_mainnet')"
       :eos-is-missing="missingFields.includes('eos_mainnet')"
+      :steem-is-missing="missingFields.includes('steem_mainnet')"
       :platform="fields.platform"
       :contracts="fields.contracts"
       :mainnet="fields.contracts.mainnet.address"
@@ -91,6 +92,8 @@
       :poa-testnet-errors="errors.poaTestnet"
       :eos-mainnet="fields.contracts.eosMainnet.address"
       :eos-mainnet-errors="errors.eosMainnet"
+      :steem-mainnet="fields.contracts.steemMainnet.address"
+      :steem-mainnet-errors="errors.steemMainnet"
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
     <DappFormFieldsStatus

@@ -58,7 +58,7 @@
             type="numbers"/>
         </div>
         <div 
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.eos_value_30d" 
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d" 
@@ -88,10 +88,19 @@
             :weekly="dapp.stats.eos_value_7d"
             title="Volume (EOS)"
             type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.steem_value_30d"
+            :daily="dapp.stats.steem_value_1d"
+            :monthly="dapp.stats.steem_value_30d"
+            :sparkline="dapp.sparklines.steem_value"
+            :quarterly="dapp.stats.steem_value_90d"
+            :weekly="dapp.stats.steem_value_7d"
+            title="Volume (STEEM)"
+            type="numbers"/>
         </div>
       </div>
       <div 
-        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length"
+        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length || dapp.contractsSteemMainnet.length"
         class="module-wrapper -tier-5">
         <div
           :class="dapp.audits.length ? 'has-audits' : ''"
@@ -104,6 +113,7 @@
             :poa-mainnet="dapp.contractsPoaMainnet"
             :poa-testnet="dapp.contractsPoaTestnet"
             :eos-mainnet="dapp.contractsEosMainnet"
+            :steem-mainnet="dapp.contractsSteemMainnet"
             :slug="dapp.slug"/>
         </div>
         <div 

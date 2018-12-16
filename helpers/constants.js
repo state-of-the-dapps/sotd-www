@@ -37,6 +37,7 @@ const dappSchema = Object.freeze({
   contractsPoaMainnet: [],
   contractsPoaTestnet: [],
   contractsEosMainnet: [],
+  contractsSteemMainnet: [],
   created: '',
   description: '',
   isNew: false,
@@ -265,6 +266,7 @@ function dappFormState() {
       poaMainnet: [],
       poaTestnet: [],
       eosMainnet: [],
+      steemMainnet: [],
       productImage: [],
       rinkeby: [],
       ropsten: [],
@@ -284,6 +286,7 @@ function dappFormState() {
         poaMainnet: { address: '' },
         poaTestnet: { address: '' },
         eosMainnet: { address: '' },
+        steemMainnet: { address: '' },
         ropsten: { address: '' },
         kovan: { address: '' },
         rinkeby: { address: '' }

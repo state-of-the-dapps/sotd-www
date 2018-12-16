@@ -14,6 +14,10 @@
         :class="platform === 'POA' ? 'is-active' : ''"
         class="selection"
         @click="setPlatform('POA')">POA</button>
+      <button
+        :class="platform === 'Steem' ? 'is-active' : ''"
+        class="selection"
+        @click="setPlatform('Steem')">Steem</button>
     </div>
   </div>
 </template>

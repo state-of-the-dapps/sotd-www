@@ -43,6 +43,12 @@
         :slug="slug"
         platform="EOS"
         network="mainnet"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="steemMainnet.length"
+        :addresses="steemMainnet"
+        :slug="slug"
+        platform="Steem"
+        network="mainnet"/>
     </ul>
   </div>
 </template>
@@ -80,6 +86,10 @@ export default {
       required: true
     },
     eosMainnet: {
+      type: Array,
+      required: true
+    },
+    steemMainnet: {
       type: Array,
       required: true
     },
