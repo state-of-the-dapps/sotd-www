@@ -37,6 +37,7 @@ const dappSchema = Object.freeze({
   contractsPoaMainnet: [],
   contractsPoaTestnet: [],
   contractsEosMainnet: [],
+  contractsSteemMainnet: [],
   created: '',
   description: '',
   isNew: false,
@@ -212,12 +213,13 @@ const homeCollectionSlots = 6
 
 const myListLimit = 50
 
-const platformList = ['Ethereum', 'EOS', 'POA']
+const platformList = ['Ethereum', 'EOS', 'POA', 'Steem']
 
 const platformMap = {
   ethereum: 'Ethereum',
   eos: 'EOS',
-  poa: 'POA'
+  poa: 'POA',
+  steem: 'Steem'
 }
 
 const platformSoftware = {
@@ -264,6 +266,7 @@ function dappFormState() {
       poaMainnet: [],
       poaTestnet: [],
       eosMainnet: [],
+      steemMainnet: [],
       productImage: [],
       rinkeby: [],
       ropsten: [],
@@ -283,6 +286,7 @@ function dappFormState() {
         poaMainnet: { address: '' },
         poaTestnet: { address: '' },
         eosMainnet: { address: '' },
+        steemMainnet: { address: '' },
         ropsten: { address: '' },
         kovan: { address: '' },
         rinkeby: { address: '' }

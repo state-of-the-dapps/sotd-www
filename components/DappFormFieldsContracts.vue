@@ -71,10 +71,33 @@
             </ul>
           </div>
         </li>
+        <li
+          v-if="steemIsMissing"
+          class="item">
+          <div class="name">Steem Mainnet Contracts</div>
+          <div
+            :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
+            class="input-wrapper">
+            <textarea
+              :value="steemMainnet"
+              class="input"
+              placeholder="Enter Steem accounts (one per line)"
+              maxlength="11000"
+              @input="updateAndValidate('steemMainnet', $event.target.value)"/>
+            <ul
+              v-if="steemMainnetErrors && steemMainnetErrors.length > 0"
+              class="error-list -contracts">
+              <li
+                v-for="(error, index) in steemMainnetErrors"
+                :key="index"
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
     <div v-if="!isEdit">
-      <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS'">accounts</span><span v-else>addresses</span></p>
+      <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS' || platform === 'Steem'">accounts</span><span v-else>addresses</span></p>
       <ul 
         v-if="platform === 'Ethereum'" 
         class="list">
@@ -234,6 +257,31 @@
           </div>
         </li>
       </ul>
+      <ul
+        v-if="platform === 'Steem'"
+        class="list">
+        <li class="item">
+          <div class="name">Mainnet</div>
+          <div
+            :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
+            class="input-wrapper">
+            <textarea
+              :value="steemMainnet"
+              class="input"
+              placeholder="Enter Steem accounts (one per line)"
+              maxlength="11000"
+              @input="updateAndValidate('steemMainnet', $event.target.value)"/>
+            <ul
+              v-if="steemMainnetErrors && steemMainnetErrors.length > 0"
+              class="error-list -contracts">
+              <li
+                v-for="(error, index) in steemMainnetErrors"
+                :key="index"
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -262,6 +310,10 @@ export default {
       default: false
     },
     eosIsMissing: {
+      type: Boolean,
+      default: false
+    },
+    steemIsMissing: {
       type: Boolean,
       default: false
     },
@@ -320,6 +372,14 @@ export default {
     eosMainnetErrors: {
       type: Array,
       required: true
+    },
+    steemMainnet: {
+      type: String,
+      required: true
+    },
+    steemMainnetErrors: {
+      type: Array,
+      required: true
     }
   },
   data() {
@@ -345,6 +405,13 @@ export default {
               if (network.startsWith(`eos`)) {
                 !element.match(
                   /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
+                )
+                  ? contractErrors.push(`Account name invalid`)
+                  : ''
+              } else if (network.startsWith(`steem`)) {
+                // https://steemit.com/programming/@cryptosharon/the-5-rules-of-a-valid-username-on-the-steem-blockchain-and-a-3-sbd-contest-to-make-an-account-name-validation-regex
+                !element.match(
+                  /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/
                 )
                   ? contractErrors.push(`Account name invalid`)
                   : ''

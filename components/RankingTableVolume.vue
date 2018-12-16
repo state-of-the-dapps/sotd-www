@@ -9,6 +9,7 @@
       <template v-if="platform === 'EOS'">EOS</template>
       <template v-if="platform === 'POA'">POA</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
+      <template v-if="platform === 'Steem'">STEEM</template>
     </span>
     <span 
       v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null" 
@@ -54,6 +55,8 @@ export default {
         volume = stats.eos_value_7d
       } else if (platform === 'POA') {
         volume = stats.poa_value_7d
+      } else if (platform === 'Steem') {
+        volume = stats.steem_value_7d
       }
       return volume
     },
@@ -67,6 +70,8 @@ export default {
         volumePct = stats.eos_value_7d_pct
       } else if (platform === 'POA') {
         volumePct = stats.poa_value_7d_pct
+      } else if (platform === 'Steem') {
+        volumePct = stats.steem_value_7d_pct
       }
       return volumePct
     }

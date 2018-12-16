@@ -220,6 +220,11 @@ const getters = {
     let contracts = contractsString.length ? contractsString.split('\n') : []
     return contracts
   },
+  contractsSteemMainnet: state => {
+    let contractsString = state.fields.contracts.steemMainnet.address || ''
+    let contracts = contractsString.length ? contractsString.split('\n') : []
+    return contracts
+  },
   dappUrl: state => {
     return state.fields.siteUrls.dapp
   },

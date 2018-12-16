@@ -17,6 +17,7 @@ export default {
   mounted() {
     this.$mixpanel.track('Error page', {
       type: this.error.statusCode,
+      message: this.error.message,
       resource: this.$route.fullPath
     })
   }
