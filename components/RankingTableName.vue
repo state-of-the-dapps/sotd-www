@@ -24,6 +24,9 @@
           :to="{ name: 'dapp-detail', params: { slug } }" 
           @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
+      <media :query="{maxWidth: 599}">
+        <p class="teaser">{{ teaser | truncate(50) }}</p>
+      </media>
       <media :query="{minWidth: 600}">
         <p class="teaser">{{ teaser }}</p>
       </media>

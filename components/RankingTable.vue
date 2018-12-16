@@ -144,6 +144,9 @@
                   <RankingTableTrend 
                     v-if="selectedColumn.selection === 'user_activity_30d'"
                     :users="dapp.sparklines.users"/>
+                  <div v-if="selectedColumn.selection === 'description'">
+                    {{ dapp.teaser }}
+                  </div>
                 </div>
               </media>
             </div>
@@ -333,9 +336,11 @@ export default {
 
 .col-variable {
   max-width: 160px;
+  // padding: 5px 0;
   margin: 0 15px;
   &.table-data {
     text-align: right;
+    padding: 5px 0;
   }
   &.table-head {
     width: 160px;
