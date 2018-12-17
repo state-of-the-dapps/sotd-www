@@ -14,18 +14,20 @@
         class="text-area-label" 
         for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your ÐApp (this will not be made public).</label>
       <textarea 
-        v-model="submitReason" 
+        :value="submitReason" 
         class="text-area" 
         name="submitReason" 
-        placeholder="I hope that..."/>
+        placeholder="I hope that..."
+        @input="updateSubmitReason($event.target.value)"/>
     </div>
     <div class="checkboxes">
       <div class="checkbox-field">
         <input 
           id="subscribe-newsletter-checkbox" 
-          v-model="subscribeNewsletter" 
+          :value="subscribeNewsletter" 
           class="checkbox-input" 
-          type="checkbox">
+          type="checkbox"
+          @change="updateNewsletter">
         <label 
           class="checkbox-label" 
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
@@ -33,9 +35,10 @@
       <div class="checkbox-field">
         <input 
           id="accepted-terms-checkbox" 
-          v-model="acceptedTerms" 
+          :value="acceptedTerms" 
           class="checkbox-input" 
-          type="checkbox">
+          type="checkbox"
+          @change="updateAcceptedTerms">
         <label 
           class="checkbox-label" 
           for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link 
@@ -77,92 +80,75 @@
 
 <script>
 export default {
+  props: {
+    acceptedTerms: {
+      type: Boolean,
+      required: true
+    },
+    contractsMainnet: {
+      type: Array,
+      required: true
+    },
+    contractsKovan: {
+      type: Array,
+      required: true
+    },
+    contractsRopsten: {
+      type: Array,
+      required: true
+    },
+    contractsRinkeby: {
+      type: Array,
+      required: true
+    },
+    contractsPoaMainnet: {
+      type: Array,
+      required: true
+    },
+    contractsPoaTestnet: {
+      type: Array,
+      required: true
+    },
+    contractsEosMainnet: {
+      type: Array,
+      required: true
+    },
+    contractsSteemMainnet: {
+      type: Array,
+      required: true
+    },
+    errorFields: {
+      type: Array,
+      required: true
+    },
+    fields: {
+      type: Object,
+      required: true
+    },
+    profileScore: {
+      type: Number,
+      required: true
+    },
+    sending: {
+      type: Boolean,
+      required: true
+    },
+    submitReason: {
+      type: String,
+      required: true
+    },
+    subscribeNewsletter: {
+      type: Boolean,
+      required: true
+    }
+  },
   data: () => {
     return {
       profileScoreTimer: '',
-      sending: false,
       honeypot: null
     }
   },
   computed: {
-    authors() {
-      return this.$store.getters['dapps/form/authors']
-    },
-    contractsMainnet() {
-      return this.$store.getters['dapps/form/contractsMainnet']
-    },
-    contractsKovan() {
-      return this.$store.getters['dapps/form/contractsKovan']
-    },
-    contractsRopsten() {
-      return this.$store.getters['dapps/form/contractsRopsten']
-    },
-    contractsRinkeby() {
-      return this.$store.getters['dapps/form/contractsRinkeby']
-    },
-    contractsPoaMainnet() {
-      return this.$store.getters['dapps/form/contractsPoaMainnet']
-    },
-    contractsPoaTestnet() {
-      return this.$store.getters['dapps/form/contractsPoaTestnet']
-    },
-    contractsEosMainnet() {
-      return this.$store.getters['dapps/form/contractsEosMainnet']
-    },
-    contractsSteemMainnet() {
-      return this.$store.getters['dapps/form/contractsSteemMainnet']
-    },
-    errorFields() {
-      return this.$store.getters['dapps/form/errorFields']
-    },
-    fields() {
-      return this.$store.getters['dapps/form/fields']
-    },
-    name() {
-      return this.$store.getters['dapps/form/name']
-    },
-    profileScore() {
-      return this.$store.getters['dapps/form/profileScore']
-    },
-    submitReason: {
-      get() {
-        return this.$store.getters['dapps/form/submitReason']
-      },
-      set(value) {
-        const field = {
-          name: 'submitReason',
-          value: value
-        }
-        this.$store.dispatch('dapps/form/setField', field)
-      }
-    },
-    subscribeNewsletter: {
-      get() {
-        return this.$store.getters['dapps/form/subscribeNewsletter']
-      },
-      set() {
-        this.$store.dispatch('dapps/form/toggleCheckbox', 'subscribeNewsletter')
-      }
-    },
-    status() {
-      return this.$store.getters['dapps/form/status']
-    },
-    teaser() {
-      return this.$store.getters['dapps/form/teaser']
-    },
-    acceptedTerms: {
-      get() {
-        return this.$store.getters['dapps/form/acceptedTerms']
-      },
-      set() {
-        this.$store.dispatch('dapps/form/toggleCheckbox', 'acceptedTerms')
-        if (this.acceptedTerms === false) {
-          this.$store.dispatch('dapps/form/addErrorField', 'acceptedTerms')
-        } else {
-          this.$store.dispatch('dapps/form/removeErrorField', 'acceptedTerms')
-        }
-      }
-    },
     userEntryRoute() {
       return this.$store.getters['userEntryRoute']
     }
@@ -187,7 +173,7 @@ export default {
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
-          this.$store.dispatch('dapps/form/setProfileScore', score)
+          this.$emit('setProfileScore', score)
         })
       }, 750)
     },
@@ -208,31 +194,17 @@ export default {
         data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
-        this.sending = true
-        this.$axios
-          .post('dapps', data)
-          .then(response => {
-            this.sending = false
-            this.$mixpanel.track('New DApp - Submit', {
-              disabled: false,
-              name: this.fields.name,
-              email: this.fields.email,
-              author: this.fields.author,
-              subscribeNewsletter: this.fields.subscribeNewsletter
-            })
-            const modal = {
-              component: 'ModalDappsNewConfirmation',
-              mpData: {},
-              props: {}
-            }
-            this.$store.dispatch('setSiteModal', modal)
-            this.$store.dispatch('dapps/form/resetForm')
-          })
-          .catch(error => {
-            alert(error.response.data.message)
-            this.sending = false
-          })
+        this.$emit('submit', data)
       }
+    },
+    updateAcceptedTerms() {
+      this.$emit('updateCheckbox', 'acceptedTerms')
+    },
+    updateNewsletter() {
+      this.$emit('updateCheckbox', 'subscribeNewsletter')
+    },
+    updateSubmitReason(value) {
+      this.$emit('updateField', 'submitReason', value)
     }
   }
 }
