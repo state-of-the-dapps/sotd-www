@@ -45,6 +45,7 @@
                 <BaseDropdown
                   :options="columnOptions"
                   :selected="selectedColumn.text"
+                  name="Show"
                   title="Choose a column"
                   theme="inline"
                   @select="selectColumn"/>
@@ -343,7 +344,8 @@ export default {
     padding: 5px 0;
   }
   &.table-head {
-    width: 160px;
+    max-width: 205px;
+    width: 205px;
     margin-right: 0;
   }
 }
