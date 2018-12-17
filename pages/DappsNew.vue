@@ -63,11 +63,13 @@
             :fields="fields"
             :name="fields.name"
             :profile-score="profileScore"
+            :sending="sending"
             :submit-reason="fields.submitReason"
             :subscribe-newsletter="fields.subscribeNewsletter"
             @addErrorField="addNewErrorField"
             @removeErrorField="removeExistingErrorField"
             @setProfileScore="updateProfileScore"
+            @submit="submit"
             @updateField="updateField"
             @updateCheckbox="updateCheckbox"/>
         </div>
@@ -93,6 +95,11 @@ export default {
     PageTitle
   },
   mixins: [dispatchErrors, dispatchWarnings, openIntercom],
+  data() {
+    return {
+      sending: false
+    }
+  },
   computed: {
     ...mapGetters('dapps/form', [
       'contractsMainnet',
@@ -154,6 +161,32 @@ export default {
     selectNewTag(key) {
       this.selectTag(key)
     },
+    submit(data) {
+      this.sending = true
+      this.$axios
+        .post('dapps', data)
+        .then(response => {
+          this.sending = false
+          this.$mixpanel.track('New DApp - Submit', {
+            disabled: false,
+            name: data.fields.name,
+            email: data.fields.email,
+            author: data.fields.author,
+            subscribeNewsletter: data.fields.subscribeNewsletter
+          })
+          const modal = {
+            component: 'ModalDappsNewConfirmation',
+            mpData: {},
+            props: {}
+          }
+          this.$store.dispatch('setSiteModal', modal)
+          this.$store.dispatch('dapps/form/resetForm')
+        })
+        .catch(error => {
+          alert(error.response.data.message)
+          this.sending = false
+        })
+    },
     updateCheckbox(field) {
       this.toggleCheckbox(field)
       if (this.fields.acceptedTerms === false) {
@@ -183,7 +216,6 @@ export default {
       this.setField(fieldObj)
     },
     updateProfileScore(score) {
-      console.log(score)
       this.setProfileScore(score)
     },
     updateSiteUrl(field, value) {

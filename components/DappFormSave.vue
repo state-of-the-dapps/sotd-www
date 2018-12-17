@@ -129,6 +129,10 @@ export default {
       type: Number,
       required: true
     },
+    sending: {
+      type: Boolean,
+      required: true
+    },
     submitReason: {
       type: String,
       required: true
@@ -141,7 +145,6 @@ export default {
   data: () => {
     return {
       profileScoreTimer: '',
-      sending: false,
       honeypot: null
     }
   },
@@ -191,30 +194,7 @@ export default {
         data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
-        this.sending = true
-        this.$axios
-          .post('dapps', data)
-          .then(response => {
-            this.sending = false
-            this.$mixpanel.track('New DApp - Submit', {
-              disabled: false,
-              name: this.fields.name,
-              email: this.fields.email,
-              author: this.fields.author,
-              subscribeNewsletter: this.fields.subscribeNewsletter
-            })
-            const modal = {
-              component: 'ModalDappsNewConfirmation',
-              mpData: {},
-              props: {}
-            }
-            this.$store.dispatch('setSiteModal', modal)
-            this.$store.dispatch('dapps/form/resetForm')
-          })
-          .catch(error => {
-            alert(error.response.data.message)
-            this.sending = false
-          })
+        this.$emit('submit', data)
       }
     },
     updateAcceptedTerms() {
