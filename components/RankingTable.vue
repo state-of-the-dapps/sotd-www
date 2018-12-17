@@ -291,7 +291,7 @@ export default {
 }
 
 .col-dev {
-  width: 120px;
+  width: 160px;
   text-align: right;
   padding: 0 10px;
 }
