@@ -18,7 +18,7 @@
     <div class="name-teaser-wrapper">
       <media
         v-if="selectedColumn.selection !== 'rank'"
-        :query="{maxWidth: 599}">
+        :query="{maxWidth: 1098}">
         <p class="rank">#{{ rank }}</p>
       </media>
       <h4 class="name">
