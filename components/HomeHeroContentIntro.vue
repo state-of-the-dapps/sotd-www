@@ -3,7 +3,7 @@
     :class="'-' + loaded" 
     class="component-HomeHeroContentIntro">
     <h1 class="title-1">Explore decentralized applications <span class="subtitle-wrapper">(<span class="subtitle">apps built <br>on Blockchain</span>)</span></h1>
-    <p class="description">Discover the possibilities of the Ethereum, EOS &amp; POA blockchain with the definitive registry of ÐApp projects. <nuxt-link 
+    <p class="description">Discover the possibilities of the Ethereum, EOS, POA &amp; Steem blockchain with the definitive registry of ÐApp projects. <nuxt-link
       :to="{ name: 'what'}" 
       class="description-link" 
       @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
