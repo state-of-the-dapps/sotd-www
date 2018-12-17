@@ -49,7 +49,27 @@
             @updateTagQuery="updateTagQuery"
             @updateWarnings="updateWarnings"
             @updateExistingDapp="updateExistingDapp"/>
-          <DappFormSave/>
+          <DappFormSave
+            :accepted-terms="fields.acceptedTerms"
+            :contracts-mainnet="contractsMainnet"
+            :contracts-kovan="contractsKovan"
+            :contracts-ropsten="contractsRopsten"
+            :contracts-rinkeby="contractsRinkeby"
+            :contracts-poa-mainnet="contractsPoaMainnet"
+            :contracts-poa-testnet="contractsPoaTestnet"
+            :contracts-eos-mainnet="contractsEosMainnet"
+            :contracts-steem-mainnet="contractsSteemMainnet"
+            :error-fields="errorFields"
+            :fields="fields"
+            :name="fields.name"
+            :profile-score="profileScore"
+            :submit-reason="fields.submitReason"
+            :subscribe-newsletter="fields.subscribeNewsletter"
+            @addErrorField="addNewErrorField"
+            @removeErrorField="removeExistingErrorField"
+            @setProfileScore="updateProfileScore"
+            @updateField="updateField"
+            @updateCheckbox="updateCheckbox"/>
         </div>
       </section>
     </div>
@@ -75,38 +95,55 @@ export default {
   mixins: [dispatchErrors, dispatchWarnings, openIntercom],
   computed: {
     ...mapGetters('dapps/form', [
-      'fields',
+      'contractsMainnet',
+      'contractsKovan',
+      'contractsRopsten',
+      'contractsRinkeby',
+      'contractsPoaMainnet',
+      'contractsPoaTestnet',
+      'contractsEosMainnet',
+      'contractsSteemMainnet',
+      'errorFields',
       'errors',
       'existingDapp',
+      'fields',
+      'profileScore',
       'selectedTags',
       'tagQuery',
       'tagsResults',
       'warnings'
     ])
   },
-  mounted() {
-    this.$store.dispatch('setSiteSection', 'dapps')
-  },
   methods: {
     ...mapActions('dapps/form', [
+      'addErrorField',
       'addTag',
       'fetchTags',
+      'removeErrorField',
       'removeTag',
       'resetTagResults',
       'selectTag',
       'setContract',
       'setExistingDapp',
       'setField',
+      'setProfileScore',
       'setSiteUrl',
       'setSocial',
       'setStatus',
-      'setTagQuery'
+      'setTagQuery',
+      'toggleCheckbox'
     ]),
+    addNewErrorField(field) {
+      this.addErrorField(field)
+    },
     addNewTag(tag) {
       this.addTag(tag)
     },
     fetchNewTags(query) {
       this.fetchTags(query)
+    },
+    removeExistingErrorField(field) {
+      this.removeErrorField(field)
     },
     removeOldTag(key) {
       this.removeTag(key)
@@ -116,6 +153,14 @@ export default {
     },
     selectNewTag(key) {
       this.selectTag(key)
+    },
+    updateCheckbox(field) {
+      this.toggleCheckbox(field)
+      if (this.fields.acceptedTerms === false) {
+        this.addErrorField('acceptedTerms')
+      } else {
+        this.removeErrorField('acceptedTerms')
+      }
     },
     updateContract(field, value) {
       const fieldObj = {
@@ -136,6 +181,10 @@ export default {
         value: value
       }
       this.setField(fieldObj)
+    },
+    updateProfileScore(score) {
+      console.log(score)
+      this.setProfileScore(score)
     },
     updateSiteUrl(field, value) {
       const fieldObj = {
