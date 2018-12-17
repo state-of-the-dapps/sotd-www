@@ -70,7 +70,7 @@
               v-if="dapp.rank"
               :key="index"
               class="table-row">
-              <media :query="{minWidth: 600}">
+              <media :query="{minWidth: tweakpoint}">
                 <div class="table-data col-rank">
                   <RankingTableRank :rank="dapp.rank"/>
                 </div>
@@ -80,6 +80,7 @@
                   :icon-small-url="dapp.iconSmallUrl"
                   :name="dapp.name"
                   :rank="dapp.rank"
+                  :selected-column="selectedColumn"
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
               </div>
@@ -123,6 +124,9 @@
               </media>
               <media :query="{maxWidth: tweakpoint - 1}">
                 <div class="table-data col-variable">
+                  <span
+                    v-if="selectedColumn.selection === 'rank'"
+                    class="rank">{{ dapp.rank }}</span>
                   <RankingTablePlatform
                     v-if="selectedColumn.selection === 'platform'"
                     :platform="dapp.platform"/>
@@ -367,6 +371,17 @@ export default {
   text-align: center;
   font-weight: 700;
   color: darken($color--gray, 40%);
+}
+
+.rank {
+  display: inline-block;
+  background: $color--gray;
+  width: 50px;
+  text-align: center;
+  border-radius: 4px;
+  padding: 7px 3px;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
 
 .table-header {

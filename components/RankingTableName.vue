@@ -16,7 +16,9 @@
       </nuxt-link>
     </div>
     <div class="name-teaser-wrapper">
-      <media :query="{maxWidth: 599}">
+      <media
+        v-if="selectedColumn.selection !== 'rank'"
+        :query="{maxWidth: 599}">
         <p class="rank">#{{ rank }}</p>
       </media>
       <h4 class="name">
@@ -53,6 +55,10 @@ export default {
     },
     rank: {
       type: Number,
+      required: true
+    },
+    selectedColumn: {
+      type: Object,
       required: true
     },
     slug: {
@@ -95,7 +101,7 @@ export default {
   text-align: left;
   margin-right: 20px;
   justify-content: left;
-  @include tweakpoint('max-width', 599px) {
+  @include tweakpoint('max-width', 1098px) {
     padding: 10px 0 10px 15px;
   }
 }

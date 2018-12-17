@@ -90,7 +90,8 @@ export default {
         columnsObj[x.selection] = {
           selection: x.selection,
           text: x.text,
-          sort: x.sort
+          sort: x.sort,
+          order: x.order
         }
       })
       const selectedColumn = columnsObj[column]
@@ -99,7 +100,7 @@ export default {
         this.$router.push({
           query: {
             sort: selectedColumn.selection,
-            order: 'desc'
+            order: selectedColumn.order
           }
         })
       }
