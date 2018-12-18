@@ -62,6 +62,16 @@ export default {
     DappFormFields,
     DappFormSave
   },
+  props: {
+    endpoint: {
+      type: String,
+      required: true
+    },
+    mpEventName: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       errorFields: [
@@ -410,6 +420,7 @@ export default {
       this.tagQuery = ''
     },
     selectTag(key) {
+      console.log(key)
       if (this.fields.tags.indexOf(this.tagsResults[key]) === -1) {
         this.fields.tags.push(this.tagsResults[key])
       }
@@ -424,10 +435,10 @@ export default {
     submit(data) {
       this.sending = true
       this.$axios
-        .post('dapps', data)
+        .post(this.endpoint, data)
         .then(response => {
           this.sending = false
-          this.$mixpanel.track('New DApp - Submit', {
+          this.$mixpanel.track(this.mpEventName, {
             disabled: false,
             name: data.fields.name,
             email: data.fields.email,

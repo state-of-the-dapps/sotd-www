@@ -24,7 +24,9 @@
         </div>
       </div>
     </section>
-    <DappForm/>
+    <DappForm
+      endpoint="dapps"
+      mp-event-name="New DApp - Submit"/>
   </LayoutMain>
 </template>
 
