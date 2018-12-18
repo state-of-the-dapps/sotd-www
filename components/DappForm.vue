@@ -419,18 +419,17 @@ export default {
       this.tagsResults = []
       this.tagQuery = ''
     },
-    selectTag(key) {
-      console.log(key)
-      if (this.fields.tags.indexOf(this.tagsResults[key]) === -1) {
-        this.fields.tags.push(this.tagsResults[key])
+    selectTag(index) {
+      if (this.fields.tags.indexOf(this.tagsResults[index]) === -1) {
+        this.fields.tags.push(this.tagsResults[index])
       }
       if (this.fields.tags.length > 0) {
-        const index = this.errorFields.indexOf('tags')
-        if (key > -1) {
-          this.errorFields.splice(key, 1)
+        const errorFieldIndex = this.errorFields.indexOf('tags')
+        if (errorFieldIndex > -1) {
+          this.errorFields.splice(errorFieldIndex, 1)
         }
       }
-      this.tagsResults.splice(key, 1)
+      this.tagsResults.splice(index, 1)
     },
     submit(data) {
       this.sending = true
