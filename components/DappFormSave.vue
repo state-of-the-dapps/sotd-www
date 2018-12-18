@@ -27,7 +27,7 @@
           :value="subscribeNewsletter" 
           class="checkbox-input" 
           type="checkbox"
-          @change="updateNewsletter">
+          @input="updateNewsletter">
         <label 
           class="checkbox-label" 
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
@@ -38,7 +38,7 @@
           :value="acceptedTerms" 
           class="checkbox-input" 
           type="checkbox"
-          @change="updateAcceptedTerms">
+          @input="updateAcceptedTerms">
         <label 
           class="checkbox-label" 
           for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link 
