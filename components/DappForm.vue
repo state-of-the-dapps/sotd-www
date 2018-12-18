@@ -375,7 +375,7 @@ export default {
       this.$axios
         .get('tags', {
           params: {
-            text: value,
+            text: query,
             excluded: this.fields.tags,
             type: 'dapps'
           }
@@ -419,7 +419,7 @@ export default {
           this.errorFields.splice(key, 1)
         }
       }
-      this.tagsResults.splice(index, 1)
+      this.tagsResults.splice(key, 1)
     },
     submit(data) {
       this.sending = true
@@ -455,9 +455,7 @@ export default {
       }
     },
     updateContract(field, value) {
-      const fieldName = field.name
-      const fieldValue = field.value
-      this.fields.contracts[fieldName]['address'] = fieldValue
+      this.fields.contracts[field]['address'] = value
     },
     updateExistingDapp(dapp) {
       this.existingDapp = dapp
@@ -466,22 +464,16 @@ export default {
       this.dispatchErrors(errors, 'dapps')
     },
     updateField(field, value) {
-      const fieldName = field.name
-      const fieldValue = field.value
-      this.fields[fieldName] = fieldValue
+      this.fields[field] = value
     },
     updateProfileScore(score) {
       this.profileScore = score
     },
     updateSiteUrl(field, value) {
-      const fieldName = field.name
-      const fieldValue = field.value
-      this.fields.siteUrls[fieldName] = fieldValue
+      this.fields.siteUrls[field] = value
     },
     updateSocial(field, value) {
-      const fieldName = field.name
-      const fieldValue = field.value
-      this.fields.socials[fieldName]['path'] = fieldValue
+      this.fields.socials[field]['path'] = value
     },
     updateStatus(value) {
       const index = this.errorFields.indexOf('status')
