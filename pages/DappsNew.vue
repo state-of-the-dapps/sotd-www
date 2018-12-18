@@ -1,247 +1,46 @@
 <template>
   <LayoutMain>
-    <div>
-      <section class="section -intro">
-        <div class="container">
-          <PageTitle title="Submit a ÐApp"/>
-          <div class="help-wrapper">
-            <div class="icon-wrapper">
-              <img
-                src="~assets/images/dapp-icons/11.jpg"
-                width="120"
-                class="icon-image horse">
-              <img
-                src="~assets/images/dapp-icons/0.jpg"
-                width="120"
-                class="icon-image kitty">
-            </div>
-            <div class="text-wrapper">
-              <p>Whether you are looking for new users, testers, concept feedback, partners, or investors, submitting a ÐApp (Decentralized Application) to this definitive registry will help your project gain traction.</p>
-              <p>We welcome ÐApps at any stage in the product life-cycle (concepts are encouraged), or even ÐApps that you didn't make but noticed are missing.
-                <a 
-                  href="#"
-                  @click="openIntercom">Ask us</a> if you have any questions!</p>
-            </div>
+    <section class="section -intro">
+      <div class="container">
+        <PageTitle title="Submit a ÐApp"/>
+        <div class="help-wrapper">
+          <div class="icon-wrapper">
+            <img
+              src="~assets/images/dapp-icons/11.jpg"
+              width="120"
+              class="icon-image horse">
+            <img
+              src="~assets/images/dapp-icons/0.jpg"
+              width="120"
+              class="icon-image kitty">
+          </div>
+          <div class="text-wrapper">
+            <p>Whether you are looking for new users, testers, concept feedback, partners, or investors, submitting a ÐApp (Decentralized Application) to this definitive registry will help your project gain traction.</p>
+            <p>We welcome ÐApps at any stage in the product life-cycle (concepts are encouraged), or even ÐApps that you didn't make but noticed are missing.
+              <a 
+                href="#"
+                @click="openIntercom">Ask us</a> if you have any questions!</p>
           </div>
         </div>
-      </section>
-      <section class="section -form">
-        <div class="container">
-          <DappFormFields
-            :errors="errors"
-            :existing-dapp="existingDapp"
-            :fields="fields"
-            :selected-tags="selectedTags"
-            :tag-query="tagQuery"
-            :tags-results="tagsResults"
-            :warnings="warnings"
-            @addNewTag="addNewTag"
-            @fetchNewTags="fetchNewTags"
-            @removeTag="removeOldTag"
-            @resetExistingTagResults="resetExistingTagResults"
-            @selectTag="selectNewTag"
-            @updateContract="updateContract"
-            @updateErrors="updateErrors"
-            @updateField="updateField"
-            @updateSiteUrl="updateSiteUrl"
-            @updateSocial="updateSocial"
-            @updateStatus="updateStatus"
-            @updateTagQuery="updateTagQuery"
-            @updateWarnings="updateWarnings"
-            @updateExistingDapp="updateExistingDapp"/>
-          <DappFormSave
-            :accepted-terms="fields.acceptedTerms"
-            :contracts-mainnet="contractsMainnet"
-            :contracts-kovan="contractsKovan"
-            :contracts-ropsten="contractsRopsten"
-            :contracts-rinkeby="contractsRinkeby"
-            :contracts-poa-mainnet="contractsPoaMainnet"
-            :contracts-poa-testnet="contractsPoaTestnet"
-            :contracts-eos-mainnet="contractsEosMainnet"
-            :contracts-steem-mainnet="contractsSteemMainnet"
-            :error-fields="errorFields"
-            :fields="fields"
-            :name="fields.name"
-            :profile-score="profileScore"
-            :sending="sending"
-            :submit-reason="fields.submitReason"
-            :subscribe-newsletter="fields.subscribeNewsletter"
-            @addErrorField="addNewErrorField"
-            @removeErrorField="removeExistingErrorField"
-            @setProfileScore="updateProfileScore"
-            @submit="submit"
-            @updateField="updateField"
-            @updateCheckbox="updateCheckbox"/>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
+    <DappForm/>
   </LayoutMain>
 </template>
 
 <script>
-import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-import { mapActions, mapGetters } from 'vuex'
 import { openIntercom } from '~/helpers/mixins'
-import DappFormFields from '~/components/DappFormFields'
-import DappFormSave from '~/components/DappFormSave'
+import DappForm from '~/components/DappForm'
 import LayoutMain from '~/components/LayoutMain'
 import PageTitle from '~/components/PageTitle'
 
 export default {
   components: {
-    DappFormFields,
-    DappFormSave,
+    DappForm,
     LayoutMain,
     PageTitle
   },
-  mixins: [dispatchErrors, dispatchWarnings, openIntercom],
-  data() {
-    return {
-      sending: false
-    }
-  },
-  computed: {
-    ...mapGetters('dapps/form', [
-      'contractsMainnet',
-      'contractsKovan',
-      'contractsRopsten',
-      'contractsRinkeby',
-      'contractsPoaMainnet',
-      'contractsPoaTestnet',
-      'contractsEosMainnet',
-      'contractsSteemMainnet',
-      'errorFields',
-      'errors',
-      'existingDapp',
-      'fields',
-      'profileScore',
-      'selectedTags',
-      'tagQuery',
-      'tagsResults',
-      'warnings'
-    ])
-  },
-  methods: {
-    ...mapActions('dapps/form', [
-      'addErrorField',
-      'addTag',
-      'fetchTags',
-      'removeErrorField',
-      'removeTag',
-      'resetTagResults',
-      'selectTag',
-      'setContract',
-      'setExistingDapp',
-      'setField',
-      'setProfileScore',
-      'setSiteUrl',
-      'setSocial',
-      'setStatus',
-      'setTagQuery',
-      'toggleCheckbox'
-    ]),
-    addNewErrorField(field) {
-      this.addErrorField(field)
-    },
-    addNewTag(tag) {
-      this.addTag(tag)
-    },
-    fetchNewTags(query) {
-      this.fetchTags(query)
-    },
-    removeExistingErrorField(field) {
-      this.removeErrorField(field)
-    },
-    removeOldTag(key) {
-      this.removeTag(key)
-    },
-    resetExistingTagResults() {
-      this.resetTagResults()
-    },
-    selectNewTag(key) {
-      this.selectTag(key)
-    },
-    submit(data) {
-      this.sending = true
-      this.$axios
-        .post('dapps', data)
-        .then(response => {
-          this.sending = false
-          this.$mixpanel.track('New DApp - Submit', {
-            disabled: false,
-            name: data.fields.name,
-            email: data.fields.email,
-            author: data.fields.author,
-            subscribeNewsletter: data.fields.subscribeNewsletter
-          })
-          const modal = {
-            component: 'ModalDappsNewConfirmation',
-            mpData: {},
-            props: {}
-          }
-          this.$store.dispatch('setSiteModal', modal)
-          this.$store.dispatch('dapps/form/resetForm')
-        })
-        .catch(error => {
-          alert(error.response.data.message)
-          this.sending = false
-        })
-    },
-    updateCheckbox(field) {
-      this.toggleCheckbox(field)
-      if (this.fields.acceptedTerms === false) {
-        this.addErrorField('acceptedTerms')
-      } else {
-        this.removeErrorField('acceptedTerms')
-      }
-    },
-    updateContract(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setContract(fieldObj)
-    },
-    updateExistingDapp(dapp) {
-      this.setExistingDapp(dapp)
-    },
-    updateErrors(errors) {
-      this.dispatchErrors(errors, 'dapps')
-    },
-    updateField(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setField(fieldObj)
-    },
-    updateProfileScore(score) {
-      this.setProfileScore(score)
-    },
-    updateSiteUrl(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setSiteUrl(fieldObj)
-    },
-    updateSocial(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setSocial(fieldObj)
-    },
-    updateStatus(value) {
-      this.setStatus(value)
-    },
-    updateTagQuery(value) {
-      this.setTagQuery(value)
-    },
-    updateWarnings(warnings) {
-      this.dispatchWarnings(warnings, 'dapps')
-    }
-  },
+  mixins: [openIntercom],
   head() {
     return {
       title: 'State of the ÐApps — Submit a ÐApp'
@@ -306,18 +105,6 @@ export default {
   &.-intro {
     position: relative;
     z-index: 15;
-  }
-  &.-form {
-    .container {
-      display: flex;
-      flex-direction: column;
-      margin: 20px auto;
-      @include tweakpoint('min-width', $tweakpoint--default) {
-        margin: 30px auto 200px;
-        flex-direction: row;
-        width: 800px;
-      }
-    }
   }
 }
 
