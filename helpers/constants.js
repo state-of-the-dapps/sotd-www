@@ -238,98 +238,6 @@ const platformSoftware = {
   }
 }
 
-function dappFormState() {
-  return {
-    errorFields: [
-      'authors',
-      'category',
-      'description',
-      'email',
-      'name',
-      'status',
-      'tags',
-      'teaser',
-      'acceptedTerms',
-      'websiteUrl'
-    ],
-    errors: {
-      authors: [],
-      dappUrl: [],
-      description: [],
-      email: [],
-      kovan: [],
-      license: [],
-      icon: [],
-      logo: [],
-      mainnet: [],
-      name: [],
-      poaMainnet: [],
-      poaTestnet: [],
-      eosMainnet: [],
-      steemMainnet: [],
-      productImage: [],
-      rinkeby: [],
-      ropsten: [],
-      socialChat: [],
-      tags: [],
-      teaser: [],
-      acceptedTerms: [],
-      websiteUrl: []
-    },
-    existingDapp: '',
-    fields: {
-      authors: [],
-      category: '',
-      description: '',
-      contracts: {
-        mainnet: { address: '' },
-        poaMainnet: { address: '' },
-        poaTestnet: { address: '' },
-        eosMainnet: { address: '' },
-        steemMainnet: { address: '' },
-        ropsten: { address: '' },
-        kovan: { address: '' },
-        rinkeby: { address: '' }
-      },
-      email: '',
-      icon: '',
-      license: '',
-      logo: '',
-      name: '',
-      platform: dappDefaultPlatform,
-      productImage: '',
-      socials: {
-        facebook: { path: '' },
-        twitter: { path: '' },
-        github: { path: '' },
-        reddit: { path: '' },
-        chat: { path: '' },
-        blog: { path: '' }
-      },
-      status: '',
-      submitReason: '',
-      subscribeNewsletter: false,
-      tags: [],
-      teaser: '',
-      acceptedTerms: false,
-      siteUrls: {
-        dapp: '',
-        website: ''
-      }
-    },
-    profileScore: 0,
-    tagQuery: '',
-    tagsResults: [],
-    warnings: {
-      icon: [],
-      logo: [],
-      name: [],
-      productImage: [],
-      teaser: []
-    }
-  }
-}
-
 const rankingColumns = Object.freeze([
   {
     selection: 'rank',
@@ -378,7 +286,6 @@ const rankingColumns = Object.freeze([
 export {
   dappBadgeMap,
   dappFallbackRedirectPath,
-  dappFormState,
   dappGameTag,
   dappListDefaultLimit,
   dappListDefaultSort,

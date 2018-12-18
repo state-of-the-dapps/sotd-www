@@ -10,11 +10,11 @@
           :tag-query="tagQuery"
           :tags-results="tagsResults"
           :warnings="warnings"
-          @addNewTag="addNewTag"
-          @fetchNewTags="fetchNewTags"
-          @removeTag="removeOldTag"
-          @resetExistingTagResults="resetExistingTagResults"
-          @selectTag="selectNewTag"
+          @addTag="addTag"
+          @fetchTags="fetchTags"
+          @removeTag="removeTag"
+          @resetTagResults="resetTagResults"
+          @selectTag="selectTag"
           @updateContract="updateContract"
           @updateErrors="updateErrors"
           @updateField="updateField"
@@ -41,8 +41,8 @@
           :sending="sending"
           :submit-reason="fields.submitReason"
           :subscribe-newsletter="fields.subscribeNewsletter"
-          @addErrorField="addNewErrorField"
-          @removeErrorField="removeExistingErrorField"
+          @addErrorField="addErrorField"
+          @removeErrorField="removeErrorField"
           @setProfileScore="updateProfileScore"
           @submit="submit"
           @updateField="updateField"
@@ -53,8 +53,7 @@
 </template>
 
 <script>
-import { dispatchErrors, dispatchWarnings } from '~/helpers/mixins'
-import { mapActions, mapGetters } from 'vuex'
+import { dappDefaultPlatform } from '~/helpers/constants'
 import DappFormFields from '~/components/DappFormFields'
 import DappFormSave from '~/components/DappFormSave'
 
@@ -63,72 +62,364 @@ export default {
     DappFormFields,
     DappFormSave
   },
-  mixins: [dispatchErrors, dispatchWarnings],
   data() {
     return {
-      sending: false
+      errorFields: [
+        'authors',
+        'category',
+        'description',
+        'email',
+        'name',
+        'status',
+        'tags',
+        'teaser',
+        'acceptedTerms',
+        'websiteUrl'
+      ],
+      errors: {
+        authors: [],
+        dappUrl: [],
+        description: [],
+        email: [],
+        kovan: [],
+        license: [],
+        icon: [],
+        logo: [],
+        mainnet: [],
+        name: [],
+        poaMainnet: [],
+        poaTestnet: [],
+        eosMainnet: [],
+        steemMainnet: [],
+        productImage: [],
+        rinkeby: [],
+        ropsten: [],
+        socialChat: [],
+        tags: [],
+        teaser: [],
+        acceptedTerms: [],
+        websiteUrl: []
+      },
+      existingDapp: '',
+      fields: {
+        authors: [],
+        category: '',
+        description: '',
+        contracts: {
+          mainnet: { address: '' },
+          poaMainnet: { address: '' },
+          poaTestnet: { address: '' },
+          eosMainnet: { address: '' },
+          steemMainnet: { address: '' },
+          ropsten: { address: '' },
+          kovan: { address: '' },
+          rinkeby: { address: '' }
+        },
+        email: '',
+        icon: '',
+        license: '',
+        logo: '',
+        name: '',
+        platform: dappDefaultPlatform,
+        productImage: '',
+        socials: {
+          facebook: { path: '' },
+          twitter: { path: '' },
+          github: { path: '' },
+          reddit: { path: '' },
+          chat: { path: '' },
+          blog: { path: '' }
+        },
+        status: '',
+        submitReason: '',
+        subscribeNewsletter: false,
+        tags: [],
+        teaser: '',
+        acceptedTerms: false,
+        siteUrls: {
+          dapp: '',
+          website: ''
+        }
+      },
+      profileScore: 0,
+      sending: false,
+      tagQuery: '',
+      tagsResults: [],
+      warnings: {
+        icon: [],
+        logo: [],
+        name: [],
+        productImage: [],
+        teaser: []
+      }
     }
   },
   computed: {
-    ...mapGetters('dapps/form', [
-      'contractsMainnet',
-      'contractsKovan',
-      'contractsRopsten',
-      'contractsRinkeby',
-      'contractsPoaMainnet',
-      'contractsPoaTestnet',
-      'contractsEosMainnet',
-      'contractsSteemMainnet',
-      'errorFields',
-      'errors',
-      'existingDapp',
-      'fields',
-      'profileScore',
-      'selectedTags',
-      'tagQuery',
-      'tagsResults',
-      'warnings'
-    ])
+    acceptedTerms() {
+      return this.fields.acceptedTerms
+    },
+    authors() {
+      return this.fields.authors
+    },
+    authorsErrors() {
+      return this.errors.authors
+    },
+    category() {
+      return this.fields.category
+    },
+    contracts() {
+      return this.fields.contracts
+    },
+    contractsMainnet() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.mainnet.address
+      )
+    },
+    contractsKovan() {
+      return this.$options.filters.strToArr(this.fields.contracts.kovan.address)
+    },
+    contractsRopsten() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.ropsten.address
+      )
+    },
+    contractsRinkeby() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.rinkeby.address
+      )
+    },
+    contractsPoaMainnet() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.poaMainnet.address
+      )
+    },
+    contractsPoaTestnet() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.poaTestnet.address
+      )
+    },
+    contractsEosMainnet() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.eosMainnet.address
+      )
+    },
+    contractsSteemMainnet() {
+      return this.$options.filters.strToArr(
+        this.fields.contracts.steemMainnet.address
+      )
+    },
+    dappUrl() {
+      return this.fields.siteUrls.dapp
+    },
+    dappUrlErrors() {
+      return this.errors.dappUrl
+    },
+    description() {
+      return this.fields.description
+    },
+    descriptionErrors() {
+      return this.errors.description
+    },
+    email() {
+      return this.fields.email
+    },
+    emailErrors() {
+      return this.errors.email
+    },
+    icon() {
+      return this.fields.icon
+    },
+    iconErrors() {
+      return this.errors.icon
+    },
+    iconWarnings() {
+      return this.warnings.icon
+    },
+    kovanErrors() {
+      return this.errors.kovan
+    },
+    license() {
+      return this.fields.license
+    },
+    licenseErrors() {
+      return this.errors.license
+    },
+    logo() {
+      return this.fields.logo
+    },
+    logoErrors() {
+      return this.errors.logo
+    },
+    logoWarnings() {
+      return this.warnings.logo
+    },
+    mainnetErrors() {
+      return this.errors.mainnet
+    },
+    name() {
+      return this.fields.name
+    },
+    nameErrors() {
+      return this.errors.name
+    },
+    nameWarnings() {
+      return this.warnings.name
+    },
+    platform() {
+      return this.fields.platform
+    },
+    poaMainnetErrors() {
+      return this.errors.poaMainnet
+    },
+    poaTestnetErrors() {
+      return this.errors.poaTestnet
+    },
+    eosMainnetErrors() {
+      return this.errors.eosMainnet
+    },
+    productImage() {
+      return this.fields.productImage
+    },
+    productImageErrors() {
+      return this.errors.productImage
+    },
+    productImageWarnings() {
+      return this.warnings.productImage
+    },
+    rinkebyErrors() {
+      return this.errors.rinkeby
+    },
+    ropstenErrors() {
+      return this.errors.ropsten
+    },
+    selectedTags() {
+      return this.fields.tags
+    },
+    socialBlog() {
+      return this.fields.socials.blog.path
+    },
+    socialFacebook() {
+      return this.fields.socials.facebook.path
+    },
+    socialGithub() {
+      return this.fields.socials.github.path
+    },
+    socialReddit() {
+      return this.fields.socials.reddit.path
+    },
+    socialChat() {
+      return this.fields.socials.chat.path
+    },
+    socialChatErrors() {
+      return this.errors.socialChat
+    },
+    socialTwitter() {
+      return this.fields.socials.twitter.path
+    },
+    status() {
+      return this.fields.status
+    },
+    submitReason() {
+      return this.fields.submitReason
+    },
+    subscribeNewsletter() {
+      return this.fields.subscribeNewsletter
+    },
+    teaser() {
+      return this.fields.teaser
+    },
+    teaserErrors() {
+      return this.errors.teaser
+    },
+    teaserWarnings() {
+      return this.warnings.teaser
+    },
+    websiteUrl() {
+      return this.fields.siteUrls.website
+    },
+    websiteUrlErrors() {
+      return this.errors.websiteUrl
+    }
   },
   methods: {
-    ...mapActions('dapps/form', [
-      'addErrorField',
-      'addTag',
-      'fetchTags',
-      'removeErrorField',
-      'removeTag',
-      'resetTagResults',
-      'selectTag',
-      'setContract',
-      'setExistingDapp',
-      'setField',
-      'setProfileScore',
-      'setSiteUrl',
-      'setSocial',
-      'setStatus',
-      'setTagQuery',
-      'toggleCheckbox'
-    ]),
-    addNewErrorField(field) {
-      this.addErrorField(field)
+    addErrorField(field) {
+      const index = this.errorFields.indexOf(field)
+      if (index > -1) {
+        this.errorFields.splice(index, 1)
+      }
+      this.errorFields.push(field)
     },
-    addNewTag(tag) {
-      this.addTag(tag)
+    addTag(tag) {
+      if (this.fields.tags.indexOf(tag) === -1) {
+        this.fields.tags.push(tag)
+      }
+      if (this.fields.tags.length > 0) {
+        const index = this.errorFields.indexOf('tags')
+        if (index > -1) {
+          this.errorFields.splice(index, 1)
+        }
+      }
     },
-    fetchNewTags(query) {
-      this.fetchTags(query)
+    dispatchErrors(errors, model) {
+      if (errors.data.length > 0) {
+        this.addErrorField(errors.field)
+      } else {
+        this.removeErrorField(errors.field)
+      }
+      this.errors[errors.field] = errors.data
     },
-    removeExistingErrorField(field) {
-      this.removeErrorField(field)
+    dispatchWarnings(warnings, model) {
+      this.warnings[warnings.field] = warnings.data
     },
-    removeOldTag(key) {
-      this.removeTag(key)
+    fetchTags(query) {
+      this.$axios
+        .get('tags', {
+          params: {
+            text: value,
+            excluded: this.fields.tags,
+            type: 'dapps'
+          }
+        })
+        .then(response => {
+          var data = response.data
+          var items = data.items
+          this.tagsResults = items
+        })
     },
-    resetExistingTagResults() {
-      this.resetTagResults()
+    removeErrorField(field) {
+      const index = this.errorFields.indexOf(field)
+      if (index > -1) {
+        this.errorFields.splice(index, 1)
+      }
     },
-    selectNewTag(key) {
-      this.selectTag(key)
+    removeTag(key) {
+      this.fields.tags.splice(key, 1)
+      let errorIndex = this.errorFields.indexOf('tags')
+      if (this.fields.tags.length > 0) {
+        if (errorIndex > 0) {
+          this.errorFields.splice(errorIndex, 1)
+        }
+      } else {
+        if (errorIndex < 0) {
+          this.errorFields.push('tags')
+        }
+      }
+    },
+    resetTagResults() {
+      this.tagsResults = []
+      this.tagQuery = ''
+    },
+    selectTag(key) {
+      if (this.fields.tags.indexOf(this.tagsResults[key]) === -1) {
+        this.fields.tags.push(this.tagsResults[key])
+      }
+      if (this.fields.tags.length > 0) {
+        const index = this.errorFields.indexOf('tags')
+        if (key > -1) {
+          this.errorFields.splice(key, 1)
+        }
+      }
+      this.tagsResults.splice(index, 1)
     },
     submit(data) {
       this.sending = true
@@ -149,7 +440,6 @@ export default {
             props: {}
           }
           this.$store.dispatch('setSiteModal', modal)
-          this.$store.dispatch('dapps/form/resetForm')
         })
         .catch(error => {
           alert(error.response.data.message)
@@ -157,7 +447,7 @@ export default {
         })
     },
     updateCheckbox(field) {
-      this.toggleCheckbox(field)
+      this.fields[field] = !this.fields[field]
       if (this.fields.acceptedTerms === false) {
         this.addErrorField('acceptedTerms')
       } else {
@@ -165,47 +455,43 @@ export default {
       }
     },
     updateContract(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setContract(fieldObj)
+      const fieldName = field.name
+      const fieldValue = field.value
+      this.fields.contracts[fieldName]['address'] = fieldValue
     },
     updateExistingDapp(dapp) {
-      this.setExistingDapp(dapp)
+      this.existingDapp = dapp
     },
     updateErrors(errors) {
       this.dispatchErrors(errors, 'dapps')
     },
     updateField(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setField(fieldObj)
+      const fieldName = field.name
+      const fieldValue = field.value
+      this.fields[fieldName] = fieldValue
     },
     updateProfileScore(score) {
-      this.setProfileScore(score)
+      this.profileScore = score
     },
     updateSiteUrl(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setSiteUrl(fieldObj)
+      const fieldName = field.name
+      const fieldValue = field.value
+      this.fields.siteUrls[fieldName] = fieldValue
     },
     updateSocial(field, value) {
-      const fieldObj = {
-        name: field,
-        value: value
-      }
-      this.setSocial(fieldObj)
+      const fieldName = field.name
+      const fieldValue = field.value
+      this.fields.socials[fieldName]['path'] = fieldValue
     },
     updateStatus(value) {
-      this.setStatus(value)
+      const index = this.errorFields.indexOf('status')
+      if (index > -1) {
+        this.errorFields.splice(index, 1)
+      }
+      this.fields.status = value
     },
     updateTagQuery(value) {
-      this.setTagQuery(value)
+      this.tagQuery = value
     },
     updateWarnings(warnings) {
       this.dispatchWarnings(warnings, 'dapps')

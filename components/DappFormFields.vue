@@ -129,10 +129,10 @@
       :query="tagQuery"
       :results="tagsResults"
       :selected="selectedTags"
-      @addNewTag="addNewTag"
-      @fetchNewTags="fetchNewTags"
+      @addTag="addTag"
+      @fetchTags="fetchTags"
       @removeTag="removeTag"
-      @resetExistingTagResults="resetExistingTagResults"
+      @resetTagResults="resetTagResults"
       @selectTag="selectTag"
       @updateTagQuery="updateTagQuery"/>
   </div>
@@ -229,17 +229,17 @@ export default {
     }
   },
   methods: {
-    addNewTag(tag) {
-      this.$emit('addNewTag', tag)
+    addTag(tag) {
+      this.$emit('addTag', tag)
     },
-    fetchNewTags(query) {
-      this.$emit('fetchNewTags', query)
+    fetchTags(query) {
+      this.$emit('fetchTags', query)
     },
     removeTag(key) {
       this.$emit('removeTag', key)
     },
-    resetExistingTagResults() {
-      this.$emit('resetExistingTagResults')
+    resetTagResults() {
+      this.$emit('resetTagResults')
     },
     selectTag(key) {
       this.$emit('selectTag', key)

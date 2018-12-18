@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import collectionsModule from './modules/collections'
-import dappsModule from './modules/dapps'
 import newsletterModule from './modules/newsletter'
 import tagsModule from './modules/tags'
 
@@ -131,7 +130,6 @@ const createStore = () => {
     getters,
     modules: {
       collections: collectionsModule,
-      dapps: dappsModule,
       newsletter: newsletterModule,
       tags: tagsModule
     },

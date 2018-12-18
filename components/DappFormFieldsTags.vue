@@ -108,8 +108,8 @@ export default {
         this.selected.length < 5 &&
         this.selected.indexOf(this.query) === -1
       ) {
-        this.$emit('addNewTag', this.query)
-        this.$emit('resetExistingTagResults')
+        this.$emit('addTag', this.query)
+        this.$emit('resetTagResults')
         this.$mixpanel.track('DApp Form - Add tag', {
           tag: this.query,
           path: this.sourcePath
@@ -121,7 +121,7 @@ export default {
     },
     findSuggestedTags() {
       if (this.query.length === 0 && this.selected.length === 0) {
-        this.$emit('fetchNewTags')
+        this.$emit('fetchTags')
       }
     },
     remove(tag, key) {
@@ -132,7 +132,7 @@ export default {
       })
     },
     resetResults() {
-      this.$emit('resetExistingTagResults')
+      this.$emit('resetTagResults')
     },
     search(value) {
       this.$emit('updateTagQuery', value)
@@ -140,7 +140,7 @@ export default {
       clearTimeout(this.trackTimer)
       this.searchTimer = setTimeout(() => {
         if (this.selected.length < 6) {
-          this.$emit('fetchNewTags', this.query)
+          this.$emit('fetchTags', this.query)
         }
       }, 100)
       this.trackTimer = setTimeout(() => {
@@ -152,7 +152,7 @@ export default {
     },
     select(item, key) {
       this.$emit('selectTag', key)
-      this.$emit('resetExistingTagResults')
+      this.$emit('resetTagResults')
       this.$mixpanel.track('DApp Form - Select tag', {
         tag: item,
         path: this.sourcePath
