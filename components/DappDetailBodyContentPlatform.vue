@@ -14,7 +14,7 @@
       <div 
         v-if="platform && platform in platformSoftware"
         class="software-wrapper">
-        To use {{ platform }} ÐApps on the web, you'll need a browser add-on such as 
+        To use {{ platform }} ÐApps on the web, we recommend a browser add-on such as
         <a
           :href="platformSoftware[platform].url"
           target="_blank"
