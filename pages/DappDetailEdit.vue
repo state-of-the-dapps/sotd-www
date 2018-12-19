@@ -31,16 +31,22 @@ export default {
       pageTitle: 'Edit'
     }
   },
-  async asyncData() {
-    return {
-      dapp: {
-        profileScore: 0,
-        slug: '',
-        fields: {
-          teaser: 'Teaser'
+  asyncData({ $axios, params, error }) {
+    return $axios
+      .get(`dapps/${params.slug}/edit`)
+      .then(response => {
+        const dapp = response.data
+        if (dapp.slug && dapp.slug !== params.slug) {
+          const redirectPath =
+            `/dapps/${dapp.slug}/edit` || constants.dappFallbackRedirectPath
+          redirect(301, redirectPath)
+          return
         }
-      }
-    }
+        return { dapp }
+      })
+      .catch(e => {
+        error({ statusCode: 404 })
+      })
   },
   head() {
     return {
