@@ -1,6 +1,11 @@
 <template>
   <div class="item">
     <p class="heading">Logo</p>
+    <p v-if="logo && preFill">
+      <img
+        :src="logo"
+        width="200">
+    </p>
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="400"
@@ -21,8 +26,20 @@ export default {
   components: {
     BaseFileUpload
   },
+  props: {
+    logo: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      preFill: true
+    }
+  },
   methods: {
     setLogo(url) {
+      this.preFill = false
       this.$emit('updateField', 'logo', url)
     },
     removeLogo() {

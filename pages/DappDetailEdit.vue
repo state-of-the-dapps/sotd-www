@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { openIntercom } from '~/helpers/mixins'
 import DappForm from '~/components/DappForm'
 import LayoutMain from '~/components/LayoutMain'
 import PageTitle from '~/components/PageTitle'
@@ -25,7 +24,6 @@ export default {
     LayoutMain,
     PageTitle
   },
-  mixins: [openIntercom],
   data() {
     return {
       pageTitle: 'Edit'

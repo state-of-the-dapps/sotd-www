@@ -1,6 +1,11 @@
 <template>
   <div class="item">
     <p class="heading">Product screenshot</p>
+    <p v-if="productImage && preFill">
+      <img
+        :src="productImage"
+        width="100%">
+    </p>
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="1200"
@@ -21,8 +26,20 @@ export default {
   components: {
     BaseFileUpload
   },
+  props: {
+    productImage: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      preFill: true
+    }
+  },
   methods: {
     setProductImage(url) {
+      this.preFill = false
       this.$emit('updateField', 'productImage', url)
     },
     removeProductImage() {

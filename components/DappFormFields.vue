@@ -48,9 +48,15 @@
       :license="fields.license"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsLogo @updateField="updateField"/>
-    <DappFormFieldsIcon @updateField="updateField"/>
-    <DappFormFieldsProductImage @updateField="updateField"/>
+    <DappFormFieldsLogo
+      :logo="fields.logo"
+      @updateField="updateField"/>
+    <DappFormFieldsIcon
+      :icon="fields.icon"
+      @updateField="updateField"/>
+    <DappFormFieldsProductImage
+      :product-image="fields.productImage"
+      @updateField="updateField"/>
     <DappFormFieldsPlatform
       :platform="fields.platform"
       @updateField="updateField"/>

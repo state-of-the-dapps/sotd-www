@@ -1,6 +1,11 @@
 <template>
   <div class="item">
     <p class="heading">Icon</p>
+    <p v-if="icon && preFill">
+      <img
+        :src="icon"
+        width="32">
+    </p>
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="192"
@@ -21,8 +26,20 @@ export default {
   components: {
     BaseFileUpload
   },
+  props: {
+    icon: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      preFill: true
+    }
+  },
   methods: {
     setIcon(url) {
+      this.preFill = false
       this.$emit('updateField', 'icon', url)
     },
     removeIcon() {
