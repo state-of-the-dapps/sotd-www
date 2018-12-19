@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isEdit">
+    <div>
       <ul class="list">
         <li 
           v-if="ethIsMissing" 
@@ -96,7 +96,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="!isEdit">
+    <div>
       <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS' || platform === 'Steem'">accounts</span><span v-else>addresses</span></p>
       <ul 
         v-if="platform === 'Ethereum'" 
@@ -296,10 +296,6 @@ export default {
     contracts: {
       type: Object,
       required: true
-    },
-    isEdit: {
-      type: Boolean,
-      default: false
     },
     ethIsMissing: {
       type: Boolean,

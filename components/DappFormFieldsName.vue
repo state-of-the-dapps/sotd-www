@@ -1,8 +1,9 @@
 <template>
   <div 
-    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="item">
     <input 
+      :disabled="formType === 'edit'"
       :class="name.length > 0 ? '--is-filled' : ''" 
       :value="name"
       class="text-input" 
@@ -46,6 +47,10 @@ export default {
       required: true
     },
     existingDapp: {
+      type: String,
+      required: true
+    },
+    formType: {
       type: String,
       required: true
     },

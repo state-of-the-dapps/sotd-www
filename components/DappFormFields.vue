@@ -1,11 +1,9 @@
 <template>
-  <div
-    :class="isEdit ? 'is-edit' : ''"
-    class="list">
+  <div class="list">
     <DappFormFieldsName
-      v-if="!isEdit || missingFields.includes('name')"
       :errors="errors.name"
       :existing-dapp="existingDapp"
+      :form-type="formType"
       :name="fields.name"
       :warnings="warnings.name"
       @updateExistingDapp="updateExistingDapp"
@@ -13,13 +11,12 @@
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
     <DappFormFieldsEmail
-      v-if="!isEdit"
       :email="fields.email"
+      :form-type="formType"
       :errors="errors.email"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsTeaser
-      v-if="!isEdit || missingFields.includes('teaser')"
       :errors="errors.teaser"
       :teaser="fields.teaser"
       :warnings="warnings.teaser"
@@ -27,55 +24,37 @@
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
     <DappFormFieldsDescription
-      v-if="!isEdit || missingFields.includes('description')"
       :errors="errors.description"
       :description="fields.description"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsWebsite
-      v-if="!isEdit || missingFields.includes('url')"
       :errors="errors.websiteUrl"
       :url="fields.siteUrls.website"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsDappUrl
-      v-if="!isEdit || missingFields.includes('dapp_url')"
       :errors="errors.dappUrl"
       :url="fields.siteUrls.dapp"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsAuthors
-      v-if="!isEdit || missingFields.includes('contact')"
       :authors="fields.authors"
       :errors="errors.authors"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsLicense
-      v-if="!isEdit || missingFields.includes('license')"
       :errors="errors.authors"
       :license="fields.license"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsLogo
-      v-if="!isEdit || missingFields.includes('logo_cache')"
-      @updateField="updateField"/>
-    <DappFormFieldsIcon
-      v-if="!isEdit || missingFields.includes('icon_cache')"
-      @updateField="updateField"/>
-    <DappFormFieldsProductImage
-      v-if="!isEdit || missingFields.includes('product_image_cache')"
-      @updateField="updateField"/>
+    <DappFormFieldsLogo @updateField="updateField"/>
+    <DappFormFieldsIcon @updateField="updateField"/>
+    <DappFormFieldsProductImage @updateField="updateField"/>
     <DappFormFieldsPlatform
-      v-if="!isEdit"
       :platform="fields.platform"
       @updateField="updateField"/>
     <DappFormFieldsContracts 
-      v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') || missingFields.includes('steem_mainnet'))"
-      :is-edit="isEdit"
-      :eth-is-missing="missingFields.includes('contract_addresses_mainnet')"
-      :poa-is-missing="missingFields.includes('poa_mainnet')"
-      :eos-is-missing="missingFields.includes('eos_mainnet')"
-      :steem-is-missing="missingFields.includes('steem_mainnet')"
       :platform="fields.platform"
       :contracts="fields.contracts"
       :mainnet="fields.contracts.mainnet.address"
@@ -97,34 +76,23 @@
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
     <DappFormFieldsStatus
-      v-if="!isEdit || missingFields.includes('status')"
       :status="fields.status"
       @updateStatus="updateStatus"/>
     <DappFormFieldsSocial 
-      v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
-      :is-edit="isEdit"
       :github="fields.socials.github.path"
-      :github-is-missing="missingFields.includes('github')"
       :twitter="fields.socials.twitter.path"
-      :twitter-is-missing="missingFields.includes('twitter')"
       :reddit="fields.socials.reddit.path"
-      :reddit-is-missing="missingFields.includes('reddit')"
       :blog="fields.socials.blog.path"
-      :blog-is-missing="missingFields.includes('blog')"
       :facebook="fields.socials.facebook.path"
-      :facebook-is-missing="missingFields.includes('facebook')"
       :chat="fields.socials.chat.path"
       :chat-errors="errors.socialChat"
-      :chat-is-missing="missingFields.includes('chat')"
       @updateErrors="updateErrors"
       @updateSocial="updateSocial"/>
     <DappFormFieldsCategory
-      v-if="!isEdit || missingFields.includes('category')"
       :selected-category="fields.category"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsTags
-      v-if="!isEdit || missingFields.includes('tags')"
       :name="fields.name"
       :query="tagQuery"
       :results="tagsResults"
@@ -190,19 +158,13 @@ export default {
       type: Object,
       required: true
     },
-    isEdit: {
-      default: false,
-      type: Boolean
+    formType: {
+      type: String,
+      required: true
     },
     selectedTags: {
       type: Array,
       required: true
-    },
-    suggestions: {
-      type: Array,
-      default: function() {
-        return []
-      }
     },
     tagsResults: {
       type: Array,
@@ -215,17 +177,6 @@ export default {
     warnings: {
       type: Object,
       required: true
-    }
-  },
-  computed: {
-    missingFields() {
-      const fields = []
-      let i = 0
-      while (i < this.suggestions.length) {
-        fields.push(this.suggestions[i].attribute)
-        i++
-      }
-      return fields
     }
   },
   methods: {
@@ -322,6 +273,10 @@ export default {
     &.--has-errors {
       border-color: $color--error;
     }
+  }
+
+  /deep/ .is-edit {
+    display: none;
   }
 
   /deep/ .required {

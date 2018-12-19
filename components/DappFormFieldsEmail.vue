@@ -9,7 +9,7 @@
       type="text" 
       maxlength="50" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">Email <span class="required">(required)</span></label>
+    <label class="label"><span v-if="formType === 'edit'">Your </span>Email <span class="required">(required)</span></label>
     <span class="remaining-characters">{{ 50 - email.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
@@ -19,7 +19,12 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Email of the primary contact (this will not be made public)</p>
+    <p  
+      v-if="formType === 'new'"
+      class="help">Email of the primary contact (this will not be made public)</p>
+    <p  
+      v-if="formType === 'edit'"
+      class="help">Your email address (this will not be made public)</p>
   </div>
 </template>
 
@@ -34,6 +39,10 @@ export default {
     },
     errors: {
       type: Array,
+      required: true
+    },
+    formType: {
+      type: String,
       required: true
     }
   },

@@ -2,9 +2,7 @@
   <div>
     <p class="heading">Social media links</p>
     <ul class="list">
-      <li 
-        v-if="(isEdit && facebookIsMissing) || !isEdit" 
-        class="item">
+      <li class="item">
         <div class="input-wrapper -facebook">
           <input 
             :value="facebook" 
@@ -15,9 +13,7 @@
             @input="updateSocial('facebook', $event.target.value)">
         </div>
       </li>
-      <li 
-        v-if="(isEdit && twitterIsMissing) || !isEdit" 
-        class="item">
+      <li class="item">
         <div class="input-wrapper -twitter">
           <input 
             :value="twitter" 
@@ -28,9 +24,7 @@
             @input="updateSocial('twitter', $event.target.value)">
         </div>
       </li>
-      <li 
-        v-if="(isEdit && githubIsMissing) || !isEdit" 
-        class="item">
+      <li class="item">
         <div class="input-wrapper -github">
           <input 
             :value="github" 
@@ -41,9 +35,7 @@
             @input="updateSocial('github', $event.target.value)">
         </div>
       </li>
-      <li 
-        v-if="(isEdit && redditIsMissing) || !isEdit" 
-        class="item">
+      <li class="item">
         <div class="input-wrapper -reddit">
           <input 
             :value="reddit" 
@@ -54,8 +46,7 @@
             @input="updateSocial('reddit', $event.target.value)">
         </div>
       </li>
-      <li 
-        v-if="(isEdit && chatIsMissing) || !isEdit" 
+      <li
         :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''" 
         class="item">
         <div class="input-wrapper -chat">
@@ -76,9 +67,7 @@
             class="error-item -social">{{ error }}</li>
         </ul>
       </li>
-      <li 
-        v-if="(isEdit && blogIsMissing) || !isEdit" 
-        class="item">
+      <li class="item">
         <div class="input-wrapper -blog">
           <input 
             :value="blog" 
@@ -96,41 +85,21 @@
 <script>
 export default {
   props: {
-    isEdit: {
-      type: Boolean,
-      default: false
-    },
     blog: {
       type: String,
       required: true
-    },
-    blogIsMissing: {
-      type: Boolean,
-      default: false
     },
     github: {
       type: String,
       required: true
     },
-    githubIsMissing: {
-      type: Boolean,
-      default: false
-    },
     facebook: {
       type: String,
       required: true
     },
-    facebookIsMissing: {
-      type: Boolean,
-      default: false
-    },
     reddit: {
       type: String,
       required: true
-    },
-    redditIsMissing: {
-      type: Boolean,
-      default: false
     },
     chat: {
       type: String,
@@ -140,17 +109,9 @@ export default {
       type: Array,
       required: true
     },
-    chatIsMissing: {
-      type: Boolean,
-      default: false
-    },
     twitter: {
       type: String,
       required: true
-    },
-    twitterIsMissing: {
-      type: Boolean,
-      default: false
     }
   },
   data() {

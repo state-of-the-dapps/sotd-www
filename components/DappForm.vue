@@ -6,6 +6,7 @@
           :errors="errors"
           :existing-dapp="existingDapp"
           :fields="fields"
+          :form-type="formType"
           :selected-tags="selectedTags"
           :tag-query="tagQuery"
           :tags-results="tagsResults"
@@ -36,6 +37,7 @@
           :contracts-steem-mainnet="contractsSteemMainnet"
           :error-fields="errorFields"
           :fields="fields"
+          :form-type="formType"
           :name="fields.name"
           :profile-score="profileScore"
           :sending="sending"
@@ -66,6 +68,14 @@ export default {
     endpoint: {
       type: String,
       required: true
+    },
+    dapp: {
+      type: Object,
+      default: () => ({})
+    },
+    formType: {
+      type: String,
+      default: 'new'
     },
     mpEventName: {
       type: String,
@@ -349,6 +359,13 @@ export default {
     },
     websiteUrlErrors() {
       return this.errors.websiteUrl
+    }
+  },
+  beforeMount() {
+    if (this.formType === 'edit') {
+      this.errorFields = ['email', 'acceptedTerms']
+      this.fields = { ...this.fields, ...this.dapp.fields }
+      this.profileScore = this.dapp.profileScore
     }
   },
   methods: {
