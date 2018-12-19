@@ -364,13 +364,26 @@ export default {
     }
   },
   mounted() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('beforeunload', this.warnBeforeReload)
+    }
     if (this.formType === 'edit') {
       this.errorFields = ['email', 'acceptedTerms']
       this.fields = { ...this.fields, ...this.dapp }
       this.profileScore = this.profileScore
     }
   },
+  destroyed() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('beforeunload', this.warnBeforeReload)
+    }
+  },
   methods: {
+    warnBeforeReload(event) {
+      event.preventDefault()
+      event.returnValue =
+        'You are about to leave. Any unsubmitted changes will be lost'
+    },
     addErrorField(field) {
       const index = this.errorFields.indexOf(field)
       if (index > -1) {

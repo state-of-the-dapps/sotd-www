@@ -43,6 +43,18 @@ export default {
     PageTitle
   },
   mixins: [openIntercom],
+  beforeRouteLeave(to, from, next) {
+    if (typeof window !== 'undefined') {
+      const answer = window.confirm(
+        'You are about to leave. Any unsubmitted changes will be lost'
+      )
+      if (answer) {
+        next()
+      } else {
+        next(false)
+      }
+    }
+  },
   head() {
     return {
       title: 'State of the ÐApps — Submit a ÐApp'
