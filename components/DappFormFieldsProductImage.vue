@@ -9,7 +9,7 @@
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="1200"
-        message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a product screenshot here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a new product screenshot here, or click to select one"
         @uploadSuccess="setProductImage"
         @removeFile="removeProductImage"/>
     </div>

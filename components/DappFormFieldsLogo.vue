@@ -9,7 +9,7 @@
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="400"
-        message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop your logo here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop a new logo here, or click to select one"
         @uploadSuccess="setLogo"
         @removeFile="removeLogo"/>
     </div>
@@ -35,6 +35,12 @@ export default {
   data() {
     return {
       preFill: true
+    }
+  },
+  computed: {
+    message() {
+      const html = ``
+      return html
     }
   },
   methods: {

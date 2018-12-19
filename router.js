@@ -14,6 +14,8 @@ const DappDetailDirect = () =>
   import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
 const DappDetailEdit = () =>
   import('~/pages/DappDetailEdit.vue').then(m => m.default || m)
+  const DappDetailFlag = () =>
+  import('~/pages/DappDetailFlag.vue').then(m => m.default || m)
 const DappDetailImprove = () =>
   import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
 const DappDetailMeta = () =>
@@ -143,6 +145,11 @@ export function createRouter() {
         path: '/dapps/:slug/edit',
         component: DappDetailEdit,
         name: 'dapp-detail-edit'
+      },
+      {
+        path: '/dapps/:slug/flag',
+        component: DappDetailFlag,
+        name: 'dapp-detail-flag'
       },
       {
         path: '/dapps/:slug/improve',

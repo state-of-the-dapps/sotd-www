@@ -9,7 +9,7 @@
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="192"
-        message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop your icon here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop a new icon here, or click to select one"
         @uploadSuccess="setIcon"
         @removeFile="removeIcon"/>
     </div>
