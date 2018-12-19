@@ -32,7 +32,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { validateEmail } from '~/helpers/mixins'
-import { setUser, trackNewsletterSubscribe } from '~/helpers/mixpanel'
+import { trackNewsletterSubscribe } from '~/helpers/mixpanel'
 import SvgIconMail from './SvgIconMail'
 
 export default {
@@ -100,9 +100,6 @@ export default {
         this.sourcePath
       )
       this.$mixpanel.track(action.name, action.data)
-
-      const hasWeb3 = typeof web3 !== 'undefined'
-      const lastUpdated = new Date().toISOString()
     }
   }
 }

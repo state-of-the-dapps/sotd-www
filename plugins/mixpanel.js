@@ -14,8 +14,13 @@ const mp = function(Vue) {
       if (typeof web3 !== 'undefined') {
         hasWeb3 = true
       }
+      let hasSteemKeychain = false
+      if (typeof steem_keychain !== 'undefined') {
+        hasSteemKeychain = true
+      }
       mixpanel.register({
-        hasWeb3: hasWeb3
+        hasWeb3: hasWeb3,
+        hasSteemKeychain: hasSteemKeychain
       })
     })
   }
@@ -30,11 +35,6 @@ const mp = function(Vue) {
         console.log('Mixpanel Event: ', name)
         console.log('Mixpanel Data: ', data)
       }
-    },
-    setUser(personData) {
-      let data = personData || {}
-      // TODO further remove all $mixpanel.setUser calls
-      console.log('Mixpanel setUser Data:', data)
     }
   }
 }

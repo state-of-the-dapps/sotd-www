@@ -235,6 +235,11 @@ const platformSoftware = {
     name: 'Nifty',
     url:
       'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
+  },
+  Steem: {
+    name: 'Steem Keychain',
+    url:
+      'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
   }
 }
 

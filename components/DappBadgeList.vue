@@ -23,6 +23,7 @@ import SvgBadgeHot from './SvgBadgeHot'
 import SvgBadgeMetamask from './SvgBadgeMetamask'
 import SvgBadgeSolidified from './SvgBadgeSolidified'
 import SvgBadgeStatus from './SvgBadgeStatus'
+import SvgBadgeSteemKeychain from './SvgBadgeSteemKeychain'
 import SvgBadgeToken from './SvgBadgeToken'
 
 export default {
@@ -35,6 +36,7 @@ export default {
     SvgBadgeMetamask,
     SvgBadgeSolidified,
     SvgBadgeStatus,
+    SvgBadgeSteemKeychain,
     SvgBadgeToken
   },
   props: {

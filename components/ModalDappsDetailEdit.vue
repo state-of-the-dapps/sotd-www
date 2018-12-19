@@ -128,7 +128,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { setUser, trackDappEditSubmit } from '~/helpers/mixpanel'
+import { trackDappEditSubmit } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 
 export default {

@@ -1,14 +1,3 @@
-export const setUser = function($email, hasWeb3, lastUpdated, userEntryRoute) {
-  let user = {
-    $email,
-    hasWeb3,
-    lastUpdated,
-    userEntryRoute
-  }
-
-  return user
-}
-
 export const trackCollectionView = function(
   sourceComponent,
   sourcePath,
@@ -872,6 +861,21 @@ export const trackSocial = function(
     sourcePageLocation,
     sourcePath,
     targetPlatform
+  }
+
+  const action = {
+    name,
+    data
+  }
+
+  return action
+}
+
+export const trackSteemKeychainCta = function(sourceComponent, sourcePath) {
+  let name = 'SteemKeychain CTA'
+  let data = {
+    sourceComponent,
+    sourcePath
   }
 
   const action = {
