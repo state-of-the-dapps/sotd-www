@@ -14,15 +14,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import { openIntercom } from '~/helpers/mixins'
 import DappForm from '~/components/DappForm'
-=======
-import * as constants from '~/helpers/constants'
-import { mapGetters } from 'vuex'
-import { trackDappEditSubmit, trackDappEditView } from '~/helpers/mixpanel'
-import { validateEmail } from '~/helpers/mixins'
->>>>>>> master
 import LayoutMain from '~/components/LayoutMain'
 import PageTitle from '~/components/PageTitle'
 
