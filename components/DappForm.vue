@@ -364,8 +364,8 @@ export default {
   beforeMount() {
     if (this.formType === 'edit') {
       this.errorFields = ['email', 'acceptedTerms']
-      this.fields = { ...this.fields, ...this.dapp.fields }
-      this.profileScore = this.dapp.profileScore
+      this.fields = { ...this.fields, ...this.dapp }
+      this.profileScore = this.profileScore
     }
   },
   methods: {

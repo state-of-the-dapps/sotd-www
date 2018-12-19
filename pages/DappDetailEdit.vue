@@ -2,12 +2,12 @@
   <LayoutMain>
     <section class="section -intro">
       <div class="container">
-        <PageTitle :title="pageTitle + ' <DApp>'"/>
+        <PageTitle :title="pageTitle + ' ' + fields.name"/>
       </div>
     </section>
     <DappForm
-      :endpoint="`dapps/<slug>/edit`"
-      :dapp="dapp"
+      :endpoint="`dapps/${slug}/edit`"
+      :dapp="fields"
       :mp-event-name="pageTitle + ' DApp - Submit'"
       form-type="edit"/>
   </LayoutMain>
@@ -35,14 +35,18 @@ export default {
     return $axios
       .get(`dapps/${params.slug}/edit`)
       .then(response => {
-        const dapp = response.data
-        if (dapp.slug && dapp.slug !== params.slug) {
+        console.log(response)
+        const data = response.data
+        const fields = data.fields
+        const profileScore = data.profileScore
+        const slug = data.slug
+        if (slug && slug !== params.slug) {
           const redirectPath =
-            `/dapps/${dapp.slug}/edit` || constants.dappFallbackRedirectPath
+            `/dapps/${slug}/edit` || constants.dappFallbackRedirectPath
           redirect(301, redirectPath)
           return
         }
-        return { dapp }
+        return { fields, profileScore, slug }
       })
       .catch(e => {
         error({ statusCode: 404 })
@@ -50,7 +54,7 @@ export default {
   },
   head() {
     return {
-      title: 'Edit ' + this.dapp.name + ' — State of the ÐApps'
+      title: 'Edit ' + this.fields.name + ' — State of the ÐApps'
     }
   }
 }
