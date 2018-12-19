@@ -240,6 +240,7 @@ export default {
   max-width: 400px;
   padding: 10px;
   margin: 0 auto;
+  margin-top: -7px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-right: 20px;
     margin-left: 0;
@@ -276,9 +277,6 @@ export default {
       min-height: 200px;
       border-radius: 10px;
     }
-    &.--has-errors {
-      border-color: $color--error;
-    }
   }
 
   /deep/ .is-edit {
@@ -304,7 +302,7 @@ export default {
   /deep/ .text-input,
   /deep/ .text-area {
     border: none;
-    padding: 30px 50px 30px 20px;
+    padding: 20px;
     width: 100%;
     box-shadow: 0 0 20px rgba($color--black, 0.05);
     background: rgba(lighten($color--gray, 100%), 0.9);
@@ -329,8 +327,8 @@ export default {
   /deep/ .remaining-characters {
     position: absolute;
     display: block;
-    right: 20px;
-    top: 30px;
+    right: 0;
+    top: 8px;
     font-size: 12px;
   }
 

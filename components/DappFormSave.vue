@@ -420,7 +420,7 @@ export default {
   margin: 0 auto;
   margin-top: 1px;
   position: sticky;
-  top: 19px;
+  top: 10px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-left: 0;
     margin-right: 0;

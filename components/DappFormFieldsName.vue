@@ -2,16 +2,19 @@
   <div 
     :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="item">
+    <p class="heading">Your name <span class="required">(required)</span></p>
     <input 
       :disabled="formType === 'edit'"
       :class="name.length > 0 ? '--is-filled' : ''" 
       :value="name"
+      placeholder="e.g. Jane Doe"
       class="text-input" 
       type="text" 
       maxlength="25" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">ÐApp name <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 25 - name.length }}</span>
+    <span
+      v-if="name.length"
+      class="remaining-characters">{{ 25 - name.length }}</span>
     <ul 
       v-if="warnings && warnings.length > 0" 
       class="warning-list">

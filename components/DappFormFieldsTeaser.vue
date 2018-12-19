@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <textarea 
+    <p class="heading">Tagline <span class="required">(required)</span></p>
+    <input 
       :class="teaser.length > 0 ? '--is-filled' : ''" 
       :value="teaser" 
-      class="text-area" 
+      class="text-input" 
+      placeholder="e.g. Trade digital cats"
       maxlength="50" 
       type="text" 
-      @input="updateAndValidate($event.target.value)"/>
-    <label class="label">Tagline <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 50 - teaser.length }}</span>
+      @input="updateAndValidate($event.target.value)">
+    <span
+      v-if="teaser.length"
+      class="remaining-characters">{{ 50 - teaser.length }}</span>
     <ul 
       v-if="warnings && warnings.length > 0" 
       class="warning-list">
