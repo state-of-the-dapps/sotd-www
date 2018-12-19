@@ -190,6 +190,10 @@ export function createRouter() {
         name: 'promoted-dapps'
       },
       {
+        path: '/submit',
+        redirect: { name: 'dapps-new' }
+      },
+      {
         path: '/tagged/metamask',
         redirect: { name: 'help-metamask' }
       },
@@ -261,6 +265,16 @@ export function createRouter() {
       },
       {
         path: '/dapps/tab/:tab',
+        redirect: to => {
+          const { params } = to
+          return {
+            name: 'dapps',
+            query: { tab: params.tab }
+          }
+        }
+      },
+      {
+        path: '/tab/:tab',
         redirect: to => {
           const { params } = to
           return {
