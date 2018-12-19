@@ -14,7 +14,7 @@ const DappDetailDirect = () =>
   import('~/pages/DappDetailDirect.vue').then(m => m.default || m)
 const DappDetailEdit = () =>
   import('~/pages/DappDetailEdit.vue').then(m => m.default || m)
-  const DappDetailFlag = () =>
+const DappDetailFlag = () =>
   import('~/pages/DappDetailFlag.vue').then(m => m.default || m)
 const DappDetailImprove = () =>
   import('~/pages/DappDetailImprove.vue').then(m => m.default || m)
