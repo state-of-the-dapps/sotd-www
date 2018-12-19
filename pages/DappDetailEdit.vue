@@ -35,7 +35,6 @@ export default {
     return $axios
       .get(`dapps/${params.slug}/edit`)
       .then(response => {
-        console.log(response)
         const data = response.data
         const fields = data.fields
         const profileScore = data.profileScore

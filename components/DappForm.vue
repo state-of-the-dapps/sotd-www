@@ -191,40 +191,42 @@ export default {
       return this.fields.contracts
     },
     contractsMainnet() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.mainnet.address
       )
     },
     contractsKovan() {
-      return this.$options.filters.strToArr(this.fields.contracts.kovan.address)
+      return this.$options.filters.linesToArr(
+        this.fields.contracts.kovan.address
+      )
     },
     contractsRopsten() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.ropsten.address
       )
     },
     contractsRinkeby() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.rinkeby.address
       )
     },
     contractsPoaMainnet() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.poaMainnet.address
       )
     },
     contractsPoaTestnet() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.poaTestnet.address
       )
     },
     contractsEosMainnet() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.eosMainnet.address
       )
     },
     contractsSteemMainnet() {
-      return this.$options.filters.strToArr(
+      return this.$options.filters.linesToArr(
         this.fields.contracts.steemMainnet.address
       )
     },
@@ -361,7 +363,7 @@ export default {
       return this.errors.websiteUrl
     }
   },
-  beforeMount() {
+  mounted() {
     if (this.formType === 'edit') {
       this.errorFields = ['email', 'acceptedTerms']
       this.fields = { ...this.fields, ...this.dapp }

@@ -15,7 +15,7 @@
         @click="findSuggestedTags">
       <span 
         v-if="selected.length < 5" 
-        :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''" 
+        :class="query.length > 1 && selected.indexOf(query) === -1 ? '--is-ready' : ''"
         class="add" 
         @click="add"><span v-if="selected.length < 5">Add</span><span v-else>Max</span></span>
       <transition name="fade">
