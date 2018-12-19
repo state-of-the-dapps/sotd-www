@@ -131,11 +131,7 @@
 <script>
 import * as constants from '~/helpers/constants'
 import { mapGetters } from 'vuex'
-import {
-  setUser,
-  trackDappEditSubmit,
-  trackDappEditView
-} from '~/helpers/mixpanel'
+import { trackDappEditSubmit, trackDappEditView } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 import LayoutMain from '~/components/LayoutMain'
 
@@ -204,8 +200,6 @@ export default {
           this.dapp.slug
         )
         this.$mixpanel.track(action.name, action.data)
-        const hasWeb3 = typeof web3 !== 'undefined'
-        const lastUpdated = new Date().toISOString()
         this.$refs.page.scrollIntoView()
       }
     }

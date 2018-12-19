@@ -77,7 +77,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import {
-  setUser,
   trackPromotedDappSubmit,
   trackPromotedDappsView
 } from '~/helpers/mixpanel'

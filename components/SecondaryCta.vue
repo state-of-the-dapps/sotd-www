@@ -3,6 +3,7 @@
     <SecondaryCtaMailingList/>
     <SecondaryCtaMetamask/>
     <SecondaryCtaScatter/>
+    <SecondaryCtaSteemKeychain/>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import SecondaryCtaMailingList from './SecondaryCtaMailingList'
 import SecondaryCtaMetamask from './SecondaryCtaMetamask'
 import SecondaryCtaScatter from './SecondaryCtaScatter'
+import SecondaryCtaSteemKeychain from './SecondaryCtaSteemKeychain'
 
 export default {
   components: {
     SecondaryCtaMailingList,
     SecondaryCtaMetamask,
-    SecondaryCtaScatter
+    SecondaryCtaScatter,
+    SecondaryCtaSteemKeychain
   }
 }
 </script>
