@@ -10,10 +10,18 @@ export default {
   },
   head() {
     return {
-      title: this.dapp.name + ' — State of the ÐApps',
+      title: this.fields.name + ' — State of the ÐApps',
       meta: [
-        { hid: 'description', name: 'description', content: this.dapp.teaser },
-        { hid: 'image', property: 'og:image', content: this.dapp.productImage },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.fields.teaser
+        },
+        {
+          hid: 'image',
+          property: 'og:image',
+          content: this.fields.productImage
+        },
         { hid: 'robots', name: 'robots', content: 'noindex' }
       ]
     }

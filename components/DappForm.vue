@@ -371,9 +371,6 @@ export default {
     }
   },
   methods: {
-    confirmLeave() {
-      confirm('If you leave this page, any submitted changes will be lost')
-    },
     addErrorField(field) {
       const index = this.errorFields.indexOf(field)
       if (index > -1) {
