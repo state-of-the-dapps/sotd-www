@@ -8,7 +8,7 @@
             :value="facebook" 
             class="input" 
             type="text" 
-            placeholder="e.g. /facebookpage" 
+            placeholder="/facebookpage" 
             maxlength="100"
             @input="updateSocial('facebook', $event.target.value)">
         </div>
@@ -19,7 +19,7 @@
             :value="twitter" 
             class="input" 
             type="text" 
-            placeholder="e.g. @twitterhandle" 
+            placeholder="@twitterhandle" 
             maxlength="100"
             @input="updateSocial('twitter', $event.target.value)">
         </div>
@@ -30,7 +30,7 @@
             :value="github" 
             class="input" 
             type="text" 
-            placeholder="e.g. /githubproject" 
+            placeholder="/githubproject" 
             maxlength="100"
             @input="updateSocial('github', $event.target.value)">
         </div>
@@ -41,7 +41,7 @@
             :value="reddit" 
             class="input" 
             type="text" 
-            placeholder="e.g. /r/reddit" 
+            placeholder="/r/reddit" 
             maxlength="100"
             @input="updateSocial('reddit', $event.target.value)">
         </div>
@@ -54,7 +54,7 @@
             :value="chat" 
             class="input" 
             type="text" 
-            placeholder="e.g. chat invite url" 
+            placeholder="chat invitation url" 
             maxlength="100" 
             @input="updateAndValidate('chat', $event.target.value)">
         </div>

@@ -445,7 +445,7 @@ export default {
 
 .heading {
   font-weight: 700;
-  margin-top: 1.5rem;
+  margin-top: 20px !important;
   margin-bottom: 0.5rem;
 }
 
@@ -456,7 +456,7 @@ export default {
 }
 
 .list {
-  padding-top: 2px;
+  margin-top: 5px;
 }
 
 .item {
