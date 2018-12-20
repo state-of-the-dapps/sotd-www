@@ -333,6 +333,10 @@ export default {
     font-size: 12px;
   }
 
+  /deep/ ::placeholder {
+    color: darken($color--gray, 25%);
+  }
+
   /deep/ .help {
     padding: 10px 15px;
     margin: 0;
