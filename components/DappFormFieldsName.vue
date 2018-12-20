@@ -2,12 +2,12 @@
   <div 
     :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="item">
-    <p class="heading">Your name <span class="required">(required)</span></p>
+    <p class="heading">ÐApp name <span class="required">(required)</span></p>
     <input 
       :disabled="formType === 'edit'"
       :class="name.length > 0 ? '--is-filled' : ''" 
       :value="name"
-      placeholder="e.g. Jane Doe"
+      placeholder="e.g. Cryptokitties"
       class="text-input" 
       type="text" 
       maxlength="25" 
