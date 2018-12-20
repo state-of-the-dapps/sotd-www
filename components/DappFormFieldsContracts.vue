@@ -464,7 +464,7 @@ export default {
 }
 
 .name {
-  padding: 8px 0 8px 20px;
+  padding: 8px 0;
 }
 
 .input-wrapper {
@@ -480,7 +480,7 @@ export default {
   resize: none;
   min-height: 75px;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
 }
 </style>

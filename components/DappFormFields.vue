@@ -305,7 +305,7 @@ export default {
     border: none;
     padding: 20px 15px;
     width: 100%;
-    box-shadow: 0 0 20px rgba($color--black, 0.05);
+    box-shadow: 0 10px 20px rgba($color--black, 0.075);
     background: rgba(lighten($color--gray, 100%), 0.9);
     transition: background 0.2s ease;
     &:focus {
