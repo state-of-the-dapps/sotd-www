@@ -50,18 +50,6 @@ export default {
         error({ statusCode: 404 })
       })
   },
-  beforeRouteLeave(to, from, next) {
-    if (typeof window !== 'undefined') {
-      const answer = window.confirm(
-        'You are about to leave. Any unsubmitted changes will be lost'
-      )
-      if (answer) {
-        next()
-      } else {
-        next(false)
-      }
-    }
-  },
   head() {
     return {
       title: 'Edit ' + this.fields.name + ' — State of the ÐApps'
