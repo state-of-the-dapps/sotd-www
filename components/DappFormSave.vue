@@ -341,6 +341,10 @@ export default {
   }
 }
 
+.text-area::placeholder {
+  color: darken($color--gray, 30%);
+}
+
 .text-area-label {
   display: block;
   padding-bottom: 5px;
