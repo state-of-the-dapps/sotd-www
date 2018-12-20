@@ -455,6 +455,10 @@ export default {
   }
 }
 
+.list {
+  padding-top: 2px;
+}
+
 .item {
   margin-bottom: 5px;
 }
