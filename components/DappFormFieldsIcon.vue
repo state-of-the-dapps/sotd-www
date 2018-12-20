@@ -53,6 +53,6 @@ export default {
 @import '~assets/css/settings';
 
 .file-upload {
-  box-shadow: 0 0 20px rgba($color--black, 0.05);
+  box-shadow: 0 10px 20px rgba($color--black, 0.075);
 }
 </style>
