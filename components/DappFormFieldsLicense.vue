@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">Software License</p>
     <input 
       :class="license.length > 0 ? '--is-filled' : ''" 
       :value="license" 
-      class="text-input" 
+      class="text-input"
+      placeholder="e.g. MIT" 
       type="text" 
       maxlength="50" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">Software license</label>
-    <span class="remaining-characters">{{ 50 - license.length }}</span>
+    <span
+      v-if="license.length"
+      class="remaining-characters">{{ 50 - license.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">

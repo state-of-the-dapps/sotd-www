@@ -349,7 +349,8 @@ export default {
 .required {
   display: inline-block;
   padding-left: 2px;
-  color: $color--error;
+  color: $color--light-purple;
+  font-weight: 600;
 }
 
 .submit {

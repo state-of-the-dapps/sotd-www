@@ -44,7 +44,7 @@
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsLicense
-      :errors="errors.authors"
+      :errors="errors.license"
       :license="fields.license"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
@@ -286,7 +286,8 @@ export default {
   /deep/ .required {
     display: inline-block;
     padding-left: 2px;
-    color: $color--error;
+    color: $color--light-purple;
+    font-weight: 700;
   }
 
   /deep/ .label {
@@ -302,7 +303,7 @@ export default {
   /deep/ .text-input,
   /deep/ .text-area {
     border: none;
-    padding: 20px;
+    padding: 20px 15px;
     width: 100%;
     box-shadow: 0 0 20px rgba($color--black, 0.05);
     background: rgba(lighten($color--gray, 100%), 0.9);
@@ -333,7 +334,7 @@ export default {
   }
 
   /deep/ .help {
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 0;
     background: none;
     background: rgba(250, 250, 250, 0.7);
@@ -349,7 +350,7 @@ export default {
 
   /deep/ .error-list,
   /deep/ .warning-list {
-    padding: 10px 20px;
+    padding: 10px 15px;
     color: lighten($color--white, 100%);
   }
 

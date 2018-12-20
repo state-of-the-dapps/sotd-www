@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">ÐApp author(s) <span class="required">(required)</span></p>
     <input 
       :class="formattedAuthors.length > 0 ? '--is-filled' : ''" 
       :value="formattedAuthors" 
-      class="text-input" 
+      class="text-input"
+      placeholder="e.g. Stephen Hawking, Ada Lovelace"
       type="text" 
       maxlength="100" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">ÐApp author(s) <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 100 - formattedAuthors.length }}</span>
+    <span
+      v-if="formattedAuthors.length"
+      class="remaining-characters">{{ 100 - formattedAuthors.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">
