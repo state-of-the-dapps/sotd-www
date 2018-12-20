@@ -11,7 +11,7 @@
       <div v-if="dapp.sites.websiteUrl && dapp.sites.websiteUrl === dapp.sites.dappUrl">
         <a 
           :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" 
-          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          :rel="'noopener' + (dapp.nofollow ? ' nofollow' : '')"
           class="button" 
           target="_blank" 
           @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
@@ -23,7 +23,7 @@
         <a 
           v-if="dapp.sites.dappUrl" 
           :href="dapp.sites.dappUrl + refString(dapp.sites.dappUrl)" 
-          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          :rel="'noopener' + (dapp.nofollow ? ' nofollow' : '')"
           class="button" 
           target="_blank" 
           @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
@@ -33,7 +33,7 @@
         <a 
           v-if="dapp.sites.websiteUrl" 
           :href="dapp.sites.websiteUrl + refString(dapp.sites.websiteUrl)" 
-          :rel="'noopener noreferrer' + (dapp.nofollow ? ' nofollow' : '')" 
+          :rel="'noopener' + (dapp.nofollow ? ' nofollow' : '')"
           class="button" 
           target="_blank" 
           @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
@@ -50,7 +50,7 @@
             :title="social.platform | capitalize" 
             class="social-link" 
             target="_blank" 
-            rel="noopener noreferrer" 
+            rel="noopener"
             @click="trackDappSocial(social.platform, social.url)">
             <component :is="svgSocialComponent(social.platform)"/>
           </a>

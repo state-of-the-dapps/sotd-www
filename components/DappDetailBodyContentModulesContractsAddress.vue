@@ -4,7 +4,7 @@
       :href="addressLink"
       class="contract-address-value"
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
       @click="trackContract(address, network, platform)">
       <media :query="{maxWidth: 500}">
         <span>{{ address | truncate(20) }}</span>

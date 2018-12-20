@@ -13,7 +13,7 @@
           class="link" 
           href="https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackSteemKeychainCta()">Try it now</a></p>
       </div>
       <div class="cta-wrapper">
@@ -21,7 +21,7 @@
           href="https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps" 
           class="cta" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackSteemKeychainCta()">Discover Steem Keychain</a>
       </div>
     </div>
