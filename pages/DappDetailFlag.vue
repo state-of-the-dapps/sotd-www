@@ -146,7 +146,9 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        this.$axios.put(`dapps/${this.dapp.slug}`, data).then(response => {})
+        this.$axios
+          .post(`dapps/${this.dapp.slug}/flag`, data)
+          .then(response => {})
         this.submitted = true
         const action = trackDappEditSubmit(
           this.checkedActions,
