@@ -13,7 +13,7 @@
           class="link" 
           href="https://get-scatter.com/?ref=StateOfTheDApps" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackScatterCta()">Try it now</a></p>
       </div>
       <div class="cta-wrapper">
@@ -21,7 +21,7 @@
           href="https://get-scatter.com/?ref=StateOfTheDApps" 
           class="cta" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackScatterCta()">Discover Scatter</a>
       </div>
     </div>

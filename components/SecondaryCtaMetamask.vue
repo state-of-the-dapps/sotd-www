@@ -13,7 +13,7 @@
           class="link" 
           href="https://metamask.io/?ref=StateOfTheDApps" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackMetamaskCta()">Try it now</a></p>
       </div>
       <div class="cta-wrapper">
@@ -21,7 +21,7 @@
           href="https://metamask.io/?ref=StateOfTheDApps" 
           class="cta" 
           target="_blank" 
-          rel="noopener noreferrer" 
+          rel="noopener"
           @click="trackMetamaskCta()">Discover Metamask</a>
       </div>
     </div>

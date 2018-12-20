@@ -6,7 +6,7 @@
       {{ description }}<span v-if="linkUrl && linkText">. <a 
         :href="linkUrl" 
         target="_blank" 
-        rel="noopener noreferrer">{{ linkText }}</a></span>
+        rel="noopener">{{ linkText }}</a></span>
     </p>
   </div>
 </template>
