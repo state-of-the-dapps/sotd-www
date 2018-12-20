@@ -334,7 +334,7 @@ export default {
   }
 
   /deep/ ::placeholder {
-    color: darken($color--gray, 25%);
+    color: darken($color--gray, 30%);
   }
 
   /deep/ .help {
