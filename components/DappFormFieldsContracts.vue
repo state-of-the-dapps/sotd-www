@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isEdit">
+    <div>
       <ul class="list">
         <li 
           v-if="ethIsMissing" 
@@ -96,7 +96,7 @@
         </li>
       </ul>
     </div>
-    <div v-if="!isEdit">
+    <div>
       <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS' || platform === 'Steem'">accounts</span><span v-else>addresses</span></p>
       <ul 
         v-if="platform === 'Ethereum'" 
@@ -297,10 +297,6 @@ export default {
       type: Object,
       required: true
     },
-    isEdit: {
-      type: Boolean,
-      default: false
-    },
     ethIsMissing: {
       type: Boolean,
       default: false
@@ -449,7 +445,7 @@ export default {
 
 .heading {
   font-weight: 700;
-  margin-top: 1.5rem;
+  margin-top: 20px !important;
   margin-bottom: 0.5rem;
 }
 
@@ -459,12 +455,16 @@ export default {
   }
 }
 
+.list {
+  margin-top: 5px;
+}
+
 .item {
   margin-bottom: 5px;
 }
 
 .name {
-  padding: 8px 0 8px 20px;
+  padding: 8px 0;
 }
 
 .input-wrapper {
@@ -480,7 +480,7 @@ export default {
   resize: none;
   min-height: 75px;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
 }
 </style>

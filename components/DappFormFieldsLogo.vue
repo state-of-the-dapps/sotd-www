@@ -1,10 +1,15 @@
 <template>
   <div class="item">
     <p class="heading">Logo</p>
+    <p v-if="logo && preFill">
+      <img
+        :src="logo"
+        width="200">
+    </p>
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="400"
-        message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop your logo here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop a new logo here, or click to select one"
         @uploadSuccess="setLogo"
         @removeFile="removeLogo"/>
     </div>
@@ -21,8 +26,26 @@ export default {
   components: {
     BaseFileUpload
   },
+  props: {
+    logo: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      preFill: true
+    }
+  },
+  computed: {
+    message() {
+      const html = ``
+      return html
+    }
+  },
   methods: {
     setLogo(url) {
+      this.preFill = false
       this.$emit('updateField', 'logo', url)
     },
     removeLogo() {
@@ -36,6 +59,6 @@ export default {
 @import '~assets/css/settings';
 
 .file-upload {
-  box-shadow: 0 0 20px rgba($color--black, 0.05);
+  box-shadow: 0 10px 20px rgba($color--black, 0.075);
 }
 </style>

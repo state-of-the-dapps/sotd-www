@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">ÐApp URL</p>
     <input 
       :class="url.length > 0 ? '--is-filled' : ''" 
       :value="url" 
       class="text-input" 
       type="text" 
+      placeholder="e.g. https://www.dappurl.com"
       maxlength="255" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">ÐApp URL<span class="required"/></label>
-    <span class="remaining-characters">{{ 255 - url.length }}</span>
+    <span
+      v-if="url.length"
+      class="remaining-characters">{{ 255 - url.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">

@@ -1,11 +1,9 @@
 <template>
-  <div
-    :class="isEdit ? 'is-edit' : ''"
-    class="list">
+  <div class="list">
     <DappFormFieldsName
-      v-if="!isEdit || missingFields.includes('name')"
       :errors="errors.name"
       :existing-dapp="existingDapp"
+      :form-type="formType"
       :name="fields.name"
       :warnings="warnings.name"
       @updateExistingDapp="updateExistingDapp"
@@ -13,13 +11,12 @@
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
     <DappFormFieldsEmail
-      v-if="!isEdit"
       :email="fields.email"
+      :form-type="formType"
       :errors="errors.email"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsTeaser
-      v-if="!isEdit || missingFields.includes('teaser')"
       :errors="errors.teaser"
       :teaser="fields.teaser"
       :warnings="warnings.teaser"
@@ -27,55 +24,43 @@
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
     <DappFormFieldsDescription
-      v-if="!isEdit || missingFields.includes('description')"
       :errors="errors.description"
       :description="fields.description"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsWebsite
-      v-if="!isEdit || missingFields.includes('url')"
       :errors="errors.websiteUrl"
       :url="fields.siteUrls.website"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsDappUrl
-      v-if="!isEdit || missingFields.includes('dapp_url')"
       :errors="errors.dappUrl"
       :url="fields.siteUrls.dapp"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsAuthors
-      v-if="!isEdit || missingFields.includes('contact')"
       :authors="fields.authors"
       :errors="errors.authors"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsLicense
-      v-if="!isEdit || missingFields.includes('license')"
-      :errors="errors.authors"
+      :errors="errors.license"
       :license="fields.license"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsLogo
-      v-if="!isEdit || missingFields.includes('logo_cache')"
+      :logo="fields.logo"
       @updateField="updateField"/>
     <DappFormFieldsIcon
-      v-if="!isEdit || missingFields.includes('icon_cache')"
+      :icon="fields.icon"
       @updateField="updateField"/>
     <DappFormFieldsProductImage
-      v-if="!isEdit || missingFields.includes('product_image_cache')"
+      :product-image="fields.productImage"
       @updateField="updateField"/>
     <DappFormFieldsPlatform
-      v-if="!isEdit"
       :platform="fields.platform"
       @updateField="updateField"/>
     <DappFormFieldsContracts 
-      v-if="!isEdit || (missingFields.includes('contract_addresses_mainnet') || missingFields.includes('poa_mainnet') || missingFields.includes('eos_mainnet') || missingFields.includes('steem_mainnet'))"
-      :is-edit="isEdit"
-      :eth-is-missing="missingFields.includes('contract_addresses_mainnet')"
-      :poa-is-missing="missingFields.includes('poa_mainnet')"
-      :eos-is-missing="missingFields.includes('eos_mainnet')"
-      :steem-is-missing="missingFields.includes('steem_mainnet')"
       :platform="fields.platform"
       :contracts="fields.contracts"
       :mainnet="fields.contracts.mainnet.address"
@@ -97,42 +82,31 @@
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
     <DappFormFieldsStatus
-      v-if="!isEdit || missingFields.includes('status')"
       :status="fields.status"
       @updateStatus="updateStatus"/>
     <DappFormFieldsSocial 
-      v-if="!isEdit || missingFields.includes('github') || missingFields.includes('twitter') || missingFields.includes('reddit') || missingFields.includes('blog') || missingFields.includes('facebook') || missingFields.includes('chat')"
-      :is-edit="isEdit"
       :github="fields.socials.github.path"
-      :github-is-missing="missingFields.includes('github')"
       :twitter="fields.socials.twitter.path"
-      :twitter-is-missing="missingFields.includes('twitter')"
       :reddit="fields.socials.reddit.path"
-      :reddit-is-missing="missingFields.includes('reddit')"
       :blog="fields.socials.blog.path"
-      :blog-is-missing="missingFields.includes('blog')"
       :facebook="fields.socials.facebook.path"
-      :facebook-is-missing="missingFields.includes('facebook')"
       :chat="fields.socials.chat.path"
       :chat-errors="errors.socialChat"
-      :chat-is-missing="missingFields.includes('chat')"
       @updateErrors="updateErrors"
       @updateSocial="updateSocial"/>
     <DappFormFieldsCategory
-      v-if="!isEdit || missingFields.includes('category')"
       :selected-category="fields.category"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsTags
-      v-if="!isEdit || missingFields.includes('tags')"
       :name="fields.name"
       :query="tagQuery"
       :results="tagsResults"
       :selected="selectedTags"
-      @addNewTag="addNewTag"
-      @fetchNewTags="fetchNewTags"
+      @addTag="addTag"
+      @fetchTags="fetchTags"
       @removeTag="removeTag"
-      @resetExistingTagResults="resetExistingTagResults"
+      @resetTagResults="resetTagResults"
       @selectTag="selectTag"
       @updateTagQuery="updateTagQuery"/>
   </div>
@@ -190,19 +164,13 @@ export default {
       type: Object,
       required: true
     },
-    isEdit: {
-      default: false,
-      type: Boolean
+    formType: {
+      type: String,
+      required: true
     },
     selectedTags: {
       type: Array,
       required: true
-    },
-    suggestions: {
-      type: Array,
-      default: function() {
-        return []
-      }
     },
     tagsResults: {
       type: Array,
@@ -217,29 +185,18 @@ export default {
       required: true
     }
   },
-  computed: {
-    missingFields() {
-      const fields = []
-      let i = 0
-      while (i < this.suggestions.length) {
-        fields.push(this.suggestions[i].attribute)
-        i++
-      }
-      return fields
-    }
-  },
   methods: {
-    addNewTag(tag) {
-      this.$emit('addNewTag', tag)
+    addTag(tag) {
+      this.$emit('addTag', tag)
     },
-    fetchNewTags(query) {
-      this.$emit('fetchNewTags', query)
+    fetchTags(query) {
+      this.$emit('fetchTags', query)
     },
     removeTag(key) {
       this.$emit('removeTag', key)
     },
-    resetExistingTagResults() {
-      this.$emit('resetExistingTagResults')
+    resetTagResults() {
+      this.$emit('resetTagResults')
     },
     selectTag(key) {
       this.$emit('selectTag', key)
@@ -283,6 +240,7 @@ export default {
   max-width: 400px;
   padding: 10px;
   margin: 0 auto;
+  margin-top: -7px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-right: 20px;
     margin-left: 0;
@@ -319,15 +277,17 @@ export default {
       min-height: 200px;
       border-radius: 10px;
     }
-    &.--has-errors {
-      border-color: $color--error;
-    }
+  }
+
+  /deep/ .is-edit {
+    display: none;
   }
 
   /deep/ .required {
     display: inline-block;
     padding-left: 2px;
-    color: $color--error;
+    color: $color--light-purple;
+    font-weight: 700;
   }
 
   /deep/ .label {
@@ -343,10 +303,10 @@ export default {
   /deep/ .text-input,
   /deep/ .text-area {
     border: none;
-    padding: 30px 50px 30px 20px;
+    padding: 20px 15px;
     width: 100%;
-    box-shadow: 0 0 20px rgba($color--black, 0.05);
-    background: rgba(lighten($color--gray, 100%), 0.9);
+    box-shadow: 0 10px 20px rgba($color--black, 0.075);
+    background: rgba(lighten($color--gray, 100%), 0.95);
     transition: background 0.2s ease;
     &:focus {
       background: none;
@@ -363,18 +323,23 @@ export default {
     vertical-align: top;
     min-height: 75px;
     resize: none;
+    line-height: 1.25;
   }
 
   /deep/ .remaining-characters {
     position: absolute;
     display: block;
-    right: 20px;
-    top: 30px;
+    right: 0;
+    top: 8px;
     font-size: 12px;
   }
 
+  /deep/ ::placeholder {
+    color: darken($color--gray, 30%);
+  }
+
   /deep/ .help {
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 0;
     background: none;
     background: rgba(250, 250, 250, 0.7);
@@ -390,7 +355,7 @@ export default {
 
   /deep/ .error-list,
   /deep/ .warning-list {
-    padding: 10px 20px;
+    padding: 10px 15px;
     color: lighten($color--white, 100%);
   }
 

@@ -7,9 +7,13 @@
           :style="'width: ' + Math.ceil(profileScore * 100) + '%'"
           class="profile-score-bar-pct"/>
       </div>
-      <p class="profile-score-note">Complete your profile to boost your rank</p>
+      <p class="profile-score-note">
+        Complete <template v-if="formType === 'edit'">this ÐApp's</template><template v-else>your</template> profile to boost <template v-if="formType === 'edit'">its</template><template v-else>your</template> rank
+      </p>
     </div>
-    <div class="submit-reason">
+    <div 
+      v-if="formType === 'new'"
+      class="submit-reason">
       <label 
         class="text-area-label" 
         for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your ÐApp (this will not be made public).</label>
@@ -21,7 +25,9 @@
         @input="updateSubmitReason($event.target.value)"/>
     </div>
     <div class="checkboxes">
-      <div class="checkbox-field">
+      <div
+        v-if="formType === 'new'"
+        class="checkbox-field">
         <input 
           id="subscribe-newsletter-checkbox" 
           :value="subscribeNewsletter" 
@@ -45,7 +51,7 @@
             to="/terms" 
             @click.native="$mixpanel.track('New DApp - Terms of Service')">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
       </div>
-      <p>Submissions are free and typically processed by the next business day.</p>
+      <p v-if="formType === 'new'">Submissions are free and typically processed by the next business day.</p>
     </div>
     <input 
       v-model="honeypot" 
@@ -123,6 +129,10 @@ export default {
     },
     fields: {
       type: Object,
+      required: true
+    },
+    formType: {
+      type: String,
       required: true
     },
     profileScore: {
@@ -331,6 +341,10 @@ export default {
   }
 }
 
+.text-area::placeholder {
+  color: darken($color--gray, 30%);
+}
+
 .text-area-label {
   display: block;
   padding-bottom: 5px;
@@ -339,7 +353,8 @@ export default {
 .required {
   display: inline-block;
   padding-left: 2px;
-  color: $color--error;
+  color: $color--light-purple;
+  font-weight: 600;
 }
 
 .submit {
@@ -410,7 +425,7 @@ export default {
   margin: 0 auto;
   margin-top: 1px;
   position: sticky;
-  top: 19px;
+  top: 10px;
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-left: 0;
     margin-right: 0;

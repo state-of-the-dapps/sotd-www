@@ -44,15 +44,17 @@ export default {
 .item {
   width: calc(50% - 10px);
   margin: 5px;
-  background: $color--white;
   padding: 10px;
   box-shadow: 0 0 20px rgba($color--black, 0.05);
-  border: 1px solid transparent;
+  border: 1px solid $color--black;
+  text-decoration: underline;
   &:hover {
     cursor: pointer;
   }
   &.--is-selected {
-    border-color: $color--black;
+    color: $color--white;
+    background-color: $color--black;
+    text-decoration: none;
   }
 }
 

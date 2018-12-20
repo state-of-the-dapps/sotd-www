@@ -135,3 +135,8 @@ Vue.filter('uppercase', value => {
     return value.toUpperCase()
   }
 })
+
+Vue.filter('linesToArr', value => {
+  let str = value || ''
+  return str.length ? str.split('\n') : []
+})

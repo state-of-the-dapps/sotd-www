@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">Website URL <span class="required">(required)</span></p>
     <input 
       :class="url.length > 0 ? '--is-filled' : ''" 
       :value="url" 
       class="text-input" 
-      type="text" 
+      type="text"
+      placeholder="e.g. https://www.websiteurl.com"
       maxlength="500" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">Website URL <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 500 - url.length }}</span>
+    <span
+      v-if="url.length"
+      class="remaining-characters">{{ 500 - url.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">

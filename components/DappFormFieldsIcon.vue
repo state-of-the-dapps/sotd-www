@@ -1,10 +1,15 @@
 <template>
   <div class="item">
     <p class="heading">Icon</p>
+    <p v-if="icon && preFill">
+      <img
+        :src="icon"
+        width="32">
+    </p>
     <div class="file-upload">
       <BaseFileUpload
         :resize-width="192"
-        message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop your icon here, or click to select"
+        message="<span class=dropzone-plus><img width=150 src=/images/sample-icon.png></span><br>Drop a new icon here, or click to select one"
         @uploadSuccess="setIcon"
         @removeFile="removeIcon"/>
     </div>
@@ -21,8 +26,20 @@ export default {
   components: {
     BaseFileUpload
   },
+  props: {
+    icon: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      preFill: true
+    }
+  },
   methods: {
     setIcon(url) {
+      this.preFill = false
       this.$emit('updateField', 'icon', url)
     },
     removeIcon() {
@@ -36,6 +53,6 @@ export default {
 @import '~assets/css/settings';
 
 .file-upload {
-  box-shadow: 0 0 20px rgba($color--black, 0.05);
+  box-shadow: 0 10px 20px rgba($color--black, 0.075);
 }
 </style>

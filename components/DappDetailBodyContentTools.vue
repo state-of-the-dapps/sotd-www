@@ -26,7 +26,7 @@
           <span 
             class="tool-link" 
             role="button" 
-            @click="viewDappEdit('flag')">
+            @click="viewDappFlag('flag')">
             <SvgIconFlag 
               :width="14" 
               :height="14"/> <span class="description">Flag as inappropriate</span>
@@ -97,15 +97,26 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     },
     viewDappEdit(flag = false) {
-      if (flag) {
-        let action = trackDappFlag(this.slug)
-        this.$mixpanel.track(action.name, action.data)
-      } else {
-        let action = trackDappEdit(this.slug)
-        this.$mixpanel.track(action.name, action.data)
-      }
+      let action = trackDappEdit(this.slug)
+      this.$mixpanel.track(action.name, action.data)
       let route = {
         name: 'dapp-detail-edit',
+        params: {
+          slug: this.slug
+        }
+      }
+      if (flag) {
+        route.query = {
+          flag: true
+        }
+      }
+      this.$router.push(route)
+    },
+    viewDappFlag(flag = false) {
+      let action = trackDappFlag(this.slug)
+      this.$mixpanel.track(action.name, action.data)
+      let route = {
+        name: 'dapp-detail-flag',
         params: {
           slug: this.slug
         }

@@ -2,15 +2,18 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">Email <span class="required">(required)</span></p>
     <input 
       :class="email.length > 0 ? '--is-filled' : ''" 
       :value="email" 
       class="text-input" 
+      placeholder="e.g. email@example.com"
       type="text" 
       maxlength="50" 
       @input="updateAndValidate($event.target.value)">
-    <label class="label">Email <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 50 - email.length }}</span>
+    <span
+      v-if="email.length"
+      class="remaining-characters">{{ 50 - email.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">
@@ -19,7 +22,12 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">Email of the primary contact (this will not be made public)</p>
+    <p  
+      v-if="formType === 'new'"
+      class="help">Email of the primary contact (this will not be made public)</p>
+    <p  
+      v-if="formType === 'edit'"
+      class="help">Your email address (this will not be made public)</p>
   </div>
 </template>
 
@@ -34,6 +42,10 @@ export default {
     },
     errors: {
       type: Array,
+      required: true
+    },
+    formType: {
+      type: String,
       required: true
     }
   },

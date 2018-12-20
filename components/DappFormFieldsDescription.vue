@@ -2,22 +2,23 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
+    <p class="heading">Full description <span class="required">(required)</span></p>
     <textarea 
       :class="description.length > 0 ? '--is-filled' : ''" 
       :value="description" 
       class="text-area" 
       maxlength="1000" 
       style="min-height: 200px" 
+      placeholder="e.g. CryptoKitties allows players to purchase, collect, breed and sell various types of virtual cats. Breed your rarest cats to create the purrfect furry friend. The future is meow!"
       autocomplete="off" 
       autocorrect="off" 
       autocapitalize="off" 
       spellcheck="false" 
       type="text" 
       @input="updateAndValidate($event.target.value)"/>
-    <label 
-      v-if="description.length < 450" 
-      class="label">Full description <span class="required">(required)</span></label>
-    <span class="remaining-characters">{{ 1000 - description.length }}</span>
+    <span
+      v-if="description.length"
+      class="remaining-characters">{{ 1000 - description.length }}</span>
     <ul 
       v-if="errors && errors.length > 0" 
       class="error-list">
