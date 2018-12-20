@@ -85,7 +85,7 @@ export default {
       }
     },
     selectColumn(column) {
-      const columnsObj = {}
+      let columnsObj = {}
       rankingColumns.map(x => {
         columnsObj[x.selection] = {
           selection: x.selection,
@@ -96,7 +96,7 @@ export default {
       })
       const selectedColumn = columnsObj[column]
       this.selectedColumn = selectedColumn
-      if (selectedColumn.sort) {
+      if (typeof selectedColumn !== 'undefined' && selectedColumn.sort) {
         this.$router.push({
           query: {
             sort: selectedColumn.selection,
