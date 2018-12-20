@@ -323,6 +323,7 @@ export default {
     vertical-align: top;
     min-height: 75px;
     resize: none;
+    line-height: 1.25;
   }
 
   /deep/ .remaining-characters {
