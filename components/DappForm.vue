@@ -35,6 +35,7 @@
           :contracts-poa-testnet="contractsPoaTestnet"
           :contracts-eos-mainnet="contractsEosMainnet"
           :contracts-steem-mainnet="contractsSteemMainnet"
+          :diff-exists="diffExists"
           :error-fields="errorFields"
           :errors="errors"
           :fields="fields"
@@ -45,6 +46,7 @@
           :submit-reason="fields.submitReason"
           :subscribe-newsletter="fields.subscribeNewsletter"
           @addErrorField="addErrorField"
+          @checkFormDiff="checkFormDiff"
           @removeErrorField="removeErrorField"
           @setProfileScore="updateProfileScore"
           @submit="submit"
@@ -57,6 +59,7 @@
 </template>
 
 <script>
+import equal from 'deep-equal'
 import { dappDefaultPlatform } from '~/helpers/constants'
 import DappFormFields from '~/components/DappFormFields'
 import DappFormSave from '~/components/DappFormSave'
@@ -86,6 +89,7 @@ export default {
   },
   data() {
     return {
+      diffExists: false,
       errorFields: [
         'authors',
         'category',
@@ -163,6 +167,7 @@ export default {
           website: ''
         }
       },
+      originalFields: {},
       profileScore: 0,
       sending: false,
       tagQuery: '',
@@ -373,6 +378,7 @@ export default {
       this.errorFields = ['email', 'acceptedTerms']
       this.fields = { ...this.fields, ...this.dapp }
       this.profileScore = this.profileScore
+      this.originalFields = { ...this.fields }
     }
   },
   destroyed() {
@@ -381,6 +387,16 @@ export default {
     }
   },
   methods: {
+    checkFormDiff() {
+      const original = { ...this.originalFields }
+      delete original.email
+      delete original.acceptedTerms
+      const current = { ...this.fields }
+      delete current.email
+      delete current.acceptedTerms
+      const diffExists = !equal(original, current)
+      this.diffExists = Boolean(diffExists)
+    },
     warnBeforeReload(event) {
       event.preventDefault()
       event.returnValue =

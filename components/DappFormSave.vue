@@ -64,7 +64,13 @@
       type="text" 
       class="yumyum">
     <input 
-      v-if="errorFields.length == 1" 
+      v-if="formType === 'edit' && !diffExists" 
+      :value="'You must edit this ÐApp before submitting'" 
+      class="submit" 
+      type="submit" 
+      @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
+    <input 
+      v-else-if="errorFields.length == 1" 
       :value="'1 field needs your attention'" 
       class="submit" 
       type="submit" 
@@ -134,6 +140,10 @@ export default {
       type: Array,
       required: true
     },
+    diffExists: {
+      type: Boolean,
+      required: true
+    },
     errorFields: {
       type: Array,
       required: true
@@ -182,6 +192,7 @@ export default {
     fields: {
       handler(fields) {
         this.setProfileScore(fields)
+        this.$emit('checkFormDiff')
       },
       deep: true
     }
