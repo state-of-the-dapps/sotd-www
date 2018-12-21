@@ -38,13 +38,11 @@ export default {
       const dapp = data.item
       if (!Object.keys(dapp).length > 0) {
         error({ statusCode: 404 })
-        return
       }
       if (dapp.slug && dapp.slug !== params.slug) {
         const redirectPath =
           `/dapps/${dapp.slug}` || constants.dappFallbackRedirectPath
         redirect(301, redirectPath)
-        return
       }
       return {
         dapp

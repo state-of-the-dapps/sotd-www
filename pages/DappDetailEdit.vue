@@ -42,7 +42,6 @@ export default {
           const redirectPath =
             `/dapps/${slug}/edit` || constants.dappFallbackRedirectPath
           redirect(301, redirectPath)
-          return
         }
         return { fields, profileScore, slug }
       })
