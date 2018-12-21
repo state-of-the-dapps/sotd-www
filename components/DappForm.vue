@@ -395,11 +395,7 @@ export default {
       delete current.email
       delete current.acceptedTerms
       const diffExists = !equal(original, current)
-      if (diffExists) {
-        this.diffExists = true
-      } else {
-        this.diffExists = false
-      }
+      this.diffExists = Boolean(diffExists)
     },
     warnBeforeReload(event) {
       event.preventDefault()
