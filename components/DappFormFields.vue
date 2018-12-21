@@ -10,12 +10,6 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
-    <DappFormFieldsEmail
-      :email="fields.email"
-      :form-type="formType"
-      :errors="errors.email"
-      @updateErrors="updateErrors"
-      @updateField="updateField"/>
     <DappFormFieldsTeaser
       :errors="errors.teaser"
       :teaser="fields.teaser"

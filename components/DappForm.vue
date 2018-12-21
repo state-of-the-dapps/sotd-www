@@ -36,6 +36,7 @@
           :contracts-eos-mainnet="contractsEosMainnet"
           :contracts-steem-mainnet="contractsSteemMainnet"
           :error-fields="errorFields"
+          :errors="errors"
           :fields="fields"
           :form-type="formType"
           :name="fields.name"
@@ -48,6 +49,7 @@
           @setProfileScore="updateProfileScore"
           @submit="submit"
           @updateField="updateField"
+          @updateErrors="updateErrors"
           @updateCheckbox="updateCheckbox"/>
       </div>
     </section>

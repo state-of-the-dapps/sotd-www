@@ -1,40 +1,27 @@
 <template>
-  <div 
-    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
-    class="item">
-    <p class="heading">Email <span class="required">(required)</span></p>
-    <input 
-      :class="email.length > 0 ? '--is-filled' : ''" 
-      :value="email" 
-      class="text-input" 
+  <div class="component-dapp-form-fields-email">
+    <FormText
+      :errors="errors"
+      :field="email"
+      :max-length="50"
+      :help="help"
+      :required="true"
+      :value="email"
+      label="Email"
       placeholder="e.g. email@example.com"
-      type="text" 
-      maxlength="50" 
-      @input="updateAndValidate($event.target.value)">
-    <span
-      v-if="email.length"
-      class="remaining-characters">{{ 50 - email.length }}</span>
-    <ul 
-      v-if="errors && errors.length > 0" 
-      class="error-list">
-      <li 
-        v-for="(error, index) in errors" 
-        :key="index" 
-        class="error-item">{{ error }}</li>
-    </ul>
-    <p  
-      v-if="formType === 'new'"
-      class="help">Email of the primary contact (this will not be made public)</p>
-    <p  
-      v-if="formType === 'edit'"
-      class="help">Your email address (this will not be made public)</p>
+      type="text"
+      @update="updateAndValidate"/>
   </div>
 </template>
 
 <script>
 import { isValidEmail } from '~/helpers/validators'
+import FormText from './FormText'
 
 export default {
+  components: {
+    FormText
+  },
   props: {
     email: {
       type: String,
@@ -52,6 +39,16 @@ export default {
   data() {
     return {
       validationTimer: ''
+    }
+  },
+  computed: {
+    help() {
+      if (this.formType === 'new') {
+        return 'The primary contact (this will not be made public)'
+      } else if (this.formType === 'edit') {
+        return 'Your email address (this will not be made public)'
+      }
+      return ''
     }
   },
   methods: {
@@ -72,3 +69,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-dapp-form-fields-email {
+  margin: 0 auto;
+  width: 300px;
+  @include tweakpoint('min-width', 900px) {
+    margin-left: 0;
+  }
+}
+</style>
