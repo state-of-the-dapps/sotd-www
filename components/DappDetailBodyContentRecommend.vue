@@ -14,30 +14,58 @@
         class="reaction-wrapper" 
         itemprop="ratingValue">
         <ul 
-          v-if="!hasSubmitted" 
+          v-if="!reaction" 
           class="reaction-list">
           <li 
-            :class="currentReaction == 'positive' ? 'is-active' : ''" 
+            :class="reaction == 'positive' ? 'is-active' : ''" 
             class="reaction-item" 
-            @click="submitDappFeedback('positive')">
+            @click="submitReaction('positive')">
             <SvgReactionPositive/><span class="reaction-value">{{ positive || 0 }}</span>
           </li>
           <li 
-            :class="currentReaction == 'neutral' ? 'is-active' : ''" 
+            :class="reaction == 'neutral' ? 'is-active' : ''" 
             class="reaction-item" 
-            @click="submitDappFeedback('neutral')">
+            @click="submitReaction('neutral')">
             <SvgReactionNeutral/><span class="reaction-value">{{ neutral || 0 }}</span>
           </li>
           <li 
-            :class="currentReaction == 'negative' ? 'is-active' : ''" 
+            :class="reaction == 'negative' ? 'is-active' : ''" 
             class="reaction-item" 
-            @click="submitDappFeedback('negative')">
+            @click="submitReaction('negative')">
             <SvgReactionNegative/><span class="reaction-value">{{ negative || 0 }}</span>
           </li>
         </ul>
-        <p 
+        <div
+          v-else-if="!hasSubmitted"
+          class="confirmation">
+          <textarea
+            v-model="comments"
+            class="textarea"
+            placeholder="Add your comments"/>
+          <button
+            class="button"
+            @click="submitDappFeedback">Submit feedback</button>
+        </div>
+        <div
           v-else 
-          class="confirmation">Thanks for your feedback!</p>
+          class="confirmation">
+          <p><strong>Thanks for your feedback on {{ name }}!</strong></p>
+          <p class="reaction-summary">
+            <SvgReactionPositive
+              v-if="reaction === 'positive'"
+              :width="30"
+              :height="30"/>
+            <SvgReactionNeutral
+              v-if="reaction === 'neutral'"
+              :width="30"
+              :height="30"/>
+            <SvgReactionNegative
+              v-if="reaction === 'negative'"
+              :width="30"
+              :height="30"/>
+          </p>
+          <p v-if="comments"><strong>Comments:</strong> {{ comments }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -59,6 +87,10 @@ export default {
     rating: {
       type: Number,
       default: null
+    },
+    name: {
+      type: String,
+      required: true
     },
     slug: {
       type: String,
@@ -83,19 +115,19 @@ export default {
   },
   data() {
     return {
-      currentReaction: '',
+      comments: '',
+      reaction: '',
       hasSubmitted: false
     }
   },
   methods: {
-    submitDappFeedback(feedback) {
-      const action = trackDappFeedback(this.slug, feedback)
+    submitReaction(feedback) {
+      this.reaction = feedback
+    },
+    submitDappFeedback() {
+      const action = trackDappFeedback(this.slug, this.reaction, this.comments)
       this.$mixpanel.track(action.name, action.data)
       this.hasSubmitted = true
-      this.currentReaction = feedback
-      setTimeout(() => {
-        this.hasSubmitted = false
-      }, 3000)
     }
   }
 }
@@ -104,6 +136,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.button {
+  @include button;
+  width: 100%;
+}
 
 .confirmation {
   margin: 0;
@@ -147,6 +184,10 @@ export default {
   }
 }
 
+.reaction-summary {
+  text-align: center;
+}
+
 .reaction-value {
   display: inline-block;
   margin-left: 4px;
@@ -156,6 +197,12 @@ export default {
 
 .reaction-wrapper {
   overflow: hidden;
+}
+
+.textarea {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid $color--black;
 }
 
 .wrapper {
