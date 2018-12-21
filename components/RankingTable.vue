@@ -245,6 +245,11 @@ export default {
   methods: {
     selectColumn(column) {
       this.$emit('selectColumn', column)
+      this.$mixpanel.track('Select ranking column', {
+        column,
+        platform: this.$route.params.platform || 'all',
+        category: this.$route.params.category || 'all'
+      })
     },
     selectPage(page) {
       const oldPage = this.$route.query.page || 1
