@@ -73,7 +73,7 @@
             :value="blog" 
             class="input" 
             type="text" 
-            placeholder="medium.com/blog" 
+            placeholder="blog.com/@user"
             maxlength="100"
             @input="updateSocial('blog', $event.target.value)">
         </div>
