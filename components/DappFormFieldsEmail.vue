@@ -44,7 +44,7 @@ export default {
   computed: {
     help() {
       if (this.formType === 'new') {
-        return 'Email of the primary contact (this will not be made public)'
+        return 'The primary contact (this will not be made public)'
       } else if (this.formType === 'edit') {
         return 'Your email address (this will not be made public)'
       }
@@ -69,3 +69,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-dapp-form-fields-email {
+  margin: 0 auto;
+  width: 300px;
+  @include tweakpoint('min-width', 900px) {
+    margin-left: 0;
+  }
+}
+</style>

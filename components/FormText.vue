@@ -107,3 +107,54 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.component-base-label {
+  flex: 1;
+}
+
+.error-list {
+  padding: 10px 15px;
+  color: lighten($color--white, 100%);
+  background: $color--error;
+}
+
+.error-item {
+  margin: 0.2rem 0;
+}
+
+.help {
+  padding: 10px 15px;
+  margin: 0;
+  background: none;
+  background: rgba($color--white, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.input,
+.textarea {
+  border: none;
+  padding: 20px 15px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba($color--black, 0.075);
+  background: rgba(lighten($color--white, 100%), 0.95);
+  transition: background 0.2s ease;
+  &:focus {
+    background: rgba(lighten($color--white, 100%), 0.7);
+  }
+}
+
+.label-remaining-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.remaining {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+</style>
