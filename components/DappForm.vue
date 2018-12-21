@@ -167,7 +167,7 @@ export default {
           website: ''
         }
       },
-      originalState: {},
+      originalFields: {},
       profileScore: 0,
       sending: false,
       tagQuery: '',
