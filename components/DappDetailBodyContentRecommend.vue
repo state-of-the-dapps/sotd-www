@@ -122,10 +122,22 @@ export default {
   },
   methods: {
     submitReaction(feedback) {
+      const action = trackDappFeedback(
+        this.slug,
+        this.reaction,
+        this.comments,
+        true
+      )
+      this.$mixpanel.track(action.name, action.data)
       this.reaction = feedback
     },
     submitDappFeedback() {
-      const action = trackDappFeedback(this.slug, this.reaction, this.comments)
+      const action = trackDappFeedback(
+        this.slug,
+        this.reaction,
+        this.comments,
+        false
+      )
       this.$mixpanel.track(action.name, action.data)
       this.hasSubmitted = true
     }

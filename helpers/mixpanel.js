@@ -133,12 +133,18 @@ export const trackDappEditSubmit = function(changes, email, slug) {
   return action
 }
 
-export const trackDappFeedback = function(dapp, feedback, comments) {
+export const trackDappFeedback = function(
+  dapp,
+  feedback,
+  comments,
+  beforeComments
+) {
   let name = 'DApp - Feedback'
   let data = {
     dapp,
     feedback,
-    comments
+    comments,
+    beforeComments
   }
 
   const action = {
