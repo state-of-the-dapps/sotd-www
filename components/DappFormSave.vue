@@ -24,6 +24,12 @@
         placeholder="I hope that..."
         @input="updateSubmitReason($event.target.value)"/>
     </div>
+    <DappFormFieldsEmail
+      :email="fields.email"
+      :form-type="formType"
+      :errors="errors.email"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <div class="checkboxes">
       <div
         v-if="formType === 'new'"
@@ -85,7 +91,12 @@
 </template>
 
 <script>
+import DappFormFieldsEmail from '~/components/DappFormFieldsEmail.vue'
+
 export default {
+  components: {
+    DappFormFieldsEmail
+  },
   props: {
     acceptedTerms: {
       type: Boolean,
@@ -125,6 +136,10 @@ export default {
     },
     errorFields: {
       type: Array,
+      required: true
+    },
+    errors: {
+      type: Object,
       required: true
     },
     fields: {
@@ -209,6 +224,12 @@ export default {
     },
     updateAcceptedTerms() {
       this.$emit('updateCheckbox', 'acceptedTerms')
+    },
+    updateField(field, value) {
+      this.$emit('updateField', field, value)
+    },
+    updateErrors(errors) {
+      this.$emit('updateErrors', errors)
     },
     updateNewsletter() {
       this.$emit('updateCheckbox', 'subscribeNewsletter')
