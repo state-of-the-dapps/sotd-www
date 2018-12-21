@@ -2,7 +2,7 @@
   <label
     :for="field"
     class="component-base-label">
-    <span class="label-text">{{ label }}</span>
+    <span class="label">{{ label }}</span>
     <span
       v-if="required"
       class="required">(required)</span>
