@@ -1,6 +1,10 @@
 <template>
   <div class="component-DappDetailBodyContentModulesStats">
-    <h4 class="subtitle">{{ title }}</h4>
+    <h4 class="subtitle">{{ title }} 
+      <Help
+        v-if="help"
+        :text="help"/>
+    </h4>
     <div class="sparkline">
       <trend
         :data="sparkline"
@@ -39,9 +43,11 @@
 
 <script>
 import Trend from 'vuetrend'
+import Help from './Help'
 
 export default {
   components: {
+    Help,
     Trend
   },
   props: {
@@ -49,6 +55,10 @@ export default {
       type: Number,
       default: 0,
       required: true
+    },
+    help: {
+      type: String,
+      default: ''
     },
     monthly: {
       type: Number,

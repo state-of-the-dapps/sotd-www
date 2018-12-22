@@ -43,6 +43,7 @@
             :sparkline="dapp.sparklines.users"
             :quarterly="dapp.stats.qau"
             :weekly="dapp.stats.wau"
+            help="(unique source addresses in transactions to ÐApp contracts)"
             title="Active users"/>
         </div>
         <div 
