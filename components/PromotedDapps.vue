@@ -239,9 +239,7 @@ export default {
 }
 
 .preview-wrapper {
-  margin-top: 20px;
   text-align: center;
-  background: rgba($color--black, 0.075);
 }
 
 .preview {
