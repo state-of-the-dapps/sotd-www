@@ -168,7 +168,7 @@ export default {
   background: none;
   border: none;
   padding-left: 28px;
-  width: 145px;
+  width: 100%;
   overflow: hidden;
   &::placeholder {
     color: rgba($color--black, 0.5);
