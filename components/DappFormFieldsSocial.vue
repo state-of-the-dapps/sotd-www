@@ -3,17 +3,6 @@
     <p class="heading">Social media links</p>
     <ul class="list">
       <li class="item">
-        <div class="input-wrapper -facebook">
-          <input 
-            :value="facebook" 
-            class="input" 
-            type="text" 
-            placeholder="/facebookpage" 
-            maxlength="100"
-            @input="updateSocial('facebook', $event.target.value)">
-        </div>
-      </li>
-      <li class="item">
         <div class="input-wrapper -twitter">
           <input 
             :value="twitter" 
@@ -76,6 +65,17 @@
             placeholder="blog.com/@user"
             maxlength="100"
             @input="updateSocial('blog', $event.target.value)">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -facebook">
+          <input 
+            :value="facebook" 
+            class="input" 
+            type="text" 
+            placeholder="/facebookpage" 
+            maxlength="100"
+            @input="updateSocial('facebook', $event.target.value)">
         </div>
       </li>
     </ul>
