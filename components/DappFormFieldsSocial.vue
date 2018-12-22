@@ -3,17 +3,6 @@
     <p class="heading">Social media links</p>
     <ul class="list">
       <li class="item">
-        <div class="input-wrapper -twitter">
-          <input 
-            :value="twitter" 
-            class="input" 
-            type="text" 
-            placeholder="@twitterhandle" 
-            maxlength="100"
-            @input="updateSocial('twitter', $event.target.value)">
-        </div>
-      </li>
-      <li class="item">
         <div class="input-wrapper -github">
           <input 
             :value="github" 
@@ -25,14 +14,14 @@
         </div>
       </li>
       <li class="item">
-        <div class="input-wrapper -reddit">
+        <div class="input-wrapper -twitter">
           <input 
-            :value="reddit" 
+            :value="twitter" 
             class="input" 
             type="text" 
-            placeholder="/r/reddit" 
+            placeholder="@twitterhandle" 
             maxlength="100"
-            @input="updateSocial('reddit', $event.target.value)">
+            @input="updateSocial('twitter', $event.target.value)">
         </div>
       </li>
       <li
@@ -65,6 +54,17 @@
             placeholder="blog.com/@user"
             maxlength="100"
             @input="updateSocial('blog', $event.target.value)">
+        </div>
+      </li>
+      <li class="item">
+        <div class="input-wrapper -reddit">
+          <input 
+            :value="reddit" 
+            class="input" 
+            type="text" 
+            placeholder="/r/reddit" 
+            maxlength="100"
+            @input="updateSocial('reddit', $event.target.value)">
         </div>
       </li>
       <li class="item">
