@@ -179,7 +179,7 @@ export default {
 }
 
 .item {
-  width: calc(50% - 10px);
+  width: 100%;
   margin: 5px;
   border: 1px solid transparent;
   &.--has-errors {
@@ -233,7 +233,7 @@ export default {
 .list {
   display: flex;
   flex-wrap: wrap;
-  text-align: center;
+  text-align: left;
   margin: -5px -5px 10px;
 }
 </style>
