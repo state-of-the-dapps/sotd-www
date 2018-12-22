@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">Social media links <span class="boost">Up to 10% profile boost (each)</span></p>
+    <p class="heading">Social media links <span class="boost">Up to +28% profile strength</span></p>
     <ul class="list">
       <li class="item">
         <div class="input-wrapper -github">

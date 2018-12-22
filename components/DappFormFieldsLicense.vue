@@ -2,7 +2,7 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <p class="heading">Software License <span class="boost">5% profile boost</span></p>
+    <p class="heading">Software License <span class="boost">+5% profile strength</span></p>
     <input 
       :class="license.length > 0 ? '--is-filled' : ''" 
       :value="license" 

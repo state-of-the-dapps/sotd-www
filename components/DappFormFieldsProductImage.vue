@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Product screenshot <span class="boost">20% profile boost</span></p>
+    <p class="heading">Product screenshot <span class="boost">+20% profile strength</span></p>
     <p v-if="productImage && preFill">
       <img
         :src="productImage"
