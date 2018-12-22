@@ -122,6 +122,7 @@ export default {
   },
   methods: {
     submitReaction(feedback) {
+      this.reaction = feedback
       const action = trackDappFeedback(
         this.slug,
         this.reaction,
@@ -129,7 +130,6 @@ export default {
         true
       )
       this.$mixpanel.track(action.name, action.data)
-      this.reaction = feedback
     },
     submitDappFeedback() {
       const action = trackDappFeedback(
