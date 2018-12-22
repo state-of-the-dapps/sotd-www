@@ -246,6 +246,7 @@ export default {
   max-width: 100%;
   display: block;
   margin: 0 auto;
+  box-shadow: 0 10px 50px rgba($color--black, 0.2);
 }
 
 .input {
