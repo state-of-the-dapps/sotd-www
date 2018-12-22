@@ -209,7 +209,7 @@ const feedbackComponentMap = Object.freeze({
 
 const homeFeaturedCollections = 3
 
-const homeCollectionSlots = 6
+const homeCollectionSlots = 8
 
 const myListLimit = 50
 

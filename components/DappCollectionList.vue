@@ -11,12 +11,12 @@
     </h3>
     <media :query="{minWidth: 1250}">
       <DappCardList 
-        :dapps="dapps.slice(0,4)" 
+        :dapps="dapps" 
         :source-collection="collection.slug" />
     </media>
     <media :query="{maxWidth: 1250}">
       <DappCardList 
-        :dapps="dapps" 
+        :dapps="dapps.slice(0,6)" 
         :source-collection="collection.slug" />
     </media>
   </div>
