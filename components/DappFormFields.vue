@@ -294,6 +294,20 @@ export default {
     transition: top 0.2s ease;
   }
 
+  /deep/ .boost {
+    background: rgba($color--light-purple, 0.25);
+    padding: 3px 4px 2px 4px;
+    line-height: 1;
+    border-radius: 2px;
+    color: $color--purple;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: 700;
+    letter-spacing: 0.125px;
+  }
+
   /deep/ .text-input,
   /deep/ .text-area {
     border: none;
