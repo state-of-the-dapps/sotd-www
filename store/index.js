@@ -1,6 +1,5 @@
 import Vuex from 'vuex'
 import collectionsModule from './modules/collections'
-import newsletterModule from './modules/newsletter'
 
 const actions = {
   nuxtServerInit({ commit }, { app, route, req, redirect }) {
@@ -128,8 +127,7 @@ const createStore = () => {
     actions,
     getters,
     modules: {
-      collections: collectionsModule,
-      newsletter: newsletterModule
+      collections: collectionsModule
     },
     mutations,
     state
