@@ -16,8 +16,7 @@
             class="tag">{{ tag }} <span 
               class="remove" 
               @click="removeTag(tag, key)"><img 
-                src="~/assets/images/close/small.png" 
-                width="9" 
+                src="~/assets/images/close/small.png"
                 alt="Close" 
                 class="close"></span></li>
           <li class="input-text"><input 
@@ -187,10 +186,17 @@ export default {
   margin-bottom: 1.3rem;
 }
 
+.remove {
+  display: inline-block;
+  padding-left: 8px;
+}
+
 .close {
+  max-width: unset;
+  width: 9px;
+  height: 9px;
   position: relative;
   top: 1px;
-  margin-left: 8px;
   &:hover {
     cursor: pointer;
   }

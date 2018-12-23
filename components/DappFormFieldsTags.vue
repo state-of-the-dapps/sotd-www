@@ -282,6 +282,7 @@ export default {
   margin-left: 8px;
   position: relative;
   top: 1px;
+  display: inline-block;
 }
 
 .warning-list {

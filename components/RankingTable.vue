@@ -273,6 +273,7 @@ export default {
 }
 
 .table {
+  display: block;
   max-width: 1200px;
   margin: 0 auto;
 }

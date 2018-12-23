@@ -50,6 +50,25 @@ export default {
 </script>
 
 <style lang="scss">
+input::placeholder {
+  opacity: 1;
+}
+
+button:focus {
+  outline: none;
+}
+
+p {
+  margin: 1em 0;
+}
+
+h1,
+h2 {
+  margin: 0.83em 0;
+}
+</style>
+
+<style lang="scss">
 body {
   &.has-modal {
     overflow: hidden;

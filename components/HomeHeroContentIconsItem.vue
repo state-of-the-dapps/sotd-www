@@ -68,6 +68,7 @@ export default {
 @import '~assets/css/settings';
 
 .card-icon {
+  max-width: unset;
   position: relative;
   display: block;
   width: 200px;
