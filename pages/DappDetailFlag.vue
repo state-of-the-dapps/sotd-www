@@ -1,85 +1,83 @@
 <template>
-  <LayoutMain>
+  <div 
+    ref="page" 
+    class="page-dapp-detail-edit">
+    <div class="hero-wrapper">
+      <p style="text-align: center;">Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link></p>
+    </div>
     <div 
-      ref="page" 
-      class="page-dapp-detail-edit">
-      <div class="hero-wrapper">
-        <p style="text-align: center;">Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link></p>
-      </div>
-      <div 
-        v-if="!submitted" 
-        class="step-1">
-        <h1 class="title-1">Flag {{ dapp.name }}</h1>
-        <div class="fields">
-          <h3 class="title-3">Your name <span class="required">required</span></h3>
-          <div class="field"><input 
-            v-model="name" 
-            class="input-text" 
-            placeholder="Enter your name here" 
-            type="text"></div>
-          <h3 class="title-3">Your email <span class="required">required</span></h3>
-          <div class="field"><input 
-            v-model="email" 
-            class="input-text" 
-            placeholder="Enter your email here" 
-            type="text" 
-            @input="validateEmail"></div>
-          <h3 class="title-3">I want to...</h3>
-          <div class="checkboxes">
-            <div class="checkbox-field">
-              <input 
-                id="links" 
-                v-model="checkedActions" 
-                class="checkbox-input" 
-                value="Links" 
-                type="checkbox">
-              <label 
-                class="checkbox-label" 
-                for="links">Report broken/missing link(s)</label>
-            </div>
-            <div class="checkbox-field">
-              <input 
-                id="tags" 
-                v-model="checkedActions" 
-                class="checkbox-input" 
-                value="Tags" 
-                type="checkbox">
-              <label 
-                class="checkbox-label" 
-                for="tags">Report incorrect tags</label>
-            </div>
-            <div class="checkbox-field">
-              <input 
-                id="flag" 
-                v-model="checkedActions" 
-                class="checkbox-input" 
-                value="Flag" 
-                type="checkbox">
-              <label 
-                class="checkbox-label" 
-                for="flag">Flag this DApp as inappropriate</label>
-            </div>
+      v-if="!submitted" 
+      class="step-1">
+      <h1 class="title-1">Flag {{ dapp.name }}</h1>
+      <div class="fields">
+        <h3 class="title-3">Your name <span class="required">required</span></h3>
+        <div class="field"><input 
+          v-model="name" 
+          class="input-text" 
+          placeholder="Enter your name here" 
+          type="text"></div>
+        <h3 class="title-3">Your email <span class="required">required</span></h3>
+        <div class="field"><input 
+          v-model="email" 
+          class="input-text" 
+          placeholder="Enter your email here" 
+          type="text" 
+          @input="validateEmail"></div>
+        <h3 class="title-3">I want to...</h3>
+        <div class="checkboxes">
+          <div class="checkbox-field">
+            <input 
+              id="links" 
+              v-model="checkedActions" 
+              class="checkbox-input" 
+              value="Links" 
+              type="checkbox">
+            <label 
+              class="checkbox-label" 
+              for="links">Report broken/missing link(s)</label>
           </div>
-          <br>
-          <h3 class="title-3">Tell us what should be changed on {{ dapp.name }}  <span class="required">required</span></h3>
-          <div class="field"><textarea 
-            v-model="suggestions" 
-            class="input-textarea" 
-            placeholder="Enter your suggestions here"/></div>
-          <p class="cta-wrapper"><button 
-            :class="formIsValid ? '' : 'not-ready'" 
-            class="cta" 
-            @click="submit">Submit</button></p>
+          <div class="checkbox-field">
+            <input 
+              id="tags" 
+              v-model="checkedActions" 
+              class="checkbox-input" 
+              value="Tags" 
+              type="checkbox">
+            <label 
+              class="checkbox-label" 
+              for="tags">Report incorrect tags</label>
+          </div>
+          <div class="checkbox-field">
+            <input 
+              id="flag" 
+              v-model="checkedActions" 
+              class="checkbox-input" 
+              value="Flag" 
+              type="checkbox">
+            <label 
+              class="checkbox-label" 
+              for="flag">Flag this DApp as inappropriate</label>
+          </div>
         </div>
-      </div>
-      <div 
-        v-if="submitted " 
-        class="step-2">
-        <h1 class="title-1">Thanks!</h1>
-        <p class="message">We will review the changes and be in touch if we have any questions.</p>
+        <br>
+        <h3 class="title-3">Tell us what should be changed on {{ dapp.name }}  <span class="required">required</span></h3>
+        <div class="field"><textarea 
+          v-model="suggestions" 
+          class="input-textarea" 
+          placeholder="Enter your suggestions here"/></div>
+        <p class="cta-wrapper"><button 
+          :class="formIsValid ? '' : 'not-ready'" 
+          class="cta" 
+          @click="submit">Submit</button></p>
       </div>
     </div>
-  </LayoutMain>
+    <div 
+      v-if="submitted " 
+      class="step-2">
+      <h1 class="title-1">Thanks!</h1>
+      <p class="message">We will review the changes and be in touch if we have any questions.</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -87,12 +85,8 @@ import * as constants from '~/helpers/constants'
 import { mapGetters } from 'vuex'
 import { trackDappEditSubmit, trackDappEditView } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
-import LayoutMain from '~/components/LayoutMain'
 
 export default {
-  components: {
-    LayoutMain
-  },
   mixins: [validateEmail],
   data() {
     return {

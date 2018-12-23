@@ -1,5 +1,5 @@
 <template>
-  <LayoutMain>
+  <div>
     <section class="section -intro">
       <div class="container">
         <p class="back-link"><nuxt-link :to="{ name: 'dapp-detail', params: {slug: slug}}">Head back to {{ fields.name }}</nuxt-link></p>
@@ -11,18 +11,16 @@
       :dapp="fields"
       :mp-event-name="pageTitle + ' DApp - Submit'"
       form-type="edit"/>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
 import DappForm from '~/components/DappForm'
-import LayoutMain from '~/components/LayoutMain'
 import PageTitle from '~/components/PageTitle'
 
 export default {
   components: {
     DappForm,
-    LayoutMain,
     PageTitle
   },
   data() {
