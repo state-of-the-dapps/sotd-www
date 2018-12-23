@@ -26,7 +26,7 @@ export const state = () => ({
 })
 
 export const actions = {
-  nuxtServerInit({ commit }, { app, route, req, redirect }) {
+  nuxtServerInit({ commit }, { app, route }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
     return app.$axios.get('stats').then(response => {
       const data = response.data
