@@ -1,7 +1,6 @@
 import Vuex from 'vuex'
 import collectionsModule from './modules/collections'
 import newsletterModule from './modules/newsletter'
-import tagsModule from './modules/tags'
 
 const actions = {
   nuxtServerInit({ commit }, { app, route, req, redirect }) {
@@ -130,8 +129,7 @@ const createStore = () => {
     getters,
     modules: {
       collections: collectionsModule,
-      newsletter: newsletterModule,
-      tags: tagsModule
+      newsletter: newsletterModule
     },
     mutations,
     state
