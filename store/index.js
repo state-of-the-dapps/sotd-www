@@ -1,6 +1,5 @@
 export const state = () => ({
   pageModal: '',
-  search: '',
   site: {
     heroHasLoaded: false,
     section: '',
@@ -39,9 +38,6 @@ export const actions = {
   setPageModal({ commit }, value) {
     commit('SET_PAGE_MODAL', value)
   },
-  setSearch({ commit }, value) {
-    commit('SET_SEARCH', value)
-  },
   setSiteModal({ commit }, modal) {
     commit('SET_SITE_MODAL', modal)
   }
@@ -53,9 +49,6 @@ export const getters = {
   },
   pageModal: state => {
     return state.pageModal
-  },
-  search: state => {
-    return state.search
   },
   siteModal: state => {
     return state.site.modal
@@ -95,9 +88,6 @@ export const mutations = {
   },
   SET_PAGE_MODAL(state, value) {
     state.pageModal = value
-  },
-  SET_SEARCH(state, value) {
-    state.search = value
   },
   SET_SITE_MODAL(state, modal) {
     state.site.modal = modal

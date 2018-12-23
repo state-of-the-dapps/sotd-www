@@ -4,8 +4,7 @@
     :class="[
       isSearching ? 'is-searching' : '',
       search.length ? 'has-input' : '']"
-    class="component-global-search"
-    @click="focusInput">
+    class="component-global-search">
     <span 
       :class="'-' + color" 
       class="nav-link -search"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
@@ -13,12 +12,11 @@
       <input
         ref="searchInput"
         :class="'-' + color"
-        v-model="search"
+        :value="search"
         class="search-input"
         placeholder="Discover awesome ÐApps…"
-        @input="fetchResults"
-        @focus="startSearch"
-        @blur="endSearch"
+        @input="fetchResults($event.target.value)"
+        @click="startSearch($event.target.value)"
         @keyup.enter="goToSearchPage">
     </div>
     <div 
@@ -109,6 +107,10 @@ export default {
     color: {
       type: String,
       required: true
+    },
+    search: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -123,14 +125,6 @@ export default {
   computed: {
     results() {
       return Boolean(this.dapps.length || this.suggestions.length)
-    },
-    search: {
-      get() {
-        return this.$store.getters['search']
-      },
-      set(value) {
-        this.$store.dispatch('setSearch', value)
-      }
     },
     isSearching() {
       return Boolean(this.searchStatus || this.search.length)
@@ -162,7 +156,8 @@ export default {
       const action = trackSearchSuggestion(this.sourcePath, suggestion)
       this.$mixpanel.track(action.name, action.data)
     },
-    fetchResults() {
+    fetchResults(value) {
+      this.$emit('setSearch', value)
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
       this.searchCompleted = false
@@ -210,23 +205,21 @@ export default {
         }
       }, 1000)
     },
-    focusInput() {
-      if (this.$refs.searchInput) {
-        this.$refs.searchInput.focus()
-      }
-    },
     endSearch() {
       this.searchStatus = false
     },
     resetSearch() {
-      this.$store.dispatch('setSearch', '')
+      this.$emit('setSearch', '')
       this.searchStatus = false
       this.suggestions = []
       this.dapps = []
+      if (this.$refs.searchInput) {
+        this.$refs.searchInput.blur()
+      }
     },
-    startSearch() {
+    startSearch(value) {
       this.searchStatus = true
-      this.fetchResults()
+      this.fetchResults(value)
     }
   }
 }

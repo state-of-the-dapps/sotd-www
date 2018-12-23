@@ -69,10 +69,6 @@
           </li>
         </media>
       </template>
-    <!-- <li class="nav-item -newsletter" :class="'-' + color" @click="scrollToMailingList('subscribe')">
-      <SvgIconMail class="nav-icon -newsletter" :fill="color" :width="18" :height="18" /> 
-      <span class="nav-link -newsletter" :class="'-' + color" >Stay in the loop</span>
-    </li> -->
     </ul>
     <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-category' && this.$route.name != 'dapps-platform' && this.$route.name != 'dapps-platform-category'">
       <media :query="{minWidth: 975}">
@@ -82,6 +78,8 @@
           <li class="nav-item -search">
             <GlobalSearch
               :color="color"
+              :search="search"
+              @setSearch="setSearch"
             />
           </li>
         </ul>
@@ -127,21 +125,16 @@ export default {
   data() {
     return {
       list: [],
+      search: '',
       sourcePath: this.$route.path
     }
   },
   computed: {
-    ...mapGetters({
-      search: 'search',
-      statDappCount: 'statDappCount'
-    })
+    ...mapGetters(['statDappCount'])
   },
   methods: {
-    scrollToMailingList(targetMenuItem) {
-      document
-        .getElementById('component-SecondaryCtaMailingList')
-        .scrollIntoView()
-      this.trackMenu(targetMenuItem)
+    setSearch(value) {
+      this.search = value
     },
     trackMenu(targetMenuItem) {
       const action = trackMenu(this.sourcePath, targetMenuItem)
@@ -227,7 +220,7 @@ export default {
     margin-left: auto;
   }
   &.-search {
-    cursor: text;
+    cursor: default;
     display: none;
     margin-right: 20px;
     @include tweakpoint('min-width', 600px) {
