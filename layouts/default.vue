@@ -50,6 +50,289 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/css/settings';
+
+html {
+  box-sizing: border-box;
+  background: $color--gray;
+  font-size: 13px;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+input,
+textarea {
+  font-family: 'Overpass', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  color: $color--black;
+  letter-spacing: -0.25px;
+}
+
+body {
+  background-size: 100px 100px;
+  height: 100%;
+  &.--has-popup {
+    overflow: hidden;
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+input::placeholder {
+  line-height: 1.7;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 1;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+em {
+  font-style: normal;
+  font-weight: 700;
+}
+
+a {
+  color: $color--black;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+strong {
+  font-weight: 700;
+}
+
+input[type='submit'] {
+  border-radius: 0;
+}
+
+button {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  letter-spacing: -0.25px;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-appearance: button; /* for input */
+  -webkit-user-select: none; /* for button */
+  -moz-user-select: none;
+  -ms-user-select: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+pre {
+  margin: 0;
+  background: $color--white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba($color--black, 0.05);
+}
+
+code {
+  @include font-monospace;
+  margin: 0;
+  padding: 0;
+}
+
+#__nuxt,
+#__layout {
+  height: 100%;
+}
+
+html,
+.wf-loading {
+  visibility: hidden !important;
+  opacity: 0;
+}
+
+.wf-active,
+.wf-inactive {
+  visibility: visible !important;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.--is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.--is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-in-enter,
+.fade-in-leave-to {
+  opacity: 0;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 15px 10px;
+  @include tweakpoint('min-width', 1000px) {
+    padding: 15px 22px;
+  }
+}
+
+.loader-wrapper {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  background-color: $color--black;
+
+  margin: 0 auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% {
+    -webkit-transform: perspective(120px);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+.note {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: rgba($color--black, 0.1);
+  padding: 3px 4px;
+  vertical-align: top;
+  font-weight: 600;
+  margin-left: 5px;
+  &.-live {
+    background: $color--dapp-live;
+  }
+  &.-beta {
+    background: $color--dapp-beta;
+  }
+  &.-prototype {
+    background: $color--dapp-prototype;
+  }
+  &.-wip {
+    background: $color--dapp-wip;
+  }
+  &.-concept {
+    background: $color--dapp-concept;
+  }
+  &.-nsfw {
+  }
+}
+
+.text-container {
+  max-width: 700px;
+  margin: 25px auto;
+  padding: 0 15px;
+  @include tweakpoint('min-width', 700px) {
+    margin: 50px auto 75px;
+  }
+  h2 {
+    font-size: 1.35rem;
+    margin-bottom: -0.5rem;
+    margin-top: 1.65rem;
+  }
+  p {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    max-width: 600px;
+    &.intro {
+      font-size: 1.4rem;
+      line-height: 1.275;
+      max-width: 700px;
+    }
+  }
+  ul {
+    margin: 1.25rem 2rem;
+    li {
+      margin: 0.25rem 0;
+      list-style-type: square;
+    }
+  }
+}
+
+.title-1,
+.title-2 {
+  font-family: 'Dharma-Gothic-Regular';
+  letter-spacing: 0px;
+  font-weight: 300;
+}
+
+.title-1 {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.title-2 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
 input::placeholder,
 textarea::placeholder {
   opacity: 1;

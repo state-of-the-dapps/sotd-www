@@ -38,10 +38,7 @@ export default {
     progress: false
   },
   serverMiddleware: ['redirect-ssl'],
-  css: [
-    '~/assets/css/tailwind.css',
-    { src: '~/assets/css/main.scss', lang: 'scss' }
-  ],
+  css: ['~/assets/css/tailwind.css'],
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
