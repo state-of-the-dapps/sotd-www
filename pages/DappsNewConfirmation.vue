@@ -15,9 +15,6 @@ export default {
     return {
       title: 'State of the ÐApps — Confirmation'
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', 'dapps')
   }
 }
 </script>

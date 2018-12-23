@@ -55,9 +55,6 @@ export default {
     return {
       title: `State of the ÐApps — What's a ÐApp`
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', '')
   }
 }
 </script>

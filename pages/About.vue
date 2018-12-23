@@ -33,9 +33,6 @@ export default {
     return {
       title: 'State of the ÐApps — About'
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', '')
   }
 }
 </script>

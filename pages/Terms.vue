@@ -45,9 +45,6 @@ export default {
     return {
       title: 'State of the ÐApps — Terms of Use'
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', '')
   }
 }
 </script>

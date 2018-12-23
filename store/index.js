@@ -42,9 +42,6 @@ export const actions = {
   setSearch({ commit }, value) {
     commit('SET_SEARCH', value)
   },
-  setSiteSection({ commit }, section) {
-    commit('SET_SITE_SECTION', section)
-  },
   setSiteModal({ commit }, modal) {
     commit('SET_SITE_MODAL', modal)
   }
@@ -59,9 +56,6 @@ export const getters = {
   },
   search: state => {
     return state.search
-  },
-  siteSection: state => {
-    return state.site.section
   },
   siteModal: state => {
     return state.site.modal

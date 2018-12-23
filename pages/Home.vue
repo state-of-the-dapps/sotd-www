@@ -38,9 +38,6 @@ export default {
         this.statDappCount.toLocaleString() +
         ' Projects Built on Ethereum, EOS, POA & Steem'
     }
-  },
-  mounted() {
-    this.$store.dispatch('setSiteSection', '')
   }
 }
 </script>

@@ -133,9 +133,7 @@ export default {
   computed: {
     ...mapGetters({
       search: 'search',
-      siteSection: 'siteSection',
-      statDappCount: 'statDappCount',
-      myList: 'list/items'
+      statDappCount: 'statDappCount'
     })
   },
   methods: {

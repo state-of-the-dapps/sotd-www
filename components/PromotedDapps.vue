@@ -131,7 +131,6 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('setSiteSection', 'dapps')
     if (this.directView) {
       const sourceComponent = ''
       const sourcePath = ''
