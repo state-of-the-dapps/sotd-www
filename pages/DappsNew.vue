@@ -1,5 +1,5 @@
 <template>
-  <LayoutMain>
+  <div>
     <section class="section -intro">
       <div class="container">
         <PageTitle title="Submit a ÐApp"/>
@@ -27,19 +27,17 @@
     <DappForm
       endpoint="dapps"
       mp-event-name="New DApp - Submit"/>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
 import { openIntercom } from '~/helpers/mixins'
 import DappForm from '~/components/DappForm'
-import LayoutMain from '~/components/LayoutMain'
 import PageTitle from '~/components/PageTitle'
 
 export default {
   components: {
     DappForm,
-    LayoutMain,
     PageTitle
   },
   mixins: [openIntercom],

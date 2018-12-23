@@ -1,31 +1,27 @@
 <template>
-  <LayoutMain>
-    <div>
-      <CollectionLead 
-        :description="collection.description"
-        :curator="collection.curator"
-        :link-text="collection.link.text"
-        :link-url="collection.link.url"
-        :name="collection.name"
-      />
-      <div class="dapp-wrapper">
-        <DappCardList :dapps="collection.items"/>
-      </div>
+  <div>
+    <CollectionLead 
+      :description="collection.description"
+      :curator="collection.curator"
+      :link-text="collection.link.text"
+      :link-url="collection.link.url"
+      :name="collection.name"
+    />
+    <div class="dapp-wrapper">
+      <DappCardList :dapps="collection.items"/>
     </div>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import LayoutMain from '~/components/LayoutMain'
 import CollectionLead from '~/components/CollectionLead'
 import DappCardList from '~/components/DappCardList'
 
 export default {
   components: {
     CollectionLead,
-    DappCardList,
-    LayoutMain
+    DappCardList
   },
   computed: {
     ...mapGetters('collections/detail', ['collection'])

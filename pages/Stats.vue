@@ -1,22 +1,18 @@
 <template>
-  <LayoutMain>
-    <div class="page-stats">
-      <div class="hero-wrapper">
-        <h1 class="title-1">ÐApp Statistics</h1>
-        <p class="description">Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.</p>
-        <Stats/>
-      </div>
+  <div class="page-stats">
+    <div class="hero-wrapper">
+      <h1 class="title-1">ÐApp Statistics</h1>
+      <p class="description">Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.</p>
+      <Stats/>
     </div>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
-import LayoutMain from '~/components/LayoutMain'
 import Stats from '~/components/Stats'
 
 export default {
   components: {
-    LayoutMain,
     Stats
   },
   head() {

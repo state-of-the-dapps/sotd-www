@@ -1,49 +1,47 @@
 <template>
-  <LayoutMain>
-    <div>
-      <DappsSearch/>
-      <div class="dapps-filters">
-        <div class="filters">
-          <DappsFilters/>
+  <div>
+    <DappsSearch/>
+    <div class="dapps-filters">
+      <div class="filters">
+        <DappsFilters/>
+      </div>
+      <div
+        ref="list"
+        class="results">
+        <div class="count-sort">
+          <div class="count">
+            <DappsResultCount
+              :end="pager.offset + pager.limit"
+              :start="pager.offset + 1"
+              :total="pager.totalCount"/>
+          </div>
+          <div class="sort">
+            <DappsSort/>
+          </div>
         </div>
+        <div class="dapp-wrapper">
+          <DappCardList
+            :dapps="dapps"
+            :optional-attribute="optionalCardAttribute"/>
+        </div>
+        <p 
+          v-if="isLoading" 
+          class="loader-wrapper"><button class="loader"/></p>
         <div
-          ref="list"
-          class="results">
-          <div class="count-sort">
-            <div class="count">
-              <DappsResultCount
-                :end="pager.offset + pager.limit"
-                :start="pager.offset + 1"
-                :total="pager.totalCount"/>
-            </div>
-            <div class="sort">
-              <DappsSort/>
-            </div>
-          </div>
-          <div class="dapp-wrapper">
-            <DappCardList
-              :dapps="dapps"
-              :optional-attribute="optionalCardAttribute"/>
-          </div>
-          <p 
-            v-if="isLoading" 
-            class="loader-wrapper"><button class="loader"/></p>
-          <div
-            v-if="!isLoading && pager.totalCount > 0"
-            class="pager-wrapper">
-            <BasePager
-              :limit="pager.limit"
-              :offset="pager.offset"
-              :total-count="pager.totalCount"
-              @selectPage="selectPage"/>
-          </div>
-          <p
-            v-if="!isLoading && pager.totalCount === 0"
-            class="no-results">There are currently no ÐApps here. Please try another search.</p>
+          v-if="!isLoading && pager.totalCount > 0"
+          class="pager-wrapper">
+          <BasePager
+            :limit="pager.limit"
+            :offset="pager.offset"
+            :total-count="pager.totalCount"
+            @selectPage="selectPage"/>
         </div>
+        <p
+          v-if="!isLoading && pager.totalCount === 0"
+          class="no-results">There are currently no ÐApps here. Please try another search.</p>
       </div>
     </div>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
@@ -57,7 +55,6 @@ import DappsLoadMore from '~/components/DappsLoadMore.vue'
 import DappsResultCount from '~/components/DappsResultCount.vue'
 import DappsSearch from '~/components/DappsSearch.vue'
 import DappsSort from '~/components/DappsSort'
-import LayoutMain from '~/components/LayoutMain'
 
 export default {
   components: {
@@ -67,8 +64,7 @@ export default {
     DappsFilters,
     DappsLoadMore,
     DappsSearch,
-    DappsSort,
-    LayoutMain
+    DappsSort
   },
   data() {
     return {

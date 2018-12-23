@@ -1,14 +1,12 @@
 <template>
-  <LayoutHome>
-    <div class="page-home">
-      <HomeHero/>
-      <DappFeaturedList/>
-      <DappFeaturedPlatforms/>
-      <DappFeaturedCategories/>
-      <DappFeaturedRankings/>
-      <HomeFeaturedCollections/>
-    </div>
-  </LayoutHome>
+  <div class="page-home">
+    <HomeHero/>
+    <DappFeaturedList/>
+    <DappFeaturedPlatforms/>
+    <DappFeaturedCategories/>
+    <DappFeaturedRankings/>
+    <HomeFeaturedCollections/>
+  </div>
 </template>
 
 <script>
@@ -19,7 +17,6 @@ import DappFeaturedPlatforms from '~/components/DappFeaturedPlatforms'
 import DappFeaturedRankings from '~/components/DappFeaturedRankings'
 import HomeFeaturedCollections from '~/components/HomeFeaturedCollections'
 import HomeHero from '~/components/HomeHero'
-import LayoutHome from '~/components/LayoutHome'
 
 export default {
   components: {
@@ -28,9 +25,9 @@ export default {
     DappFeaturedCategories,
     DappFeaturedPlatforms,
     DappFeaturedRankings,
-    HomeHero,
-    LayoutHome
+    HomeHero
   },
+  layout: 'home',
   computed: {
     ...mapGetters(['statDappCount'])
   },

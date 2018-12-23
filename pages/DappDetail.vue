@@ -1,26 +1,22 @@
 <template>
-  <LayoutMain>
-    <div 
-      class="page-dapps-detail" 
-      itemscope 
-      itemtype="http://schema.org/Product">
-      <DappDetail 
-        :dapp="dapp" 
-        :direct="direct"/>
-    </div>
-  </LayoutMain>
+  <div 
+    class="page-dapps-detail" 
+    itemscope 
+    itemtype="http://schema.org/Product">
+    <DappDetail 
+      :dapp="dapp" 
+      :direct="direct"/>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import DappDetail from '~/components/DappDetail'
 import * as constants from '~/helpers/constants'
-import LayoutMain from '~/components/LayoutMain'
 
 export default {
   components: {
-    DappDetail,
-    LayoutMain
+    DappDetail
   },
   data() {
     return {

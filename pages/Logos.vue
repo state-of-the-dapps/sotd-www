@@ -1,48 +1,42 @@
 <template>
-  <LayoutMain>
-    <div class="page-logos">
-      <div class="wrapper">
-        <h1 class="title-1">Download our logos</h1>
-        <p>The logos and icons below can be used to link to State of the ÐApps. Please do not modify them.</p>
-        <p>Below are some examples. The <a 
-          href="/logos.zip" 
-          download 
-          @click="trackLogosDownload">full set</a> has more color options.</p>
-        <ul class="logo-list">
-          <li class="logo-item">
-            <a 
-              class="button"
-              href="/logos.zip"
-              download
-              @click="trackLogosDownload">Download all logos (.zip)</a>
-          </li>
-          <li
-            v-for="(logo, index) in logos"
-            :key="index"
-            class="logo-item">
-            <a
-              href="/logos.zip"
-              download
-              @click="trackLogosDownload">
-              <img 
-                :width="logo.width" 
-                :src="require(`~/assets/images/press/${logo.url}`)">
-            </a>
-          </li>
-        </ul>
-      </div>
+  <div class="page-logos">
+    <div class="wrapper">
+      <h1 class="title-1">Download our logos</h1>
+      <p>The logos and icons below can be used to link to State of the ÐApps. Please do not modify them.</p>
+      <p>Below are some examples. The <a 
+        href="/logos.zip" 
+        download 
+        @click="trackLogosDownload">full set</a> has more color options.</p>
+      <ul class="logo-list">
+        <li class="logo-item">
+          <a 
+            class="button"
+            href="/logos.zip"
+            download
+            @click="trackLogosDownload">Download all logos (.zip)</a>
+        </li>
+        <li
+          v-for="(logo, index) in logos"
+          :key="index"
+          class="logo-item">
+          <a
+            href="/logos.zip"
+            download
+            @click="trackLogosDownload">
+            <img 
+              :width="logo.width" 
+              :src="require(`~/assets/images/press/${logo.url}`)">
+          </a>
+        </li>
+      </ul>
     </div>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
-import LayoutMain from '~/components/LayoutMain'
 import { trackLogosDownload } from '~/helpers/mixpanel'
 
 export default {
-  components: {
-    LayoutMain
-  },
   data() {
     return {
       logos: [

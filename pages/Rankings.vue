@@ -1,30 +1,26 @@
 <template>
-  <LayoutMain>
-    <div class="page-rankings">
-      <RankingFilters/>
-      <div ref="table">
-        <RankingTable
-          :dapps="dapps"
-          :is-loading="isLoading"
-          :pager="pager"
-          :column-options="columnOptions"
-          :selected-column="selectedColumn"
-          @selectColumn="selectColumn"/>
-      </div>
+  <div class="page-rankings">
+    <RankingFilters/>
+    <div ref="table">
+      <RankingTable
+        :dapps="dapps"
+        :is-loading="isLoading"
+        :pager="pager"
+        :column-options="columnOptions"
+        :selected-column="selectedColumn"
+        @selectColumn="selectColumn"/>
     </div>
-  </LayoutMain>
+  </div>
 </template>
 
 <script>
 import { rankingColumns } from '~/helpers/constants'
 import { getDapps } from '~/helpers/api'
-import LayoutMain from '~/components/LayoutMain'
 import RankingFilters from '~/components/RankingFilters'
 import RankingTable from '~/components/RankingTable'
 
 export default {
   components: {
-    LayoutMain,
     RankingFilters,
     RankingTable
   },
