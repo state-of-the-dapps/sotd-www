@@ -1,7 +1,31 @@
-import Vuex from 'vuex'
-import collectionsModule from './modules/collections'
+export const state = () => ({
+  pageModal: '',
+  search: '',
+  site: {
+    heroHasLoaded: false,
+    section: '',
+    modal: {
+      component: '',
+      mpData: {},
+      props: {}
+    }
+  },
+  stats: {
+    categories: [],
+    dappContractCount: 0,
+    dappCount: 0,
+    dappDau: 0,
+    dappTx24Hr: 0,
+    dappVol24Hr: 0,
+    platforms: [],
+    statuses: []
+  },
+  user: {
+    entryRoute: ''
+  }
+})
 
-const actions = {
+export const actions = {
   nuxtServerInit({ commit }, { app, route, req, redirect }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
     return app.$axios.get('stats').then(response => {
@@ -26,7 +50,7 @@ const actions = {
   }
 }
 
-const getters = {
+export const getters = {
   heroHasLoaded: state => {
     return state.site.heroHasLoaded
   },
@@ -71,7 +95,7 @@ const getters = {
   }
 }
 
-const mutations = {
+export const mutations = {
   SET_HERO_LOADED(state) {
     state.site.heroHasLoaded = true
   },
@@ -94,44 +118,3 @@ const mutations = {
     state.user.entryRoute = path
   }
 }
-
-const state = () => ({
-  pageModal: '',
-  search: '',
-  site: {
-    heroHasLoaded: false,
-    section: '',
-    modal: {
-      component: '',
-      mpData: {},
-      props: {}
-    }
-  },
-  stats: {
-    categories: [],
-    dappContractCount: 0,
-    dappCount: 0,
-    dappDau: 0,
-    dappTx24Hr: 0,
-    dappVol24Hr: 0,
-    platforms: [],
-    statuses: []
-  },
-  user: {
-    entryRoute: ''
-  }
-})
-
-const createStore = () => {
-  return new Vuex.Store({
-    actions,
-    getters,
-    modules: {
-      collections: collectionsModule
-    },
-    mutations,
-    state
-  })
-}
-
-export default createStore

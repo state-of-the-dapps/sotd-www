@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import CollectionLead from '~/components/CollectionLead'
 import DappCardList from '~/components/DappCardList'
 
@@ -23,17 +22,13 @@ export default {
     CollectionLead,
     DappCardList
   },
-  computed: {
-    ...mapGetters('collections/detail', ['collection'])
-  },
-  fetch({ store, params, error, app }) {
-    store.dispatch('setSiteSection', 'collections')
+  asyncData({ params, error, app }) {
     return app.$axios.get('collections/' + params.slug).then(response => {
       const collection = response.data
       if (!Object.keys(collection).length > 0) {
         error({ statusCode: 404 })
       } else {
-        store.dispatch('collections/detail/setCollection', collection)
+        return { collection }
       }
     })
   },
