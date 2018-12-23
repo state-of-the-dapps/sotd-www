@@ -18,7 +18,7 @@
   *
   * @import "tailwindcss/components";
   */
- @tailwind components;
+ /* @tailwind components; */
  
  /**
   * Here you would add any of your custom component classes; stuff that you'd
@@ -44,7 +44,7 @@
   *
   * @import "tailwindcss/utilities";
   */
- @tailwind utilities;
+ /* @tailwind utilities; */
  
  /**
   * Here you would add any custom utilities you need that don't come out of the
