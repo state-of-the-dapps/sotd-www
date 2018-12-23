@@ -236,7 +236,6 @@ export default {
   padding: 8px 12px;
   border-radius: 3px;
   min-width: 250px;
-  transition: all 0.2s ease;
   position: relative;
   color: $color--black;
   &.is-searching {
