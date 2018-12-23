@@ -50,7 +50,8 @@ export default {
 </script>
 
 <style lang="scss">
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   opacity: 1;
 }
 
