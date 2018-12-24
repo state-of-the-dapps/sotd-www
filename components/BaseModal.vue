@@ -6,15 +6,12 @@
           <slot/>
         </div>
       </div>
+      <style>
+        body {overflow: hidden;}
+      </style>
     </div>
   </transition>
 </template>
-
-<style>
-body {
-  overflow: hidden;
-}
-</style>
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';

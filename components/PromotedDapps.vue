@@ -1,5 +1,5 @@
 <template>
-  <div class="component-PropmotedDapps">
+  <div class="component-propmoted-dapps">
     <div class="wrapper">
       <h1 class="title-1">Promote your ÐApp to attract more users</h1>
       <p class="description">{{ description }}</p>
@@ -71,6 +71,9 @@
         class="send" 
         @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
     </div>
+    <BaseModal v-if="confirmationModal">
+      <ModalPromotedDappsNewConfirmation :has-submitted-dapp="hasSubmittedDapp"/>
+    </BaseModal>
   </div>
 </template>
 
@@ -81,10 +84,14 @@ import {
   trackPromotedDappsView
 } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
+import BaseModal from '~/components/BaseModal'
+import ModalPromotedDappsNewConfirmation from '~/components/ModalPromotedDappsNewConfirmation'
 import PromotedDapps from '~/components/PromotedDapps'
 
 export default {
   components: {
+    BaseModal,
+    ModalPromotedDappsNewConfirmation,
     PromotedDapps
   },
   mixins: [validateEmail],
@@ -101,6 +108,7 @@ export default {
   data() {
     return {
       budget: '',
+      confirmationModal: false,
       country: '',
       dapp: '',
       email: '',
@@ -181,14 +189,7 @@ export default {
         this.$axios
           .post('promoted/dapps', data)
           .then(response => {
-            const modal = {
-              component: 'ModalPromotedDappsNewConfirmation',
-              mpData: {},
-              props: {
-                hasSubmittedDapp: this.hasSubmittedDapp
-              }
-            }
-            this.$store.dispatch('setSiteModal', modal)
+            this.confirmationModal = true
           })
           .catch(error => {
             this.formIsSubmitting = false
