@@ -47,9 +47,6 @@
           class="nav-link" 
           @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
-      <!-- <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
-    </li> -->
       <li class="nav-item -stats">
         <nuxt-link 
           :class="'-' + color" 
@@ -120,13 +117,11 @@ export default {
   },
   data() {
     return {
-      list: [],
       search: '',
       sourcePath: this.$route.path
     }
   },
   computed: {
-    ...mapGetters(['statDappCount']),
     hideSearch() {
       return !(
         this.$route.name != 'dapps' &&
