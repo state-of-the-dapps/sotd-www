@@ -1,13 +1,6 @@
 export const state = () => ({
-  pageModal: '',
   site: {
-    heroHasLoaded: false,
-    section: '',
-    modal: {
-      component: '',
-      mpData: {},
-      props: {}
-    }
+    heroHasLoaded: false
   },
   stats: {
     categories: [],
@@ -34,24 +27,12 @@ export const actions = {
   },
   setHeroLoaded({ commit }) {
     commit('SET_HERO_LOADED')
-  },
-  setPageModal({ commit }, value) {
-    commit('SET_PAGE_MODAL', value)
-  },
-  setSiteModal({ commit }, modal) {
-    commit('SET_SITE_MODAL', modal)
   }
 }
 
 export const getters = {
   heroHasLoaded: state => {
     return state.site.heroHasLoaded
-  },
-  pageModal: state => {
-    return state.pageModal
-  },
-  siteModal: state => {
-    return state.site.modal
   },
   statCategories: state => {
     return state.stats.categories
@@ -85,15 +66,6 @@ export const getters = {
 export const mutations = {
   SET_HERO_LOADED(state) {
     state.site.heroHasLoaded = true
-  },
-  SET_PAGE_MODAL(state, value) {
-    state.pageModal = value
-  },
-  SET_SITE_MODAL(state, modal) {
-    state.site.modal = modal
-  },
-  SET_SITE_SECTION(state, section) {
-    state.site.section = section
   },
   SET_STATS(state, data) {
     state.stats = data

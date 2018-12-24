@@ -1,10 +1,6 @@
 <template>
-  <div 
-    :class="siteModal.component ? 'has-modal' : ''" 
-    class="layout-default">
-    <div 
-      :class="siteModal.component ? 'has-modal' : ''" 
-      class="wrapper">
+  <div class="layout-default">
+    <div class="wrapper">
       <div class="main">
         <div class="menu">
           <div class="menu-wrapper">
@@ -18,7 +14,6 @@
         <BaseFooter/>
       </div>
     </div>
-    <Modal/>
   </div>
 </template>
 
@@ -26,25 +21,13 @@
 import { mapGetters } from 'vuex'
 import BaseFooter from '~/components/BaseFooter'
 import Menu from '~/components/Menu'
-import Modal from '~/components/Modal'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     BaseFooter,
     Menu,
-    Modal,
     SecondaryCta
-  },
-  computed: {
-    ...mapGetters(['pageModal', 'siteModal'])
-  },
-  head() {
-    return {
-      bodyAttrs: {
-        class: this.siteModal.component || this.pageModal ? 'has-modal' : ''
-      }
-    }
   }
 }
 </script>

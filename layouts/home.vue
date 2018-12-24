@@ -1,10 +1,6 @@
 <template>
-  <div 
-    :class="siteModal.component ? 'has-modal' : ''" 
-    class="layout-default">
-    <div 
-      :class="siteModal.component ? 'has-modal' : ''" 
-      class="wrapper">
+  <div class="layout-default">
+    <div class="wrapper">
       <main class="main">
         <nuxt/>
       </main>

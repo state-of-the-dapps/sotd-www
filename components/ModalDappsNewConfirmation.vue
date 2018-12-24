@@ -1,7 +1,7 @@
 <template>
-  <div class="component-ModalDappsNewConfirmation">
+  <div class="component-modal-dapps-new-confirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
-    <p class="message">Your post will typically be processed by the next business day. Stay tuned for updates via email.</p>
+    <p class="message">Your post will typically be processed by the next business day. Stay tuned for updates via the email address you provided.</p>
     <p class="cta-wrapper"><button 
       class="cta" 
       @click="close">Ok</button></p>
@@ -12,12 +12,6 @@
 export default {
   methods: {
     close() {
-      const modal = {
-        component: '',
-        mpData: {},
-        props: {}
-      }
-      this.$store.dispatch('setSiteModal', modal)
       this.$router.push({ name: 'promoted-dapps' })
     }
   }
@@ -27,12 +21,17 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.component-modal-dapps-new-confirmation {
+  text-align: center;
+}
+
 .cta {
   background: $color--black;
   color: $color--white;
   padding: 12px 50px;
   box-shadow: 0 5px 20px rgba($color--black, 0.2);
   text-transform: uppercase;
+  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -43,6 +42,7 @@ export default {
 
 .message {
   font-size: 1.1rem;
+  text-align: left;
 }
 
 .title-1 {
