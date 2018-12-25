@@ -15,7 +15,6 @@ export default {
     }
   },
   mounted() {
-    console.log(window.location.href)
     this.$mixpanel.track('Error page', {
       type: this.error.statusCode,
       message: this.error.message,
@@ -25,11 +24,13 @@ export default {
     // This may be due to a new deployment or a network problem
     if (
       this.error.statusCode === 500 &&
-      /^Loading chunk (\d)+ failed\./.test(this.error.message)
+      /^Loading chunk (\d)+ failed\./.test(this.error.message) &&
+      window.location.hash !== '#retry'
     ) {
       // the chunk might no longer be available due to a recent redeployment of the page
-      const location = window.location.href
-      window.location = location
+      // mark the page to not trigger reload infinitely
+      window.location.hash = '#retry'
+      window.location.reload(true /* skip cache */)
       return // prevent error page blinking for user
     }
   }
