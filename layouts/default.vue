@@ -72,6 +72,11 @@ body {
   outline: none;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: darken($color--gray, 30%);
+}
+
 input::placeholder {
   line-height: 1.7;
 }
