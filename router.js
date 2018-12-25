@@ -1,50 +1,93 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { interopDefault } from './utils'
 
 Vue.use(Router)
 
 const About = () =>
-  import('~/pages/About.vue' /* webpackChunkName: "pages/about" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/About.vue' /* webpackChunkName: "pages/about" */)
+  )
 const Collections = () =>
-  import('~/pages/Collections.vue' /* webpackChunkName: "pages/collections" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Collections.vue' /* webpackChunkName: "pages/collections" */)
+  )
 const CollectionDetail = () =>
-  import('~/pages/CollectionDetail.vue' /* webpackChunkName: "pages/collection-detail" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/CollectionDetail.vue' /* webpackChunkName: "pages/collection-detail" */)
+  )
 const DappDetail = () =>
-  import('~/pages/DappDetail.vue' /* webpackChunkName: "pages/dapp-detail" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetail.vue' /* webpackChunkName: "pages/dapp-detail" */)
+  )
 const DappDetailDirect = () =>
-  import('~/pages/DappDetailDirect.vue' /* webpackChunkName: "pages/dapp-detail-direct" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetailDirect.vue' /* webpackChunkName: "pages/dapp-detail-direct" */)
+  )
 const DappDetailEdit = () =>
-  import('~/pages/DappDetailEdit.vue' /* webpackChunkName: "pages/dapp-detail-edit" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetailEdit.vue' /* webpackChunkName: "pages/dapp-detail-edit" */)
+  )
 const DappDetailFlag = () =>
-  import('~/pages/DappDetailFlag.vue' /* webpackChunkName: "pages/dapp-detail-flag" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetailFlag.vue' /* webpackChunkName: "pages/dapp-detail-flag" */)
+  )
 const DappDetailImprove = () =>
-  import('~/pages/DappDetailImprove.vue' /* webpackChunkName: "pages/dapp-detail-improve" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetailImprove.vue' /* webpackChunkName: "pages/dapp-detail-improve" */)
+  )
 const DappDetailMeta = () =>
-  import('~/pages/DappDetailMeta.vue' /* webpackChunkName: "pages/dapp-detail-meta" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappDetailMeta.vue' /* webpackChunkName: "pages/dapp-detail-meta" */)
+  )
 const Dapps = () =>
-  import('~/pages/Dapps.vue' /* webpackChunkName: "pages/dapps" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Dapps.vue' /* webpackChunkName: "pages/dapps" */)
+  )
 const DappsNew = () =>
-  import('~/pages/DappsNew.vue' /* webpackChunkName: "pages/dapps-new" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappsNew.vue' /* webpackChunkName: "pages/dapps-new" */)
+  )
 const DappsNewConfirmation = () =>
-  import('~/pages/DappsNewConfirmation.vue' /* webpackChunkName: "pages/dapps-new-confirmation" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/DappsNewConfirmation.vue' /* webpackChunkName: "pages/dapps-new-confirmation" */)
+  )
 const Home = () =>
-  import('~/pages/Home.vue' /* webpackChunkName: "pages/home" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Home.vue' /* webpackChunkName: "pages/home" */)
+  )
 const HelpMetamask = () =>
-  import('~/pages/HelpMetamask.vue' /* webpackChunkName: "pages/help-metamask" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/HelpMetamask.vue' /* webpackChunkName: "pages/help-metamask" */)
+  )
 const Logos = () =>
-  import('~/pages/Logos.vue' /* webpackChunkName: "pages/logos" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Logos.vue' /* webpackChunkName: "pages/logos" */)
+  )
 const PromotedDapps = () =>
-  import('~/pages/PromotedDapps.vue' /* webpackChunkName: "pages/promoted-dapps" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/PromotedDapps.vue' /* webpackChunkName: "pages/promoted-dapps" */)
+  )
 const PromotedDappsDirect = () =>
-  import('~/pages/PromotedDappsDirect.vue' /* webpackChunkName: "pages/promoted-dapps-direct" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/PromotedDappsDirect.vue' /* webpackChunkName: "pages/promoted-dapps-direct" */)
+  )
 const Rankings = () =>
-  import('~/pages/Rankings.vue' /* webpackChunkName: "pages/rankings" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Rankings.vue' /* webpackChunkName: "pages/rankings" */)
+  )
 const Stats = () =>
-  import('~/pages/Stats.vue' /* webpackChunkName: "pages/stats" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Stats.vue' /* webpackChunkName: "pages/stats" */)
+  )
 const Terms = () =>
-  import('~/pages/Terms.vue' /* webpackChunkName: "pages/terms" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/Terms.vue' /* webpackChunkName: "pages/terms" */)
+  )
 const What = () =>
-  import('~/pages/What.vue' /* webpackChunkName: "pages/what" */).then(m => m.default || m)
+  interopDefault(
+    import('~/pages/What.vue' /* webpackChunkName: "pages/what" */)
+  )
 
 if (process.client) {
   window.history.scrollRestoration = 'manual'
