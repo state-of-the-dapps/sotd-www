@@ -1,5 +1,5 @@
 import { newDapps } from '~/helpers/constants'
-import { sum } from '~/helpers/functions'
+import { sum } from '~/helpers/utils'
 
 export const state = () => ({
   site: {
