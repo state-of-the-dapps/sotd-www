@@ -20,11 +20,13 @@ export default {
       message: this.error.message,
       resource: this.$route.fullPath
     })
-    if (this.error.statusCode === 500
-      && /^Loading chunk [0-9]+ failed/.test(this.error.message)
-      && window.location.hash !== '#retry') {
+    if (
+      this.error.statusCode === 500 &&
+      /^Loading chunk [0-9]+ failed/.test(this.error.message) &&
+      window.location.hash !== '#retry'
+    ) {
       // the chunk might no longer be available due to a recent redeployment of the page
-      // mark the page to don't trigger reload infinitely
+      // mark the page to not trigger reload infinitely
       window.location.hash = '#retry'
       window.location.reload(true)
     }
