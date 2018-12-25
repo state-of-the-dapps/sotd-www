@@ -49,7 +49,7 @@ export default {
   },
   head() {
     return {
-      title: 'Edit ' + this.fields.name + ' — State of the ÐApps '
+      title: 'Edit ' + this.fields.name + ' — State of the ÐApps'
     }
   }
 }
