@@ -9,7 +9,6 @@
         <BaseFooter/>
       </footer>
     </div>
-    <Modal/>
   </div>
 </template>
 

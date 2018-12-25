@@ -213,6 +213,53 @@ const homeCollectionSlots = 8
 
 const myListLimit = 50
 
+const newDapps = [
+  25,
+  1,
+  7,
+  6,
+  22,
+  9,
+  6,
+  17,
+  7,
+  5,
+  11,
+  27,
+  12,
+  23,
+  16,
+  8,
+  14,
+  15,
+  11,
+  6,
+  5,
+  10,
+  22,
+  17,
+  18,
+  64,
+  76,
+  46,
+  67,
+  56,
+  83,
+  68,
+  55,
+  76,
+  141,
+  137,
+  122,
+  145,
+  132,
+  111,
+  120,
+  160,
+  158,
+  144
+]
+
 const platformList = ['Ethereum', 'EOS', 'POA', 'Steem']
 
 const platformMap = {
@@ -312,6 +359,7 @@ export {
   feedbackComponentMap,
   homeCollectionSlots,
   homeFeaturedCollections,
+  newDapps,
   myListLimit,
   platformList,
   platformMap,

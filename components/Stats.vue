@@ -146,56 +146,9 @@
 <script>
 import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
-import { mapGetters } from 'vuex'
+import { newDapps } from '~/helpers/constants'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
-
-const newDapps = [
-  25,
-  1,
-  7,
-  6,
-  22,
-  9,
-  6,
-  17,
-  7,
-  5,
-  11,
-  27,
-  12,
-  23,
-  16,
-  8,
-  14,
-  15,
-  11,
-  6,
-  5,
-  10,
-  22,
-  17,
-  18,
-  64,
-  76,
-  46,
-  67,
-  56,
-  83,
-  68,
-  55,
-  76,
-  141,
-  137,
-  122,
-  145,
-  132,
-  111,
-  120,
-  160,
-  158,
-  144
-]
 
 const labels = [
   '2015-04-30',
@@ -262,6 +215,43 @@ export default {
     Help,
     StatsStatusBarChart
   },
+  props: {
+    statCategories: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    statDappContractCount: {
+      type: Number,
+      required: true,
+      default: null
+    },
+    statDappCount: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    statDappDau: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    statDappTx24Hr: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    statPlatforms: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    statStatuses: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  },
   data() {
     return {
       newVsTotalData: {
@@ -288,18 +278,6 @@ export default {
         ]
       }
     }
-  },
-  computed: {
-    ...mapGetters([
-      'statCategories',
-      'statDappContractCount',
-      'statDappCount',
-      'statDappDau',
-      'statDappTx24Hr',
-      'statDappVol24Hr',
-      'statPlatforms',
-      'statStatuses'
-    ])
   },
   mounted() {
     this.createChart('new-vs-total', this.newVsTotalData)
