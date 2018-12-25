@@ -20,15 +20,18 @@ export default {
       message: this.error.message,
       resource: this.$route.fullPath
     })
+    // Handle chunk loading errors
+    // This may be due to a new deployment or a network problem
     if (
       this.error.statusCode === 500 &&
-      /^Loading chunk [0-9]+ failed/.test(this.error.message) &&
+      /^Loading chunk (\d)+ failed\./.test(this.error.message) &&
       window.location.hash !== '#retry'
     ) {
       // the chunk might no longer be available due to a recent redeployment of the page
       // mark the page to not trigger reload infinitely
       window.location.hash = '#retry'
-      window.location.reload(true)
+      window.location.reload(true /* skip cache */)
+      return // prevent error page blinking for user
     }
   }
 }
