@@ -35,11 +35,11 @@
         v-if="formType === 'new'"
         class="checkbox-field">
         <input 
-          id="subscribe-newsletter-checkbox" 
-          :value="subscribeNewsletter" 
+          id="subscribe-newsletter-checkbox"
+          :checked="subscribeNewsletter"
           class="checkbox-input" 
           type="checkbox"
-          @input="updateNewsletter">
+          @click="updateNewsletter">
         <label 
           class="checkbox-label" 
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
@@ -47,10 +47,10 @@
       <div class="checkbox-field">
         <input 
           id="accepted-terms-checkbox" 
-          :value="acceptedTerms" 
+          :checked="acceptedTerms" 
           class="checkbox-input" 
           type="checkbox"
-          @input="updateAcceptedTerms">
+          @click="updateAcceptedTerms">
         <label 
           class="checkbox-label" 
           for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link 
