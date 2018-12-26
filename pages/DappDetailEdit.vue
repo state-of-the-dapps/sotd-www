@@ -3,7 +3,7 @@
     <section class="section -intro">
       <div class="container">
         <p class="back-link"><nuxt-link :to="{ name: 'dapp-detail', params: {slug: slug}}">Head back to {{ fields.name }}</nuxt-link></p>
-        <PageTitle :title="pageTitle + ' ' + fields.name"/>
+        <PageHeading :title="pageTitle + ' ' + fields.name"/>
       </div>
     </section>
     <DappForm
@@ -16,12 +16,12 @@
 
 <script>
 import DappForm from '~/components/DappForm'
-import PageTitle from '~/components/PageTitle'
+import PageHeading from '~/components/PageHeading'
 
 export default {
   components: {
     DappForm,
-    PageTitle
+    PageHeading
   },
   data() {
     return {

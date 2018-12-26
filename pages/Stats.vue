@@ -1,7 +1,7 @@
 <template>
   <div class="page-stats">
     <div class="hero-wrapper">
-      <h1 class="title-1">ÐApp Statistics</h1>
+      <PageHeading title="ÐApp Statistics"/>
       <p class="description">Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.</p>
       <Stats
         :stat-categories="stats.categories"
@@ -17,10 +17,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Stats from '~/components/Stats'
+import PageHeading from '@/components/PageHeading'
+import Stats from '@/components/Stats'
 
 export default {
   components: {
+    PageHeading,
     Stats
   },
   data() {
@@ -64,17 +66,10 @@ export default {
 
 .hero-wrapper {
   @include margin-wrapper-main;
-  padding: 3rem 0 2rem;
+  padding: 0 0 2rem;
 }
 
 .page-stats {
   padding-bottom: 50px;
-}
-
-.title-1 {
-  @include title-1;
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 0;
 }
 </style>

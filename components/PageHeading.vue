@@ -1,5 +1,7 @@
 <template>
-  <h1 class="component-page-title">{{ title }}</h1>
+  <div class="component-page-heading">
+    <h1 class="title">{{ title }}</h1>
+  </div>
 </template>
 
 <script>
@@ -13,14 +15,13 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-page-title {
+.title {
   @include title-1;
   text-align: center;
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
