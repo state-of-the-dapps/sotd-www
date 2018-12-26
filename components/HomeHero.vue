@@ -1,7 +1,7 @@
 <template>
   <div class="component-HomeHero">
     <div class="wrapper">
-      <Menu color="white" />
+      <BaseMenu color="white" />
       <div class="hero-wrapper">
         <HomeHeroContent/>
       </div>
@@ -11,12 +11,12 @@
 
 <script>
 import HomeHeroContent from './HomeHeroContent'
-import Menu from './Menu'
+import BaseMenu from './BaseMenu'
 
 export default {
   components: {
-    HomeHeroContent,
-    Menu
+    BaseMenu,
+    HomeHeroContent
   }
 }
 </script>

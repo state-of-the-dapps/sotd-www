@@ -4,7 +4,7 @@
       <div class="main">
         <div class="menu">
           <div class="menu-wrapper">
-            <Menu/>
+            <BaseMenu/>
           </div>
         </div>
         <nuxt/>
@@ -20,13 +20,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import BaseFooter from '~/components/BaseFooter'
-import Menu from '~/components/Menu'
+import BaseMenu from '~/components/BaseMenu'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     BaseFooter,
-    Menu,
+    BaseMenu,
     SecondaryCta
   }
 }

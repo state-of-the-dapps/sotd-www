@@ -1,7 +1,7 @@
 <template>
   <div 
     :class="'-' + color" 
-    class="component-Menu">
+    class="component-base-menu">
     <div class="nameplate">
       <nuxt-link 
         :to="{ name: 'home' }" 
@@ -9,8 +9,8 @@
         @click.native="trackMenu('logo')">
         <SvgIconLogo 
           :fill="color" 
-          :width="45" 
-          :height="45" />
+          :width="35" 
+          :height="35" />
       </nuxt-link>
       <nuxt-link 
         :to="{ name: 'home' }" 
@@ -33,20 +33,27 @@
           exact 
           @click.native="trackMenu('home')">Home</nuxt-link>
       </li>
-      <li class="nav-item">
+      <li class="nav-item -all">
         <nuxt-link 
           :class="'-' + color" 
           :to="{ name: 'dapps' }" 
           class="nav-link" 
           @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
       </li>
-      <li class="nav-item">
+      <li class="nav-item -rankings">
         <nuxt-link 
           :class="'-' + color" 
           :to="{ name: 'rankings' }" 
           class="nav-link" 
           @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
+      <media :query="{maxWidth: 699}">
+        <li class="nav-item -more">
+          <span class="bullet">&bull;</span>
+          <span class="bullet">&bull;</span>
+          <span class="bullet">&bull;</span>
+        </li>
+      </media>
       <li class="nav-item -stats">
         <nuxt-link 
           :class="'-' + color" 
@@ -56,7 +63,7 @@
           @click.native="trackMenu('stats')">Stats</nuxt-link>
       </li>
       <media :query="{maxWidth: 975}">
-        <li class="nav-item">
+        <li class="nav-item -search">
           <nuxt-link 
             :class="[hideSearch ? 'hidden' : '', '-' + color]" 
             :to="{ name: 'dapps' }" 
@@ -78,13 +85,21 @@
         </li>
       </ul>
     </media>
-    <ul class="nav-list-submit">
+    <ul class="nav-list-submit-lang">
       <li class="nav-item -submit">
         <nuxt-link 
           :to="{ name: 'dapps-new' }" 
           :class="$route.name === 'home' ? 'is-home' : ''" 
           class="nav-link -submit" 
           @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
+      </li>
+      <li class="nav-item -lang">
+        <BaseDropdown
+          :options="languages"
+          :selected="'English'"
+          :theme="'menu ' + $route.name"
+          title="Language"
+          @select="selectLang"/>
       </li>
     </ul>
   </div>
@@ -93,7 +108,9 @@
 <script>
 import Media from 'vue-media'
 import { mapGetters } from 'vuex'
-import { trackMenu } from '~/helpers/mixpanel'
+import { languages } from '@/helpers/constants'
+import { trackMenu } from '@/helpers/mixpanel'
+import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
@@ -102,6 +119,7 @@ import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {
+    BaseDropdown,
     GlobalSearch,
     Media,
     SvgIconLogo,
@@ -117,6 +135,7 @@ export default {
   },
   data() {
     return {
+      languages,
       search: '',
       sourcePath: this.$route.path
     }
@@ -132,6 +151,7 @@ export default {
     }
   },
   methods: {
+    selectLang() {},
     setSearch(value) {
       this.search = value
     },
@@ -146,7 +166,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-Menu {
+.component-base-menu {
   display: flex;
   align-items: center;
   padding: 18px 10px 16px 10px;
@@ -159,6 +179,13 @@ export default {
   }
   &.-white {
     background: rgba($color--black, 0.2);
+  }
+}
+
+.bullet {
+  display: inline-block;
+  &:nth-child(2) {
+    padding: 0 2px;
   }
 }
 
@@ -176,8 +203,8 @@ export default {
 
 .logo-link {
   &.-icon {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     @include tweakpoint('min-width', 834px) {
       display: none;
     }
@@ -211,9 +238,14 @@ export default {
   align-items: center;
   text-align: center;
   cursor: pointer;
+  &.-lang {
+    margin-left: 12px;
+  }
   &.-newsletter,
   &.-submit,
-  &.-my-list {
+  &.-my-list,
+  &.-home,
+  &.-stats {
     display: none;
     @include tweakpoint('min-width', 700px) {
       display: flex;
@@ -223,11 +255,9 @@ export default {
     margin-left: auto;
   }
   &.-search {
-    cursor: default;
     display: none;
-    margin-right: 20px;
-    @include tweakpoint('min-width', 600px) {
-      display: flex;
+    @include tweakpoint('min-width', 700px) {
+      display: block;
     }
   }
 }
@@ -261,13 +291,16 @@ export default {
   }
   &.-submit {
     border: 1px solid $color--black;
+    color: $color--white;
+    background: $color--black;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 4px;
     @include tweakpoint('min-width', 840px) {
-      padding: 7px 10px;
+      padding: 7px 15px;
     }
     &.is-home {
-      border-color: rgba($color--white, 0.7);
+      background: transparent;
+      border-color: rgba($color--white, 0.8);
     }
   }
 }
@@ -277,13 +310,9 @@ export default {
   align-items: center;
 }
 
-.nav-list-search {
-  &.is-searching {
-    flex-grow: 1;
-  }
-}
-
-.nav-list-submit {
+.nav-list-submit-lang {
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 

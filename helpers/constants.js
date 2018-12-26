@@ -211,6 +211,17 @@ const homeFeaturedCollections = 3
 
 const homeCollectionSlots = 8
 
+const languages = Object.freeze([
+  {
+    text: 'English',
+    selection: 'en'
+  },
+  {
+    text: '中文',
+    selection: 'cn'
+  }
+])
+
 const myListLimit = 50
 
 const newDapps = [
@@ -359,6 +370,7 @@ export {
   feedbackComponentMap,
   homeCollectionSlots,
   homeFeaturedCollections,
+  languages,
   newDapps,
   myListLimit,
   platformList,
