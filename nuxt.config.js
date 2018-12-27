@@ -33,18 +33,20 @@ export default {
     [
       'nuxt-i18n',
       {
-        detectBrowserLanguage: {
-          useCookie: true,
-          cookieKey: 'i18n_redirected'
-        },
         baseUrl: 'https://www.stateofthedapps.com',
-        strategy: 'prefix_except_default',
         defaultLocale: 'en',
         locales: [
           {
             code: 'en',
-            iso: 'en-US',
-            file: 'en-US.js'
+            name: 'English',
+            iso: 'en',
+            file: 'en.js'
+          },
+          {
+            code: 'cn',
+            name: '中文',
+            iso: 'cn',
+            file: 'cn.js'
           }
         ],
         lazy: true,

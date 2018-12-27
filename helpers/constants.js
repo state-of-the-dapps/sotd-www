@@ -222,6 +222,11 @@ const languages = Object.freeze([
   }
 ])
 
+const localeStrings = Object.freeze({
+  en: `English`,
+  cn: `中文`
+})
+
 const myListLimit = 50
 
 const newDapps = [
@@ -371,6 +376,7 @@ export {
   homeCollectionSlots,
   homeFeaturedCollections,
   languages,
+  localeStrings,
   newDapps,
   myListLimit,
   platformList,

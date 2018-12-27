@@ -1,7 +1,9 @@
 <template>
   <div class="component-HomeHero">
     <div class="wrapper">
-      <BaseMenu color="white" />
+      <BaseMenu
+        :is-home="true"
+        color="white"/>
       <div class="hero-wrapper">
         <HomeHeroContent/>
       </div>

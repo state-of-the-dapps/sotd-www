@@ -90,7 +90,7 @@
       <media :query="{maxWidth: 975}">
         <li class="nav-item -search">
           <nuxt-link 
-            :class="[hideSearch ? 'hidden' : '', '-' + color]" 
+            :class="'-' + color" 
             :to="localePath({ name: 'dapps' })" 
             class="nav-link -search" 
             @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
@@ -99,7 +99,7 @@
     </ul>
     <media :query="{minWidth: 976}">
       <ul 
-        :class="[hideSearch ? 'hidden' : '', search.length ? 'is-searching' : '']" 
+        :class="search.length ? 'is-searching' : ''" 
         class="nav-list-search">
         <li class="nav-item -search">
           <GlobalSearch
@@ -114,15 +114,15 @@
       <li class="nav-item -submit">
         <nuxt-link 
           :to="localePath({ name: 'dapps-new' })" 
-          :class="$route.name === 'home' ? 'is-home' : ''" 
+          :class="isHome ? 'is-home' : ''"
           class="nav-link -submit" 
           @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
       </li>
       <li class="nav-item -lang">
         <BaseDropdown
           :options="languages"
-          :selected="'English'"
-          :theme="'menu ' + $route.name"
+          :selected="locale"
+          :theme="dropdownTheme"
           title="Language"
           @select="setLang"/>
       </li>
@@ -134,7 +134,7 @@
 import Media from 'vue-media'
 import { directive as onClickaway } from 'vue-clickaway'
 import { mapGetters } from 'vuex'
-import { languages } from '@/helpers/constants'
+import { languages, localeStrings } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
 import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
@@ -160,6 +160,10 @@ export default {
     color: {
       type: String,
       default: 'black'
+    },
+    isHome: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -171,17 +175,21 @@ export default {
     }
   },
   computed: {
-    hideSearch() {
-      return !(
-        this.$route.name != 'dapps' &&
-        this.$route.name != 'dapps-category' &&
-        this.$route.name != 'dapps-platform' &&
-        this.$route.name != 'dapps-platform-category'
-      )
+    locale() {
+      return localeStrings[this.$i18n.locale]
+    },
+    dropdownTheme() {
+      let theme = 'menu'
+      if (this.isHome) {
+        theme += ' home'
+      }
+      return theme
     }
   },
   methods: {
-    setLang() {},
+    setLang(lang) {
+      this.$router.push(this.switchLocalePath(lang))
+    },
     setSearch(value) {
       this.search = value
     },
