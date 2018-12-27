@@ -233,7 +233,7 @@ export default {
   display: flex;
   align-items: center;
   background: rgba($color--black, 0.1);
-  padding: 8px 12px;
+  padding: 7px 12px;
   border-radius: 3px;
   min-width: 250px;
   position: relative;

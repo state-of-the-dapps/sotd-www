@@ -124,7 +124,7 @@
           :selected="'English'"
           :theme="'menu ' + $route.name"
           title="Language"
-          @select="selectLang"/>
+          @select="setLang"/>
       </li>
     </ul>
   </div>
@@ -181,7 +181,7 @@ export default {
     }
   },
   methods: {
-    selectLang() {},
+    setLang() {},
     setSearch(value) {
       this.search = value
     },
