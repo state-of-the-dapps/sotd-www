@@ -234,7 +234,13 @@ export default {
     },
     selectedColumn: {
       type: Object,
-      required: true
+      required: true,
+      default: () => {
+        return {
+          text: '',
+          selection: ''
+        }
+      }
     }
   },
   data() {
@@ -330,6 +336,7 @@ export default {
 .col-rank {
   width: 50px;
   margin-right: 15px;
+  align-self: stretch;
 }
 
 .col-usage {

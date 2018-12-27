@@ -2,7 +2,7 @@
   <div>
     <section class="section -intro">
       <div class="container">
-        <PageTitle title="Submit a ÐApp"/>
+        <PageHeading title="Submit a ÐApp"/>
         <div class="help-wrapper">
           <div class="icon-wrapper">
             <img
@@ -33,12 +33,12 @@
 <script>
 import { openIntercom } from '~/helpers/mixins'
 import DappForm from '~/components/DappForm'
-import PageTitle from '~/components/PageTitle'
+import PageHeading from '~/components/PageHeading'
 
 export default {
   components: {
     DappForm,
-    PageTitle
+    PageHeading
   },
   mixins: [openIntercom],
   head() {
@@ -51,13 +51,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
-
-.title-1 {
-  @include title-1;
-  text-align: center;
-  font-size: 3.2rem;
-  margin: 0;
-}
 
 .description {
   text-align: left;

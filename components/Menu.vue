@@ -47,9 +47,6 @@
           class="nav-link" 
           @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
-      <!-- <li class="nav-item">
-      <nuxt-link class="nav-link" :class="'-' + color" :to="{ name: 'collections' }" @click.native="trackMenu('collections')">Collections</nuxt-link>
-    </li> -->
       <li class="nav-item -stats">
         <nuxt-link 
           :class="'-' + color" 
@@ -58,33 +55,29 @@
           exact 
           @click.native="trackMenu('stats')">Stats</nuxt-link>
       </li>
-      <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-category' && this.$route.name != 'dapps-platform' && this.$route.name != 'dapps-platform-category'">
-        <media :query="{maxWidth: 975}">
-          <li class="nav-item">
-            <nuxt-link 
-              :class="'-' + color" 
-              :to="{ name: 'dapps' }" 
-              class="nav-link -search" 
-              @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
-          </li>
-        </media>
-      </template>
-    </ul>
-    <template v-if="this.$route.name != 'dapps' && this.$route.name != 'dapps-category' && this.$route.name != 'dapps-platform' && this.$route.name != 'dapps-platform-category'">
-      <media :query="{minWidth: 975}">
-        <ul 
-          :class="search.length ? 'is-searching' : ''" 
-          class="nav-list-search">
-          <li class="nav-item -search">
-            <GlobalSearch
-              :color="color"
-              :search="search"
-              @setSearch="setSearch"
-            />
-          </li>
-        </ul>
+      <media :query="{maxWidth: 975}">
+        <li class="nav-item">
+          <nuxt-link 
+            :class="[hideSearch ? 'hidden' : '', '-' + color]" 
+            :to="{ name: 'dapps' }" 
+            class="nav-link -search" 
+            @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+        </li>
       </media>
-    </template>
+    </ul>
+    <media :query="{minWidth: 975}">
+      <ul 
+        :class="[hideSearch ? 'hidden' : '', search.length ? 'is-searching' : '']" 
+        class="nav-list-search">
+        <li class="nav-item -search">
+          <GlobalSearch
+            :color="color"
+            :search="search"
+            @setSearch="setSearch"
+          />
+        </li>
+      </ul>
+    </media>
     <ul class="nav-list-submit">
       <li class="nav-item -submit">
         <nuxt-link 
@@ -124,13 +117,19 @@ export default {
   },
   data() {
     return {
-      list: [],
       search: '',
       sourcePath: this.$route.path
     }
   },
   computed: {
-    ...mapGetters(['statDappCount'])
+    hideSearch() {
+      return !(
+        this.$route.name != 'dapps' &&
+        this.$route.name != 'dapps-category' &&
+        this.$route.name != 'dapps-platform' &&
+        this.$route.name != 'dapps-platform-category'
+      )
+    }
   },
   methods: {
     setSearch(value) {
@@ -190,6 +189,10 @@ export default {
       height: 26px;
     }
   }
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .nameplate {

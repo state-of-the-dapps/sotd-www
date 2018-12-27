@@ -6,26 +6,12 @@
           <slot/>
         </div>
       </div>
+      <style>
+        body {overflow: hidden;}
+      </style>
     </div>
   </transition>
 </template>
-
-<script>
-import { mapActions } from 'vuex'
-
-export default {
-  destroyed() {
-    this.setPageModal(false)
-  },
-  mounted() {
-    this.setPageModal(true)
-  },
-  methods: {
-    ...mapActions(['setPageModal'])
-  }
-}
-</script>
-
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
@@ -37,7 +23,7 @@ export default {
   right: 0;
   bottom: 0;
   z-index: 50;
-  background: rgba($color--black, 0.5);
+  background: rgba($color--black, 0.75);
   display: flex;
   justify-content: center;
   overflow-y: scroll;

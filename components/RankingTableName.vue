@@ -95,7 +95,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-ranking-table-name {
-  padding: 5px 0;
+  padding: 13px 0;
   display: flex;
   align-items: center;
   text-align: left;

@@ -24,9 +24,6 @@ export default {
       direct: false
     }
   },
-  computed: {
-    ...mapGetters(['pageModal'])
-  },
   asyncData({ store, params, error, app, redirect }) {
     return app.$axios.get('dapps/' + params.slug).then(response => {
       const data = response.data

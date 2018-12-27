@@ -44,6 +44,12 @@
         </li>
       </ul>
     </div>
+    <BaseModal v-if="shareModal">
+      <ModalDappsDetailShare
+        :dapp-name="name"
+        :dapp-slug="slug"
+        @close="closeShareModal"/>
+    </BaseModal>
   </div>
 </template>
 
@@ -54,6 +60,8 @@ import {
   trackDappFlag,
   trackPromotedDappsView
 } from '~/helpers/mixpanel'
+import BaseModal from './BaseModal'
+import ModalDappsDetailShare from './ModalDappsDetailShare'
 import SvgIconEdit from './SvgIconEdit'
 import SvgIconFeatured from './SvgIconFeatured'
 import SvgIconFlag from './SvgIconFlag'
@@ -61,6 +69,8 @@ import SvgIconShare from './SvgIconShare'
 
 export default {
   components: {
+    BaseModal,
+    ModalDappsDetailShare,
     SvgIconEdit,
     SvgIconFeatured,
     SvgIconFlag,
@@ -78,6 +88,7 @@ export default {
   },
   data() {
     return {
+      shareModal: false,
       sourcePath: this.$route.path
     }
   },
@@ -87,6 +98,9 @@ export default {
     }
   },
   methods: {
+    closeShareModal() {
+      this.shareModal = false
+    },
     trackPromotedDappsView() {
       const sourceComponent = 'DappDetailBodyContentTools'
       const action = trackPromotedDappsView(
@@ -129,17 +143,9 @@ export default {
       this.$router.push(route)
     },
     viewDappShare() {
+      this.shareModal = true
       const action = trackDappShare(this.slug)
       this.$mixpanel.track(action.name, action.data)
-      const modal = {
-        component: 'ModalDappsDetailShare',
-        mpData: {},
-        props: {
-          dapp: this.name,
-          path: `https://www.stateofthedapps.com${this.$route.path}`
-        }
-      }
-      this.$store.dispatch('setSiteModal', modal)
     }
   }
 }

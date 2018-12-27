@@ -1,7 +1,7 @@
 <template>
-  <div class="component-ModalDappsDetailShare">
-    <h1 class="title-1">Share {{ modalProps.dapp }} with a friend</h1>
-    <p class="message">{{ modalProps.path }}</p>
+  <div class="component-modal-dapps-detail-share">
+    <h1 class="title-1">Share {{ dappName }} with a friend</h1>
+    <p class="message">https://www.stateofthedapps.com/dapps/{{ dappSlug }}</p>
     <p class="cta-wrapper"><button 
       class="cta" 
       @click="close">I've copied this link!</button></p>
@@ -11,19 +11,18 @@
 <script>
 export default {
   props: {
-    modalProps: {
-      type: Object,
+    dappName: {
+      type: String,
+      required: true
+    },
+    dappSlug: {
+      type: String,
       required: true
     }
   },
   methods: {
     close() {
-      const modal = {
-        component: '',
-        mpData: {},
-        props: {}
-      }
-      this.$store.dispatch('setSiteModal', modal)
+      this.$emit('close')
     }
   }
 }
@@ -31,6 +30,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
+
+.component-modal-dapps-detail-share {
+  text-align: center;
+}
 
 .cta {
   background: $color--black;

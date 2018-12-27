@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="component-dapp-form">
     <section class="section -form">
       <div class="container">
         <DappFormFields
@@ -55,19 +55,26 @@
           @updateCheckbox="updateCheckbox"/>
       </div>
     </section>
+    <BaseModal v-if="confirmationModal">
+      <ModalDappsNewConfirmation/>
+    </BaseModal>
   </div>
 </template>
 
 <script>
 import equal from 'deep-equal'
 import { dappDefaultPlatform } from '~/helpers/constants'
+import BaseModal from './BaseModal'
 import DappFormFields from '~/components/DappFormFields'
 import DappFormSave from '~/components/DappFormSave'
+import ModalDappsNewConfirmation from '~/components/ModalDappsNewConfirmation'
 
 export default {
   components: {
+    BaseModal,
     DappFormFields,
-    DappFormSave
+    DappFormSave,
+    ModalDappsNewConfirmation
   },
   props: {
     endpoint: {
@@ -89,6 +96,7 @@ export default {
   },
   data() {
     return {
+      confirmationModal: false,
       diffExists: false,
       errorFields: [
         'authors',
@@ -371,19 +379,11 @@ export default {
     }
   },
   mounted() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('beforeunload', this.warnBeforeReload)
-    }
     if (this.formType === 'edit') {
       this.errorFields = ['email', 'acceptedTerms']
       this.fields = { ...this.fields, ...this.dapp }
       this.profileScore = this.profileScore
       this.originalFields = { ...this.fields }
-    }
-  },
-  destroyed() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('beforeunload', this.warnBeforeReload)
     }
   },
   methods: {
@@ -494,12 +494,7 @@ export default {
             author: data.fields.author,
             subscribeNewsletter: data.fields.subscribeNewsletter
           })
-          const modal = {
-            component: 'ModalDappsNewConfirmation',
-            mpData: {},
-            props: {}
-          }
-          this.$store.dispatch('setSiteModal', modal)
+          this.confirmationModal = true
         })
         .catch(error => {
           alert(error.response.data.message)

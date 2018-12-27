@@ -1,6 +1,6 @@
 <template>
   <li class="contract-item">
-    <h4 class="contract-name">{{ network | capitalize }} contract<span v-if="addresses.length > 1">s</span> ({{ platform }})</h4>
+    <h4 class="contract-name">{{ network | capitalize }} {{ label | pluralize(addresses.length) }} ({{ platform }})</h4>
     <ul class="contract-addresses">
       <DappDetailBodyContentModulesContractsAddress
         v-for="(address, index) in visibleAddresses"
@@ -55,6 +55,13 @@ export default {
     }
   },
   computed: {
+    label() {
+      if (this.platform === 'Steem') {
+        return 'address'
+      } else {
+        return 'contract'
+      }
+    },
     visibleAddresses() {
       const addresses = this.addresses.slice(0, this.visibleLimit)
       return addresses

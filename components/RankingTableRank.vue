@@ -27,7 +27,7 @@ export default {
   background: darken($color--white, 2%);
   border-right: 1px solid darken($color--gray, 5%);
   display: flex;
-  height: 70px;
+  height: 100%;
   align-items: center;
   justify-content: center;
   border-top-left-radius: 4px;
