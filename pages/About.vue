@@ -3,10 +3,23 @@
     <section class="section">
       <div class="text-container">
         <h1>About</h1>
-        <p class="intro">State of the ÐApps is a not-for-profit curated directory of Decentralized Applications, also called ÐApps, on the <a 
+        <p class="intro">State of the ÐApps is a not-for-profit curated directory of Decentralized Applications, also called ÐApps, which run on various several blockchains.
+        State of ÐApps was initially created to categorize and showcase developed projects built on the <a 
           href="https://ethereum.org/" 
           target="_blank" 
-          rel="noopener">Ethereum Blockchain</a>. State of ÐApps was created to categorize and showcase developed projects built on the Ethereum Blockchain.</p>
+          rel="noopener">Ethereum</a> Blockchain, but more recently we have added support for 
+          <a 
+            href="https://eos.io/" 
+            target="_blank" 
+            rel="noopener">EOS</a>
+          <a 
+            href="https://poa.network/" 
+            target="_blank" 
+            rel="noopener">POA</a> and
+          <a 
+            href="https://steem.com/" 
+            target="_blank" 
+            rel="noopener">Steem</a> as well.</p>
         <p>The inspiration for State of the ÐApps came from FreshMeat now known as <a 
           href="http://freecode.com/" 
           target="_blank" 
