@@ -72,7 +72,7 @@
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="{name: 'dapps-new'}"
-                    class="dropdown-link">Submit a DApp</nuxt-link>
+                    class="dropdown-link">Submit a ÐApp</nuxt-link>
                 </li>
               </ul>
             </div>
