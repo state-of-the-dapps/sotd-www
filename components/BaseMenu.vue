@@ -264,6 +264,7 @@ export default {
     background: rgba($color--black, 0.1);
   }
   &.active {
+    color: $color--black;
     background: $color--white;
     box-shadow: 0 4px 10px rgba($color--black, 0.1);
     border-bottom-left-radius: 0;
@@ -289,6 +290,7 @@ export default {
 }
 
 .dropdown-link {
+  color: $color--black !important;
   display: block;
   padding: 1px 7px;
   text-decoration: none;
