@@ -405,7 +405,7 @@ export default {
 }
 
 .heading {
-  font-weight: 300;
+  font-weight: normal;
   font-size: 1.2rem;
   margin-bottom: 0;
 }
@@ -442,7 +442,7 @@ export default {
 }
 
 .table-heading {
-  font-weight: 400;
+  font-weight: normal;
   padding-bottom: 10px;
   &:first-child {
     padding-left: 0;

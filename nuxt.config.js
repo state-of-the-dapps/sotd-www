@@ -39,14 +39,14 @@ export default {
           {
             code: 'en',
             name: 'English',
-            iso: 'en',
-            file: 'en.js'
+            iso: 'en-US',
+            file: 'en-US.js'
           },
           {
-            code: 'cn',
+            code: 'zh',
             name: '中文',
-            iso: 'cn',
-            file: 'cn.js'
+            iso: 'zh-CN',
+            file: 'zh-CN.js'
           }
         ],
         lazy: true,

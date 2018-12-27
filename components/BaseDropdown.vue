@@ -145,7 +145,7 @@ export default {
   &.is-active {
     font-weight: 700;
     .menu & {
-      font-weight: 300;
+      font-weight: normal;
     }
   }
 }

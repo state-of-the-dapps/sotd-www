@@ -63,7 +63,7 @@ export default {
 .label {
   font-family: 'Dharma-Gothic-Regular';
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: normal;
   margin: 5px 0;
   letter-spacing: normal;
   text-transform: uppercase;

@@ -192,7 +192,7 @@ export default {
 }
 
 .label-dau {
-  font-weight: 300;
+  font-weight: normal;
   font-size: 0.95rem;
   position: absolute;
   right: 0;
@@ -216,6 +216,6 @@ export default {
   letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: normal;
 }
 </style>

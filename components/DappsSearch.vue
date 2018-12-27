@@ -176,7 +176,7 @@ export default {
 
 .sub-heading {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: normal;
   letter-spacing: 2px;
   font-size: 1rem;
   margin-bottom: 0;
@@ -184,7 +184,7 @@ export default {
 
 .heading {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: normal;
   letter-spacing: 2px;
   margin-top: 0;
   margin-bottom: 1.3rem;

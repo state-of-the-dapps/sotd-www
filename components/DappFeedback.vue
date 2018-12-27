@@ -107,7 +107,7 @@ export default {
 }
 
 .title-3 {
-  font-weight: 300;
+  font-weight: normal;
   font-size: 1rem;
   margin: 0;
   @include tweakpoint('min-width', 1100px) {

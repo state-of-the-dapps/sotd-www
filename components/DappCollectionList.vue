@@ -89,7 +89,7 @@ export default {
   letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 .link {

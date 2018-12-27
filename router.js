@@ -155,9 +155,9 @@ export function createRouter() {
         name: 'home___en'
       },
       {
-        path: '/cn',
+        path: '/zh',
         component: Home,
-        name: 'home___cn'
+        name: 'home___zh'
       },
       {
         path: '/about',
@@ -165,9 +165,9 @@ export function createRouter() {
         name: 'about___en'
       },
       {
-        path: '/cn/about',
+        path: '/zh/about',
         component: About,
-        name: 'about___cn'
+        name: 'about___zh'
       },
       {
         path: '/collections',
@@ -175,9 +175,9 @@ export function createRouter() {
         name: 'collections___en'
       },
       {
-        path: '/cn/collections',
+        path: '/zh/collections',
         component: Collections,
-        name: 'collections___cn'
+        name: 'collections___zh'
       },
       {
         path: '/collections/:slug',
@@ -185,9 +185,9 @@ export function createRouter() {
         name: 'collection-detail___en'
       },
       {
-        path: '/cn/collections/:slug',
+        path: '/zh/collections/:slug',
         component: CollectionDetail,
-        name: 'collection-detail___cn'
+        name: 'collection-detail___zh'
       },
       {
         path: '/dapps/submit/new',
@@ -195,17 +195,17 @@ export function createRouter() {
         name: 'dapps-new___en'
       },
       {
-        path: '/cn/dapps/submit/new',
+        path: '/zh/dapps/submit/new',
         component: DappsNew,
-        name: 'dapps-new___cn'
+        name: 'dapps-new___zh'
       },
       {
         path: '/dapps/new/form',
         redirect: { name: 'help-metamask___en' }
       },
       {
-        path: '/cn/dapps/new/form',
-        redirect: { name: 'help-metamask___cn' }
+        path: '/zh/dapps/new/form',
+        redirect: { name: 'help-metamask___zh' }
       },
       {
         path: '/dapps/submit/new/confirmation',
@@ -213,9 +213,9 @@ export function createRouter() {
         name: 'dapps-new-confirmation___en'
       },
       {
-        path: '/cn/dapps/submit/new/confirmation',
+        path: '/zh/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation___cn'
+        name: 'dapps-new-confirmation___zh'
       },
       {
         path: '/dapps/:slug',
@@ -223,9 +223,9 @@ export function createRouter() {
         name: 'dapp-detail-direct___en'
       },
       {
-        path: '/cn/dapps/:slug',
+        path: '/zh/dapps/:slug',
         component: DappDetailDirect,
-        name: 'dapp-detail-direct___cn'
+        name: 'dapp-detail-direct___zh'
       },
       {
         path: '/dapps/:slug',
@@ -233,9 +233,9 @@ export function createRouter() {
         name: 'dapp-detail___en'
       },
       {
-        path: '/cn/dapps/:slug',
+        path: '/zh/dapps/:slug',
         component: DappDetail,
-        name: 'dapp-detail___cn'
+        name: 'dapp-detail___zh'
       },
       {
         path: '/dapps/:slug/edit',
@@ -243,9 +243,9 @@ export function createRouter() {
         name: 'dapp-detail-edit___en'
       },
       {
-        path: '/cn/dapps/:slug/edit',
+        path: '/zh/dapps/:slug/edit',
         component: DappDetailEdit,
-        name: 'dapp-detail-edit___cn'
+        name: 'dapp-detail-edit___zh'
       },
       {
         path: '/dapps/:slug/flag',
@@ -253,9 +253,9 @@ export function createRouter() {
         name: 'dapp-detail-flag___en'
       },
       {
-        path: '/cn/dapps/:slug/flag',
+        path: '/zh/dapps/:slug/flag',
         component: DappDetailFlag,
-        name: 'dapp-detail-flag___cn'
+        name: 'dapp-detail-flag___zh'
       },
       {
         path: '/dapps/:slug/improve',
@@ -263,9 +263,9 @@ export function createRouter() {
         name: 'dapp-detail-improve___en'
       },
       {
-        path: '/cn/dapps/:slug/improve',
+        path: '/zh/dapps/:slug/improve',
         component: DappDetailImprove,
-        name: 'dapp-detail-improve___cn'
+        name: 'dapp-detail-improve___zh'
       },
       {
         path: '/dapps/:slug/meta',
@@ -273,9 +273,9 @@ export function createRouter() {
         name: 'dapp-detail-meta___en'
       },
       {
-        path: '/cn/dapps/:slug/meta',
+        path: '/zh/dapps/:slug/meta',
         component: DappDetailMeta,
-        name: 'dapp-detail-meta___cn'
+        name: 'dapp-detail-meta___zh'
       },
       {
         path: '/logos',
@@ -283,9 +283,9 @@ export function createRouter() {
         name: 'logos___en'
       },
       {
-        path: '/cn/logos',
+        path: '/zh/logos',
         component: Logos,
-        name: 'logos___cn'
+        name: 'logos___zh'
       },
       {
         path: '/rankings',
@@ -293,9 +293,9 @@ export function createRouter() {
         name: 'rankings___en'
       },
       {
-        path: '/cn/rankings',
+        path: '/zh/rankings',
         component: Rankings,
-        name: 'rankings___cn'
+        name: 'rankings___zh'
       },
       {
         path: '/rankings/category/:category',
@@ -303,9 +303,9 @@ export function createRouter() {
         name: 'rankings-category___en'
       },
       {
-        path: '/cn/rankings/category/:category',
+        path: '/zh/rankings/category/:category',
         component: Rankings,
-        name: 'rankings-category___cn'
+        name: 'rankings-category___zh'
       },
       {
         path: '/rankings/platform/:platform',
@@ -313,9 +313,9 @@ export function createRouter() {
         name: 'rankings-platform___en'
       },
       {
-        path: '/cn/rankings/platform/:platform',
+        path: '/zh/rankings/platform/:platform',
         component: Rankings,
-        name: 'rankings-platform___cn'
+        name: 'rankings-platform___zh'
       },
       {
         path: '/rankings/platform/:platform/category/:category',
@@ -323,9 +323,9 @@ export function createRouter() {
         name: 'rankings-platform-category___en'
       },
       {
-        path: '/cn/rankings/platform/:platform/category/:category',
+        path: '/zh/rankings/platform/:platform/category/:category',
         component: Rankings,
-        name: 'rankings-platform-category___cn'
+        name: 'rankings-platform-category___zh'
       },
       {
         path: '/promoted-dapps',
@@ -333,9 +333,9 @@ export function createRouter() {
         name: 'promoted-dapps-direct___en'
       },
       {
-        path: '/cn/promoted-dapps',
+        path: '/zh/promoted-dapps',
         component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct___cn'
+        name: 'promoted-dapps-direct___zh'
       },
       {
         path: '/promoted-dapps',
@@ -343,25 +343,25 @@ export function createRouter() {
         name: 'promoted-dapps___en'
       },
       {
-        path: '/cn/promoted-dapps',
+        path: '/zh/promoted-dapps',
         component: PromotedDapps,
-        name: 'promoted-dapps___cn'
+        name: 'promoted-dapps___zh'
       },
       {
         path: '/submit',
         redirect: { name: 'dapps-new___en' }
       },
       {
-        path: '/cn/submit',
-        redirect: { name: 'dapps-new___cn' }
+        path: '/zh/submit',
+        redirect: { name: 'dapps-new___zh' }
       },
       {
         path: '/tagged/metamask',
         redirect: { name: 'help-metamask___en' }
       },
       {
-        path: '/cn/tagged/metamask',
-        redirect: { name: 'help-metamask___cn' }
+        path: '/zh/tagged/metamask',
+        redirect: { name: 'help-metamask___zh' }
       },
       {
         path: '/tagged/:tags',
@@ -415,9 +415,9 @@ export function createRouter() {
         name: 'dapps___en'
       },
       {
-        path: '/cn/dapps',
+        path: '/zh/dapps',
         component: Dapps,
-        name: 'dapps___cn'
+        name: 'dapps___zh'
       },
       {
         path: '/dapps/category/:category',
@@ -425,9 +425,9 @@ export function createRouter() {
         name: 'dapps-category___en'
       },
       {
-        path: '/cn/dapps/category/:category',
+        path: '/zh/dapps/category/:category',
         component: Dapps,
-        name: 'dapps-category___cn'
+        name: 'dapps-category___zh'
       },
       {
         path: '/dapps/platform/:platform',
@@ -435,9 +435,9 @@ export function createRouter() {
         name: 'dapps-platform___en'
       },
       {
-        path: '/cn/dapps/platform/:platform',
+        path: '/zh/dapps/platform/:platform',
         component: Dapps,
-        name: 'dapps-platform___cn'
+        name: 'dapps-platform___zh'
       },
       {
         path: '/dapps/platform/:platform/category/:category',
@@ -445,9 +445,9 @@ export function createRouter() {
         name: 'dapps-platform-category___en'
       },
       {
-        path: '/cn/dapps/platform/:platform/category/:category',
+        path: '/zh/dapps/platform/:platform/category/:category',
         component: Dapps,
-        name: 'dapps-platform-category___cn'
+        name: 'dapps-platform-category___zh'
       },
       {
         path: '/dapps/tab/:tab',
@@ -475,9 +475,9 @@ export function createRouter() {
         name: 'help-metamask___en'
       },
       {
-        path: '/cn/help/metamask',
+        path: '/zh/help/metamask',
         component: HelpMetamask,
-        name: 'help-metamask___cn'
+        name: 'help-metamask___zh'
       },
       {
         path: '/stats',
@@ -485,9 +485,9 @@ export function createRouter() {
         name: 'stats___en'
       },
       {
-        path: '/cn/stats',
+        path: '/zh/stats',
         component: Stats,
-        name: 'stats___cn'
+        name: 'stats___zh'
       },
       {
         path: '/terms',
@@ -495,9 +495,9 @@ export function createRouter() {
         name: 'terms___en'
       },
       {
-        path: '/cn/terms',
+        path: '/zh/terms',
         component: Terms,
-        name: 'terms___cn'
+        name: 'terms___zh'
       },
       {
         path: '/whats-a-dapp',
@@ -505,9 +505,9 @@ export function createRouter() {
         name: 'what___en'
       },
       {
-        path: '/cn/whats-a-dapp',
+        path: '/zh/whats-a-dapp',
         component: What,
-        name: 'what___cn'
+        name: 'what___zh'
       }
     ],
     fallback: false

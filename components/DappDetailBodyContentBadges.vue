@@ -80,7 +80,7 @@ export default {
 }
 
 .subtitle {
-  font-weight: 300;
+  font-weight: normal;
   margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {

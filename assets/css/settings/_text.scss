@@ -1,7 +1,7 @@
 @mixin title {
   font-family: 'Dharma-Gothic-Regular';
   letter-spacing: 0.25px;
-  font-weight: 300;  
+  font-weight: normal;  
 }
 
 @mixin title-1 {
@@ -30,5 +30,5 @@
 @mixin dharma-gothic {
   font-family: 'Dharma-Gothic-Regular';
   letter-spacing: 0px;
-  font-weight: 300;
+  font-weight: normal;
 }

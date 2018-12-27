@@ -218,13 +218,13 @@ const languages = Object.freeze([
   },
   {
     text: '中文',
-    selection: 'cn'
+    selection: 'zh'
   }
 ])
 
 const localeStrings = Object.freeze({
   en: `English`,
-  cn: `中文`
+  zh: `中文`
 })
 
 const myListLimit = 50

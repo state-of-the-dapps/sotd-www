@@ -52,7 +52,7 @@ export default {
   margin-right: auto;
 }
 .sub-heading {
-  font-weight: 300;
+  font-weight: normal;
   text-transform: uppercase;
   font-size: 1.1rem;
   letter-spacing: 2px;
