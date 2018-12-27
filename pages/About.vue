@@ -4,14 +4,14 @@
       <div class="text-container">
         <h1>About</h1>
         <p class="intro">State of the ÐApps is a not-for-profit curated directory of Decentralized Applications, also called ÐApps, which run on various several blockchains.
-        State of ÐApps was initially created to categorize and showcase developed projects built on the <a 
+        State of the ÐApps was initially created to categorize and showcase developed projects built on the <a 
           href="https://ethereum.org/" 
           target="_blank" 
           rel="noopener">Ethereum</a> Blockchain, but more recently we have added support for 
           <a 
             href="https://eos.io/" 
             target="_blank" 
-            rel="noopener">EOS</a>
+            rel="noopener">EOS</a>,
           <a 
             href="https://poa.network/" 
             target="_blank" 
