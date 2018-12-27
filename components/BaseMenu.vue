@@ -49,9 +49,34 @@
       </li>
       <media :query="{maxWidth: 699}">
         <li class="nav-item -more">
-          <span class="bullet">&bull;</span>
-          <span class="bullet">&bull;</span>
-          <span class="bullet">&bull;</span>
+          <button
+            :class="more ? 'active' : ''"
+            class="more-button"
+            @click="toggleMore">
+            <span class="bullet">&bull;</span><span class="bullet">&bull;</span><span class="bullet">&bull;</span>
+            <div
+              v-on-clickaway="toggleMore"
+              v-if="more"
+              class="dropdown">
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="{name: 'stats'}"
+                    class="dropdown-link">Stats</nuxt-link>
+                </li>
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="{name: 'dapps'}"
+                    class="dropdown-link">Search</nuxt-link>
+                </li>
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="{name: 'dapps-new'}"
+                    class="dropdown-link">Submit a DApp</nuxt-link>
+                </li>
+              </ul>
+            </div>
+          </button>
         </li>
       </media>
       <li class="nav-item -stats">
@@ -72,7 +97,7 @@
         </li>
       </media>
     </ul>
-    <media :query="{minWidth: 975}">
+    <media :query="{minWidth: 976}">
       <ul 
         :class="[hideSearch ? 'hidden' : '', search.length ? 'is-searching' : '']" 
         class="nav-list-search">
@@ -107,6 +132,7 @@
 
 <script>
 import Media from 'vue-media'
+import { directive as onClickaway } from 'vue-clickaway'
 import { mapGetters } from 'vuex'
 import { languages } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
@@ -127,6 +153,9 @@ export default {
     SvgIconMagnifier,
     SvgLogotype
   },
+  directives: {
+    onClickaway
+  },
   props: {
     color: {
       type: String,
@@ -136,6 +165,7 @@ export default {
   data() {
     return {
       languages,
+      more: false,
       search: '',
       sourcePath: this.$route.path
     }
@@ -154,6 +184,9 @@ export default {
     selectLang() {},
     setSearch(value) {
       this.search = value
+    },
+    toggleMore() {
+      this.more = !this.more
     },
     trackMenu(targetMenuItem) {
       const action = trackMenu(this.sourcePath, targetMenuItem)
@@ -185,7 +218,7 @@ export default {
 .bullet {
   display: inline-block;
   &:nth-child(2) {
-    padding: 0 2px;
+    padding: 0 1px;
   }
 }
 
@@ -222,6 +255,48 @@ export default {
   visibility: hidden;
 }
 
+.more-button {
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: transparent;
+  position: relative;
+  &:hover {
+    background: rgba($color--black, 0.1);
+  }
+  &.active {
+    background: $color--white;
+    box-shadow: 0 4px 10px rgba($color--black, 0.1);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  width: 125px;
+  z-index: 100;
+  left: 0;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  box-shadow: 0 4px 10px rgba($color--black, 0.1);
+  background: $color--white;
+  text-align: left;
+}
+
+.dropdown-list {
+  padding: 8px 0;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 1px 7px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .nameplate {
   display: flex;
   align-items: center;
@@ -233,11 +308,14 @@ export default {
 }
 
 .nav-item {
-  margin-left: 20px;
+  margin-left: 15px;
   display: flex;
   align-items: center;
   text-align: center;
   cursor: pointer;
+  @include tweakpoint('min-width', 700px) {
+    margin-left: 20px;
+  }
   &.-lang {
     margin-left: 12px;
   }
@@ -293,11 +371,8 @@ export default {
     border: 1px solid $color--black;
     color: $color--white;
     background: $color--black;
-    padding: 5px;
+    padding: 7px 15px;
     border-radius: 4px;
-    @include tweakpoint('min-width', 840px) {
-      padding: 7px 15px;
-    }
     &.is-home {
       background: transparent;
       border-color: rgba($color--white, 0.8);

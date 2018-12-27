@@ -28,6 +28,7 @@
             @click="close">{{ title }}</h4>
           <ul class="option-list">
             <li
+              v-if="allText"
               class="option-item"
               role="button"
               @click="select('')"

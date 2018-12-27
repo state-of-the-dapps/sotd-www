@@ -27,7 +27,7 @@ export default {
 .component-HomeHero {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
-  padding: 10px 0 20px 0;
+  padding: 7px 0 20px 0;
   @include tweakpoint('min-width', 575px) {
     background-image: $gradient--main-2;
     padding-top: 7px;
