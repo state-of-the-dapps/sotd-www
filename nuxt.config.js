@@ -29,7 +29,28 @@ export default {
     '@nuxtjs/sentry',
     '@nuxtjs/router',
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    [
+      'nuxt-i18n',
+      {
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected'
+        },
+        baseUrl: 'https://www.stateofthedapps.com',
+        strategy: 'prefix_except_default',
+        defaultLocale: 'en',
+        locales: [
+          {
+            code: 'en',
+            iso: 'en-US',
+            file: 'en-US.js'
+          }
+        ],
+        lazy: true,
+        langDir: 'lang/'
+      }
+    ]
   ],
   axios: {
     baseUrl: env.apiUrl,

@@ -2,7 +2,7 @@
   <div class="component-HomeFeaturedCollections">
     <h2 class="title-2">
       <nuxt-link 
-        :to="{ name: 'collections'}" 
+        :to="localePath({ name: 'collections'})" 
         class="header-cta" 
         @click.native="trackCollectionView('home')">
         <SvgIconCollection 
@@ -10,7 +10,7 @@
           :height="16"/>ÐApp Collections
       </nuxt-link>
       <nuxt-link 
-        :to="{ name: 'collections'}" 
+        :to="localePath({ name: 'collections'})" 
         class="cta" 
         @click.native="trackCollectionView('home')">View all
         <SvgIconChevron 

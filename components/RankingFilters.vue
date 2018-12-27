@@ -84,7 +84,7 @@ export default {
       if (category) {
         path += `/category/${category.toLowerCase()}`
       }
-      this.$router.push({ path })
+      this.$router.push(this.localePath({ path }))
     },
     filterPlatform(platform) {
       this.platform = platformMap[platform]
@@ -96,7 +96,7 @@ export default {
       if (this.category) {
         path += `/category/${this.category.toLowerCase()}`
       }
-      this.$router.push({ path })
+      this.$router.push(this.localePath({ path }))
     },
     trackDappRankingCategory(category) {
       const sourceComponent = 'RankingFilters'

@@ -40,7 +40,9 @@ export default {
   methods: {
     findDappsByTag(tag) {
       this.trackDappTag(tag)
-      this.$router.push({ name: 'dapps', query: { tags: tag } })
+      this.$router.push(
+        this.localePath({ name: 'dapps', query: { tags: tag } })
+      )
     },
     trackDappTag(name) {
       const action = trackDappTag(name, this.slug)

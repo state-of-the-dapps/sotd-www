@@ -15,19 +15,19 @@
       </li>
       <li class="nav-item">
         <nuxt-link 
-          :to="{ name: 'dapps-new' }" 
+          :to="localePath({ name: 'dapps-new' })" 
           class="nav-link" 
           @click.native="trackFooterSubmit()">Submit a ÐApp</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
-          :to="{ name: 'promoted-dapps' }" 
+          :to="localePath({ name: 'promoted-dapps' })" 
           class="nav-link" 
           @click.native="trackPromotedDappsView()">Promote your ÐApp</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
-          :to="{ name: 'logos' }" 
+          :to="localePath({ name: 'logos' })" 
           class="nav-link" 
           @click.native="trackFooterLogoDownload()">Download our logo</nuxt-link>
       </li>
@@ -40,7 +40,7 @@
       </li>
       <li class="nav-item">
         <nuxt-link 
-          :to="{ name: 'help-metamask' }" 
+          :to="localePath({ name: 'help-metamask' })" 
           class="nav-link"
           @click.native="trackFooterLink('help-metamask')">Help for Metamask</nuxt-link>
       </li>

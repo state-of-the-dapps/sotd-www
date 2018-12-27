@@ -4,7 +4,7 @@
     class="component-base-menu">
     <div class="nameplate">
       <nuxt-link 
-        :to="{ name: 'home' }" 
+        :to="localePath({ name: 'home' })" 
         class="logo-link -icon" 
         @click.native="trackMenu('logo')">
         <SvgIconLogo 
@@ -13,7 +13,7 @@
           :height="35" />
       </nuxt-link>
       <nuxt-link 
-        :to="{ name: 'home' }" 
+        :to="localePath({ name: 'home' })" 
         class="logo-link -wordmark" 
         @click.native="trackMenu('logo')">
         <SvgLogotype 
@@ -28,7 +28,7 @@
       <li class="nav-item -home">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'home' }" 
+          :to="localePath({ name: 'home' })" 
           class="nav-link" 
           exact 
           @click.native="trackMenu('home')">Home</nuxt-link>
@@ -36,14 +36,14 @@
       <li class="nav-item -all">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'dapps' }" 
+          :to="localePath({ name: 'dapps' })" 
           class="nav-link" 
           @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
       </li>
       <li class="nav-item -rankings">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'rankings' }" 
+          :to="localePath({ name: 'rankings' })" 
           class="nav-link" 
           @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
@@ -61,17 +61,17 @@
               <ul class="dropdown-list">
                 <li class="dropdown-item">
                   <nuxt-link
-                    :to="{name: 'stats'}"
+                    :to="localePath({name: 'stats'})"
                     class="dropdown-link">Stats</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
-                    :to="{name: 'dapps'}"
+                    :to="localePath({name: 'dapps'})"
                     class="dropdown-link">Search</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
-                    :to="{name: 'dapps-new'}"
+                    :to="localePath({name: 'dapps-new'})"
                     class="dropdown-link">Submit a ÐApp</nuxt-link>
                 </li>
               </ul>
@@ -82,7 +82,7 @@
       <li class="nav-item -stats">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'stats' }" 
+          :to="localePath({ name: 'stats' })" 
           class="nav-link" 
           exact 
           @click.native="trackMenu('stats')">Stats</nuxt-link>
@@ -91,7 +91,7 @@
         <li class="nav-item -search">
           <nuxt-link 
             :class="[hideSearch ? 'hidden' : '', '-' + color]" 
-            :to="{ name: 'dapps' }" 
+            :to="localePath({ name: 'dapps' })" 
             class="nav-link -search" 
             @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
         </li>
@@ -113,7 +113,7 @@
     <ul class="nav-list-submit-lang">
       <li class="nav-item -submit">
         <nuxt-link 
-          :to="{ name: 'dapps-new' }" 
+          :to="localePath({ name: 'dapps-new' })" 
           :class="$route.name === 'home' ? 'is-home' : ''" 
           class="nav-link -submit" 
           @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>

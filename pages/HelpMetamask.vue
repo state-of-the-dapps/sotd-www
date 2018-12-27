@@ -14,7 +14,7 @@
         <p>Are you confused? We understand and are here to help you! The world of Decentralized Applications (ÐApps) on the Ethereum Blockchain can be quite overwhelming. There are many new confusing terms to understand. The learning curve can be pretty steep. Hang in there, the journey is exciting.</p>
         <p class="button-wrapper">
           <nuxt-link
-            :to="{name: 'rankings-platform', params: {platform: 'ethereum'}}"
+            :to="localePath({name: 'rankings-platform', params: {platform: 'ethereum'}})"
             class="button"
             @click.native="trackMetamaskHelp">I'm ready to Explore Ethereum ÐApps</nuxt-link></p>
         <h2 class="title-2">Digital wallets</h2>
@@ -80,7 +80,7 @@
         </p>
         <p class="button-wrapper">
           <nuxt-link
-            :to="{name: 'rankings-platform', params: {platform: 'ethereum'}}"
+            :to="localePath({name: 'rankings-platform', params: {platform: 'ethereum'}})"
             class="button"
             @click.native="trackMetamaskHelp">Explore Ethereum ÐApps</nuxt-link></p>
       </div>

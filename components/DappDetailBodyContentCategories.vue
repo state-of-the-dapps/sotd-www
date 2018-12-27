@@ -8,7 +8,7 @@
           :key="index" 
           class="category-item">
           <nuxt-link 
-            :to="{name: 'rankings-category', params: {category: category}}" 
+            :to="localePath({name: 'rankings-category', params: {category: category}})" 
             :class="'-' + category" 
             class="category-link" 
             @click.native="trackDappCategory($options.filters.formatCategory(category))">{{ category | formatCategory }}</nuxt-link>

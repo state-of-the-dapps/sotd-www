@@ -260,7 +260,12 @@ export default {
     selectPage(page) {
       const oldPage = this.$route.query.page || 1
       this.trackRankingPage(oldPage, page)
-      this.$router.push({ query: { ...this.$route.query, page: page } })
+      this.$router.push(
+        this.localePath({
+          name: 'rankings',
+          query: { ...this.$route.query, page: page }
+        })
+      )
     },
     trackRankingPage(oldPage, targetPage) {
       const action = trackDappRankingPager(oldPage, targetPage)

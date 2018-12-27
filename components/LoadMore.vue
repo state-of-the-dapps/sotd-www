@@ -13,7 +13,7 @@
       <p 
         v-if="dapps.length >= total && !isLoading" 
         class="message">No {{ dapps.length > 0 ? 'more' : '' }} ÐApps here. You can always <nuxt-link 
-          :to="{ name: 'dapps-new' }" 
+          :to="localePath({ name: 'dapps-new' })" 
           class="link" 
           @click.native="$mixpanel.track('DApps - New DApp')">submit one</nuxt-link>!</p>
       <p 

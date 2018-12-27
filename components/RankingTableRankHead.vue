@@ -2,7 +2,7 @@
   <div class="component-ranking-table-rank-head">
     <nuxt-link
       v-if="sort"
-      :to="{query: {}}"
+      :to="localePath({name: 'rankings', query: {}})"
       :class="!$route.query.sort ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('rank')">#</nuxt-link>

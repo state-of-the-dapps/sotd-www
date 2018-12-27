@@ -97,14 +97,16 @@ export default {
       tags = tags.split(',').filter(Boolean)
       tags.pop()
       tags = tags.join(',')
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          tags: tags || undefined,
-          text: undefined,
-          page: 1
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          query: {
+            ...this.$route.query,
+            tags: tags || undefined,
+            text: undefined,
+            page: 1
+          }
+        })
+      )
     },
     removeLastTag() {
       if (!this.textQuery && this.tags.length > 0) {
@@ -146,15 +148,17 @@ export default {
         if (this.$route.params.category) {
           routeName += '-category'
         }
-        this.$router.push({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: {
-            ...this.$route.query,
-            page: 1,
-            text: this.textQuery || undefined
-          }
-        })
+        this.$router.push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: {
+              ...this.$route.query,
+              page: 1,
+              text: this.textQuery || undefined
+            }
+          })
+        )
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })

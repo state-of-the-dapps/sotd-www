@@ -22,7 +22,7 @@ export default {
       if (this.hasSubmittedDapp === 'no') {
         routeName = 'dapps-new'
       }
-      this.$router.push({ name: routeName })
+      this.$router.push(this.localePath({ name: routeName }))
     }
   }
 }

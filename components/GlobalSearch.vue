@@ -35,7 +35,7 @@
             :key="index"
             class="results-suggestions-item">
             <nuxt-link
-              :to="{ name: 'dapps', query: {tags: suggestion} }"
+              :to="localePath({ name: 'dapps', query: {tags: suggestion} })"
               class="results-suggestions-link"
               @click.native="suggestionView(suggestion)">
               {{ suggestion }}
@@ -54,7 +54,7 @@
             :key="index" 
             class="results-dapp-item">
             <nuxt-link
-              :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }"
+              :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })"
               class="results-dapp-link"
               @click.native="dappView(dapp.slug)">
               <span class="results-dapp-icon-wrapper">
@@ -77,7 +77,7 @@
         </ul>
         <div class="results-link-wrapper">
           <nuxt-link 
-            :to="{name: 'dapps', query: {text: search} }" 
+            :to="localePath({name: 'dapps', query: {text: search} })" 
             class="results-link" 
             @click.native="resetSearch()">View all ÐApp results</nuxt-link>
         </div>
@@ -144,12 +144,14 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     },
     goToSearchPage() {
-      this.$router.push({
-        name: 'dapps',
-        query: {
-          text: this.search
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: {
+            text: this.search
+          }
+        })
+      )
     },
     suggestionView(suggestion) {
       this.resetSearch()

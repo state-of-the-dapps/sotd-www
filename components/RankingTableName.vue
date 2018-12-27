@@ -2,7 +2,7 @@
   <div class="component-ranking-table-name">
     <div class="icon-wrapper">
       <nuxt-link 
-        :to="{ name: 'dapp-detail', params: { slug } }" 
+        :to="localePath({ name: 'dapp-detail', params: { slug }})" 
         :class="!iconSmallUrl ? 'has-no-icon' : ''" 
         class="icon-link" 
         @click.native="trackDappView(slug)">
@@ -23,7 +23,7 @@
       </media>
       <h4 class="name">
         <nuxt-link 
-          :to="{ name: 'dapp-detail', params: { slug } }" 
+          :to="localePath({ name: 'dapp-detail', params: { slug } })" 
           @click.native="trackDappView(slug)">{{ name }}</nuxt-link>
       </h4>
       <media :query="{maxWidth: 599}">

@@ -2,7 +2,7 @@
   <div class="component-DappCollectionList">
     <h3 class="title-3">
       <nuxt-link 
-        :to="{ name: 'collection-detail', params: { slug: collection.slug } }" 
+        :to="localePath({ name: 'collection-detail', params: { slug: collection.slug } })" 
         class="link" 
         @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron 
           :width="8" 

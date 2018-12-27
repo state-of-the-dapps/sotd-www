@@ -71,10 +71,10 @@
             class="table-row">
             <td class="table-data -name">
               <nuxt-link
-                :to="{
+                :to="localePath({
                   name: 'rankings-category',
                   params: { category: category.category.toLowerCase() }
-                }"
+                })"
                 class="table-link">{{ category.category }}</nuxt-link>
             </td>
             <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
@@ -120,10 +120,10 @@
             class="table-row">
             <td class="table-data -name">
               <nuxt-link
-                :to="{
+                :to="localePath({
                   name: 'rankings-platform',
                   params: { platform: platform.platform.toLowerCase() }
-                }"
+                })"
                 class="table-link">{{ platform.platform }}</nuxt-link>
             </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>

@@ -7,14 +7,14 @@
           :key="index"
           class="category-item">
           <nuxt-link 
-            :to="{name: 'rankings-category', params: {category: category.name}}"
+            :to="localePath({name: 'rankings-category', params: {category: category.name}})"
             :class="'-' + category.name.toLowerCase()"
             class="category-link"
             @click.native="trackFeaturedCategory(category.name)"><component :is="category.iconComponent"/><span class="category-text">{{ category.name | capitalize }}</span></nuxt-link>
         </li>
         <li class="category-item all">
           <nuxt-link
-            :to="{name: 'rankings'}"
+            :to="localePath({name: 'rankings'})"
             class="category-link all"
             @click.native="trackFeaturedCategory('all')">All categories</nuxt-link>
         </li>

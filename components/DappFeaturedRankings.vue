@@ -3,7 +3,7 @@
     <div class="wrapper">
       <h2 class="title-2">
         <nuxt-link 
-          :to="{ name: 'rankings' }" 
+          :to="localePath({ name: 'rankings' })" 
           class="header-cta" 
           @click.native="trackDappRankingCategory('all')">
           <img 
@@ -12,7 +12,7 @@
             class="icon">Rankings by Category
         </nuxt-link>
         <nuxt-link 
-          :to="{ name: 'rankings' }" 
+          :to="localePath({ name: 'rankings' })"
           class="cta" 
           @click.native="trackDappRankingCategory('all')">View all categories
           <SvgIconChevron 

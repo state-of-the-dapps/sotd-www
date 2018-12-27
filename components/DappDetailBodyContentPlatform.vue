@@ -5,9 +5,9 @@
         <strong>Platform</strong> 
         &nbsp;
         <nuxt-link
-          :to="{
+          :to="localePath({
             name: 'rankings-platform',
-            params: { platform: platform.toLowerCase()} }"
+            params: { platform: platform.toLowerCase()} })"
           class="platform-name"
           @click.native="trackPlatform(platform)">{{ platform }}</nuxt-link>
       </p>

@@ -152,116 +152,116 @@ export function createRouter() {
       {
         path: '/',
         component: Home,
-        name: 'home'
+        name: 'home___en'
       },
       {
         path: '/about',
         component: About,
-        name: 'about'
+        name: 'about___en'
       },
       {
         path: '/collections',
         component: Collections,
-        name: 'collections'
+        name: 'collections___en'
       },
       {
         path: '/collections/:slug',
         component: CollectionDetail,
-        name: 'collection-detail'
+        name: 'collection-detail___en'
       },
       {
         path: '/dapps/submit/new',
         component: DappsNew,
-        name: 'dapps-new'
+        name: 'dapps-new___en'
       },
       {
         path: '/dapps/new/form',
-        redirect: { name: 'help-metamask' }
+        redirect: { name: 'help-metamask___en' }
       },
       {
         path: '/dapps/submit/new/confirmation',
         component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation'
+        name: 'dapps-new-confirmation___en'
       },
       {
         path: '/dapps/:slug',
         component: DappDetailDirect,
-        name: 'dapp-detail-direct'
+        name: 'dapp-detail-direct___en'
       },
       {
         path: '/dapps/:slug',
         component: DappDetail,
-        name: 'dapp-detail'
+        name: 'dapp-detail___en'
       },
       {
         path: '/dapps/:slug/edit',
         component: DappDetailEdit,
-        name: 'dapp-detail-edit'
+        name: 'dapp-detail-edit___en'
       },
       {
         path: '/dapps/:slug/flag',
         component: DappDetailFlag,
-        name: 'dapp-detail-flag'
+        name: 'dapp-detail-flag___en'
       },
       {
         path: '/dapps/:slug/improve',
         component: DappDetailImprove,
-        name: 'dapp-detail-improve'
+        name: 'dapp-detail-improve___en'
       },
       {
         path: '/dapps/:slug/meta',
         component: DappDetailMeta,
-        name: 'dapp-detail-meta'
+        name: 'dapp-detail-meta___en'
       },
       {
         path: '/logos',
         component: Logos,
-        name: 'logos'
+        name: 'logos___en'
       },
       {
         path: '/rankings',
         component: Rankings,
-        name: 'rankings'
+        name: 'rankings___en'
       },
       {
         path: '/rankings/category/:category',
         component: Rankings,
-        name: 'rankings-category'
+        name: 'rankings-category___en'
       },
       {
         path: '/rankings/platform/:platform',
         component: Rankings,
-        name: 'rankings-platform'
+        name: 'rankings-platform___en'
       },
       {
         path: '/rankings/platform/:platform/category/:category',
         component: Rankings,
-        name: 'rankings-platform-category'
+        name: 'rankings-platform-category___en'
       },
       {
         path: '/promoted-dapps',
         component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct'
+        name: 'promoted-dapps-direct___en'
       },
       {
         path: '/promoted-dapps',
         component: PromotedDapps,
-        name: 'promoted-dapps'
+        name: 'promoted-dapps___en'
       },
       {
         path: '/submit',
-        redirect: { name: 'dapps-new' }
+        redirect: { name: 'dapps-new___en' }
       },
       {
         path: '/tagged/metamask',
-        redirect: { name: 'help-metamask' }
+        redirect: { name: 'help-metamask___en' }
       },
       {
         path: '/tagged/:tags',
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: { tags: params.tags }
           }
         }
@@ -271,7 +271,7 @@ export function createRouter() {
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: {
               tags: params.tags,
               tab: params.tab
@@ -284,7 +284,7 @@ export function createRouter() {
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: { tags: params.tags }
           }
         }
@@ -294,7 +294,7 @@ export function createRouter() {
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: {
               tags: params.tags,
               tab: params.tab
@@ -305,29 +305,29 @@ export function createRouter() {
       {
         path: '/dapps',
         component: Dapps,
-        name: 'dapps'
+        name: 'dapps___en'
       },
       {
         path: '/dapps/category/:category',
         component: Dapps,
-        name: 'dapps-category'
+        name: 'dapps-category___en'
       },
       {
         path: '/dapps/platform/:platform',
         component: Dapps,
-        name: 'dapps-platform'
+        name: 'dapps-platform___en'
       },
       {
         path: '/dapps/platform/:platform/category/:category',
         component: Dapps,
-        name: 'dapps-platform-category'
+        name: 'dapps-platform-category___en'
       },
       {
         path: '/dapps/tab/:tab',
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: { tab: params.tab }
           }
         }
@@ -337,7 +337,7 @@ export function createRouter() {
         redirect: to => {
           const { params } = to
           return {
-            name: 'dapps',
+            name: 'dapps___en',
             query: { tab: params.tab }
           }
         }
@@ -345,22 +345,22 @@ export function createRouter() {
       {
         path: '/help/metamask',
         component: HelpMetamask,
-        name: 'help-metamask'
+        name: 'help-metamask___en'
       },
       {
         path: '/stats',
         component: Stats,
-        name: 'stats'
+        name: 'stats___en'
       },
       {
         path: '/terms',
         component: Terms,
-        name: 'terms'
+        name: 'terms___en'
       },
       {
         path: '/whats-a-dapp',
         component: What,
-        name: 'what'
+        name: 'what___en'
       }
     ],
     fallback: false
