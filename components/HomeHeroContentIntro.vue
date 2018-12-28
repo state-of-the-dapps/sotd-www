@@ -1,48 +1,29 @@
-<i18n>
-{
-  "en": {
-    "heading": "Explore Decentralized Applications",
-    "learnMore": "Learn more about ÐApps",
-    "submitCta": "Submit a ÐApp",
-    "valueProp": "Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.",
-    "viewCta": "View the top ÐApps"
-  },
-  "zh": {
-    "heading": "探索分散的应用程序",
-    "learnMore": "了解有关ÐApps的更多信息",
-    "submitCta": "提交ÐApp",
-    "valueProp": "通过ÐApp项目的权威注册，发现以太坊，EOS，POA和Steem区块链的可能性。",
-    "viewCta": "查看顶部ÐApps"
-  }
-}
-</i18n>
-
 <template>
   <div 
     :class="'-' + loaded" 
-    class="component-HomeHeroContentIntro">
+    class="HomeHeroContentIntro">
     <h1
       :class="$i18n.locale"
-      class="title-1">{{ $t('heading') }}</h1>
-    <p class="description">{{ $t('valueProp') }} <nuxt-link
+      class="title-1">Explore Decentralized Applications</h1>
+    <p class="description">Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects. <nuxt-link
       :to="localePath({ name: 'what'})" 
       class="description-link" 
-      @click.native="trackHomeHeroCta('learn')">{{ $t('learnMore') }}</nuxt-link></p>
+      @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link 
         :to="localePath({ name: 'rankings' })" 
         class="cta-link" 
-        @click.native="trackHomeHeroCta('rankings')">{{ $t('viewCta') }}</nuxt-link></li>
+        @click.native="trackHomeHeroCta('rankings')">View the top ÐApps</nuxt-link></li>
       <li class="cta-item"><nuxt-link 
         :to="localePath({ name: 'dapps-new' })" 
         class="cta-link -submit" 
-        @click.native="trackHomeHeroCta('submit')">{{ $t('submitCta') }}</nuxt-link></li>
+        @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
     </ul>
   </div>
 </template>
 
 <script>
-import { trackHomeHeroCta } from '~/helpers/mixpanel'
+import { trackHomeHeroCta } from '@/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -73,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-HomeHeroContentIntro {
+.HomeHeroContentIntro {
   position: relative;
   z-index: 20;
   opacity: 0;

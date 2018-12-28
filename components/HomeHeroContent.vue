@@ -26,7 +26,7 @@ export default {
     flex-direction: row-reverse;
     align-items: center;
     margin-top: 30px;
-    .component-HomeHeroContentIntro {
+    .HomeHeroContentIntro {
       width: 400px;
     }
     .component-HomeHeroContentIcons {
@@ -34,12 +34,12 @@ export default {
     }
   }
   @include tweakpoint('min-width', 1150px) {
-    .component-HomeHeroContentIntro {
+    .HomeHeroContentIntro {
       width: 500px;
     }
   }
   @include tweakpoint('min-width', 1250px) {
-    .component-HomeHeroContentIntro {
+    .HomeHeroContentIntro {
       width: 650px;
       margin: 40px auto;
     }
