@@ -2,9 +2,7 @@
   <div 
     :class="'-' + loaded" 
     class="HomeHeroContentIntro">
-    <h1
-      :class="$i18n.locale"
-      class="title-1">Explore Decentralized Applications</h1>
+    <h1 class="title-1">Explore Decentralized Applications</h1>
     <p class="description">Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects. <nuxt-link
       :to="localePath({ name: 'what'})" 
       class="description-link" 

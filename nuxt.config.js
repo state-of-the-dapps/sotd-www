@@ -41,11 +41,6 @@ export default {
             code: 'en',
             name: 'English',
             iso: 'en-US'
-          },
-          {
-            code: 'zh',
-            name: '中文',
-            iso: 'zh-CN'
           }
         ]
       }
