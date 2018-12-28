@@ -122,12 +122,20 @@ export default {
       }
     },
     selectPage(page) {
+      let routeName = 'dapps'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
       const oldPage = this.$route.query.page || 1
       this.trackPager(oldPage, page)
       this.$refs.list.scrollIntoView()
       this.$router.push(
         this.localePath({
-          name: 'dapps',
+          name: routeName,
+          params: { ...this.$route.params },
           query: { ...this.$route.query, page: page }
         })
       )

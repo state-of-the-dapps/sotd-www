@@ -2,7 +2,7 @@
   <div class="component-ranking-table-rank-head">
     <nuxt-link
       v-if="sort"
-      :to="localePath({name: 'rankings', query: {}})"
+      :to="localePath({name: rankingRouteName, params: rankingParams, query: {}})"
       :class="!$route.query.sort ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('rank')">#</nuxt-link>
@@ -27,6 +27,21 @@ export default {
     sort: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    rankingRouteName() {
+      let routeName = 'rankings'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
+      return routeName
+    },
+    rankingParams() {
+      return { ...this.$route.params }
     }
   },
   methods: {

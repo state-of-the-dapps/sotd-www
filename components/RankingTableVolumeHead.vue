@@ -2,7 +2,7 @@
   <div class="component-ranking-table-volume-head">
     <nuxt-link
       v-if="sort"
-      :to="localePath({name: 'rankings', query: {sort: 'usd_value_7d', order: 'desc'}})"
+      :to="localePath({name: rankingRouteName, params: rankingParams, query: {sort: 'usd_value_7d', order: 'desc'}})"
       :class="$route.query.sort === 'usd_value_7d' ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('usd_value_7d')">Volume (7d)</nuxt-link>
@@ -27,6 +27,21 @@ export default {
     sort: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    rankingRouteName() {
+      let routeName = 'rankings'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
+      return routeName
+    },
+    rankingParams() {
+      return { ...this.$route.params }
     }
   },
   methods: {

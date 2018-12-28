@@ -93,13 +93,21 @@ export default {
       }
     },
     removeTagQuery() {
+      let routeName = 'dapps'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
       let tags = this.$route.query.tags || ''
       tags = tags.split(',').filter(Boolean)
       tags.pop()
       tags = tags.join(',')
       this.$router.push(
         this.localePath({
-          name: 'dapps',
+          name: routeName,
+          params: { ...this.$route.params },
           query: {
             ...this.$route.query,
             tags: tags || undefined,

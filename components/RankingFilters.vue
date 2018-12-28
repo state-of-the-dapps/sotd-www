@@ -77,26 +77,42 @@ export default {
     filterCategory(category) {
       this.category = category
       this.trackDappRankingCategory(category)
-      let path = '/rankings'
-      if (this.platform) {
-        path += `/platform/${this.platform.toLowerCase()}`
+      let routeName = 'rankings'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
       }
       if (category) {
-        path += `/category/${category.toLowerCase()}`
+        routeName += '-category'
       }
-      this.$router.push(this.localePath({ path }))
+      this.$router.push(
+        this.localePath({
+          name: routeName,
+          params: {
+            ...this.$route.params,
+            category: category.toLowerCase()
+          }
+        })
+      )
     },
     filterPlatform(platform) {
       this.platform = platformMap[platform]
       this.trackDappRankingPlatform(platform)
-      let path = '/rankings'
+      let routeName = 'rankings'
       if (platform) {
-        path += `/platform/${platform.toLowerCase()}`
+        routeName += '-platform'
       }
-      if (this.category) {
-        path += `/category/${this.category.toLowerCase()}`
+      if (this.$route.params.category) {
+        routeName += '-category'
       }
-      this.$router.push(this.localePath({ path }))
+      this.$router.push(
+        this.localePath({
+          name: routeName,
+          params: {
+            ...this.$route.params,
+            platform: platform.toLowerCase()
+          }
+        })
+      )
     },
     trackDappRankingCategory(category) {
       const sourceComponent = 'RankingFilters'

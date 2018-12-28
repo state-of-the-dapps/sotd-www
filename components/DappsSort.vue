@@ -34,9 +34,17 @@ export default {
   },
   methods: {
     selectSort(selected) {
+      let routeName = 'dapps'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
       this.$router.push(
         this.localePath({
-          name: 'dapps',
+          name: routeName,
+          params: { ...this.$route.params },
           query: {
             ...this.$route.query,
             tab: selected || undefined,

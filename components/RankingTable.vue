@@ -258,11 +258,19 @@ export default {
       })
     },
     selectPage(page) {
+      let routeName = 'rankings'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
       const oldPage = this.$route.query.page || 1
       this.trackRankingPage(oldPage, page)
       this.$router.push(
         this.localePath({
-          name: 'rankings',
+          name: routeName,
+          params: { ...this.$route.params },
           query: { ...this.$route.query, page: page }
         })
       )

@@ -39,13 +39,21 @@ export default {
       this.$emit('resetSuggestedTags')
     },
     select(item, key) {
+      let routeName = 'dapps'
+      if (this.$route.params.platform) {
+        routeName += '-platform'
+      }
+      if (this.$route.params.category) {
+        routeName += '-category'
+      }
       let tags = this.$route.query.tags || ''
       tags = tags.split(',').filter(Boolean)
       tags.push(item)
       tags = tags.join(',')
       this.$router.push(
         this.localePath({
-          name: 'dapps',
+          name: routeName,
+          params: { ...this.$route.params },
           query: {
             ...this.$route.query,
             tags: tags || undefined,
