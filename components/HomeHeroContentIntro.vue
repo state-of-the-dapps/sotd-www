@@ -9,10 +9,10 @@
   },
   "zh": {
     "heading": "探索分散的应用程序",
-    "learnMore": "了解有关ÐApps的更多信息",
-    "submitCta": "提交ÐApp",
-    "valueProp": "通过ÐApp项目的权威注册，发现以太坊，EOS，POA和Steem区块链的可能性。",
-    "viewCta": "查看顶部ÐApps"
+    "learnMore": "了解有关分散应用程序的更多信息",
+    "submitCta": "提交分散的申请",
+    "valueProp": "通过分散应用项目的权威注册，发现以太坊，EOS，POA，和Steem区块链的可能性。",
+    "viewCta": "查看顶级分散应用程序"
   }
 }
 </i18n>
