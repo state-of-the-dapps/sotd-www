@@ -1,24 +1,3 @@
-<i18n>
-{
-  "en": {
-    "allDapps": "All ÐApps",
-    "home": "Home",
-    "rankings": "Rankings",
-    "search": "Search",
-    "stats": "Stats",
-    "submit": "Submit a ÐApp"
-  },
-  "zh": {
-    "allDapps": "所有ÐApps",
-    "home": "家",
-    "rankings": "排名",
-    "search": "搜索",
-    "stats": "统计",
-    "submit": "提交ÐApp"
-  }
-}
-</i18n>
-
 <template>
   <div 
     :class="'-' + color" 
@@ -52,21 +31,21 @@
           :to="localePath({ name: 'home' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('home')">{{ $t('home') }}</nuxt-link>
+          @click.native="trackMenu('home')">All ÐApps</nuxt-link>
       </li>
       <li class="nav-item -all">
         <nuxt-link 
           :class="'-' + color" 
           :to="localePath({ name: 'dapps' })" 
           class="nav-link" 
-          @click.native="trackMenu('dapp-list')">{{ $t('allDapps') }}</nuxt-link>
+          @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
       </li>
       <li class="nav-item -rankings">
         <nuxt-link 
           :class="'-' + color" 
           :to="localePath({ name: 'rankings' })" 
           class="nav-link" 
-          @click.native="trackMenu('rankings')">{{ $t('rankings') }}</nuxt-link>
+          @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
       <media :query="{maxWidth: 699}">
         <li class="nav-item -more">
@@ -83,17 +62,17 @@
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'stats'})"
-                    class="dropdown-link">{{ $t('stats') }}</nuxt-link>
+                    class="dropdown-link">Stats</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'dapps'})"
-                    class="dropdown-link">{{ $t('search') }}</nuxt-link>
+                    class="dropdown-link">Search</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'dapps-new'})"
-                    class="dropdown-link">{{ $t('submit') }}</nuxt-link>
+                    class="dropdown-link">Submit a ÐApp</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -106,7 +85,7 @@
           :to="localePath({ name: 'stats' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('stats')">{{ $t('stats') }}</nuxt-link>
+          @click.native="trackMenu('stats')">Stats</nuxt-link>
       </li>
       <media :query="{maxWidth: 975}">
         <li class="nav-item -search">
@@ -137,8 +116,9 @@
           :to="localePath({ name: 'dapps-new' })" 
           :class="isHome ? 'is-home' : ''"
           class="nav-link -submit" 
-          @click.native="trackMenu('dapps-new')">{{ $t('submit') }}</nuxt-link>
+          @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
       </li>
+      <!--
       <li class="nav-item -lang">
         <BaseDropdown
           :options="languages"
@@ -147,6 +127,7 @@
           title="Language"
           @select="setLang"/>
       </li>
+      -->
     </ul>
   </div>
 </template>

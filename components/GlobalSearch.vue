@@ -1,14 +1,3 @@
-<i18n>
-{
-  "en": {
-    "placeholder": "Discover awesome ÐApps…"
-  },
-  "zh": {
-    "placeholder": "发现很棒的ÐApps"
-  }
-}
-</i18n>
-
 <template>
   <div 
     v-on-clickaway="resetSearch"
@@ -23,9 +12,9 @@
       <input
         ref="searchInput"
         :class="'-' + color"
-        :placeholder="$t('placeholder')"
         :value="search"
         class="search-input"
+        placeholder="Discover awesome ÐApps…"
         @input="fetchResults($event.target.value)"
         @click="startSearch($event.target.value)"
         @keyup.enter="goToSearchPage">
