@@ -52,6 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 .layout-error {
-  @apply min-h-full text-center;
+  min-height: 100%;
+  text-align: center;
 }
 </style>

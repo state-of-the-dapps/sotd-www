@@ -52,8 +52,8 @@ export default {
     retry: true,
     progress: false
   },
-  serverMiddleware: ['redirect-ssl'],
-  css: ['~/assets/css/tailwind.css'],
+  // serverMiddleware: ['redirect-ssl'],
+  css: ['~/assets/css/normalize.scss'],
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
