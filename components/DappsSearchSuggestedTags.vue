@@ -43,14 +43,17 @@ export default {
       tags = tags.split(',').filter(Boolean)
       tags.push(item)
       tags = tags.join(',')
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          tags: tags || undefined,
-          text: undefined,
-          page: 1
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: {
+            ...this.$route.query,
+            tags: tags || undefined,
+            text: undefined,
+            page: 1
+          }
+        })
+      )
       this.$emit('resetTextQuery')
       this.reset()
       this.$mixpanel.track('DApps - Select tag', { tag: item })

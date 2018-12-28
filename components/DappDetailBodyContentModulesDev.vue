@@ -95,7 +95,7 @@ export default {
 }
 
 .explanation {
-  font-weight: 400;
+  font-weight: normal;
 }
 
 .sparkline {

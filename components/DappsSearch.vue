@@ -97,14 +97,17 @@ export default {
       tags = tags.split(',').filter(Boolean)
       tags.pop()
       tags = tags.join(',')
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          tags: tags || undefined,
-          text: undefined,
-          page: 1
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: {
+            ...this.$route.query,
+            tags: tags || undefined,
+            text: undefined,
+            page: 1
+          }
+        })
+      )
     },
     removeLastTag() {
       if (!this.textQuery && this.tags.length > 0) {
@@ -146,15 +149,17 @@ export default {
         if (this.$route.params.category) {
           routeName += '-category'
         }
-        this.$router.push({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: {
-            ...this.$route.query,
-            page: 1,
-            text: this.textQuery || undefined
-          }
-        })
+        this.$router.push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: {
+              ...this.$route.query,
+              page: 1,
+              text: this.textQuery || undefined
+            }
+          })
+        )
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })
@@ -172,7 +177,7 @@ export default {
 
 .sub-heading {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: normal;
   letter-spacing: 2px;
   font-size: 1rem;
   margin-bottom: 0;
@@ -180,7 +185,7 @@ export default {
 
 .heading {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: normal;
   letter-spacing: 2px;
   margin-top: 0;
   margin-bottom: 1.3rem;

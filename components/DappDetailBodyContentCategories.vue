@@ -8,7 +8,7 @@
           :key="index" 
           class="category-item">
           <nuxt-link 
-            :to="{name: 'rankings-category', params: {category: category}}" 
+            :to="localePath({name: 'rankings-category', params: {category: category}})" 
             :class="'-' + category" 
             class="category-link" 
             @click.native="trackDappCategory($options.filters.formatCategory(category))">{{ category | formatCategory }}</nuxt-link>
@@ -46,7 +46,7 @@ export default {
 @import '~assets/css/settings';
 
 .subtitle {
-  font-weight: 300;
+  font-weight: normal;
   margin-bottom: 0.75rem;
   text-align: center;
   @include tweakpoint('min-width', 1000px) {

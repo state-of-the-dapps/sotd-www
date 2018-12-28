@@ -35,10 +35,10 @@
         v-if="existingDapp"
         class="error-item">You can 
         <nuxt-link 
-          :to="{ name: 'dapp-detail', params: { slug: existingDapp } }"
+          :to="localePath({ name: 'dapp-detail', params: { slug: existingDapp } })"
           class="error-link">review</nuxt-link> or 
         <nuxt-link
-          :to="{ name: 'dapp-detail-edit', params: { slug: existingDapp }}"
+          :to="localePath({ name: 'dapp-detail-edit', params: { slug: existingDapp }})"
           class="error-link">submit edits</nuxt-link> to that ÐApp
       </li>
     </ul>

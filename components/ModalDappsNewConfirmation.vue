@@ -12,7 +12,7 @@
 export default {
   methods: {
     close() {
-      this.$router.push({ name: 'promoted-dapps' })
+      this.$router.push(this.localePath({ name: 'promoted-dapps' }))
     }
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <section class="section -intro">
       <div class="container">
-        <p class="back-link"><nuxt-link :to="{ name: 'dapp-detail', params: {slug: slug}}">Head back to {{ fields.name }}</nuxt-link></p>
+        <p class="back-link"><nuxt-link :to="localePath({ name: 'dapp-detail', params: {slug: slug}})">Head back to {{ fields.name }}</nuxt-link></p>
         <PageHeading :title="pageTitle + ' ' + fields.name"/>
       </div>
     </section>

@@ -2,7 +2,7 @@
   <div class="component-ranking-table-dau-head">
     <nuxt-link
       v-if="sort"
-      :to="{query: {sort: 'dau', order: 'desc'}}"
+      :to="localePath({name: 'rankings', query: {sort: 'dau', order: 'desc'}})"
       :class="$route.query.sort === 'dau' ? 'is-active' : ''"
       class="label head-link"
       @click.native="trackRankingSort('dau')">Users (24hr)</nuxt-link>

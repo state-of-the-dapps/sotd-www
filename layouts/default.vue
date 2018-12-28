@@ -4,7 +4,7 @@
       <div class="main">
         <div class="menu">
           <div class="menu-wrapper">
-            <Menu/>
+            <BaseMenu/>
           </div>
         </div>
         <nuxt/>
@@ -20,13 +20,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import BaseFooter from '~/components/BaseFooter'
-import Menu from '~/components/Menu'
+import BaseMenu from '~/components/BaseMenu'
 import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     BaseFooter,
-    Menu,
+    BaseMenu,
     SecondaryCta
   }
 }
@@ -53,7 +53,7 @@ input,
 textarea {
   font-family: 'Overpass', sans-serif;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: normal;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   color: $color--black;
@@ -308,7 +308,7 @@ html,
 .title-2 {
   font-family: 'Dharma-Gothic-Regular';
   letter-spacing: 0px;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 .title-1 {

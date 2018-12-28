@@ -1,7 +1,9 @@
 <template>
   <div class="component-HomeHero">
     <div class="wrapper">
-      <Menu color="white" />
+      <BaseMenu
+        :is-home="true"
+        color="white"/>
       <div class="hero-wrapper">
         <HomeHeroContent/>
       </div>
@@ -11,12 +13,12 @@
 
 <script>
 import HomeHeroContent from './HomeHeroContent'
-import Menu from './Menu'
+import BaseMenu from './BaseMenu'
 
 export default {
   components: {
-    HomeHeroContent,
-    Menu
+    BaseMenu,
+    HomeHeroContent
   }
 }
 </script>
@@ -27,7 +29,7 @@ export default {
 .component-HomeHero {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
-  padding: 10px 0 20px 0;
+  padding: 7px 0 20px 0;
   @include tweakpoint('min-width', 575px) {
     background-image: $gradient--main-2;
     padding-top: 7px;

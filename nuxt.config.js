@@ -29,7 +29,22 @@ export default {
     '@nuxtjs/sentry',
     '@nuxtjs/router',
     ['@nuxtjs/google-analytics', { id: env.googleAnalytics }],
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    [
+      'nuxt-i18n',
+      {
+        vueI18nLoader: true,
+        baseUrl: 'https://www.stateofthedapps.com',
+        defaultLocale: 'en',
+        locales: [
+          {
+            code: 'en',
+            name: 'English',
+            iso: 'en-US'
+          }
+        ]
+      }
+    ]
   ],
   axios: {
     baseUrl: env.apiUrl,

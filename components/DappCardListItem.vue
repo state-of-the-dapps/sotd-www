@@ -3,7 +3,7 @@
     :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
     class="component-DappCardListItem">
     <nuxt-link 
-      :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+      :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
       class="link" 
       @click.native="trackDappView(dapp.slug)">
       <div 

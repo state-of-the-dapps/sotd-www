@@ -4,7 +4,7 @@
     :id="'dapp-featured-list-item-' + index" 
     class="component-DappFeaturedListItem">
     <nuxt-link 
-      :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+      :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
       class="link" 
       @click.native="trackDappView(dapp.slug)">
       <div

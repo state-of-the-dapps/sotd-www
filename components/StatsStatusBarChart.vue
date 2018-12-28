@@ -8,7 +8,7 @@
         <div class="stat-item-field -label">
           <h3 class="label">
             <nuxt-link
-              :to="{ name: 'dapps', query: { status: status.status }}"
+              :to="localePath({ name: 'dapps', query: { status: status.status }})"
               class="link">{{ status.status }}</nuxt-link>
           </h3>
         </div>
@@ -63,7 +63,7 @@ export default {
 .label {
   font-family: 'Dharma-Gothic-Regular';
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: normal;
   margin: 5px 0;
   letter-spacing: normal;
   text-transform: uppercase;

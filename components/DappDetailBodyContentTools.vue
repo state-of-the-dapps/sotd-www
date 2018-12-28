@@ -34,7 +34,7 @@
         </li>
         <li class="tool-item">
           <nuxt-link 
-            :to="{ name: 'promoted-dapps' }" 
+            :to="localePath({ name: 'promoted-dapps' })" 
             class="tool-link" 
             @click.native="trackPromotedDappsView">
             <SvgIconFeatured 
@@ -124,7 +124,7 @@ export default {
           flag: true
         }
       }
-      this.$router.push(route)
+      this.$router.push(this.localePath(route))
     },
     viewDappFlag(flag = false) {
       let action = trackDappFlag(this.slug)
@@ -140,7 +140,7 @@ export default {
           flag: true
         }
       }
-      this.$router.push(route)
+      this.$router.push(this.localePath(route))
     },
     viewDappShare() {
       this.shareModal = true

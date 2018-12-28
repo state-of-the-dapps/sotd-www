@@ -360,7 +360,7 @@ export default {
 }
 
 .profile-score-title-pct {
-  font-weight: 300;
+  font-weight: normal;
   padding-left: 5px;
 }
 

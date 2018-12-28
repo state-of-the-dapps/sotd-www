@@ -3,7 +3,7 @@
     ref="page" 
     class="page-dapp-detail-edit">
     <div class="hero-wrapper">
-      <p style="text-align: center;">Head back to <nuxt-link :to="{name: 'dapp-detail', params: {}}">{{ dapp.name }}</nuxt-link></p>
+      <p style="text-align: center;">Head back to <nuxt-link :to="localePath({name: 'dapp-detail', params: {}})">{{ dapp.name }}</nuxt-link></p>
     </div>
     <div 
       v-if="!submitted" 

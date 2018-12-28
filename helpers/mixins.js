@@ -1,5 +1,13 @@
 import { isValidEmail } from '~/helpers/validators'
 
+export const componentNamespace = {
+  methods: {
+    namespace(value) {
+      return this.$options._componentTag + '.' + value
+    }
+  }
+}
+
 export const getCaretPosition = {
   methods: {
     getCaretPosition(ctrl) {

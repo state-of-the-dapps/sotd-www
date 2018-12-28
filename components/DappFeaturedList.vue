@@ -3,13 +3,13 @@
     <div class="wrapper">
       <h2 class="title-2">
         <nuxt-link 
-          :to="{ name: 'collection-detail', params: { slug: 'featured' }}" 
+          :to="localePath({ name: 'collection-detail', params: { slug: 'featured' }})" 
           class="header-cta" 
           @click.native="trackCollectionView('featured')">
           <SvgIconFeatured/>Featured ÐApps
         </nuxt-link>
         <nuxt-link 
-          :to="{ name: 'collection-detail', params: { slug: 'featured' }}" 
+          :to="localePath({ name: 'collection-detail', params: { slug: 'featured' }})" 
           class="cta" 
           @click.native="trackCollectionView('featured')">View all
           <SvgIconChevron 
@@ -18,7 +18,7 @@
             direction="right" />
         </nuxt-link>
         <nuxt-link 
-          :to="{ name: 'promoted-dapps' }" 
+          :to="localePath({ name: 'promoted-dapps' })" 
           class="cta -promote" 
           @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
       </h2>

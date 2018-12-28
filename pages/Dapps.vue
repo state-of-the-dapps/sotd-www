@@ -125,7 +125,12 @@ export default {
       const oldPage = this.$route.query.page || 1
       this.trackPager(oldPage, page)
       this.$refs.list.scrollIntoView()
-      this.$router.push({ query: { ...this.$route.query, page: page } })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: { ...this.$route.query, page: page }
+        })
+      )
     },
     trackPager(oldPage, targetPage) {
       const action = trackDappPager(oldPage, targetPage)

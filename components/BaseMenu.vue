@@ -1,19 +1,19 @@
 <template>
   <div 
     :class="'-' + color" 
-    class="component-Menu">
+    class="component-base-menu">
     <div class="nameplate">
       <nuxt-link 
-        :to="{ name: 'home' }" 
+        :to="localePath({ name: 'home' })" 
         class="logo-link -icon" 
         @click.native="trackMenu('logo')">
         <SvgIconLogo 
           :fill="color" 
-          :width="45" 
-          :height="45" />
+          :width="35" 
+          :height="35" />
       </nuxt-link>
       <nuxt-link 
-        :to="{ name: 'home' }" 
+        :to="localePath({ name: 'home' })" 
         class="logo-link -wordmark" 
         @click.native="trackMenu('logo')">
         <SvgLogotype 
@@ -28,46 +28,78 @@
       <li class="nav-item -home">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'home' }" 
+          :to="localePath({ name: 'home' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('home')">Home</nuxt-link>
+          @click.native="trackMenu('home')">All ÐApps</nuxt-link>
       </li>
-      <li class="nav-item">
+      <li class="nav-item -all">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'dapps' }" 
+          :to="localePath({ name: 'dapps' })" 
           class="nav-link" 
           @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
       </li>
-      <li class="nav-item">
+      <li class="nav-item -rankings">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'rankings' }" 
+          :to="localePath({ name: 'rankings' })" 
           class="nav-link" 
           @click.native="trackMenu('rankings')">Rankings</nuxt-link>
       </li>
+      <media :query="{maxWidth: 699}">
+        <li class="nav-item -more">
+          <button
+            :class="more ? 'active' : ''"
+            class="more-button"
+            @click="toggleMore">
+            <span class="bullet">&bull;</span><span class="bullet">&bull;</span><span class="bullet">&bull;</span>
+            <div
+              v-on-clickaway="toggleMore"
+              v-if="more"
+              class="dropdown">
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="localePath({name: 'stats'})"
+                    class="dropdown-link">Stats</nuxt-link>
+                </li>
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="localePath({name: 'dapps'})"
+                    class="dropdown-link">Search</nuxt-link>
+                </li>
+                <li class="dropdown-item">
+                  <nuxt-link
+                    :to="localePath({name: 'dapps-new'})"
+                    class="dropdown-link">Submit a ÐApp</nuxt-link>
+                </li>
+              </ul>
+            </div>
+          </button>
+        </li>
+      </media>
       <li class="nav-item -stats">
         <nuxt-link 
           :class="'-' + color" 
-          :to="{ name: 'stats' }" 
+          :to="localePath({ name: 'stats' })" 
           class="nav-link" 
           exact 
           @click.native="trackMenu('stats')">Stats</nuxt-link>
       </li>
       <media :query="{maxWidth: 975}">
-        <li class="nav-item">
+        <li class="nav-item -search">
           <nuxt-link 
-            :class="[hideSearch ? 'hidden' : '', '-' + color]" 
-            :to="{ name: 'dapps' }" 
+            :class="'-' + color" 
+            :to="localePath({ name: 'dapps' })" 
             class="nav-link -search" 
             @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
         </li>
       </media>
     </ul>
-    <media :query="{minWidth: 975}">
+    <media :query="{minWidth: 976}">
       <ul 
-        :class="[hideSearch ? 'hidden' : '', search.length ? 'is-searching' : '']" 
+        :class="search.length ? 'is-searching' : ''" 
         class="nav-list-search">
         <li class="nav-item -search">
           <GlobalSearch
@@ -78,22 +110,35 @@
         </li>
       </ul>
     </media>
-    <ul class="nav-list-submit">
+    <ul class="nav-list-submit-lang">
       <li class="nav-item -submit">
         <nuxt-link 
-          :to="{ name: 'dapps-new' }" 
-          :class="$route.name === 'home' ? 'is-home' : ''" 
+          :to="localePath({ name: 'dapps-new' })" 
+          :class="isHome ? 'is-home' : ''"
           class="nav-link -submit" 
           @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
       </li>
+      <!--
+      <li class="nav-item -lang">
+        <BaseDropdown
+          :options="languages"
+          :selected="locale"
+          :theme="dropdownTheme"
+          title="Language"
+          @select="setLang"/>
+      </li>
+      -->
     </ul>
   </div>
 </template>
 
 <script>
 import Media from 'vue-media'
+import { directive as onClickaway } from 'vue-clickaway'
 import { mapGetters } from 'vuex'
-import { trackMenu } from '~/helpers/mixpanel'
+import { languages, localeStrings } from '@/helpers/constants'
+import { trackMenu } from '@/helpers/mixpanel'
+import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
 import SvgIconMail from './SvgIconMail'
@@ -102,6 +147,7 @@ import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {
+    BaseDropdown,
     GlobalSearch,
     Media,
     SvgIconLogo,
@@ -109,31 +155,48 @@ export default {
     SvgIconMagnifier,
     SvgLogotype
   },
+  directives: {
+    onClickaway
+  },
   props: {
     color: {
       type: String,
       default: 'black'
+    },
+    isHome: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
+      languages,
+      more: false,
       search: '',
       sourcePath: this.$route.path
     }
   },
   computed: {
-    hideSearch() {
-      return !(
-        this.$route.name != 'dapps' &&
-        this.$route.name != 'dapps-category' &&
-        this.$route.name != 'dapps-platform' &&
-        this.$route.name != 'dapps-platform-category'
-      )
+    locale() {
+      return localeStrings[this.$i18n.locale]
+    },
+    dropdownTheme() {
+      let theme = 'menu'
+      if (this.isHome) {
+        theme += ' home'
+      }
+      return theme
     }
   },
   methods: {
+    setLang(lang) {
+      this.$router.push(this.switchLocalePath(lang))
+    },
     setSearch(value) {
       this.search = value
+    },
+    toggleMore() {
+      this.more = !this.more
     },
     trackMenu(targetMenuItem) {
       const action = trackMenu(this.sourcePath, targetMenuItem)
@@ -146,7 +209,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-Menu {
+.component-base-menu {
   display: flex;
   align-items: center;
   padding: 18px 10px 16px 10px;
@@ -159,6 +222,13 @@ export default {
   }
   &.-white {
     background: rgba($color--black, 0.2);
+  }
+}
+
+.bullet {
+  display: inline-block;
+  &:nth-child(2) {
+    padding: 0 1px;
   }
 }
 
@@ -176,8 +246,8 @@ export default {
 
 .logo-link {
   &.-icon {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     @include tweakpoint('min-width', 834px) {
       display: none;
     }
@@ -195,6 +265,50 @@ export default {
   visibility: hidden;
 }
 
+.more-button {
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: transparent;
+  position: relative;
+  &:hover {
+    background: rgba($color--black, 0.1);
+  }
+  &.active {
+    color: $color--black;
+    background: $color--white;
+    box-shadow: 0 4px 10px rgba($color--black, 0.1);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  width: 125px;
+  z-index: 100;
+  left: 0;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  box-shadow: 0 4px 10px rgba($color--black, 0.1);
+  background: $color--white;
+  text-align: left;
+}
+
+.dropdown-list {
+  padding: 8px 0;
+}
+
+.dropdown-link {
+  color: $color--black !important;
+  display: block;
+  padding: 1px 7px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .nameplate {
   display: flex;
   align-items: center;
@@ -206,14 +320,22 @@ export default {
 }
 
 .nav-item {
-  margin-left: 20px;
+  margin-left: 15px;
   display: flex;
   align-items: center;
   text-align: center;
   cursor: pointer;
+  @include tweakpoint('min-width', 700px) {
+    margin-left: 20px;
+  }
+  &.-lang {
+    margin-left: 12px;
+  }
   &.-newsletter,
   &.-submit,
-  &.-my-list {
+  &.-my-list,
+  &.-home,
+  &.-stats {
     display: none;
     @include tweakpoint('min-width', 700px) {
       display: flex;
@@ -223,11 +345,9 @@ export default {
     margin-left: auto;
   }
   &.-search {
-    cursor: default;
     display: none;
-    margin-right: 20px;
-    @include tweakpoint('min-width', 600px) {
-      display: flex;
+    @include tweakpoint('min-width', 700px) {
+      display: block;
     }
   }
 }
@@ -261,13 +381,13 @@ export default {
   }
   &.-submit {
     border: 1px solid $color--black;
-    padding: 5px;
-    border-radius: 3px;
-    @include tweakpoint('min-width', 840px) {
-      padding: 7px 10px;
-    }
+    color: $color--white;
+    background: $color--black;
+    padding: 7px 15px;
+    border-radius: 4px;
     &.is-home {
-      border-color: rgba($color--white, 0.7);
+      background: transparent;
+      border-color: rgba($color--white, 0.8);
     }
   }
 }
@@ -277,13 +397,9 @@ export default {
   align-items: center;
 }
 
-.nav-list-search {
-  &.is-searching {
-    flex-grow: 1;
-  }
-}
-
-.nav-list-submit {
+.nav-list-submit-lang {
+  display: flex;
+  align-items: center;
   margin-left: auto;
 }
 

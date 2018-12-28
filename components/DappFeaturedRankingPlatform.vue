@@ -16,7 +16,7 @@
         class="dapp-item">
         <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
         <nuxt-link 
-          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
           :class="!dapp.iconSmallUrl ? 'has-no-icon' : ''" 
           class="dapp-icon-wrapper" 
           @click.native="trackDappView(dapp.slug)">
@@ -29,7 +29,7 @@
           <span v-else>{{ dapp.name | firstLetter }}</span>
         </nuxt-link>
         <span class="dapp-name"><nuxt-link 
-          :to="{ name: 'dapp-detail', params: { slug: dapp.slug } }" 
+          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
           @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link></span>
         <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
@@ -95,10 +95,12 @@ export default {
         category.slug
       )
       this.$mixpanel.track(action.name, action.data)
-      this.$router.push({
-        name: 'rankings-platform',
-        params: { platform: this.platform.toLowerCase() }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'rankings-platform',
+          params: { platform: this.platform.toLowerCase() }
+        })
+      )
     }
   }
 }
@@ -193,7 +195,7 @@ export default {
 }
 
 .label-dau {
-  font-weight: 300;
+  font-weight: normal;
   font-size: 0.95rem;
   position: absolute;
   right: 0;
@@ -217,6 +219,6 @@ export default {
   letter-spacing: -0.25px;
   margin-left: 10px;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: normal;
 }
 </style>

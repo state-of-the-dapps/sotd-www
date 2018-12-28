@@ -15,7 +15,8 @@
           class="selected-option">{{ $options.filters.capitalize(selected) || allText }}</span>
         <span class="arrow-wrapper"><SvgIconChevron
           :width="11"
-          :height="11"/></span>
+          :height="11"
+          :fill="color"/></span>
       </button>
       <transition name="fade">
         <div
@@ -27,6 +28,7 @@
             @click="close">{{ title }}</h4>
           <ul class="option-list">
             <li
+              v-if="allText"
               class="option-item"
               role="button"
               @click="select('')"
@@ -92,6 +94,15 @@ export default {
       dropdown: false
     }
   },
+  computed: {
+    color() {
+      if (this.theme === 'menu home') {
+        return 'white'
+      } else {
+        return 'black'
+      }
+    }
+  },
   methods: {
     open() {
       this.dropdown = true
@@ -111,6 +122,8 @@ export default {
 @import '~assets/css/settings';
 
 .component-base-dropdown {
+  text-align: left;
+  color: $color--black;
   &.inline {
     display: flex;
     align-items: center;
@@ -131,6 +144,9 @@ export default {
   flex: 1;
   &.is-active {
     font-weight: 700;
+    .menu & {
+      font-weight: normal;
+    }
   }
 }
 
@@ -156,6 +172,14 @@ export default {
   }
   .inline & {
     padding: 3px 10px;
+  }
+  .menu & {
+    background: rgba($color--black, 0.1);
+    border: none;
+    color: $color--black;
+  }
+  .menu.home & {
+    color: $color--white;
   }
 }
 

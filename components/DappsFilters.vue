@@ -105,11 +105,13 @@ export default {
       if (category) {
         routeName += '-category'
       }
-      this.$router.push({
-        name: routeName,
-        params: { ...this.$route.params, category: category || undefined },
-        query: { ...this.$route.query, page: 1 }
-      })
+      this.$router.push(
+        this.localePath({
+          name: routeName,
+          params: { ...this.$route.params, category: category || undefined },
+          query: { ...this.$route.query, page: 1 }
+        })
+      )
       this.trackFilter('category', category)
     },
     selectPlatform(platform) {
@@ -120,21 +122,26 @@ export default {
       if (this.$route.params.category) {
         routeName += '-category'
       }
-      this.$router.push({
-        name: routeName,
-        params: { ...this.$route.params, platform: platform || undefined },
-        query: { ...this.$route.query, page: 1 }
-      })
+      this.$router.push(
+        this.localePath({
+          name: routeName,
+          params: { ...this.$route.params, platform: platform || undefined },
+          query: { ...this.$route.query, page: 1 }
+        })
+      )
       this.trackFilter('platform', platform)
     },
     selectStatus(status) {
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          status: status || undefined,
-          page: 1
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: {
+            ...this.$route.query,
+            status: status || undefined,
+            page: 1
+          }
+        })
+      )
       this.trackFilter('status', status)
     },
     trackFilter(type, option) {

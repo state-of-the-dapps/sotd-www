@@ -13,12 +13,12 @@
         v-if="profileScore !== 1"
         class="improve-wrapper">
         <nuxt-link
-          :to="{
+          :to="localePath({
             name: 'dapp-detail-improve',
             params: {
               slug: dapp
             }
-          }"
+          })"
           class="improve"
           @click.native="trackImproveProfile(dapp)">Improve this profile</nuxt-link>
       </div>

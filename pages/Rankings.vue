@@ -93,12 +93,15 @@ export default {
       const selectedColumn = columnsObj[column]
       this.selectedColumn = selectedColumn
       if (typeof selectedColumn !== 'undefined' && selectedColumn.sort) {
-        this.$router.push({
-          query: {
-            sort: selectedColumn.selection,
-            order: selectedColumn.order
-          }
-        })
+        this.$router.push(
+          this.localePath({
+            name: 'rankings',
+            query: {
+              sort: selectedColumn.selection,
+              order: selectedColumn.order
+            }
+          })
+        )
       }
     }
   },

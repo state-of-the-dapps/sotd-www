@@ -34,13 +34,16 @@ export default {
   },
   methods: {
     selectSort(selected) {
-      this.$router.push({
-        query: {
-          ...this.$route.query,
-          tab: selected || undefined,
-          page: 1
-        }
-      })
+      this.$router.push(
+        this.localePath({
+          name: 'dapps',
+          query: {
+            ...this.$route.query,
+            tab: selected || undefined,
+            page: 1
+          }
+        })
+      )
       this.trackSort(selected)
     },
     trackSort(sort) {
