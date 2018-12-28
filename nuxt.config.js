@@ -33,24 +33,21 @@ export default {
     [
       'nuxt-i18n',
       {
+        vueI18nLoader: true,
         baseUrl: 'https://www.stateofthedapps.com',
         defaultLocale: 'en',
         locales: [
           {
             code: 'en',
             name: 'English',
-            iso: 'en-US',
-            file: 'en-US.js'
+            iso: 'en-US'
           },
           {
             code: 'zh',
             name: '中文',
-            iso: 'zh-CN',
-            file: 'zh-CN.js'
+            iso: 'zh-CN'
           }
-        ],
-        lazy: true,
-        langDir: 'lang/'
+        ]
       }
     ]
   ],

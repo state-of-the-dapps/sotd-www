@@ -1,10 +1,21 @@
+<i18n>
+{
+  "en": {
+    "heading": "Explore Decentralized Applications"
+  },
+  "zh": {
+    "heading": "探索分散的应用程序"
+  }
+}
+</i18n>
+
 <template>
   <div 
     :class="'-' + loaded" 
     class="component-HomeHeroContentIntro">
     <h1
       :class="$i18n.locale"
-      class="title-1">{{ $t('homeHeroHeading') }}</h1>
+      class="title-1">{{ $t('heading') }}</h1>
     <p class="description">Discover the possibilities of the Ethereum, EOS, POA &amp; Steem blockchain with the definitive registry of ÐApp projects. <nuxt-link
       :to="localePath({ name: 'what'})" 
       class="description-link" 
