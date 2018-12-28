@@ -36,6 +36,7 @@ export default {
     selectSort(selected) {
       this.$router.push(
         this.localePath({
+          name: 'dapps',
           query: {
             ...this.$route.query,
             tab: selected || undefined,

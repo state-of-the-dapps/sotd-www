@@ -95,6 +95,7 @@ export default {
       if (typeof selectedColumn !== 'undefined' && selectedColumn.sort) {
         this.$router.push(
           this.localePath({
+            name: 'rankings',
             query: {
               sort: selectedColumn.selection,
               order: selectedColumn.order

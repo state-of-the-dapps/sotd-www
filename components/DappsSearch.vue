@@ -99,6 +99,7 @@ export default {
       tags = tags.join(',')
       this.$router.push(
         this.localePath({
+          name: 'dapps',
           query: {
             ...this.$route.query,
             tags: tags || undefined,
