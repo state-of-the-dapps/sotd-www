@@ -10,12 +10,11 @@ export default {
   GlobalSearch: {
     dapps: '',
     noResults: '',
-    placeholer: '',
+    placeholder: '',
     suggestedTags: '',
     viewDappResults: ''
   },
   HomeHeroContentIntro: {
-    heading: '',
     learn: '',
     subheading: '',
     submit: '',

@@ -1,3 +1,5 @@
+import fallbackMessages from './lang/en-US'
+
 const env = {
   apiUrl: process.env.API_URL || 'https://api.stateofthedapps.com/',
   cdnPublicPath: process.env.CDN_PUBLIC_PATH || '/_nuxt/',
@@ -33,19 +35,23 @@ export default {
     [
       'nuxt-i18n',
       {
-        vueI18nLoader: true,
         baseUrl: 'https://www.stateofthedapps.com',
         defaultLocale: 'en',
         locales: [
           {
             code: 'en',
             name: 'English',
-            iso: 'en-US',
-            file: 'en-US.js'
+            iso: 'en-US'
           }
         ],
         lazy: true,
-        langDir: 'lang/'
+        langDir: 'lang/',
+        vueI18n: {
+          fallbackLocale: 'en',
+          messages: {
+            en: fallbackMessages
+          }
+        }
       }
     ]
   ],

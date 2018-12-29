@@ -1,4 +1,5 @@
 export default {
+  BaseTest: 'testing',
   BaseMenu: {
     allDapps: 'All ÐApps',
     home: 'Home',
