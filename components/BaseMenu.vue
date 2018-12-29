@@ -31,7 +31,7 @@
           :to="localePath({ name: 'home' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('home')">All ÐApps</nuxt-link>
+          @click.native="trackMenu('home')">Home</nuxt-link>
       </li>
       <li class="nav-item -all">
         <nuxt-link 
