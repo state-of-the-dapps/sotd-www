@@ -40,9 +40,12 @@ export default {
           {
             code: 'en',
             name: 'English',
-            iso: 'en-US'
+            iso: 'en-US',
+            file: 'en-US.js'
           }
-        ]
+        ],
+        lazy: true,
+        langDir: 'lang/'
       }
     ]
   ],
@@ -52,7 +55,7 @@ export default {
     retry: true,
     progress: false
   },
-  // serverMiddleware: ['redirect-ssl'],
+  serverMiddleware: ['redirect-ssl'],
   css: ['~/assets/css/normalize.scss'],
   env: {
     apiUrl: env.apiUrl,
