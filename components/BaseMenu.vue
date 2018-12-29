@@ -31,21 +31,21 @@
           :to="localePath({ name: 'home' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('home')">Home</nuxt-link>
+          @click.native="trackMenu('home')">{{ $t(namespace('home')) }}</nuxt-link>
       </li>
       <li class="nav-item -all">
         <nuxt-link 
           :class="'-' + color" 
           :to="localePath({ name: 'dapps' })" 
           class="nav-link" 
-          @click.native="trackMenu('dapp-list')">All ÐApps</nuxt-link>
+          @click.native="trackMenu('dapp-list')">{{ $t(namespace('allDapps')) }}</nuxt-link>
       </li>
       <li class="nav-item -rankings">
         <nuxt-link 
           :class="'-' + color" 
           :to="localePath({ name: 'rankings' })" 
           class="nav-link" 
-          @click.native="trackMenu('rankings')">Rankings</nuxt-link>
+          @click.native="trackMenu('rankings')">{{ $t(namespace('rankings')) }}</nuxt-link>
       </li>
       <media :query="{maxWidth: 699}">
         <li class="nav-item -more">
@@ -62,17 +62,17 @@
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'stats'})"
-                    class="dropdown-link">Stats</nuxt-link>
+                    class="dropdown-link">{{ $t(namespace('stats')) }}</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'dapps'})"
-                    class="dropdown-link">Search</nuxt-link>
+                    class="dropdown-link">{{ $t(namespace('search')) }}</nuxt-link>
                 </li>
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'dapps-new'})"
-                    class="dropdown-link">Submit a ÐApp</nuxt-link>
+                    class="dropdown-link">{{ $t(namespace('submit')) }}</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -85,7 +85,7 @@
           :to="localePath({ name: 'stats' })" 
           class="nav-link" 
           exact 
-          @click.native="trackMenu('stats')">Stats</nuxt-link>
+          @click.native="trackMenu('stats')">{{ $t(namespace('stats')) }}</nuxt-link>
       </li>
       <media :query="{maxWidth: 975}">
         <li class="nav-item -search">
@@ -116,7 +116,7 @@
           :to="localePath({ name: 'dapps-new' })" 
           :class="isHome ? 'is-home' : ''"
           class="nav-link -submit" 
-          @click.native="trackMenu('dapps-new')">Submit a ÐApp</nuxt-link>
+          @click.native="trackMenu('dapps-new')">{{ $t(namespace('submit')) }}</nuxt-link>
       </li>
       <!--
       <li class="nav-item -lang">
@@ -138,6 +138,7 @@ import { directive as onClickaway } from 'vue-clickaway'
 import { mapGetters } from 'vuex'
 import { languages, localeStrings } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
 import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
@@ -158,6 +159,7 @@ export default {
   directives: {
     onClickaway
   },
+  mixins: [componentNamespace],
   props: {
     color: {
       type: String,
