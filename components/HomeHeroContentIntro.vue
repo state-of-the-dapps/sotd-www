@@ -2,10 +2,12 @@
   <div 
     :class="'-' + loaded" 
     class="HomeHeroContentIntro">
-    <h1 class="title-1">{{ $t(namespace('heading')) }}</h1>
+    <h1
+      :class="$i18n.locale"
+      class="title-1">{{ $t(namespace('heading')) }}</h1>
     <p class="description">{{ $t(namespace('subheading')) }} <nuxt-link
-      :to="localePath({ name: 'what'})" 
-      class="description-link" 
+      :to="localePath({ name: 'what'})"
+      class="description-link"
       @click.native="trackHomeHeroCta('learn')">{{ $t(namespace('learn')) }}</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link 
