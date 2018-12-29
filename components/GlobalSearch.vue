@@ -4,7 +4,7 @@
     :class="[
       isSearching ? 'is-searching' : '',
       search.length ? 'has-input' : '']"
-    class="component-global-search">
+    class="GlobalSearch">
     <span 
       :class="'-' + color" 
       class="nav-link -search"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
@@ -24,11 +24,11 @@
       class="results">
       <div 
         v-if="!results && searchCompleted" 
-        class="results-none">Sorry, no results. Please try a new search</div>
+        class="results-none">{{ $t(namespace('noResults')) }}</div>
       <div 
         v-if="suggestions.length" 
         class="suggestions-wrapper">
-        <h3 class="results-title">Suggested tags</h3>
+        <h3 class="results-title">{{ $t(namespace('suggestedTags')) }}</h3>
         <ul class="results-suggestions-list">
           <li
             v-for="(suggestion, index) in suggestions.slice(0, 7)"
@@ -47,7 +47,7 @@
       <div 
         v-if="dapps.length" 
         class="dapps-wrapper">
-        <h3 class="results-title">ÐApps</h3>
+        <h3 class="results-title">{{ $t(namespace('dapps')) }}</h3>
         <ul class="results-dapp-list">
           <li 
             v-for="(dapp, index) in dapps.slice(0, 5)" 
@@ -79,7 +79,7 @@
           <nuxt-link 
             :to="localePath({name: 'dapps', query: {text: search} })" 
             class="results-link" 
-            @click.native="resetSearch()">View all ÐApp results</nuxt-link>
+            @click.native="resetSearch()">{{ $t(namespace('viewDappResults')) }}</nuxt-link>
         </div>
       </div>
     </div>
@@ -231,7 +231,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-global-search {
+.GlobalSearch {
   display: flex;
   align-items: center;
   background: rgba($color--black, 0.1);

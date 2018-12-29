@@ -8,6 +8,17 @@ export default {
     submit: ''
   },
   GlobalSearch: {
-    placeholer: ''
+    dapps: '',
+    noResults: '',
+    placeholer: '',
+    suggestedTags: '',
+    viewDappResults: ''
+  },
+  HomeHeroContentIntro: {
+    heading: '',
+    learn: '',
+    subheading: '',
+    submit: '',
+    view: ''
   }
 }
