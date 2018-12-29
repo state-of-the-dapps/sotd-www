@@ -6,5 +6,8 @@ export default {
     search: '',
     stats: '',
     submit: ''
+  },
+  GlobalSearch: {
+    placeholer: ''
   }
 }

@@ -6,5 +6,8 @@ export default {
     search: 'Search',
     stats: 'Stats',
     submit: 'Submit a ÐApp'
+  },
+  GlobalSearch: {
+    placeholder: 'Discover awesome ÐApps…'
   }
 }

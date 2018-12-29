@@ -13,8 +13,8 @@
         ref="searchInput"
         :class="'-' + color"
         :value="search"
+        :placeholder="$t(namespace('placeholder'))"
         class="search-input"
-        placeholder="Discover awesome ÐApps…"
         @input="fetchResults($event.target.value)"
         @click="startSearch($event.target.value)"
         @keyup.enter="goToSearchPage">
@@ -89,7 +89,7 @@
 <script>
 import { trackDappView, trackSearchSuggestion } from '~/helpers/mixpanel'
 import { directive as onClickaway } from 'vue-clickaway'
-import { getCaretPosition } from '~/helpers/mixins'
+import { getCaretPosition, componentNamespace } from '~/helpers/mixins'
 import SvgIconMagnifier from './SvgIconMagnifier'
 
 var searchTimer
@@ -102,7 +102,7 @@ export default {
   directives: {
     onClickaway: onClickaway
   },
-  mixins: [getCaretPosition],
+  mixins: [getCaretPosition, componentNamespace],
   props: {
     color: {
       type: String,
