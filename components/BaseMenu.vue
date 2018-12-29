@@ -118,7 +118,6 @@
           class="nav-link -submit" 
           @click.native="trackMenu('dapps-new')">{{ $t(namespace('submit')) }}</nuxt-link>
       </li>
-      <!--
       <li class="nav-item -lang">
         <BaseDropdown
           :options="languages"
@@ -127,7 +126,6 @@
           title="Language"
           @select="setLang"/>
       </li>
-      -->
     </ul>
   </div>
 </template>
