@@ -18,7 +18,7 @@ export default {
     heading: '搜索去中心化应用',
     learn: '了解更多关于 ÐApps 的信息',
     subheading:
-      '通过权威注册的 DApp项目，发现以太坊，EOS，POA和区块链的可能性。',
+      '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA和区块链的可能性。',
     submit: '提交 ÐApp',
     view: '查看最佳 ÐApps'
   }
