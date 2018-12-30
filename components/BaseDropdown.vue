@@ -119,6 +119,9 @@ export default {
       }
     }
   },
+  destroyed() {
+    this.close()
+  },
   methods: {
     open() {
       this.dropdown = true
