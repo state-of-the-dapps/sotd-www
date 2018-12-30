@@ -2,29 +2,33 @@
   <div 
     :class="'-' + loaded" 
     class="HomeHeroContentIntro">
-    <h1 class="title-1">Explore Decentralized Applications</h1>
-    <p class="description">Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects. <nuxt-link
-      :to="localePath({ name: 'what'})" 
-      class="description-link" 
-      @click.native="trackHomeHeroCta('learn')">Learn more about ÐApps</nuxt-link></p>
+    <h1
+      :class="$i18n.locale"
+      class="title-1">{{ $t(namespace('heading')) }}</h1>
+    <p class="description">{{ $t(namespace('subheading')) }} <nuxt-link
+      :to="localePath({ name: 'what'})"
+      class="description-link"
+      @click.native="trackHomeHeroCta('learn')">{{ $t(namespace('learn')) }}</nuxt-link></p>
     <ul class="cta-list">
       <li class="cta-item"><nuxt-link 
         :to="localePath({ name: 'rankings' })" 
         class="cta-link" 
-        @click.native="trackHomeHeroCta('rankings')">View the top ÐApps</nuxt-link></li>
+        @click.native="trackHomeHeroCta('rankings')">{{ $t(namespace('view')) }}</nuxt-link></li>
       <li class="cta-item"><nuxt-link 
         :to="localePath({ name: 'dapps-new' })" 
         class="cta-link -submit" 
-        @click.native="trackHomeHeroCta('submit')">Submit a ÐApp</nuxt-link></li>
+        @click.native="trackHomeHeroCta('submit')">{{ $t(namespace('submit')) }}</nuxt-link></li>
     </ul>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 import { trackHomeHeroCta } from '@/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 
 export default {
+  mixins: [componentNamespace],
   data() {
     return {
       loaded: ''

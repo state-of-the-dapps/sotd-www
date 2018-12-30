@@ -71,7 +71,7 @@ export default {
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
         const slots = dappPromotedSlots
-        const promotedDapps = promoted.data.slice(0, slots).reverse()
+        const promotedDapps = promoted.data.slice(0, slots).reverse() || ''
         if (featuredDapps && featuredDapps.length) {
           this.dapps = featuredDapps.slice(0, 4 - promotedDapps.length)
         }
