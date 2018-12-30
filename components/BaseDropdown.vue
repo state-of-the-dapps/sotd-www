@@ -10,6 +10,18 @@
         :class="important ? 'important' : ''"
         class="button"
         @click="open">
+        <img
+          v-if="icon === 'globe' && theme === 'menu home'"
+          src="~/assets/images/icons/globe-white.png"
+          class="icon"
+          width="18"
+          height="18">
+        <img
+          v-else-if="icon === 'globe'"
+          src="~/assets/images/icons/globe.png"
+          class="icon"
+          width="18"
+          height="18">
         <span
           :class="selected ? 'is-active' : ''"
           class="selected-option">{{ $options.filters.capitalize(selected) || allText }}</span>
@@ -68,6 +80,10 @@ export default {
       type: String,
       default: ''
     },
+    icon: {
+      type: String,
+      default: ''
+    },
     important: {
       type: Boolean,
       default: false
@@ -122,6 +138,7 @@ export default {
 @import '~assets/css/settings';
 
 .component-base-dropdown {
+  width: 100%;
   text-align: left;
   color: $color--black;
   &.inline {
@@ -208,5 +225,9 @@ export default {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.icon {
+  margin-right: 5px;
 }
 </style>

@@ -123,6 +123,7 @@
           :options="languages"
           :selected="locale"
           :theme="dropdownTheme"
+          icon="globe"
           title="Language"
           @select="setLang"/>
       </li>
@@ -330,6 +331,7 @@ export default {
   }
   &.-lang {
     margin-left: 12px;
+    width: 115px;
   }
   &.-newsletter,
   &.-submit,
