@@ -1,27 +1,21 @@
 <template>
   <div class="component-DappFeaturedList">
     <div class="wrapper">
-      <h2 class="title-2">
-        <nuxt-link 
-          :to="localePath({ name: 'collection-detail', params: { slug: 'featured' }})" 
-          class="header-cta" 
-          @click.native="trackCollectionView('featured')">
-          <SvgIconFeatured/>Featured ÐApps
-        </nuxt-link>
-        <nuxt-link 
-          :to="localePath({ name: 'collection-detail', params: { slug: 'featured' }})" 
-          class="cta" 
-          @click.native="trackCollectionView('featured')">View all
-          <SvgIconChevron 
-            :width="8" 
-            :height="8" 
-            direction="right" />
-        </nuxt-link>
-        <nuxt-link 
-          :to="localePath({ name: 'promoted-dapps' })" 
-          class="cta -promote" 
-          @click.native="trackPromotedDappsView()">Promote your ÐApp here</nuxt-link>
-      </h2>
+      <SectionHeading
+        :cta-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
+        :has-line="false"
+        :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
+        :secondary-cta-route="{ name: 'promoted-dapps' }"
+        cta-text="View all"
+        heading="Featured ÐApps"
+        secondary-cta-text="Promote your ÐApp here"
+        @clickCta="trackCollectionView('featured')"
+        @clickHeading="trackCollectionView('featured')"
+        @clickSecondaryCta="trackPromotedDappsView">
+        <template slot="icon">
+          <SvgIconFeatured/>
+        </template>
+      </SectionHeading>
       <div class="featured-wrapper">
         <div class="featured-list-wrapper">
           <ul class="featured-list">
@@ -43,12 +37,14 @@
 import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
 import { dappFeaturedSlots, dappPromotedSlots } from '~/helpers/constants'
 import DappFeaturedListItem from './DappFeaturedListItem'
+import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
     DappFeaturedListItem,
+    SectionHeading,
     SvgIconChevron,
     SvgIconFeatured
   },
@@ -122,10 +118,6 @@ export default {
 
 .component-DappFeaturedList {
   margin-bottom: 10px;
-}
-
-.component-SvgIconFeatured {
-  margin-right: 7px;
 }
 
 .featured-list-wrapper {

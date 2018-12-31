@@ -1,0 +1,122 @@
+<template>
+  <h2
+    :class="{ 'has-line': hasLine }"
+    class="SectionHeading">
+    <nuxt-link 
+      :to="localePath(headingRoute)"
+      :class="$i18n.locale"
+      class="link" 
+      @click.native="$emit('clickHeading')">
+      <span class="icon-wrapper">
+        <slot name="icon"/>
+      </span>
+      <span class="heading">{{ heading }}</span>
+    </nuxt-link>
+    <nuxt-link
+      v-if="ctaRoute && ctaText"
+      :to="localePath(ctaRoute)"
+      class="cta" 
+      @click.native="$emit('clickCta')">{{ ctaText }}
+      <SvgIconChevron
+        :width="8"
+        :height="8"
+        direction="right"/>
+    </nuxt-link>
+    <nuxt-link
+      v-if="secondaryCtaRoute && secondaryCtaText"
+      :to="localePath(secondaryCtaRoute)"
+      class="cta secondary"
+      @click.native="$emit('clickSecondaryCta')">{{ secondaryCtaText }}</nuxt-link>
+  </h2>
+</template>
+
+<script>
+import SvgIconChevron from './SvgIconChevron'
+
+export default {
+  components: {
+    SvgIconChevron
+  },
+  props: {
+    ctaText: {
+      type: String,
+      default: ''
+    },
+    ctaRoute: {
+      type: Object,
+      default: () => ({
+        name: '',
+        params: {},
+        query: {}
+      })
+    },
+    heading: {
+      type: String,
+      required: true
+    },
+    headingRoute: {
+      type: Object,
+      required: true
+    },
+    hasLine: {
+      type: Boolean,
+      default: true
+    },
+    secondaryCtaRoute: {
+      type: Object,
+      default: () => ({
+        name: '',
+        params: {},
+        query: {}
+      })
+    },
+    secondaryCtaText: {
+      type: String,
+      default: ''
+    }
+  }
+}
+</script>
+
+
+<style lang="scss" scoped>
+@import '~assets/css/settings';
+
+.SectionHeading {
+  @include font-gothic;
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0;
+  &.has-line {
+    border-bottom: 1px solid rgba($color--black, 0.15);
+  }
+  &.zh {
+    font-size: 1.9rem;
+  }
+}
+
+.cta {
+  @include font-sans;
+  padding-top: 5px;
+  display: inline-block;
+  font-size: 1rem;
+  letter-spacing: -0.25px;
+  margin-left: 12px;
+  text-decoration: none;
+  &.secondary {
+    margin-left: auto;
+    text-decoration: underline;
+  }
+}
+
+.icon-wrapper {
+  margin-right: 3px;
+}
+
+.link {
+  text-decoration: none;
+}
+</style>

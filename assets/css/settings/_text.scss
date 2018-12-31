@@ -4,6 +4,12 @@
   font-weight: normal;  
 }
 
+@mixin dharma-gothic {
+  font-family: 'Dharma-Gothic-Regular';
+  letter-spacing: 0px;
+  font-weight: normal;
+}
+
 @mixin title-1 {
   @include title;
   text-transform: uppercase; 
@@ -23,11 +29,15 @@
   letter-spacing: -.5px;
 }
 
+@mixin font-sans {
+  font-family: 'Overpass', sans-serif;
+}
+
 @mixin font-monospace {
   font-family: 'Inconsolata', monospace;
 }
 
-@mixin dharma-gothic {
+@mixin font-gothic {
   font-family: 'Dharma-Gothic-Regular';
   letter-spacing: 0px;
   font-weight: normal;
