@@ -6,7 +6,7 @@
         :heading="$t(namespace('heading'))"
         :heading-is-translated="$te(namespace('heading'))"
         :heading-route="{ name: 'rankings' }"
-        cta-text="View all"
+        :cta-text="$t('CTA.viewAll')"
         @clickCta="trackDappRankingCategory('all')"
         @clickHeading="trackDappRankingCategory('all')">
         <template slot="icon">

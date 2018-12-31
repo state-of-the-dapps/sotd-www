@@ -4,7 +4,7 @@
       <nuxt-link 
         :to="localePath({ name: 'collection-detail', params: { slug: collection.slug } })" 
         class="link" 
-        @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">View all <SvgIconChevron 
+        @click.native="trackCollectionView(collection.slug)">{{ collection.name }} <span class="cta">{{ $t('CTA.viewAll') }} <SvgIconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></span></nuxt-link>

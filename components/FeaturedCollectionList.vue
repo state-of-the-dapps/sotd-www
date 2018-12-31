@@ -5,7 +5,7 @@
       :heading="$t(namespace('heading'))"
       :heading-is-translated="$te(namespace('heading'))"
       :heading-route="{ name: 'collections' }"
-      cta-text="View all"
+      :cta-text="$t('CTA.viewAll')"
       @clickCta="trackCollectionView('home')"
       @clickHeading="trackCollectionView('home')">
       <template slot="icon">

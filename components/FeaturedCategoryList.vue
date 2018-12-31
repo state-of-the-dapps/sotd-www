@@ -10,13 +10,13 @@
             :to="localePath({name: 'rankings-category', params: {category: category.name}})"
             :class="'-' + category.name.toLowerCase()"
             class="category-link"
-            @click.native="trackFeaturedCategory(category.name)"><component :is="category.iconComponent"/><span class="category-text">{{ category.name | capitalize }}</span></nuxt-link>
+            @click.native="trackFeaturedCategory(category.name)"><component :is="category.iconComponent"/><span class="category-text">{{ $t(namespace(category.name)) | capitalize }}</span></nuxt-link>
         </li>
         <li class="category-item all">
           <nuxt-link
             :to="localePath({name: 'rankings'})"
             class="category-link all"
-            @click.native="trackFeaturedCategory('all')">All categories</nuxt-link>
+            @click.native="trackFeaturedCategory('all')">{{ $t(namespace('allCategories')) }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -25,6 +25,7 @@
 
 <script>
 import { trackFeaturedCategory } from '@/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
 import SvgCategoryExchanges from './SvgCategoryExchanges'
 import SvgCategoryFinance from './SvgCategoryFinance'
 import SvgCategoryGames from './SvgCategoryGames'
@@ -35,6 +36,7 @@ export default {
     SvgCategoryFinance,
     SvgCategoryGames
   },
+  mixins: [componentNamespace],
   data() {
     return {
       categories: [

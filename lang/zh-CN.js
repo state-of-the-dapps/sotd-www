@@ -7,6 +7,22 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
+  CTA: {
+    viewAll: '查看全部'
+  },
+  FeaturedCategoryList: {
+    games: '游戏',
+    finance: '财务',
+    exchanges: '交易平台',
+    allCategories: '所有类别'
+  },
+  FeaturedCollectionList: {
+    heading: 'ÐApp 收藏'
+  },
+  FeaturedDappList: {
+    heading: '特色 ÐApps'
+    // promote: 'Promote your ÐApp here'
+  },
   FeaturedRankingByCategoryList: {
     heading: '类别排行榜'
   },

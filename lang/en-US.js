@@ -7,11 +7,21 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
+  CTA: {
+    viewAll: 'View all'
+  },
+  FeaturedCategoryList: {
+    games: 'games',
+    finance: 'finance',
+    exchanges: 'exchanges',
+    allCategories: 'All categories'
+  },
   FeaturedCollectionList: {
     heading: 'ÐApp Collections'
   },
   FeaturedDappList: {
-    heading: 'Featured ÐApps'
+    heading: 'Featured ÐApps',
+    promote: 'Promote your ÐApp here'
   },
   FeaturedRankingByCategoryList: {
     heading: 'Rankings by Category'

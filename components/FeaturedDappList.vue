@@ -8,8 +8,8 @@
         :heading-is-translated="$te(namespace('heading'))"
         :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
         :secondary-cta-route="{ name: 'promoted-dapps' }"
-        cta-text="View all"
-        secondary-cta-text="Promote your ÐApp here"
+        :cta-text="$t('CTA.viewAll')"
+        :secondary-cta-text="$t(namespace('promote'))"
         @clickCta="trackCollectionView('featured')"
         @clickHeading="trackCollectionView('featured')"
         @clickSecondaryCta="trackPromotedDappsView">
