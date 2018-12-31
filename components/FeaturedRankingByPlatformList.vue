@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappFeaturedList">
+  <div class="FeaturedRankingByPlatformList">
     <div class="wrapper">
       <h2
         :class="$i18n.locale"
@@ -11,7 +11,7 @@
           <img 
             src="~/assets/images/icons/platforms.png" 
             width="16" 
-            class="icon">{{ $t(namespace('rankings')) }}
+            class="icon">{{ $t(namespace('heading')) }}
         </nuxt-link>
         <nuxt-link 
           :to="localePath({ name: 'rankings' })" 
@@ -24,7 +24,7 @@
         </nuxt-link>
       </h2>
       <div class="platforms">
-        <DappFeaturedRankingPlatform
+        <FeaturedRankingByPlatformListItem
           v-for="(platform, index) in platforms"
           :key="index"
           :platform="platform"/>
@@ -37,15 +37,13 @@
 import { componentNamespace } from '@/helpers/mixins'
 import { platformList } from '@/helpers/constants'
 import { trackDappRankingPlatform } from '@/helpers/mixpanel'
-import DappFeaturedListItem from './DappFeaturedListItem'
-import DappFeaturedRankingPlatform from './DappFeaturedRankingPlatform'
+import FeaturedRankingByPlatformListItem from './FeaturedRankingByPlatformListItem'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
-    DappFeaturedListItem,
-    DappFeaturedRankingPlatform,
+    FeaturedRankingByPlatformListItem,
     SvgIconChevron,
     SvgIconFeatured
   },
@@ -74,7 +72,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-DappFeaturedList {
+.FeaturedRankingByPlatformList {
   margin-bottom: 10px;
 }
 

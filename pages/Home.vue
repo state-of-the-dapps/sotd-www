@@ -1,30 +1,30 @@
 <template>
-  <div class="page-home">
+  <div class="PageHome">
     <HomeHero/>
-    <DappFeaturedList/>
-    <DappFeaturedPlatforms/>
-    <DappFeaturedCategories/>
-    <DappFeaturedRankings/>
+    <FeaturedDappList/>
+    <FeaturedRankingByPlatformList/>
+    <FeaturedCategoryList/>
+    <FeaturedRankingByCategoryList/>
     <HomeFeaturedCollections/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import DappFeaturedList from '~/components/DappFeaturedList'
-import DappFeaturedCategories from '~/components/DappFeaturedCategories'
-import DappFeaturedPlatforms from '~/components/DappFeaturedPlatforms'
-import DappFeaturedRankings from '~/components/DappFeaturedRankings'
-import HomeFeaturedCollections from '~/components/HomeFeaturedCollections'
-import HomeHero from '~/components/HomeHero'
+import FeaturedDappList from '@/components/FeaturedDappList'
+import FeaturedCategoryList from '@/components/FeaturedCategoryList'
+import FeaturedRankingByPlatformList from '@/components/FeaturedRankingByPlatformList'
+import FeaturedRankingByCategoryList from '@/components/FeaturedRankingByCategoryList'
+import HomeFeaturedCollections from '@/components/HomeFeaturedCollections'
+import HomeHero from '@/components/HomeHero'
 
 export default {
   components: {
     HomeFeaturedCollections,
-    DappFeaturedList,
-    DappFeaturedCategories,
-    DappFeaturedPlatforms,
-    DappFeaturedRankings,
+    FeaturedDappList,
+    FeaturedCategoryList,
+    FeaturedRankingByPlatformList,
+    FeaturedRankingByCategoryList,
     HomeHero
   },
   layout: 'home',

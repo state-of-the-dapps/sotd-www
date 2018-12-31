@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappFeaturedRankingCategory">
+  <div class="FeaturedRankingByPlatformListItem">
     <h3 class="title-3">
       <a 
         class="link" 
@@ -109,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-DappFeaturedRankingCategory {
+.FeaturedRankingByPlatformListItem {
   margin: 10px;
   width: 100%;
   @include tweakpoint('min-width', 600px) {

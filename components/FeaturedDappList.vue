@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappFeaturedList">
+  <div class="FeaturedDappList">
     <div class="wrapper">
       <SectionHeading
         :cta-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
@@ -19,7 +19,7 @@
       <div class="featured-wrapper">
         <div class="featured-list-wrapper">
           <ul class="featured-list">
-            <DappFeaturedListItem 
+            <FeaturedDappListItem 
               v-for="(dapp, index) in dapps"
               :key="index"
               :dapp="dapp"
@@ -36,14 +36,14 @@
 <script>
 import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
 import { dappFeaturedSlots, dappPromotedSlots } from '~/helpers/constants'
-import DappFeaturedListItem from './DappFeaturedListItem'
+import FeaturedDappListItem from './FeaturedDappListItem'
 import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
-    DappFeaturedListItem,
+    FeaturedDappListItem,
     SectionHeading,
     SvgIconChevron,
     SvgIconFeatured
@@ -116,7 +116,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-DappFeaturedList {
+.FeaturedDappList {
   margin-bottom: 10px;
 }
 

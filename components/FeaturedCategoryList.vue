@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapp-featured-categories">
+  <div class="FeaturedCategoryList">
     <div class="wrapper">
       <ul class="category-list">
         <li
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { trackFeaturedCategory } from '~/helpers/mixpanel'
+import { trackFeaturedCategory } from '@/helpers/mixpanel'
 import SvgCategoryExchanges from './SvgCategoryExchanges'
 import SvgCategoryFinance from './SvgCategoryFinance'
 import SvgCategoryGames from './SvgCategoryGames'

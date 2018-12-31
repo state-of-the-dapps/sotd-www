@@ -2,7 +2,7 @@
   <li 
     :class="hasPromotedDapp ? 'has-promotion' : ''" 
     :id="'dapp-featured-list-item-' + index" 
-    class="component-DappFeaturedListItem">
+    class="FeaturedDappListItem">
     <nuxt-link 
       :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
       class="link" 
@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-DappFeaturedListItem {
+.FeaturedDappListItem {
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;
   margin: 0 10px 20px 10px;

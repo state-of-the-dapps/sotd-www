@@ -7,8 +7,8 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
-  DappFeaturedPlatforms: {
-    rankings: 'Rankings by Platform'
+  FeaturedRankingByPlatformList: {
+    heading: 'Rankings by Platform'
   },
   GlobalSearch: {
     dapps: 'ÐApps',

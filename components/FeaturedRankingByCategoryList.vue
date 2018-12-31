@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappFeaturedList">
+  <div class="FeaturedRankingByCategoryList">
     <div class="wrapper">
       <h2 class="title-2">
         <nuxt-link 
@@ -22,7 +22,7 @@
         </nuxt-link>
       </h2>
       <div class="categories">
-        <DappFeaturedRankingCategory
+        <FeaturedRankingByCategoryListItem
           v-for="(category, index) in categories"
           :key="index"
           :category="category"/>
@@ -33,15 +33,13 @@
 
 <script>
 import { trackDappRankingCategory } from '~/helpers/mixpanel'
-import DappFeaturedListItem from './DappFeaturedListItem'
-import DappFeaturedRankingCategory from './DappFeaturedRankingCategory'
+import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListItem'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
-    DappFeaturedListItem,
-    DappFeaturedRankingCategory,
+    FeaturedRankingByCategoryListItem,
     SvgIconChevron,
     SvgIconFeatured
   },
@@ -66,7 +64,7 @@ export default {
   },
   methods: {
     trackDappRankingCategory(category) {
-      const sourceComponent = 'DappFeaturedRankings'
+      const sourceComponent = 'FeaturedRankingByCategoryList'
       const action = trackDappRankingCategory(
         sourceComponent,
         this.sourcePath,
@@ -82,14 +80,14 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.FeaturedRankingByCategoryList {
+  margin-bottom: 10px;
+}
+
 .categories {
   margin: 0 -10px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.component-DappFeaturedList {
-  margin-bottom: 10px;
 }
 
 .component-SvgIconFeatured {

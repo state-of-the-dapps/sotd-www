@@ -1,6 +1,6 @@
 <template>
   <h2
-    :class="{ 'has-line': hasLine }"
+    :class="{'has-line': hasLine}"
     class="SectionHeading">
     <nuxt-link 
       :to="localePath(headingRoute)"
