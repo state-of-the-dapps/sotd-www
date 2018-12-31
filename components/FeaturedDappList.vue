@@ -4,11 +4,11 @@
       <SectionHeading
         :cta-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
         :has-line="false"
+        :heading="$t(namespace('heading'))"
+        :heading-is-translated="$te(namespace('heading'))"
         :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
-        :heading-is-translated="false"
         :secondary-cta-route="{ name: 'promoted-dapps' }"
         cta-text="View all"
-        heading="Featured ÐApps"
         secondary-cta-text="Promote your ÐApp here"
         @clickCta="trackCollectionView('featured')"
         @clickHeading="trackCollectionView('featured')"
@@ -35,8 +35,9 @@
 </template>
 
 <script>
-import { trackCollectionView, trackPromotedDappsView } from '~/helpers/mixpanel'
-import { dappFeaturedSlots, dappPromotedSlots } from '~/helpers/constants'
+import { componentNamespace } from '@/helpers/mixins'
+import { trackCollectionView, trackPromotedDappsView } from '@/helpers/mixpanel'
+import { dappFeaturedSlots, dappPromotedSlots } from '@/helpers/constants'
 import FeaturedDappListItem from './FeaturedDappListItem'
 import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
@@ -49,6 +50,7 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
+  mixins: [componentNamespace],
   data() {
     return {
       scrollIndex: 0,

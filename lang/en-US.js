@@ -10,6 +10,9 @@ export default {
   FeaturedCollectionList: {
     heading: 'ÐApp Collections'
   },
+  FeaturedDappList: {
+    heading: 'Featured ÐApps'
+  },
   FeaturedRankingByCategoryList: {
     heading: 'Rankings by Category'
   },
