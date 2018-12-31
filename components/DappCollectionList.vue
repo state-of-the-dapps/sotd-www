@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappCollectionList">
+  <div class="DappCollectionList">
     <h3 class="title-3">
       <nuxt-link 
         :to="localePath({ name: 'collection-detail', params: { slug: collection.slug } })" 
@@ -76,10 +76,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/css/settings';
-
-.component-DappCollectionList {
-  padding-bottom: 20px;
-}
 
 .cta {
   display: inline-block;
