@@ -21,13 +21,16 @@ export default {
   },
   FeaturedDappList: {
     heading: '特色 ÐApps'
-    // promote: 'Promote your ÐApp here'
+    // TODO translate promote: 'Promote your ÐApp here'
   },
   FeaturedRankingByCategoryList: {
     heading: '类别排行榜'
   },
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
+  },
+  FeaturedRankingByPlatformListItem: {
+    users24h: '用户 (24小时)'
   },
   GlobalSearch: {
     dapps: 'ÐApps',

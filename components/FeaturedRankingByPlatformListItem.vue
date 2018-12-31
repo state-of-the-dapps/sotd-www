@@ -8,7 +8,7 @@
           :width="8" 
           :height="8" 
           direction="right"/></a>
-      <span class="label-dau">Users (24hr)</span>
+      <span class="label-dau">{{ $t(namespace('users24h')) }}</span>
     </h3>
     <ul class="dapp-list">
       <li 
@@ -40,6 +40,7 @@
 
 <script>
 import { trackDappRankingPlatform, trackDappView } from '~/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
@@ -48,6 +49,7 @@ export default {
     Help,
     SvgIconChevron
   },
+  mixins: [componentNamespace],
   props: {
     platform: {
       type: String,

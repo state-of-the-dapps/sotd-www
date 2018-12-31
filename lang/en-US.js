@@ -29,6 +29,10 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: 'Rankings by Platform'
   },
+  FeaturedRankingByPlatformListItem: {
+    // TODO reuse
+    users24h: 'Users (24hr)'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: 'Sorry, no results. Please try a new search',
