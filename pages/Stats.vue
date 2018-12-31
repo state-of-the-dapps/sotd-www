@@ -2,7 +2,7 @@
   <div class="page-stats">
     <div class="hero-wrapper">
       <PageHeading title="ÐApp Statistics"/>
-      <p class="description">Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.</p>
+      <p class="description">{{ $t('Stats.description') }}</p>
       <Stats
         :stat-categories="stats.categories"
         :stat-dapp-contract-count="stats.dappContractCount"

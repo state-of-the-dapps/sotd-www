@@ -43,5 +43,9 @@ export default {
       'Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.',
     submit: 'Submit a ÐApp',
     view: 'View the top ÐApps'
+  },
+  Stats: {
+    description:
+      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.'
   }
 }

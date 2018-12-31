@@ -43,5 +43,9 @@ export default {
       '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA和区块链的可能性。',
     submit: '提交 ÐApp',
     view: '查看最佳 ÐApps'
+  },
+  Stats: {
+    description:
+      '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
   }
 }
