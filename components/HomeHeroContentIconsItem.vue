@@ -15,12 +15,8 @@
 <script>
 import { trackHomeHeroDappIcon } from '~/helpers/mixpanel'
 import { mapGetters } from 'vuex'
-import SvgBadgeMetamask from './SvgBadgeMetamask'
 
 export default {
-  components: {
-    SvgBadgeMetamask
-  },
   props: {
     index: {
       type: Number,

@@ -23,12 +23,7 @@
 </template>
 
 <script>
-import SvgBadgeComplete from '~/components/SvgBadgeComplete'
-
 export default {
-  components: {
-    SvgBadgeComplete
-  },
   props: {
     platform: {
       type: String,

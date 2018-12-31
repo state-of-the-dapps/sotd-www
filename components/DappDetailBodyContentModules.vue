@@ -132,7 +132,6 @@
 <script>
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
-import DappDetailBodyContentModulesCollections from './DappDetailBodyContentModulesCollections'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
 import DappDetailBodyContentModulesDev from './DappDetailBodyContentModulesDev'
 import DappDetailBodyContentModulesLicense from './DappDetailBodyContentModulesLicense'
@@ -145,7 +144,6 @@ export default {
   components: {
     DappDetailBodyContentModulesAudits,
     DappDetailBodyContentModulesAuthors,
-    DappDetailBodyContentModulesCollections,
     DappDetailBodyContentModulesContracts,
     DappDetailBodyContentModulesDev,
     DappDetailBodyContentModulesLicense,

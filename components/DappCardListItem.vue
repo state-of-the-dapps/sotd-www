@@ -45,12 +45,8 @@
 <script>
 import formatDate from 'date-fns/format'
 import { trackDappView } from '~/helpers/mixpanel'
-import DappBadgeList from './DappBadgeList'
 
 export default {
-  components: {
-    DappBadgeList
-  },
   props: {
     dapp: {
       type: Object,
