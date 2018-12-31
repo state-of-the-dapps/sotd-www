@@ -7,7 +7,7 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
-  CTA: {
+  cta: {
     viewAll: 'View all'
   },
   FeaturedCategoryList: {

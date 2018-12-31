@@ -7,7 +7,7 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
-  CTA: {
+  cta: {
     viewAll: '查看全部'
   },
   FeaturedCategoryList: {

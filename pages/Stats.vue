@@ -1,5 +1,5 @@
 <template>
-  <div class="page-stats">
+  <div class="PageStats">
     <div class="hero-wrapper">
       <PageHeading :title="$t('Stats.title')"/>
       <p class="description">{{ $t('Stats.description') }}</p>
@@ -58,6 +58,10 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
+.PageStats {
+  padding-bottom: 50px;
+}
+
 .description {
   margin: 0.5rem auto 4rem auto;
   text-align: center;
@@ -67,9 +71,5 @@ export default {
 .hero-wrapper {
   @include margin-wrapper-main;
   padding: 0 0 2rem;
-}
-
-.page-stats {
-  padding-bottom: 50px;
 }
 </style>
