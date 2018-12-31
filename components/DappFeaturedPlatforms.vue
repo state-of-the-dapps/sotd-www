@@ -1,7 +1,9 @@
 <template>
   <div class="component-DappFeaturedList">
     <div class="wrapper">
-      <h2 class="title-2">
+      <h2
+        :class="$i18n.locale"
+        class="title-2">
         <nuxt-link 
           :to="localePath({ name: 'rankings' })" 
           class="header-cta" 
@@ -9,7 +11,7 @@
           <img 
             src="~/assets/images/icons/platforms.png" 
             width="16" 
-            class="icon">Rankings by Platform
+            class="icon">{{ $t(namespace('rankings')) }}
         </nuxt-link>
         <nuxt-link 
           :to="localePath({ name: 'rankings' })" 
@@ -18,7 +20,7 @@
           <SvgIconChevron 
             :width="8" 
             :height="8" 
-            direction="right" />
+            direction="right"/>
         </nuxt-link>
       </h2>
       <div class="platforms">
@@ -32,8 +34,9 @@
 </template>
 
 <script>
-import { platformList } from '~/helpers/constants'
-import { trackDappRankingPlatform } from '~/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
+import { platformList } from '@/helpers/constants'
+import { trackDappRankingPlatform } from '@/helpers/mixpanel'
 import DappFeaturedListItem from './DappFeaturedListItem'
 import DappFeaturedRankingPlatform from './DappFeaturedRankingPlatform'
 import SvgIconChevron from './SvgIconChevron'
@@ -46,6 +49,7 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
+  mixins: [componentNamespace],
   data() {
     return {
       platforms: platformList,
@@ -141,6 +145,9 @@ export default {
   margin-bottom: 0rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid rgba($color--black, 0.15);
+  &.zh {
+    font-size: 1.9rem;
+  }
 }
 
 .wrapper {

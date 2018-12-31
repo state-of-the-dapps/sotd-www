@@ -7,6 +7,9 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
+  DappFeaturedPlatforms: {
+    rankings: '平台排行榜'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: '对不起，没有找到结果，请重新搜索',

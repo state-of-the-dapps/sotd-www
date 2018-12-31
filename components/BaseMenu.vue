@@ -271,6 +271,7 @@ export default {
   border-radius: 4px;
   background: transparent;
   position: relative;
+  white-space: nowrap;
   &:hover {
     background: rgba($color--black, 0.1);
   }
@@ -321,7 +322,7 @@ export default {
 }
 
 .nav-item {
-  margin-left: 15px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -331,7 +332,7 @@ export default {
   }
   &.-lang {
     margin-left: 12px;
-    width: 115px;
+    width: 108px;
   }
   &.-newsletter,
   &.-submit,
