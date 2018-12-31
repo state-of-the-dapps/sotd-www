@@ -70,5 +70,6 @@ export default {
 
 .FeaturedCollectionList {
   @include margin-wrapper-main;
+  padding-bottom: 35px;
 }
 </style>
