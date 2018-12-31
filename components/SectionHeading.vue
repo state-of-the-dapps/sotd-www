@@ -1,10 +1,9 @@
 <template>
   <h2
-    :class="{'has-line': hasLine}"
+    :class="[{'has-line': hasLine}, {'is-translated': headingIsTranslated}, $i18n.locale]"
     class="SectionHeading">
     <nuxt-link 
       :to="localePath(headingRoute)"
-      :class="$i18n.locale"
       class="link" 
       @click.native="$emit('clickHeading')">
       <span class="icon-wrapper">
@@ -54,6 +53,10 @@ export default {
       type: String,
       required: true
     },
+    headingIsTranslated: {
+      type: Boolean,
+      required: true
+    },
     headingRoute: {
       type: Object,
       required: true
@@ -93,8 +96,10 @@ export default {
   &.has-line {
     border-bottom: 1px solid rgba($color--black, 0.15);
   }
-  &.zh {
-    font-size: 1.9rem;
+  &.is-translated {
+    &.zh {
+      font-size: 1.9rem;
+    }
   }
 }
 

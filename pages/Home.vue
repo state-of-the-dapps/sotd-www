@@ -5,7 +5,7 @@
     <FeaturedRankingByPlatformList/>
     <FeaturedCategoryList/>
     <FeaturedRankingByCategoryList/>
-    <HomeFeaturedCollections/>
+    <FeaturedCollectionList/>
   </div>
 </template>
 
@@ -15,12 +15,12 @@ import FeaturedDappList from '@/components/FeaturedDappList'
 import FeaturedCategoryList from '@/components/FeaturedCategoryList'
 import FeaturedRankingByPlatformList from '@/components/FeaturedRankingByPlatformList'
 import FeaturedRankingByCategoryList from '@/components/FeaturedRankingByCategoryList'
-import HomeFeaturedCollections from '@/components/HomeFeaturedCollections'
+import FeaturedCollectionList from '@/components/FeaturedCollectionList'
 import HomeHero from '@/components/HomeHero'
 
 export default {
   components: {
-    HomeFeaturedCollections,
+    FeaturedCollectionList,
     FeaturedDappList,
     FeaturedCategoryList,
     FeaturedRankingByPlatformList,

@@ -5,6 +5,7 @@
         :cta-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
         :has-line="false"
         :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
+        :heading-is-translated="false"
         :secondary-cta-route="{ name: 'promoted-dapps' }"
         cta-text="View all"
         heading="Featured ÐApps"
@@ -112,12 +113,11 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
 .FeaturedDappList {
-  margin-bottom: 10px;
+  padding-top: 10px;
 }
 
 .featured-list-wrapper {
@@ -130,9 +130,6 @@ export default {
 .featured-list {
   display: flex;
   flex-wrap: wrap;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .featured-list-spacer {
@@ -143,32 +140,6 @@ export default {
   @include tweakpoint('min-width', 750px) {
     display: flex;
   }
-}
-
-.header-cta {
-  text-decoration: none;
-}
-
-.cta {
-  position: relative;
-  bottom: 4px;
-  display: inline-block;
-  font-family: 'Overpass';
-  font-size: 1rem;
-  letter-spacing: -0.25px;
-  margin-left: 12px;
-  text-decoration: none;
-  &.-promote {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    text-decoration: underline;
-  }
-}
-
-.title-2 {
-  position: relative;
-  font-size: 2.5rem;
 }
 
 .wrapper {

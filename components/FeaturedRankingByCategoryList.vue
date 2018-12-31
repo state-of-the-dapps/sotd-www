@@ -1,26 +1,20 @@
 <template>
   <div class="FeaturedRankingByCategoryList">
     <div class="wrapper">
-      <h2 class="title-2">
-        <nuxt-link 
-          :to="localePath({ name: 'rankings' })" 
-          class="header-cta" 
-          @click.native="trackDappRankingCategory('all')">
+      <SectionHeading
+        :cta-route="{ name: 'rankings' }"
+        :heading="$t(namespace('heading'))"
+        :heading-is-translated="$te(namespace('heading'))"
+        :heading-route="{ name: 'rankings' }"
+        cta-text="View all"
+        @clickCta="trackDappRankingCategory('all')"
+        @clickHeading="trackDappRankingCategory('all')">
+        <template slot="icon">
           <img 
             src="~/assets/images/icons/categories.png" 
-            width="16" 
-            class="icon">Rankings by Category
-        </nuxt-link>
-        <nuxt-link 
-          :to="localePath({ name: 'rankings' })"
-          class="cta" 
-          @click.native="trackDappRankingCategory('all')">View all categories
-          <SvgIconChevron 
-            :width="8" 
-            :height="8" 
-            direction="right" />
-        </nuxt-link>
-      </h2>
+            width="16">
+        </template>
+      </SectionHeading>
       <div class="categories">
         <FeaturedRankingByCategoryListItem
           v-for="(category, index) in categories"
@@ -32,17 +26,21 @@
 </template>
 
 <script>
-import { trackDappRankingCategory } from '~/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
+import { trackDappRankingCategory } from '@/helpers/mixpanel'
 import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListItem'
+import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
     FeaturedRankingByCategoryListItem,
+    SectionHeading,
     SvgIconChevron,
     SvgIconFeatured
   },
+  mixins: [componentNamespace],
   data() {
     return {
       categories: [],
@@ -80,10 +78,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.FeaturedRankingByCategoryList {
-  margin-bottom: 10px;
-}
-
 .categories {
   margin: 0 -10px;
   display: flex;
@@ -119,43 +113,8 @@ export default {
   }
 }
 
-.header-cta {
-  text-decoration: none;
-}
-
-.icon {
-  margin-right: 7px;
-}
-
-.cta {
-  position: relative;
-  bottom: 4px;
-  display: inline-block;
-  font-family: 'Overpass';
-  font-size: 1rem;
-  letter-spacing: -0.25px;
-  margin-left: 12px;
-  text-decoration: none;
-  &.-promote {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    text-decoration: underline;
-  }
-}
-
-.title-2 {
-  position: relative;
-  font-size: 2.5rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba($color--black, 0.15);
-}
-
 .wrapper {
   @include margin-wrapper-main;
   position: relative;
-  padding-bottom: 1.05rem;
 }
 </style>

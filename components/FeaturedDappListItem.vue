@@ -66,7 +66,7 @@ export default {
 .FeaturedDappListItem {
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;
-  margin: 0 10px 20px 10px;
+  margin: 0 10px 5px 10px;
   border-radius: 4px;
   width: 100%;
   overflow: hidden;

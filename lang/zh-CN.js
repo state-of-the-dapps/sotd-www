@@ -7,6 +7,9 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
+  FeaturedRankingByCategoryList: {
+    heading: '类别排行榜'
+  },
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
   },

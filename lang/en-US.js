@@ -7,6 +7,12 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
+  FeaturedCollectionList: {
+    heading: 'ÐApp Collections'
+  },
+  FeaturedRankingByCategoryList: {
+    heading: 'Rankings by Category'
+  },
   FeaturedRankingByPlatformList: {
     heading: 'Rankings by Platform'
   },

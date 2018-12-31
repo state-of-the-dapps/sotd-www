@@ -1,24 +1,19 @@
 <template>
-  <div class="component-HomeFeaturedCollections">
-    <h2 class="title-2">
-      <nuxt-link 
-        :to="localePath({ name: 'collections'})" 
-        class="header-cta" 
-        @click.native="trackCollectionView('home')">
+  <div class="FeaturedCollectionList">
+    <SectionHeading
+      :cta-route="{ name: 'collections' }"
+      :heading="$t(namespace('heading'))"
+      :heading-is-translated="$te(namespace('heading'))"
+      :heading-route="{ name: 'collections' }"
+      cta-text="View all"
+      @clickCta="trackCollectionView('home')"
+      @clickHeading="trackCollectionView('home')">
+      <template slot="icon">
         <SvgIconCollection 
           :width="16" 
-          :height="16"/>ÐApp Collections
-      </nuxt-link>
-      <nuxt-link 
-        :to="localePath({ name: 'collections'})" 
-        class="cta" 
-        @click.native="trackCollectionView('home')">View all
-        <SvgIconChevron 
-          :width="8" 
-          :height="8" 
-          direction="right" />
-      </nuxt-link>
-    </h2>
+          :height="16"/>
+      </template>
+    </SectionHeading>
     <DappCollectionList 
       v-for="(collection, index) in collections" 
       :collection="collection" 
@@ -27,18 +22,22 @@
 </template>
 
 <script>
-import { homeFeaturedCollections } from '~/helpers/constants'
-import { trackCollectionView } from '~/helpers/mixpanel'
+import { componentNamespace } from '@/helpers/mixins'
+import { homeFeaturedCollections } from '@/helpers/constants'
+import { trackCollectionView } from '@/helpers/mixpanel'
 import DappCollectionList from './DappCollectionList'
+import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconCollection from './SvgIconCollection'
 
 export default {
   components: {
     DappCollectionList,
+    SectionHeading,
     SvgIconChevron,
     SvgIconCollection
   },
+  mixins: [componentNamespace],
   data() {
     return {
       collections: [],
@@ -69,38 +68,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-HomeFeaturedCollections {
+.FeaturedCollectionList {
   @include margin-wrapper-main;
-}
-
-.component-SvgIconCollection {
-  margin-right: 7px;
-}
-
-.cta {
-  position: relative;
-  bottom: 4px;
-  display: inline-block;
-  font-family: 'Overpass';
-  font-size: 1rem;
-  letter-spacing: -0.25px;
-  margin-left: 12px;
-  text-decoration: none;
-  &.-promote {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    text-decoration: underline;
-  }
-}
-
-.header-cta {
-  text-decoration: none;
-}
-
-.title-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
 }
 </style>

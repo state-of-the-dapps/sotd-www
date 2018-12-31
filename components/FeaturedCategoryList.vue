@@ -104,6 +104,6 @@ export default {
   @include margin-wrapper-main;
   border-top: 1px solid rgba($color--black, 0.15);
   position: relative;
-  padding: 1.5rem 0;
+  padding: 1.5rem 0 0 0;
 }
 </style>

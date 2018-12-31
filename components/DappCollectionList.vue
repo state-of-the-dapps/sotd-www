@@ -78,7 +78,6 @@ export default {
 @import '~assets/css/settings';
 
 .component-DappCollectionList {
-  border-top: 1px solid rgba($color--black, 0.15);
   padding-bottom: 20px;
 }
 

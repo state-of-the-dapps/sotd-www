@@ -1,28 +1,20 @@
 <template>
   <div class="FeaturedRankingByPlatformList">
     <div class="wrapper">
-      <h2
-        :class="$i18n.locale"
-        class="title-2">
-        <nuxt-link 
-          :to="localePath({ name: 'rankings' })" 
-          class="header-cta" 
-          @click.native="trackDappRankingPlatform('all')">
+      <SectionHeading
+        :cta-route="{ name: 'rankings' }"
+        :heading="$t(namespace('heading'))"
+        :heading-is-translated="$te(namespace('heading'))"
+        :heading-route="{ name: 'rankings' }"
+        cta-text="View all"
+        @clickCta="trackDappRankingPlatform('all')"
+        @clickHeading="trackDappRankingPlatform('all')">
+        <template slot="icon">
           <img 
             src="~/assets/images/icons/platforms.png" 
-            width="16" 
-            class="icon">{{ $t(namespace('heading')) }}
-        </nuxt-link>
-        <nuxt-link 
-          :to="localePath({ name: 'rankings' })" 
-          class="cta" 
-          @click.native="trackDappRankingPlatform('all')">View all
-          <SvgIconChevron 
-            :width="8" 
-            :height="8" 
-            direction="right"/>
-        </nuxt-link>
-      </h2>
+            width="16">
+        </template>
+      </SectionHeading>
       <div class="platforms">
         <FeaturedRankingByPlatformListItem
           v-for="(platform, index) in platforms"
@@ -38,12 +30,14 @@ import { componentNamespace } from '@/helpers/mixins'
 import { platformList } from '@/helpers/constants'
 import { trackDappRankingPlatform } from '@/helpers/mixpanel'
 import FeaturedRankingByPlatformListItem from './FeaturedRankingByPlatformListItem'
+import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
 import SvgIconFeatured from './SvgIconFeatured'
 
 export default {
   components: {
     FeaturedRankingByPlatformListItem,
+    SectionHeading,
     SvgIconChevron,
     SvgIconFeatured
   },
@@ -73,28 +67,7 @@ export default {
 @import '~assets/css/settings';
 
 .FeaturedRankingByPlatformList {
-  margin-bottom: 10px;
-}
-
-.component-SvgIconFeatured {
-  margin-right: 7px;
-}
-
-.cta {
-  position: relative;
-  bottom: 4px;
-  display: inline-block;
-  font-family: 'Overpass';
-  font-size: 1rem;
-  letter-spacing: -0.25px;
-  margin-left: 12px;
-  text-decoration: none;
-  &.-promote {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    text-decoration: underline;
-  }
+  padding-top: 5px;
 }
 
 .featured-list-wrapper {
@@ -107,9 +80,6 @@ export default {
 .featured-list {
   display: flex;
   flex-wrap: wrap;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .featured-list-spacer {
@@ -122,30 +92,10 @@ export default {
   }
 }
 
-.header-cta {
-  text-decoration: none;
-}
-
-.icon {
-  margin-right: 7px;
-}
-
 .platforms {
   margin: 0 -10px;
   display: flex;
   flex-wrap: wrap;
-}
-
-.title-2 {
-  position: relative;
-  font-size: 2.5rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba($color--black, 0.15);
-  &.zh {
-    font-size: 1.9rem;
-  }
 }
 
 .wrapper {

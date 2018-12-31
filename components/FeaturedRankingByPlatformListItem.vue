@@ -3,19 +3,20 @@
     <h3 class="title-3">
       <a 
         class="link" 
-        @click="viewDappRankingPlatform(platform)">{{ platform }} <SvgIconChevron 
+        @click="viewDappRankingPlatform(platform)">{{ platform }}
+        <SvgIconChevron 
           :width="8" 
           :height="8" 
-          direction="right" /></a>
+          direction="right"/></a>
       <span class="label-dau">Users (24hr)</span>
     </h3>
     <ul class="dapp-list">
       <li 
-        v-for="(dapp, index) in dapps" 
-        :key="index" 
+        v-for="(dapp, index) in dapps"
+        :key="index"
         class="dapp-item">
         <span class="dapp-rank"><span>{{ index + 1 }}</span></span>
-        <nuxt-link 
+        <nuxt-link
           :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
           :class="!dapp.iconSmallUrl ? 'has-no-icon' : ''" 
           class="dapp-icon-wrapper" 
