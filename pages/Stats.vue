@@ -1,7 +1,7 @@
 <template>
   <div class="page-stats">
     <div class="hero-wrapper">
-      <PageHeading title="ÐApp Statistics"/>
+      <PageHeading :title="$t('Stats.title')"/>
       <p class="description">{{ $t('Stats.description') }}</p>
       <Stats
         :stat-categories="stats.categories"

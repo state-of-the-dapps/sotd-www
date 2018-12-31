@@ -45,7 +45,7 @@ export default {
     view: '查看最佳 ÐApps'
   },
   Stats: {
-    description:
-      '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
+    title: 'ÐApp 数据',
+    description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
   }
 }

@@ -45,6 +45,7 @@ export default {
     view: 'View the top ÐApps'
   },
   Stats: {
+    title: 'ÐApp Statistics',
     description:
       'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.'
   }
