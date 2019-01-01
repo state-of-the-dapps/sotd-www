@@ -3,7 +3,6 @@
     <SectionHeading
       :cta-route="{ name: 'collections' }"
       :heading="$t(namespace('heading'))"
-      :heading-is-translated="$te(namespace('heading'))"
       :heading-route="{ name: 'collections' }"
       :cta-text="$t('cta.viewAll')"
       @clickCta="trackCollectionView('home')"

@@ -1,6 +1,6 @@
 <template>
   <h2
-    :class="[{'has-line': hasLine}, {'is-translated': headingIsTranslated}, $i18n.locale]"
+    :class="[{'has-line': hasLine}, $i18n.locale]"
     class="SectionHeading">
     <nuxt-link 
       :to="localePath(headingRoute)"
@@ -53,10 +53,6 @@ export default {
       type: String,
       required: true
     },
-    headingIsTranslated: {
-      type: Boolean,
-      required: true
-    },
     headingRoute: {
       type: Object,
       required: true
@@ -86,20 +82,20 @@ export default {
 @import '~assets/css/settings';
 
 .SectionHeading {
-  @include font-gothic;
+  @include font-sans;
   display: flex;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   margin-top: 2rem;
-  padding-bottom: 0.75rem;
+  padding-bottom: 1rem;
   margin-bottom: 0;
+  letter-spacing: -0.85px;
+  font-weight: 300;
   &.has-line {
     border-bottom: 1px solid rgba($color--black, 0.15);
   }
-  &.is-translated {
-    &.zh {
-      font-size: 1.9rem;
-    }
+  &.zh {
+    font-weight: 400;
   }
 }
 
@@ -111,9 +107,13 @@ export default {
   letter-spacing: -0.25px;
   margin-left: 12px;
   text-decoration: none;
+  font-weight: 300;
   &.secondary {
     margin-left: auto;
     text-decoration: underline;
+  }
+  .zh & {
+    font-weight: 400;
   }
 }
 

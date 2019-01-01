@@ -319,9 +319,6 @@ html,
 .title-2 {
   font-size: 2.25rem;
   margin-bottom: 0.75rem;
-  &.zh {
-    font-size: 1.9rem;
-  }
 }
 
 input::placeholder,

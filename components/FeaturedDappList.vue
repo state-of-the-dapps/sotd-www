@@ -5,7 +5,6 @@
         :cta-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
         :has-line="false"
         :heading="$t(namespace('heading'))"
-        :heading-is-translated="$te(namespace('heading'))"
         :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}"
         :secondary-cta-route="{ name: 'promoted-dapps' }"
         :cta-text="$t('cta.viewAll')"

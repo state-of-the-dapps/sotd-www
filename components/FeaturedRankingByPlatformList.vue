@@ -4,7 +4,6 @@
       <SectionHeading
         :cta-route="{ name: 'rankings' }"
         :heading="$t(namespace('heading'))"
-        :heading-is-translated="$te(namespace('heading'))"
         :heading-route="{ name: 'rankings' }"
         :cta-text="$t('cta.viewAll')"
         @clickCta="trackDappRankingPlatform('all')"
