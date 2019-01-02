@@ -11,6 +11,9 @@ export default {
   cta: {
     viewAll: 'View all'
   },
+  DappDetailBodyContentCtas: {
+    website: 'Visit website'
+  },
   DappDetailBodyContentModulesStatus: {
     status: 'Status'
   },

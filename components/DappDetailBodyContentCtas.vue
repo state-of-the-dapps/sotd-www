@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentCtas">
+  <div class="DappDetailBodyContentCtas">
     <div class="wrapper">
       <div 
         v-if="dapp.logoUrl" 
@@ -36,7 +36,7 @@
           :rel="'noopener' + (dapp.nofollow ? ' nofollow' : '')"
           class="button" 
           target="_blank" 
-          @click="trackDappSite(['website'], dapp.sites.websiteUrl)">Visit website<span v-if="dapp.isNsfw"> (NSFW)</span></a>
+          @click="trackDappSite(['website'], dapp.sites.websiteUrl)">{{ $t(namespace('website')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></a>
       </div>
       <ul 
         v-if="dapp.socials.length" 

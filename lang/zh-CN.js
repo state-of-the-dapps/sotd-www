@@ -11,6 +11,9 @@ export default {
   cta: {
     viewAll: '查看全部'
   },
+  DappDetailBodyContentCtas: {
+    website: '访问网站'
+  },
   DappDetailBodyContentModulesStatus: {
     status: '现状'
   },

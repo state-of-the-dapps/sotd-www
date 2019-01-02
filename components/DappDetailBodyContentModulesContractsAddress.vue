@@ -1,5 +1,5 @@
 <template>
-  <li class="component-DappDetailBodyContentModulesContractsAddress">
+  <li class="DappDetailBodyContentModulesContractsAddress">
     <a
       :href="addressLink"
       class="contract-address-value"
@@ -106,7 +106,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-DappDetailBodyContentModulesContractsAddress {
+.DappDetailBodyContentModulesContractsAddress {
   padding: 2px 0;
 }
 
