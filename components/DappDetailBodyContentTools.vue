@@ -9,7 +9,7 @@
             @click="viewDappEdit()">
             <SvgIconEdit 
               :width="14" 
-              :height="14"/> <span class="description">Edit this ÐApp</span>
+              :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
           </span>
         </li>
         <li class="tool-item">
@@ -19,7 +19,7 @@
             @click="viewDappShare()">
             <SvgIconShare 
               :width="14" 
-              :height="14"/> <span class="description">Share this ÐApp</span>
+              :height="14"/> <span class="description">{{ $t(namespace('share')) }}</span>
           </span>
         </li>
         <li class="tool-item">
@@ -29,7 +29,7 @@
             @click="viewDappFlag('flag')">
             <SvgIconFlag 
               :width="14" 
-              :height="14"/> <span class="description">Flag as inappropriate</span>
+              :height="14"/> <span class="description">{{ $t(namespace('flag')) }}</span>
           </span>
         </li>
         <li class="tool-item">
@@ -39,7 +39,7 @@
             @click.native="trackPromotedDappsView">
             <SvgIconFeatured 
               :width="14" 
-              :height="14"/> <span class="description">Promote this ÐApp</span>
+              :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
           </nuxt-link>
         </li>
       </ul>

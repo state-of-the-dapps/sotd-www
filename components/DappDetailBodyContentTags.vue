@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBodyContentBadges">
     <div class="wrapper">
-      <h4 class="subtitle">Tags</h4>
+      <h4 class="subtitle">{{ $t('tags') }}</h4>
       <ul class="tag-list">
         <li 
           v-for="(tag, index) in formattedTags" 

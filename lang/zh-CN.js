@@ -7,6 +7,7 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
+  categories: '分类',
   cta: {
     viewAll: '查看全部'
   },
@@ -39,6 +40,12 @@ export default {
     weekly: '每周',
     monthly: '每月'
   },
+  DappDetailBodyContentTools: {
+    edit: '编辑这个ÐApp',
+    flag: '举报不当',
+    promote: '推广这个ÐApp',
+    share: '分享这个'
+  },
   DappDetailBodyContentPlatform: {
     platform: '平台'
   },
@@ -56,6 +63,9 @@ export default {
     // TODO duplicates
     title: '你会不会把这个ÐApp推荐给朋友？',
     confirmation: '感谢您的反馈意见！'
+  },
+  DappProfile: {
+    improve: '改善这个简介'
   },
   FeaturedCategoryList: {
     games: '游戏',
@@ -98,5 +108,6 @@ export default {
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
-  }
+  },
+  tags: '标签'
 }

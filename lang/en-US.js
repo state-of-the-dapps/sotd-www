@@ -7,6 +7,7 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
+  categories: 'categories',
   cta: {
     viewAll: 'View all'
   },
@@ -40,6 +41,12 @@ export default {
     weekly: 'Weekly',
     monthly: 'Monthly'
   },
+  DappDetailBodyContentTools: {
+    edit: 'Edit this ÐApp',
+    flag: 'Flag as inappropriate',
+    promote: 'Promote this ÐApp',
+    share: 'Share this ÐApp'
+  },
   DappDetailBodyContentPlatform: {
     platform: 'Platform'
   },
@@ -57,6 +64,9 @@ export default {
     // TODO duplicates
     title: 'Would you recommend this ÐApp to a friend?',
     confirmation: 'Thanks for your feedback!'
+  },
+  DappProfile: {
+    improve: 'Improve this profile'
   },
   FeaturedCategoryList: {
     games: 'games',
@@ -101,5 +111,6 @@ export default {
     title: 'ÐApp Statistics',
     description:
       'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.'
-  }
+  },
+  tags: 'tags'
 }

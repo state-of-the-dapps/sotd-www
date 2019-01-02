@@ -20,7 +20,7 @@
             }
           })"
           class="improve"
-          @click.native="trackImproveProfile(dapp)">Improve this profile</nuxt-link>
+          @click.native="trackImproveProfile(dapp)">{{ $t(namespace('improve')) }}</nuxt-link>
       </div>
     </div>
   </div>
