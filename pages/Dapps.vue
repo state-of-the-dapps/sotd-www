@@ -84,14 +84,22 @@ export default {
     }
   },
   async asyncData({ params, query, app }) {
+    let dapps = []
+    let pager = {}
     const urlParams = { ...params, ...query }
     if (!query.tab) {
       urlParams.tab = 'hot'
     }
-    const data = await getDapps(app.$axios, urlParams)
-    const dapps = data.items
-    const pager = data.pager
-    return { dapps, pager }
+    try {
+      const data = await getDapps(app.$axios, urlParams)
+      const dapps = data.items
+      const pager = data.pager
+      return { dapps, pager }
+    } catch (e) {
+      if (typeof app.$sentry !== 'undefined') {
+        app.$sentry.captureException(e)
+      }
+    }
   },
   watch: {
     $route() {
