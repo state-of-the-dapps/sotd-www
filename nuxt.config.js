@@ -65,7 +65,7 @@ export default {
   axios: {
     baseUrl: env.apiUrl,
     proxyHeaders: false,
-    retry: true,
+    retry: false,
     progress: false
   },
   serverMiddleware: ['redirect-ssl'],
