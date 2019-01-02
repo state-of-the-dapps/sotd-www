@@ -62,11 +62,6 @@ export default {
     comments: '评论',
     commentsPlaceholder: '添加您的评论'
   },
-  DappFeedback: {
-    // TODO duplicates
-    title: '你会不会把这个ÐApp推荐给朋友？',
-    confirmation: '感谢您的反馈意见！'
-  },
   DappProfile: {
     improve: '改善这个简介'
   },
@@ -81,16 +76,13 @@ export default {
   },
   FeaturedDappList: {
     heading: '特色 ÐApps'
-    // TODO translate promote: 'Promote your ÐApp here'
+    // TODO promote: 'Promote your ÐApp here'
   },
   FeaturedRankingByCategoryList: {
     heading: '类别排行榜'
   },
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
-  },
-  FeaturedRankingByPlatformListItem: {
-    users24h: '用户 (24小时)'
   },
   GlobalSearch: {
     dapps: 'ÐApps',
@@ -112,5 +104,6 @@ export default {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
   },
-  tags: '标签'
+  tags: '标签',
+  users24h: '用户 (24小时)'
 }

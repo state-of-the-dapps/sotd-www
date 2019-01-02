@@ -63,11 +63,6 @@ export default {
     comments: 'Comments',
     commentsPlaceholder: 'Add your comments'
   },
-  DappFeedback: {
-    // TODO duplicates
-    title: 'Would you recommend this ÐApp to a friend?',
-    confirmation: 'Thanks for your feedback!'
-  },
   DappProfile: {
     improve: 'Improve this profile'
   },
@@ -90,10 +85,6 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: 'Rankings by Platform'
   },
-  FeaturedRankingByPlatformListItem: {
-    // TODO reuse
-    users24h: 'Users (24hr)'
-  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: 'Sorry, no results. Please try a new search',
@@ -115,5 +106,6 @@ export default {
     description:
       'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.'
   },
-  tags: 'tags'
+  tags: 'tags',
+  users24h: 'Users (24hr)'
 }
