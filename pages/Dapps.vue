@@ -68,13 +68,7 @@ export default {
   },
   data() {
     return {
-      dapps: [],
-      isLoading: false,
-      pager: {
-        limit: 0,
-        offset: 0,
-        totalCount: 0
-      }
+      isLoading: false
     }
   },
   computed: {
@@ -84,22 +78,14 @@ export default {
     }
   },
   async asyncData({ params, query, app }) {
-    let dapps = []
-    let pager = {}
     const urlParams = { ...params, ...query }
     if (!query.tab) {
       urlParams.tab = 'hot'
     }
-    try {
-      const data = await getDapps(app.$axios, urlParams)
-      const dapps = data.items
-      const pager = data.pager
-      return { dapps, pager }
-    } catch (e) {
-      if (typeof app.$sentry !== 'undefined') {
-        app.$sentry.captureException(e)
-      }
-    }
+    const data = await getDapps(app.$axios, urlParams, app.$sentry)
+    const dapps = data.items
+    const pager = data.pager
+    return { dapps, pager }
   },
   watch: {
     $route() {

@@ -26,13 +26,7 @@ export default {
   },
   data() {
     return {
-      dapps: [],
       isLoading: false,
-      pager: {
-        limit: 0,
-        offset: 0,
-        totalCount: 0
-      },
       columnOptions: rankingColumns,
       selectedColumn: rankingColumns[0]
     }
@@ -44,7 +38,7 @@ export default {
       urlParams.order = 'asc'
     }
     urlParams.view = 'rankings'
-    const data = await getDapps(app.$axios, urlParams)
+    const data = await getDapps(app.$axios, urlParams, app.$sentry)
     const dapps = data.items
     const pager = data.pager
     return { dapps, pager }
