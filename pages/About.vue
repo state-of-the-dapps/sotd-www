@@ -35,6 +35,7 @@
           target="_blank" 
           rel="noopener">https://youtu.be/iqBNPh5IMqM</a></p>
         <p>And remember... smart contracts are neither smart, nor contracts!</p>
+        <br>
       </div>
     </section>
   </div>
