@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { homeFeaturedCollections } from '@/helpers/constants'
 import { trackCollectionView } from '@/helpers/mixpanel'
 import DappCollectionList from './DappCollectionList'
@@ -36,7 +35,6 @@ export default {
     SvgIconChevron,
     SvgIconCollection
   },
-  mixins: [componentNamespace],
   data() {
     return {
       collections: [],

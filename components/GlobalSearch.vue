@@ -89,7 +89,7 @@
 <script>
 import { trackDappView, trackSearchSuggestion } from '~/helpers/mixpanel'
 import { directive as onClickaway } from 'vue-clickaway'
-import { getCaretPosition, componentNamespace } from '~/helpers/mixins'
+import { getCaretPosition } from '~/helpers/mixins'
 import SvgIconMagnifier from './SvgIconMagnifier'
 
 var searchTimer
@@ -102,7 +102,7 @@ export default {
   directives: {
     onClickaway: onClickaway
   },
-  mixins: [getCaretPosition, componentNamespace],
+  mixins: [getCaretPosition],
   props: {
     color: {
       type: String,

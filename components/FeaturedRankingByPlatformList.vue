@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { platformList } from '@/helpers/constants'
 import { trackDappRankingPlatform } from '@/helpers/mixpanel'
 import FeaturedRankingByPlatformListItem from './FeaturedRankingByPlatformListItem'
@@ -40,7 +39,6 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  mixins: [componentNamespace],
   data() {
     return {
       platforms: platformList,

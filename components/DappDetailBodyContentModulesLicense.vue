@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 export default {
-  mixins: [componentNamespace],
   props: {
     license: {
       type: String,

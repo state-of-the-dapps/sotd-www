@@ -25,7 +25,6 @@
 
 <script>
 import { trackFeaturedCategory } from '@/helpers/mixpanel'
-import { componentNamespace } from '@/helpers/mixins'
 import SvgCategoryExchanges from './SvgCategoryExchanges'
 import SvgCategoryFinance from './SvgCategoryFinance'
 import SvgCategoryGames from './SvgCategoryGames'
@@ -36,7 +35,6 @@ export default {
     SvgCategoryFinance,
     SvgCategoryGames
   },
-  mixins: [componentNamespace],
   data() {
     return {
       categories: [

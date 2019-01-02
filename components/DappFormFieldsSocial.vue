@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">Social media links <span class="boost">Up to +28% profile strength</span></p>
+    <p class="heading">Social media links <span class="boost">Up to +28% {{ $t('profileStrength') }}</span></p>
     <ul class="list">
       <li class="item">
         <div class="input-wrapper -github">

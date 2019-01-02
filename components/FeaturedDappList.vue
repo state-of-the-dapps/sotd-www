@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { trackCollectionView, trackPromotedDappsView } from '@/helpers/mixpanel'
 import { dappFeaturedSlots, dappPromotedSlots } from '@/helpers/constants'
 import FeaturedDappListItem from './FeaturedDappListItem'
@@ -49,7 +48,6 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  mixins: [componentNamespace],
   data() {
     return {
       scrollIndex: 0,

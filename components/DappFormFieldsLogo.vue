@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Logo <span class="boost">+5% profile strength</span></p>
+    <p class="heading">Logo <span class="boost">+5% {{ $t('profileStrength') }}</span></p>
     <p v-if="logo && preFill">
       <img
         :src="logo"

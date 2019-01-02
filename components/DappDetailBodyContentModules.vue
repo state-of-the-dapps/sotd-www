@@ -130,7 +130,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -153,7 +152,6 @@ export default {
     DappDetailBodyContentModulesSubmitted,
     DappDetailBodyContentModulesUpdated
   },
-  mixins: [componentNamespace],
   props: {
     dapp: {
       type: Object,

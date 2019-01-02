@@ -72,7 +72,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { trackDappFeedback } from '~/helpers/mixpanel'
 import SvgReactionNegative from './SvgReactionNegative'
 import SvgReactionNeutral from './SvgReactionNeutral'
@@ -84,7 +83,6 @@ export default {
     SvgReactionNeutral,
     SvgReactionPositive
   },
-  mixins: [componentNamespace],
   props: {
     rating: {
       type: Number,

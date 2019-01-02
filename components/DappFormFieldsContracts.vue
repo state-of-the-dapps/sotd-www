@@ -102,7 +102,7 @@
         v-if="platform === 'Ethereum'" 
         class="list">
         <li class="item">
-          <div class="name">Mainnet <span class="boost">+10% profile strength</span></div>
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
@@ -190,7 +190,7 @@
         v-if="platform === 'POA'" 
         class="list">
         <li class="item">
-          <div class="name">Mainnet <span class="boost">+10% profile strength</span></div>
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
@@ -236,7 +236,7 @@
         v-if="platform === 'EOS'" 
         class="list">
         <li class="item">
-          <div class="name">Mainnet <span class="boost">+10% profile strength</span></div>
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
@@ -261,7 +261,7 @@
         v-if="platform === 'Steem'"
         class="list">
         <li class="item">
-          <div class="name">Mainnet <span class="boost">+10% profile strength</span></div>
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div
             :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
             class="input-wrapper">

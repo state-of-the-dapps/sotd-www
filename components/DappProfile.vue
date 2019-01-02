@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappProfile">
     <div class="wrapper">
-      <p class="description"><strong>Profile strength</strong> &nbsp;{{ Math.ceil(profileScore * 100) }}%</p>
+      <p class="description"><strong>{{ $t('profileStrength') | capitalize }}</strong> &nbsp;{{ Math.ceil(profileScore * 100) }}%</p>
       <div class="meter-wrapper">
         <div class="meter">
           <span 

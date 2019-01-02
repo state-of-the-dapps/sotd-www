@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { feedbackComponentMap } from '~/helpers/constants'
 import { mapGetters } from 'vuex'
 import { trackDappFeedback } from '~/helpers/mixpanel'
@@ -39,7 +38,6 @@ export default {
     SvgFeedbackNeutral,
     SvgFeedbackPositive
   },
-  mixins: [componentNamespace],
   data() {
     return {
       options: ['positive', 'neutral', 'negative'],

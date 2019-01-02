@@ -44,13 +44,11 @@
 <script>
 import Trend from 'vuetrend'
 import Help from './Help'
-import { componentNamespace } from '@/helpers/mixins'
 export default {
   components: {
     Help,
     Trend
   },
-  mixins: [componentNamespace],
   props: {
     daily: {
       type: Number,

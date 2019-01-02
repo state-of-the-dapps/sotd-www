@@ -137,7 +137,6 @@ import { directive as onClickaway } from 'vue-clickaway'
 import { mapGetters } from 'vuex'
 import { languages, localeStrings } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
-import { componentNamespace } from '@/helpers/mixins'
 import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
 import SvgIconLogo from './SvgIconLogo'
@@ -158,7 +157,6 @@ export default {
   directives: {
     onClickaway
   },
-  mixins: [componentNamespace],
   props: {
     color: {
       type: String,

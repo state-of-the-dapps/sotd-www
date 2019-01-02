@@ -96,6 +96,7 @@ export default {
     submit: 'Submit a ÐApp',
     view: 'View the top ÐApps'
   },
+  profileStrength: 'profile strength',
   Stats: {
     title: 'ÐApp Statistics',
     description:

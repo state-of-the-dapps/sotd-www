@@ -13,9 +13,7 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 export default {
-  mixins: [componentNamespace],
   props: {
     authors: {
       type: Array,

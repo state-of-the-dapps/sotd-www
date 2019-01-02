@@ -94,6 +94,7 @@ export default {
     submit: '提交 ÐApp',
     view: '查看最佳 ÐApps'
   },
+  profileStrength: '简介强度',
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'

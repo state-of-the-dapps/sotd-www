@@ -23,12 +23,10 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { trackHomeHeroCta } from '@/helpers/mixpanel'
 import { mapGetters } from 'vuex'
 
 export default {
-  mixins: [componentNamespace],
   data() {
     return {
       loaded: ''

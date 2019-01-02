@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { trackDappRankingCategory } from '@/helpers/mixpanel'
 import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListItem'
 import SectionHeading from './SectionHeading'
@@ -39,7 +38,6 @@ export default {
     SvgIconChevron,
     SvgIconFeatured
   },
-  mixins: [componentNamespace],
   data() {
     return {
       categories: [],

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { componentNamespace } from '@/helpers/mixins'
 import { platformSoftware } from '~/helpers/constants'
 import {
   trackDappPlatform,
@@ -33,7 +32,6 @@ import {
 } from '~/helpers/mixpanel'
 
 export default {
-  mixins: [componentNamespace],
   props: {
     platform: {
       type: String,

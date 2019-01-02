@@ -122,6 +122,7 @@ export default {
     breaks: true
   },
   plugins: [
+    { src: '~/plugins/mixin' },
     { src: '~/plugins/polyfills', ssr: false },
     { src: '~/plugins/vue-config' },
     { src: '~/plugins/vue-filters' },
