@@ -12,6 +12,7 @@
     </div>
     <div class="filter-wrapper">
       <BaseDropdown
+        :important="true"
         :options="platformOptions"
         :selected="platform"
         all-text="All platforms"

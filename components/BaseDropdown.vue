@@ -183,18 +183,19 @@ export default {
   padding: 5px 10px;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid $color--black;
+  border: 1px solid transparent;
   display: flex;
   align-items: center;
   text-align: left;
+  background: rgba($color--black, 0.1);
   &.important {
+    border-color: $color--black;
     background: $color--white;
   }
   .inline & {
     padding: 3px 10px;
   }
   .menu & {
-    background: rgba($color--black, 0.1);
     border: none;
     color: $color--black;
   }
