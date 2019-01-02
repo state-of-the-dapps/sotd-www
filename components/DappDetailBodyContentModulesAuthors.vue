@@ -1,6 +1,6 @@
 <template>
   <div class="component-DappDetailBodyContentModulesAuthors">
-    <h4 class="author-title">Author<span v-if="authors && authors.length > 1">s</span></h4>
+    <h4 class="author-title">{{ $tc(namespace('author'), authors ? authors.length: 0) }}</h4>
     <p 
       v-if="authors" 
       class="author-data"><span 
@@ -8,12 +8,14 @@
         :key="index">{{ author }}<span v-if="index !== authors.length - 1">, </span></span></p>
     <p 
       v-else 
-      class="author-data">Unknown author</p>
+      class="author-data">{{ $t(namespace('unknownAuthor')) }}</p>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 export default {
+  mixins: [componentNamespace],
   props: {
     authors: {
       type: Array,

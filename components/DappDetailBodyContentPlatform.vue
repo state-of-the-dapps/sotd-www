@@ -1,8 +1,8 @@
 <template>
-  <div class="component-DappDetailBodyContentRank">
+  <div class="component-DappDetailBodyContentPlatform">
     <div class="wrapper">
       <p class="description">
-        <strong>Platform</strong> 
+        <strong>{{ $t(namespace('platform')) }}</strong> 
         &nbsp;
         <nuxt-link
           :to="localePath({
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 import { platformSoftware } from '~/helpers/constants'
 import {
   trackDappPlatform,
@@ -32,6 +33,7 @@ import {
 } from '~/helpers/mixpanel'
 
 export default {
+  mixins: [componentNamespace],
   props: {
     platform: {
       type: String,

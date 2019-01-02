@@ -1,17 +1,19 @@
 <template>
   <div class="component-DappDetailBodyContentModulesLicense">
-    <h4 class="license-title">Software license</h4>
+    <h4 class="license-title">{{ $t(namespace('license')) }}</h4>
     <p 
       v-if="license" 
       class="license-data">{{ license }}</p>
     <p 
       v-else 
-      class="license-data">Unknown license</p>
+      class="license-data">{{ $t(namespace('unknownLicense')) }}</p>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 export default {
+  mixins: [componentNamespace],
   props: {
     license: {
       type: String,

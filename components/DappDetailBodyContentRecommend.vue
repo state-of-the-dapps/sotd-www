@@ -8,7 +8,7 @@
       <p 
         :content="votes" 
         class="description" 
-        itemprop="ratingCount">Would you recommend this ÐApp to a friend?</p>
+        itemprop="ratingCount">{{ $t(namespace('title')) }}</p>
       <div 
         :content="rating" 
         class="reaction-wrapper" 
@@ -40,16 +40,16 @@
           class="confirmation">
           <textarea
             v-model="comments"
-            class="textarea"
-            placeholder="Add your comments"/>
+            :placeholder="$t(namespace('commentsPlaceholder'))"
+            class="textarea"/>
           <button
             class="button"
-            @click="submitDappFeedback">Submit feedback</button>
+            @click="submitDappFeedback">{{ $t(namespace('submit')) }}</button>
         </div>
         <div
           v-else 
           class="confirmation">
-          <p><strong>Thanks for your feedback on {{ name }}!</strong></p>
+          <p><strong>{{ $t(namespace('thanks'), {name: name}) }}</strong></p>
           <p class="reaction-summary">
             <SvgReactionPositive
               v-if="reaction === 'positive'"
@@ -64,7 +64,7 @@
               :width="30"
               :height="30"/>
           </p>
-          <p v-if="comments"><strong>Comments:</strong> {{ comments }}</p>
+          <p v-if="comments"><strong>{{ $t(namespace('comments')) }}:</strong> {{ comments }}</p>
         </div>
       </div>
     </div>
@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 import { trackDappFeedback } from '~/helpers/mixpanel'
 import SvgReactionNegative from './SvgReactionNegative'
 import SvgReactionNeutral from './SvgReactionNeutral'
@@ -83,6 +84,7 @@ export default {
     SvgReactionNeutral,
     SvgReactionPositive
   },
+  mixins: [componentNamespace],
   props: {
     rating: {
       type: Number,

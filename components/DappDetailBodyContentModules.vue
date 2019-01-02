@@ -43,8 +43,8 @@
             :sparkline="dapp.sparklines.users"
             :quarterly="dapp.stats.qau"
             :weekly="dapp.stats.wau"
-            help="(unique source addresses in transactions to ÐApp contracts)"
-            title="Active users"/>
+            :title="$t(namespace('activeUsers'))"
+            :help="$t(namespace('activeUsersHelp'))"/>
         </div>
         <div 
           v-if="dapp.stats.tx_30d" 
@@ -55,7 +55,7 @@
             :sparkline="dapp.sparklines.transactions"
             :quarterly="dapp.stats.tx_90d"
             :weekly="dapp.stats.tx_7d"
-            title="Transactions"
+            :title="$t(namespace('transactions'))"
             type="numbers"/>
         </div>
         <div 
@@ -68,7 +68,7 @@
             :sparkline="dapp.sparklines.value"
             :quarterly="dapp.stats.value_90d"
             :weekly="dapp.stats.value_7d"
-            title="Volume (ETH)"
+            :title="$t(namespace('volume'), {token: 'ETH'})"
             type="numbers"/>
           <br v-if="dapp.stats.value_30d && dapp.stats.poa_value_30d">
           <DappDetailBodyContentModulesStats
@@ -78,7 +78,7 @@
             :sparkline="dapp.sparklines.poa_value"
             :quarterly="dapp.stats.poa_value_90d"
             :weekly="dapp.stats.poa_value_7d"
-            title="Volume (POA)"
+            :title="$t(namespace('volume'), {token: 'POA'})"
             type="numbers"/>
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.eos_value_30d"
@@ -87,7 +87,7 @@
             :sparkline="dapp.sparklines.eos_value"
             :quarterly="dapp.stats.eos_value_90d"
             :weekly="dapp.stats.eos_value_7d"
-            title="Volume (EOS)"
+            :title="$t(namespace('volume'), {token: 'EOS'})"
             type="numbers"/>
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.steem_value_30d"
@@ -96,7 +96,7 @@
             :sparkline="dapp.sparklines.steem_value"
             :quarterly="dapp.stats.steem_value_90d"
             :weekly="dapp.stats.steem_value_7d"
-            title="Volume (STEEM)"
+            :title="$t(namespace('volume'), {token: 'STEEM'})"
             type="numbers"/>
         </div>
       </div>
@@ -130,6 +130,7 @@
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -152,6 +153,7 @@ export default {
     DappDetailBodyContentModulesSubmitted,
     DappDetailBodyContentModulesUpdated
   },
+  mixins: [componentNamespace],
   props: {
     dapp: {
       type: Object,

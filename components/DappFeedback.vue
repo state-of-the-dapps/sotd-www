@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappFeedback">
     <div class="wrapper">
-      <h3 class="title-3">Would you recommend this ÐApp to a friend?</h3>
+      <h3 class="title-3">{{ $t(namespace('title')) }}</h3>
       <ul 
         v-if="!hasSubmitted" 
         class="list">
@@ -18,13 +18,14 @@
       <transition name="fade">
         <p 
           v-if="hasSubmitted" 
-          class="confirmation">Thanks for your feedback!</p>
+          class="confirmation">{{ $t(namespace('confirmation')) }}</p>
       </transition>
     </div>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 import { feedbackComponentMap } from '~/helpers/constants'
 import { mapGetters } from 'vuex'
 import { trackDappFeedback } from '~/helpers/mixpanel'
@@ -38,6 +39,7 @@ export default {
     SvgFeedbackNeutral,
     SvgFeedbackPositive
   },
+  mixins: [componentNamespace],
   data() {
     return {
       options: ['positive', 'neutral', 'negative'],

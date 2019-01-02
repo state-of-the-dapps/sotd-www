@@ -1,13 +1,15 @@
 <template>
   <div class="component-DappDetailBodyContentRank">
     <div class="wrapper">
-      <p class="description"><strong>Current rank</strong> &nbsp;#{{ rank.toLocaleString() }}</p>
+      <p class="description"><strong>{{ $t(namespace('currentRank')) }}</strong> &nbsp;#{{ rank.toLocaleString() }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 export default {
+  mixins: [componentNamespace],
   props: {
     rank: {
       type: Number,

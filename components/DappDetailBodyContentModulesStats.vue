@@ -16,18 +16,18 @@
     </div>
     <ul class="stat-list">
       <li class="stat-item">
-        <span v-if="type === 'numbers'">1 day</span>
-        <span v-else>Daily</span>
+        <span v-if="type === 'numbers'">{{ $tc(namespace('day'), 1, {count: 1}) }}</span>
+        <span v-else>{{ $t(namespace('daily')) }}</span>
         <span class="stat-value">{{ daily.toLocaleString() }}</span>
       </li>
       <li class="stat-item">
-        <span v-if="type === 'numbers'">7 days</span>
-        <span v-else>Weekly</span>
+        <span v-if="type === 'numbers'">{{ $tc(namespace('day'), 7, {count: 7}) }}</span>
+        <span v-else>{{ $t(namespace('weekly')) }}</span>
         <span class="stat-value">{{ weekly.toLocaleString() }}</span>
       </li>
       <li class="stat-item">
-        <span v-if="type === 'numbers'">30 days</span>
-        <span v-else>Monthly</span>
+        <span v-if="type === 'numbers'">{{ $tc(namespace('day'), 30, {count: 30}) }}</span>
+        <span v-else>{{ $t(namespace('monthly')) }}</span>
         <span class="stat-value">{{ monthly.toLocaleString() }}</span>
       </li>
     <!--
@@ -44,12 +44,13 @@
 <script>
 import Trend from 'vuetrend'
 import Help from './Help'
-
+import { componentNamespace } from '@/helpers/mixins'
 export default {
   components: {
     Help,
     Trend
   },
+  mixins: [componentNamespace],
   props: {
     daily: {
       type: Number,

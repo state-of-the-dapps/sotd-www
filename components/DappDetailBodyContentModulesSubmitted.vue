@@ -1,11 +1,13 @@
 <template>
   <div class="component-DappDetailBodyContentModulesSubmitted">
-    Submitted: <strong>{{ submitted | formatDate('MMM Do, YYYY') }}</strong>
+    {{ $t(namespace('submitted')) }}: <strong>{{ submitted | formatDate('MMM Do, YYYY') }}</strong>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 export default {
+  mixins: [componentNamespace],
   props: {
     submitted: {
       type: String,

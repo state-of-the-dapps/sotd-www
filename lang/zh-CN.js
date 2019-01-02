@@ -10,6 +10,53 @@ export default {
   cta: {
     viewAll: '查看全部'
   },
+  DappDetailBodyContentModulesStatus: {
+    status: '现状'
+  },
+  DappDetailBodyContentModulesAuthors: {
+    author: '作者',
+    unknownAuthor: '作者不明'
+  },
+  DappDetailBodyContentModulesLicense: {
+    license: '软件许可证',
+    unknownLicense: '未知许可证'
+  },
+  DappDetailBodyContentModulesSubmitted: {
+    submitted: '提交日期'
+  },
+  DappDetailBodyContentModulesUpdated: {
+    lastUpdated: '最后更新时间'
+  },
+  DappDetailBodyContentModules: {
+    activeUsers: '活跃用户',
+    activeUsersHelp: '(与ÐApp合约有交易的独特源地址)',
+    transactions: '交易',
+    volume: '数量 ({token})'
+  },
+  DappDetailBodyContentModulesStats: {
+    day: '{count}天',
+    daily: '每日',
+    weekly: '每周',
+    monthly: '每月'
+  },
+  DappDetailBodyContentPlatform: {
+    platform: '平台'
+  },
+  DappDetailBodyContentRank: {
+    currentRank: '目前排名'
+  },
+  DappDetailBodyContentRecommend: {
+    title: '你会不会把这个ÐApp推荐给朋友？',
+    submit: '提交反馈',
+    thanks: '感谢您对{name}的反馈！',
+    comments: '评论',
+    commentsPlaceholder: '添加您的评论'
+  },
+  DappFeedback: {
+    // TODO duplicates
+    title: '你会不会把这个ÐApp推荐给朋友？',
+    confirmation: '感谢您的反馈意见！'
+  },
   FeaturedCategoryList: {
     games: '游戏',
     finance: '财务',

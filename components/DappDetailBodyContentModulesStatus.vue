@@ -1,11 +1,13 @@
 <template>
   <div class="component-DappDetailBodyContentModulesStatus">
-    Status: <strong>{{ status | capitalize }}</strong>
+    {{ $t(namespace('status')) }}: <strong>{{ status | capitalize }}</strong>
   </div>
 </template>
 
 <script>
+import { componentNamespace } from '@/helpers/mixins'
 export default {
+  mixins: [componentNamespace],
   props: {
     status: {
       type: String,
