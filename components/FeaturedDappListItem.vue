@@ -11,7 +11,7 @@
         :style="`background-image: url('${dapp.productImageSmall || dapp.imageKeyVisualSmall}')`"
         class="product-image-wrapper"/>
       <div class="info">
-        <h4 class="title-4">{{ dapp.name }}</h4>   
+        <h4 class="name">{{ dapp.name }}</h4>   
         <p class="tagline">{{ dapp.teaser | truncate(50) }}</p>
         <span 
           v-if="dapp.isPromoted" 
@@ -66,7 +66,7 @@ export default {
 .FeaturedDappListItem {
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;
-  margin: 0 10px 5px 10px;
+  margin: 0 10px 10px 10px;
   border-radius: 4px;
   width: 100%;
   overflow: hidden;
@@ -133,9 +133,9 @@ export default {
   margin: 0;
 }
 
-.title-4 {
+.name {
   margin: 0;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
 }
 </style>

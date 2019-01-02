@@ -89,7 +89,7 @@ export default {
   margin-top: 2rem;
   padding-bottom: 1rem;
   margin-bottom: 0;
-  letter-spacing: -0.85px;
+  letter-spacing: -0.95px;
   font-weight: 300;
   &.has-line {
     border-bottom: 1px solid rgba($color--black, 0.15);
@@ -111,6 +111,9 @@ export default {
   &.secondary {
     margin-left: auto;
     text-decoration: underline;
+    flex: 1;
+    text-align: right;
+    padding-left: 10px;
   }
   .zh & {
     font-weight: 400;

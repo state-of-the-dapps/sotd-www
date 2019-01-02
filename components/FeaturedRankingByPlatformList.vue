@@ -65,10 +65,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.FeaturedRankingByPlatformList {
-  padding-top: 5px;
-}
-
 .featured-list-wrapper {
   position: relative;
   margin-left: -10px;
