@@ -4,7 +4,7 @@
       <BaseDropdown
         :important="true"
         :options="categoryOptions"
-        :selected="category"
+        :selected="category ? $t(`categoryOptions.${$options.filters.capitalize(category)}`) : ''"
         :all-text="$t('filters.allCategories')"
         :name="$tc('category', 1)"
         :title="$t('filters.chooseCategory')"
@@ -49,7 +49,7 @@ export default {
     categoryOptions() {
       const options = this.dappCategories.map(x => {
         const optionObj = {
-          text: x.name,
+          text: this.$t(`categoryOptions.${x.name}`),
           selection: x.slug
         }
         return optionObj
