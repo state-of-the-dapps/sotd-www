@@ -3,7 +3,6 @@
     <div class="hero-wrapper">
       <PageHeading :title="$t('Stats.title')"/>
       <p class="description">{{ $t('Stats.description') }}</p>
-      <a :onclick="Intercom('showNewMessage', 'HELLO!')" href="#">Click here</a>
       <p class="button-wrapper">
         <BaseButton
           text="Ask us about custom data"

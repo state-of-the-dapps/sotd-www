@@ -28,13 +28,14 @@ export default {
 .BaseButton {
   position: relative;
   display: inline-block;
-  background: $gradient--main-1;
+  background: $gradient--button;
   color: $color--white;
-  font-size: 1.25rem;
-  text-shadow: 0px 1px rgba($color--purple, 0.2);
-  padding: 7px 14px;
+  text-shadow: 0 1px rgba($color--black, 0.1);
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 8px 16px;
   border-radius: 4px;
-  box-shadow: 0 2px 10px rgba($color--purple, 0.1);
+  box-shadow: 0 2px 10px rgba($color--black, 0.1);
   &:active {
     top: 1px;
     box-shadow: none;
