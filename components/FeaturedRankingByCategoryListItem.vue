@@ -3,7 +3,7 @@
     <h3 class="title-3">
       <a 
         class="link" 
-        @click="viewDappRankingCategory(category)">{{ category.name }} <SvgIconChevron 
+        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }} <SvgIconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></a>
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import { trackDappRankingCategory, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
@@ -79,7 +78,6 @@ export default {
       })
   },
   methods: {
-    ...mapActions('dapps/rankings', ['fetchDapps', 'setCategory', 'setSort']),
     trackDappView(targetDapp) {
       const sourceCollection = ''
       const sourceComponent = 'DappFeaturedRankingCategory'
@@ -99,9 +97,6 @@ export default {
         category.slug
       )
       this.$mixpanel.track(action.name, action.data)
-      this.setCategory(category.slug)
-      this.setSort({ order: 'asc', sort: 'rank' })
-      this.fetchDapps()
       this.$router.push(
         this.localePath({
           name: 'rankings-category',

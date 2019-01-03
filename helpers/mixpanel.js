@@ -682,34 +682,6 @@ export const trackMetamaskHelp = function() {
   return action
 }
 
-export const trackMyListView = function(dapps) {
-  let name = 'My List - View'
-  let data = {
-    dapps
-  }
-
-  const action = {
-    name,
-    data
-  }
-
-  return action
-}
-
-export const trackMyListShare = function(dapps) {
-  let name = 'My List - Share'
-  let data = {
-    dapps
-  }
-
-  const action = {
-    name,
-    data
-  }
-
-  return action
-}
-
 export const trackNewsletterSubscribe = function(
   email,
   sourceComponent,

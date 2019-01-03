@@ -187,20 +187,6 @@ const daysOfTheWeek = Object.freeze([
 
 const dappDefaultPlatform = 'Ethereum'
 
-const eventCategories = Object.freeze([
-  'conference',
-  'crowdsale',
-  'hackathon',
-  'ico',
-  'meetup',
-  'release',
-  'summit',
-  'workshop'
-])
-
-const eventRefineCategoryOptions = eventCategories.slice()
-eventRefineCategoryOptions.unshift('all')
-
 const feedbackComponentMap = Object.freeze({
   negative: 'SvgFeedbackNegative',
   neutral: 'SvgFeedbackNeutral',
@@ -226,8 +212,6 @@ const localeStrings = Object.freeze({
   en: `English`,
   zh: `中文`
 })
-
-const myListLimit = 50
 
 const newDapps = [
   25,
@@ -370,15 +354,12 @@ export {
   dappStatuses,
   daysOfTheWeek,
   dappDefaultPlatform,
-  eventCategories,
-  eventRefineCategoryOptions,
   feedbackComponentMap,
   homeCollectionSlots,
   homeFeaturedCollections,
   languages,
   localeStrings,
   newDapps,
-  myListLimit,
   platformList,
   platformMap,
   platformSoftware,

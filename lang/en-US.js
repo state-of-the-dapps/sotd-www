@@ -8,6 +8,25 @@ export default {
     submit: 'Submit a ÐApp'
   },
   categories: 'categories',
+  categoryOptions: {
+    Development: 'Development',
+    Energy: 'Energy',
+    Exchanges: 'Exchanges',
+    Finance: 'Finance',
+    Gambling: 'Gambling',
+    Games: 'Games',
+    Governance: 'Governance',
+    Health: 'Health',
+    'High-risk': 'High risk',
+    Identity: 'Identity',
+    Insurance: 'Insurance',
+    Media: 'Media',
+    Property: 'Property',
+    Security: 'Security',
+    Social: 'Social',
+    Storage: 'Storage',
+    Wallet: 'Wallet'
+  },
   cta: {
     viewAll: 'View all'
   },

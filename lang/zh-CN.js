@@ -8,6 +8,25 @@ export default {
     submit: '提交 ÐApp'
   },
   categories: '分类',
+  categoryOptions: {
+    // TODO Development: 'Development',
+    Energy: '能源',
+    // TODO Exchanges: 'Exchanges',
+    // TODO Finance: 'Finance',
+    Gambling: '赌博',
+    Games: '游戏',
+    // TODO Governance: 'Governance',
+    Health: '健康',
+    'High-risk': '高危',
+    // TODO Identity: 'Identity',
+    Insurance: '保险',
+    Media: '媒体',
+    // TODO Property: 'Property',
+    // TODO Security: 'Security',
+    // TODO Social: 'Social',
+    // TODO Storage: 'Storage',
+    Wallet: '钱包'
+  },
   cta: {
     viewAll: '查看全部'
   },
