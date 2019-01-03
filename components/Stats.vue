@@ -368,8 +368,8 @@ export default {
 .list {
   display: block;
   text-align: center;
-  margin-bottom: 35px;
-  margin-top: 15px;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
   @include tweakpoint('min-width', 1000px) {
     display: flex;
     flex-wrap: wrap;
