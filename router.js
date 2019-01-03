@@ -511,13 +511,11 @@ export function createRouter() {
       },
       {
         path: '*',
-        component: Home,
-        name: 'home___en'
+        redirect: { name: 'home___en' }
       },
       {
         path: '/zh/*',
-        component: Home,
-        name: 'home___zh'
+        redirect: { name: 'home___zh' }
       }
     ],
     fallback: false
