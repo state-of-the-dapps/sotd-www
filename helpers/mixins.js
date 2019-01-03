@@ -22,12 +22,13 @@ export const getCaretPosition = {
 
 export const openIntercom = {
   methods: {
-    openIntercom() {
+    openIntercom(message = '') {
+      const prePopulatedMessage = message | ''
       const fallbackUrl = 'mailto:support@stateofthedapps.com'
       if (typeof Intercom !== 'undefined') {
         const visitorId = Intercom('getVisitorId')
         if (typeof visitorId !== 'undefined') {
-          Intercom('showNewMessage', '')
+          Intercom('showNewMessage', prePopulatedMessage)
         } else {
           location.href = fallbackUrl
         }
