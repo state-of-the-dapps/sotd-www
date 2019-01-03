@@ -1,13 +1,13 @@
 <template>
   <li 
-    :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+    :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
     class="component-DappCardListItem">
     <nuxt-link 
       :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
       class="link" 
       @click.native="trackDappView(dapp.slug)">
       <div 
-        :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+        :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
         class="dapp-icon-wrapper">
         <img 
           v-if="dapp.iconSmallUrl" 
@@ -24,9 +24,9 @@
         <p class="description">{{ dapp.teaser }}</p>
       </div>
       <div 
-        :class="dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+        :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
         class="meta">
-        <span class="category">{{ dapp.categories.length ? dapp.categories[0] : '' }}</span>
+        <span class="category">{{ dapp.categories && dapp.categories.length ? dapp.categories[0] : '' }}</span>
       </div>
       <span 
         v-if="dapp.isNew" 
