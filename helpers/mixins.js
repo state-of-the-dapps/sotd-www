@@ -23,7 +23,7 @@ export const getCaretPosition = {
 export const openIntercom = {
   methods: {
     openIntercom(message = '') {
-      const prePopulatedMessage = message | ''
+      const prePopulatedMessage = message || ''
       const fallbackUrl = 'mailto:support@stateofthedapps.com'
       if (typeof Intercom !== 'undefined') {
         const visitorId = Intercom('getVisitorId')

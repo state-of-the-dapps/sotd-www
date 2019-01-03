@@ -4,7 +4,7 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">
-            <span>{{ $t(namespace('totalDapps')) }}</span>
+            <span>Total ÐApps</span>
           </h2>
           <p class="value">{{ statDappCount.toLocaleString() }}</p>
         </div>
@@ -12,8 +12,8 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">
-            <span>{{ $t(namespace('dailyActiveUsers')) }}</span>
-            <Help :text="$t(namespace('activeUsersHelp'))"/>
+            <span>Daily active users</span>
+            <Help text="Unique source addresses in transactions to ÐApp contracts"/>
           </h2>
           <p class="value">{{ statDappDau | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -21,47 +21,47 @@
       <li class="item">
         <div class="wrapper">
           <h2 class="heading">
-            <span>{{ $t(namespace('24htransactions')) }}</span>
-            <Help :text="$t(namespace('transactionsHelp'))"/>
+            <span>24hr transactions</span>
+            <Help text="Number of transactions to ÐApp contracts"/>
           </h2>
           <p class="value">{{ statDappTx24Hr | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
       <li class="item">
         <div class="wrapper">
-          <h2 class="heading">{{ $t(namespace('smartContracts')) }}</h2>
+          <h2 class="heading">Smart contracts</h2>
           <p class="value">{{ statDappContractCount | abbreviateNumber(2) || 0 }}</p>
         </div>
       </li>
     </ul>
-    <h2 class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+    <h2 class="heading-2">New ÐApps per Month</h2>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
-        <div class="new-vs-total-legend-new">{{ $t(namespace('newDapps')) }}</div>
-        <div>{{ $t(namespace('totalDapps')) }}</div>
+        <div class="new-vs-total-legend-new">New ÐApps</div>
+        <div>Total ÐApps</div>
       </div>
       <canvas id="new-vs-total"/>
     </div>
-    <h2 class="heading-2">{{ $tc('category', 2) }}</h2>
+    <h2 class="heading-2">Categories</h2>
     <div class="table-wrapper">
       <table class="table">
         <thead class="table-headings">
           <tr class="table-heading-row">
-            <th class="table-heading -name">{{ $tc('category', 1) }}</th>
-            <th class="table-heading">{{ $t(namespace('totalDapps')) }}</th>
+            <th class="table-heading -name">Category</th>
+            <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
-              <span>{{ $t(namespace('monthlyActiveUsers')) }}</span>
+              <span>Monthly active users</span>
               <Help 
                 :bottom="true" 
-                :text="$t(namespace('activeUsersHelp'))"/>
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
-              <span>{{ $t(namespace('transactions30d')) }}</span>
+              <span>Transactions (30d)</span>
               <Help 
                 :bottom="true" 
-                :text="$t(namespace('transactionsHelp'))"/>
+                text="Number of transactions to ÐApp contracts"/>
             </th>
-            <th class="table-heading">{{ $t(namespace('nrOfContracts')) }}</th>
+            <th class="table-heading"># of contracts</th>
           </tr>
         </thead>
         <tbody>
@@ -75,7 +75,7 @@
                   name: 'rankings-category',
                   params: { category: category.category.toLowerCase() }
                 })"
-                class="table-link">{{ $t(`categoryOptions.${$options.filters.capitalize(category.category)}`) }}</nuxt-link>
+                class="table-link">{{ category.category }}</nuxt-link>
             </td>
             <td class="table-data">{{ category.dappCount.toLocaleString() }}</td>
             <td class="table-data">{{ category.dappMau | abbreviateNumber(2) || 0 }}</td>
@@ -85,32 +85,32 @@
         </tbody>
       </table>
     </div>
-    <h2 class="heading-2">{{ $t('platform') | pluralize }}</h2>
+    <h2 class="heading-2">Platforms</h2>
     <div class="table-wrapper">
       <table class="table">
         <thead class="table-headings">
           <tr class="table-heading-row">
-            <th class="table-heading -name">{{ $t('platform') }}</th>
-            <th class="table-heading">{{ $t(namespace('totalDapps')) }}</th>
+            <th class="table-heading -name">Platform</th>
+            <th class="table-heading">Total ÐApps</th>
             <th class="table-heading">
-              <span>{{ $t(namespace('dailyActiveUsers')) }}</span>
+              <span>Daily active users</span>
               <Help 
                 :bottom="true" 
-                :text="$t(namespace('activeUsersHelp'))"/>
+                text="Unique source addresses in transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
-              <span>{{ $t(namespace('transactions24h')) }}</span>
+              <span>Transactions (24hr)</span>
               <Help 
                 :bottom="true" 
-                :text="$t(namespace('transactionsHelp'))"/>
+                text="Number of transactions to ÐApp contracts"/>
             </th>
             <th class="table-heading">
-              <span>{{ $t(namespace('volume24h')) }}</span>
+              <span>Volume (24hr)</span>
               <Help 
                 :bottom="true" 
                 text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly"/>
             </th>
-            <th class="table-heading">{{ $t(namespace('nrOfContracts')) }}</th>
+            <th class="table-heading"># of contracts</th>
           </tr>
         </thead>
         <tbody>
@@ -135,7 +135,7 @@
         </tbody>
       </table>
     </div>
-    <h2 class="heading-2">{{ $t('status') }}</h2>
+    <h2 class="heading-2">Status</h2>
     <div class="chart-wrapper-bar">
       <StatsStatusBarChart
         :statuses="statStatuses"/>

@@ -26,11 +26,20 @@ export default {
 @import '~assets/css/settings';
 
 .BaseButton {
+  position: relative;
   display: inline-block;
-  background: $color--purple;
+  background: $gradient--button;
   color: $color--white;
-  padding: 7px 14px;
+  text-shadow: 0 1px rgba($color--black, 0.1);
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 8px 16px;
   border-radius: 4px;
+  box-shadow: 0 2px 10px rgba($color--black, 0.1);
+  &:active {
+    top: 1px;
+    box-shadow: none;
+  }
   &.full {
     width: 100%;
   }
