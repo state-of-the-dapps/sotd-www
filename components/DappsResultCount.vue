@@ -3,7 +3,7 @@
     <div class="outer-wrapper">
       <ul class="count-list">
         <i18n
-          :path="namespace('showingResults')"
+          :path="namespace('showing')"
           tag="li"
           class="count-item">
           <span
@@ -20,6 +20,7 @@
           <strong
             place="total"
             @click="$mixpanel.track('DApps - Results count')">{{ total }}</strong>
+          <span place="result">{{ $tc(namespace('result'), total) }}</span>
         </i18n>
       </ul>
     </div>

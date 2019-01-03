@@ -101,7 +101,8 @@ export default {
     improve: 'Improve this profile'
   },
   DappsResultCount: {
-    showingResults: 'Showing {showing} {total} results',
+    result: 'result | results',
+    showing: 'Showing {showing} {total} {result}',
     xOf: '{x} of'
   },
   devActivity30d: 'Dev activity (30d)',
