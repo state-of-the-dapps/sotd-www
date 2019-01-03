@@ -24,6 +24,7 @@ export const openIntercom = {
   methods: {
     openIntercom(message = '') {
       const prePopulatedMessage = message | ''
+      console.log(message)
       const fallbackUrl = 'mailto:support@stateofthedapps.com'
       if (typeof Intercom !== 'undefined') {
         const visitorId = Intercom('getVisitorId')
