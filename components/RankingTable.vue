@@ -61,7 +61,7 @@
           <p
             v-if="!isLoading && !dapps.length"
             class="no-results">
-            There are currently no ÐApps for this category and platform
+            {{ $t(namespace('noDapps')) }}
           </p>
           <template
             v-for="(dapp, index) in dapps"

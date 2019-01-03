@@ -5,13 +5,13 @@
       :to="localePath({name: rankingRouteName, params: rankingParams, query: {sort: 'dau', order: 'desc'}})"
       :class="$route.query.sort === 'dau' ? 'is-active' : ''"
       class="label head-link"
-      @click.native="trackRankingSort('dau')">Users (24hr)</nuxt-link>
+      @click.native="trackRankingSort('dau')">{{ $t('users24h') }}</nuxt-link>
     <span 
       v-else 
-      class="label">Users (24hr)</span>
+      class="label">{{ $t('users24h') }}</span>
     <Help 
       :bottom="true"
-      text="Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)"/>
+      :text="$t('users24hHelp')"/>
   </div>
 </template>
 

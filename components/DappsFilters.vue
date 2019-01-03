@@ -4,27 +4,27 @@
       <BaseDropdown
         :options="platformOptions"
         :selected="formattedPlatformQuery"
-        all-text="All platforms"
-        name="Platform"
-        title="Choose a platform"
+        :all-text="$t('filters.allPlatforms')"
+        :name="$t('platform')"
+        :title="$t('filters.choosePlatform')"
         @select="selectPlatform"/>
     </div>
     <div class="filter">
       <BaseDropdown
         :options="categoryOptions"
         :selected="categoryQuery"
-        all-text="All categories"
-        name="Category"
-        title="Choose a category"
+        :all-text="$t('filters.allCategories')"
+        :name="$tc('category', 1)"
+        :title="$t('filters.chooseCategory')"
         @select="selectCategory"/>
     </div>
     <div class="filter">
       <BaseDropdown
         :options="statusOptions"
         :selected="statusQuery"
-        all-text="All statuses"
-        name="Status"
-        title="Choose a status"
+        :all-text="$t('filters.allStatuses')"
+        :name="$t('status')"
+        :title="$t('filters.chooseStatus')"
         @select="selectStatus"/>
     </div>
   </div>

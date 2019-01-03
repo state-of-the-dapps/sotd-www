@@ -5,13 +5,13 @@
       :to="localePath({name: rankingRouteName, params: rankingParams, query: {sort: 'dev_30d', order: 'desc'}})"
       :class="$route.query.sort === 'dev_30d' ? 'is-active' : ''"
       class="label head-link"
-      @click.native="trackRankingSort('dev_30d')">Dev activity (30d)</nuxt-link>
+      @click.native="trackRankingSort('dev_30d')">{{ $t('devActivity30d') }}</nuxt-link>
     <span 
       v-else 
-      class="label">Dev activity (30d)</span>
+      class="label">{{ $t('devActivity30d') }}</span>
     <Help
       :bottom="true"
-      text="The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc."/>
+      :text="$t('devActivity30dHelp')"/>
   </div>
 </template>
 

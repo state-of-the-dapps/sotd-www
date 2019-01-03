@@ -5,9 +5,9 @@
         :important="true"
         :options="categoryOptions"
         :selected="category"
-        all-text="All categories"
-        name="Category"
-        title="Choose a category"
+        :all-text="$t('filters.allCategories')"
+        :name="$tc('category', 1)"
+        :title="$t('filters.chooseCategory')"
         @select="filterCategory"/>
     </div>
     <div class="filter-wrapper">
@@ -15,9 +15,9 @@
         :important="true"
         :options="platformOptions"
         :selected="platform"
-        all-text="All platforms"
-        name="Platform"
-        title="Choose a platform"
+        :all-text="$t('filters.allPlatforms')"
+        :name="$t('platform')"
+        :title="$t('filters.choosePlatform')"
         @select="filterPlatform"/>
     </div>
   </div>

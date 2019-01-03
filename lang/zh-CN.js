@@ -98,6 +98,8 @@ export default {
   DappProfile: {
     improve: '改善这个简介'
   },
+  // TODO devActivity30d: 'Dev activity (30d)',
+  // TODO devActivity30dHelp: 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
   FeaturedCategoryList: {
     games: '游戏',
     finance: '财务',
@@ -117,6 +119,14 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
   },
+  filters: {
+    // TODO allPlatforms: 'All platforms',
+    // TODO choosePlatform: 'Choose a platform',
+    // TODO allCategories: 'All categories',
+    // TODO chooseCategory: 'Choose a category',
+    // TODO allStatuses: 'All statuses',
+    // TODO chooseStatus: 'Choose a status'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: '对不起，没有找到结果，请重新搜索',
@@ -134,6 +144,9 @@ export default {
   },
   platform: '平台',
   profileStrength: '简介强度',
+  RankingTable: {
+    // TODO noDapps: 'There are currently no ÐApps for this category and platform'
+  },
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
@@ -164,5 +177,8 @@ export default {
     broken: '坏掉'
   },
   tags: '标签',
+  // TODO userActivity30d: 'User activity (30d)',
+  // TODO userActivity30dHelp: 'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
   users24h: '用户 (24小时)'
+  // TODO users24hHelp: 'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
 }

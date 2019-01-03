@@ -100,6 +100,9 @@ export default {
   DappProfile: {
     improve: 'Improve this profile'
   },
+  devActivity30d: 'Dev activity (30d)',
+  devActivity30dHelp:
+    'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
   FeaturedCategoryList: {
     games: 'games',
     finance: 'finance',
@@ -119,6 +122,14 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: 'Rankings by Platform'
   },
+  filters: {
+    allPlatforms: 'All platforms',
+    choosePlatform: 'Choose a platform',
+    allCategories: 'All categories',
+    chooseCategory: 'Choose a category',
+    allStatuses: 'All statuses',
+    chooseStatus: 'Choose a status'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: 'Sorry, no results. Please try a new search',
@@ -136,6 +147,9 @@ export default {
   },
   platform: 'Platform',
   profileStrength: 'profile strength',
+  RankingTable: {
+    noDapps: 'There are currently no ÐApps for this category and platform'
+  },
   Stats: {
     title: 'ÐApp Statistics',
     description:
@@ -169,5 +183,10 @@ export default {
     broken: 'broken'
   },
   tags: 'tags',
-  users24h: 'Users (24hr)'
+  userActivity30d: 'User activity (30d)',
+  userActivity30dHelp:
+    'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
+  users24h: 'Users (24hr)',
+  users24hHelp:
+    'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
 }

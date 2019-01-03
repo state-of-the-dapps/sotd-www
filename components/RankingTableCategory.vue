@@ -8,7 +8,7 @@
       ]"
       :to="localePath({name: 'rankings-category', params: { category: category.toLowerCase() }})"
       class="value"
-      @click.native="trackRankingCategory(category)">{{ category | capitalize }}</nuxt-link>
+      @click.native="trackRankingCategory(category)">{{ $t(`categoryOptions.${$options.filters.capitalize(category)}`) }}</nuxt-link>
   </div>
 </template>
 
