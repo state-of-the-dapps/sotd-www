@@ -6,7 +6,7 @@
       <p class="button-wrapper">
         <BaseButton
           text="Ask us about custom data"
-          @clickButton="openIntercom('I need custom data:')"/>
+          @clickButton="openIntercom"/>
       </p>
       <Stats
         :stat-categories="stats.categories"
