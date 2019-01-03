@@ -100,6 +100,10 @@ export default {
   DappProfile: {
     improve: 'Improve this profile'
   },
+  DappsResultCount: {
+    showingResults: 'Showing {showing} {total} results',
+    xOf: '{x} of'
+  },
   devActivity30d: 'Dev activity (30d)',
   devActivity30dHelp:
     'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',

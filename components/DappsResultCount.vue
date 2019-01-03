@@ -2,7 +2,25 @@
   <section class="section">
     <div class="outer-wrapper">
       <ul class="count-list">
-        <li class="count-item">Showing <span v-if="total > 0 && start <= total"><strong @click="$mixpanel.track('DApps - Results count')">{{ start }} - {{ Math.min(end, total) }}</strong> of </span><strong @click="$mixpanel.track('DApps - Results count')">{{ total }}</strong> {{ 'result' | pluralize(total) }}</li>
+        <i18n
+          :path="namespace('showingResults')"
+          tag="li"
+          class="count-item">
+          <span
+            v-if="total > 0 && start <= total"
+            place="showing">
+            <i18n
+              :path="namespace('xOf')"
+              tag="span">
+              <strong
+                place="x"
+                @click="$mixpanel.track('DApps - Results count')">{{ start }} - {{ Math.min(end, total) }}</strong>
+            </i18n>
+          </span>
+          <strong
+            place="total"
+            @click="$mixpanel.track('DApps - Results count')">{{ total }}</strong>
+        </i18n>
       </ul>
     </div>
   </section>
