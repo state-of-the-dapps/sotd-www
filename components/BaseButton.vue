@@ -27,7 +27,7 @@ export default {
 
 .BaseButton {
   display: inline-block;
-  background: $color--black;
+  background: $color--purple;
   color: $color--white;
   padding: 7px 14px;
   border-radius: 4px;
