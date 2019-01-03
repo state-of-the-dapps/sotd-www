@@ -7,7 +7,7 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
-  categories: 'categories',
+  category: 'Category | Categories',
   categoryOptions: {
     Development: 'Development',
     Energy: 'Energy',
@@ -50,9 +50,6 @@ export default {
     events: '1 event | {count} events',
     day: '{count}d'
   },
-  DappDetailBodyContentModulesStatus: {
-    status: 'Status'
-  },
   DappDetailBodyContentModulesAuthors: {
     author: 'Author | Authors',
     unknownAuthor: 'Unknown author'
@@ -87,7 +84,6 @@ export default {
     share: 'Share this ÐApp'
   },
   DappDetailBodyContentPlatform: {
-    platform: 'Platform',
     advise:
       'To use {platform} ÐApps on the web, we recommend a browser add-on such as {software}.'
   },
@@ -138,11 +134,39 @@ export default {
     submit: 'Submit a ÐApp',
     view: 'View the top ÐApps'
   },
+  platform: 'Platform',
   profileStrength: 'profile strength',
   Stats: {
     title: 'ÐApp Statistics',
     description:
-      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.'
+      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.',
+    activeUsersHelp:
+      'Unique source addresses in transactions to ÐApp contracts',
+    dailyActiveUsers: 'Daily active users',
+    monthlyActiveUsers: 'Monthly active users',
+    newDappsPerMonth: 'New ÐApps per Month',
+    newDapps: 'New ÐApps',
+    nrOfContracts: '# of contracts',
+    smartContracts: 'Smart contracts',
+    '24htransactions': '24h transactions',
+    transactions24h: 'Transactions (24hr)',
+    transactions30d: 'Transactions (30d)',
+    transactionsHelp: 'Number of transactions to ÐApp contracts',
+    totalDapps: 'Total ÐApps',
+    volume24h: 'Volume (24hr)',
+    volumeHelp:
+      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
+  },
+  status: 'Status',
+  statusOptions: {
+    live: 'live',
+    abandoned: 'abandoned',
+    wip: 'WIP',
+    beta: 'beta',
+    prototype: 'prototype',
+    concept: 'concept',
+    stealth: 'stealth',
+    broken: 'broken'
   },
   tags: 'tags',
   users24h: 'Users (24hr)'
