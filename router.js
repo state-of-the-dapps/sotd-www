@@ -515,7 +515,7 @@ export function createRouter() {
         name: 'home___en'
       },
       {
-        path: '*',
+        path: '/zh/*',
         component: Home,
         name: 'home___zh'
       }
