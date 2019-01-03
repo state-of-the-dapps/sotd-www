@@ -12,7 +12,7 @@
     <div class="filter">
       <BaseDropdown
         :options="categoryOptions"
-        :selected="categoryQuery"
+        :selected="categoryQuery ? $t(`categoryOptions.${$options.filters.capitalize(categoryQuery)}`) : ''"
         :all-text="$t('filters.allCategories')"
         :name="$tc('category', 1)"
         :title="$t('filters.chooseCategory')"
@@ -21,7 +21,7 @@
     <div class="filter">
       <BaseDropdown
         :options="statusOptions"
-        :selected="statusQuery"
+        :selected="statusQuery ? $t(`statusOptions.${statusQuery}`) : ''"
         :all-text="$t('filters.allStatuses')"
         :name="$t('status')"
         :title="$t('filters.chooseStatus')"
@@ -69,7 +69,7 @@ export default {
     getDappStatusOptions(options) {
       const optionsArr = options.map(x => {
         const optionObj = {
-          text: this.$options.filters.capitalize(x),
+          text: this.$options.filters.capitalize(this.$t(`statusOptions.${x}`)),
           selection: x.toLowerCase()
         }
         return optionObj
@@ -90,7 +90,7 @@ export default {
       const categories = await getCategories(this.$axios)
       const optionsArr = categories.map(x => {
         const optionObj = {
-          text: x.name,
+          text: this.$t(`categoryOptions.${x.name}`),
           selection: x.slug
         }
         return optionObj
