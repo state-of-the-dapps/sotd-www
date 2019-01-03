@@ -31,7 +31,24 @@ export default {
     viewAll: 'View all'
   },
   DappDetailBodyContentCtas: {
-    website: 'Visit website'
+    website: 'Visit website',
+    playGame: 'Play game',
+    launchDapp: 'Launch ÐApp',
+    launchDappWebsite: 'Launch ÐApp/website'
+  },
+  DappDetailBodyContentModulesContractsAddress: {
+    copy: 'Copy',
+    copied: 'Copied!'
+  },
+  DappDetailBodyContentModulesContractsItem: {
+    address: 'address',
+    contract: 'contract'
+  },
+  DappDetailBodyContentModulesDev: {
+    title: 'Development activity',
+    help: 'Code pushes, issues, pull requests, etc.',
+    events: '1 event | {count} events',
+    day: '{count}d'
   },
   DappDetailBodyContentModulesStatus: {
     status: 'Status'
@@ -70,7 +87,9 @@ export default {
     share: 'Share this ÐApp'
   },
   DappDetailBodyContentPlatform: {
-    platform: 'Platform'
+    platform: 'Platform',
+    advise:
+      'To use {platform} ÐApps on the web, we recommend a browser add-on such as {software}.'
   },
   DappDetailBodyContentRank: {
     currentRank: 'Current rank'

@@ -17,7 +17,7 @@
       v-clipboard:copy="address" 
       v-clipboard:success="copy" 
       class="contract-address-copy" 
-      @click="trackContractCopy(address, network)">{{ copyText }}</span>
+      @click="trackContractCopy(address, network)">{{ $t(namespace(copyText)) }}</span>
   </li>
 </template>
 
@@ -49,7 +49,7 @@ export default {
   },
   data: () => {
     return {
-      copyText: 'Copy'
+      copyText: 'copy'
     }
   },
   computed: {
@@ -83,9 +83,9 @@ export default {
   },
   methods: {
     copy() {
-      this.copyText = 'Copied!'
+      this.copyText = 'copied'
       setTimeout(() => {
-        this.copyText = 'Copy'
+        this.copyText = 'copy'
       }, 1500)
     },
     trackContract(address, network, platform) {

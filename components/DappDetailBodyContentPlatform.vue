@@ -14,11 +14,16 @@
       <div 
         v-if="platform && platform in platformSoftware"
         class="software-wrapper">
-        To use {{ platform }} ÐApps on the web, we recommend a browser add-on such as
-        <a
-          :href="platformSoftware[platform].url"
-          target="_blank"
-          @click="trackDappPlatformSoftware(platformSoftware[platform].name, slug)">{{ platformSoftware[platform].name }}</a>
+        <i18n
+          :path="namespace('advise')"
+          :places="{ platform: platform }"
+          tag="span">
+          <a
+            :href="platformSoftware[platform].url"
+            place="software"
+            target="_blank"
+            @click="trackDappPlatformSoftware(platformSoftware[platform].name, slug)">{{ platformSoftware[platform].name }}</a>
+        </i18n>
       </div>
     </div>
   </div>

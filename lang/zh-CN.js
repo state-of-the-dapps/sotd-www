@@ -23,7 +23,7 @@ export default {
     Media: '媒体',
     // TODO Property: 'Property',
     // TODO Security: 'Security',
-    // TODO Social: 'Social',
+    Social: '社交',
     // TODO Storage: 'Storage',
     Wallet: '钱包'
   },
@@ -31,7 +31,24 @@ export default {
     viewAll: '查看全部'
   },
   DappDetailBodyContentCtas: {
-    website: '访问网站'
+    website: '访问网站',
+    playGame: '玩游戏',
+    launchDapp: '启动 ÐApp',
+    launchDappWebsite: '启动 ÐApp / 网站'
+  },
+  DappDetailBodyContentModulesContractsAddress: {
+    copy: '复制',
+    copied: '是副本!'
+  },
+  DappDetailBodyContentModulesContractsItem: {
+    address: '地址',
+    contract: '合约'
+  },
+  DappDetailBodyContentModulesDev: {
+    title: '开发活动',
+    help: '代码推送，问题，合并请求等',
+    events: '{count}项',
+    day: '{count}天'
   },
   DappDetailBodyContentModulesStatus: {
     status: '现状'
@@ -69,7 +86,8 @@ export default {
     share: '分享这个'
   },
   DappDetailBodyContentPlatform: {
-    platform: '平台'
+    platform: '平台',
+    advise: '我们推荐浏览器插件比如{software}，以便在网上使用{platform} ÐApps。'
   },
   DappDetailBodyContentRank: {
     currentRank: '目前排名'

@@ -1,6 +1,6 @@
 <template>
   <li class="contract-item">
-    <h4 class="contract-name">{{ network | capitalize }} {{ label | pluralize(addresses.length) }} ({{ platform }})</h4>
+    <h4 class="contract-name">{{ network | capitalize }} {{ $t(namespace(label)) | pluralize(addresses.length) }} ({{ platform }})</h4>
     <ul class="contract-addresses">
       <DappDetailBodyContentModulesContractsAddress
         v-for="(address, index) in visibleAddresses"

@@ -15,8 +15,8 @@
           class="button" 
           target="_blank" 
           @click="trackDappSite(['website','dapp'], dapp.sites.websiteUrl)">
-          <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-          <span v-else>Launch ÐApp/website<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-if="dapp.tags.includes(dappGameTag)">{{ $t(namespace('playGame')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-else>{{ $t(namespace('launchDappWebsite')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         </a>
       </div>
       <div v-else>
@@ -27,8 +27,8 @@
           class="button" 
           target="_blank" 
           @click="trackDappSite(['dapp'], dapp.sites.dappUrl)">
-          <span v-if="dapp.tags.includes(dappGameTag)">Play game<span v-if="dapp.isNsfw"> (NSFW)</span></span>
-          <span v-else>Launch ÐApp<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-if="dapp.tags.includes(dappGameTag)">{{ $t(namespace('playGame')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></span>
+          <span v-else>{{ $t(namespace('launchDapp')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></span>
         </a>
         <a 
           v-if="dapp.sites.websiteUrl" 

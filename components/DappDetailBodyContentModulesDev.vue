@@ -2,14 +2,14 @@
   <div class="component-DappDetailBodyContentModulesDev">
     <div class="wrapper">
       <div class="field -title">
-        <h4 class="dev-title">Development activity<Help text="Code pushes, issues, pull requests, etc."/></h4>
+        <h4 class="dev-title">{{ $t(namespace('title')) }}<Help :text="$t(namespace('help'))"/></h4>
       </div>
       <div class="field -data">
-        <p class="dev-data">{{ dev30d }} events<span 
+        <p class="dev-data">{{ $tc(namespace('events'), dev30d, {count: dev30d}) }}<span 
           v-if="dev30dPct" 
           :class="getDappStatsClass(dev30dPct)" 
-          class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> (30d)</p>
-        <p class="dev-data">{{ dev90d }} events (90d)</p>
+          class="dev-pct"> &nbsp;<span v-if="dev30dPct > 0">+</span>{{ Number(dev30dPct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%</span> ({{ $t(namespace('day'), {count: 30}) }})</p>
+        <p class="dev-data">{{ $tc(namespace('events'), dev90d, {count: dev90d}) }}  ({{ $t(namespace('day'), {count: 90}) }})</p>
         <div class="sparkline">
           <trend
             :data="sparkline"
