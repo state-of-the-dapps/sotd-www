@@ -508,6 +508,16 @@ export function createRouter() {
         path: '/zh/whats-a-dapp',
         component: What,
         name: 'what___zh'
+      },
+      {
+        path: '*',
+        component: Home,
+        name: 'home___en'
+      },
+      {
+        path: '*',
+        component: Home,
+        name: 'home___zh'
       }
     ],
     fallback: false
