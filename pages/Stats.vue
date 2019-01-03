@@ -3,6 +3,11 @@
     <div class="hero-wrapper">
       <PageHeading :title="$t('Stats.title')"/>
       <p class="description">{{ $t('Stats.description') }}</p>
+      <p class="button-wrapper">
+        <BaseButton
+          text="Get custom data"
+          @clickButton="openIntercom(`Need custom data? What are you looking for specifically?`)"/>
+      </p>
       <Stats
         :stat-categories="stats.categories"
         :stat-dapp-contract-count="stats.dappContractCount"
@@ -17,14 +22,18 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { openIntercom } from '@/helpers/mixins'
+import BaseButton from '@/components/BaseButton'
 import PageHeading from '@/components/PageHeading'
 import Stats from '@/components/Stats'
 
 export default {
   components: {
+    BaseButton,
     PageHeading,
     Stats
   },
+  mixins: [openIntercom],
   data() {
     return {
       stats: {}
@@ -62,8 +71,12 @@ export default {
   padding-bottom: 50px;
 }
 
+.button-wrapper {
+  text-align: center;
+}
+
 .description {
-  margin: 0.5rem auto 4rem auto;
+  margin: 0.5rem auto 0 auto;
   text-align: center;
   max-width: 400px;
 }

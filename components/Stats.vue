@@ -368,8 +368,8 @@ export default {
 .list {
   display: block;
   text-align: center;
-  margin-bottom: 35px;
-  margin-top: 15px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
   @include tweakpoint('min-width', 1000px) {
     display: flex;
     flex-wrap: wrap;
@@ -414,7 +414,7 @@ export default {
   @include title-2;
   font-size: 3rem;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
 }
 
