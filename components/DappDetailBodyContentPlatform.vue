@@ -2,7 +2,7 @@
   <div class="component-DappDetailBodyContentPlatform">
     <div class="wrapper">
       <p class="description">
-        <strong>{{ $t(namespace('platform')) }}</strong> 
+        <strong>{{ $t('platform') }}</strong> 
         &nbsp;
         <nuxt-link
           :to="localePath({

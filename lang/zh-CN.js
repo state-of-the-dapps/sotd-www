@@ -7,24 +7,24 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
-  categories: '分类',
+  category: '分类',
   categoryOptions: {
-    // TODO Development: 'Development',
+    Development: '软件开发',
     Energy: '能源',
-    // TODO Exchanges: 'Exchanges',
-    // TODO Finance: 'Finance',
+    Exchanges: '交流',
+    Finance: '金融',
     Gambling: '赌博',
     Games: '游戏',
-    // TODO Governance: 'Governance',
+    Governance: '治理',
     Health: '健康',
     'High-risk': '高危',
-    // TODO Identity: 'Identity',
+    Identity: '身份',
     Insurance: '保险',
     Media: '媒体',
-    // TODO Property: 'Property',
-    // TODO Security: 'Security',
+    Property: '财产',
+    Security: '安全',
     Social: '社交',
-    // TODO Storage: 'Storage',
+    Storage: '存储',
     Wallet: '钱包'
   },
   cta: {
@@ -49,9 +49,6 @@ export default {
     help: '代码推送，问题，合并请求等',
     events: '{count}项',
     day: '{count}天'
-  },
-  DappDetailBodyContentModulesStatus: {
-    status: '现状'
   },
   DappDetailBodyContentModulesAuthors: {
     author: '作者',
@@ -86,7 +83,6 @@ export default {
     share: '分享这个'
   },
   DappDetailBodyContentPlatform: {
-    platform: '平台',
     advise: '我们推荐浏览器插件比如{software}，以便在网上使用{platform} ÐApps。'
   },
   DappDetailBodyContentRank: {
@@ -136,10 +132,36 @@ export default {
     submit: '提交 ÐApp',
     view: '查看最佳 ÐApps'
   },
+  platform: '平台',
   profileStrength: '简介强度',
   Stats: {
     title: 'ÐApp 数据',
-    description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。'
+    description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
+    dailyActiveUsers: '每日活跃用户',
+    // TODO activeUsersHelp: 'Unique source addresses in transactions to ÐApp contracts',
+    monthlyActiveUsers: '每月活跃用户',
+    newDappsPerMonth: '每月新ÐApps',
+    newDapps: '新ÐApps',
+    nrOfContracts: '合同数量',
+    smartContracts: '智能合约',
+    '24htransactions': '24小时交易',
+    transactions24h: '交易 (24小时)',
+    transactions30d: '交易 (30天)',
+    // TODO transactionsHelp: 'Number of transactions to ÐApp contracts',
+    totalDapps: '总 ÐApps',
+    volume24h: '数量 (24小时)'
+    // TODO volumeHelp: 'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
+  },
+  status: '现状',
+  statusOptions: {
+    live: '使用中',
+    abandoned: '放弃',
+    wip: '进行中',
+    beta: '公测',
+    prototype: '原型',
+    concept: '概念',
+    stealth: '隐形模式',
+    broken: '坏掉'
   },
   tags: '标签',
   users24h: '用户 (24小时)'

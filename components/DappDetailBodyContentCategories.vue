@@ -1,7 +1,7 @@
 <template>
   <div class="component-DappDetailBodyContentCategories">
     <div class="wrapper">
-      <h4 class="subtitle">{{ $t('categories') | capitalize }}</h4>
+      <h4 class="subtitle">{{ $tc('category', 2) }}</h4>
       <ul class="category-list">
         <li 
           v-for="(category, index) in categories" 
