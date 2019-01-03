@@ -11,7 +11,7 @@
             :to="localePath({name: 'rankings-category', params: {category: category}})" 
             :class="'-' + category" 
             class="category-link" 
-            @click.native="trackDappCategory($options.filters.formatCategory(category))">{{ category | formatCategory }}</nuxt-link>
+            @click.native="trackDappCategory(category)">{{ $t(`categoryOptions.${$options.filters.capitalize(category)}`) }}</nuxt-link>
         </li>
       </ul>
     </div>
