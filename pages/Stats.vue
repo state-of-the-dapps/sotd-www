@@ -51,7 +51,6 @@ export default {
     })
     return Promise.all([statsDefault, statsGrowth]).then(
       ([resStatsDefault, resStatsGrowth]) => {
-        resStatsGrowth.data.pop()
         return {
           stats: resStatsDefault.data,
           growth: resStatsGrowth.data
