@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-filters">
+  <div class="CategoryPlatformFilters">
     <div class="filter-wrapper">
       <BaseDropdown
         :important="true"
@@ -27,14 +27,24 @@
 import { platformList, platformMap } from '~/helpers/constants'
 import { getCategories } from '~/helpers/api'
 import {
-  trackDappRankingCategory,
-  trackDappRankingPlatform
+  trackDappCategoryFilter,
+  trackDappPlatformFilter
 } from '~/helpers/mixpanel'
 import BaseDropdown from '~/components/BaseDropdown'
 
 export default {
   components: {
     BaseDropdown
+  },
+  props: {
+    baseRoute: {
+      type: String,
+      required: true
+    },
+    routeHash: {
+      type: String,
+      default: ''
+    }
   },
   data() {
     return {
@@ -77,8 +87,8 @@ export default {
   methods: {
     filterCategory(category) {
       this.category = category
-      this.trackDappRankingCategory(category)
-      let routeName = 'rankings'
+      this.trackDappCategoryFilter(category)
+      let routeName = this.baseRoute
       if (this.$route.params.platform) {
         routeName += '-platform'
       }
@@ -91,14 +101,15 @@ export default {
           params: {
             ...this.$route.params,
             category: category.toLowerCase()
-          }
+          },
+          hash: this.routeHash
         })
       )
     },
     filterPlatform(platform) {
       this.platform = platformMap[platform]
-      this.trackDappRankingPlatform(platform)
-      let routeName = 'rankings'
+      this.trackDappPlatformFilter(platform)
+      let routeName = this.baseRoute
       if (platform) {
         routeName += '-platform'
       }
@@ -111,22 +122,23 @@ export default {
           params: {
             ...this.$route.params,
             platform: platform.toLowerCase()
-          }
+          },
+          hash: this.routeHash
         })
       )
     },
-    trackDappRankingCategory(category) {
-      const sourceComponent = 'RankingFilters'
-      const action = trackDappRankingCategory(
+    trackDappCategoryFilter(category) {
+      const sourceComponent = 'CategoryPlatformFilter'
+      const action = trackDappCategoryFilter(
         sourceComponent,
         this.sourcePath,
         category
       )
       this.$mixpanel.track(action.name, action.data)
     },
-    trackDappRankingPlatform(platform) {
-      const sourceComponent = 'RankingFilters'
-      const action = trackDappRankingPlatform(
+    trackDappPlatformFilter(platform) {
+      const sourceComponent = 'CategoryPlatformFilter'
+      const action = trackDappPlatformFilter(
         sourceComponent,
         this.sourcePath,
         platform
@@ -140,11 +152,7 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/css/settings';
 
-.component-base-filter {
-  margin: 10px 6px 5px 6px;
-}
-
-.component-ranking-filters {
+.CategoryPlatformFilters {
   padding-bottom: 15px;
   display: flex;
   justify-content: center;

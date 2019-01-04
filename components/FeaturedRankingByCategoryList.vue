@@ -6,8 +6,8 @@
         :heading="$t(namespace('heading'))"
         :heading-route="{ name: 'rankings' }"
         :cta-text="$t('cta.viewAll')"
-        @clickCta="trackDappRankingCategory('all')"
-        @clickHeading="trackDappRankingCategory('all')">
+        @clickCta="trackDappCategoryFilter('all')"
+        @clickHeading="trackDappCategoryFilter('all')">
         <template slot="icon">
           <img 
             src="~/assets/images/icons/categories.png" 
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { trackDappRankingCategory } from '@/helpers/mixpanel'
+import { trackDappCategoryFilter } from '@/helpers/mixpanel'
 import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListItem'
 import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
@@ -58,9 +58,9 @@ export default {
     })
   },
   methods: {
-    trackDappRankingCategory(category) {
+    trackDappCategoryFilter(category) {
       const sourceComponent = 'FeaturedRankingByCategoryList'
-      const action = trackDappRankingCategory(
+      const action = trackDappCategoryFilter(
         sourceComponent,
         this.sourcePath,
         category

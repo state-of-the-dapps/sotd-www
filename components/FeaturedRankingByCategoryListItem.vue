@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { trackDappRankingCategory, trackDappView } from '~/helpers/mixpanel'
+import { trackDappCategoryFilter, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
@@ -91,7 +91,7 @@ export default {
     },
     viewDappRankingCategory(category) {
       const sourceComponent = 'DappFeaturedRankingCategory'
-      const action = trackDappRankingCategory(
+      const action = trackDappCategoryFilter(
         sourceComponent,
         this.sourcePath,
         category.slug

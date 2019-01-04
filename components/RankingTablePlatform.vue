@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { trackDappRankingPlatform } from '~/helpers/mixpanel'
+import { trackDappPlatformFilter } from '~/helpers/mixpanel'
 
 export default {
   props: {
@@ -21,7 +21,7 @@ export default {
   methods: {
     trackRankingPlatform(platform) {
       const sourceComponent = 'RankingTablePlatform'
-      const action = trackDappRankingPlatform(
+      const action = trackDappPlatformFilter(
         sourceComponent,
         this.$route.path,
         platform

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { trackDappRankingPlatform, trackDappView } from '~/helpers/mixpanel'
+import { trackDappPlatformFilter, trackDappView } from '~/helpers/mixpanel'
 import Help from './Help'
 import SvgIconChevron from './SvgIconChevron'
 
@@ -90,7 +90,7 @@ export default {
     },
     viewDappRankingPlatform(category) {
       const sourceComponent = 'DappFeaturedRankingPlatform'
-      const action = trackDappRankingPlatform(
+      const action = trackDappPlatformFilter(
         sourceComponent,
         this.sourcePath,
         category.slug

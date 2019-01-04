@@ -34,7 +34,14 @@
         </div>
       </li>
     </ul>
-    <h2 class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+    <h2
+      id="new"
+      class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+    <div class="new-vs-total-filters-wrapper">
+      <CategoryPlatformFilters
+        base-route="stats"
+        route-hash="#new"/>
+    </div>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
         <div class="new-vs-total-legend-new">{{ $t(namespace('newDapps')) }}</div>
@@ -146,15 +153,16 @@
 <script>
 import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
-import { newDapps } from '~/helpers/constants'
+import { newDapps } from '@/helpers/constants'
+import CategoryPlatformFilters from './CategoryPlatformFilters'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
 
 const labels = [
-  '2015-04-30',
-  '2015-05-31',
-  '2015-06-30',
-  '2015-07-31',
+  '2015-04',
+  '2015-05',
+  '2015-06',
+  '2015-07',
   '2015-08-31',
   '2015-09-30',
   '2015-10-31',
@@ -212,6 +220,7 @@ function totalDapps() {
 
 export default {
   components: {
+    CategoryPlatformFilters,
     Help,
     StatsStatusBarChart
   },
