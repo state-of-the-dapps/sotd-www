@@ -156,23 +156,6 @@ import CategoryPlatformFilters from './CategoryPlatformFilters'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
 
-function totalDapps() {
-  let totalDappArr = []
-  let totalDapps = 0
-  let i = 0
-  for (i; i < newDapps.length; i++) {
-    totalDapps += newDapps[i].count
-    totalDappArr.push(totalDapps)
-  }
-  return totalDappArr
-}
-
-function newDappsArr() {
-  const arr = []
-  newDapps.map(x => arr.push(x.count))
-  return arr
-}
-
 export default {
   components: {
     CategoryPlatformFilters,
@@ -180,6 +163,10 @@ export default {
     StatsStatusBarChart
   },
   props: {
+    growthData: {
+      type: Array,
+      required: true
+    },
     statCategories: {
       type: Array,
       required: true,
@@ -218,18 +205,8 @@ export default {
   },
   data() {
     return {
-      newDapps: [
-        {
-          month: '2015-04',
-          count: 12
-        },
-        {
-          month: '2015-05',
-          count: 2
-        }
-      ],
       newVsTotalData: {
-        labels: formattedLabels,
+        labels: this.getLabels(),
         datasets: [
           {
             type: 'line',
@@ -238,7 +215,7 @@ export default {
             backgroundColor: '#333333',
             borderWidth: '2',
             fill: false,
-            data: totalDapps(),
+            data: this.getTotalDapps(),
             yAxisID: 'y-axis-2'
           },
           {
@@ -246,27 +223,23 @@ export default {
             borderColor: '#bd5eff',
             backgroundColor: '#bd5eff',
             borderWidth: '2',
-            data: newDappsArr(),
+            data: this.getNewDapps(),
             yAxisID: 'y-axis-1'
           }
         ]
       }
     }
   },
-  computed: {
-    formattedLabels() {
-      return this.labels.map(x => formatDate(x, "MMM 'YY"))
-    },
-    labels() {
-      const labels = []
-      newDapps.map(x => labels.push(x.month))
-      return labels
-    }
-  },
   mounted() {
     this.createChart('new-vs-total', this.newVsTotalData)
   },
   methods: {
+    getLabels() {
+      const labels = []
+      this.growthData.map(x => labels.push(x.month))
+      const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
+      return formattedLabels
+    },
     createChart(chartId, chartData) {
       var ctx = document.getElementById(chartId)
       var lineChart = new Chart(ctx, {
@@ -326,6 +299,23 @@ export default {
           }
         }
       })
+    },
+    getTotalDapps() {
+      let totalDappArr = []
+      let totalDapps = 0
+      let growthData = this.growthData
+      let i = 0
+      for (i; i < growthData.length; i++) {
+        totalDapps += growthData[i].count
+        totalDappArr.push(totalDapps)
+      }
+      return totalDappArr
+    },
+    getNewDapps() {
+      const arr = []
+      const growthData = this.growthData
+      growthData.map(x => arr.push(x.count))
+      return arr
     }
   }
 }
