@@ -26,12 +26,12 @@
       <div 
         :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
         class="meta">
-        <span class="category">{{ dapp.categories && dapp.categories.length ? dapp.categories[0] : '' }}</span>
+        <span class="category">{{ dapp.categories && dapp.categories.length ? $t(`categoryOptions.${$options.filters.capitalize(dapp.categories[0])}`) : '' }}</span>
       </div>
       <span 
         v-if="dapp.isNew" 
         class="new">
-        New
+        {{ $t(namespace('new')) }}
       </span>
       <span 
         v-if="optionalAttribute" 

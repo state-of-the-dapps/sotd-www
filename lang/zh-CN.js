@@ -7,6 +7,18 @@ export default {
     stats: '数据',
     submit: '提交 ÐApp'
   },
+  BaseFooter: {
+    copyright: '版权',
+    designedBy: '由 {designer} 设计',
+    contactUs: '联系我们',
+    about: '关于',
+    submit: '提交 ÐApp', // TODO refactor duplicate
+    // TODO promote: 'Promote your ÐApp',
+    downloadLogo: '下载我们的徽标',
+    getAndroidApp: '获取Android应用',
+    helpMetamask: '帮助 Metamask',
+    termsOfUse: '使用条款'
+  },
   category: '分类',
   categoryOptions: {
     Development: '软件开发',
@@ -29,6 +41,9 @@ export default {
   },
   cta: {
     viewAll: '查看全部'
+  },
+  DappCardListItem: {
+    new: '新'
   },
   DappDetailBodyContentCtas: {
     website: '访问网站',
@@ -98,10 +113,19 @@ export default {
   DappProfile: {
     improve: '改善这个简介'
   },
+  Dapps: {
+    // TODO noResults: 'There are currently no ÐApps here. Please try another search.'
+  },
   DappsResultCount: {
     // TODO result: 'result | results',
     // TODO showing: 'Showing {showing} {total} {result}',
     // TODO xOf: '{x} of'
+  },
+  DappsSearch: {
+    // TODO placeholder: 'Search by ÐApp name or tag'
+  },
+  DappsSort: {
+    sortBy: '排序方式'
   },
   // TODO devActivity30d: 'Dev activity (30d)',
   // TODO devActivity30dHelp: 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
@@ -152,9 +176,19 @@ export default {
   RankingTable: {
     // TODO noDapps: 'There are currently no ÐApps for this category and platform'
   },
+  SecondaryCtaMailingList: {
+    // TODO title: 'Stay in the loop',
+    // TODO description: 'Subscribe to receive updates on the ÐApp ecosystem.',
+    // TODO placeholder: 'Enter your email here',
+    // TODO signUp: 'Sign up',
+    // TODO submitting: 'Submitting...',
+    // TODO thanks: "Thanks! We'll be in touch!",
+    // TODO error: 'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
+  },
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
+    // TODO askUs: 'Ask us about custom data',
     dailyActiveUsers: '每日活跃用户',
     // TODO activeUsersHelp: 'Unique source addresses in transactions to ÐApp contracts',
     monthlyActiveUsers: '每月活跃用户',

@@ -38,7 +38,7 @@
         </div>
         <p
           v-if="!isLoading && pager.totalCount === 0"
-          class="no-results">There are currently no ÐApps here. Please try another search.</p>
+          class="no-results">{{ $t('Dapps.noResults') }}</p>
       </div>
     </div>
   </div>

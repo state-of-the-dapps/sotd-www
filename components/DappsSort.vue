@@ -3,8 +3,8 @@
     <BaseDropdown
       :options="sortOptions"
       :selected="formattedSortQuery"
-      name="Sort by"
-      title="Sort by"
+      :name="$t(namespace('sortBy'))"
+      :title="$t(namespace('sortBy'))"
       theme="inline right"
       @select="selectSort"/>
   </div>

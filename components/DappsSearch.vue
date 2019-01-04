@@ -22,8 +22,8 @@
           <li class="input-text"><input 
             ref="search" 
             v-model="textQuery" 
+            :placeholder="$t(namespace('placeholder'))" 
             class="input" 
-            placeholder="Search by ÐApp name or tag" 
             autocomplete="off" 
             @input="search" 
             @keyup.enter="blurTextInput" 

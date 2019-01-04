@@ -5,50 +5,50 @@
         <a 
           href="mailto:support@stateofthedapps.com" 
           class="nav-link" 
-          @click="trackContact()">Contact us</a>
+          @click="trackContact()">{{ $t(namespace('contactUs')) }}</a>
       </li>
       <li class="nav-item">
         <nuxt-link 
           to="/about" 
           class="nav-link" 
-          @click.native="trackPageAbout()">About</nuxt-link>
+          @click.native="trackPageAbout()">{{ $t(namespace('about')) }}</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
           :to="localePath({ name: 'dapps-new' })" 
           class="nav-link" 
-          @click.native="trackFooterSubmit()">Submit a ÐApp</nuxt-link>
+          @click.native="trackFooterSubmit()">{{ $t(namespace('submit')) }}</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
           :to="localePath({ name: 'promoted-dapps' })" 
           class="nav-link" 
-          @click.native="trackPromotedDappsView()">Promote your ÐApp</nuxt-link>
+          @click.native="trackPromotedDappsView()">{{ $t(namespace('promote')) }}</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
           :to="localePath({ name: 'logos' })" 
           class="nav-link" 
-          @click.native="trackFooterLogoDownload()">Download our logo</nuxt-link>
+          @click.native="trackFooterLogoDownload()">{{ $t(namespace('downloadLogo')) }}</nuxt-link>
       </li>
       <li class="nav-item">
         <a
           href="https://play.google.com/store/apps/details?id=com.stateofthedapps.android&ref=StateOfTheDapps"
           class="nav-link"
           target="_blank"
-          @click="trackFooterAppAndroid()">Get the Android app</a>
+          @click="trackFooterAppAndroid()">{{ $t(namespace('getAndroidApp')) }}</a>
       </li>
       <li class="nav-item">
         <nuxt-link 
           :to="localePath({ name: 'help-metamask' })" 
           class="nav-link"
-          @click.native="trackFooterLink('help-metamask')">Help for Metamask</nuxt-link>
+          @click.native="trackFooterLink('help-metamask')">{{ $t(namespace('helpMetamask')) }}</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 
           to="/terms" 
           class="nav-link" 
-          @click.native="trackPageTerms()">Terms of use</nuxt-link>
+          @click.native="trackPageTerms()">{{ $t(namespace('termsOfUse')) }}</nuxt-link>
       </li>
       <ul class="social-list">
         <li class="social-item">
@@ -126,15 +126,19 @@
           src="~/assets/images/logo-reverse.png">
       </li>
       <li class="attribution-item">
-        <span>Copyright &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</span>
+        <span>{{ $t(namespace('copyright')) }} &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</span>
       </li>
       <li class="attribution-item">
-        <span>Designed by <a 
-          class="attribution-link" 
-          href="https://www.theduo.io" 
-          target="_blank" 
-          rel="noopener"
-          @click="$mixpanel.track('SotD - Designer website')">Duo</a></span>
+        <i18n
+          :path="namespace('designedBy')"
+          tag="span"><a 
+            class="attribution-link" 
+            href="https://www.theduo.io" 
+            place="designer"
+            target="_blank" 
+            rel="noopener"
+            @click="$mixpanel.track('SotD - Designer website')">Duo</a>
+        </i18n>
       </li>
     </ul>
   </div>

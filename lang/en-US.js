@@ -7,6 +7,18 @@ export default {
     stats: 'Stats',
     submit: 'Submit a ÐApp'
   },
+  BaseFooter: {
+    copyright: 'Copyright',
+    designedBy: 'Designed by {designer}',
+    contactUs: 'Contact us',
+    about: 'About',
+    submit: 'Submit a ÐApp',
+    promote: 'Promote your ÐApp',
+    downloadLogo: 'Download our logo',
+    getAndroidApp: 'Get the Android app',
+    helpMetamask: 'Help for Metamask',
+    termsOfUse: 'Terms of use'
+  },
   category: 'Category | Categories',
   categoryOptions: {
     Development: 'Development',
@@ -29,6 +41,9 @@ export default {
   },
   cta: {
     viewAll: 'View all'
+  },
+  DappCardListItem: {
+    new: 'New'
   },
   DappDetailBodyContentCtas: {
     website: 'Visit website',
@@ -100,10 +115,19 @@ export default {
   DappProfile: {
     improve: 'Improve this profile'
   },
+  Dapps: {
+    noResults: 'There are currently no ÐApps here. Please try another search.'
+  },
   DappsResultCount: {
     result: 'result | results',
     showing: 'Showing {showing} {total} {result}',
     xOf: '{x} of'
+  },
+  DappsSearch: {
+    placeholder: 'Search by ÐApp name or tag'
+  },
+  DappsSort: {
+    sortBy: 'Sort by'
   },
   devActivity30d: 'Dev activity (30d)',
   devActivity30dHelp:
@@ -155,10 +179,21 @@ export default {
   RankingTable: {
     noDapps: 'There are currently no ÐApps for this category and platform'
   },
+  SecondaryCtaMailingList: {
+    title: 'Stay in the loop',
+    description: 'Subscribe to receive updates on the ÐApp ecosystem.',
+    placeholder: 'Enter your email here',
+    signUp: 'Sign up',
+    submitting: 'Submitting...',
+    thanks: "Thanks! We'll be in touch!",
+    error:
+      'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
+  },
   Stats: {
     title: 'ÐApp Statistics',
     description:
       'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.',
+    askUs: 'Ask us about custom data',
     activeUsersHelp:
       'Unique source addresses in transactions to ÐApp contracts',
     dailyActiveUsers: 'Daily active users',
