@@ -7,15 +7,15 @@
         :width="30" 
         :height="30" 
         fill="white" />
-      <h2 class="title-2">Stay in the loop</h2>
-      <p class="description">Subscribe to receive updates on the ÐApp ecosystem.</p>
+      <h2 class="title-2">{{ $t(namespace('title')) }}</h2>
+      <p class="description">{{ $t(namespace('description')) }}</p>
       <div class="input-wrapper">
         <input 
           id="component-SecondaryCtaMailingList-input" 
           v-model="email" 
+          :placeholder="$t(namespace('placeholder'))" 
           class="input" 
           type="text" 
-          placeholder="Enter your email here" 
           @input="validateEmail" >
       </div>
       <button 
@@ -42,7 +42,7 @@ export default {
   mixins: [validateEmail],
   data() {
     return {
-      ctaText: 'Sign up',
+      ctaText: this.$t(this.namespace('signUp')),
       email: '',
       emailIsValid: false,
       isSubmitting: false,
@@ -56,7 +56,7 @@ export default {
   methods: {
     subscribe() {
       if (this.emailIsValid && !this.isSubmitting) {
-        this.ctaText = 'Submitting...'
+        this.ctaText = this.$t(this.namespace('submitting'))
         this.isSubmitting = true
         const data = {
           fields: {
@@ -72,22 +72,24 @@ export default {
             this.trackNewsletterSubscribe()
             this.email = ''
             this.justSubmitted = true
-            this.ctaText = "Thanks! We'll be in touch!"
+            this.ctaText = this.$t(this.namespace('thanks'))
             return new Promise(resolve => {
               setTimeout(() => {
                 this.emailIsValid = false
                 this.isSubmitting = false
                 this.justSubmitted = false
-                this.ctaText = 'Sign up'
+                this.ctaText = this.$t(this.namespace('signUp'))
                 resolve()
               }, 5000)
             })
           })
           .catch(() => {
             this.isSubmitting = false
-            this.ctaText = 'Sign up'
+            this.ctaText = this.$t(this.namespace('signUp'))
             alert(
-              'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: support@stateofthedapps.com'
+              this.$t(this.namespace('error'), {
+                email: 'support@stateofthedapps.com'
+              })
             )
           })
       }

@@ -2,7 +2,7 @@
   <div class="component-DappDetailRelatedDapps">
     <div class="wrapper">
       <div class="wrapper-inner">
-        <h2 class="title-2">Related DApps</h2>
+        <h2 class="title-2">{{ $t(namespace('title')) }}</h2>
         <DappCardList :dapps="dapps"/>
       </div>
     </div>

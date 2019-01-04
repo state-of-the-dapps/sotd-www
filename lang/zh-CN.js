@@ -4,8 +4,18 @@ export default {
     home: '首页',
     rankings: '排名',
     search: '搜索',
-    stats: '数据',
-    submit: '提交 ÐApp'
+    stats: '数据'
+  },
+  BaseFooter: {
+    copyright: '版权',
+    designedBy: '由 {designer} 设计',
+    contactUs: '联系我们',
+    about: '关于',
+    promote: '推广你的DApp',
+    downloadLogo: '下载我们的徽标',
+    getAndroidApp: '获取Android应用',
+    helpMetamask: '帮助 Metamask',
+    termsOfUse: '使用条款'
   },
   category: '分类',
   categoryOptions: {
@@ -28,7 +38,11 @@ export default {
     Wallet: '钱包'
   },
   cta: {
+    submit: '提交 ÐApp',
     viewAll: '查看全部'
+  },
+  DappCardListItem: {
+    new: '新'
   },
   DappDetailBodyContentCtas: {
     website: '访问网站',
@@ -95,16 +109,29 @@ export default {
     comments: '评论',
     commentsPlaceholder: '添加您的评论'
   },
+  DappDetailRelatedDapps: {
+    title: '有关连ÐApp'
+  },
   DappProfile: {
     improve: '改善这个简介'
   },
-  DappsResultCount: {
-    // TODO result: 'result | results',
-    // TODO showing: 'Showing {showing} {total} {result}',
-    // TODO xOf: '{x} of'
+  Dapps: {
+    noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
   },
-  // TODO devActivity30d: 'Dev activity (30d)',
-  // TODO devActivity30dHelp: 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
+  DappsResultCount: {
+    result: '的结果',
+    showing: '显示 {showing} {total} {result}',
+    xOf: '{x} 之 '
+  },
+  DappsSearch: {
+    placeholder: '以 ÐApp 名称或标签搜寻'
+  },
+  DappsSort: {
+    sortBy: '排序方式'
+  },
+  devActivity30d: '开发活动（30天',
+  devActivity30dHelp:
+    'GitHub中项目组织/代码库产生的活动次数。包括代码推送、问题、合并请求等。',
   FeaturedCategoryList: {
     games: '游戏',
     finance: '财务',
@@ -115,8 +142,8 @@ export default {
     heading: 'ÐApp 收藏'
   },
   FeaturedDappList: {
-    heading: '特色 ÐApps'
-    // TODO promote: 'Promote your ÐApp here'
+    heading: '特色 ÐApps',
+    promote: '在这里推广你的DApp'
   },
   FeaturedRankingByCategoryList: {
     heading: '类别排行榜'
@@ -125,12 +152,12 @@ export default {
     heading: '平台排行榜'
   },
   filters: {
-    // TODO allPlatforms: 'All platforms',
-    // TODO choosePlatform: 'Choose a platform',
-    // TODO allCategories: 'All categories',
-    // TODO chooseCategory: 'Choose a category',
-    // TODO allStatuses: 'All statuses',
-    // TODO chooseStatus: 'Choose a status'
+    allPlatforms: '所有平台',
+    choosePlatform: '选择平台',
+    allCategories: '所有类别',
+    chooseCategory: '選擇類別',
+    allStatuses: '所有状态',
+    chooseStatus: '选择状态'
   },
   GlobalSearch: {
     dapps: 'ÐApps',
@@ -144,19 +171,46 @@ export default {
     learn: '了解更多关于 ÐApps 的信息',
     subheading:
       '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA和区块链的可能性。',
-    submit: '提交 ÐApp',
     view: '查看最佳 ÐApps'
   },
   platform: '平台',
   profileStrength: '简介强度',
   RankingTable: {
-    // TODO noDapps: 'There are currently no ÐApps for this category and platform'
+    noDapps: '目前该类别/平台尚无ÐApps'
+  },
+  SecondaryCtaMailingList: {
+    title: '保持循环',
+    description: '订阅接收DApp生态上的更新',
+    placeholder: '在此输入您的电子邮件地址',
+    signUp: '注册',
+    submitting: '提交...',
+    thanks: '谢谢！ 保持联系！',
+    error: '订阅出错。请确认邮箱地址后再尝试。如果还有问题，请联系我们：{email}'
+  },
+  SecondaryCtaMetamask: {
+    title: '以太坊和POA的Metamask',
+    description: 'Metamask可以让你在浏览器里使用以太坊和POA的DApps。',
+    cta: '现在试试。',
+    discover: '探索 MetaMask'
+  },
+  SecondaryCtaScatter: {
+    title: 'EOS的Scatter',
+    description: 'Scatter可以让你在浏览器里使用EOS DApps。',
+    cta: '现在试试。',
+    discover: '探索 Scatter'
+  },
+  SecondaryCtaSteemKeychain: {
+    title: 'Steem Keychain',
+    description: 'Steem Keychain可以让你在浏览器里使用SteemÐApps。',
+    cta: '现在试试。',
+    discover: '探索 Steem Keychain'
   },
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
+    askUs: '向我们询问自定义数据',
     dailyActiveUsers: '每日活跃用户',
-    // TODO activeUsersHelp: 'Unique source addresses in transactions to ÐApp contracts',
+    activeUsersHelp: '与ÐApp合约交易的独特源地址',
     monthlyActiveUsers: '每月活跃用户',
     newDappsPerMonth: '每月新ÐApps',
     newDapps: '新ÐApps',
@@ -165,10 +219,10 @@ export default {
     '24htransactions': '24小时交易',
     transactions24h: '交易 (24小时)',
     transactions30d: '交易 (30天)',
-    // TODO transactionsHelp: 'Number of transactions to ÐApp contracts',
+    transactionsHelp: '与ÐApp合约交易的次数',
     totalDapps: '总 ÐApps',
-    volume24h: '数量 (24小时)'
-    // TODO volumeHelp: 'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
+    volume24h: '数量 (24小时)',
+    volumeHelp: '与ÐApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。'
   },
   status: '现状',
   statusOptions: {
@@ -182,8 +236,8 @@ export default {
     broken: '坏掉'
   },
   tags: '标签',
-  // TODO userActivity30d: 'User activity (30d)',
-  // TODO userActivity30dHelp: 'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
-  users24h: '用户 (24小时)'
-  // TODO users24hHelp: 'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
+  userActivity30d: '用户活动 (30天)',
+  userActivity30dHelp: '过去30天的用户（与ÐApp合约交易的独特源地址）',
+  users24h: '用户 (24小时)',
+  users24hHelp: '每日活跃用户，或DAU（与ÐApp合约交易的独特源地址）'
 }

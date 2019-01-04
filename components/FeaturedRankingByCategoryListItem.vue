@@ -7,7 +7,7 @@
           :width="8" 
           :height="8" 
           direction="right" /></a>
-      <span class="label-dau">Users (24hr)</span>
+      <span class="label-dau">{{ $t('users24h') }}</span>
     </h3>
     <ul class="dapp-list">
       <li 

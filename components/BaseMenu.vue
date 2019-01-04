@@ -72,7 +72,7 @@
                 <li class="dropdown-item">
                   <nuxt-link
                     :to="localePath({name: 'dapps-new'})"
-                    class="dropdown-link">{{ $t(namespace('submit')) }}</nuxt-link>
+                    class="dropdown-link">{{ $t('cta.submit') }}</nuxt-link>
                 </li>
               </ul>
             </div>
@@ -116,7 +116,7 @@
           :to="localePath({ name: 'dapps-new' })" 
           :class="isHome ? 'is-home' : ''"
           class="nav-link -submit" 
-          @click.native="trackMenu('dapps-new')">{{ $t(namespace('submit')) }}</nuxt-link>
+          @click.native="trackMenu('dapps-new')">{{ $t('cta.submit') }}</nuxt-link>
       </li>
       <li class="nav-item -lang">
         <BaseDropdown

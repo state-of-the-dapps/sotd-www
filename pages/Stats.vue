@@ -5,7 +5,7 @@
       <p class="description">{{ $t('Stats.description') }}</p>
       <p class="button-wrapper">
         <BaseButton
-          text="Ask us about custom data"
+          :text="$t('Stats.askUs')"
           @clickButton="openIntercom"/>
       </p>
       <Stats

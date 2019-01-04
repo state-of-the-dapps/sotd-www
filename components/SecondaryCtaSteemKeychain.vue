@@ -8,13 +8,13 @@
           fill="white" />
       </div>
       <div class="description-wrapper">
-        <h5 class="title-5">Steem Keychain</h5>
-        <p class="description">Steem Keychain lets you use Steem ÐApps within your browser. <a 
+        <h5 class="title-5">{{ $t(namespace('title')) }}</h5>
+        <p class="description">{{ $t(namespace('description')) }} <a 
           class="link" 
           href="https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps" 
           target="_blank" 
           rel="noopener"
-          @click="trackSteemKeychainCta()">Try it now</a></p>
+          @click="trackSteemKeychainCta()">{{ $t(namespace('cta')) }}</a></p>
       </div>
       <div class="cta-wrapper">
         <a 
@@ -22,7 +22,7 @@
           class="cta" 
           target="_blank" 
           rel="noopener"
-          @click="trackSteemKeychainCta()">Discover Steem Keychain</a>
+          @click="trackSteemKeychainCta()">{{ $t(namespace('discover')) }}</a>
       </div>
     </div>
   </div>
