@@ -31,16 +31,21 @@ export default {
     }
   },
   asyncData({ store, params, error, app }) {
-    return app.$axios.get('dapps/' + params.slug).then(response => {
-      const data = response.data
-      const dapp = data.item
-      if (!Object.keys(dapp).length > 0) {
-        error({ statusCode: 404 })
-      }
-      return {
-        dapp
-      }
-    })
+    return app.$axios
+      .get('dapps/' + params.slug)
+      .then(response => {
+        const data = response.data
+        const dapp = data.item
+        if (!Object.keys(dapp).length > 0) {
+          error({ statusCode: 404 })
+        }
+        return {
+          dapp
+        }
+      })
+      .catch(e => {
+        return
+      })
   },
   mounted() {
     const action = trackDappMetaView(this.dapp.slug)

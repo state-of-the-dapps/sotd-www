@@ -23,14 +23,19 @@ export default {
     DappCardList
   },
   asyncData({ params, error, app }) {
-    return app.$axios.get('collections/' + params.slug).then(response => {
-      const collection = response.data
-      if (!Object.keys(collection).length > 0) {
-        error({ statusCode: 404 })
-      } else {
-        return { collection }
-      }
-    })
+    return app.$axios
+      .get('collections/' + params.slug)
+      .then(response => {
+        const collection = response.data
+        if (!Object.keys(collection).length > 0) {
+          error({ statusCode: 404 })
+        } else {
+          return { collection }
+        }
+      })
+      .catch(e => {
+        return
+      })
   },
   head() {
     return {

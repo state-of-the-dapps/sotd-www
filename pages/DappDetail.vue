@@ -25,22 +25,27 @@ export default {
     }
   },
   asyncData({ store, params, error, app, redirect }) {
-    return app.$axios.get('dapps/' + params.slug).then(response => {
-      const data = response.data
-      const status = response.status
-      const dapp = data.item
-      if (!Object.keys(dapp).length > 0) {
-        error({ statusCode: 404 })
-      }
-      if (dapp.slug && dapp.slug !== params.slug) {
-        const redirectPath =
-          `/dapps/${dapp.slug}` || constants.dappFallbackRedirectPath
-        redirect(301, redirectPath)
-      }
-      return {
-        dapp
-      }
-    })
+    return app.$axios
+      .get('dapps/' + params.slug)
+      .then(response => {
+        const data = response.data
+        const status = response.status
+        const dapp = data.item
+        if (!Object.keys(dapp).length > 0) {
+          error({ statusCode: 404 })
+        }
+        if (dapp.slug && dapp.slug !== params.slug) {
+          const redirectPath =
+            `/dapps/${dapp.slug}` || constants.dappFallbackRedirectPath
+          redirect(301, redirectPath)
+        }
+        return {
+          dapp
+        }
+      })
+      .catch(e => {
+        return
+      })
   },
   head() {
     return {

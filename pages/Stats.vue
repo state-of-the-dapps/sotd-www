@@ -49,14 +49,16 @@ export default {
         platform: params.platform
       }
     })
-    return Promise.all([statsDefault, statsGrowth]).then(
-      ([resStatsDefault, resStatsGrowth]) => {
+    return Promise.all([statsDefault, statsGrowth])
+      .then(([resStatsDefault, resStatsGrowth]) => {
         return {
           stats: resStatsDefault.data,
           growth: resStatsGrowth.data
         }
-      }
-    )
+      })
+      .catch(e => {
+        return
+      })
   },
   computed: {
     ...mapGetters(['statDappCount'])
