@@ -177,18 +177,18 @@ export default {
     // TODO noDapps: 'There are currently no ÐApps for this category and platform'
   },
   SecondaryCtaMailingList: {
-    // TODO title: 'Stay in the loop',
+    title: '保持循环',
     // TODO description: 'Subscribe to receive updates on the ÐApp ecosystem.',
-    // TODO placeholder: 'Enter your email here',
-    // TODO signUp: 'Sign up',
-    // TODO submitting: 'Submitting...',
-    // TODO thanks: "Thanks! We'll be in touch!",
+    placeholder: '在此输入您的电子邮件地址',
+    signUp: '注册',
+    submitting: '提交...',
+    thanks: '谢谢！ 保持联系！'
     // TODO error: 'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
   },
   Stats: {
     title: 'ÐApp 数据',
     description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
-    // TODO askUs: 'Ask us about custom data',
+    askUs: '向我们询问自定义数据',
     dailyActiveUsers: '每日活跃用户',
     // TODO activeUsersHelp: 'Unique source addresses in transactions to ÐApp contracts',
     monthlyActiveUsers: '每月活跃用户',
@@ -216,7 +216,7 @@ export default {
     broken: '坏掉'
   },
   tags: '标签',
-  // TODO userActivity30d: 'User activity (30d)',
+  userActivity30d: '用户活动 (30天)',
   // TODO userActivity30dHelp: 'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
   users24h: '用户 (24小时)'
   // TODO users24hHelp: 'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
