@@ -98,6 +98,11 @@ export default {
   DappProfile: {
     improve: '改善这个简介'
   },
+  DappsResultCount: {
+    // TODO result: 'result | results',
+    // TODO showing: 'Showing {showing} {total} {result}',
+    // TODO xOf: '{x} of'
+  },
   // TODO devActivity30d: 'Dev activity (30d)',
   // TODO devActivity30dHelp: 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
   FeaturedCategoryList: {
