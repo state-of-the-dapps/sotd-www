@@ -194,7 +194,8 @@ const labels = [
   '2018-08-31',
   '2018-09-30',
   '2018-10-31',
-  '2018-11-30'
+  '2018-11-30',
+  '2018-12-31'
 ]
 
 const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
