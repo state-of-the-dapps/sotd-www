@@ -112,6 +112,9 @@ export default {
     comments: 'Comments',
     commentsPlaceholder: 'Add your comments'
   },
+  DappDetailRelatedDapps: {
+    title: 'Related ÐApps'
+  },
   DappProfile: {
     improve: 'Improve this profile'
   },
@@ -122,6 +125,7 @@ export default {
     result: 'result | results',
     showing: 'Showing {showing} {total} {result}',
     xOf: '{x} of'
+    // TODO showingXofY: 'Showing {showing} of {total} results'
   },
   DappsSearch: {
     placeholder: 'Search by ÐApp name or tag'

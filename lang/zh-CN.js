@@ -110,19 +110,23 @@ export default {
     comments: '评论',
     commentsPlaceholder: '添加您的评论'
   },
+  DappDetailRelatedDapps: {
+    title: '有关连ÐApp'
+  },
   DappProfile: {
     improve: '改善这个简介'
   },
   Dapps: {
-    // TODO noResults: 'There are currently no ÐApps here. Please try another search.'
+    noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
   },
   DappsResultCount: {
     // TODO result: 'result | results',
     // TODO showing: 'Showing {showing} {total} {result}',
     // TODO xOf: '{x} of'
+    // TODO showingXofY: '显示 {showing} 之 {total} 的结果'
   },
   DappsSearch: {
-    // TODO placeholder: 'Search by ÐApp name or tag'
+    placeholder: '以 ÐApp 名称或标签搜寻'
   },
   DappsSort: {
     sortBy: '排序方式'
@@ -149,12 +153,12 @@ export default {
     heading: '平台排行榜'
   },
   filters: {
-    // TODO allPlatforms: 'All platforms',
-    // TODO choosePlatform: 'Choose a platform',
-    // TODO allCategories: 'All categories',
-    // TODO chooseCategory: 'Choose a category',
-    // TODO allStatuses: 'All statuses',
-    // TODO chooseStatus: 'Choose a status'
+    allPlatforms: '所有平台',
+    choosePlatform: '选择平台',
+    allCategories: '所有类别',
+    chooseCategory: '選擇類別',
+    allStatuses: '所有状态',
+    chooseStatus: '选择状态'
   },
   GlobalSearch: {
     dapps: 'ÐApps',
