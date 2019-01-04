@@ -34,7 +34,14 @@
         </div>
       </li>
     </ul>
-    <h2 class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+    <h2
+      id="new"
+      class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+    <div class="new-vs-total-filters-wrapper">
+      <CategoryPlatformFilters
+        base-route="stats"
+        route-hash="#new"/>
+    </div>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
         <div class="new-vs-total-legend-new">{{ $t(namespace('newDapps')) }}</div>
@@ -137,8 +144,7 @@
     </div>
     <h2 class="heading-2">{{ $t('status') }}</h2>
     <div class="chart-wrapper-bar">
-      <StatsStatusBarChart
-        :statuses="statStatuses"/>
+      <StatsStatusBarChart :statuses="statStatuses"/>
     </div>
   </div>
 </template>
@@ -146,77 +152,21 @@
 <script>
 import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
-import { newDapps } from '~/helpers/constants'
+import CategoryPlatformFilters from './CategoryPlatformFilters'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
 
-const labels = [
-  '2015-04-30',
-  '2015-05-31',
-  '2015-06-30',
-  '2015-07-31',
-  '2015-08-31',
-  '2015-09-30',
-  '2015-10-31',
-  '2015-11-30',
-  '2015-12-31',
-  '2016-01-31',
-  '2016-02-29',
-  '2016-03-31',
-  '2016-04-30',
-  '2016-05-31',
-  '2016-06-30',
-  '2016-07-31',
-  '2016-08-31',
-  '2016-09-30',
-  '2016-10-31',
-  '2016-11-30',
-  '2016-12-31',
-  '2017-01-31',
-  '2017-02-28',
-  '2017-03-31',
-  '2017-04-30',
-  '2017-05-31',
-  '2017-06-30',
-  '2017-07-31',
-  '2017-08-31',
-  '2017-09-30',
-  '2017-10-31',
-  '2017-11-30',
-  '2017-12-31',
-  '2018-01-31',
-  '2018-02-28',
-  '2018-03-31',
-  '2018-04-30',
-  '2018-05-31',
-  '2018-06-30',
-  '2018-07-31',
-  '2018-08-31',
-  '2018-09-30',
-  '2018-10-31',
-  '2018-11-30',
-  '2018-12-31'
-]
-
-const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
-
-function totalDapps() {
-  let totalDappArr = []
-  let totalDapps = 0
-  let i = 0
-  for (i; i < newDapps.length; i++) {
-    totalDapps += newDapps[i]
-    totalDappArr.push(totalDapps)
-  }
-  return totalDappArr
-}
-
 export default {
   components: {
+    CategoryPlatformFilters,
     Help,
     StatsStatusBarChart
   },
   props: {
+    growthData: {
+      type: Array,
+      required: true
+    },
     statCategories: {
       type: Array,
       required: true,
@@ -256,7 +206,7 @@ export default {
   data() {
     return {
       newVsTotalData: {
-        labels: formattedLabels,
+        labels: this.getLabels(),
         datasets: [
           {
             type: 'line',
@@ -265,7 +215,7 @@ export default {
             backgroundColor: '#333333',
             borderWidth: '2',
             fill: false,
-            data: totalDapps(),
+            data: this.getTotalDapps(),
             yAxisID: 'y-axis-2'
           },
           {
@@ -273,7 +223,7 @@ export default {
             borderColor: '#bd5eff',
             backgroundColor: '#bd5eff',
             borderWidth: '2',
-            data: newDapps,
+            data: this.getNewDapps(),
             yAxisID: 'y-axis-1'
           }
         ]
@@ -284,6 +234,12 @@ export default {
     this.createChart('new-vs-total', this.newVsTotalData)
   },
   methods: {
+    getLabels() {
+      const labels = []
+      this.growthData.map(x => labels.push(x.month))
+      const formattedLabels = labels.map(x => formatDate(x, "MMM 'YY"))
+      return formattedLabels
+    },
     createChart(chartId, chartData) {
       var ctx = document.getElementById(chartId)
       var lineChart = new Chart(ctx, {
@@ -343,6 +299,23 @@ export default {
           }
         }
       })
+    },
+    getTotalDapps() {
+      let totalDappArr = []
+      let totalDapps = 0
+      let growthData = this.growthData
+      let i = 0
+      for (i; i < growthData.length; i++) {
+        totalDapps += growthData[i].count
+        totalDappArr.push(totalDapps)
+      }
+      return totalDappArr
+    },
+    getNewDapps() {
+      const arr = []
+      const growthData = this.growthData
+      growthData.map(x => arr.push(x.count))
+      return arr
     }
   }
 }

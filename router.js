@@ -490,6 +490,36 @@ export function createRouter() {
         name: 'stats___zh'
       },
       {
+        path: '/stats/category/:category',
+        component: Stats,
+        name: 'stats-category___en'
+      },
+      {
+        path: '/zh/stats/category/:category',
+        component: Stats,
+        name: 'stats-category___zh'
+      },
+      {
+        path: '/stats/platform/:platform',
+        component: Stats,
+        name: 'stats-platform___en'
+      },
+      {
+        path: '/zh/stats/platform/:platform',
+        component: Stats,
+        name: 'stats-platform___zh'
+      },
+      {
+        path: '/stats/platform/:platform/category/:category',
+        component: Stats,
+        name: 'stats-platform-category___en'
+      },
+      {
+        path: '/zh/stats/platform/:platform/category/:category',
+        component: Stats,
+        name: 'stats-platform-category___zh'
+      },
+      {
         path: '/terms',
         component: Terms,
         name: 'terms___en'

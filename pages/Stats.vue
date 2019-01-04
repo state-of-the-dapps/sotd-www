@@ -9,6 +9,7 @@
           @clickButton="openIntercom"/>
       </p>
       <Stats
+        :growth-data="growth"
         :stat-categories="stats.categories"
         :stat-dapp-contract-count="stats.dappContractCount"
         :stat-dapp-count="statDappCount"
@@ -36,14 +37,26 @@ export default {
   mixins: [openIntercom],
   data() {
     return {
+      growth: [],
       stats: {}
     }
   },
-  asyncData({ app }) {
-    return app.$axios.get('stats').then(response => {
-      const data = response.data
-      return { stats: data }
+  asyncData({ app, params }) {
+    let statsDefault = app.$axios.get('stats')
+    let statsGrowth = app.$axios.get('stats/growth', {
+      params: {
+        category: params.category,
+        platform: params.platform
+      }
     })
+    return Promise.all([statsDefault, statsGrowth]).then(
+      ([resStatsDefault, resStatsGrowth]) => {
+        return {
+          stats: resStatsDefault.data,
+          growth: resStatsGrowth.data
+        }
+      }
+    )
   },
   computed: {
     ...mapGetters(['statDappCount'])

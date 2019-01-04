@@ -199,12 +199,12 @@ export const trackDappPlatformSoftware = function(platform, slug) {
   return action
 }
 
-export const trackDappRankingCategory = function(
+export const trackDappCategoryFilter = function(
   sourceComponent,
   sourcePath,
   category
 ) {
-  let name = 'DApp Ranking - Category'
+  let name = 'DApp Filter - Category'
   let data = {
     sourceComponent,
     sourcePath,
@@ -249,12 +249,12 @@ export const trackDappRankingPager = function(from, to) {
   return action
 }
 
-export const trackDappRankingPlatform = function(
+export const trackDappPlatformFilter = function(
   sourceComponent,
   sourcePath,
   platform
 ) {
-  let name = 'DApp Ranking - Platform'
+  let name = 'DApp Filter - Platform'
   let data = {
     sourceComponent,
     sourcePath,

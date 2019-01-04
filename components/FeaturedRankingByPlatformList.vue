@@ -6,8 +6,8 @@
         :heading="$t(namespace('heading'))"
         :heading-route="{ name: 'rankings' }"
         :cta-text="$t('cta.viewAll')"
-        @clickCta="trackDappRankingPlatform('all')"
-        @clickHeading="trackDappRankingPlatform('all')">
+        @clickCta="trackDappPlatformFilter('all')"
+        @clickHeading="trackDappPlatformFilter('all')">
         <template slot="icon">
           <img 
             src="~/assets/images/icons/platforms.png" 
@@ -26,7 +26,7 @@
 
 <script>
 import { platformList } from '@/helpers/constants'
-import { trackDappRankingPlatform } from '@/helpers/mixpanel'
+import { trackDappPlatformFilter } from '@/helpers/mixpanel'
 import FeaturedRankingByPlatformListItem from './FeaturedRankingByPlatformListItem'
 import SectionHeading from './SectionHeading'
 import SvgIconChevron from './SvgIconChevron'
@@ -46,9 +46,9 @@ export default {
     }
   },
   methods: {
-    trackDappRankingPlatform(category) {
+    trackDappPlatformFilter(category) {
       const sourceComponent = 'DappFeaturedPlatform'
-      const action = trackDappRankingPlatform(
+      const action = trackDappPlatformFilter(
         sourceComponent,
         this.sourcePath,
         category

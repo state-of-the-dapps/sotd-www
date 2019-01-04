@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { trackDappRankingCategory } from '~/helpers/mixpanel'
+import { trackDappCategoryFilter } from '~/helpers/mixpanel'
 
 export default {
   props: {
@@ -25,7 +25,7 @@ export default {
   methods: {
     trackRankingCategory(category) {
       const sourceComponent = 'RankingTableCategory'
-      const action = trackDappRankingCategory(
+      const action = trackDappCategoryFilter(
         sourceComponent,
         this.$route.path,
         category

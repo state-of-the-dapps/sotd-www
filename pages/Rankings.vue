@@ -1,6 +1,6 @@
 <template>
   <div class="page-rankings">
-    <RankingFilters/>
+    <CategoryPlatformFilters base-route="rankings"/>
     <div ref="table">
       <RankingTable
         :dapps="dapps"
@@ -16,12 +16,12 @@
 <script>
 import { rankingColumns } from '~/helpers/constants'
 import { getDapps } from '~/helpers/api'
-import RankingFilters from '~/components/RankingFilters'
+import CategoryPlatformFilters from '~/components/CategoryPlatformFilters'
 import RankingTable from '~/components/RankingTable'
 
 export default {
   components: {
-    RankingFilters,
+    CategoryPlatformFilters,
     RankingTable
   },
   data() {
