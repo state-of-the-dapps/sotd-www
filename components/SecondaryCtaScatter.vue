@@ -8,13 +8,13 @@
           fill="white" />
       </div>
       <div class="description-wrapper">
-        <h5 class="title-5">Scatter for EOS</h5>
-        <p class="description">Scatter lets your use EOS ÐApps within your browser. <a 
+        <h5 class="title-5">{{ $t(namespace('title')) }}</h5>
+        <p class="description">{{ $t(namespace('description')) }} <a 
           class="link" 
           href="https://get-scatter.com/?ref=StateOfTheDApps" 
           target="_blank" 
           rel="noopener"
-          @click="trackScatterCta()">Try it now</a></p>
+          @click="trackScatterCta()">{{ $t(namespace('cta')) }}</a></p>
       </div>
       <div class="cta-wrapper">
         <a 
@@ -22,7 +22,7 @@
           class="cta" 
           target="_blank" 
           rel="noopener"
-          @click="trackScatterCta()">Discover Scatter</a>
+          @click="trackScatterCta()">{{ $t(namespace('discover')) }}</a>
       </div>
     </div>
   </div>

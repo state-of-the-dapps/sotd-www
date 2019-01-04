@@ -17,7 +17,7 @@
       <li class="cta-item"><nuxt-link 
         :to="localePath({ name: 'dapps-new' })" 
         class="cta-link -submit" 
-        @click.native="trackHomeHeroCta('submit')">{{ $t(namespace('submit')) }}</nuxt-link></li>
+        @click.native="trackHomeHeroCta('submit')">{{ $t('cta.submit') }}</nuxt-link></li>
     </ul>
   </div>
 </template>

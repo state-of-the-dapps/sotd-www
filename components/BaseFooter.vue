@@ -17,7 +17,7 @@
         <nuxt-link 
           :to="localePath({ name: 'dapps-new' })" 
           class="nav-link" 
-          @click.native="trackFooterSubmit()">{{ $t(namespace('submit')) }}</nuxt-link>
+          @click.native="trackFooterSubmit()">{{ $t('cta.submit') }}</nuxt-link>
       </li>
       <li class="nav-item">
         <nuxt-link 

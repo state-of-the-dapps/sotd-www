@@ -4,15 +4,13 @@ export default {
     home: 'Home',
     rankings: 'Rankings',
     search: 'Search',
-    stats: 'Stats',
-    submit: 'Submit a ÐApp'
+    stats: 'Stats'
   },
   BaseFooter: {
     copyright: 'Copyright',
     designedBy: 'Designed by {designer}',
     contactUs: 'Contact us',
     about: 'About',
-    submit: 'Submit a ÐApp',
     promote: 'Promote your ÐApp',
     downloadLogo: 'Download our logo',
     getAndroidApp: 'Get the Android app',
@@ -40,6 +38,7 @@ export default {
     Wallet: 'Wallet'
   },
   cta: {
+    submit: 'Submit a ÐApp',
     viewAll: 'View all'
   },
   DappCardListItem: {
@@ -125,7 +124,6 @@ export default {
     result: 'result | results',
     showing: 'Showing {showing} {total} {result}',
     xOf: '{x} of'
-    // TODO showingXofY: 'Showing {showing} of {total} results'
   },
   DappsSearch: {
     placeholder: 'Search by ÐApp name or tag'
@@ -175,7 +173,6 @@ export default {
     learn: 'Learn more about ÐApps',
     subheading:
       'Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.',
-    submit: 'Submit a ÐApp',
     view: 'View the top ÐApps'
   },
   platform: 'Platform',
@@ -192,6 +189,25 @@ export default {
     thanks: "Thanks! We'll be in touch!",
     error:
       'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
+  },
+  SecondaryCtaMetamask: {
+    title: 'Metamask for Ethereum and POA',
+    description:
+      'Metamask lets you use Ethereum and POA ÐApps within your browser.',
+    cta: 'Try it now',
+    discover: 'Discover Metamask'
+  },
+  SecondaryCtaScatter: {
+    title: 'Scatter for EOS',
+    description: 'Scatter lets your use EOS ÐApps within your browser.',
+    cta: 'Try it now',
+    discover: 'Discover Scatter'
+  },
+  SecondaryCtaSteemKeychain: {
+    title: 'Steem Keychain',
+    description: 'Steem Keychain lets you use Steem ÐApps within your browser.',
+    cta: 'Try it now',
+    discover: 'Discover Steem Keychain'
   },
   Stats: {
     title: 'ÐApp Statistics',
