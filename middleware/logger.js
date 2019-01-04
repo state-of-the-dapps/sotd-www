@@ -1,4 +1,4 @@
-export default function(req, next) {
+export default function(req, res, next) {
   if (process.env.NODE_ENV === 'production') {
     console.log(
       `IPLOG ${req.url} ${req.headers['CF-Connecting-IP']} ${
