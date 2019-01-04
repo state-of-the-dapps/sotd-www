@@ -1,8 +1,10 @@
-export default function(req, res, next) {
-  console.log(
-    `IPLOG ${req.path} ${req.headers['CF-Connecting-IP']} ${
-      req.headers['x-request-id']
-    } ${req.headers['user-agent']}`
-  )
+export default function(req, next) {
+  if (process.env.NODE_ENV === 'production') {
+    console.log(
+      `IPLOG ${req.url} ${req.headers['CF-Connecting-IP']} ${
+        req.headers['x-request-id']
+      } ${req.headers['user-agent']}`
+    )
+  }
   next()
 }
