@@ -68,7 +68,7 @@ export default {
     retry: true,
     progress: false
   },
-  serverMiddleware: ['redirect-ssl'],
+  serverMiddleware: ['redirect-ssl', '~/middleware/logger'],
   css: ['~/assets/css/normalize.scss'],
   env: {
     apiUrl: env.apiUrl,
