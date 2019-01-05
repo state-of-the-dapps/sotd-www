@@ -153,8 +153,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .description {
   margin-left: 6px;
 }

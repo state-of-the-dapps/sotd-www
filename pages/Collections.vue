@@ -19,8 +19,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .description {
   margin-top: 0.5rem;
   text-align: center;

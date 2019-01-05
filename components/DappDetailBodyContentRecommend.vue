@@ -147,8 +147,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .button {
   @include button;
   width: 100%;

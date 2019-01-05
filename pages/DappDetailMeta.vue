@@ -65,8 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .badge-wrapper {
   padding: 10px;
   background: rgba($color--black, 0.075);

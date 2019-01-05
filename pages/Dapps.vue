@@ -152,8 +152,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .count-sort {
   @include tweakpoint('min-width', 600px) {
     display: flex;

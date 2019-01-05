@@ -88,8 +88,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/css/settings';
-
 /*
  * The MIT License
  * Copyright (c) 2012 Matias Meno <m@tias.me>
@@ -681,8 +679,6 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 #dropzone {
   overflow: hidden;
   display: flex;

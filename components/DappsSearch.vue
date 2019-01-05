@@ -181,8 +181,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .sub-heading {
   text-transform: uppercase;
   font-weight: normal;

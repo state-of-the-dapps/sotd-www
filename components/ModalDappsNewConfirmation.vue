@@ -19,8 +19,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-modal-dapps-new-confirmation {
   text-align: center;
 }

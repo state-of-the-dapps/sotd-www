@@ -105,8 +105,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .wrapper {
   margin-bottom: 20px;
   @include tweakpoint('min-width', 1000px) {

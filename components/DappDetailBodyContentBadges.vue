@@ -63,8 +63,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .badge-item {
   display: flex;
   align-items: center;

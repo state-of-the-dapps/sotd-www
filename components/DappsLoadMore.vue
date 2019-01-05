@@ -55,8 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .button {
   border-radius: 4px;
   padding: 12px 25px;

@@ -51,8 +51,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .description {
   margin-bottom: 0;
   text-align: center;

@@ -104,8 +104,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .DappDetailBodyContentModulesContractsAddress {
   padding: 2px 0;
 }

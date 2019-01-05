@@ -147,8 +147,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .error-list {
   &.-social {
     padding: 5px 10px;

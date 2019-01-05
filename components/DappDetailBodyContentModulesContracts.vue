@@ -102,8 +102,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .subtitle {
   margin: 0;
 }

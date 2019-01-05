@@ -16,8 +16,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .title {
   @include title-1;
   text-align: center;

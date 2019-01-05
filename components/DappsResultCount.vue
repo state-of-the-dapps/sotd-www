@@ -50,8 +50,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .outer-wrapper {
   display: flex;
   flex-direction: column-reverse;

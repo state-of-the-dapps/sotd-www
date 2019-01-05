@@ -14,8 +14,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-base-modal {
   position: fixed;
   top: 0;

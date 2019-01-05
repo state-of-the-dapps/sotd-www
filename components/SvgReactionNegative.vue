@@ -55,8 +55,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 path {
   pointer-events: all;
   fill: $color--black;

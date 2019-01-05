@@ -61,8 +61,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .FeaturedDappListItem {
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;

@@ -108,8 +108,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .FeaturedRankingByPlatformListItem {
   margin: 10px;
   width: 100%;

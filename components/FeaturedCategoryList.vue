@@ -63,8 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .category-item {
   margin: 10px;
   font-size: 1.325rem;

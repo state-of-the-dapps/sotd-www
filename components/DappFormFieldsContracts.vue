@@ -435,8 +435,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .error-list {
   &.-contracts {
     padding: 10px;

@@ -56,8 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .file-upload {
   box-shadow: 0 10px 20px rgba($color--black, 0.075);
 }

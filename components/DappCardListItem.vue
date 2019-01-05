@@ -92,8 +92,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-DappCardListItem {
   position: relative;
   margin: 10px;

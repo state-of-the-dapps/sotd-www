@@ -91,8 +91,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-base-pager {
   padding-top: 15px;
   display: flex;

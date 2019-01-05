@@ -284,8 +284,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-base-pager {
   max-width: 1200px;
   margin: 0 auto;

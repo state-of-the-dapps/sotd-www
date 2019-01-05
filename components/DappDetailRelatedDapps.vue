@@ -26,8 +26,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .title-2 {
   @include title-2;
   font-size: 2.5rem;

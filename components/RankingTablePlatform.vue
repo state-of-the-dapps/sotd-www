@@ -33,8 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .value {
   background: $color--gray;
   font-size: 1rem;

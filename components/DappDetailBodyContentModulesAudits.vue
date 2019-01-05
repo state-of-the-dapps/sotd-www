@@ -50,8 +50,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-DappDetailBodyContentModulesAudits {
   overflow: hidden;
 }

@@ -233,8 +233,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .attribution-link {
   color: darken($color--gray, 25%);
   text-decoration: none;

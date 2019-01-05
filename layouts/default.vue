@@ -33,8 +33,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~assets/css/settings';
-
 html {
   box-sizing: border-box;
   background: $color--gray;
@@ -349,8 +347,6 @@ body {
 </style>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .layout-default {
   height: 100%;
   position: relative;

@@ -79,8 +79,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .SectionHeading {
   @include font-sans;
   display: flex;

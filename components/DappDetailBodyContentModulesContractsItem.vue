@@ -82,8 +82,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .contract-name {
   margin: 0;
 }

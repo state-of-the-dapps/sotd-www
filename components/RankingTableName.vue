@@ -92,8 +92,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-ranking-table-name {
   padding: 13px 0;
   display: flex;

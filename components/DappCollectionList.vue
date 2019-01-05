@@ -75,8 +75,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .cta {
   display: inline-block;
   font-family: 'Overpass';

@@ -118,8 +118,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .page-rankings {
   padding-top: 25px;
   padding-bottom: 50px;

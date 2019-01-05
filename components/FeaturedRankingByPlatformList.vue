@@ -61,8 +61,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .featured-list-wrapper {
   position: relative;
   margin-left: -10px;
