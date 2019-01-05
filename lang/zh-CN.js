@@ -129,7 +129,7 @@ export default {
   DappsSort: {
     sortBy: '排序方式'
   },
-  devActivity30d: '开发活动（30天',
+  devActivity30d: '开发活动（30天)',
   devActivity30dHelp:
     'GitHub中项目组织/代码库产生的活动次数。包括代码推送、问题、合并请求等。',
   FeaturedCategoryList: {
