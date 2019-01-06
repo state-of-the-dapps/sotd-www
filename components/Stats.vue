@@ -44,12 +44,6 @@
     </p>
     <div v-if="newDappChartIsPretty">
       <h2 class="heading-2 screenshot">
-        <span class="new-vs-total-prettier-logo">
-          <SvgLogotype 
-            :width="180" 
-            :height="39"
-            fill="black"/>
-        </span>
         <span>{{ $t(namespace('newDappsPerMonth')) }}</span>
         <template v-if="$route.params.category || $route.params.platform">
           &ndash; 
@@ -443,9 +437,13 @@ export default {
   margin-top: 6rem;
   margin-bottom: 2rem;
   &.screenshot {
-    font-size: 4.1rem;
+    font-size: 3.1rem;
     margin-top: 4rem;
     margin-bottom: 1rem;
+    @include tweakpoint('min-width', 700px) {
+      font-size: 4.1rem;
+      margin-bottom: 0;
+    }
   }
 }
 
