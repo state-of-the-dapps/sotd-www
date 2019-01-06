@@ -388,6 +388,7 @@ export default {
 }
 
 .new-vs-total-prettier-cta-wrapper {
+  margin-top: 0;
   text-align: center;
   &.screenshot {
     padding-top: 5rem;
