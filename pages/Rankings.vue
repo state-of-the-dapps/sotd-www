@@ -26,8 +26,10 @@ export default {
   },
   data() {
     return {
+      dapps: [],
       isLoading: false,
       columnOptions: rankingColumns,
+      pager: {},
       selectedColumn: rankingColumns[0]
     }
   },
