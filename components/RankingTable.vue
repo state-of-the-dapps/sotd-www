@@ -218,7 +218,8 @@ export default {
   props: {
     dapps: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     isLoading: {
       type: Boolean,
