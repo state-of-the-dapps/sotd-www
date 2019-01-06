@@ -120,7 +120,7 @@ export default {
         }
       })
       .catch(e => {
-        return
+        error({ statusCode: 404 })
       })
   },
   mounted() {
