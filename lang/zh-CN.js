@@ -174,6 +174,12 @@ export default {
     view: '查看最佳 ÐApps'
   },
   platform: '平台',
+  platformOptions: {
+    // TODO ethereum: 'Ethereum',
+    // TODO eos: 'EOS',
+    // TODO poa: 'POA',
+    // TODO steem: 'Steem'
+  },
   profileStrength: '简介强度',
   RankingTable: {
     noDapps: '目前该类别/平台尚无ÐApps'
