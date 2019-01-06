@@ -41,7 +41,7 @@ export default {
       stats: {}
     }
   },
-  asyncData({ app, params }) {
+  asyncData({ app, params, error }) {
     let statsDefault = app.$axios.get('stats')
     let statsGrowth = app.$axios.get('stats/growth', {
       params: {
