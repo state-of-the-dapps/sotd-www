@@ -26,20 +26,23 @@ export default {
 .BaseButton {
   position: relative;
   display: inline-block;
-  background: $gradient--button;
   color: $color--white;
+  background: $color--black;
   text-shadow: 0 1px rgba($color--black, 0.1);
-  font-size: 1.15rem;
-  font-weight: 600;
   padding: 8px 16px;
   border-radius: 4px;
-  box-shadow: 0 2px 10px rgba($color--black, 0.1);
   &:active {
     top: 1px;
     box-shadow: none;
   }
   &.full {
     width: 100%;
+  }
+  &.special {
+    background: $gradient--button;
+    font-size: 1.15rem;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba($color--black, 0.1);
   }
 }
 </style>

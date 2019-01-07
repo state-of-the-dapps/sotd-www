@@ -6,6 +6,7 @@
       <p class="button-wrapper">
         <BaseButton
           :text="$t('Stats.askUs')"
+          classes="special"
           @clickButton="openIntercom"/>
       </p>
       <Stats
