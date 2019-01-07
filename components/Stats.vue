@@ -34,25 +34,7 @@
         </div>
       </li>
     </ul>
-    <p 
-      v-if="newDappChartIsPretty"
-      class="new-vs-total-prettier-cta-wrapper screenshot">
-      <span
-        class="new-vs-total-prettier-cta"
-        role="button"
-        @click="toggleNewDappsChartView">Back to normal chart view</span>
-    </p>
-    <div v-if="newDappChartIsPretty">
-      <h2 class="heading-2 screenshot">
-        <span>{{ $t(namespace('newDappsPerMonth')) }}</span>
-        <template v-if="$route.params.category || $route.params.platform">
-          &ndash; 
-          <template v-if="$route.params.platform">{{ $t(`platformOptions.${$route.params.platform}`) }} </template>
-          <template v-if="$route.params.category">{{ $t(`categoryOptions.${$options.filters.capitalize($route.params.category)}`) }}</template>
-        </template>
-      </h2>
-    </div>
-    <div v-else>
+    <div>
       <h2
         id="new"
         class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
@@ -61,16 +43,20 @@
           base-route="stats"
           route-hash="#new"/>
       </div>
-      <p class="new-vs-total-prettier-cta-wrapper">
-        <span
-          class="new-vs-total-prettier-cta"
-          role="button"
-          @click="toggleNewDappsChartView">View this chart in a better format for taking screenshots</span> (e.g. for articles, blogs, twitter)
-      </p>
     </div>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
         <div class="new-vs-total-legend-new">{{ $t(namespace('newDapps')) }}</div>
+        <div class="new-vs-total-legend-title">
+          <h3 class="heading-3 screenshot">
+            <span>{{ $t(namespace('newDappsPerMonth')) }}</span>
+            <template v-if="$route.params.category || $route.params.platform">
+              &ndash; 
+              <template v-if="$route.params.platform">{{ $t(`platformOptions.${$route.params.platform}`) }} </template>
+              <template v-if="$route.params.category">{{ $t(`categoryOptions.${$options.filters.capitalize($route.params.category)}`) }}</template>
+            </template>
+          </h3>
+        </div>
         <div>{{ $t(namespace('totalDapps')) }}</div>
       </div>
       <canvas id="new-vs-total"/>
@@ -233,7 +219,6 @@ export default {
   },
   data() {
     return {
-      newDappChartIsPretty: false,
       newVsTotalData: {
         labels: this.getLabels(),
         datasets: [
@@ -345,9 +330,6 @@ export default {
       const growthData = this.growthData
       growthData.map(x => arr.push(x.count))
       return arr
-    },
-    toggleNewDappsChartView() {
-      this.newDappChartIsPretty = !this.newDappChartIsPretty
     }
   }
 }
@@ -383,23 +365,6 @@ export default {
   }
 }
 
-.new-vs-total-prettier-logo {
-  padding-right: 1rem;
-}
-
-.new-vs-total-prettier-cta-wrapper {
-  margin-top: 0;
-  text-align: center;
-  &.screenshot {
-    padding-top: 5rem;
-  }
-}
-
-.new-vs-total-prettier-cta {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 .new-vs-total-wrapper {
   max-width: 1300px;
   margin: 0 auto;
@@ -407,14 +372,23 @@ export default {
 
 .new-vs-total-legend {
   font-weight: 700;
-  padding: 0 5px 20px 5px;
-  font-size: 1.2rem;
+  padding: 15px 5px 10px 5px;
   display: flex;
+  align-items: center;
 }
 
 .new-vs-total-legend-new {
-  margin-right: auto;
   color: #bd5eff;
+}
+
+.new-vs-total-legend-title {
+  flex: 1;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0 20px;
+  @include tweakpoint('min-width', 900px) {
+    font-size: 1.2rem;
+  }
 }
 
 .item {
@@ -446,6 +420,10 @@ export default {
       margin-bottom: 0;
     }
   }
+}
+
+.heading-3 {
+  margin: 0;
 }
 
 .table-wrapper {
