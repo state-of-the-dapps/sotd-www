@@ -25,8 +25,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .author-data {
   margin: 0;
 }

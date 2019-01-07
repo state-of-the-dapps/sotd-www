@@ -19,8 +19,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .alert-wrapper {
   background: rgba($color--warning, 0.15);
   overflow: hidden;

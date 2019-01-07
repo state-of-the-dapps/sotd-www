@@ -227,8 +227,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .list {
   width: 100%;
   max-width: 400px;

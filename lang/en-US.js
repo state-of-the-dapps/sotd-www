@@ -180,6 +180,12 @@ export default {
   RankingTable: {
     noDapps: 'There are currently no ÐApps for this category and platform'
   },
+  platformOptions: {
+    ethereum: 'Ethereum',
+    eos: 'EOS',
+    poa: 'POA',
+    steem: 'Steem'
+  },
   SecondaryCtaMailingList: {
     title: 'Stay in the loop',
     description: 'Subscribe to receive updates on the ÐApp ecosystem.',

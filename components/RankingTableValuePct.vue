@@ -35,8 +35,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-ranking-table-value-pct {
   display: flex;
   flex-direction: column;

@@ -73,8 +73,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .button {
   display: inline-block;
   background: $color--black;

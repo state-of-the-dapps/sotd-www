@@ -52,8 +52,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .HomeHeroContentIntro {
   position: relative;
   z-index: 20;

@@ -169,8 +169,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .main-wrapper {
   padding: 10px;
   @include tweakpoint('min-width', 700px) {

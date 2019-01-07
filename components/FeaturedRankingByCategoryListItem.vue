@@ -109,8 +109,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .FeaturedRankingByCategoryListItem {
   margin: 10px;
   width: 100%;

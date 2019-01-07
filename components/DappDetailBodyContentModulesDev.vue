@@ -67,8 +67,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .field {
   @include tweakpoint('min-width', 800px) {
     display: flex;

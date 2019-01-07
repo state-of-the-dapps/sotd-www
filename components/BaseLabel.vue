@@ -29,8 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-base-label {
   margin-top: 1rem;
   margin-bottom: 0.5rem;

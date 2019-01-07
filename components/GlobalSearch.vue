@@ -229,8 +229,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .GlobalSearch {
   display: flex;
   align-items: center;

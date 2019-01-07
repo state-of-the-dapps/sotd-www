@@ -41,7 +41,7 @@ export default {
       stats: {}
     }
   },
-  asyncData({ app, params }) {
+  asyncData({ app, params, error }) {
     let statsDefault = app.$axios.get('stats')
     let statsGrowth = app.$axios.get('stats/growth', {
       params: {
@@ -57,7 +57,7 @@ export default {
         }
       })
       .catch(e => {
-        return
+        error({ statusCode: 404 })
       })
   },
   computed: {
@@ -80,8 +80,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .PageStats {
   padding-bottom: 50px;
 }

@@ -16,8 +16,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-ranking-table-profile {
   @include font-monospace;
 }

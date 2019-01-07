@@ -62,6 +62,7 @@
               alt="Twitter" 
               class="social-icon"></a>
         </li>
+        <!--
         <li class="social-item">
           <a 
             href="https://github.com/state-of-the-dapps" 
@@ -73,6 +74,7 @@
               alt="Github" 
               class="social-icon"></a>
         </li>
+        -->
         <li class="social-item">
           <a 
             href="https://reddit.com/r/StateOfTheDApps" 
@@ -233,8 +235,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .attribution-link {
   color: darken($color--gray, 25%);
   text-decoration: none;

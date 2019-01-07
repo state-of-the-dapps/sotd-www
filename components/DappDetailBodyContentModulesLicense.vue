@@ -23,8 +23,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .license-data {
   margin: 0;
 }

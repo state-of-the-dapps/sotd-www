@@ -34,8 +34,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-DappCardList {
   display: flex;
   align-items: center;

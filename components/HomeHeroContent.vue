@@ -18,8 +18,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-HomeHeroContent {
   @include tweakpoint('min-width', 575px) {
     display: flex;

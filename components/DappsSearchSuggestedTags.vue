@@ -71,8 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .container {
   &.-suggested-tags {
     position: absolute;

@@ -63,8 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .category {
   cursor: pointer;
   font-weight: 700;

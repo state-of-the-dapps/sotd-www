@@ -19,8 +19,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-ranking-table-rank {
   font-weight: 700;
   padding: 0;

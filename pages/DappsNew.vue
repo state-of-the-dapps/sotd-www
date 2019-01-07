@@ -50,8 +50,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .description {
   text-align: left;
   max-width: 600px;

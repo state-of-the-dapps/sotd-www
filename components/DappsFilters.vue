@@ -161,8 +161,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .filter {
   padding-bottom: 15px;
 }

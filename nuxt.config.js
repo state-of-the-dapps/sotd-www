@@ -27,6 +27,7 @@ export default {
   },
   mode: env.mode,
   modules: [
+    ['nuxt-sass-resources-loader', '@/assets/css/_settings.scss'],
     '@nuxtjs/axios',
     '@nuxtjs/sentry',
     '@nuxtjs/router',

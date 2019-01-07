@@ -163,8 +163,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .add {
   background: $color--black;
   color: $color--gray;

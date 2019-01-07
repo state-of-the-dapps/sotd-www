@@ -40,8 +40,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .selection-wrapper {
   display: flex;
   align-items: center;

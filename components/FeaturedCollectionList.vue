@@ -63,8 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .FeaturedCollectionList {
   @include margin-wrapper-main;
   padding-bottom: 35px;

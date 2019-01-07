@@ -34,7 +34,7 @@ export default {
         }
       })
       .catch(e => {
-        return
+        error({ statusCode: 404 })
       })
   },
   head() {
@@ -53,8 +53,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .dapp-wrapper {
   @include margin-wrapper-main;
 }

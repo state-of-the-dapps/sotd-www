@@ -109,8 +109,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .cta {
   padding: 4px 75px;
   border: 1px solid lighten($color--white, 100%);

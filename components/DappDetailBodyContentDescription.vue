@@ -48,8 +48,6 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .description {
   word-break: break-word;
   text-align: left;

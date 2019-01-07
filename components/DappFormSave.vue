@@ -253,8 +253,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .attribution {
   margin: 0;
 }

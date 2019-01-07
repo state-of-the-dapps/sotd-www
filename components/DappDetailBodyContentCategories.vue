@@ -43,8 +43,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .subtitle {
   font-weight: normal;
   margin-bottom: 0.75rem;

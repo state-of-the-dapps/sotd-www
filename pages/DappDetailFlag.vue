@@ -120,7 +120,7 @@ export default {
         }
       })
       .catch(e => {
-        return
+        error({ statusCode: 404 })
       })
   },
   mounted() {
@@ -173,8 +173,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .button {
   &.-cancel {
     padding: 20px;

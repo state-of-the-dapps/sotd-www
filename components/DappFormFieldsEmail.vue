@@ -71,8 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-dapp-form-fields-email {
   margin: 0 auto;
   width: 300px;

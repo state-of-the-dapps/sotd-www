@@ -43,8 +43,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-Help {
   display: inline-block;
   margin-left: 5px;

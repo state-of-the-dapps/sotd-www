@@ -60,8 +60,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .back {
   display: block;
   transform: rotate(90deg);

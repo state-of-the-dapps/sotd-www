@@ -24,8 +24,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-SecondaryCta {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);

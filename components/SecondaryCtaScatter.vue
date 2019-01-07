@@ -53,8 +53,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .component-SecondaryCtaMetamask {
   background: rgba($color--black, 0.5);
   border-top: 1px solid rgba($color--black, 0.3);

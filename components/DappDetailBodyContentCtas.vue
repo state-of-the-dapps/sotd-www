@@ -120,8 +120,6 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .add-icon {
   font-size: 2.1rem;
   line-height: 0;

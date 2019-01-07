@@ -1,5 +1,5 @@
 <template>
-  <div class="component-Stats">
+  <div class="Stats">
     <ul class="list">
       <li class="item">
         <div class="wrapper">
@@ -34,13 +34,39 @@
         </div>
       </li>
     </ul>
-    <h2
-      id="new"
-      class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
-    <div class="new-vs-total-filters-wrapper">
-      <CategoryPlatformFilters
-        base-route="stats"
-        route-hash="#new"/>
+    <p 
+      v-if="newDappChartIsPretty"
+      class="new-vs-total-prettier-cta-wrapper screenshot">
+      <span
+        class="new-vs-total-prettier-cta"
+        role="button"
+        @click="toggleNewDappsChartView">Back to normal chart view</span>
+    </p>
+    <div v-if="newDappChartIsPretty">
+      <h2 class="heading-2 screenshot">
+        <span>{{ $t(namespace('newDappsPerMonth')) }}</span>
+        <template v-if="$route.params.category || $route.params.platform">
+          &ndash; 
+          <template v-if="$route.params.platform">{{ $t(`platformOptions.${$route.params.platform}`) }} </template>
+          <template v-if="$route.params.category">{{ $t(`categoryOptions.${$options.filters.capitalize($route.params.category)}`) }}</template>
+        </template>
+      </h2>
+    </div>
+    <div v-else>
+      <h2
+        id="new"
+        class="heading-2">{{ $t(namespace('newDappsPerMonth')) }}</h2>
+      <div class="new-vs-total-filters-wrapper">
+        <CategoryPlatformFilters
+          base-route="stats"
+          route-hash="#new"/>
+      </div>
+      <p class="new-vs-total-prettier-cta-wrapper">
+        <span
+          class="new-vs-total-prettier-cta"
+          role="button"
+          @click="toggleNewDappsChartView">View this chart in a better format for taking screenshots</span> (e.g. for articles, blogs, twitter)
+      </p>
     </div>
     <div class="new-vs-total-wrapper">
       <div class="new-vs-total-legend">
@@ -155,12 +181,14 @@ import formatDate from 'date-fns/format'
 import CategoryPlatformFilters from './CategoryPlatformFilters'
 import Help from './Help'
 import StatsStatusBarChart from './StatsStatusBarChart'
+import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {
     CategoryPlatformFilters,
     Help,
-    StatsStatusBarChart
+    StatsStatusBarChart,
+    SvgLogotype
   },
   props: {
     growthData: {
@@ -205,6 +233,7 @@ export default {
   },
   data() {
     return {
+      newDappChartIsPretty: false,
       newVsTotalData: {
         labels: this.getLabels(),
         datasets: [
@@ -316,14 +345,15 @@ export default {
       const growthData = this.growthData
       growthData.map(x => arr.push(x.count))
       return arr
+    },
+    toggleNewDappsChartView() {
+      this.newDappChartIsPretty = !this.newDappChartIsPretty
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/css/settings';
-
 .table-link {
   text-decoration: none;
   border-bottom: 1px solid $color--black;
@@ -351,6 +381,23 @@ export default {
     justify-content: center;
     text-align: left;
   }
+}
+
+.new-vs-total-prettier-logo {
+  padding-right: 1rem;
+}
+
+.new-vs-total-prettier-cta-wrapper {
+  margin-top: 0;
+  text-align: center;
+  &.screenshot {
+    padding-top: 5rem;
+  }
+}
+
+.new-vs-total-prettier-cta {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .new-vs-total-wrapper {
@@ -390,6 +437,15 @@ export default {
   text-align: center;
   margin-top: 6rem;
   margin-bottom: 2rem;
+  &.screenshot {
+    font-size: 3.1rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+    @include tweakpoint('min-width', 700px) {
+      font-size: 4.1rem;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .table-wrapper {
