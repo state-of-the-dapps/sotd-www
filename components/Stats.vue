@@ -59,7 +59,15 @@
         </div>
         <div>{{ $t(namespace('totalDapps')) }}</div>
       </div>
-      <canvas id="new-vs-total"/>
+      <div class="new-vs-total-wrapper-inner">
+        <div class="new-vs-total-logo">
+          <SvgLogotype 
+            :fill="color" 
+            :width="120" 
+            :height="26" />
+        </div>
+        <canvas id="new-vs-total"/>
+      </div>
     </div>
     <h2 class="heading-2">{{ $tc('category', 2) }}</h2>
     <div class="table-wrapper">
@@ -389,6 +397,17 @@ export default {
   @include tweakpoint('min-width', 900px) {
     font-size: 1.2rem;
   }
+}
+
+.new-vs-total-wrapper-inner {
+  position: relative;
+}
+
+.new-vs-total-logo {
+  position: absolute;
+  z-index: 10;
+  top: 25px;
+  left: 50px;
 }
 
 .item {
