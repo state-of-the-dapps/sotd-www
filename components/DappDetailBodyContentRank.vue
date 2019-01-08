@@ -1,17 +1,30 @@
 <template>
-  <div class="component-DappDetailBodyContentRank">
+  <div class="DappDetailBodyContentRank">
     <div class="wrapper">
-      <p class="description"><strong>{{ $t(namespace('currentRank')) }}</strong> &nbsp;#{{ rank.toLocaleString() }}</p>
+      <p class="description"><strong>{{ $t(namespace('currentRank')) }}</strong> &nbsp;#{{ rank.toLocaleString() }} 
+        <BaseDelta
+          :null-text="$t('new')"
+          :value="rankDelta"/>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import BaseDelta from './BaseDelta'
+
 export default {
+  components: {
+    BaseDelta
+  },
   props: {
     rank: {
       type: Number,
       required: true
+    },
+    rankDelta: {
+      type: Number,
+      default: null
     }
   }
 }
