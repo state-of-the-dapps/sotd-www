@@ -3,7 +3,9 @@
     :class="'rank-' + rank"
     class="component-ranking-table-rank">
     <span class="value">{{ rank }}</span>
-    <BaseDelta :value="rankDelta"/>
+    <BaseDelta
+      :value="rankDelta"
+      null-text="New"/>
   </div>
 </template>
 
@@ -21,7 +23,7 @@ export default {
     },
     rankDelta: {
       type: Number,
-      required: true
+      default: null
     }
   }
 }

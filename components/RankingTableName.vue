@@ -19,7 +19,12 @@
       <media
         v-if="selectedColumn.selection !== 'rank'"
         :query="{maxWidth: 1098}">
-        <p class="rank">#{{ rank }} &nbsp;<BaseDelta :value="rankDelta"/></p>
+        <p class="rank">#{{ rank }}<template v-if="rankDelta !== 0">&nbsp;
+          <BaseDelta
+            :value="rankDelta"
+            null-text="New"/>
+        </template>
+        </p>
       </media>
       <h4 class="name">
         <nuxt-link 
@@ -61,8 +66,7 @@ export default {
     },
     rankDelta: {
       type: Number,
-      required: true,
-      default: 0
+      default: null
     },
     selectedColumn: {
       type: Object,

@@ -20,11 +20,13 @@ Vue.filter('formatDate', (value, format) => {
 })
 
 Vue.filter('formatDelta', value => {
-  if (!isNaN(value)) {
+  let result = ''
+  if (!isNaN(value) && value !== 0 && value !== null) {
     let symbol = value > 0 ? '+' : ''
     let delta = value !== 0 ? value : '-'
-    return symbol + delta
+    result = symbol + delta
   }
+  return result
 })
 
 Vue.filter('addMonths', (value, num) => {

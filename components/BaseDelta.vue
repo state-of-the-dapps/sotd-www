@@ -1,16 +1,24 @@
 <template>
   <span
+    v-if="value !== 0"
     :class="[{positive: value > 0}, {negative: value < 0}]"
-    class="BaseDelta">{{ value | formatDelta }}</span>
+    class="BaseDelta">{{ value | formatDelta }}
+    <span
+      v-if="nullText && value === null"
+      class="null">{{ nullText }}</span>
+  </span>
 </template>
 
 <script>
 export default {
   props: {
     value: {
-      type: Number,
-      required: true,
+      type: [Number, null],
       default: 0
+    },
+    nullText: {
+      type: String,
+      default: ''
     }
   }
 }
@@ -30,5 +38,8 @@ export default {
 }
 .negative {
   color: $color--negative;
+}
+.null {
+  color: $color--light-purple;
 }
 </style>

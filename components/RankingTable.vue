@@ -129,7 +129,13 @@
                 <div class="table-data col-variable">
                   <span
                     v-if="selectedColumn.selection === 'rank'"
-                    class="rank">{{ dapp.rank }}<br><BaseDelta :value="dapp.rankDelta"/></span>
+                    class="rank">{{ dapp.rank }}<template v-if="dapp.rankDelta !== 0">
+                      <br>
+                      <BaseDelta 
+                        :value="dapp.rankDelta"
+                        null-text="New"/>
+                    </template>
+                  </span>
                   <RankingTablePlatform
                     v-if="selectedColumn.selection === 'platform'"
                     :platform="dapp.platform"/>
