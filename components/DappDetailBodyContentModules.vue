@@ -101,7 +101,16 @@
         </div>
       </div>
       <div 
-        v-if="dapp.audits.length || dapp.contractsMainnet.length || dapp.contractsKovan.length || dapp.contractsRinkeby.length || dapp.contractsRopsten.length || dapp.contractsPoaMainnet.length || dapp.contractsPoaTestnet.length || dapp.contractsEosMainnet.length || dapp.contractsSteemMainnet.length"
+        v-if="
+          (dapp.audits && dapp.audits.length)||
+            (dapp.contractsMainnet && dapp.contractsMainnet.length) ||
+            (dapp.contractsKovan && dapp.contractsKovan.length) ||
+            (dapp.contractsRinkeby && dapp.contractsRinkeby.length) ||
+            (dapp.contractsRopsten && dapp.contractsRopsten.length) ||
+            (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
+            (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
+            (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length)
+        "
         class="module-wrapper -tier-5">
         <div
           :class="dapp.audits.length ? 'has-audits' : ''"
@@ -112,7 +121,6 @@
             :rinkeby="dapp.contractsRinkeby"
             :ropsten="dapp.contractsRopsten"
             :poa-mainnet="dapp.contractsPoaMainnet"
-            :poa-testnet="dapp.contractsPoaTestnet"
             :eos-mainnet="dapp.contractsEosMainnet"
             :steem-mainnet="dapp.contractsSteemMainnet"
             :slug="dapp.slug"/>
