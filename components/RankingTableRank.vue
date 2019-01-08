@@ -2,7 +2,8 @@
   <div
     :class="'rank-' + rank"
     class="component-ranking-table-rank">
-    <span class="value">{{ rank }}</span> <BaseDelta :value="rankDelta"/>
+    <span class="value">{{ rank }}</span>
+    <BaseDelta :value="rankDelta"/>
   </div>
 </template>
 
@@ -38,5 +39,6 @@ export default {
   justify-content: center;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  flex-direction: column;
 }
 </style>

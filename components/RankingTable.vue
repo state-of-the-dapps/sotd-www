@@ -82,6 +82,7 @@
                   :icon-small-url="dapp.iconSmallUrl"
                   :name="dapp.name"
                   :rank="dapp.rank"
+                  :rank-delta="dapp.rankDelta"
                   :selected-column="selectedColumn"
                   :slug="dapp.slug"
                   :teaser="dapp.teaser"/>
@@ -128,7 +129,7 @@
                 <div class="table-data col-variable">
                   <span
                     v-if="selectedColumn.selection === 'rank'"
-                    class="rank">{{ dapp.rank }}</span>
+                    class="rank">{{ dapp.rank }}<br><BaseDelta :value="dapp.rankDelta"/></span>
                   <RankingTablePlatform
                     v-if="selectedColumn.selection === 'platform'"
                     :platform="dapp.platform"/>
@@ -171,6 +172,7 @@
 
 <script>
 import { trackDappRankingPager } from '~/helpers/mixpanel'
+import BaseDelta from './BaseDelta'
 import BaseDropdown from './BaseDropdown'
 import BasePager from './BasePager'
 import Help from './Help'
@@ -195,6 +197,7 @@ import RankingTableVolumeHead from './RankingTableVolumeHead'
 
 export default {
   components: {
+    BaseDelta,
     BaseDropdown,
     BasePager,
     Help,

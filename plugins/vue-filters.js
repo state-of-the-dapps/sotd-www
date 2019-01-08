@@ -21,7 +21,9 @@ Vue.filter('formatDate', (value, format) => {
 
 Vue.filter('formatDelta', value => {
   if (!isNaN(value)) {
-    return value
+    let symbol = value > 0 ? '+' : ''
+    let delta = value !== 0 ? value : '-'
+    return symbol + delta
   }
 })
 
