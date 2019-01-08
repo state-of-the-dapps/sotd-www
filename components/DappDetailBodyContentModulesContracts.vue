@@ -63,35 +63,43 @@ export default {
   props: {
     mainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     kovan: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     rinkeby: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     ropsten: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     poaMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     poaTestnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     eosMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     steemMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     slug: {
       type: String,
