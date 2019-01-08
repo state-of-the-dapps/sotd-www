@@ -5,7 +5,7 @@
     <span class="value">{{ rank }}</span>
     <BaseDelta
       :value="rankDelta"
-      null-text="New"/>
+      :null-text="$t('new')"/>
   </div>
 </template>
 

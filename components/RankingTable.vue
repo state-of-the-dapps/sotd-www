@@ -133,7 +133,7 @@
                       <br>
                       <BaseDelta 
                         :value="dapp.rankDelta"
-                        null-text="New"/>
+                        :null-text="$t('new')"/>
                     </template>
                   </span>
                   <RankingTablePlatform

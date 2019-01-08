@@ -175,6 +175,7 @@ export default {
       'Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.',
     view: 'View the top ÐApps'
   },
+  new: 'New',
   platform: 'Platform',
   profileStrength: 'profile strength',
   RankingTable: {

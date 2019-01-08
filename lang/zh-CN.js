@@ -173,6 +173,7 @@ export default {
       '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA, Steem和区块链的可能性。',
     view: '查看最佳 ÐApps'
   },
+  new: '新',
   platform: '平台',
   platformOptions: {
     // TODO ethereum: 'Ethereum',

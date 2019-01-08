@@ -22,7 +22,7 @@
         <p class="rank">#{{ rank }}<template v-if="rankDelta !== 0">&nbsp;
           <BaseDelta
             :value="rankDelta"
-            null-text="New"/>
+            :null-text="$t('new')"/>
         </template>
         </p>
       </media>
