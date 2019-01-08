@@ -19,7 +19,12 @@
       <media
         v-if="selectedColumn.selection !== 'rank'"
         :query="{maxWidth: 1098}">
-        <p class="rank">#{{ rank }}</p>
+        <p class="rank">#{{ rank }}<template v-if="rankDelta !== 0">&nbsp;
+          <BaseDelta
+            :value="rankDelta"
+            null-text="New"/>
+        </template>
+        </p>
       </media>
       <h4 class="name">
         <nuxt-link 
@@ -39,9 +44,11 @@
 <script>
 import Media from 'vue-media'
 import { trackDappView } from '~/helpers/mixpanel'
+import BaseDelta from './BaseDelta'
 
 export default {
   components: {
+    BaseDelta,
     Media
   },
   props: {
@@ -56,6 +63,10 @@ export default {
     rank: {
       type: Number,
       required: true
+    },
+    rankDelta: {
+      type: Number,
+      default: null
     },
     selectedColumn: {
       type: Object,
@@ -175,7 +186,7 @@ export default {
   padding: 1px 3px;
   border-radius: 3px;
   background: $color--gray;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   display: inline-block;
 }
