@@ -72,7 +72,9 @@
               class="table-row">
               <media :query="{minWidth: tweakpoint}">
                 <div class="table-data col-rank">
-                  <RankingTableRank :rank="dapp.rank"/>
+                  <RankingTableRank
+                    :rank="dapp.rank"
+                    :rank-delta="dapp.rankDelta"/>
                 </div>
               </media>
               <div class="table-data col-name">

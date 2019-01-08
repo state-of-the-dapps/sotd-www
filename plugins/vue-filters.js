@@ -19,6 +19,12 @@ Vue.filter('formatDate', (value, format) => {
   }
 })
 
+Vue.filter('formatDelta', value => {
+  if (!isNaN(value)) {
+    return value
+  }
+})
+
 Vue.filter('addMonths', (value, num) => {
   if (value) {
     return addMonths(value, num)

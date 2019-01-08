@@ -2,15 +2,23 @@
   <div
     :class="'rank-' + rank"
     class="component-ranking-table-rank">
-    <span
-      class="value">{{ rank }}</span>
+    <span class="value">{{ rank }}</span> <BaseDelta :value="rankDelta"/>
   </div>
 </template>
 
 <script>
+import BaseDelta from './BaseDelta'
+
 export default {
+  components: {
+    BaseDelta
+  },
   props: {
     rank: {
+      type: Number,
+      required: true
+    },
+    rankDelta: {
       type: Number,
       required: true
     }
