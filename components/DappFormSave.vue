@@ -128,10 +128,6 @@ export default {
       type: Array,
       required: true
     },
-    contractsPoaTestnet: {
-      type: Array,
-      required: true
-    },
     contractsEosMainnet: {
       type: Array,
       required: true
@@ -227,7 +223,6 @@ export default {
         data.fields.contractsRopsten = this.contractsRopsten
         data.fields.contractsRinkeby = this.contractsRinkeby
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
-        data.fields.contractsPoaTestnet = this.contractsPoaTestnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.$emit('submit', data)

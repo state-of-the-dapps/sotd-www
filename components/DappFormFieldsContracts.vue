@@ -210,27 +210,6 @@
             </ul>
           </div>
         </li>
-        <li class="item">
-          <div class="name">Sokol Testnet</div>
-          <div 
-            :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea 
-              :value="poaTestnet" 
-              class="input" 
-              placeholder="Enter POA addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('poaTestnet', $event.target.value)"/>
-            <ul 
-              v-if="poaTestnetErrors && poaTestnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in poaTestnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
       </ul>
       <ul 
         v-if="platform === 'EOS'" 
@@ -350,14 +329,6 @@ export default {
       required: true
     },
     poaMainnetErrors: {
-      type: Array,
-      required: true
-    },
-    poaTestnet: {
-      type: String,
-      required: true
-    },
-    poaTestnetErrors: {
       type: Array,
       required: true
     },

@@ -108,7 +108,6 @@
             (dapp.contractsRinkeby && dapp.contractsRinkeby.length) ||
             (dapp.contractsRopsten && dapp.contractsRopsten.length) ||
             (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
-            (dapp.contractsPoaTestnet && dapp.contractsPoaTestnet.length) ||
             (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
             (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length)
         "
@@ -122,7 +121,6 @@
             :rinkeby="dapp.contractsRinkeby"
             :ropsten="dapp.contractsRopsten"
             :poa-mainnet="dapp.contractsPoaMainnet"
-            :poa-testnet="dapp.contractsPoaTestnet"
             :eos-mainnet="dapp.contractsEosMainnet"
             :steem-mainnet="dapp.contractsSteemMainnet"
             :slug="dapp.slug"/>

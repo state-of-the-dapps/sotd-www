@@ -32,12 +32,6 @@
         platform="POA"
         network="mainnet"/>
       <DappDetailBodyContentModulesContractsItem
-        v-if="poaTestnet.length"
-        :addresses="poaTestnet"
-        :slug="slug"
-        platform="POA"
-        network="Sokol Testnet"/>
-      <DappDetailBodyContentModulesContractsItem
         v-if="eosMainnet.length"
         :addresses="eosMainnet"
         :slug="slug"
@@ -82,11 +76,6 @@ export default {
       default: () => []
     },
     poaMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    poaTestnet: {
       type: Array,
       required: true,
       default: () => []
