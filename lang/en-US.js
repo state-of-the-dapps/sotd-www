@@ -188,6 +188,7 @@ export default {
     ethereum: 'Ethereum',
     eos: 'EOS',
     poa: 'POA',
+    gochain: 'GoChain',
     steem: 'Steem'
   },
   SecondaryCtaMailingList: {

@@ -179,10 +179,11 @@ export default {
   new: '新',
   platform: '平台',
   platformOptions: {
-    ethereum: '以太坊'
-    // TODO eos: 'EOS',
-    // TODO poa: 'POA',
-    // TODO steem: 'Steem'
+    ethereum: '以太坊',
+    eos: 'EOS',
+    poa: 'POA',
+    gochain: 'GoChain',
+    steem: 'Steem'
   },
   profileStrength: '简介强度',
   RankingTable: {

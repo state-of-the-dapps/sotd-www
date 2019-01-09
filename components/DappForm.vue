@@ -32,6 +32,7 @@
           :contracts-ropsten="contractsRopsten"
           :contracts-rinkeby="contractsRinkeby"
           :contracts-poa-mainnet="contractsPoaMainnet"
+          :contracts-go-chain-mainnet="contractsGoChainMainnet"
           :contracts-eos-mainnet="contractsEosMainnet"
           :contracts-steem-mainnet="contractsSteemMainnet"
           :diff-exists="diffExists"
@@ -121,6 +122,7 @@ export default {
         mainnet: [],
         name: [],
         poaMainnet: [],
+        goChainMainnet: [],
         eosMainnet: [],
         steemMainnet: [],
         productImage: [],
@@ -140,6 +142,7 @@ export default {
         contracts: {
           mainnet: { address: '' },
           poaMainnet: { address: '' },
+          goChainMainnet: { address: '' },
           eosMainnet: { address: '' },
           steemMainnet: { address: '' },
           ropsten: { address: '' },
@@ -227,6 +230,11 @@ export default {
         this.fields.contracts.poaMainnet.address
       )
     },
+    contractsGoChainMainnet() {
+      return this.$options.filters.linesToArr(
+        this.fields.contracts.goChainMainnet.address
+      )
+    },
     contractsEosMainnet() {
       return this.$options.filters.linesToArr(
         this.fields.contracts.eosMainnet.address
@@ -299,6 +307,9 @@ export default {
     },
     poaMainnetErrors() {
       return this.errors.poaMainnet
+    },
+    goChainMainnetErrors() {
+      return this.errors.goChainMainnet
     },
     eosMainnetErrors() {
       return this.errors.eosMainnet

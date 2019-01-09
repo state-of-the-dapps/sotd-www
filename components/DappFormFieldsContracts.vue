@@ -49,6 +49,29 @@
           </div>
         </li>
         <li 
+          v-if="goChainIsMissing" 
+          class="item">
+          <div class="name">GoChain Mainnet Contracts</div>
+          <div 
+            :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
+            class="input-wrapper">
+            <textarea 
+              :value="goChainMainnet" 
+              class="input" 
+              placeholder="Enter GoChain addresses (one per line)" 
+              maxlength="11000" 
+              @input="updateAndValidate('goChainMainnet', $event.target.value)"/>
+            <ul 
+              v-if="goChainMainnetErrors && goChainMainnetErrors.length > 0" 
+              class="error-list -contracts">
+              <li 
+                v-for="(error, index) in goChainMainnetErrors" 
+                :key="index" 
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li 
           v-if="eosIsMissing" 
           class="item">
           <div class="name">EOS Mainnet Contracts</div>
@@ -212,6 +235,31 @@
         </li>
       </ul>
       <ul 
+        v-if="platform === 'GoChain'" 
+        class="list">
+        <li class="item">
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
+          <div 
+            :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
+            class="input-wrapper">
+            <textarea 
+              :value="goChainMainnet" 
+              class="input" 
+              placeholder="Enter GoChain addresses (one per line)" 
+              maxlength="11000" 
+              @input="updateAndValidate('goChainMainnet', $event.target.value)"/>
+            <ul 
+              v-if="goChainMainnetErrors && goChainMainnetErrors.length > 0" 
+              class="error-list -contracts">
+              <li 
+                v-for="(error, index) in goChainMainnetErrors" 
+                :key="index" 
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <ul 
         v-if="platform === 'EOS'" 
         class="list">
         <li class="item">
@@ -284,6 +332,10 @@ export default {
       type: Boolean,
       default: false
     },
+    goChainIsMissing: {
+      type: Boolean,
+      default: false
+    },
     eosIsMissing: {
       type: Boolean,
       default: false
@@ -329,6 +381,14 @@ export default {
       required: true
     },
     poaMainnetErrors: {
+      type: Array,
+      required: true
+    },
+    goChainMainnet: {
+      type: String,
+      required: true
+    },
+    goChainMainnetErrors: {
       type: Array,
       required: true
     },

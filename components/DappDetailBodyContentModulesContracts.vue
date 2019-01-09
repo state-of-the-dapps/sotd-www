@@ -32,6 +32,12 @@
         platform="POA"
         network="mainnet"/>
       <DappDetailBodyContentModulesContractsItem
+        v-if="goChainMainnet.length"
+        :addresses="goChainMainnet"
+        :slug="slug"
+        platform="GoChain"
+        network="mainnet"/>
+      <DappDetailBodyContentModulesContractsItem
         v-if="eosMainnet.length"
         :addresses="eosMainnet"
         :slug="slug"
@@ -76,6 +82,11 @@ export default {
       default: () => []
     },
     poaMainnet: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    goChainMainnet: {
       type: Array,
       required: true,
       default: () => []

@@ -15,6 +15,10 @@
         class="selection"
         @click="setPlatform('POA')">POA</button>
       <button
+        :class="platform === 'GoChain' ? 'is-active' : ''"
+        class="selection"
+        @click="setPlatform('GoChain')">GoChain</button>
+      <button
         :class="platform === 'Steem' ? 'is-active' : ''"
         class="selection"
         @click="setPlatform('Steem')">Steem</button>

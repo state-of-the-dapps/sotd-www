@@ -59,7 +59,7 @@
             type="numbers"/>
         </div>
         <div 
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d"
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d" 
@@ -79,6 +79,15 @@
             :quarterly="dapp.stats.poa_value_90d"
             :weekly="dapp.stats.poa_value_7d"
             :title="$t(namespace('volume'), {token: 'POA'})"
+            type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.gochain_value_30d" 
+            :daily="dapp.stats.gochain_value_1d"
+            :monthly="dapp.stats.gochain_value_30d"
+            :sparkline="dapp.sparklines.gochain_value"
+            :quarterly="dapp.stats.gochain_value_90d"
+            :weekly="dapp.stats.gochain_value_7d"
+            :title="$t(namespace('volume'), {token: 'GO'})"
             type="numbers"/>
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.eos_value_30d"
@@ -108,6 +117,7 @@
             (dapp.contractsRinkeby && dapp.contractsRinkeby.length) ||
             (dapp.contractsRopsten && dapp.contractsRopsten.length) ||
             (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
+            (dapp.contractsGoChainMainnet && dapp.contractsGoChainMainnet.length) ||
             (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
             (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length)
         "
@@ -121,6 +131,7 @@
             :rinkeby="dapp.contractsRinkeby"
             :ropsten="dapp.contractsRopsten"
             :poa-mainnet="dapp.contractsPoaMainnet"
+            :go-chain-mainnet="dapp.contractsGoChainMainnet"
             :eos-mainnet="dapp.contractsEosMainnet"
             :steem-mainnet="dapp.contractsSteemMainnet"
             :slug="dapp.slug"/>
