@@ -32,7 +32,7 @@
           :contracts-ropsten="contractsRopsten"
           :contracts-rinkeby="contractsRinkeby"
           :contracts-poa-mainnet="contractsPoaMainnet"
-          :contracts-gochain-mainnet="contractsGoChainMainnet"
+          :contracts-go-chain-mainnet="contractsGoChainMainnet"
           :contracts-eos-mainnet="contractsEosMainnet"
           :contracts-steem-mainnet="contractsSteemMainnet"
           :diff-exists="diffExists"

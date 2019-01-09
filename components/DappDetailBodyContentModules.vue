@@ -122,7 +122,7 @@
             :rinkeby="dapp.contractsRinkeby"
             :ropsten="dapp.contractsRopsten"
             :poa-mainnet="dapp.contractsPoaMainnet"
-            :gochain-mainnet="dapp.contractsGoChainMainnet"
+            :go-chain-mainnet="dapp.contractsGoChainMainnet"
             :eos-mainnet="dapp.contractsEosMainnet"
             :steem-mainnet="dapp.contractsSteemMainnet"
             :slug="dapp.slug"/>
