@@ -29,6 +29,15 @@
       </li>
       <li class="item">
         <div class="wrapper">
+          <h2 class="heading">
+            <span>{{ $t(namespace('24hVolumeUsd')) }}</span>
+            <Help :text="$t('help.volumeUsd')"/>
+          </h2>
+          <p class="value">{{ statDappUsdVol24Hr | abbreviateNumber(2) || 0 }}</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="wrapper">
           <h2 class="heading">{{ $t(namespace('smartContracts')) }}</h2>
           <p class="value">{{ statDappContractCount | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -210,6 +219,11 @@ export default {
       default: 0
     },
     statDappTx24Hr: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    statDappUsdVol24Hr: {
       type: Number,
       required: true,
       default: 0

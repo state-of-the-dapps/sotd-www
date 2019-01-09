@@ -232,6 +232,7 @@ export default {
     nrOfContracts: '合同数量',
     smartContracts: '智能合约',
     '24htransactions': '24小时交易',
+    // TODO '24hVolumeUsd': '24h volume USD',
     transactions24h: '交易 (24小时)',
     transactions30d: '交易 (30天)',
     transactionsHelp: '与ÐApp合约交易的次数',

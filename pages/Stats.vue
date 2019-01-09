@@ -15,6 +15,7 @@
         :stat-dapp-contract-count="stats.dappContractCount"
         :stat-dapp-count="statDappCount"
         :stat-dapp-dau="stats.dappDau"
+        :stat-dapp-usd-vol24-hr="stats.dappUSDVol24Hr"
         :stat-dapp-tx24-hr="stats.dappTx24Hr"
         :stat-platforms="stats.platforms"
         :stat-statuses="stats.statuses"/>

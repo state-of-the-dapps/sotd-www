@@ -240,6 +240,7 @@ export default {
     nrOfContracts: '# of contracts',
     smartContracts: 'Smart contracts',
     '24htransactions': '24h transactions',
+    '24hVolumeUsd': '24h volume USD',
     transactions24h: 'Transactions (24hr)',
     transactions30d: 'Transactions (30d)',
     transactionsHelp: 'Number of transactions to ÐApp contracts',
