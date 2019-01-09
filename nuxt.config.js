@@ -70,7 +70,10 @@ export default {
     progress: false
   },
   serverMiddleware: ['redirect-ssl', '~/middleware/logger'],
-  css: ['~/assets/css/normalize.scss'],
+  css: [
+    '~/assets/css/normalize.scss',
+    '~/assets/css/fonts.css'
+  ],
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
@@ -128,7 +131,6 @@ export default {
     { src: '~/plugins/vue-config' },
     { src: '~/plugins/vue-filters' },
     { src: '~/plugins/mixpanel', ssr: false },
-    { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false },
     { src: '~/plugins/intercom.js', ssr: false }
   ]

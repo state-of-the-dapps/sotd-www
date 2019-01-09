@@ -154,19 +154,6 @@ code {
   height: 100%;
 }
 
-html,
-.wf-loading {
-  visibility: hidden !important;
-  opacity: 0;
-}
-
-.wf-active,
-.wf-inactive {
-  visibility: visible !important;
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-
 .--is-hidden {
   visibility: hidden;
   opacity: 0;

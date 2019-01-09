@@ -31,6 +31,14 @@
 
 @mixin font-sans {
   font-family: 'Overpass', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-sans-bold {
+  font-family: 'Overpass SemiBold', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @mixin font-monospace {

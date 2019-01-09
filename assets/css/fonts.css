@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Amsi Pro Cond SemiBold';
+    src: url('~assets/fonts/amsi-pro-cond-semibold.eot');
+    src: url('~assets/fonts/amsi-pro-cond-semibold.eot?#iefix') format('embedded-opentype'),
+         url('~assets/fonts/amsi-pro-cond-semibold.woff2') format('woff2'),
+         url('~assets/fonts/amsi-pro-cond-semibold.woff') format('woff'),
+         url('~assets/fonts/amsi-pro-cond-semibold.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Overpass';
+    src: url('~assets/fonts/overpass-light.eot');
+    src: url('~assets/fonts/overpass-light.eot?#iefix') format('embedded-opentype'),
+         url('~assets/fonts/overpass-light.woff2') format('woff2'),
+         url('~assets/fonts/overpass-light.woff') format('woff'),
+         url('~assets/fonts/overpass-light.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Overpass Bold';
+    src: url('~assets/fonts/overpass-bold.eot');
+    src: url('~assets/fonts/overpass-bold.eot?#iefix') format('embedded-opentype'),
+         url('~assets/fonts/overpass-bold.woff2') format('woff2'),
+         url('~assets/fonts/overpass-bold.woff') format('woff'),
+         url('~assets/fonts/overpass-bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Overpass Mono';
+    src: url('~assets/fonts/overpass-mono-regular.eot');
+    src: url('~assets/fonts/overpass-mono-regular.eot?#iefix') format('embedded-opentype'),
+         url('~assets/fonts/overpass-mono-regular.woff2') format('woff2'),
+         url('~assets/fonts/overpass-mono-regular.woff') format('woff'),
+         url('~assets/fonts/overpass-mono-regular.ttf') format('truetype');
+    font-weight: 400;
+}
