@@ -31,11 +31,13 @@ export default {
   props: {
     authors: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     errors: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   data() {
