@@ -6,17 +6,6 @@ export default {
     search: '搜索',
     stats: '数据'
   },
-  BaseFooter: {
-    copyright: '版权',
-    designedBy: '由 {designer} 设计',
-    contactUs: '联系我们',
-    about: '关于',
-    promote: '推广你的DApp',
-    downloadLogo: '下载我们的徽标',
-    getAndroidApp: '获取Android应用',
-    helpMetamask: '帮助 Metamask',
-    termsOfUse: '使用条款'
-  },
   category: '分类',
   categoryOptions: {
     Development: '软件开发',
@@ -257,6 +246,17 @@ export default {
     broken: '坏掉'
   },
   tags: '标签',
+  TheFooter: {
+    copyright: '版权',
+    designedBy: '由 {designer} 设计',
+    contactUs: '联系我们',
+    about: '关于',
+    promote: '推广你的DApp',
+    downloadLogo: '下载我们的徽标',
+    getAndroidApp: '获取Android应用',
+    helpMetamask: '帮助 Metamask',
+    termsOfUse: '使用条款'
+  },
   userActivity30d: '用户活动 (30天)',
   userActivity30dHelp: '过去30天的用户（与ÐApp合约交易的独特源地址）',
   users24h: '用户 (24小时)',

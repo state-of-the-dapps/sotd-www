@@ -6,17 +6,6 @@ export default {
     search: 'Search',
     stats: 'Stats'
   },
-  BaseFooter: {
-    copyright: 'Copyright',
-    designedBy: 'Designed by {designer}',
-    contactUs: 'Contact us',
-    about: 'About',
-    promote: 'Promote your ÐApp',
-    downloadLogo: 'Download our logo',
-    getAndroidApp: 'Get the Android app',
-    helpMetamask: 'Help for Metamask',
-    termsOfUse: 'Terms of use'
-  },
   category: 'Category | Categories',
   categoryOptions: {
     Development: 'Development',
@@ -264,6 +253,17 @@ export default {
     broken: 'broken'
   },
   tags: 'tags',
+  TheFooter: {
+    copyright: 'Copyright',
+    designedBy: 'Designed by {designer}',
+    contactUs: 'Contact us',
+    about: 'About',
+    promote: 'Promote your ÐApp',
+    downloadLogo: 'Download our logo',
+    getAndroidApp: 'Get the Android app',
+    helpMetamask: 'Help for Metamask',
+    termsOfUse: 'Terms of use'
+  },
   userActivity30d: 'User activity (30d)',
   userActivity30dHelp:
     'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',

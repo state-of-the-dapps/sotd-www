@@ -6,7 +6,7 @@
       </main>
       <footer class="footer">
         <SecondaryCta/>
-        <BaseFooter/>
+        <TheFooter/>
       </footer>
     </div>
   </div>
