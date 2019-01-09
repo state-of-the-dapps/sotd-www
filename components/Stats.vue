@@ -135,7 +135,7 @@
               <span>{{ $t(namespace('volume24h')) }}</span>
               <Help 
                 :bottom="true" 
-                text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly"/>
+                :text="$t('help.volumePerNetwork')"/>
             </th>
             <th class="table-heading">{{ $t(namespace('nrOfContracts')) }}</th>
           </tr>

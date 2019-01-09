@@ -11,7 +11,7 @@
       class="label">Volume (7d)</span>
     <Help
       :bottom="true"
-      text="Transaction volume to ÐApp contracts"/>
+      :text="$t('help.volumeUsd')"/>
   </div>
 </template>
 

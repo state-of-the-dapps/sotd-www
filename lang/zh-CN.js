@@ -169,6 +169,10 @@ export default {
     suggestedTags: '建议标签',
     viewDappResults: '查看所有 ÐApp 结果'
   },
+  help: {
+    // TODO volumeUsd: 'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
+    // TODO volumePerNetwork: 'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+  },
   HomeHeroContentIntro: {
     heading: '搜索去中心化应用',
     learn: '了解更多关于 ÐApps 的信息',

@@ -164,6 +164,12 @@ export default {
     allStatuses: 'All statuses',
     chooseStatus: 'Choose a status'
   },
+  help: {
+    volumeUsd:
+      'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
+    volumePerNetwork:
+      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: 'Sorry, no results. Please try a new search',
