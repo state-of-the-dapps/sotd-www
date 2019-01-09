@@ -37,6 +37,16 @@ export default {
     Storage: '存储',
     Wallet: '钱包'
   },
+  collections: {
+    // TODO 'Best-of-MetaMask': 'Best of Metamask',
+    // TODO BitGuild: 'BitGuild',
+    // TODO CryptoGaming: 'CryptoGaming',
+    // TODO Featured: 'Featured',
+    Hottest: '最热的',
+    // TODO 'Most-Viewed': 'Most Viewed',
+    'Recently-added': '最近上架'
+    // TODO 'Top-Development-Activity': 'Top Development Activity'
+  },
   cta: {
     submit: '提交 ÐApp',
     viewAll: '查看全部'
@@ -118,6 +128,10 @@ export default {
   Dapps: {
     noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
   },
+  dappSortOptions: {
+    Hottest: '最热的',
+    Newest: '最新'
+  },
   DappsResultCount: {
     result: '的结果',
     showing: '显示 {showing} {total} {result}',
@@ -176,7 +190,7 @@ export default {
   new: '新',
   platform: '平台',
   platformOptions: {
-    // TODO ethereum: 'Ethereum',
+    ethereum: '以太坊'
     // TODO eos: 'EOS',
     // TODO poa: 'POA',
     // TODO steem: 'Steem'

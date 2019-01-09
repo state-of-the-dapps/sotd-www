@@ -2,7 +2,7 @@
   <div class="component-dapps-sort">
     <BaseDropdown
       :options="sortOptions"
-      :selected="formattedSortQuery"
+      :selected="$t(`dappSortOptions.${formattedSortQuery}`)"
       :name="$t(namespace('sortBy'))"
       :title="$t(namespace('sortBy'))"
       theme="inline right"
@@ -19,12 +19,17 @@ export default {
   components: {
     BaseDropdown
   },
-  data() {
-    return {
-      sortOptions: dappSortOptions
-    }
-  },
   computed: {
+    sortOptions() {
+      const options = []
+      dappSortOptions.map(x => {
+        options.push({
+          text: this.$t(`dappSortOptions.${x.text}`),
+          selection: x.selection
+        })
+      })
+      return options
+    },
     sortQuery() {
       return this.$route.query.tab || 'hot'
     },

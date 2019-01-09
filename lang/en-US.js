@@ -37,6 +37,16 @@ export default {
     Storage: 'Storage',
     Wallet: 'Wallet'
   },
+  collections: {
+    'Best-of-MetaMask': 'Best of Metamask',
+    BitGuild: 'BitGuild',
+    CryptoGaming: 'CryptoGaming',
+    Featured: 'Featured',
+    Hottest: 'Hottest',
+    'Most-Viewed': 'Most Viewed',
+    'Recently-added': 'Recently added',
+    'Top-Development-Activity': 'Top Development Activity'
+  },
   cta: {
     submit: 'Submit a ÐApp',
     viewAll: 'View all'
@@ -119,6 +129,10 @@ export default {
   },
   Dapps: {
     noResults: 'There are currently no ÐApps here. Please try another search.'
+  },
+  dappSortOptions: {
+    Hottest: 'Hottest',
+    Newest: 'Newest'
   },
   DappsResultCount: {
     result: 'result | results',
