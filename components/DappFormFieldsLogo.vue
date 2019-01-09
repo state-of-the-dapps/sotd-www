@@ -8,12 +8,23 @@
     </p>
     <div class="file-upload">
       <BaseFileUpload
-        :resize-width="400"
+        :width="width"
+        :height="height"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop a new logo here, or click to select one"
+        @addInvalidDimenionsWarning="addWarning"
         @uploadSuccess="setLogo"
-        @removeFile="removeLogo"/>
+        @removeFile="removeLogo"
+        @removeInvalidDimenionsWarning="removeWarning"/>
     </div>
-    <p class="help">Dimensions must be 400px width by 200-400px height <br>(JPEG or PNG format) <br><a 
+    <ul 
+      v-if="warnings && warnings.length > 0" 
+      class="warning-list">
+      <li 
+        v-for="(warning, index) in warnings" 
+        :key="index" 
+        class="warning-item">{{ warning }}</li>
+    </ul>
+    <p class="help">Dimensions must be {{ width }}px width by {{ height }}px height <br>(JPEG or PNG format) <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines/examples</a></p>
   </div>
@@ -34,7 +45,10 @@ export default {
   },
   data() {
     return {
-      preFill: true
+      height: 200,
+      preFill: true,
+      warnings: [],
+      width: 400
     }
   },
   computed: {
@@ -44,12 +58,22 @@ export default {
     }
   },
   methods: {
+    addWarning() {
+      this.warnings.push(
+        `Your logo dimensions are not valid. The logo should be ${
+          this.width
+        }px width by ${this.height}px height`
+      )
+    },
     setLogo(url) {
       this.preFill = false
       this.$emit('updateField', 'logo', url)
     },
     removeLogo() {
       this.$emit('updateField', 'logo', '')
+    },
+    removeWarning() {
+      this.warnings = []
     }
   }
 }
