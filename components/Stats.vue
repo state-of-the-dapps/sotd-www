@@ -62,9 +62,9 @@
       <div class="new-vs-total-wrapper-inner">
         <div class="new-vs-total-logo">
           <SvgLogotype 
-            :fill="color" 
             :width="120" 
-            :height="26" />
+            :height="26"
+            fill="black"/>
         </div>
         <canvas id="new-vs-total"/>
       </div>
