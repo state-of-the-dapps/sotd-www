@@ -8,6 +8,7 @@
       class="value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} 
       <template v-if="platform === 'EOS'">EOS</template>
       <template v-if="platform === 'POA'">POA</template>
+      <template v-if="platform === 'GoChain'">GO</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
       <template v-if="platform === 'Steem'">STEEM</template>
     </span>
@@ -55,6 +56,8 @@ export default {
         volume = stats.eos_value_7d
       } else if (platform === 'POA') {
         volume = stats.poa_value_7d
+      } else if (platform === 'GoChain') {
+        volume = stats.gochain_value_7d
       } else if (platform === 'Steem') {
         volume = stats.steem_value_7d
       }
@@ -70,6 +73,8 @@ export default {
         volumePct = stats.eos_value_7d_pct
       } else if (platform === 'POA') {
         volumePct = stats.poa_value_7d_pct
+      } else if (platform === 'GoChain') {
+        volumePct = stats.gochain_value_7d_pct
       } else if (platform === 'Steem') {
         volumePct = stats.steem_value_7d_pct
       }

@@ -67,6 +67,11 @@ export default {
           'https://blockscout.com/poa/address/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'GoChain') {
+        addressLink =
+          'https://explorer.gochain.io/addr/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink =
           'https://eospark.com/account/' +
