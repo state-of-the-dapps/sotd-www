@@ -54,7 +54,7 @@ export default {
   methods: {
     addWarning() {
       this.warnings.push(
-        `Your product image dimensions are not valid. The product image should be ${
+        `Your product screenshot dimensions are not valid. The product screenshot should be ${
           this.width
         }px width by ${this.height}px height.`
       )
