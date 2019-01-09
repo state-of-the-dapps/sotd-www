@@ -7,7 +7,7 @@
       :options="options"
       :destroy-dropzone="true"
       :duplicate-check="true"
-      @vdropzone-queue-complete="disable"
+      @vdropzone-complete="complete"
       @vdropzone-s3-upload-error="s3UploadError"
       @vdropzone-s3-upload-success="s3UploadSuccess"/>
     <div
@@ -29,13 +29,17 @@ export default {
       type: String,
       default: '.jpg,.jpeg,.svg,.gif,.png'
     },
+    height: {
+      type: Number,
+      default: 0
+    },
     message: {
       type: String,
       default: 'Drop file here'
     },
-    resizeWidth: {
+    width: {
       type: Number,
-      default: 200
+      default: 0
     }
   },
   data() {
@@ -52,7 +56,7 @@ export default {
         acceptedFiles: this.acceptedFiles,
         autoProcessQueue: true,
         dictDefaultMessage: this.message,
-        resizeWidth: this.resizeWidth,
+        resizeWidth: this.width,
         resizeQuality: 1,
         maxFiles: 1,
         maxFilesize: 2,
@@ -65,14 +69,31 @@ export default {
     const instance = this.$refs.el.dropzone
   },
   methods: {
+    complete(file) {
+      this.disable()
+      if (
+        this.width &&
+        this.width !== file.width &&
+        this.height &&
+        this.height !== file.height
+      ) {
+        this.$emit('addInvalidDimenionsWarning')
+      } else {
+        this.$emit('removeInvalidDimenionsWarning')
+      }
+    },
+    enable() {
+      this.$refs.el.dropzone.enable()
+      this.disabled = false
+    },
     disable() {
       this.$refs.el.dropzone.disable()
       this.disabled = true
     },
     remove() {
       this.$refs.el.dropzone.removeAllFiles()
-      this.$refs.el.dropzone.enable()
-      this.disabled = false
+      this.enable()
+      this.$emit('removeInvalidDimenionsWarning')
       this.$emit('removeFile')
     },
     s3UploadError(errorMessage) {

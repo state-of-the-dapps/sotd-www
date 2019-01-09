@@ -142,6 +142,22 @@
             @click="$mixpanel.track('SotD - Designer website')">Duo</a>
         </i18n>
       </li>
+      <li class="attribution-item">
+        Exchange rates powered by <a 
+          class="attribution-link"
+          href="https://www.cryptocompare.com/" 
+          target="_blank" 
+          rel="noopener"
+          @click="$mixpanel.track('SotD - CryptoCompare')">CryptoCompare.com</a>
+      </li>
+      <li class="attribution-item">
+        Steem data powered by <a 
+          class="attribution-link"
+          href="https://steemapps.com/" 
+          target="_blank" 
+          rel="noopener"
+          @click="$mixpanel.track('SotD - Steemapps')">SteemApps.com</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -239,6 +255,10 @@ export default {
   color: darken($color--gray, 25%);
   text-decoration: none;
   font-weight: 700;
+}
+
+.attribution-item {
+  margin-bottom: 5px;
 }
 
 .attribution-list {

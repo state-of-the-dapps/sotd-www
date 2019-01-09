@@ -32,11 +32,11 @@
         platform="POA"
         network="mainnet"/>
       <DappDetailBodyContentModulesContractsItem
-        v-if="poaTestnet.length"
-        :addresses="poaTestnet"
+        v-if="goChainMainnet.length"
+        :addresses="goChainMainnet"
         :slug="slug"
-        platform="POA"
-        network="Sokol Testnet"/>
+        platform="GoChain"
+        network="mainnet"/>
       <DappDetailBodyContentModulesContractsItem
         v-if="eosMainnet.length"
         :addresses="eosMainnet"
@@ -63,35 +63,43 @@ export default {
   props: {
     mainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     kovan: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     rinkeby: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     ropsten: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     poaMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
-    poaTestnet: {
+    goChainMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     eosMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     steemMainnet: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     slug: {
       type: String,

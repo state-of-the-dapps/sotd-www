@@ -35,7 +35,7 @@ const dappSchema = Object.freeze({
   contractsRinkeby: [],
   contractsRopsten: [],
   contractsPoaMainnet: [],
-  contractsPoaTestnet: [],
+  contractsGoChainMainnet: [],
   contractsEosMainnet: [],
   contractsSteemMainnet: [],
   created: '',
@@ -261,12 +261,13 @@ const newDapps = [
   179
 ]
 
-const platformList = ['Ethereum', 'EOS', 'POA', 'Steem']
+const platformList = ['Ethereum', 'EOS', 'POA', 'Steem'] // TODO add GoChain
 
 const platformMap = {
   ethereum: 'Ethereum',
   eos: 'EOS',
   poa: 'POA',
+  gochain: 'GoChain',
   steem: 'Steem'
 }
 

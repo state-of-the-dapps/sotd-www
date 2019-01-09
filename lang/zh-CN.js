@@ -6,17 +6,6 @@ export default {
     search: '搜索',
     stats: '数据'
   },
-  BaseFooter: {
-    copyright: '版权',
-    designedBy: '由 {designer} 设计',
-    contactUs: '联系我们',
-    about: '关于',
-    promote: '推广你的DApp',
-    downloadLogo: '下载我们的徽标',
-    getAndroidApp: '获取Android应用',
-    helpMetamask: '帮助 Metamask',
-    termsOfUse: '使用条款'
-  },
   category: '分类',
   categoryOptions: {
     Development: '软件开发',
@@ -36,6 +25,16 @@ export default {
     Social: '社交',
     Storage: '存储',
     Wallet: '钱包'
+  },
+  collections: {
+    // TODO 'Best-of-MetaMask': 'Best of Metamask',
+    // TODO BitGuild: 'BitGuild',
+    // TODO CryptoGaming: 'CryptoGaming',
+    Featured: '特色',
+    Hottest: '最热的',
+    'Most-Viewed': '最受关注',
+    'Recently-added': '最近上架'
+    // TODO 'Top-Development-Activity': 'Top Development Activity'
   },
   cta: {
     submit: '提交 ÐApp',
@@ -118,6 +117,10 @@ export default {
   Dapps: {
     noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
   },
+  dappSortOptions: {
+    Hottest: '最热的',
+    Newest: '最新'
+  },
   DappsResultCount: {
     result: '的结果',
     showing: '显示 {showing} {total} {result}',
@@ -166,6 +169,10 @@ export default {
     suggestedTags: '建议标签',
     viewDappResults: '查看所有 ÐApp 结果'
   },
+  help: {
+    // TODO volumeUsd: 'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
+    // TODO volumePerNetwork: 'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+  },
   HomeHeroContentIntro: {
     heading: '搜索去中心化应用',
     learn: '了解更多关于 ÐApps 的信息',
@@ -173,12 +180,14 @@ export default {
       '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA, Steem和区块链的可能性。',
     view: '查看最佳 ÐApps'
   },
+  new: '新',
   platform: '平台',
   platformOptions: {
-    // TODO ethereum: 'Ethereum',
-    // TODO eos: 'EOS',
-    // TODO poa: 'POA',
-    // TODO steem: 'Steem'
+    ethereum: '以太坊',
+    eos: 'EOS',
+    poa: 'POA',
+    gochain: 'GoChain',
+    steem: 'Steem'
   },
   profileStrength: '简介强度',
   RankingTable: {
@@ -223,6 +232,7 @@ export default {
     nrOfContracts: '合同数量',
     smartContracts: '智能合约',
     '24htransactions': '24小时交易',
+    // TODO '24hVolumeUsd': '24h volume USD',
     transactions24h: '交易 (24小时)',
     transactions30d: '交易 (30天)',
     transactionsHelp: '与ÐApp合约交易的次数',
@@ -242,6 +252,17 @@ export default {
     broken: '坏掉'
   },
   tags: '标签',
+  TheFooter: {
+    copyright: '版权',
+    designedBy: '由 {designer} 设计',
+    contactUs: '联系我们',
+    about: '关于',
+    promote: '推广你的DApp',
+    downloadLogo: '下载我们的徽标',
+    getAndroidApp: '获取Android应用',
+    helpMetamask: '帮助 Metamask',
+    termsOfUse: '使用条款'
+  },
   userActivity30d: '用户活动 (30天)',
   userActivity30dHelp: '过去30天的用户（与ÐApp合约交易的独特源地址）',
   users24h: '用户 (24小时)',

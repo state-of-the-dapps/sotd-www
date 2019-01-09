@@ -43,7 +43,8 @@
           :negative="dapp.stats.negative"/>
         <DappDetailBodyContentRank 
           v-if="dapp.rank" 
-          :rank="dapp.rank"/>
+          :rank="dapp.rank"
+          :rank-delta="dapp.rankDelta"/>
         <DappProfile
           v-if="dapp.profileScore"
           :dapp="dapp.slug"

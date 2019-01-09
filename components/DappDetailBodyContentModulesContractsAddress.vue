@@ -64,14 +64,17 @@ export default {
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'POA') {
         addressLink =
-          'https://blockscout.com/poa/' +
-          (this.network === 'mainnet' ? 'core' : 'sokol') +
-          '/address/' +
+          'https://blockscout.com/poa/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'GoChain') {
+        addressLink =
+          'https://explorer.gochain.io/addr/' +
           this.address +
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink =
-          'https://www.myeoskit.com/account/' +
+          'https://eospark.com/account/' +
           this.address +
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'Steem') {

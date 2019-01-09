@@ -6,17 +6,6 @@ export default {
     search: 'Search',
     stats: 'Stats'
   },
-  BaseFooter: {
-    copyright: 'Copyright',
-    designedBy: 'Designed by {designer}',
-    contactUs: 'Contact us',
-    about: 'About',
-    promote: 'Promote your ÐApp',
-    downloadLogo: 'Download our logo',
-    getAndroidApp: 'Get the Android app',
-    helpMetamask: 'Help for Metamask',
-    termsOfUse: 'Terms of use'
-  },
   category: 'Category | Categories',
   categoryOptions: {
     Development: 'Development',
@@ -36,6 +25,16 @@ export default {
     Social: 'Social',
     Storage: 'Storage',
     Wallet: 'Wallet'
+  },
+  collections: {
+    'Best-of-MetaMask': 'Best of Metamask',
+    BitGuild: 'BitGuild',
+    CryptoGaming: 'CryptoGaming',
+    Featured: 'Featured',
+    Hottest: 'Hottest',
+    'Most-Viewed': 'Most Viewed',
+    'Recently-added': 'Recently added',
+    'Top-Development-Activity': 'Top Development Activity'
   },
   cta: {
     submit: 'Submit a ÐApp',
@@ -120,6 +119,10 @@ export default {
   Dapps: {
     noResults: 'There are currently no ÐApps here. Please try another search.'
   },
+  dappSortOptions: {
+    Hottest: 'Hottest',
+    Newest: 'Newest'
+  },
   DappsResultCount: {
     result: 'result | results',
     showing: 'Showing {showing} {total} {result}',
@@ -161,6 +164,12 @@ export default {
     allStatuses: 'All statuses',
     chooseStatus: 'Choose a status'
   },
+  help: {
+    volumeUsd:
+      'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
+    volumePerNetwork:
+      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+  },
   GlobalSearch: {
     dapps: 'ÐApps',
     noResults: 'Sorry, no results. Please try a new search',
@@ -175,6 +184,7 @@ export default {
       'Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.',
     view: 'View the top ÐApps'
   },
+  new: 'New',
   platform: 'Platform',
   profileStrength: 'profile strength',
   RankingTable: {
@@ -184,6 +194,7 @@ export default {
     ethereum: 'Ethereum',
     eos: 'EOS',
     poa: 'POA',
+    gochain: 'GoChain',
     steem: 'Steem'
   },
   SecondaryCtaMailingList: {
@@ -229,6 +240,7 @@ export default {
     nrOfContracts: '# of contracts',
     smartContracts: 'Smart contracts',
     '24htransactions': '24h transactions',
+    '24hVolumeUsd': '24h volume USD',
     transactions24h: 'Transactions (24hr)',
     transactions30d: 'Transactions (30d)',
     transactionsHelp: 'Number of transactions to ÐApp contracts',
@@ -249,6 +261,17 @@ export default {
     broken: 'broken'
   },
   tags: 'tags',
+  TheFooter: {
+    copyright: 'Copyright',
+    designedBy: 'Designed by {designer}',
+    contactUs: 'Contact us',
+    about: 'About',
+    promote: 'Promote your ÐApp',
+    downloadLogo: 'Download our logo',
+    getAndroidApp: 'Get the Android app',
+    helpMetamask: 'Help for Metamask',
+    termsOfUse: 'Terms of use'
+  },
   userActivity30d: 'User activity (30d)',
   userActivity30dHelp:
     'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',

@@ -128,7 +128,7 @@ export default {
       type: Array,
       required: true
     },
-    contractsPoaTestnet: {
+    contractsGoChainMainnet: {
       type: Array,
       required: true
     },
@@ -205,6 +205,7 @@ export default {
         const data = { fields }
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
+        data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.$axios.$post('profile/score', data).then(response => {
@@ -227,7 +228,7 @@ export default {
         data.fields.contractsRopsten = this.contractsRopsten
         data.fields.contractsRinkeby = this.contractsRinkeby
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
-        data.fields.contractsPoaTestnet = this.contractsPoaTestnet
+        data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
         this.$emit('submit', data)

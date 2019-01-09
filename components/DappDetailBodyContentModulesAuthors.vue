@@ -1,6 +1,6 @@
 <template>
   <div class="component-DappDetailBodyContentModulesAuthors">
-    <h4 class="author-title">{{ $tc(namespace('author'), authors ? authors.length: 0) }}</h4>
+    <h4 class="author-title">{{ $tc(namespace('author'), authors ? authors.length : 0) }}</h4>
     <p 
       v-if="authors" 
       class="author-data"><span 
@@ -17,7 +17,8 @@ export default {
   props: {
     authors: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   }
 }

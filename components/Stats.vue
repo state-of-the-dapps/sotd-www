@@ -29,6 +29,15 @@
       </li>
       <li class="item">
         <div class="wrapper">
+          <h2 class="heading">
+            <span>{{ $t(namespace('24hVolumeUsd')) }}</span>
+            <Help :text="$t('help.volumeUsd')"/>
+          </h2>
+          <p class="value">{{ statDappUsdVol24Hr | abbreviateNumber(2) || 0 }}</p>
+        </div>
+      </li>
+      <li class="item">
+        <div class="wrapper">
           <h2 class="heading">{{ $t(namespace('smartContracts')) }}</h2>
           <p class="value">{{ statDappContractCount | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -62,9 +71,9 @@
       <div class="new-vs-total-wrapper-inner">
         <div class="new-vs-total-logo">
           <SvgLogotype 
-            :fill="color" 
             :width="120" 
-            :height="26" />
+            :height="26"
+            fill="black"/>
         </div>
         <canvas id="new-vs-total"/>
       </div>
@@ -135,7 +144,7 @@
               <span>{{ $t(namespace('volume24h')) }}</span>
               <Help 
                 :bottom="true" 
-                text="Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly"/>
+                :text="$t('help.volumePerNetwork')"/>
             </th>
             <th class="table-heading">{{ $t(namespace('nrOfContracts')) }}</th>
           </tr>
@@ -210,6 +219,11 @@ export default {
       default: 0
     },
     statDappTx24Hr: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    statDappUsdVol24Hr: {
       type: Number,
       required: true,
       default: 0

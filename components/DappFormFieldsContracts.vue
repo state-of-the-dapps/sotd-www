@@ -49,6 +49,29 @@
           </div>
         </li>
         <li 
+          v-if="goChainIsMissing" 
+          class="item">
+          <div class="name">GoChain Mainnet Contracts</div>
+          <div 
+            :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
+            class="input-wrapper">
+            <textarea 
+              :value="goChainMainnet" 
+              class="input" 
+              placeholder="Enter GoChain addresses (one per line)" 
+              maxlength="11000" 
+              @input="updateAndValidate('goChainMainnet', $event.target.value)"/>
+            <ul 
+              v-if="goChainMainnetErrors && goChainMainnetErrors.length > 0" 
+              class="error-list -contracts">
+              <li 
+                v-for="(error, index) in goChainMainnetErrors" 
+                :key="index" 
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+        <li 
           v-if="eosIsMissing" 
           class="item">
           <div class="name">EOS Mainnet Contracts</div>
@@ -210,22 +233,26 @@
             </ul>
           </div>
         </li>
+      </ul>
+      <ul 
+        v-if="platform === 'GoChain'" 
+        class="list">
         <li class="item">
-          <div class="name">Sokol Testnet</div>
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
-            :class="poaTestnetErrors && poaTestnetErrors.length > 0 ? '--has-errors' : ''" 
+            :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
             <textarea 
-              :value="poaTestnet" 
+              :value="goChainMainnet" 
               class="input" 
-              placeholder="Enter POA addresses (one per line)" 
+              placeholder="Enter GoChain addresses (one per line)" 
               maxlength="11000" 
-              @input="updateAndValidate('poaTestnet', $event.target.value)"/>
+              @input="updateAndValidate('goChainMainnet', $event.target.value)"/>
             <ul 
-              v-if="poaTestnetErrors && poaTestnetErrors.length > 0" 
+              v-if="goChainMainnetErrors && goChainMainnetErrors.length > 0" 
               class="error-list -contracts">
               <li 
-                v-for="(error, index) in poaTestnetErrors" 
+                v-for="(error, index) in goChainMainnetErrors" 
                 :key="index" 
                 class="error-item">{{ error }}</li>
             </ul>
@@ -305,6 +332,10 @@ export default {
       type: Boolean,
       default: false
     },
+    goChainIsMissing: {
+      type: Boolean,
+      default: false
+    },
     eosIsMissing: {
       type: Boolean,
       default: false
@@ -353,11 +384,11 @@ export default {
       type: Array,
       required: true
     },
-    poaTestnet: {
+    goChainMainnet: {
       type: String,
       required: true
     },
-    poaTestnetErrors: {
+    goChainMainnetErrors: {
       type: Array,
       required: true
     },
