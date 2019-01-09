@@ -67,6 +67,8 @@
       :rinkeby-errors="errors.rinkeby"
       :poa-mainnet="fields.contracts.poaMainnet.address"
       :poa-mainnet-errors="errors.poaMainnet"
+      :gochain-mainnet="fields.contracts.goChainMainnet.address"
+      :gochain-mainnet-errors="errors.goChainMainnet"
       :eos-mainnet="fields.contracts.eosMainnet.address"
       :eos-mainnet-errors="errors.eosMainnet"
       :steem-mainnet="fields.contracts.steemMainnet.address"

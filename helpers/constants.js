@@ -35,6 +35,7 @@ const dappSchema = Object.freeze({
   contractsRinkeby: [],
   contractsRopsten: [],
   contractsPoaMainnet: [],
+  contractsGoChainMainnet: [],
   contractsEosMainnet: [],
   contractsSteemMainnet: [],
   created: '',
