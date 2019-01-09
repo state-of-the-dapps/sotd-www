@@ -56,7 +56,7 @@ export default {
       this.warnings.push(
         `Your product image dimensions are not valid. The product image should be ${
           this.width
-        }px width by ${this.height}px height`
+        }px width by ${this.height}px height.`
       )
     },
     setProductImage(url) {

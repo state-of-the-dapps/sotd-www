@@ -56,7 +56,7 @@ export default {
       this.warnings.push(
         `Your icon dimensions are not valid. The icon should be ${
           this.width
-        }px width by ${this.height}px height`
+        }px width by ${this.height}px height.`
       )
     },
     setIcon(url) {

@@ -62,7 +62,7 @@ export default {
       this.warnings.push(
         `Your logo dimensions are not valid. The logo should be ${
           this.width
-        }px width by ${this.height}px height`
+        }px width by ${this.height}px height.`
       )
     },
     setLogo(url) {
