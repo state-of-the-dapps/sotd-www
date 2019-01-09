@@ -41,9 +41,9 @@ export default {
     // TODO 'Best-of-MetaMask': 'Best of Metamask',
     // TODO BitGuild: 'BitGuild',
     // TODO CryptoGaming: 'CryptoGaming',
-    // TODO Featured: 'Featured',
+    Featured: '特色',
     Hottest: '最热的',
-    // TODO 'Most-Viewed': 'Most Viewed',
+    'Most-Viewed': '最受关注',
     'Recently-added': '最近上架'
     // TODO 'Top-Development-Activity': 'Top Development Activity'
   },
