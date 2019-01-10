@@ -83,7 +83,7 @@ export default {
   @include font-display;
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.725rem;
   margin-top: 2rem;
   padding-bottom: 1rem;
   margin-bottom: 0;
