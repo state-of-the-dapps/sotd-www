@@ -102,6 +102,6 @@ export default {
 }
 
 .value {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 </style>

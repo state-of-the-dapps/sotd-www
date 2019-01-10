@@ -50,12 +50,12 @@ body,
 input,
 textarea {
   font-family: 'Overpass', sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  font-weight: 300;
   line-height: 1.2;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   color: $color--black;
-  letter-spacing: -0.15px;
+  letter-spacing: -0.25px;
 }
 
 body {

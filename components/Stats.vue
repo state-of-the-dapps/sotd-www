@@ -360,7 +360,7 @@ export default {
 <style lang="scss" scoped>
 .table-link {
   text-decoration: none;
-  border-bottom: 1px solid $color--black;
+  color: $color--purple;
 }
 
 .chart-wrapper-bar {
@@ -495,15 +495,12 @@ export default {
 
 .table-data {
   font-family: 'Amsi Pro Cond SemiBold';
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   &:first-child {
     padding-left: 0;
   }
   &:last-child {
     padding-right: 0;
-  }
-  &.-name {
-    text-transform: uppercase;
   }
 }
 
@@ -513,7 +510,7 @@ export default {
 
 .value {
   @include title;
-  font-size: 7rem;
+  font-size: 4rem;
   margin: 0;
   line-height: 1;
   color: $color--black;

@@ -384,7 +384,7 @@ export default {
 .required {
   display: inline-block;
   padding-left: 2px;
-  color: $color--light-purple;
+  color: $color--medium-purple;
   font-weight: 600;
 }
 

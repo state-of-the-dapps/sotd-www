@@ -82,7 +82,7 @@ export default {
 .dapp-icon {
   border-radius: 2px;
   padding: 2px;
-  margin-right: 8px;
+  margin-right: 11px;
   background: $color--white;
   box-shadow: 0 5px 15px rgba($color--black, 0.2);
 }
@@ -103,15 +103,23 @@ export default {
     display: flex;
     align-items: center;
     text-align: left;
-    padding: 10px 12px;
+    padding: 12px;
   }
   @include dapp-category-colors;
 }
 
+.heading-tagline {
+  display: inline-block;
+  padding-top: 3px;
+}
+
 .heading-title {
   @include title-1;
-  font-size: 3.2rem;
+  font-size: 2rem;
   margin: 0;
   text-transform: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

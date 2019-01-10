@@ -31,7 +31,7 @@ export default {
   border-radius: 3px;
   font-weight: 700;
   line-height: 1;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .positive {
   color: $color--positive;
@@ -40,6 +40,6 @@ export default {
   color: $color--negative;
 }
 .null {
-  color: $color--light-purple;
+  color: $color--medium-purple;
 }
 </style>
