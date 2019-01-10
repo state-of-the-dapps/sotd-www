@@ -101,9 +101,9 @@ export default {
 }
 
 .stat-item {
-  font-size: 1rem;
   padding: 4px 5px;
-  font-family: 'Inconsolata', monospace;
+  @include font-text-mono;
+  font-size: 0.9rem;
   &:nth-child(odd) {
     background: lighten($color--white, 100%);
   }
@@ -118,7 +118,8 @@ export default {
 }
 
 .stat-value {
-  font-family: 'Inconsolata', monospace;
+  @include font-text-mono;
+  font-size: 0.9rem;
 }
 
 .subtitle {

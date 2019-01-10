@@ -38,11 +38,11 @@ export default {
 .component-ranking-table-value-pct {
   display: flex;
   flex-direction: column;
-  @include font-monospace;
+  @include font-text-mono;
 }
 
 .pct {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   &.is-positive {
     color: $color--positive;
   }
@@ -52,6 +52,6 @@ export default {
 }
 
 .value {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 </style>

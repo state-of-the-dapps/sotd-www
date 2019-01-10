@@ -50,9 +50,9 @@ body,
 input,
 textarea {
   font-family: 'Overpass', sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.2;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   color: $color--black;
   letter-spacing: -0.25px;
@@ -115,7 +115,7 @@ button {
   border: 0;
   border-radius: 0;
   color: inherit;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
   /* cursor: default; */
   font: inherit;
   line-height: normal;
@@ -144,7 +144,7 @@ pre {
 }
 
 code {
-  @include font-monospace;
+  @include font-text-mono;
   margin: 0;
   padding: 0;
 }
@@ -152,19 +152,6 @@ code {
 #__nuxt,
 #__layout {
   height: 100%;
-}
-
-html,
-.wf-loading {
-  visibility: hidden !important;
-  opacity: 0;
-}
-
-.wf-active,
-.wf-inactive {
-  visibility: visible !important;
-  opacity: 1;
-  transition: opacity 0.5s;
 }
 
 .--is-hidden {
@@ -304,14 +291,13 @@ html,
 
 .title-1,
 .title-2 {
-  font-family: 'Dharma-Gothic-Regular';
+  @include font-display;
   letter-spacing: 0px;
   font-weight: normal;
 }
 
 .title-1 {
   letter-spacing: 0.5px;
-  text-transform: uppercase;
 }
 
 .title-2 {

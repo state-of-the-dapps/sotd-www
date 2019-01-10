@@ -112,7 +112,8 @@ export default {
 }
 
 .contract-address-value {
-  font-family: 'Inconsolata', monospace;
+  @include font-text-mono;
+  font-size: 0.9rem;
 }
 
 .contract-address-copy {

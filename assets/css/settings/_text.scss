@@ -1,18 +1,10 @@
 @mixin title {
-  font-family: 'Dharma-Gothic-Regular';
-  letter-spacing: 0.25px;
-  font-weight: normal;  
-}
-
-@mixin dharma-gothic {
-  font-family: 'Dharma-Gothic-Regular';
-  letter-spacing: 0px;
-  font-weight: normal;
+  @include font-display;
+  font-weight: 400;  
 }
 
 @mixin title-1 {
   @include title;
-  text-transform: uppercase; 
 }
 
 @mixin title-2 {
@@ -29,16 +21,31 @@
   letter-spacing: -.5px;
 }
 
-@mixin font-sans {
-  font-family: 'Overpass', sans-serif;
+@mixin font-display {
+  font-family: 'Amsi Pro Cond SemiBold', 'Noto Sans SC', sans-serif;
+  font-weight: 400;  
 }
 
-@mixin font-monospace {
-  font-family: 'Inconsolata', monospace;
+@mixin font-text {
+  font-family: 'Overpass', 'Noto Sans SC', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@mixin font-gothic {
-  font-family: 'Dharma-Gothic-Regular';
-  letter-spacing: 0px;
-  font-weight: normal;
+@mixin font-text-bold {
+  font-family: 'Overpass', 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-text-mono {
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
+  font-weight: 400
+}
+
+@mixin font-text-mono-bold {
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
+  font-weight: 700;
 }

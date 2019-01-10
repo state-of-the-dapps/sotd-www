@@ -70,7 +70,7 @@ export default {
     progress: false
   },
   serverMiddleware: ['redirect-ssl', '~/middleware/logger'],
-  css: ['~/assets/css/normalize.scss'],
+  css: ['~/assets/css/normalize.scss', '~/assets/css/fonts.css'],
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
@@ -92,9 +92,14 @@ export default {
         content: 'The curated list of decentralized applications'
       },
       { hid: 'image', property: 'og:image', content: '/og-default.png' },
-      { name: 'theme-color', content: '#222' }
+      { name: 'theme-color', content: '#333' }
     ],
     link: [
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Overpass+Mono:400,700|Overpass:300,700|Noto+Sans+SC:400,700&amp;subset=chinese-simplified'
+      },
       {
         rel: 'apple-touch-icon',
         href: '/apple-touch-icon.png',
@@ -128,7 +133,6 @@ export default {
     { src: '~/plugins/vue-config' },
     { src: '~/plugins/vue-filters' },
     { src: '~/plugins/mixpanel', ssr: false },
-    { src: '~/plugins/webfontloader', ssr: false },
     { src: '~/plugins/clipboard', ssr: false },
     { src: '~/plugins/intercom.js', ssr: false }
   ]

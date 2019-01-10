@@ -36,6 +36,6 @@ export default {
 }
 
 .required {
-  color: $color--light-purple;
+  color: $color--medium-purple;
 }
 </style>

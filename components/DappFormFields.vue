@@ -278,7 +278,7 @@ export default {
   /deep/ .required {
     display: inline-block;
     padding-left: 2px;
-    color: $color--light-purple;
+    color: $color--medium-purple;
     font-weight: 700;
   }
 
@@ -293,7 +293,7 @@ export default {
   }
 
   /deep/ .boost {
-    background: rgba($color--light-purple, 0.25);
+    background: rgba($color--medium-purple, 0.25);
     padding: 3px 4px 2px 4px;
     line-height: 1;
     border-radius: 2px;

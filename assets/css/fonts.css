@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Amsi Pro Cond SemiBold';
+    src: url('~assets/fonts/amsi-pro-cond-semibold.eot');
+    src: url('~assets/fonts/amsi-pro-cond-semibold.eot?#iefix') format('embedded-opentype'),
+         url('~assets/fonts/amsi-pro-cond-semibold.woff2') format('woff2'),
+         url('~assets/fonts/amsi-pro-cond-semibold.woff') format('woff'),
+         url('~assets/fonts/amsi-pro-cond-semibold.ttf') format('truetype');
+    font-weight: 400;
+}

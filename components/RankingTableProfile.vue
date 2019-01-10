@@ -17,6 +17,6 @@ export default {
 
 <style lang="scss" scoped>
 .component-ranking-table-profile {
-  @include font-monospace;
+  @include font-text-mono;
 }
 </style>

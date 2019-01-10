@@ -120,9 +120,9 @@ export default {
 }
 
 .dapp-dau {
-  @include font-monospace;
+  @include font-text-mono;
   line-height: 1;
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   margin-left: auto;
 }
 
@@ -215,7 +215,7 @@ export default {
 .view {
   display: inline-block;
   font-size: 1rem;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: normal;

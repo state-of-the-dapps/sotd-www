@@ -137,18 +137,15 @@ export default {
 }
 
 .title-1 {
-  font-size: 5.3rem;
+  font-size: 3.8rem;
   line-height: 0.825;
-  letter-spacing: 1.05px;
   margin: 1rem 0 0.75rem 0;
+  letter-spacing: 0;
+  text-transform: none;
   @include tweakpoint('min-width', 1400px) {
     margin-top: 20px;
     margin-bottom: 10px;
     text-align: center;
-  }
-  &.zh {
-    font-size: 4.5rem;
-    line-height: 1;
   }
 }
 

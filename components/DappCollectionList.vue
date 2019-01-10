@@ -79,7 +79,7 @@ export default {
   display: inline-block;
   font-family: 'Overpass';
   font-size: 1rem;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: normal;

@@ -39,7 +39,7 @@ export default {
     width: 100%;
   }
   &.special {
-    background: $gradient--button;
+    background: $color--light-purple;
     font-size: 1.15rem;
     font-weight: 600;
     box-shadow: 0 2px 10px rgba($color--black, 0.1);
