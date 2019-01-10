@@ -1,5 +1,5 @@
 @mixin title {
-  font-family: 'Amsi Pro Cond SemiBold';
+  @include font-display;
   font-weight: 400;  
 }
 
@@ -22,30 +22,30 @@
 }
 
 @mixin font-display {
-  font-family: 'Amsi Pro Cond SemiBold', sans-serif;
+  font-family: 'Amsi Pro Cond SemiBold', 'Noto Sans SC', sans-serif;
   font-weight: 400;  
 }
 
 @mixin font-text {
-  font-family: 'Overpass', sans-serif;
+  font-family: 'Overpass', 'Noto Sans SC', sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @mixin font-text-bold {
-  font-family: 'Overpass', sans-serif;
+  font-family: 'Overpass', 'Noto Sans SC', sans-serif;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @mixin font-text-mono {
-  font-family: 'Overpass Mono', monospace;
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
   font-weight: 400
 }
 
 @mixin font-text-mono-bold {
-  font-family: 'Overpass Mono', monospace;
+  font-family: 'Overpass Mono', 'Noto Sans SC', monospace;
   font-weight: 700;
 }

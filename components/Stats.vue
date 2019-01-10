@@ -160,7 +160,7 @@
                   name: 'rankings-platform',
                   params: { platform: platform.platform.toLowerCase() }
                 })"
-                class="table-link">{{ platform.platform }}</nuxt-link>
+                class="table-link">{{ $t(`platformOptions.${platform.platform}`) }}</nuxt-link>
             </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
             <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0 }}</td>
@@ -360,7 +360,11 @@ export default {
 <style lang="scss" scoped>
 .table-link {
   text-decoration: none;
-  color: $color--purple;
+  color: $color--medium-purple;
+  transition: color 0.1s ease;
+  &:hover {
+    color: $color--purple;
+  }
 }
 
 .chart-wrapper-bar {
@@ -374,16 +378,26 @@ export default {
 }
 
 .list {
+  background: $color--white;
   display: block;
   text-align: center;
   margin-bottom: 1rem;
-  margin-top: 3rem;
+  margin-top: 5rem;
+  margin-left: -10px;
+  margin-right: -10px;
+  padding: 2rem 0;
+  @include tweakpoint('min-width', 680px) {
+    margin-left: -22px;
+    margin-right: -22px;
+  }
   @include tweakpoint('min-width', 1000px) {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 10px;
     justify-content: center;
     text-align: left;
+  }
+  .heading {
+    margin-top: 0;
   }
 }
 
@@ -442,7 +456,7 @@ export default {
   @include title-2;
   font-size: 3rem;
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
   &.screenshot {
     font-size: 3.1rem;
@@ -494,7 +508,7 @@ export default {
 }
 
 .table-data {
-  font-family: 'Amsi Pro Cond SemiBold';
+  @include font-display;
   font-size: 2.5rem;
   &:first-child {
     padding-left: 0;
@@ -520,7 +534,6 @@ export default {
   @include tweakpoint('min-width', 1000px) {
     margin-right: 40px;
     padding-right: 40px;
-    border-right: 1px solid rgba($color--black, 0.2);
   }
 }
 </style>

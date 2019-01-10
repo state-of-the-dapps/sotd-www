@@ -9,7 +9,7 @@
           <h3 class="label">
             <nuxt-link
               :to="localePath({ name: 'dapps', query: { status: status.status }})"
-              class="link">{{ $t(`statusOptions.${status.status}`) }}</nuxt-link>
+              class="link">{{ $t(`statusOptions.${status.status}`) | capitalize }}</nuxt-link>
           </h3>
         </div>
         <div class="stat-item-field -value">
@@ -59,12 +59,11 @@ export default {
 }
 
 .label {
-  font-family: 'Amsi Pro Cond SemiBold';
-  font-size: 3rem;
+  @include font-display;
+  font-size: 2.5rem;
   font-weight: normal;
   margin: 5px 0;
   letter-spacing: normal;
-  text-transform: uppercase;
   @include tweakpoint('min-width', 1000px) {
     text-align: right;
     padding-right: 10px;
@@ -73,7 +72,11 @@ export default {
 
 .link {
   text-decoration: none;
-  border-bottom: 1px solid $color--black;
+  color: $color--medium-purple;
+  transition: color 0.1s ease;
+  &:hover {
+    color: $color--purple;
+  }
 }
 
 .spacer {
@@ -108,7 +111,7 @@ export default {
 
 .value {
   color: $color--white;
-  min-width: 30px;
+  min-width: 50px;
   height: 50px;
   background: $gradient--main-1;
 }

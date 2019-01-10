@@ -123,7 +123,7 @@ export default {
 .dapp-dau {
   @include font-text-mono;
   line-height: 1;
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   margin-left: auto;
 }
 

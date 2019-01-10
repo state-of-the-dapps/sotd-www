@@ -100,7 +100,7 @@ export default {
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Overpass+Mono:400,700|Overpass:300,700'
+        href: 'https://fonts.googleapis.com/css?family=Overpass+Mono:400,700|Overpass:300,700|Noto+Sans+SC:400,700&amp;subset=chinese-simplified'
       },
       {
         rel: 'apple-touch-icon',

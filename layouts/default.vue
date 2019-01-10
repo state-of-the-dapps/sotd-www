@@ -50,7 +50,7 @@ body,
 input,
 textarea {
   font-family: 'Overpass', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
@@ -291,7 +291,7 @@ code {
 
 .title-1,
 .title-2 {
-  font-family: 'Amsi Pro Cond SemiBold';
+  @include font-display;
   letter-spacing: 0px;
   font-weight: normal;
 }
