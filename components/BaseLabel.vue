@@ -14,11 +14,13 @@ export default {
   props: {
     field: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     label: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     required: {
       type: Boolean,

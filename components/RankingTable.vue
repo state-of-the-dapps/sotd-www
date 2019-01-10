@@ -235,24 +235,25 @@ export default {
     isLoading: {
       type: Boolean,
       required: true
+      // TODO default value
     },
     pager: {
       type: Object,
       required: true
+      // TODO default value
     },
     columnOptions: {
       type: Array,
       required: true
+      // TODO default value
     },
     selectedColumn: {
       type: Object,
       required: true,
-      default: () => {
-        return {
-          text: '',
-          selection: ''
-        }
-      }
+      default: () => ({
+        text: '',
+        selection: ''
+      })
     }
   },
   data() {

@@ -28,10 +28,12 @@ export default {
     audits: {
       type: Array,
       required: true
+      // TODO default value
     },
     slug: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   methods: {

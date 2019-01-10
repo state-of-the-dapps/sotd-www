@@ -24,10 +24,12 @@ export default {
     slug: {
       type: String,
       required: true
+      // TODO default value
     },
     tags: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   computed: {

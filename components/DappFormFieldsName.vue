@@ -51,22 +51,27 @@ export default {
     errors: {
       type: Array,
       required: true
+      // TODO default value
     },
     existingDapp: {
       type: String,
       required: true
+      // TODO default value
     },
     formType: {
       type: String,
       required: true
+      // TODO default value
     },
     name: {
       type: String,
       required: true
+      // TODO default value
     },
     warnings: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   data() {

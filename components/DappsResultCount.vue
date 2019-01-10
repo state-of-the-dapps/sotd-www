@@ -35,14 +35,17 @@ export default {
     end: {
       type: Number,
       required: true
+      // TODO default value
     },
     start: {
       type: Number,
       required: true
+      // TODO default value
     },
     total: {
       type: Number,
       required: true
+      // TODO default value
     }
   }
 }

@@ -10,6 +10,7 @@ export default {
     status: {
       type: String,
       required: true
+      // TODO default value
     }
   }
 }

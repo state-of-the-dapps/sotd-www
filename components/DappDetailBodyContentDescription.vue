@@ -11,7 +11,8 @@ export default {
   props: {
     description: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     }
   }
 }

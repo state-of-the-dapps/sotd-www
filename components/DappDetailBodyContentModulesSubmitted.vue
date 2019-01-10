@@ -10,6 +10,7 @@ export default {
     submitted: {
       type: String,
       required: true
+      // TODO default value
     }
   }
 }

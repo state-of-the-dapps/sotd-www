@@ -21,9 +21,10 @@ export default {
     rank: {
       type: Number,
       required: true
+      // TODO default value
     },
     rankDelta: {
-      type: Number,
+      type: [Number, null],
       default: null
     }
   }

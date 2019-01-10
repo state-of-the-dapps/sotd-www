@@ -11,7 +11,8 @@ export default {
   props: {
     alert: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     }
   }
 }

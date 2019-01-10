@@ -41,18 +41,22 @@ export default {
     iconSmallUrl: {
       type: String,
       required: true
+      // TODO default value
     },
     name: {
       type: String,
       required: true
+      // TODO default value
     },
     category: {
       type: String,
       required: true
+      // TODO default value
     },
     teaser: {
       type: String,
       required: true
+      // TODO default value
     }
   }
 }

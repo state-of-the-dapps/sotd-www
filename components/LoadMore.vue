@@ -29,22 +29,27 @@ export default {
     dapps: {
       type: Array,
       required: true
+      // TODO default value
     },
     isLoading: {
       type: Boolean,
       required: true
+      // TODO default value
     },
     limit: {
       type: Number,
       required: true
+      // TODO default value
     },
     offset: {
       type: Number,
       required: true
+      // TODO default value
     },
     total: {
       type: Number,
       required: true
+      // TODO default value
     }
   },
   methods: {

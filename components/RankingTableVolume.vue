@@ -39,10 +39,12 @@ export default {
     platform: {
       type: String,
       required: true
+      // TODO default value
     },
     stats: {
       type: Object,
       required: true
+      // TODO default value
     }
   },
   computed: {

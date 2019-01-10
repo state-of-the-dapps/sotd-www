@@ -107,74 +107,92 @@ export default {
     acceptedTerms: {
       type: Boolean,
       required: true
+      // TODO default value
     },
     contractsMainnet: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsKovan: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsRopsten: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsRinkeby: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsPoaMainnet: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsGoChainMainnet: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsEosMainnet: {
       type: Array,
       required: true
+      // TODO default value
     },
     contractsSteemMainnet: {
       type: Array,
       required: true
+      // TODO default value
     },
     diffExists: {
       type: Boolean,
       required: true
+      // TODO default value
     },
     errorFields: {
       type: Array,
       required: true
+      // TODO default value
     },
     errors: {
       type: Object,
       required: true
+      // TODO default value
     },
     fields: {
       type: Object,
       required: true
+      // TODO default value
     },
     formType: {
       type: String,
       required: true
+      // TODO default value
     },
     profileScore: {
       type: Number,
       required: true
+      // TODO default value
     },
     sending: {
       type: Boolean,
       required: true
+      // TODO default value
     },
     submitReason: {
       type: String,
       required: true
+      // TODO default value
     },
     subscribeNewsletter: {
       type: Boolean,
       required: true
+      // TODO default value
     }
   },
   data: () => {

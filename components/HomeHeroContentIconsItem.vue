@@ -21,10 +21,12 @@ export default {
     index: {
       type: Number,
       required: true
+      // TODO default value
     },
     status: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

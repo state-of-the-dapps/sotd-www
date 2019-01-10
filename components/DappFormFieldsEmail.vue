@@ -26,14 +26,17 @@ export default {
     email: {
       type: String,
       required: true
+      // TODO default value
     },
     errors: {
       type: Array,
       required: true
+      // TODO default value
     },
     formType: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

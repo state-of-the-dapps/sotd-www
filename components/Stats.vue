@@ -196,7 +196,8 @@ export default {
   props: {
     growthData: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     statCategories: {
       type: Array,

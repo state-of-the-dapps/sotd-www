@@ -35,6 +35,7 @@ export default {
     selectedCategory: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

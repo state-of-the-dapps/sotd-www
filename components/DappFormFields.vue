@@ -149,34 +149,42 @@ export default {
     errors: {
       type: Object,
       required: true
+      // TODO default value
     },
     existingDapp: {
       type: String,
       required: true
+      // TODO default value
     },
     fields: {
       type: Object,
       required: true
+      // TODO default value
     },
     formType: {
       type: String,
       required: true
+      // TODO default value
     },
     selectedTags: {
       type: Array,
       required: true
+      // TODO default value
     },
     tagsResults: {
       type: Array,
       required: true
+      // TODO default value
     },
     tagQuery: {
       type: String,
       required: true
+      // TODO default value
     },
     warnings: {
       type: Object,
       required: true
+      // TODO default value
     }
   },
   methods: {

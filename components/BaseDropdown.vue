@@ -90,7 +90,8 @@ export default {
     },
     options: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     selected: {
       type: String,
@@ -98,7 +99,8 @@ export default {
     },
     title: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     theme: {
       type: String,

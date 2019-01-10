@@ -14,10 +14,12 @@ export default {
     dappName: {
       type: String,
       required: true
+      // TODO default value
     },
     dappSlug: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   methods: {

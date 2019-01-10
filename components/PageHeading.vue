@@ -10,6 +10,7 @@ export default {
     title: {
       type: String,
       required: true
+      // TODO default value
     }
   }
 }

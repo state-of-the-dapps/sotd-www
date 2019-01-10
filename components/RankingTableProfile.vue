@@ -10,6 +10,7 @@ export default {
     score: {
       type: Number,
       required: true
+      // TODO default value
     }
   }
 }

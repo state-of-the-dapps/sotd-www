@@ -64,18 +64,22 @@ export default {
     name: {
       type: String,
       required: true
+      // TODO default value
     },
     query: {
       type: String,
       required: true
+      // TODO default value
     },
     results: {
       type: Array,
       required: true
+      // TODO default value
     },
     selected: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   data() {

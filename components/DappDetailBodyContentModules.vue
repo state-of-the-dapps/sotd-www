@@ -175,6 +175,7 @@ export default {
     dapp: {
       type: Object,
       required: true
+      // TODO default value
     }
   },
   computed: {

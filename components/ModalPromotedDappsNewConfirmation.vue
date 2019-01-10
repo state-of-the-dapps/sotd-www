@@ -14,6 +14,7 @@ export default {
     hasSubmittedDapp: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   methods: {

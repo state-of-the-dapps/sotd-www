@@ -20,6 +20,7 @@ export default {
     dapps: {
       type: Array,
       required: true
+      // TODO default value
     }
   }
 }

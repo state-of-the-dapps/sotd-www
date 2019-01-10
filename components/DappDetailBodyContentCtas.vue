@@ -88,7 +88,19 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        isNsfw: false,
+        logoUrl: '',
+        nofollow: false,
+        socials: [],
+        sites: {
+          websiteUrl: '',
+          dappUrl: ''
+        },
+        slug: '',
+        tags: []
+      })
     }
   },
   data() {

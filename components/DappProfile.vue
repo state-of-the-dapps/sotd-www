@@ -34,10 +34,12 @@ export default {
     dapp: {
       type: String,
       required: true
+      // TODO default value
     },
     profileScore: {
       type: Number,
       required: true
+      // TODO default value
     }
   },
   methods: {

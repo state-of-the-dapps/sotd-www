@@ -32,10 +32,12 @@ export default {
     errors: {
       type: Array,
       required: true
+      // TODO default value
     },
     license: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

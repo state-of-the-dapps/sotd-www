@@ -52,10 +52,12 @@ export default {
     heading: {
       type: String,
       required: true
+      // TODO default value
     },
     headingRoute: {
       type: Object,
       required: true
+      // TODO default value
     },
     hasLine: {
       type: Boolean,

@@ -319,10 +319,12 @@ export default {
     platform: {
       type: String,
       required: true
+      // TODO default value
     },
     contracts: {
       type: Object,
       required: true
+      // TODO default value
     },
     ethIsMissing: {
       type: Boolean,
@@ -347,66 +349,82 @@ export default {
     mainnet: {
       type: String,
       required: true
+      // TODO default value
     },
     mainnetErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     ropsten: {
       type: String,
       required: true
+      // TODO default value
     },
     ropstenErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     kovan: {
       type: String,
       required: true
+      // TODO default value
     },
     kovanErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     rinkeby: {
       type: String,
       required: true
+      // TODO default value
     },
     rinkebyErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     poaMainnet: {
       type: String,
       required: true
+      // TODO default value
     },
     poaMainnetErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     goChainMainnet: {
       type: String,
       required: true
+      // TODO default value
     },
     goChainMainnetErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     eosMainnet: {
       type: String,
       required: true
+      // TODO default value
     },
     eosMainnetErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     steemMainnet: {
       type: String,
       required: true
+      // TODO default value
     },
     steemMainnetErrors: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   data() {

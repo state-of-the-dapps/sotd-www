@@ -29,6 +29,7 @@ export default {
     dapp: {
       type: Object,
       required: true
+      // TODO default value
     },
     hasPromotedDapp: {
       type: Boolean,
@@ -37,6 +38,7 @@ export default {
     index: {
       type: Number,
       required: true
+      // TODO default value
     }
   },
   data() {

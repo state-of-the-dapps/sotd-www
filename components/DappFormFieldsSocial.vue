@@ -88,30 +88,37 @@ export default {
     blog: {
       type: String,
       required: true
+      // TODO default value
     },
     github: {
       type: String,
       required: true
+      // TODO default value
     },
     facebook: {
       type: String,
       required: true
+      // TODO default value
     },
     reddit: {
       type: String,
       required: true
+      // TODO default value
     },
     chat: {
       type: String,
       required: true
+      // TODO default value
     },
     chatErrors: {
       type: Array,
       required: true
+      // TODO default value
     },
     twitter: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

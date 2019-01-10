@@ -25,11 +25,13 @@ export default {
   props: {
     slug: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     categories: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     }
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetail">
+  <div class="DappDetail">
     <DappDetailBody 
       :dapp="dapp" 
       :direct="direct"/>
@@ -22,7 +22,10 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        relatedDapps: []
+      })
     },
     direct: {
       type: Boolean,

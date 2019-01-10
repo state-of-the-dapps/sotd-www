@@ -39,7 +39,8 @@ export default {
   props: {
     baseRoute: {
       type: String,
-      required: true
+      required: true,
+      default: ''
     },
     routeHash: {
       type: String,

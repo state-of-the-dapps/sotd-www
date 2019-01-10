@@ -80,6 +80,7 @@ export default {
     endpoint: {
       type: String,
       required: true
+      // TODO default value
     },
     dapp: {
       type: Object,
@@ -92,6 +93,7 @@ export default {
     mpEventName: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

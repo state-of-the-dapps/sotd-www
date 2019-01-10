@@ -55,14 +55,17 @@ export default {
     iconSmallUrl: {
       type: String,
       required: true
+      // TODO default value
     },
     name: {
       type: String,
       required: true
+      // TODO default value
     },
     rank: {
       type: Number,
       required: true
+      // TODO default value
     },
     rankDelta: {
       type: Number,
@@ -71,14 +74,17 @@ export default {
     selectedColumn: {
       type: Object,
       required: true
+      // TODO default value
     },
     slug: {
       type: String,
       required: true
+      // TODO default value
     },
     teaser: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

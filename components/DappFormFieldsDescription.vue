@@ -37,10 +37,12 @@ export default {
     errors: {
       type: Array,
       required: true
+      // TODO default value
     },
     description: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

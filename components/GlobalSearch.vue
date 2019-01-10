@@ -107,10 +107,12 @@ export default {
     color: {
       type: String,
       required: true
+      // TODO default value
     },
     search: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

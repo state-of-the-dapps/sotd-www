@@ -50,7 +50,15 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        categories: [],
+        iconSmallUrl: '',
+        isNew: false,
+        name: '',
+        slug: '',
+        teaser: ''
+      })
     },
     optionalAttribute: {
       type: String,

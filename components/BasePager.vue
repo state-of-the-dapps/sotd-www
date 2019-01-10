@@ -67,15 +67,18 @@ export default {
   props: {
     limit: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     offset: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     totalCount: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     }
   },
   computed: {

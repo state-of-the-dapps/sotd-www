@@ -18,6 +18,7 @@ export default {
     users: {
       type: Array,
       required: true
+      // TODO default value
     }
   }
 }

@@ -26,7 +26,13 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        categories: [],
+        iconSmallUrl: '',
+        name: '',
+        teaser: ''
+      })
     },
     direct: {
       type: Boolean,

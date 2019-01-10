@@ -41,10 +41,12 @@ export default {
     platform: {
       type: String,
       required: true
+      // TODO default value
     },
     slug: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data() {

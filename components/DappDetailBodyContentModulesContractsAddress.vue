@@ -33,18 +33,22 @@ export default {
     address: {
       type: String,
       required: true
+      // TODO default value
     },
     network: {
       type: String,
       required: true
+      // TODO default value
     },
     platform: {
       type: String,
       required: true
+      // TODO default value
     },
     slug: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   data: () => {

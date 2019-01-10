@@ -32,6 +32,7 @@ export default {
     statuses: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   computed: {

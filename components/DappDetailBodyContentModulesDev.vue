@@ -37,6 +37,7 @@ export default {
     dev30d: {
       type: Number,
       required: true
+      // TODO default value
     },
     dev30dPct: {
       type: Number,
@@ -45,10 +46,12 @@ export default {
     dev90d: {
       type: Number,
       required: true
+      // TODO default value
     },
     sparkline: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   methods: {

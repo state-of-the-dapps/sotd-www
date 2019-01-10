@@ -37,8 +37,13 @@ export default {
   },
   props: {
     collection: {
+      type: Object,
       required: true,
-      type: Object
+      default: () => ({
+        items: [],
+        name: '',
+        slug: ''
+      })
     }
   },
   data() {

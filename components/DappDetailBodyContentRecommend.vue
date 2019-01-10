@@ -91,10 +91,12 @@ export default {
     name: {
       type: String,
       required: true
+      // TODO default value
     },
     slug: {
       type: String,
       required: true
+      // TODO default value
     },
     votes: {
       type: Number,

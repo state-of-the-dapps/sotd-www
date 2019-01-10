@@ -53,6 +53,7 @@ export default {
     category: {
       type: Object,
       required: true
+      // TODO default value
     }
   },
   data() {

@@ -16,6 +16,7 @@ export default {
     platform: {
       type: String,
       required: true
+      // TODO default value
     }
   },
   methods: {

@@ -40,14 +40,17 @@ export default {
     errors: {
       type: Array,
       required: true
+      // TODO default value
     },
     teaser: {
       type: String,
       required: true
+      // TODO default value
     },
     warnings: {
       type: Array,
       required: true
+      // TODO default value
     }
   },
   data() {

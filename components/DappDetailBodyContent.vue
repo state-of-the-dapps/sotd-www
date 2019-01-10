@@ -99,7 +99,28 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({
+        alert: '',
+        categories: [],
+        description: '',
+        name: '',
+        platform: '',
+        productImage: '',
+        profileScore: null,
+        rank: null,
+        rankDelta: null,
+        slug: '',
+        stats: {
+          negative: null,
+          neutral: null,
+          positive: null,
+          star_rating: null,
+          votes: null
+        },
+        tags: [],
+        teaser: ''
+      })
     }
   }
 }
