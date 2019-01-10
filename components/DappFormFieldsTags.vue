@@ -151,12 +151,14 @@ export default {
       }, 5000)
     },
     select(item, key) {
-      this.$emit('selectTag', key)
-      this.$emit('resetTagResults')
-      this.$mixpanel.track('DApp Form - Select tag', {
-        tag: item,
-        path: this.sourcePath
-      })
+      if (typeof item !== 'undefined') {
+        this.$emit('selectTag', key)
+        this.$emit('resetTagResults')
+        this.$mixpanel.track('DApp Form - Select tag', {
+          tag: item,
+          path: this.sourcePath
+        })
+      }
     }
   }
 }
