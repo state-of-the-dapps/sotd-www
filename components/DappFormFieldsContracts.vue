@@ -504,7 +504,7 @@ export default {
 }
 
 .input {
-  @include font-monospace;
+  @include font-text-mono;
   display: block;
   resize: none;
   min-height: 75px;

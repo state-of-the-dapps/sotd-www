@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .SectionHeading {
-  @include font-sans;
+  @include font-text;
   display: flex;
   align-items: center;
   font-size: 1.7rem;
@@ -98,11 +98,11 @@ export default {
 }
 
 .cta {
-  @include font-sans;
+  @include font-text;
   padding-top: 5px;
   display: inline-block;
   font-size: 1rem;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
   margin-left: 12px;
   text-decoration: none;
   font-weight: 300;

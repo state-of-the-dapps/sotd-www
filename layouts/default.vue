@@ -55,7 +55,7 @@ textarea {
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   color: $color--black;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
 }
 
 body {
@@ -115,7 +115,7 @@ button {
   border: 0;
   border-radius: 0;
   color: inherit;
-  letter-spacing: -0.25px;
+  letter-spacing: -0.15px;
   /* cursor: default; */
   font: inherit;
   line-height: normal;
@@ -144,7 +144,7 @@ pre {
 }
 
 code {
-  @include font-monospace;
+  @include font-text-mono;
   margin: 0;
   padding: 0;
 }
@@ -291,14 +291,13 @@ code {
 
 .title-1,
 .title-2 {
-  font-family: 'Dharma-Gothic-Regular';
+  font-family: 'Amsi Pro Cond SemiBold';
   letter-spacing: 0px;
   font-weight: normal;
 }
 
 .title-1 {
   letter-spacing: 0.5px;
-  text-transform: uppercase;
 }
 
 .title-2 {

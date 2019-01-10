@@ -59,7 +59,7 @@ export default {
 }
 
 .label {
-  font-family: 'Dharma-Gothic-Regular';
+  font-family: 'Amsi Pro Cond SemiBold';
   font-size: 3rem;
   font-weight: normal;
   margin: 5px 0;

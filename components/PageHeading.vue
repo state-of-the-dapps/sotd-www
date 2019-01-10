@@ -20,7 +20,6 @@ export default {
   @include title-1;
   text-align: center;
   font-size: 3.5rem;
-  text-transform: uppercase;
   margin-bottom: 0.5rem;
 }
 </style>

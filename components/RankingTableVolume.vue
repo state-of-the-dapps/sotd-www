@@ -88,7 +88,7 @@ export default {
 .component-ranking-table-volume {
   display: flex;
   flex-direction: column;
-  @include font-monospace;
+  @include font-text-mono;
 }
 
 .pct {

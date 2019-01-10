@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .BaseDelta {
-  @include font-monospace;
+  @include font-text-mono;
   display: inline-block;
   border-radius: 3px;
   font-weight: 700;

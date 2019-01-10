@@ -494,7 +494,7 @@ export default {
 }
 
 .table-data {
-  font-family: 'Dharma-Gothic-Regular';
+  font-family: 'Amsi Pro Cond SemiBold';
   font-size: 3.5rem;
   &:first-child {
     padding-left: 0;

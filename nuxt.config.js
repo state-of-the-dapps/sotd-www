@@ -95,9 +95,13 @@ export default {
         content: 'The curated list of decentralized applications'
       },
       { hid: 'image', property: 'og:image', content: '/og-default.png' },
-      { name: 'theme-color', content: '#222' }
+      { name: 'theme-color', content: '#333' }
     ],
     link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Overpass+Mono:400,700|Overpass:300,700'
+      },
       {
         rel: 'apple-touch-icon',
         href: '/apple-touch-icon.png',
