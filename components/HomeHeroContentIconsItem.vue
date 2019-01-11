@@ -20,13 +20,13 @@ export default {
   props: {
     index: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     status: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

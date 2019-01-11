@@ -27,13 +27,13 @@ export default {
   props: {
     audits: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     slug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   methods: {

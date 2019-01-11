@@ -19,8 +19,8 @@ export default {
   props: {
     category: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   methods: {

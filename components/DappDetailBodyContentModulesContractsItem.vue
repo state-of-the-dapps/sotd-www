@@ -33,23 +33,23 @@ export default {
   props: {
     addresses: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     network: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     platform: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     slug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

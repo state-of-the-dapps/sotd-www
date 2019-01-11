@@ -40,23 +40,23 @@ export default {
     },
     iconSmallUrl: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     name: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     category: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     teaser: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   }
 }

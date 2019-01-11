@@ -13,13 +13,13 @@ export default {
   props: {
     dappName: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     dappSlug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   methods: {

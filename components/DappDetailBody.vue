@@ -28,10 +28,7 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        categories: [],
-        iconSmallUrl: '',
-        name: '',
-        teaser: ''
+        categories: []
       })
     },
     direct: {

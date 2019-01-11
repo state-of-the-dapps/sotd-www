@@ -25,18 +25,18 @@ export default {
   props: {
     email: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     errors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     formType: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

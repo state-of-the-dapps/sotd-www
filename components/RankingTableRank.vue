@@ -19,11 +19,11 @@ export default {
   props: {
     rank: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     rankDelta: {
-      type: Number,
+      type: [Number, null],
       default: null
     }
   }

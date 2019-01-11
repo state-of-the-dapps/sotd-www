@@ -234,8 +234,8 @@ export default {
     },
     isLoading: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     },
     pager: {
       type: Object,
@@ -244,16 +244,13 @@ export default {
     },
     columnOptions: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     selectedColumn: {
       type: Object,
       required: true,
-      default: () => ({
-        text: '',
-        selection: ''
-      })
+      default: () => ({})
     }
   },
   data() {

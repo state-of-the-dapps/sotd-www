@@ -51,7 +51,6 @@ import { trackDappPager } from '~/helpers/mixpanel'
 import BasePager from '~/components/BasePager'
 import DappCardList from '~/components/DappCardList'
 import DappsFilters from '~/components/DappsFilters'
-import DappsLoadMore from '~/components/DappsLoadMore.vue'
 import DappsResultCount from '~/components/DappsResultCount.vue'
 import DappsSearch from '~/components/DappsSearch.vue'
 import DappsSort from '~/components/DappsSort'
@@ -62,7 +61,6 @@ export default {
     DappsResultCount,
     DappCardList,
     DappsFilters,
-    DappsLoadMore,
     DappsSearch,
     DappsSort
   },

@@ -54,21 +54,21 @@ export default {
   props: {
     iconSmallUrl: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     name: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     rank: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     rankDelta: {
-      type: Number,
+      type: [Number, null],
       default: null
     },
     selectedColumn: {
@@ -78,13 +78,13 @@ export default {
     },
     slug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     teaser: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

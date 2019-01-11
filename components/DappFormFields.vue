@@ -148,13 +148,13 @@ export default {
   props: {
     errors: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     existingDapp: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     fields: {
       type: Object,
@@ -163,23 +163,23 @@ export default {
     },
     formType: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     selectedTags: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     tagsResults: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     tagQuery: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     warnings: {
       type: Object,

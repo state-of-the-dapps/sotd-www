@@ -37,8 +37,8 @@ export default {
     },
     index: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     }
   },
   data() {

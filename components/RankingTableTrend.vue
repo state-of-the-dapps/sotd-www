@@ -17,8 +17,8 @@ export default {
   props: {
     users: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   }
 }

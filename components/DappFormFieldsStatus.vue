@@ -18,8 +18,8 @@ export default {
   props: {
     status: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data: () => {

@@ -28,28 +28,28 @@ export default {
   props: {
     dapps: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     isLoading: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     },
     limit: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     offset: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     total: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     }
   },
   methods: {

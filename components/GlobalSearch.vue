@@ -106,13 +106,13 @@ export default {
   props: {
     color: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     search: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

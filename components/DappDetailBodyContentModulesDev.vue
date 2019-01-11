@@ -36,8 +36,8 @@ export default {
   props: {
     dev30d: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     dev30dPct: {
       type: Number,
@@ -45,13 +45,13 @@ export default {
     },
     dev90d: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     sparkline: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   },
   methods: {

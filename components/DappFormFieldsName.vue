@@ -50,28 +50,28 @@ export default {
   props: {
     errors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     existingDapp: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     formType: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     name: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     warnings: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   },
   data() {

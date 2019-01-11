@@ -33,13 +33,13 @@ export default {
   props: {
     dapp: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     profileScore: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     }
   },
   methods: {

@@ -34,8 +34,8 @@ export default {
   props: {
     selectedCategory: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

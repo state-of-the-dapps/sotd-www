@@ -90,15 +90,8 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        isNsfw: false,
-        logoUrl: '',
-        nofollow: false,
         socials: [],
-        sites: {
-          websiteUrl: '',
-          dappUrl: ''
-        },
-        slug: '',
+        sites: {},
         tags: []
       })
     }

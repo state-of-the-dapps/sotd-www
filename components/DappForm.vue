@@ -79,8 +79,8 @@ export default {
   props: {
     endpoint: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     dapp: {
       type: Object,
@@ -92,8 +92,8 @@ export default {
     },
     mpEventName: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

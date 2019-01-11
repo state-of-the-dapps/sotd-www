@@ -9,8 +9,8 @@ export default {
   props: {
     submitted: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   }
 }

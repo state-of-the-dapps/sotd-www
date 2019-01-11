@@ -34,18 +34,18 @@ export default {
   props: {
     end: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: 0
     },
     start: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: 0
     },
     total: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: 0
     }
   }
 }

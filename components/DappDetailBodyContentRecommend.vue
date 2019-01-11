@@ -90,13 +90,13 @@ export default {
     },
     name: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     slug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     votes: {
       type: Number,

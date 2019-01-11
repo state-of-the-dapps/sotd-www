@@ -51,8 +51,8 @@ export default {
   props: {
     platform: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

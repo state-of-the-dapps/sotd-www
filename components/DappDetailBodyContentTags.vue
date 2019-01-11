@@ -23,13 +23,13 @@ export default {
   props: {
     slug: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     tags: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   },
   computed: {

@@ -36,13 +36,13 @@ export default {
   props: {
     errors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     description: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

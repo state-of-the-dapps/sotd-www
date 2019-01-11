@@ -66,8 +66,8 @@ export default {
     },
     sparkline: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     quarterly: {
       type: Number,
@@ -76,8 +76,8 @@ export default {
     },
     title: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     type: {
       type: String,

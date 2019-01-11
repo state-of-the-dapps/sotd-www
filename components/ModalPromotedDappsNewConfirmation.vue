@@ -13,8 +13,8 @@ export default {
   props: {
     hasSubmittedDapp: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   methods: {

@@ -63,23 +63,23 @@ export default {
   props: {
     name: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     query: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     results: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     selected: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   },
   data() {

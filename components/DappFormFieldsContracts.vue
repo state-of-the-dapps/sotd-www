@@ -318,8 +318,8 @@ export default {
   props: {
     platform: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     contracts: {
       type: Object,
@@ -348,83 +348,83 @@ export default {
     },
     mainnet: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     mainnetErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     ropsten: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     ropstenErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     kovan: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     kovanErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     rinkeby: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     rinkebyErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     poaMainnet: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     poaMainnetErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     goChainMainnet: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     goChainMainnetErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     eosMainnet: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     eosMainnetErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     steemMainnet: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     steemMainnetErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     }
   },
   data() {
@@ -529,5 +529,6 @@ export default {
   width: 100%;
   padding: 10px 15px;
   border: none;
+  font-size: 0.95rem;
 }
 </style>

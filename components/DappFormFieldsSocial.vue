@@ -87,38 +87,38 @@ export default {
   props: {
     blog: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     github: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     facebook: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     reddit: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     chat: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     chatErrors: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     twitter: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   },
   data() {

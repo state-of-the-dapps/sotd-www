@@ -106,58 +106,58 @@ export default {
   props: {
     acceptedTerms: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     },
     contractsMainnet: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsKovan: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsRopsten: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsRinkeby: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsPoaMainnet: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsGoChainMainnet: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsEosMainnet: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     contractsSteemMainnet: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     diffExists: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     },
     errorFields: {
       type: Array,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => []
     },
     errors: {
       type: Object,
@@ -171,28 +171,28 @@ export default {
     },
     formType: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     profileScore: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     },
     sending: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     },
     submitReason: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     subscribeNewsletter: {
       type: Boolean,
-      required: true
-      // TODO default value
+      required: true,
+      default: false
     }
   },
   data: () => {

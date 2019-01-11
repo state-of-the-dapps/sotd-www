@@ -9,8 +9,8 @@ export default {
   props: {
     title: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     }
   }
 }

@@ -52,12 +52,7 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        categories: [],
-        iconSmallUrl: '',
-        isNew: false,
-        name: '',
-        slug: '',
-        teaser: ''
+        categories: []
       })
     },
     optionalAttribute: {

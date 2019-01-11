@@ -65,13 +65,13 @@ export default {
     },
     field: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     label: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     maxLength: {
       type: Number,
@@ -83,8 +83,8 @@ export default {
     },
     placeholder: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     required: {
       type: Boolean,
@@ -96,8 +96,8 @@ export default {
     },
     value: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     warnings: {
       type: Array,

@@ -44,15 +44,14 @@ export default {
     ctaRoute: {
       type: Object,
       default: () => ({
-        name: '',
         params: {},
         query: {}
       })
     },
     heading: {
       type: String,
-      required: true
-      // TODO default value
+      required: true,
+      default: ''
     },
     headingRoute: {
       type: Object,
@@ -66,7 +65,6 @@ export default {
     secondaryCtaRoute: {
       type: Object,
       default: () => ({
-        name: '',
         params: {},
         query: {}
       })

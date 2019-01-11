@@ -137,7 +137,7 @@
             :slug="dapp.slug"/>
         </div>
         <div 
-          v-if="dapp.audits.length"
+          v-if="dapp.audits && dapp.audits.length"
           class="module">
           <DappDetailBodyContentModulesAudits
             :slug="dapp.slug"
@@ -174,8 +174,21 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({
+        audits: [],
+        authors: [],
+        contractsMainnet: [],
+        contractsKovan: [],
+        contractsRinkeby: [],
+        contractsRopsten: [],
+        contractsPoaMainnet: [],
+        contractsGoChainMainnet: [],
+        contractsEosMainnet: [],
+        contractsSteemMainnet: [],
+        sparklines: {},
+        stats: {}
+      })
     }
   },
   computed: {

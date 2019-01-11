@@ -9,8 +9,8 @@ export default {
   props: {
     score: {
       type: Number,
-      required: true
-      // TODO default value
+      required: true,
+      default: null
     }
   }
 }
