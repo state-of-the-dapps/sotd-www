@@ -68,7 +68,7 @@ export default {
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'POA') {
         addressLink =
-          'https://blockscout.com/poa/address/' +
+          'https://blockscout.com/poa/core/address/' +
           this.address +
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'GoChain') {
