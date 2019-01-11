@@ -190,7 +190,7 @@ export default {
   background: rgba($color--black, 0.1);
   &.important {
     border-color: $color--black;
-    background: $color--white;
+    background: transparent;
   }
   .inline & {
     padding: 3px 10px;

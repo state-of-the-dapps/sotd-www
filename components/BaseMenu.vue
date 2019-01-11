@@ -380,12 +380,12 @@ export default {
   }
   &.-submit {
     border: 1px solid $color--black;
-    color: $color--white;
-    background: $color--black;
+    color: $color--black;
+    background: transparent;
     padding: 7px 15px;
     border-radius: 4px;
     &.is-home {
-      background: transparent;
+      color: $color--white;
       border-color: rgba($color--white, 0.8);
     }
   }
