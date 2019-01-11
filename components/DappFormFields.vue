@@ -158,8 +158,28 @@ export default {
     },
     fields: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({
+        contracts: {
+          mainnet: {},
+          kovan: {},
+          ropsten: {},
+          rinkeby: {},
+          poaMainnet: {},
+          goChainMainnet: {},
+          eosMainnet: {},
+          steemMainnet: {}
+        },
+        siteUrls: {},
+        socials: {
+          blog: {},
+          chat: {},
+          facebook: {},
+          github: {},
+          reddit: {},
+          twitter: {}
+        }
+      })
     },
     formType: {
       type: String,

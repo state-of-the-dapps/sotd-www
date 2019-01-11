@@ -166,8 +166,8 @@ export default {
     },
     fields: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     formType: {
       type: String,
@@ -219,7 +219,7 @@ export default {
     setProfileScore(fields) {
       clearTimeout(this.profileScoreTimer)
       this.profileScoreTimer = setTimeout(() => {
-        // clean this up
+        // TODO clean this up
         const data = { fields }
         data.fields.contractsMainnet = this.contractsMainnet
         data.fields.contractsPoaMainnet = this.contractsPoaMainnet
