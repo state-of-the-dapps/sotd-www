@@ -2,9 +2,7 @@
   <div>
     <div>
       <ul class="list">
-        <li 
-          v-if="ethIsMissing" 
-          class="item">
+        <li class="item">
           <div class="name">Ethereum Mainnet Contracts</div>
           <div 
             :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
@@ -25,9 +23,7 @@
             </ul>
           </div>
         </li>
-        <li 
-          v-if="poaIsMissing" 
-          class="item">
+        <li class="item">
           <div class="name">POA Mainnet Contracts</div>
           <div 
             :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
@@ -48,9 +44,7 @@
             </ul>
           </div>
         </li>
-        <li 
-          v-if="goChainIsMissing" 
-          class="item">
+        <li class="item">
           <div class="name">GoChain Mainnet Contracts</div>
           <div 
             :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
@@ -71,9 +65,7 @@
             </ul>
           </div>
         </li>
-        <li 
-          v-if="eosIsMissing" 
-          class="item">
+        <li class="item">
           <div class="name">EOS Mainnet Contracts</div>
           <div 
             :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
@@ -94,9 +86,7 @@
             </ul>
           </div>
         </li>
-        <li
-          v-if="steemIsMissing"
-          class="item">
+        <li class="item">
           <div class="name">Steem Mainnet Contracts</div>
           <div
             :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
@@ -320,31 +310,6 @@ export default {
       type: String,
       required: true,
       default: ''
-    },
-    contracts: {
-      type: Object,
-      required: true
-      // TODO default value
-    },
-    ethIsMissing: {
-      type: Boolean,
-      default: false
-    },
-    poaIsMissing: {
-      type: Boolean,
-      default: false
-    },
-    goChainIsMissing: {
-      type: Boolean,
-      default: false
-    },
-    eosIsMissing: {
-      type: Boolean,
-      default: false
-    },
-    steemIsMissing: {
-      type: Boolean,
-      default: false
     },
     mainnet: {
       type: String,

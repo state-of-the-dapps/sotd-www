@@ -52,8 +52,8 @@ export default {
   props: {
     category: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     }
   },
   data() {

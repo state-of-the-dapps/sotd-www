@@ -28,8 +28,8 @@ export default {
   props: {
     dapp: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     hasPromotedDapp: {
       type: Boolean,

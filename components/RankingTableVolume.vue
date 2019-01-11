@@ -43,8 +43,8 @@ export default {
     },
     stats: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     }
   },
   computed: {

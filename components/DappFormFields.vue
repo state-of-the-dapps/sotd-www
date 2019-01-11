@@ -183,8 +183,8 @@ export default {
     },
     warnings: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     }
   },
   methods: {

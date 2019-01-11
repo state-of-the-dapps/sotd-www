@@ -73,8 +73,8 @@ export default {
     },
     selectedColumn: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     slug: {
       type: String,

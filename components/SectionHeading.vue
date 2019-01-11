@@ -55,8 +55,8 @@ export default {
     },
     headingRoute: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     hasLine: {
       type: Boolean,

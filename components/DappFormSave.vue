@@ -161,8 +161,8 @@ export default {
     },
     errors: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     fields: {
       type: Object,

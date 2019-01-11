@@ -239,8 +239,8 @@ export default {
     },
     pager: {
       type: Object,
-      required: true
-      // TODO default value
+      required: true,
+      default: () => ({})
     },
     columnOptions: {
       type: Array,
