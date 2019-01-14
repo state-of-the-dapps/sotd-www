@@ -261,7 +261,7 @@ const newDapps = [
   179
 ]
 
-const platformList = ['Ethereum', 'EOS', 'POA', 'Steem'] // TODO add GoChain
+const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem']
 
 const platformMap = {
   ethereum: 'Ethereum',
