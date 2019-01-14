@@ -1,8 +1,9 @@
 <template>
-  <span
-    v-if="value !== 0"
-    :class="[{positive: value > 0}, {negative: value < 0}]"
-    class="BaseDelta">{{ value | formatDelta }}
+  <span>
+    <span
+      v-if="value !== 0 && value !== null"
+      :class="[{positive: value > 0}, {negative: value < 0}]"
+      class="BaseDelta"><BaseArrow :position="arrowPosition"/>{{ Math.abs(value) }}</span>
     <span
       v-if="nullText && value === null"
       class="null">{{ nullText }}</span>
@@ -10,7 +11,12 @@
 </template>
 
 <script>
+import BaseArrow from './BaseArrow'
+
 export default {
+  components: {
+    BaseArrow
+  },
   props: {
     value: {
       type: [Number, null],
@@ -19,6 +25,11 @@ export default {
     nullText: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    arrowPosition() {
+      return this.value > 0 ? 'up' : 'down'
     }
   }
 }
