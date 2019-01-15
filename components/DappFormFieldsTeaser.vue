@@ -2,7 +2,7 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <p class="heading">Tagline <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="teaser.length >= 4 && !errors.length ? 'purple' : 'gray'"/></span>Tagline <span class="required">(required)</span></p>
     <input 
       :class="teaser.length > 0 ? '--is-filled' : ''" 
       :value="teaser" 
@@ -35,7 +35,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     errors: {
       type: Array,

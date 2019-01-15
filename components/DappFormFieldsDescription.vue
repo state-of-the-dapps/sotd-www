@@ -2,7 +2,7 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <p class="heading">Full description <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="description.length >= 50 && !errors.length ? 'purple' : 'gray'"/></span>Full description <span class="required">(required)</span></p>
     <textarea 
       :class="description.length > 0 ? '--is-filled' : ''" 
       :value="description" 
@@ -32,7 +32,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     errors: {
       type: Array,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">Category <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="selectedCategory.length ? 'purple' : 'gray'"/></span>Category <span class="required">(required)</span></p>
     <div class="input-wrapper">
       <div 
         class="input" 
@@ -26,8 +26,12 @@
 <script>
 import { getCategories } from '~/helpers/api'
 import { directive as onClickaway } from 'vue-clickaway'
+import IconCheckmark from './IconCheckmark'
 
 export default {
+  components: {
+    IconCheckmark
+  },
   directives: {
     onClickaway: onClickaway
   },

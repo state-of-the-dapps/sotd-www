@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">Social media links <span class="boost">Up to +28% {{ $t('profileStrength') }}</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span>Social media links <span class="boost">Up to +28% {{ $t('profileStrength') }}</span></p>
     <ul class="list">
       <li class="item">
         <div class="input-wrapper -github">
@@ -83,7 +83,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     blog: {
       type: String,
@@ -124,6 +129,18 @@ export default {
   data() {
     return {
       validationTimer: ''
+    }
+  },
+  computed: {
+    isComplete() {
+      return Boolean(
+        this.blog.length ||
+          this.github.length ||
+          this.facebook.length ||
+          this.reddit.length ||
+          this.twitter ||
+          (this.chat.length && !this.chatErrors.length)
+      )
     }
   },
   methods: {

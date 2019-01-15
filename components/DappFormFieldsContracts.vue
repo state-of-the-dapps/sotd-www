@@ -110,7 +110,7 @@
       </ul>
     </div>
     <div>
-      <p class="heading">{{ platform }} contract <span v-if="platform === 'EOS' || platform === 'Steem'">accounts</span><span v-else>addresses</span></p>
+      <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span><span>{{ platform }} contract <template v-if="platform === 'EOS' || platform === 'Steem'">accounts</template><template v-else>addresses</template></span></p>
       <ul 
         v-if="platform === 'Ethereum'" 
         class="list">
@@ -304,7 +304,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     platform: {
       type: String,
@@ -395,6 +400,41 @@ export default {
   data() {
     return {
       validationTimer: ''
+    }
+  },
+  computed: {
+    isComplete() {
+      const ethereumIsComplete = Boolean(
+        this.platform === 'Ethereum' &&
+          ((this.mainnet.length >= 42 && !this.mainnetErrors.length) ||
+            (this.ropsten.length >= 42 && !this.ropstenErrors.length) ||
+            (this.kovan.length >= 42 && !this.kovanErrors.length) ||
+            (this.rinkeby.length >= 42 && !this.rinkebyErrors.length))
+      )
+      const eosIsComplete = Boolean(
+        this.platform === 'EOS' &&
+          (this.eosMainnet.length && !this.eosMainnetErrors.length)
+      )
+      const poaIsComplete = Boolean(
+        this.platform === 'POA' &&
+          (this.poaMainnet.length >= 42 && !this.poaMainnetErrors.length)
+      )
+      const goChainIsComplete = Boolean(
+        this.platform === 'GoChain' &&
+          (this.goChainMainnet.length >= 42 &&
+            !this.goChainMainnetErrors.length)
+      )
+      const steemIsComplete = Boolean(
+        this.platform === 'Steem' &&
+          (this.steemMainnet.length && !this.steemMainnetErrors.length)
+      )
+      return Boolean(
+        ethereumIsComplete ||
+          eosIsComplete ||
+          poaIsComplete ||
+          goChainIsComplete ||
+          steemIsComplete
+      )
     }
   },
   methods: {

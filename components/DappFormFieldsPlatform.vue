@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Platform</p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="platform.length ? 'purple' : 'gray'"/></span>Platform</p>
     <div class="selection-wrapper">
       <button
         :class="platform === 'Ethereum' ? 'is-active' : ''"
@@ -27,7 +27,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     platform: {
       type: String,

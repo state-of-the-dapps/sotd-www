@@ -1,6 +1,9 @@
 <template>
-  <div class="component-form-text">
-    <div class="label-remaining-wrapper">
+  <div class="FormText">
+    <div class="checkmark-label-remaining-wrapper">
+      <span class="checkmark">
+        <IconCheckmark :fill="field.length && !errors.length ? 'purple' : 'gray'"/>
+      </span>
       <BaseLabel
         :field="field"
         :label="label"
@@ -53,10 +56,12 @@
 
 <script>
 import BaseLabel from './BaseLabel'
+import IconCheckmark from './IconCheckmark'
 
 export default {
   components: {
-    BaseLabel
+    BaseLabel,
+    IconCheckmark
   },
   props: {
     errors: {
@@ -113,8 +118,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-label {
-  flex: 1;
+.checkmark {
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  width: 18px;
+  height: 16px;
+  margin-right: 2px;
+  @include tweakpoint('min-width', 600px) {
+    position: absolute;
+    top: -1px;
+    left: -22px;
+  }
 }
 
 .error-list {
@@ -149,14 +164,16 @@ export default {
   }
 }
 
-.label-remaining-wrapper {
+.checkmark-label-remaining-wrapper {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .remaining {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
+  margin-left: auto;
 }
 </style>
