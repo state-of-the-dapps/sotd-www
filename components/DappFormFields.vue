@@ -385,6 +385,21 @@ export default {
     font-weight: 700;
     margin-top: 0.5rem;
     margin-bottom: 0.75rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  /deep/ .checkmark {
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    margin-right: 2px;
+    @include tweakpoint('min-width', 600px) {
+      position: absolute;
+      top: -1px;
+      left: -22px;
+    }
   }
 
   /deep/ .error-list,

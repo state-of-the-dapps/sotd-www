@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="heading">ÐApp status <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>ÐApp status <span class="required">(required)</span></p>
     <ul class="list">
       <li 
         v-for="(item, index) in items" 
@@ -13,8 +13,12 @@
 
 <script>
 import { dappStatuses as statusList } from '~/helpers/constants'
+import IconCheckmark from './IconCheckmark'
 
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     status: {
       type: String,

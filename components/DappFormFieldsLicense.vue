@@ -2,7 +2,7 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <p class="heading">Software License <span class="boost">+5% {{ $t('profileStrength') }}</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="license.length && !errors.length ? 'purple' : 'gray'"/></span>Software License <span class="boost">+5% {{ $t('profileStrength') }}</span></p>
     <input 
       :class="license.length > 0 ? '--is-filled' : ''" 
       :value="license" 
@@ -27,7 +27,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     errors: {
       type: Array,

@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <p class="heading">Product screenshot <span class="boost">+20% {{ $t('profileStrength') }}</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="productImage ? 'purple' : 'gray'"/></span>Product screenshot <span class="boost">+20% {{ $t('profileStrength') }}</span></p>
     <p v-if="productImage && preFill">
       <img
         :src="productImage"
@@ -31,11 +31,13 @@
 </template>
 
 <script>
-import BaseFileUpload from '~/components/BaseFileUpload'
+import BaseFileUpload from './BaseFileUpload'
+import IconCheckmark from './IconCheckmark'
 
 export default {
   components: {
-    BaseFileUpload
+    BaseFileUpload,
+    IconCheckmark
   },
   props: {
     productImage: {

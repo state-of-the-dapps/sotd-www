@@ -2,7 +2,7 @@
   <div 
     :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="item">
-    <p class="heading">ÐApp name <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="name.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp name <span class="required">(required)</span></p>
     <input 
       :disabled="formType === 'edit'"
       :class="name.length > 0 ? '--is-filled' : ''" 
@@ -46,7 +46,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     errors: {
       type: Array,

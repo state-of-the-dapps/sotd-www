@@ -2,14 +2,14 @@
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
-    <p class="heading">ÐApp author(s) <span class="required">(required)</span></p>
-    <input 
-      :class="formattedAuthors.length > 0 ? '--is-filled' : ''" 
-      :value="formattedAuthors" 
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="formattedAuthors.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp author(s) <span class="required">(required)</span></p>
+    <input
+      :class="formattedAuthors.length > 0 ? '--is-filled' : ''"
+      :value="formattedAuthors"
       class="text-input"
       placeholder="e.g. Stephen Hawking, Ada Lovelace"
-      type="text" 
-      maxlength="100" 
+      type="text"
+      maxlength="100"
       @input="updateAndValidate($event.target.value)">
     <span
       v-if="formattedAuthors.length"
@@ -27,7 +27,12 @@
 </template>
 
 <script>
+import IconCheckmark from './IconCheckmark'
+
 export default {
+  components: {
+    IconCheckmark
+  },
   props: {
     authors: {
       type: Array,

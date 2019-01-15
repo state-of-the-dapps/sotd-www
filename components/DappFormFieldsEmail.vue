@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapp-form-fields-email">
+  <div class="DappFormFieldsEmail">
     <FormText
       :errors="errors"
       :field="email"
@@ -74,10 +74,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-dapp-form-fields-email {
+.DappFormFieldsEmail {
   margin: 0 auto;
   width: 300px;
-  @include tweakpoint('min-width', 900px) {
+  @include tweakpoint('min-width', 1000px) {
     margin-left: 0;
   }
 }
