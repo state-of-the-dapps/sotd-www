@@ -172,6 +172,7 @@ export default {
   font-weight: 700;
   height: 52px;
   width: 30px;
+  min-width: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
