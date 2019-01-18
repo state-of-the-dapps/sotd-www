@@ -10,7 +10,7 @@ export default {
   categoryOptions: {
     Development: '软件开发',
     Energy: '能源',
-    Exchanges: '交流',
+    Exchanges: '交换',
     Finance: '金融',
     Gambling: '赌博',
     Games: '游戏',

@@ -10,7 +10,7 @@
         class="input" 
         autocomplete="off" 
         maxlength="20" 
-        @input="search($event.target.value)" 
+        @input="search($event.target.value)"
         @keyup.enter="add" 
         @click="findSuggestedTags">
       <span 
