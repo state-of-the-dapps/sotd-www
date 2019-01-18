@@ -1,5 +1,7 @@
 <template>
-  <div class="DappFormFieldsEmail">
+  <div
+    id="email"
+    class="DappFormFieldsEmail">
     <FormText
       :errors="errors"
       :field="email"

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="status">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>ÐApp status <span class="required">(required)</span></p>
     <ul class="list">
       <li 

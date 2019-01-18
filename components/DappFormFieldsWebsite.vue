@@ -1,5 +1,6 @@
 <template>
-  <div 
+  <div
+    id="website" 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="url.length >= 3 && !errors.length ? 'purple' : 'gray'"/></span>Website URL <span class="required">(required)</span></p>

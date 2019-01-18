@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="tags">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="selected.length > 0 ? 'purple' : 'gray'"/></span>Tags <span class="required">(at least 1 required)</span></p>
     <div class="input-wrapper">
       <input 

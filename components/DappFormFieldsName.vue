@@ -1,9 +1,11 @@
 <template>
-  <div 
+  <div
+    id="name"
     :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="name.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp name <span class="required">(required)</span></p>
-    <input 
+    <input
+      id="nameField"
       :disabled="formType === 'edit'"
       :class="name.length > 0 ? '--is-filled' : ''" 
       :value="name"
@@ -137,3 +139,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-input {
+  @include highlight;
+}
+</style>
