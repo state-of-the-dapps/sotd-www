@@ -5,6 +5,7 @@
     class="item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="formattedAuthors.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp author(s) <span class="required">(required)</span></p>
     <input
+      id="authorsField"
       :class="formattedAuthors.length > 0 ? '--is-filled' : ''"
       :value="formattedAuthors"
       class="text-input"
@@ -79,3 +80,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-input {
+  @include highlight;
+}
+</style>

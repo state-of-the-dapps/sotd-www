@@ -5,6 +5,7 @@
     class="item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="description.length >= 50 && !errors.length ? 'purple' : 'gray'"/></span>Full description <span class="required">(required)</span></p>
     <textarea 
+      id="descriptionField"
       :class="description.length > 0 ? '--is-filled' : ''" 
       :value="description" 
       class="text-area" 
@@ -77,3 +78,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-area {
+  @include highlight;
+}
+</style>

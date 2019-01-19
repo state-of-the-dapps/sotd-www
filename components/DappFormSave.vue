@@ -230,10 +230,20 @@ export default {
         acceptedTerms: 'Accept the terms',
         authors: 'Authors',
         category: 'Category',
+        dappUrl: 'ÐApp URL',
         description: 'Description',
+        eosMainnet: 'EOS Mainnet',
         email: 'Email',
+        goChainMainnet: 'GoChain Mainnet',
+        kovan: 'Ethereum Kovan',
+        mainnet: 'Ethereum Mainnet',
         name: 'Name',
+        poaMainnet: 'POA Mainnet',
+        ropsten: 'Ethereum Ropsten',
+        rinkeby: 'Ethereum Rinkeby',
+        socialChat: 'Chat invitation URL',
         status: 'Status',
+        steemMainnet: 'Steem Mainnet',
         tags: 'Tags',
         teaser: 'Tagline',
         websiteUrl: 'Website URL'
@@ -263,7 +273,7 @@ export default {
       highlightEl.classList.add('is-highlighted')
       setTimeout(() => {
         highlightEl.classList.remove('is-highlighted')
-      }, 5000)
+      }, 4000)
       this.popoverIsActive = false
     },
     setProfileScore(fields) {

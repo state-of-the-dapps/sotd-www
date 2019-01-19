@@ -56,7 +56,6 @@
       @updateField="updateField"/>
     <DappFormFieldsContracts 
       :platform="fields.platform"
-      :contracts="fields.contracts"
       :mainnet="fields.contracts.mainnet.address"
       :mainnet-errors="errors.mainnet"
       :kovan="fields.contracts.kovan.address"
