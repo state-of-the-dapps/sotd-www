@@ -1,7 +1,9 @@
 <template>
   <div id="status">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>ÐApp status <span class="required">(required)</span></p>
-    <ul class="list">
+    <ul
+      id="statusField"
+      class="list">
       <li 
         v-for="(item, index) in items" 
         :key="index" 
@@ -66,5 +68,6 @@ export default {
   flex-wrap: wrap;
   text-align: center;
   margin: 0 -5px 10px;
+  @include highlight;
 }
 </style>

@@ -10,6 +10,7 @@
       :required="true"
       :value="email"
       label="Email"
+      input-id="emailField"
       placeholder="e.g. email@example.com"
       type="text"
       @update="updateAndValidate"/>
