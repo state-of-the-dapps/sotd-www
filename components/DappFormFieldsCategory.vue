@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div id="category">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="selectedCategory.length ? 'purple' : 'gray'"/></span>Category <span class="required">(required)</span></p>
-    <div class="input-wrapper">
-      <div 
+    <div
+      id="categoryField"
+      class="input-wrapper">
+      <div
         class="input" 
         @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
       <transition name="fade">
@@ -121,6 +123,7 @@ export default {
   box-shadow: 0 0 20px rgba($color--black, 0.05);
   margin-bottom: 10px;
   position: relative;
+  @include highlight;
 }
 
 .selected-category {

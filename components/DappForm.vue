@@ -101,16 +101,16 @@ export default {
       confirmationModal: false,
       diffExists: false,
       errorFields: [
+        'name',
+        'teaser',
+        'description',
+        'websiteUrl',
         'authors',
         'category',
-        'description',
-        'email',
-        'name',
         'status',
         'tags',
-        'teaser',
-        'acceptedTerms',
-        'websiteUrl'
+        'email',
+        'acceptedTerms'
       ],
       errors: {
         authors: [],

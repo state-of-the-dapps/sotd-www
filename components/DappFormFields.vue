@@ -56,7 +56,6 @@
       @updateField="updateField"/>
     <DappFormFieldsContracts 
       :platform="fields.platform"
-      :contracts="fields.contracts"
       :mainnet="fields.contracts.mainnet.address"
       :mainnet-errors="errors.mainnet"
       :kovan="fields.contracts.kovan.address"
@@ -341,11 +340,6 @@ export default {
     width: 100%;
     box-shadow: 0 10px 20px rgba($color--black, 0.075);
     background: rgba(lighten($color--gray, 100%), 0.95);
-    transition: background 0.2s ease;
-    &:focus {
-      background: none;
-      background: rgba(250, 250, 250, 0.7);
-    }
     &:focus + .label,
     &.--is-filled + .label {
       top: -11px;

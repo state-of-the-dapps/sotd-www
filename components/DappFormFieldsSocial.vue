@@ -25,10 +25,13 @@
         </div>
       </li>
       <li
+        id="socialChat"
         :class="chatErrors && chatErrors.length > 0 ? '--has-errors' : ''" 
         class="item">
-        <div class="input-wrapper -chat">
-          <input 
+        <div
+          id="socialChatField"
+          class="input-wrapper -chat">
+          <input
             :value="chat" 
             class="input" 
             type="text" 
@@ -250,6 +253,7 @@ export default {
     background: url('~assets/images/social/etherian.png') center left no-repeat;
     background-size: 21px 21px;
   }
+  @include highlight;
 }
 
 .list {

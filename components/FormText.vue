@@ -12,7 +12,9 @@
         v-if="field.length"
         class="remaining">{{ maxLength - field.length }}</span>
     </div>
-    <div class="input-wrapper">
+    <div
+      :id="inputId"
+      class="input-wrapper">
       <textarea
         v-if="type === 'textarea'"
         :maxlength="maxLength"
@@ -76,6 +78,10 @@ export default {
     label: {
       type: String,
       required: true,
+      default: ''
+    },
+    inputId: {
+      type: String,
       default: ''
     },
     maxLength: {
@@ -153,15 +159,20 @@ export default {
 
 .input,
 .textarea {
+  background: transparent;
   border: none;
   padding: 20px 15px;
   width: 100%;
   box-shadow: 0 10px 20px rgba($color--black, 0.075);
-  background: rgba(lighten($color--white, 100%), 0.95);
   transition: background 0.2s ease;
   &:focus {
     background: rgba(lighten($color--white, 100%), 0.7);
   }
+}
+
+.input-wrapper {
+  background: rgba(lighten($color--white, 100%), 0.95);
+  @include highlight;
 }
 
 .checkmark-label-remaining-wrapper {

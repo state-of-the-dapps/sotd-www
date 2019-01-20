@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div id="tags">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="selected.length > 0 ? 'purple' : 'gray'"/></span>Tags <span class="required">(at least 1 required)</span></p>
-    <div class="input-wrapper">
+    <div
+      id="tagsField"
+      class="input-wrapper">
       <input 
         :value="query" 
         :placeholder="selected.length < 5 ? 'Add a tag' : 'Only 5 tags max'" 
@@ -10,7 +12,7 @@
         class="input" 
         autocomplete="off" 
         maxlength="20" 
-        @input="search($event.target.value)" 
+        @input="search($event.target.value)"
         @keyup.enter="add" 
         @click="findSuggestedTags">
       <span 
@@ -262,6 +264,7 @@ export default {
   box-shadow: 0 0 20px rgba($color--black, 0.05);
   margin-bottom: 10px;
   position: relative;
+  @include highlight;
 }
 
 .item {

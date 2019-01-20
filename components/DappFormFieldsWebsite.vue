@@ -1,9 +1,11 @@
 <template>
-  <div 
+  <div
+    id="websiteUrl" 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="url.length >= 3 && !errors.length ? 'purple' : 'gray'"/></span>Website URL <span class="required">(required)</span></p>
-    <input 
+    <input
+      id="websiteUrlField"
       :class="url.length > 0 ? '--is-filled' : ''" 
       :value="url" 
       class="text-input" 
@@ -68,3 +70,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-input {
+  @include highlight;
+}
+</style>

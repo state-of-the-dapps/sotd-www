@@ -44,14 +44,17 @@
           class="checkbox-label" 
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
       </div>
-      <div class="checkbox-field">
+      <div
+        id="acceptedTermsField"
+        class="checkbox-field">
         <input 
           id="accepted-terms-checkbox" 
           :checked="acceptedTerms" 
           class="checkbox-input" 
           type="checkbox"
           @click="updateAcceptedTerms">
-        <label 
+        <label
+          id="acceptedTerms" 
           class="checkbox-label" 
           for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link 
             to="/terms" 
@@ -59,48 +62,65 @@
       </div>
       <p v-if="formType === 'new'">Submissions are free and typically processed by the next business day.</p>
     </div>
-    <input 
-      v-model="honeypot" 
-      type="text" 
-      class="yumyum">
-    <input 
-      v-if="formType === 'edit' && !diffExists" 
-      :value="'You must edit this ÐApp before submitting'" 
-      class="submit" 
-      type="submit" 
-      @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
-    <input 
-      v-else-if="errorFields.length == 1" 
-      :value="'1 field needs your attention'" 
-      class="submit" 
-      type="submit" 
-      @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
-    <input 
-      v-else-if="errorFields.length > 0 && errorFields.length !== 1" 
-      :value="errorFields.length + ' fields require your attention'" 
-      class="submit" 
-      type="submit" 
-      @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
-    <input 
-      v-else-if="sending" 
-      :value="'Please wait'" 
-      class="submit" 
-      type="submit" 
-      @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })">
-    <input 
-      v-else-if="errorFields.length == 0" 
-      :value="'Submit'" 
-      class="submit --is-ready" 
-      type="submit" 
-      @click.prevent="submit">
+    <div class="input-wrapper">
+      <BasePopover
+        v-on-clickaway="hideMissingFields"
+        v-if="popoverIsActive && missingFields.length">
+        <ul class="missing-fields-list">
+          <li
+            v-for="(field, index) in missingFields"
+            :key="index"
+            class="missing-fields-item">
+            <span
+              class="missing-fields-anchor"
+              role="link"
+              @click="goToField(field.anchor)">{{ field.label }}</span>
+          </li>
+        </ul>
+      </BasePopover>
+      <input 
+        v-model="honeypot" 
+        type="text" 
+        class="yumyum">
+      <input 
+        v-if="formType === 'edit' && !diffExists" 
+        :value="'You must edit this ÐApp before submitting'" 
+        class="submit" 
+        type="submit" 
+        @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
+      <input 
+        v-else-if="errorFields.length > 0"
+        :value="`${errorFields.length} ${$options.filters.pluralize('field', errorFields.length)} ${errorFields.length > 1 ? 'require' : 'requires' } your attention`"
+        class="submit has-missing-fields"
+        type="submit"
+        @click.prevent="showMissingFields">
+      <input 
+        v-else-if="sending" 
+        :value="'Please wait'" 
+        class="submit" 
+        type="submit" 
+        @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })">
+      <input 
+        v-else-if="errorFields.length === 0" 
+        :value="'Submit'" 
+        class="submit --is-ready" 
+        type="submit" 
+        @click.prevent="submit">
+    </div>
   </div>
 </template>
 
 <script>
-import DappFormFieldsEmail from '~/components/DappFormFieldsEmail.vue'
+import { directive as onClickaway } from 'vue-clickaway'
+import DappFormFieldsEmail from './DappFormFieldsEmail.vue'
+import BasePopover from './BasePopover'
 
 export default {
+  directives: {
+    onClickaway: onClickaway
+  },
   components: {
+    BasePopover,
     DappFormFieldsEmail
   },
   props: {
@@ -197,6 +217,7 @@ export default {
   },
   data: () => {
     return {
+      popoverIsActive: false,
       profileScoreTimer: '',
       honeypot: null
     }
@@ -204,6 +225,38 @@ export default {
   computed: {
     userEntryRoute() {
       return this.$store.getters['userEntryRoute']
+    },
+    missingFields() {
+      const missingFields = []
+      const errorFieldsToLabelsMap = {
+        acceptedTerms: 'Accept the terms',
+        authors: 'Authors',
+        category: 'Category',
+        dappUrl: 'ÐApp URL',
+        description: 'Description',
+        eosMainnet: 'EOS Mainnet',
+        email: 'Email',
+        goChainMainnet: 'GoChain Mainnet',
+        kovan: 'Ethereum Kovan',
+        mainnet: 'Ethereum Mainnet',
+        name: 'Name',
+        poaMainnet: 'POA Mainnet',
+        ropsten: 'Ethereum Ropsten',
+        rinkeby: 'Ethereum Rinkeby',
+        socialChat: 'Chat invitation URL',
+        status: 'Status',
+        steemMainnet: 'Steem Mainnet',
+        tags: 'Tags',
+        teaser: 'Tagline',
+        websiteUrl: 'Website URL'
+      }
+      this.errorFields.map(x => {
+        missingFields.push({
+          anchor: x,
+          label: errorFieldsToLabelsMap[x]
+        })
+      })
+      return missingFields
     }
   },
   watch: {
@@ -216,6 +269,15 @@ export default {
     }
   },
   methods: {
+    goToField(anchor) {
+      document.getElementById(anchor).scrollIntoView({ behavior: 'smooth' })
+      const highlightEl = document.getElementById(anchor + 'Field')
+      highlightEl.classList.add('is-highlighted')
+      setTimeout(() => {
+        highlightEl.classList.remove('is-highlighted')
+      }, 4000)
+      this.popoverIsActive = false
+    },
     setProfileScore(fields) {
       clearTimeout(this.profileScoreTimer)
       this.profileScoreTimer = setTimeout(() => {
@@ -231,6 +293,15 @@ export default {
           this.$emit('setProfileScore', score)
         })
       }, 750)
+    },
+    hideMissingFields() {
+      this.popoverIsActive = false
+    },
+    showMissingFields() {
+      this.popoverIsActive = true
+      this.$mixpanel.track('New DApp - Show Missing', {
+        errorFields: this.errorFields
+      })
     },
     submit() {
       if (this.honeypot === null) {
@@ -272,6 +343,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.BasePopover {
+  bottom: 100%;
+  left: 50%;
+  margin-left: -100px;
+}
+
 .attribution {
   margin: 0;
 }
@@ -287,6 +364,7 @@ export default {
 .checkbox-field {
   margin-top: 9px;
   display: flex;
+  @include highlight;
 }
 
 .checkbox-input {
@@ -338,6 +416,10 @@ export default {
   flex-grow: 1;
 }
 
+.input-wrapper {
+  position: relative;
+}
+
 .info {
   display: flex;
   align-items: center;
@@ -347,6 +429,11 @@ export default {
     justify-content: center;
     text-align: center;
   }
+}
+
+.missing-fields-anchor {
+  @include link;
+  padding: 0.25rem 0;
 }
 
 .profile-score-bar {
@@ -423,6 +510,10 @@ export default {
   @include tweakpoint('min-width', $tweakpoint--default) {
     margin-left: 0;
     margin-right: 0;
+  }
+  &.has-missing-fields {
+    text-decoration: underline;
+    cursor: pointer;
   }
   &.--is-ready {
     background: rgba($color--black, 1);

@@ -5,12 +5,15 @@
       <ul 
         v-if="platform === 'Ethereum'" 
         class="list">
-        <li class="item">
+        <li
+          id="mainnet"
+          class="item">
           <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="mainnetField"
               :value="mainnet" 
               class="input"
               placeholder="Enter addresses (one per line)" 
@@ -26,12 +29,15 @@
             </ul>
           </div>
         </li>
-        <li class="item">
+        <li
+          id="ropsten"
+          class="item">
           <div class="name">Ropsten</div>
           <div 
             :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="ropstenField"
               :value="ropsten" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
@@ -47,12 +53,15 @@
             </ul>
           </div>
         </li>
-        <li class="item">
+        <li
+          id="kovan"
+          class="item">
           <div class="name">Kovan</div>
           <div 
             :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="kovanField"
               :value="kovan" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
@@ -68,12 +77,15 @@
             </ul>
           </div>
         </li>
-        <li class="item">
+        <li
+          id="rinkeby"
+          class="item">
           <div class="name">Rinkeby</div>
           <div 
             :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="rinkebyField"
               :value="rinkeby" 
               class="input" 
               placeholder="Enter addresses (one per line)" 
@@ -93,12 +105,15 @@
       <ul 
         v-if="platform === 'POA'" 
         class="list">
-        <li class="item">
+        <li
+          id="poaMainnet"
+          class="item">
           <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="poaMainnetField"
               :value="poaMainnet" 
               class="input" 
               placeholder="Enter POA addresses (one per line)" 
@@ -118,12 +133,15 @@
       <ul 
         v-if="platform === 'GoChain'" 
         class="list">
-        <li class="item">
+        <li
+          id="goChainMainnet"
+          class="item">
           <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="goChainMainnetField"
               :value="goChainMainnet" 
               class="input" 
               placeholder="Enter GoChain addresses (one per line)" 
@@ -143,12 +161,15 @@
       <ul 
         v-if="platform === 'EOS'" 
         class="list">
-        <li class="item">
+        <li
+          id="eosMainnet"
+          class="item">
           <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div 
             :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
             class="input-wrapper">
-            <textarea 
+            <textarea
+              id="eosMainnetField"
               :value="eosMainnet" 
               class="input" 
               placeholder="Enter EOS accounts (one per line)" 
@@ -168,12 +189,15 @@
       <ul
         v-if="platform === 'Steem'"
         class="list">
-        <li class="item">
+        <li
+          id="steemMainnet"
+          class="item">
           <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
           <div
             :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
             class="input-wrapper">
             <textarea
+              id="steemMainnetField"
               :value="steemMainnet"
               class="input"
               placeholder="Enter Steem accounts (one per line)"
@@ -426,5 +450,6 @@ export default {
   padding: 10px 15px;
   border: none;
   font-size: 0.95rem;
+  @include highlight;
 }
 </style>

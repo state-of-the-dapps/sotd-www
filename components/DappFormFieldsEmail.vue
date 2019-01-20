@@ -1,5 +1,7 @@
 <template>
-  <div class="DappFormFieldsEmail">
+  <div
+    id="email"
+    class="DappFormFieldsEmail">
     <FormText
       :errors="errors"
       :field="email"
@@ -8,6 +10,7 @@
       :required="true"
       :value="email"
       label="Email"
+      input-id="emailField"
       placeholder="e.g. email@example.com"
       type="text"
       @update="updateAndValidate"/>

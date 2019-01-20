@@ -2,9 +2,10 @@
   <transition name="fade">
     <div 
       :class="[bottom ? 'is-bottom' : '', reversed ? 'is-reversed' : '']" 
-      class="component-Popover">
+      class="BasePopover">
       <div class="wrapper">
         {{ text }}
+        <slot/>
       </div>
     </div>
   </transition>
@@ -30,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-Popover {
+.BasePopover {
   text-transform: initial;
   position: absolute;
   bottom: calc(1.1rem + 10px);
