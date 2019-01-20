@@ -44,7 +44,9 @@
           class="checkbox-label" 
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
       </div>
-      <div class="checkbox-field">
+      <div
+        id="acceptedTermsField"
+        class="checkbox-field">
         <input 
           id="accepted-terms-checkbox" 
           :checked="acceptedTerms" 
@@ -362,6 +364,7 @@ export default {
 .checkbox-field {
   margin-top: 9px;
   display: flex;
+  @include highlight;
 }
 
 .checkbox-input {
