@@ -213,8 +213,8 @@ export default {
     error: '订阅出错。请确认邮箱地址后再尝试。如果还有问题，请联系我们：{email}'
   },
   SecondaryCtaMetamask: {
-    title: '以太坊和POA的Metamask',
-    description: 'Metamask可以让你在浏览器里使用以太坊和POA的DApps。',
+    title: '以太坊和POA，GoChain的Metamask',
+    description: 'Metamask可以让你在浏览器里使用以太坊和POA，GoChain的DApps。',
     cta: '现在试试。',
     discover: '探索 MetaMask'
   },

@@ -218,9 +218,9 @@ export default {
       'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
   },
   SecondaryCtaMetamask: {
-    title: 'Metamask for Ethereum and POA',
+    title: 'Metamask for Ethereum, POA, and GoChain',
     description:
-      'Metamask lets you use Ethereum and POA ÐApps within your browser.',
+      'Metamask lets you use Ethereum, GoChain, and POA ÐApps within your browser.',
     cta: 'Try it now',
     discover: 'Discover Metamask'
   },
