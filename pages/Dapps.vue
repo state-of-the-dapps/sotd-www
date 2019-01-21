@@ -66,7 +66,13 @@ export default {
   },
   data() {
     return {
-      isLoading: false
+      dapps: [],
+      isLoading: false,
+      pager: {
+        limit: 0,
+        offset: 0,
+        totalCount: 0
+      }
     }
   },
   computed: {
