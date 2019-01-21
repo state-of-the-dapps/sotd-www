@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailRelatedDapps">
+  <div class="DappDetailRelatedDapps">
     <div class="wrapper">
       <div class="wrapper-inner">
         <h2 class="title-2">{{ $t(namespace('title')) }}</h2>

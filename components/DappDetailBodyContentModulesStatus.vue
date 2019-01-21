@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesStatus">
+  <div class="DappDetailBodyContentModulesStatus">
     {{ $t('status') }}: <strong>{{ $t(`statusOptions.${status}`) | capitalize }}</strong>
   </div>
 </template>

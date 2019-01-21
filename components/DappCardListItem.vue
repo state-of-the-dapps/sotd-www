@@ -1,7 +1,7 @@
 <template>
   <li 
     :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
-    class="component-DappCardListItem">
+    class="DappCardListItem">
     <nuxt-link 
       :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
       class="link" 
@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-DappCardListItem {
+.DappCardListItem {
   position: relative;
   margin: 10px;
   box-shadow: 0 10px 30px rgba($color--black, 0.1);

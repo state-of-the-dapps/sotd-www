@@ -1,5 +1,5 @@
 <template>
-  <ul class="component-DappCardList">
+  <ul class="DappCardList">
     <DappCardListItem 
       v-for="(dapp, index) in dapps"
       :key="index"
@@ -34,14 +34,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-DappCardList {
+.DappCardList {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   margin: 0 -10px;
 }
 
-.component-DappCardListItem {
+.DappCardListItem {
   height: 175px;
   width: calc(100% - 20px);
   @include tweakpoint('min-width', 480px) {
