@@ -78,7 +78,8 @@ export default {
     mixpanel: env.mixpanel
   },
   head: {
-    title: 'State of the ÐApps — Blockchain Apps for Ethereum, Steem, EOS, and More',
+    title:
+      'State of the ÐApps — Blockchain Apps for Ethereum, Steem, EOS, and More',
     meta: [
       { charset: 'utf-8' },
       {

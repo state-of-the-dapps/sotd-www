@@ -34,9 +34,9 @@ export default {
   head() {
     return {
       title:
-        'State of the ÐApps — A List of ' +
+        'State of the ÐApps — A list of ' +
         this.statDappCount.toLocaleString() +
-        ' Blockchain Apps for Ethereum, Steem, EOS, and More'
+        ' blockchain apps for Ethereum, Steem, EOS, and more'
     }
   }
 }
