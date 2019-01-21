@@ -148,7 +148,7 @@ export default {
       title:
         'State of the ÐApps — ' +
         this.statDappCount.toLocaleString() +
-        ' Projects Built on Ethereum, EOS, POA & Steem'
+        ' Projects Built on Ethereum, EOS & Steem'
     }
   },
   scrollToTop: true

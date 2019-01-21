@@ -103,14 +103,14 @@ export default {
   width: 75%;
   margin-top: 0.5rem;
   @include tweakpoint('min-width', 575px) {
-    width: 80%;
+    width: 90%;
   }
   @include tweakpoint('min-width', 1400px) {
     width: 70%;
   }
   @include tweakpoint('min-width', 1400px) {
     text-align: center;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
   }
 }

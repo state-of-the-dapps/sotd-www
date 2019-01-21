@@ -181,7 +181,7 @@ export default {
     heading: 'Explore Decentralized Applications',
     learn: 'Learn more about ÐApps',
     subheading:
-      'Discover the possibilities of the Ethereum, EOS, POA, and Steem blockchains with the definitive registry of ÐApp projects.',
+      'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of ÐApp projects.',
     view: 'View the top ÐApps'
   },
   new: 'New',

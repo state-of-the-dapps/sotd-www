@@ -36,7 +36,7 @@ export default {
       title:
         'State of the ÐApps — A List of ' +
         this.statDappCount.toLocaleString() +
-        ' Projects Built on Ethereum, EOS, POA & Steem'
+        ' Blockchain Apps for Ethereum, Steem, EOS, and More'
     }
   }
 }
