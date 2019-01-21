@@ -45,17 +45,23 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get('categories').then(response => {
-      const items = response.data.items
-      const categoryNum = 4
-      let categories = []
-      for (let i = 0; i < categoryNum; i++) {
-        let randomItemIndex = Math.floor(Math.random() * items.length)
-        let category = items.splice(randomItemIndex, 1)
-        categories = categories.concat(category)
-      }
-      this.categories = categories
-    })
+    this.$axios
+      .get('categories', {
+        params: {
+          excluded: ['high-risk', 'gambling']
+        }
+      })
+      .then(response => {
+        const items = response.data.items
+        const categoryNum = 4
+        let categories = []
+        for (let i = 0; i < categoryNum; i++) {
+          let randomItemIndex = Math.floor(Math.random() * items.length)
+          let category = items.splice(randomItemIndex, 1)
+          categories = categories.concat(category)
+        }
+        this.categories = categories
+      })
   },
   methods: {
     trackDappCategoryFilter(category) {
