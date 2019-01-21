@@ -1,14 +1,14 @@
 <template>
-  <div class="component-ranking-table-dau-head">
+  <div class="RankingTableDauHead">
     <nuxt-link
       v-if="sort"
       :to="localePath({name: rankingRouteName, params: rankingParams, query: {sort: 'dau', order: 'desc'}})"
       :class="$route.query.sort === 'dau' ? 'is-active' : ''"
       class="label head-link"
-      @click.native="trackRankingSort('dau')">{{ $t('users24h') }}</nuxt-link>
+      @click.native="trackRankingSort('dau')">{{ $t('rankingColumns.dau') }}</nuxt-link>
     <span 
       v-else 
-      class="label">{{ $t('users24h') }}</span>
+      class="label">{{ $t('rankingColumns.dau') }}</span>
     <Help 
       :bottom="true"
       :text="$t('users24hHelp')"/>

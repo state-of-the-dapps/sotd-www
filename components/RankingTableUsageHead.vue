@@ -1,6 +1,6 @@
 <template>
-  <div class="component-ranking-table-usage-head">
-    <span class="label">{{ $t('userActivity30d') }}</span>
+  <div class="RankingTableUsageHead">
+    <span class="label">{{ $t('rankingColumns.user_activity_30d') }}</span>
     <Help
       :reversed="true"
       :bottom="true"

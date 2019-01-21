@@ -158,6 +158,7 @@ export default {
   },
   filters: {
     allPlatforms: 'All platforms',
+    chooseColumn: 'Choose a column',
     choosePlatform: 'Choose a platform',
     allCategories: 'All categories',
     chooseCategory: 'Choose a category',
@@ -187,6 +188,15 @@ export default {
   new: 'New',
   platform: 'Platform',
   profileStrength: 'profile strength',
+  rankingColumns: {
+    rank: 'Rank',
+    dau: 'Users (24h)',
+    platform: 'Platform',
+    category: 'Category',
+    usd_value_7d: 'Volume (7d)',
+    dev_30d: 'Dev activity (30d)',
+    user_activity_30d: 'User activity (30d)'
+  },
   RankingTable: {
     noDapps: 'There are currently no ÐApps for this category and platform'
   },

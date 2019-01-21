@@ -1,11 +1,11 @@
 <template>
-  <div class="component-ranking-table-volume-head">
+  <div class="RankingTableVolumeHead">
     <nuxt-link
       v-if="sort"
       :to="localePath({name: rankingRouteName, params: rankingParams, query: {sort: 'usd_value_7d', order: 'desc'}})"
       :class="$route.query.sort === 'usd_value_7d' ? 'is-active' : ''"
       class="label head-link"
-      @click.native="trackRankingSort('usd_value_7d')">Volume (7d)</nuxt-link>
+      @click.native="trackRankingSort('usd_value_7d')">{{ $t('rankingColumns.usd_value_7d') }}</nuxt-link>
     <span 
       v-else 
       class="label">Volume (7d)</span>

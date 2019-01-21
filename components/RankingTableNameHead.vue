@@ -1,3 +1,3 @@
 <template>
-  <div class="component-ranking-table-name-head"/>
+  <div class="RankingTableNameHead"/>
 </template>

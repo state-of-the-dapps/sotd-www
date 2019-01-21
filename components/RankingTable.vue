@@ -44,8 +44,8 @@
               <div class="table-head col-variable">
                 <BaseDropdown
                   :options="columnOptions"
-                  :selected="selectedColumn.text"
-                  title="Choose a column"
+                  :selected="$t(`rankingColumns.${selectedColumn.selection}`)"
+                  :title="$t('filters.chooseColumn')"
                   theme="inline"
                   @select="selectColumn"/>
               </div>

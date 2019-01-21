@@ -28,7 +28,6 @@ export default {
     return {
       dapps: [],
       isLoading: false,
-      columnOptions: rankingColumns,
       pager: {},
       selectedColumn: rankingColumns[0]
     }
@@ -44,6 +43,18 @@ export default {
     const dapps = data.items
     const pager = data.pager
     return { dapps, pager }
+  },
+  computed: {
+    columnOptions() {
+      const options = rankingColumns.map(x => {
+        const optionObj = {
+          text: this.$t(`rankingColumns.${x.selection}`),
+          selection: x.selection
+        }
+        return optionObj
+      })
+      return options
+    }
   },
   watch: {
     '$route.query'() {

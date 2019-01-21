@@ -156,6 +156,7 @@ export default {
   },
   filters: {
     allPlatforms: '所有平台',
+    chooseColumn: '选择一列',
     choosePlatform: '选择平台',
     allCategories: '所有类别',
     chooseCategory: '選擇類別',
@@ -190,6 +191,15 @@ export default {
     steem: 'Steem'
   },
   profileStrength: '简介强度',
+  rankingColumns: {
+    rank: '排名',
+    dau: '用户 (24小时)',
+    platform: '平台',
+    category: '分类',
+    usd_value_7d: '数量 (7天)',
+    dev_30d: '开发活动（30天)',
+    user_activity_30d: '用户活动 (30天)'
+  },
   RankingTable: {
     noDapps: '目前该类别/平台尚无ÐApps'
   },

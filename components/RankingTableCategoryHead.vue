@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-category-head">
-    <span class="label">{{ $tc('category', 1) }}</span>
+  <div class="RankingTableCategoryHead">
+    <span class="label">{{ $tc('rankingColumns.category', 1) }}</span>
   </div>
 </template>
