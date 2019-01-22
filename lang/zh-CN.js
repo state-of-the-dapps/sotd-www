@@ -31,7 +31,7 @@ export default {
     // TODO BitGuild: 'BitGuild',
     // TODO CryptoGaming: 'CryptoGaming',
     Featured: '特色',
-    Hottest: '最热的',
+    Hottest: '最热门的',
     'Most-Viewed': '最受关注',
     'Recently-added': '最近上架'
     // TODO 'Top-Development-Activity': 'Top Development Activity'
@@ -118,7 +118,7 @@ export default {
     noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
   },
   dappSortOptions: {
-    Hottest: '最热的',
+    Hottest: '最热门的',
     Newest: '最新'
   },
   DappsResultCount: {
