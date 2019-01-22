@@ -171,8 +171,9 @@ export default {
     viewDappResults: '查看所有 ÐApp 结果'
   },
   help: {
-    // TODO volumeUsd: 'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
-    // TODO volumePerNetwork: 'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+    volumeUsd: 'ÐApp合约交易量。汇率源自CryptoCompare.com',
+    volumePerNetwork:
+      'ÐApp合约交易量。与ÐApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com'
   },
   HomeHeroContentIntro: {
     heading: '搜索去中心化应用',
@@ -202,6 +203,10 @@ export default {
   },
   RankingTable: {
     noDapps: '目前该类别/平台尚无ÐApps'
+  },
+  RankingTableRankHead: {
+    help:
+      '排名基于多重因素，包括活跃用户（与ÐApp合约交易的独特源地址）、交易量、开发活动、资料新鲜度和完整度、点击通过率和用户推荐。排名旁边的数字指24小时的变化。'
   },
   SecondaryCtaMailingList: {
     title: '保持循环',
@@ -265,7 +270,7 @@ export default {
     nrOfContracts: '合同数量',
     smartContracts: '智能合约',
     '24htransactions': '24小时交易',
-    // TODO '24hVolumeUsd': '24h volume USD',
+    '24hVolumeUsd': '24小时美元',
     transactions24h: '交易 (24小时)',
     transactions30d: '交易 (30天)',
     transactionsHelp: '与ÐApp合约交易的次数',
