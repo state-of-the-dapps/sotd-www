@@ -200,6 +200,10 @@ export default {
   RankingTable: {
     noDapps: 'There are currently no ÐApps for this category and platform'
   },
+  RankingTableRankHead: {
+    help:
+      'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
+  },
   platformOptions: {
     ethereum: 'Ethereum',
     eos: 'EOS',

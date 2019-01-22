@@ -1,11 +1,11 @@
 <template>
   <div class="page">
     <div class="hero-wrapper">
-      <PageHeading :title="$t('Stats.title')"/>
-      <p class="description">{{ $t('Stats.description') }}</p>
+      <PageHeading :title="$t('TheStats.title')"/>
+      <p class="description">{{ $t('TheStats.description') }}</p>
       <p class="button-wrapper">
         <BaseButton
-          :text="$t('Stats.askUs')"
+          :text="$t('TheStats.askUs')"
           classes="special"
           @clickButton="openIntercom"/>
       </p>
