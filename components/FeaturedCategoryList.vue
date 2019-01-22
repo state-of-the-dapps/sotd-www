@@ -25,13 +25,13 @@
 
 <script>
 import { trackFeaturedCategory } from '@/helpers/mixpanel'
-import SvgCategoryExchanges from './SvgCategoryExchanges'
+import IconCategoryExchanges from './IconCategoryExchanges'
 import SvgCategoryFinance from './SvgCategoryFinance'
 import SvgCategoryGames from './SvgCategoryGames'
 
 export default {
   components: {
-    SvgCategoryExchanges,
+    IconCategoryExchanges,
     SvgCategoryFinance,
     SvgCategoryGames
   },
@@ -48,7 +48,7 @@ export default {
         },
         {
           name: 'exchanges',
-          iconComponent: 'SvgCategoryExchanges'
+          iconComponent: 'IconCategoryExchanges'
         }
       ]
     }

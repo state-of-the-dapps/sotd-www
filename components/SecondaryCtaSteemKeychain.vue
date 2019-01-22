@@ -2,7 +2,7 @@
   <div class="SecondaryCtaSteemKeychain">
     <div class="wrapper">
       <div class="icon-wrapper">
-        <SvgBadgeSteemKeychain 
+        <BadgeSteemKeychain 
           :width="35" 
           :height="35" 
           fill="white" />
@@ -30,11 +30,11 @@
 
 <script>
 import { trackSteemKeychainCta } from '~/helpers/mixpanel'
-import SvgBadgeSteemKeychain from './SvgBadgeSteemKeychain'
+import BadgeSteemKeychain from './BadgeSteemKeychain'
 
 export default {
   components: {
-    SvgBadgeSteemKeychain
+    BadgeSteemKeychain
   },
   data() {
     return {

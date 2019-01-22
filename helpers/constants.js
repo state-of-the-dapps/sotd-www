@@ -87,42 +87,42 @@ const dappSchema = Object.freeze({
 
 const dappBadgeMap = Object.freeze({
   '0x': {
-    component: 'SvgBadge0x',
+    component: 'Badge0x',
     description: '0x protocol compatible'
   },
   complete: {
-    component: 'SvgBadgeComplete',
+    component: 'BadgeComplete',
     description: 'Has a complete profile'
   },
   consensys: {
-    component: 'SvgBadgeConsensys',
+    component: 'BadgeConsensys',
     description:
       'Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a>'
   },
   featured: {
-    component: 'SvgBadgeFeatured',
+    component: 'BadgeFeatured',
     description: 'Currently featured'
   },
   hot: {
-    component: 'SvgBadgeHot',
+    component: 'BadgeHot',
     description: 'Currently hot'
   },
   metamask: {
-    component: 'SvgBadgeMetamask',
+    component: 'BadgeMetamask',
     description:
       'Works with <a href="https://www.metamask.io" target="_blank">Metamask</a>'
   },
   solidified: {
-    component: 'SvgBadgeSolidified',
+    component: 'BadgeSolidified',
     description:
       'Audited by <a href="https://solidified.io/" target="_blank">Solidified</a>'
   },
   'status-im': {
-    component: 'SvgBadgeStatus',
+    component: 'BadgeStatus',
     description: 'On <a href="https://status.im/" target="_blank">Status.im</a>'
   },
   token: {
-    component: 'SvgBadgeToken',
+    component: 'BadgeToken',
     description: 'Has a token'
   }
 })

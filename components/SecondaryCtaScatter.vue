@@ -2,7 +2,7 @@
   <div class="SecondaryCtaMetamask">
     <div class="wrapper">
       <div class="icon-wrapper">
-        <SvgBadgeScatter 
+        <BadgeScatter 
           :width="35" 
           :height="35" 
           fill="white" />
@@ -30,11 +30,11 @@
 
 <script>
 import { trackScatterCta } from '~/helpers/mixpanel'
-import SvgBadgeScatter from './SvgBadgeScatter'
+import BadgeScatter from './BadgeScatter'
 
 export default {
   components: {
-    SvgBadgeScatter
+    BadgeScatter
   },
   data() {
     return {

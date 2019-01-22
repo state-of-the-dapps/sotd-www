@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="SvgBadgeMetamask" 
+    class="BadgeMetamask" 
     x="0px" 
     y="0px" 
     viewBox="0 0 1280 1152.7">

@@ -22,27 +22,27 @@
 
 <script>
 import { dappBadgeMap } from '~/helpers/constants'
-import SvgBadge0x from './SvgBadge0x'
-import SvgBadgeComplete from './SvgBadgeComplete'
-import SvgBadgeConsensys from './SvgBadgeConsensys'
-import SvgBadgeFeatured from './SvgBadgeFeatured'
-import SvgBadgeHot from './SvgBadgeHot'
-import SvgBadgeMetamask from './SvgBadgeMetamask'
-import SvgBadgeSolidified from './SvgBadgeSolidified'
-import SvgBadgeStatus from './SvgBadgeStatus'
-import SvgBadgeToken from './SvgBadgeToken'
+import Badge0x from './Badge0x'
+import BadgeComplete from './BadgeComplete'
+import BadgeConsensys from './BadgeConsensys'
+import BadgeFeatured from './BadgeFeatured'
+import BadgeHot from './BadgeHot'
+import BadgeMetamask from './BadgeMetamask'
+import BadgeSolidified from './BadgeSolidified'
+import BadgeStatus from './BadgeStatus'
+import BadgeToken from './BadgeToken'
 
 export default {
   components: {
-    SvgBadge0x,
-    SvgBadgeComplete,
-    SvgBadgeConsensys,
-    SvgBadgeFeatured,
-    SvgBadgeHot,
-    SvgBadgeMetamask,
-    SvgBadgeSolidified,
-    SvgBadgeStatus,
-    SvgBadgeToken
+    Badge0x,
+    BadgeComplete,
+    BadgeConsensys,
+    BadgeFeatured,
+    BadgeHot,
+    BadgeMetamask,
+    BadgeSolidified,
+    BadgeStatus,
+    BadgeToken
   },
   props: {
     badges: {

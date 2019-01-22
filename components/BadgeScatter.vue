@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height"
-    class="SvgBadgeScatter"
+    class="BadgeScatter"
     viewBox="0 0 240 240" 
     version="1.1" 
     xmlns="http://www.w3.org/2000/svg" 
