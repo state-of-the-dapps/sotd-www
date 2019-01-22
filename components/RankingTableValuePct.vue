@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-value-pct">
+  <div class="RankingTableValuePct">
     <span 
       v-if="value === null" 
       class="value">-</span>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-value-pct {
+.RankingTableValuePct {
   display: flex;
   flex-direction: column;
   @include font-text-mono;

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesUpdated">
+  <div class="DappDetailBodyContentModulesUpdated">
     {{ $t(namespace('lastUpdated')) }}: <strong>{{ updated | formatDate('MMM Do, YYYY') }}</strong>
   </div>
 </template>

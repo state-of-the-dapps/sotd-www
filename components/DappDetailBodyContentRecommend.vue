@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="component-DappDetailBodyContentRecommend" 
+    class="DappDetailBodyContentRecommend" 
     itemprop="aggregateRating" 
     itemscope 
     itemtype="http://schema.org/AggregateRating">

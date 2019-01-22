@@ -1,5 +1,5 @@
 <template>
-  <div class="page-logos">
+  <div class="page">
     <div class="wrapper">
       <h1 class="title-1">Download our logos</h1>
       <p>The logos and icons below can be used to link to State of the ÐApps. Please do not modify them.</p>

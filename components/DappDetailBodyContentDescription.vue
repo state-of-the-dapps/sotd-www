@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentDescription">
+  <div class="DappDetailBodyContentDescription">
     <div 
       class="description" 
       v-html="$md.render(description)"/>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss">
-.component-DappDetailBodyContentDescription .description {
+.DappDetailBodyContentDescription .description {
   ol,
   ol li {
     list-style-type: decimal;

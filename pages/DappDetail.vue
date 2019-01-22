@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="page-dapps-detail" 
+    class="page" 
     itemscope 
     itemtype="http://schema.org/Product">
     <DappDetail 

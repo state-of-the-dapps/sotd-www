@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-profile">
+  <div class="RankingTableProfile">
     <span>{{ Math.ceil(score * 100) }}%</span>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-profile {
+.RankingTableProfile {
   @include font-text-mono;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-LoadMore">
+  <div class="LoadMore">
     <div class="wrapper">
       <p 
         v-if="dapps.length < total && !isLoading" 
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-LoadMore {
+.LoadMore {
   display: flex;
   align-items: center;
   justify-content: center;

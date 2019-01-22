@@ -1,5 +1,5 @@
 <template>
-  <div class="page-rankings">
+  <div class="page">
     <CategoryPlatformFilters base-route="rankings"/>
     <div ref="table">
       <RankingTable
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-rankings {
+.page {
   padding-top: 25px;
   padding-bottom: 50px;
 }

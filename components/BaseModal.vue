@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="component-base-modal">
+    <div class="BaseModal">
       <div class="outer-wrapper">
         <div class="inner-wrapper">
           <slot/>
@@ -14,7 +14,7 @@
 </template>
 
 <style lang="scss" scoped>
-.component-base-modal {
+.BaseModal {
   position: fixed;
   top: 0;
   left: 0;

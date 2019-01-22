@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyHeading">
+  <div class="DappDetailBodyHeading">
     <ul 
       :class="'-' + category" 
       class="heading-items">

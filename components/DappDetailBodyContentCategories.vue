@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentCategories">
+  <div class="DappDetailBodyContentCategories">
     <div class="wrapper">
       <h4 class="subtitle">{{ $tc('category', 2) }}</h4>
       <ul class="category-list">

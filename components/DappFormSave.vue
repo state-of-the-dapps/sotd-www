@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="DappFormSave">
     <div class="profile-score-wrapper">
       <h3 class="profile-score-title">Current profile strength <span class="profile-score-title-pct">{{ Math.ceil(profileScore * 100) }}%</span></h3>
       <div class="profile-score-bar">
@@ -343,6 +343,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.DappFormSave {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 1px;
+  position: sticky;
+  top: 10px;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .BasePopover {
   bottom: 100%;
   left: 50%;
@@ -556,20 +570,6 @@ export default {
 
 .url {
   width: 300px;
-}
-
-.wrapper {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 0 auto;
-  margin-top: 1px;
-  position: sticky;
-  top: 10px;
-  @include tweakpoint('min-width', $tweakpoint--default) {
-    margin-left: 0;
-    margin-right: 0;
-  }
 }
 
 .yumyum {

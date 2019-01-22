@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="DappFormFieldsSocial">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span>Social media links <span class="boost">Up to +28% {{ $t('profileStrength') }}</span></p>
     <ul class="list">
       <li class="item">

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesContracts">
+  <div class="DappDetailBodyContentModulesContracts">
     <ul class="contract-list">
       <DappDetailBodyContentModulesContractsItem
         v-if="mainnet.length"

@@ -1,5 +1,5 @@
 <template>
-  <li class="contract-item">
+  <li class="DappDetailBodyContentModulesContractsItem">
     <h4 class="contract-name">{{ network | capitalize }} {{ $t(namespace(label)) | pluralize(addresses.length) }} ({{ platform }})</h4>
     <ul class="contract-addresses">
       <DappDetailBodyContentModulesContractsAddress

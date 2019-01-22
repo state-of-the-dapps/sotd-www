@@ -1,7 +1,7 @@
 <template>
   <div 
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
-    class="item">
+    class="DappFormFieldsLicense item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="license.length && !errors.length ? 'purple' : 'gray'"/></span>Software License <span class="boost">+5% {{ $t('profileStrength') }}</span></p>
     <input 
       :class="license.length > 0 ? '--is-filled' : ''" 

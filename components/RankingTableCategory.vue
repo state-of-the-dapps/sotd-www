@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="RankingTableCategory">
     <nuxt-link
       v-if="category"
       :class="[

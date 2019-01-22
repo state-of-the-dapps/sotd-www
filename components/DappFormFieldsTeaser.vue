@@ -2,7 +2,7 @@
   <div
     id="teaser"
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
-    class="item">
+    class="DappFormFieldsTeaser item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="teaser.length >= 4 && !errors.length ? 'purple' : 'gray'"/></span>Tagline <span class="required">(required)</span></p>
     <input
       id="teaserField"

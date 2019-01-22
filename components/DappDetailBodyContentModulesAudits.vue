@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesAudits">
+  <div class="DappDetailBodyContentModulesAudits">
     <h4 class="audit-title">Contract audit<span v-if="audits.length > 1">s</span></h4>
     <ul class="audit-list">
       <li 
@@ -52,7 +52,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.component-DappDetailBodyContentModulesAudits {
+.DappDetailBodyContentModulesAudits {
   overflow: hidden;
 }
 

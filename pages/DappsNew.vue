@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <section class="section -intro">
       <div class="container">
         <PageHeading title="Submit a ÐApp"/>

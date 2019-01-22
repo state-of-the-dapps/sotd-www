@@ -2,7 +2,7 @@
   <div
     id="authors"
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
-    class="item">
+    class="DappFormFieldsAuthors item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="formattedAuthors.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp author(s) <span class="required">(required)</span></p>
     <input
       id="authorsField"

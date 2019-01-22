@@ -1,5 +1,5 @@
 <template>
-  <div class="PageHome">
+  <div class="page">
     <HomeHero/>
     <FeaturedDappList/>
     <FeaturedRankingByPlatformList/>

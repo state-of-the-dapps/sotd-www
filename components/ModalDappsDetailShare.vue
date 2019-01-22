@@ -1,5 +1,5 @@
 <template>
-  <div class="component-modal-dapps-detail-share">
+  <div class="ModalDappsDetailShare">
     <h1 class="title-1">Share {{ dappName }} with a friend</h1>
     <p class="message">https://www.stateofthedapps.com/dapps/{{ dappSlug }}</p>
     <p class="cta-wrapper"><button 
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-modal-dapps-detail-share {
+.ModalDappsDetailShare {
   text-align: center;
 }
 

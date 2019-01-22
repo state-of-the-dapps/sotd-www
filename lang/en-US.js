@@ -236,29 +236,6 @@ export default {
     cta: 'Try it now',
     discover: 'Discover Steem Keychain'
   },
-  Stats: {
-    title: 'ÐApp Statistics',
-    description:
-      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.',
-    askUs: 'Ask us about custom data',
-    activeUsersHelp:
-      'Unique source addresses in transactions to ÐApp contracts',
-    dailyActiveUsers: 'Daily active users',
-    monthlyActiveUsers: 'Monthly active users',
-    newDappsPerMonth: 'New ÐApps per Month',
-    newDapps: 'New ÐApps',
-    nrOfContracts: '# of contracts',
-    smartContracts: 'Smart contracts',
-    '24htransactions': '24h transactions',
-    '24hVolumeUsd': '24h volume USD',
-    transactions24h: 'Transactions (24hr)',
-    transactions30d: 'Transactions (30d)',
-    transactionsHelp: 'Number of transactions to ÐApp contracts',
-    totalDapps: 'Total ÐApps',
-    volume24h: 'Volume (24hr)',
-    volumeHelp:
-      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
-  },
   status: 'Status',
   statusOptions: {
     live: 'live',
@@ -281,6 +258,29 @@ export default {
     getAndroidApp: 'Get the Android app',
     helpMetamask: 'Help for Metamask',
     termsOfUse: 'Terms of use'
+  },
+  TheStats: {
+    title: 'ÐApp Statistics',
+    description:
+      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.',
+    askUs: 'Ask us about custom data',
+    activeUsersHelp:
+      'Unique source addresses in transactions to ÐApp contracts',
+    dailyActiveUsers: 'Daily active users',
+    monthlyActiveUsers: 'Monthly active users',
+    newDappsPerMonth: 'New ÐApps per Month',
+    newDapps: 'New ÐApps',
+    nrOfContracts: '# of contracts',
+    smartContracts: 'Smart contracts',
+    '24htransactions': '24h transactions',
+    '24hVolumeUsd': '24h volume USD',
+    transactions24h: 'Transactions (24hr)',
+    transactions30d: 'Transactions (30d)',
+    transactionsHelp: 'Number of transactions to ÐApp contracts',
+    totalDapps: 'Total ÐApps',
+    volume24h: 'Volume (24hr)',
+    volumeHelp:
+      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
   },
   userActivity30d: 'User activity (30d)',
   userActivity30dHelp:

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-propmoted-dapps">
+  <div class="PromotedDapps">
     <div class="wrapper">
       <h1 class="title-1">Promote your ÐApp to attract more users</h1>
       <p class="description">{{ description }}</p>

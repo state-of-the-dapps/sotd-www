@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContent">
+  <div class="DappDetailBodyContent">
     <div class="wrapper">
       <div class="main">
         <DappAlert 

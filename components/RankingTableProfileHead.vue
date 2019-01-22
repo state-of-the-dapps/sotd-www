@@ -1,18 +1,18 @@
 <template>
-  <div class="component-ranking-table-profile-head">
+  <div class="RankingTableProfileHead">
     <span class="label">Profile</span>
-    <Help
+    <BaseHelp
       :bottom="true"
       text="How complete the profile of the ÐApp is"/>
   </div>
 </template>
 
 <script>
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <span>
+  <span class="BaseDelta">
     <span
       v-if="value !== 0 && value !== null"
       :class="[{positive: value > 0}, {negative: value < 0}]"
-      class="BaseDelta"><BaseArrow :position="arrowPosition"/>{{ Math.abs(value) }}</span>
+      class="value"><BaseArrow :position="arrowPosition"/>{{ Math.abs(value) }}</span>
     <span
       v-if="nullText && value === null"
       class="null">{{ nullText }}</span>
@@ -36,14 +36,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.BaseDelta {
-  @include font-text-mono;
-  display: inline-block;
-  border-radius: 3px;
-  font-weight: 700;
-  line-height: 1;
-  font-size: 0.9rem;
-}
 .positive {
   color: $color--positive;
 }
@@ -52,5 +44,13 @@ export default {
 }
 .null {
   color: $color--medium-purple;
+}
+.value {
+  @include font-text-mono;
+  display: inline-block;
+  border-radius: 3px;
+  font-weight: 700;
+  line-height: 1;
+  font-size: 0.9rem;
 }
 </style>

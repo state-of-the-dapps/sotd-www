@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-rank-head">
+  <div class="RankingTableRankHead">
     <nuxt-link
       v-if="sort"
       :to="localePath({name: rankingRouteName, params: rankingParams, query: {}})"
@@ -9,7 +9,7 @@
     <span 
       v-else 
       class="label">#</span>
-    <Help
+    <BaseHelp
       :bottom="true"
       text="Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h."/>
   </div>
@@ -17,11 +17,11 @@
 
 <script>
 import { trackDappRankingSort } from '~/helpers/mixpanel'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   },
   props: {
     sort: {
@@ -55,7 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-rank-head {
+.RankingTableRankHead {
   text-align: center;
 }
 </style>

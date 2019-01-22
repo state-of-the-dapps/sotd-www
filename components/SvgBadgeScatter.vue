@@ -1,7 +1,8 @@
 <template>
   <svg 
     :width="width" 
-    :height="height" 
+    :height="height"
+    class="SvgBadgeScatter"
     viewBox="0 0 240 240" 
     version="1.1" 
     xmlns="http://www.w3.org/2000/svg" 

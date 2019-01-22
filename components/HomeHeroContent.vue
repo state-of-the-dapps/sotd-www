@@ -1,5 +1,5 @@
 <template>
-  <div class="component-HomeHeroContent">
+  <div class="HomeHeroContent">
     <HomeHeroContentIcons/>
     <HomeHeroContentIntro/>
   </div>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-HomeHeroContent {
+.HomeHeroContent {
   @include tweakpoint('min-width', 575px) {
     display: flex;
     flex-direction: row-reverse;
@@ -27,7 +27,7 @@ export default {
     .HomeHeroContentIntro {
       width: 400px;
     }
-    .component-HomeHeroContentIcons {
+    .HomeHeroContentIcons {
       flex-grow: 1;
     }
   }
@@ -43,7 +43,7 @@ export default {
     }
   }
   @include tweakpoint('min-width', 1400px) {
-    .component-HomeHeroContentIcons {
+    .HomeHeroContentIcons {
       position: absolute;
       top: 75px;
       left: 0;

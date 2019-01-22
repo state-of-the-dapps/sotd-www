@@ -1,5 +1,5 @@
 <template>
-  <section class="section -search">
+  <section class="DappsSearch">
     <div class="wrapper-outer">
       <div class="wrapper">
         <a 

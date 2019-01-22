@@ -1,7 +1,7 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesStats">
+  <div class="DappDetailBodyContentModulesStats">
     <h4 class="subtitle">{{ title }} 
-      <Help
+      <BaseHelp
         v-if="help"
         :text="help"/>
     </h4>
@@ -43,10 +43,10 @@
 
 <script>
 import Trend from 'vuetrend'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 export default {
   components: {
-    Help,
+    BaseHelp,
     Trend
   },
   props: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="PageStats">
+  <div class="page">
     <div class="hero-wrapper">
       <PageHeading :title="$t('Stats.title')"/>
       <p class="description">{{ $t('Stats.description') }}</p>
@@ -9,7 +9,7 @@
           classes="special"
           @clickButton="openIntercom"/>
       </p>
-      <Stats
+      <TheStats
         :growth-data="growth"
         :stat-categories="stats.categories"
         :stat-dapp-contract-count="stats.dappContractCount"
@@ -28,13 +28,13 @@ import { mapGetters } from 'vuex'
 import { openIntercom } from '@/helpers/mixins'
 import BaseButton from '@/components/BaseButton'
 import PageHeading from '@/components/PageHeading'
-import Stats from '@/components/Stats'
+import TheStats from '@/components/TheStats'
 
 export default {
   components: {
     BaseButton,
     PageHeading,
-    Stats
+    TheStats
   },
   mixins: [openIntercom],
   data() {
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.PageStats {
+.page {
   padding-bottom: 50px;
 }
 

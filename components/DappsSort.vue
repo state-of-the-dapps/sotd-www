@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapps-sort">
+  <div class="DappsSort">
     <BaseDropdown
       :options="sortOptions"
       :selected="$t(`dappSortOptions.${formattedSortQuery}`)"

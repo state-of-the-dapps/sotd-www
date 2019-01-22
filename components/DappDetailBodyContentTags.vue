@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentBadges">
+  <div class="DappDetailBodyContentTags">
     <div class="wrapper">
       <h4 class="subtitle">{{ $t('tags') | capitalize }}</h4>
       <ul class="tag-list">

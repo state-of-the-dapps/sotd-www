@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgStar" 
+    class="SvgStar" 
     viewBox="0 0 51 48">
     <path 
       fill="none" 

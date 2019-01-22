@@ -1,5 +1,5 @@
 <template>
-  <div class="component-SecondaryCta">
+  <div class="SecondaryCta">
     <SecondaryCtaMailingList/>
     <SecondaryCtaMetamask/>
     <SecondaryCtaScatter/>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-SecondaryCta {
+.SecondaryCta {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
   overflow: hidden;

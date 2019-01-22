@@ -1,5 +1,5 @@
 <template>
-  <div class="component-HomeHeroContentIcons">
+  <div class="HomeHeroContentIcons">
     <HomeHeroContentIconsItem 
       v-for="(status, index) in cards" 
       :key="index"
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-HomeHeroContentIcons {
+.HomeHeroContentIcons {
   position: relative;
   bottom: 0;
   left: 30px;
@@ -56,7 +56,7 @@ export default {
   }
 }
 
-.component-HomeHeroContentIconsItem {
+.HomeHeroContentIconsItem {
   position: absolute;
   border-radius: 5px;
   overflow: hidden;

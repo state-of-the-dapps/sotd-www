@@ -1,5 +1,5 @@
 <template>
-  <div class="component-base-pager">
+  <div class="BasePager">
     <div class="first-wrapper">
       <button
         :class="currentPage !== 1 ? '' : 'hidden'"
@@ -94,7 +94,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-pager {
+.BasePager {
   padding-top: 15px;
   display: flex;
   flex-wrap: wrap;

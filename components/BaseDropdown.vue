@@ -1,7 +1,7 @@
 <template>
   <div
     :class="theme"
-    class="component-base-dropdown">
+    class="BaseDropdown">
     <h3
       v-if="name"
       class="dropdown-title">{{ name }}</h3>
@@ -140,7 +140,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-dropdown {
+.BaseDropdown {
   width: 100%;
   text-align: left;
   color: $color--black;

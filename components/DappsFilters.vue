@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapps-filters">
+  <div class="DappsFilters">
     <div class="filter">
       <BaseDropdown
         :options="platformOptions"

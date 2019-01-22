@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="DappFormFieldsContracts">
     <div>
       <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span><span>{{ platform }} contract <template v-if="platform === 'EOS' || platform === 'Steem'">accounts</template><template v-else>addresses</template></span></p>
       <ul 

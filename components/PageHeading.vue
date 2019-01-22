@@ -1,5 +1,5 @@
 <template>
-  <div class="component-page-heading">
+  <div class="PageHeading">
     <h1 class="title">{{ title }}</h1>
   </div>
 </template>

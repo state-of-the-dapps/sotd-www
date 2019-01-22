@@ -1,7 +1,7 @@
 <template>
   <div
     :class="'rank-' + rank"
-    class="component-ranking-table-rank">
+    class="RankingTableRank">
     <span class="value">{{ rank }}</span>
     <BaseDelta
       :value="rankDelta"
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-rank {
+.RankingTableRank {
   font-weight: 700;
   padding: 0;
   background: darken($color--white, 2%);

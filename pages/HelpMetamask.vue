@@ -1,5 +1,5 @@
 <template>
-  <div class="page-landing-metamask">
+  <div class="page">
     <section class="section">
       <div class="text-container">
         <div class="icon-wrapper">
@@ -171,7 +171,7 @@ export default {
   margin: 0;
 }
 
-.page-landing-metamask {
+.page {
   padding-bottom: 50px;
 }
 

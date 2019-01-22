@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <CollectionLead 
       :description="collection.description"
       :curator="collection.curator"

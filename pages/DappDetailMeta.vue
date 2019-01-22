@@ -1,5 +1,5 @@
 <template>
-  <div class="page-dapp-detail-meta">
+  <div class="page">
     <div class="hero-wrapper">
       <p style="text-align: center;">Head back to <nuxt-link :to="localePath({name: 'dapp-detail', params: {}})">{{ dapp.name }}</nuxt-link></p>
 

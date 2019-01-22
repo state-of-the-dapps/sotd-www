@@ -1,8 +1,8 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesDev">
+  <div class="DappDetailBodyContentModulesDev">
     <div class="wrapper">
       <div class="field -title">
-        <h4 class="dev-title">{{ $t(namespace('title')) }}<Help :text="$t(namespace('help'))"/></h4>
+        <h4 class="dev-title">{{ $t(namespace('title')) }}<BaseHelp :text="$t(namespace('help'))"/></h4>
       </div>
       <div class="field -data">
         <p class="dev-data">{{ $tc(namespace('events'), dev30d, {count: dev30d}) }}<span 
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 import Trend from 'vuetrend'
 
 export default {
   components: {
-    Help,
+    BaseHelp,
     Trend
   },
   props: {

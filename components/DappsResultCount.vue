@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="DappsResultCount">
     <div class="outer-wrapper">
       <ul class="count-list">
         <i18n

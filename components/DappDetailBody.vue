@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBody">
+  <div class="DappDetailBody">
     <div 
       :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
       class="wrapper">
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-DappDetailBody {
+.DappDetailBody {
   @include margin-wrapper-main;
 }
 

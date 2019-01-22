@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModules">
+  <div class="DappDetailBodyContentModules">
     <div class="main-wrapper">
       <div class="module-wrapper -tier-1">
         <div class="module -status">

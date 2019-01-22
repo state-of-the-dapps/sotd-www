@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgIconEdit" 
+    class="SvgIconEdit" 
     x="0px" 
     y="0px" 
     viewBox="0 0 1280 1280">

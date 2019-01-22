@@ -9,7 +9,7 @@
     <span 
       v-else 
       class="label">{{ $t('rankingColumns.dau') }}</span>
-    <Help 
+    <BaseHelp 
       :bottom="true"
       :text="$t('users24hHelp')"/>
   </div>
@@ -17,11 +17,11 @@
 
 <script>
 import { trackDappRankingSort } from '~/helpers/mixpanel'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   },
   props: {
     sort: {

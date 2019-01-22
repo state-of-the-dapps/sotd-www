@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesLicense">
+  <div class="DappDetailBodyContentModulesLicense">
     <h4 class="license-title">{{ $t(namespace('license')) }}</h4>
     <p 
       v-if="license" 
@@ -20,7 +20,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .license-data {

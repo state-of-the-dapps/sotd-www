@@ -1,6 +1,6 @@
 <template>
   <span 
-    class="component-Help" 
+    class="BaseHelp" 
     @mouseover="popoverIsActive = true" 
     @mouseout="popoverIsActive = false">
     <span class="help-icon">?</span>
@@ -43,7 +43,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.component-Help {
+.BaseHelp {
   display: inline-block;
   margin-left: 5px;
   position: relative;
