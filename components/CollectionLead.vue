@@ -1,5 +1,5 @@
 <template>
-  <div class="component--collections-detail-lead">
+  <div class="CollectionLead">
     <h2 class="sub-heading">Collection</h2>
     <h1 class="heading">{{ name }}<span v-if="curator">, by {{ curator }}</span></h1>
     <p class="description">
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component--collections-detail-lead {
+.CollectionLead {
   padding: 0 20px;
   text-align: center;
   margin: 3rem 0 3.5rem 0;

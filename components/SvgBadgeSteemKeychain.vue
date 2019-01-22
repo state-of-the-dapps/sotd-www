@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgBadgeSteemKeychain" 
+    class="SvgBadgeSteemKeychain" 
     x="0px" 
     y="0px" 
     viewBox="0 0 204.55 204.55">

@@ -1,5 +1,7 @@
 <template>
-  <div id="category">
+  <div
+    id="category"
+    class="DappFormFieldsCategory">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="selectedCategory.length ? 'purple' : 'gray'"/></span>Category <span class="required">(required)</span></p>
     <div
       id="categoryField"

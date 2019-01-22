@@ -1,7 +1,7 @@
 <template>
   <div class="RankingTableUsageHead">
     <span class="label">{{ $t('rankingColumns.user_activity_30d') }}</span>
-    <Help
+    <BaseHelp
       :reversed="true"
       :bottom="true"
       :text="$t('userActivity30dHelp')"/>
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   }
 }
 </script>

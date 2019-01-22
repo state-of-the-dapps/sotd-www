@@ -1,5 +1,5 @@
 <template>
-  <div class="component-dapp-form">
+  <div class="DappForm">
     <section class="section -form">
       <div class="container">
         <DappFormFields
@@ -65,9 +65,9 @@
 import equal from 'deep-equal'
 import { dappDefaultPlatform } from '~/helpers/constants'
 import BaseModal from './BaseModal'
-import DappFormFields from '~/components/DappFormFields'
-import DappFormSave from '~/components/DappFormSave'
-import ModalDappsNewConfirmation from '~/components/ModalDappsNewConfirmation'
+import DappFormFields from './DappFormFields'
+import DappFormSave from './DappFormSave'
+import ModalDappsNewConfirmation from './ModalDappsNewConfirmation'
 
 export default {
   components: {

@@ -1,7 +1,7 @@
 <template>
   <label
     :for="field"
-    class="component-base-label">
+    class="BaseLabel">
     <span class="label">{{ label }}</span>
     <span
       v-if="required"
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-label {
+.BaseLabel {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-weight: 700;

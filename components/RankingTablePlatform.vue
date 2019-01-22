@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="RankingTablePlatform">
     <nuxt-link
       :class="platform.toLowerCase() === $route.params.platform ? 'is-selected' : ''"
       :to="localePath({name: 'rankings-platform', params: { platform: platform.toLowerCase() }})"

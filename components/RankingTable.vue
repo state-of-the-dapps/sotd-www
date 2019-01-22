@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table">
+  <div class="RankingTable">
     <div class="wrapper">
       <div class="table">
         <div class="table-header">
@@ -181,7 +181,7 @@ import { trackDappRankingPager } from '~/helpers/mixpanel'
 import BaseDelta from './BaseDelta'
 import BaseDropdown from './BaseDropdown'
 import BasePager from './BasePager'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 import Media from 'vue-media'
 import RankingTableCategory from './RankingTableCategory'
 import RankingTableCategoryHead from './RankingTableCategoryHead'
@@ -205,8 +205,8 @@ export default {
   components: {
     BaseDelta,
     BaseDropdown,
+    BaseHelp,
     BasePager,
-    Help,
     Media,
     RankingTableCategory,
     RankingTableCategoryHead,
@@ -294,7 +294,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-pager {
+.BasePager {
   max-width: 1200px;
   margin: 0 auto;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="DappFormFieldsPlatform item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="platform.length ? 'purple' : 'gray'"/></span>Platform</p>
     <div class="selection-wrapper">
       <button

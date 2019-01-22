@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="DappFormFields">
     <DappFormFieldsName
       :errors="errors.name"
       :existing-dapp="existingDapp"
@@ -254,7 +254,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list {
+.DappFormFields {
   width: 100%;
   max-width: 400px;
   padding: 10px;

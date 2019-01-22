@@ -1,5 +1,5 @@
 <template>
-  <div class="component--shared-footer">
+  <div class="TheFooter">
     <ul class="nav-list">
       <li class="nav-item">
         <a 
@@ -276,7 +276,7 @@ export default {
   width: 120px;
 }
 
-.component--shared-footer {
+.TheFooter {
   align-items: top;
   background: $color--black;
   color: darken($color--gray, 25%);

@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentImage">
+  <div class="DappDetailBodyContentImage">
     <div class="wrapper">
       <img 
         :src="productImage"

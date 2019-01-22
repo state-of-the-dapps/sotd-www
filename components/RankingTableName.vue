@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-name">
+  <div class="RankingTableName">
     <div class="icon-wrapper">
       <nuxt-link 
         :to="localePath({ name: 'dapp-detail', params: { slug }})" 
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-name {
+.RankingTableName {
   padding: 13px 0;
   display: flex;
   align-items: center;

@@ -1,5 +1,7 @@
 <template>
-  <div id="status">
+  <div
+    id="status"
+    class="DappFormFieldsStatus">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>ÐApp status <span class="required">(required)</span></p>
     <ul
       id="statusField"

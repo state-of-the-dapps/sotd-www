@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentPlatform">
+  <div class="DappDetailBodyContentPlatform">
     <div class="wrapper">
       <p class="description">
         <strong>{{ $t('platform') }}</strong> 

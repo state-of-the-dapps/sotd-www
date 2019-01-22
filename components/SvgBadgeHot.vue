@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgBadgeHot" 
+    class="SvgBadgeHot" 
     viewBox="-200 0 1280 1152.7">
     <path 
       :class="fill" 

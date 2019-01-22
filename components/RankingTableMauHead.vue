@@ -1,18 +1,18 @@
 <template>
-  <div class="component-ranking-table-mau-head">
+  <div class="RankingTableMauHead">
     <span class="label">Users (30d)</span>
-    <Help
+    <BaseHelp
       :bottom="true"
       text="Monthly Active Users, or MAU (unique source addresses in transactions to ÐApp contracts)"/>
   </div>
 </template>
 
 <script>
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   }
 }
 </script>

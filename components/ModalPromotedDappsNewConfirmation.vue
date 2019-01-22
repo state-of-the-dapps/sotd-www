@@ -1,5 +1,5 @@
 <template>
-  <div class="component-modal-promoted-dapps-new-confirmation">
+  <div class="ModalPromotedDappsNewConfirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
     <p class="message">Your post will typically be processed by the next business day. Stay tuned for updates via the email you provided.</p>
     <p class="cta-wrapper"><button 
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-modal-promoted-dapps-new-confirmation {
+.ModalPromotedDappsNewConfirmation {
   text-align: center;
 }
 

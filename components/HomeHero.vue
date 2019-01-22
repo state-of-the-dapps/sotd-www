@@ -1,5 +1,5 @@
 <template>
-  <div class="component-HomeHero">
+  <div class="HomeHero">
     <div class="wrapper">
       <BaseMenu
         :is-home="true"
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-HomeHero {
+.HomeHero {
   background-image: $gradient--main-1;
   color: lighten($color--white, 100%);
   padding: 7px 0 20px 0;

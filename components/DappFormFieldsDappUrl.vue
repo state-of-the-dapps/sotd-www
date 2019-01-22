@@ -2,7 +2,7 @@
   <div
     id="dappUrl"
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
-    class="item">
+    class="DappFormFieldsDappUrl item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="url.length >= 3 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp URL</p>
     <input
       id="dappUrlField"

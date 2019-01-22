@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-svg-category-exchanges" 
+    class="Svg-category-exchanges" 
     viewBox="0 0 54 54">
     <path 
       :class="fill" 

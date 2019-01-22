@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-platform-head">
+  <div class="RankingTablePlatformHead">
     <span class="label">{{ $t('rankingColumns.platform') }}</span>
   </div>
 </template>

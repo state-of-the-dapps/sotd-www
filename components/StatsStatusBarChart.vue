@@ -1,5 +1,5 @@
 <template>
-  <div class="component-StatsBarChart">
+  <div class="StatsBarChart">
     <ul class="stat-list">
       <li 
         v-for="(status, index) in statuses" 

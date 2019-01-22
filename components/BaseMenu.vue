@@ -1,7 +1,7 @@
 <template>
   <div 
     :class="'-' + color" 
-    class="component-base-menu">
+    class="BaseMenu">
     <div class="nameplate">
       <nuxt-link 
         :to="localePath({ name: 'home' })" 
@@ -206,7 +206,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-base-menu {
+.BaseMenu {
   display: flex;
   align-items: center;
   padding: 18px 10px 16px 10px;

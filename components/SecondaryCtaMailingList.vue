@@ -1,7 +1,7 @@
 <template>
   <div 
-    id="component-SecondaryCtaMailingList" 
-    class="component-SecondaryCtaMailingList">
+    id="SecondaryCtaMailingList" 
+    class="SecondaryCtaMailingList">
     <div class="wrapper">
       <SvgIconMail 
         :width="30" 
@@ -11,7 +11,7 @@
       <p class="description">{{ $t(namespace('description')) }}</p>
       <div class="input-wrapper">
         <input 
-          id="component-SecondaryCtaMailingList-input" 
+          id="SecondaryCtaMailingList-input" 
           v-model="email" 
           :placeholder="$t(namespace('placeholder'))" 
           class="input" 
@@ -140,7 +140,7 @@ export default {
   }
 }
 
-.component-SecondaryCtaMailingList {
+.SecondaryCtaMailingList {
   color: lighten($color--white, 100%);
   padding: 20px 0;
   overflow: hidden;

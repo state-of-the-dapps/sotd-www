@@ -3,7 +3,7 @@
     <div 
       v-on-clickaway="reset" 
       v-if="tags.length" 
-      class="container -suggested-tags">
+      class="DappsSearchSuggestedTags container -suggested-tags">
       <ul class="list">
         <li 
           v-for="(tag, key) in tags" 

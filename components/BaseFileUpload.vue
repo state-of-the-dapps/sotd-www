@@ -1,5 +1,5 @@
 <template>
-  <div class="component-base-file-upload">
+  <div class="BaseFileUpload">
     <dropzone
       id="dropzone"
       ref="el"

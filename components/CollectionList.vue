@@ -1,5 +1,5 @@
 <template>
-  <div class="component-CollectionList">
+  <div class="CollectionList">
     <DappCollectionList 
       v-for="(collection, index) in collections" 
       :collection="collection" 
@@ -31,11 +31,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-CollectionList {
+.CollectionList {
   @include margin-wrapper-main;
 }
 
-.component-SvgIconCollection {
+.SvgIconCollection {
   margin-right: 7px;
 }
 

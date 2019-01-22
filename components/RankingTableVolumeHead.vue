@@ -9,7 +9,7 @@
     <span 
       v-else 
       class="label">Volume (7d)</span>
-    <Help
+    <BaseHelp
       :bottom="true"
       :text="$t('help.volumeUsd')"/>
   </div>
@@ -17,11 +17,11 @@
 
 <script>
 import { trackDappRankingSort } from '~/helpers/mixpanel'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 
 export default {
   components: {
-    Help
+    BaseHelp
   },
   props: {
     sort: {

@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgIconCollection" 
+    class="SvgIconCollection" 
     viewBox="0 0 1280 1280" 
     x="0px" 
     y="0px" 

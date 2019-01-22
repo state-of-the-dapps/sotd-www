@@ -40,12 +40,12 @@
 
 <script>
 import { trackDappPlatformFilter, trackDappView } from '~/helpers/mixpanel'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 import SvgIconChevron from './SvgIconChevron'
 
 export default {
   components: {
-    Help,
+    BaseHelp,
     SvgIconChevron
   },
   props: {

@@ -1,5 +1,7 @@
 <template>
-  <div id="tags">
+  <div
+    id="tags"
+    class="DappFormFieldsTags">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="selected.length > 0 ? 'purple' : 'gray'"/></span>Tags <span class="required">(at least 1 required)</span></p>
     <div
       id="tagsField"

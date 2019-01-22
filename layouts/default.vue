@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-default">
+  <div class="layout">
     <div class="wrapper">
       <div class="main">
         <div class="menu">
@@ -333,7 +333,7 @@ body {
 </style>
 
 <style lang="scss" scoped>
-.layout-default {
+.layout {
   height: 100%;
   position: relative;
 }

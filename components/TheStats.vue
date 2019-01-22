@@ -1,5 +1,5 @@
 <template>
-  <div class="Stats">
+  <div class="TheStats">
     <ul class="list">
       <li class="item">
         <div class="wrapper">
@@ -13,7 +13,7 @@
         <div class="wrapper">
           <h2 class="heading">
             <span>{{ $t(namespace('dailyActiveUsers')) }}</span>
-            <Help :text="$t(namespace('activeUsersHelp'))"/>
+            <BaseHelp :text="$t(namespace('activeUsersHelp'))"/>
           </h2>
           <p class="value">{{ statDappDau | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -22,7 +22,7 @@
         <div class="wrapper">
           <h2 class="heading">
             <span>{{ $t(namespace('24htransactions')) }}</span>
-            <Help :text="$t(namespace('transactionsHelp'))"/>
+            <BaseHelp :text="$t(namespace('transactionsHelp'))"/>
           </h2>
           <p class="value">{{ statDappTx24Hr | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -31,7 +31,7 @@
         <div class="wrapper">
           <h2 class="heading">
             <span>{{ $t(namespace('24hVolumeUsd')) }}</span>
-            <Help :text="$t('help.volumeUsd')"/>
+            <BaseHelp :text="$t('help.volumeUsd')"/>
           </h2>
           <p class="value">{{ statDappUsdVol24Hr | abbreviateNumber(2) || 0 }}</p>
         </div>
@@ -87,13 +87,13 @@
             <th class="table-heading">{{ $t(namespace('totalDapps')) }}</th>
             <th class="table-heading">
               <span>{{ $t(namespace('monthlyActiveUsers')) }}</span>
-              <Help 
+              <BaseHelp 
                 :bottom="true" 
                 :text="$t(namespace('activeUsersHelp'))"/>
             </th>
             <th class="table-heading">
               <span>{{ $t(namespace('transactions30d')) }}</span>
-              <Help 
+              <BaseHelp 
                 :bottom="true" 
                 :text="$t(namespace('transactionsHelp'))"/>
             </th>
@@ -130,19 +130,19 @@
             <th class="table-heading">{{ $t(namespace('totalDapps')) }}</th>
             <th class="table-heading">
               <span>{{ $t(namespace('dailyActiveUsers')) }}</span>
-              <Help 
+              <BaseHelp 
                 :bottom="true" 
                 :text="$t(namespace('activeUsersHelp'))"/>
             </th>
             <th class="table-heading">
               <span>{{ $t(namespace('transactions24h')) }}</span>
-              <Help 
+              <BaseHelp 
                 :bottom="true" 
                 :text="$t(namespace('transactionsHelp'))"/>
             </th>
             <th class="table-heading">
               <span>{{ $t(namespace('volume24h')) }}</span>
-              <Help 
+              <BaseHelp 
                 :bottom="true" 
                 :text="$t('help.volumePerNetwork')"/>
             </th>
@@ -182,14 +182,14 @@
 import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
 import CategoryPlatformFilters from './CategoryPlatformFilters'
-import Help from './Help'
+import BaseHelp from './BaseHelp'
 import StatsStatusBarChart from './StatsStatusBarChart'
 import SvgLogotype from './SvgLogotype'
 
 export default {
   components: {
     CategoryPlatformFilters,
-    Help,
+    BaseHelp,
     StatsStatusBarChart,
     SvgLogotype
   },

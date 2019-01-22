@@ -1,5 +1,5 @@
 <template>
-  <div class="page-promoted-dapps">
+  <div class="page">
     <PromotedDapps
       :description="description"
       :direct-view="true"

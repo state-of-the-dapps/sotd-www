@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesAuthors">
+  <div class="DappDetailBodyContentModulesAuthors">
     <h4 class="author-title">{{ $tc(namespace('author'), authors ? authors.length : 0) }}</h4>
     <p 
       v-if="authors" 

@@ -85,7 +85,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.component-SvgIconFeatured {
+.SvgIconFeatured {
   margin-right: 7px;
 }
 

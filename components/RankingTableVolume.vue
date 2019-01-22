@@ -1,5 +1,5 @@
 <template>
-  <div class="component-ranking-table-volume">
+  <div class="RankingTableVolume">
     <span 
       v-if="volume === undefined || volume === null" 
       class="value">-</span>
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-ranking-table-volume {
+.RankingTableVolume {
   display: flex;
   flex-direction: column;
   @include font-text-mono;

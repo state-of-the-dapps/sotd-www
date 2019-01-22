@@ -1,5 +1,5 @@
 <template>
-  <div class="item">
+  <div class="DappFormFieldsIcon item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="icon ? 'purple' : 'gray'"/></span>Icon <span class="boost">+10% {{ $t('profileStrength') }}</span></p>
     <p v-if="icon && preFill">
       <img

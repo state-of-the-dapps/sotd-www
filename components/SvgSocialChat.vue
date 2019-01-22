@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgSocialChat" 
+    class="SvgSocialChat" 
     x="0px" 
     y="0px" 
     viewBox="0 0 512 512">

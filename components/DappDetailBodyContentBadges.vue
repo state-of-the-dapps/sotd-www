@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentBadges">
+  <div class="DappDetailBodyContentBadges">
     <div class="wrapper">
       <ul class="badge-list">
         <li 

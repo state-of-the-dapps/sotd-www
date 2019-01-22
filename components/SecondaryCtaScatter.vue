@@ -1,5 +1,5 @@
 <template>
-  <div class="component-SecondaryCtaMetamask">
+  <div class="SecondaryCtaMetamask">
     <div class="wrapper">
       <div class="icon-wrapper">
         <SvgBadgeScatter 
@@ -53,7 +53,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.component-SecondaryCtaMetamask {
+.SecondaryCtaMetamask {
   background: rgba($color--black, 0.5);
   border-top: 1px solid rgba($color--black, 0.3);
 }

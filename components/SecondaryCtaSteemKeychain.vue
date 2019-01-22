@@ -1,5 +1,5 @@
 <template>
-  <div class="component-SecondaryCtaSteemKeychain">
+  <div class="SecondaryCtaSteemKeychain">
     <div class="wrapper">
       <div class="icon-wrapper">
         <SvgBadgeSteemKeychain 
@@ -53,7 +53,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.component-SecondaryCtaSteemKeychain {
+.SecondaryCtaSteemKeychain {
   background: rgba($color--black, 0.5);
   border-top: 1px solid rgba($color--black, 0.3);
 }

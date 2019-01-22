@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <DappsSearch/>
     <div class="dapps-filters">
       <div class="filters">

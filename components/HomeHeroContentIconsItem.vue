@@ -1,7 +1,7 @@
 <template>
   <div 
     :class="'-dapp-' + index + ' ' + loaded" 
-    class="component-HomeHeroContentIconsItem" 
+    class="HomeHeroContentIconsItem" 
     @click="trackHomeHeroDappIcon(index)">
     <img 
       :src="imageSrc" 

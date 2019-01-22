@@ -1,7 +1,7 @@
 <template>
   <div 
     ref="page" 
-    class="page-dapp-detail-edit">
+    class="page">
     <div class="hero-wrapper">
       <p style="text-align: center;">Head back to <nuxt-link :to="localePath({name: 'dapp-detail', params: {}})">{{ dapp.name }}</nuxt-link></p>
     </div>
@@ -243,7 +243,7 @@ export default {
   padding: 2rem 0 0 0;
 }
 
-.page-dapp-detail-edit {
+.page {
   margin: 0 auto;
   max-width: 500px;
   padding: 20px 0;

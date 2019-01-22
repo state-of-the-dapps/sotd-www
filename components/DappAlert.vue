@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappAlert">
+  <div class="DappAlert">
     <div class="alert-wrapper">
       <p class="alert">{{ alert }}</p>
     </div>

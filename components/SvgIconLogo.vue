@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgIconLogo" 
+    class="SvgIconLogo" 
     viewBox="0 0 512 512">
     <path 
       :class="fill" 

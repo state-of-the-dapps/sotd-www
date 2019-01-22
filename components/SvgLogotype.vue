@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="component-SvgLogotype" 
+    class="SvgLogotype" 
     x="0px" 
     y="0px" 
     viewBox="0 0 1280 269.1">

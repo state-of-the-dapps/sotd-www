@@ -1,5 +1,5 @@
 <template>
-  <div class="component-DappDetailBodyContentModulesSubmitted">
+  <div class="DappDetailBodyContentModulesSubmitted">
     {{ $t(namespace('submitted')) }}: <strong>{{ submitted | formatDate('MMM Do, YYYY') }}</strong>
   </div>
 </template>
