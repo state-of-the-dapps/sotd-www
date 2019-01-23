@@ -208,11 +208,6 @@ if [ -z "$RCLONE_CONFIG_PASS" ]; then
   exit 1
 fi
 
-if [ ! -d "$NUXT_CLIENT_DIST" ]; then
-  echo "$NUXT_CLIENT_DIST not found. Aborting postdeploy."
-  exit 1
-fi
-
 if ! hash rclone 2>/dev/null; then
   echo "rclone not found, installing:"
   install_rclone
@@ -220,6 +215,11 @@ fi
 
 if ! hash rclone 2>/dev/null; then
   echo "rclone still not found. Aborting postdeploy."
+  exit 1
+fi
+
+if [ ! -d "$NUXT_CLIENT_DIST" ]; then
+  echo "$NUXT_CLIENT_DIST not found. Aborting postdeploy."
   exit 1
 fi
 
