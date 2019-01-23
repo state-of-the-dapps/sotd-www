@@ -25,7 +25,7 @@
         <span
           :class="selected ? 'is-active' : ''"
           class="selected-option">{{ $options.filters.capitalize(selected) || allText }}</span>
-        <span class="arrow-wrapper"><SvgIconChevron
+        <span class="arrow-wrapper"><IconChevron
           :width="11"
           :height="11"
           :fill="color"/></span>
@@ -62,11 +62,11 @@
 
 <script>
 import { directive as onClickaway } from 'vue-clickaway'
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
-    SvgIconChevron
+    IconChevron
   },
   directives: {
     onClickaway: onClickaway

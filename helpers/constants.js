@@ -87,54 +87,54 @@ const dappSchema = Object.freeze({
 
 const dappBadgeMap = Object.freeze({
   '0x': {
-    component: 'Badge0x',
+    component: 'IconBadge0x',
     description: '0x protocol compatible'
   },
   complete: {
-    component: 'BadgeComplete',
+    component: 'IconBadgeComplete',
     description: 'Has a complete profile'
   },
   consensys: {
-    component: 'BadgeConsensys',
+    component: 'IconBadgeConsensys',
     description:
       'Part of <a href="https://new.consensys.net/" target="_blank">Consensys</a>'
   },
   featured: {
-    component: 'BadgeFeatured',
+    component: 'IconBadgeFeatured',
     description: 'Currently featured'
   },
   hot: {
-    component: 'BadgeHot',
+    component: 'IconBadgeHot',
     description: 'Currently hot'
   },
   metamask: {
-    component: 'BadgeMetamask',
+    component: 'IconBadgeMetamask',
     description:
       'Works with <a href="https://www.metamask.io" target="_blank">Metamask</a>'
   },
   solidified: {
-    component: 'BadgeSolidified',
+    component: 'IconBadgeSolidified',
     description:
       'Audited by <a href="https://solidified.io/" target="_blank">Solidified</a>'
   },
   'status-im': {
-    component: 'BadgeStatus',
+    component: 'IconBadgeStatus',
     description: 'On <a href="https://status.im/" target="_blank">Status.im</a>'
   },
   token: {
-    component: 'BadgeToken',
+    component: 'IconBadgeToken',
     description: 'Has a token'
   }
 })
 
 const dappSocialComponentMap = Object.freeze({
-  chat: 'SvgSocialChat',
-  blog: 'SvgSocialBlog',
-  facebook: 'SvgSocialFacebook',
-  github: 'SvgSocialGithub',
-  gitter: 'SvgSocialGitter',
-  reddit: 'SvgSocialReddit',
-  twitter: 'SvgSocialTwitter'
+  chat: 'IconSocialChat',
+  blog: 'IconSocialBlog',
+  facebook: 'IconSocialFacebook',
+  github: 'IconSocialGithub',
+  gitter: 'IconSocialGitter',
+  reddit: 'IconSocialReddit',
+  twitter: 'IconSocialTwitter'
 })
 
 const dappStatuses = Object.freeze([

@@ -8,7 +8,7 @@
       @clickCta="trackCollectionView('home')"
       @clickHeading="trackCollectionView('home')">
       <template slot="icon">
-        <SvgIconCollection 
+        <IconCollection 
           :width="16" 
           :height="16"/>
       </template>
@@ -25,15 +25,15 @@ import { homeFeaturedCollections } from '@/helpers/constants'
 import { trackCollectionView } from '@/helpers/mixpanel'
 import DappCollectionList from './DappCollectionList'
 import SectionHeading from './SectionHeading'
-import SvgIconChevron from './SvgIconChevron'
-import SvgIconCollection from './SvgIconCollection'
+import IconChevron from './IconChevron'
+import IconCollection from './IconCollection'
 
 export default {
   components: {
     DappCollectionList,
     SectionHeading,
-    SvgIconChevron,
-    SvgIconCollection
+    IconChevron,
+    IconCollection
   },
   data() {
     return {

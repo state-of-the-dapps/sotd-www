@@ -3,7 +3,7 @@
     :class="'-' + direction" 
     :width="width" 
     :height="height" 
-    class="SvgIconChevron" 
+    class="IconChevron" 
     viewBox="0 0 1280 670.4" 
     x="0px" 
     y="0px" 
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.SvgIconChevron {
+.IconChevron {
   &.-left {
     transform: rotate(90deg);
     margin-right: 1px;

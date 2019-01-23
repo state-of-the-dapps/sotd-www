@@ -26,25 +26,25 @@
 <script>
 import { trackFeaturedCategory } from '@/helpers/mixpanel'
 import IconCategoryExchanges from './IconCategoryExchanges'
-import SvgCategoryFinance from './SvgCategoryFinance'
-import SvgCategoryGames from './SvgCategoryGames'
+import IconCategoryFinance from './IconCategoryFinance'
+import IconCategoryGames from './IconCategoryGames'
 
 export default {
   components: {
     IconCategoryExchanges,
-    SvgCategoryFinance,
-    SvgCategoryGames
+    IconCategoryFinance,
+    IconCategoryGames
   },
   data() {
     return {
       categories: [
         {
           name: 'games',
-          iconComponent: 'SvgCategoryGames'
+          iconComponent: 'IconCategoryGames'
         },
         {
           name: 'finance',
-          iconComponent: 'SvgCategoryFinance'
+          iconComponent: 'IconCategoryFinance'
         },
         {
           name: 'exchanges',

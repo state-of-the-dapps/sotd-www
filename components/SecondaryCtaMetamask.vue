@@ -2,7 +2,7 @@
   <div class="SecondaryCtaMetamask">
     <div class="wrapper">
       <div class="icon-wrapper">
-        <BadgeMetamask 
+        <IconBadgeMetamask 
           :width="35" 
           :height="35" 
           fill="white" />
@@ -30,11 +30,11 @@
 
 <script>
 import { trackMetamaskCta } from '~/helpers/mixpanel'
-import BadgeMetamask from './BadgeMetamask'
+import IconBadgeMetamask from './IconBadgeMetamask'
 
 export default {
   components: {
-    BadgeMetamask
+    IconBadgeMetamask
   },
   data() {
     return {

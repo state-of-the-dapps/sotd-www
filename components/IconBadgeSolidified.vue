@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="BadgeSolidified" 
+    class="IconBadgeSolidified" 
     x="0px" 
     y="0px" 
     viewBox="0 0 1021.4 1280">

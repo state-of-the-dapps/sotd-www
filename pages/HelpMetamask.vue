@@ -3,7 +3,7 @@
     <section class="section">
       <div class="text-container">
         <div class="icon-wrapper">
-          <BadgeMetamask
+          <IconBadgeMetamask
             :width="36"
             :height="36"
             fill="black"/>
@@ -91,11 +91,11 @@
 <script>
 import { trackMetamaskHelp } from '~/helpers/mixpanel'
 import { openIntercom } from '~/helpers/mixins'
-import BadgeMetamask from '~/components/BadgeMetamask'
+import IconBadgeMetamask from '~/components/IconBadgeMetamask'
 
 export default {
   components: {
-    BadgeMetamask
+    IconBadgeMetamask
   },
   mixins: [openIntercom],
   methods: {

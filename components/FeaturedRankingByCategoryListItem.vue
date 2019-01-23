@@ -3,7 +3,7 @@
     <h3 class="title-3">
       <a 
         class="link" 
-        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }} <SvgIconChevron 
+        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }} <IconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></a>
@@ -42,12 +42,12 @@
 <script>
 import { trackDappCategoryFilter, trackDappView } from '~/helpers/mixpanel'
 import BaseHelp from './BaseHelp'
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
     BaseHelp,
-    SvgIconChevron
+    IconChevron
   },
   props: {
     category: {

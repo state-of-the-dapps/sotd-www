@@ -13,7 +13,7 @@
         @clickHeading="trackCollectionView('featured')"
         @clickSecondaryCta="trackPromotedDappsView">
         <template slot="icon">
-          <SvgIconFeatured/>
+          <IconFeatured/>
         </template>
       </SectionHeading>
       <div class="featured-wrapper">
@@ -38,15 +38,15 @@ import { trackCollectionView, trackPromotedDappsView } from '@/helpers/mixpanel'
 import { dappFeaturedSlots, dappPromotedSlots } from '@/helpers/constants'
 import FeaturedDappListItem from './FeaturedDappListItem'
 import SectionHeading from './SectionHeading'
-import SvgIconChevron from './SvgIconChevron'
-import SvgIconFeatured from './SvgIconFeatured'
+import IconChevron from './IconChevron'
+import IconFeatured from './IconFeatured'
 
 export default {
   components: {
     FeaturedDappListItem,
     SectionHeading,
-    SvgIconChevron,
-    SvgIconFeatured
+    IconChevron,
+    IconFeatured
   },
   data() {
     return {

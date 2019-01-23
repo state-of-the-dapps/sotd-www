@@ -70,7 +70,7 @@
       </div>
       <div class="new-vs-total-wrapper-inner">
         <div class="new-vs-total-logo">
-          <SvgLogotype 
+          <TheLogo 
             :width="120" 
             :height="26"
             fill="black"/>
@@ -184,14 +184,14 @@ import formatDate from 'date-fns/format'
 import CategoryPlatformFilters from './CategoryPlatformFilters'
 import BaseHelp from './BaseHelp'
 import StatsStatusBarChart from './StatsStatusBarChart'
-import SvgLogotype from './SvgLogotype'
+import TheLogo from './TheLogo'
 
 export default {
   components: {
     CategoryPlatformFilters,
     BaseHelp,
     StatsStatusBarChart,
-    SvgLogotype
+    TheLogo
   },
   props: {
     growthData: {

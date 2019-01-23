@@ -7,7 +7,7 @@
         v-if="!direct" 
         class="heading-item"><span 
           class="back" 
-          @click="$router.go(-1)"><SvgIconChevron 
+          @click="$router.go(-1)"><IconChevron 
             :fill="'-' + category" 
             :width="10" 
             :height="10"/></span></li>
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
-    SvgIconChevron
+    IconChevron
   },
   props: {
     direct: {

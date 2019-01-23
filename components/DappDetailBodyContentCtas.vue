@@ -63,27 +63,27 @@
 <script>
 import { dappGameTag, dappSocialComponentMap } from '~/helpers/constants'
 import { trackDappSite, trackDappSocial } from '~/helpers/mixpanel'
-import SvgSocialChat from './SvgSocialChat'
-import SvgSocialBlog from './SvgSocialBlog'
-import SvgSocialFacebook from './SvgSocialFacebook'
-import SvgSocialGithub from './SvgSocialGithub'
-import SvgSocialGitter from './SvgSocialGitter'
-import SvgPlus from './SvgPlus'
-import SvgSocialReddit from './SvgSocialReddit'
-import SvgSocialTwitter from './SvgSocialTwitter'
-import SvgStar from './SvgStar'
+import IconSocialChat from './IconSocialChat'
+import IconSocialBlog from './IconSocialBlog'
+import IconSocialFacebook from './IconSocialFacebook'
+import IconSocialGithub from './IconSocialGithub'
+import IconSocialGitter from './IconSocialGitter'
+import IconPlus from './IconPlus'
+import IconSocialReddit from './IconSocialReddit'
+import IconSocialTwitter from './IconSocialTwitter'
+import IconStar from './IconStar'
 
 export default {
   components: {
-    SvgSocialChat,
-    SvgSocialBlog,
-    SvgSocialFacebook,
-    SvgSocialGithub,
-    SvgSocialGitter,
-    SvgPlus,
-    SvgSocialReddit,
-    SvgSocialTwitter,
-    SvgStar
+    IconSocialChat,
+    IconSocialBlog,
+    IconSocialFacebook,
+    IconSocialGithub,
+    IconSocialGitter,
+    IconPlus,
+    IconSocialReddit,
+    IconSocialTwitter,
+    IconStar
   },
   props: {
     dapp: {

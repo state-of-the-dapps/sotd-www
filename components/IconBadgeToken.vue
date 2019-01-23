@@ -2,14 +2,14 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="SvgIconFeatured" 
+    class="IconBadgeToken" 
     x="0px" 
     y="0px" 
-    viewBox="0 0 1280 1280">
+    viewBox="-100 0 1280 1152.7">
     <path 
       :class="fill" 
-      d="M1228.2,0H52.8C23.8,0,0.3,23.5,0.3,52.5v1175.4c0,29,23.5,52.5,52.5,52.5h1175.4c29,0,52.5-23.5,52.5-52.5V52.5
-	C1280.7,23.5,1257.2,0,1228.2,0z M613.1,104.9V694l203.1-106l203.1,106V104.9h156.4v899.7H105.2V104.9H613.1z"/>
+      d="M952,1259.4c0,11.4-9.2,20.6-20.6,20.6h-910c-11.4,0-20.6-9.2-20.6-20.6V1105c0-11.4,9.2-20.6,20.6-20.6h910
+	c11.4,0,20.6,9.2,20.6,20.6V1259.4z M476,0c262.5,0,476,213.5,476,476S738.5,952,476,952S0,738.5,0,476S213.5,0,476,0z"/>
   </svg>
 </template>
 
@@ -17,11 +17,11 @@
 export default {
   props: {
     fill: {
-      default: 'black',
+      default: 'purple',
       type: String
     },
     height: {
-      default: 16,
+      default: 18,
       type: Number
     },
     width: {
@@ -37,7 +37,7 @@ export default {
   fill: $color--black;
 }
 
-.white {
-  fill: lighten($color--white, 100%);
+.purple {
+  fill: $color--purple;
 }
 </style>

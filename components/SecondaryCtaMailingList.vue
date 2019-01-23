@@ -3,7 +3,7 @@
     id="SecondaryCtaMailingList" 
     class="SecondaryCtaMailingList">
     <div class="wrapper">
-      <SvgIconMail 
+      <IconMail 
         :width="30" 
         :height="30" 
         fill="white" />
@@ -33,11 +33,11 @@
 import { mapGetters } from 'vuex'
 import { validateEmail } from '~/helpers/mixins'
 import { trackNewsletterSubscribe } from '~/helpers/mixpanel'
-import SvgIconMail from './SvgIconMail'
+import IconMail from './IconMail'
 
 export default {
   components: {
-    SvgIconMail
+    IconMail
   },
   mixins: [validateEmail],
   data() {

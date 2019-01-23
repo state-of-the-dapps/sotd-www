@@ -7,7 +7,7 @@
             class="tool-link" 
             role="button" 
             @click="viewDappEdit()">
-            <SvgIconEdit 
+            <IconEdit 
               :width="14" 
               :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
           </span>
@@ -17,7 +17,7 @@
             class="tool-link" 
             role="button" 
             @click="viewDappShare()">
-            <SvgIconShare 
+            <IconShare 
               :width="14" 
               :height="14"/> <span class="description">{{ $t(namespace('share')) }}</span>
           </span>
@@ -27,7 +27,7 @@
             class="tool-link" 
             role="button" 
             @click="viewDappFlag('flag')">
-            <SvgIconFlag 
+            <IconFlag 
               :width="14" 
               :height="14"/> <span class="description">{{ $t(namespace('flag')) }}</span>
           </span>
@@ -37,7 +37,7 @@
             :to="localePath({ name: 'promoted-dapps' })" 
             class="tool-link" 
             @click.native="trackPromotedDappsView">
-            <SvgIconFeatured 
+            <IconFeatured 
               :width="14" 
               :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
           </nuxt-link>
@@ -62,19 +62,19 @@ import {
 } from '~/helpers/mixpanel'
 import BaseModal from './BaseModal'
 import ModalDappsDetailShare from './ModalDappsDetailShare'
-import SvgIconEdit from './SvgIconEdit'
-import SvgIconFeatured from './SvgIconFeatured'
-import SvgIconFlag from './SvgIconFlag'
-import SvgIconShare from './SvgIconShare'
+import IconEdit from './IconEdit'
+import IconFeatured from './IconFeatured'
+import IconFlag from './IconFlag'
+import IconShare from './IconShare'
 
 export default {
   components: {
     BaseModal,
     ModalDappsDetailShare,
-    SvgIconEdit,
-    SvgIconFeatured,
-    SvgIconFlag,
-    SvgIconShare
+    IconEdit,
+    IconFeatured,
+    IconFlag,
+    IconShare
   },
   props: {
     name: {

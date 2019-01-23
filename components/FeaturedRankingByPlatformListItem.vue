@@ -4,7 +4,7 @@
       <a 
         class="link" 
         @click="viewDappRankingPlatform(platform)">{{ platform }}
-        <SvgIconChevron 
+        <IconChevron 
           :width="8" 
           :height="8" 
           direction="right"/></a>
@@ -41,12 +41,12 @@
 <script>
 import { trackDappPlatformFilter, trackDappView } from '~/helpers/mixpanel'
 import BaseHelp from './BaseHelp'
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
     BaseHelp,
-    SvgIconChevron
+    IconChevron
   },
   props: {
     platform: {

@@ -9,12 +9,12 @@
 
 <script>
 import DappCollectionList from './DappCollectionList'
-import SvgIconCollection from './SvgIconCollection'
+import IconCollection from './IconCollection'
 
 export default {
   components: {
     DappCollectionList,
-    SvgIconCollection
+    IconCollection
   },
   data() {
     return {
@@ -35,7 +35,7 @@ export default {
   @include margin-wrapper-main;
 }
 
-.SvgIconCollection {
+.IconCollection {
   margin-right: 7px;
 }
 

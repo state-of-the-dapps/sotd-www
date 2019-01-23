@@ -28,15 +28,15 @@
 import { trackDappCategoryFilter } from '@/helpers/mixpanel'
 import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListItem'
 import SectionHeading from './SectionHeading'
-import SvgIconChevron from './SvgIconChevron'
-import SvgIconFeatured from './SvgIconFeatured'
+import IconChevron from './IconChevron'
+import IconFeatured from './IconFeatured'
 
 export default {
   components: {
     FeaturedRankingByCategoryListItem,
     SectionHeading,
-    SvgIconChevron,
-    SvgIconFeatured
+    IconChevron,
+    IconFeatured
   },
   data() {
     return {
@@ -85,7 +85,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.SvgIconFeatured {
+.IconFeatured {
   margin-right: 7px;
 }
 

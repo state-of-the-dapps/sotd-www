@@ -2,14 +2,13 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="SvgIconFlag" 
+    class="IconBadgeFeatured" 
     x="0px" 
     y="0px" 
-    viewBox="0 0 1280 1280">
-    <path 
+    viewBox="0 0 914 1280">
+    <polygon 
       :class="fill" 
-      d="M1189.7,0H89.9c-29,0-52.4,23.5-52.4,52.4v912.7v262.5c0,29,23.5,52.4,52.4,52.4s52.4-23.5,52.4-52.4v-210h1047.4
-	c29,0,52.4-23.5,52.4-52.4V52.4C1242.2,23.5,1218.7,0,1189.7,0z M1137.3,912.7h-995V104.9h995V912.7z"/>
+      points="914.2,1280 457,1049.7 -0.2,1280 -0.2,0 914.2,0 "/>
   </svg>
 </template>
 
@@ -17,11 +16,11 @@
 export default {
   props: {
     fill: {
-      default: 'black',
+      default: 'purple',
       type: String
     },
     height: {
-      default: 16,
+      default: 18,
       type: Number
     },
     width: {
@@ -35,5 +34,9 @@ export default {
 <style lang="scss" scoped>
 .black {
   fill: $color--black;
+}
+
+.purple {
+  fill: $color--purple;
 }
 </style>

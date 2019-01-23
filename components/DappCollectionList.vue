@@ -4,7 +4,7 @@
       <nuxt-link 
         :to="localePath({ name: 'collection-detail', params: { slug: collection.slug } })" 
         class="link" 
-        @click.native="trackCollectionView(collection.slug)">{{ $t(`collections.${collection.name.replace(/\s/g,'-')}`) }} <span class="cta">{{ $t('cta.viewAll') }} <SvgIconChevron 
+        @click.native="trackCollectionView(collection.slug)">{{ $t(`collections.${collection.name.replace(/\s/g,'-')}`) }} <span class="cta">{{ $t('cta.viewAll') }} <IconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></span></nuxt-link>
@@ -27,13 +27,13 @@ import { trackCollectionView } from '~/helpers/mixpanel'
 import { homeCollectionSlots } from '~/helpers/constants'
 import Media from 'vue-media'
 import DappCardList from './DappCardList'
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
     DappCardList,
     Media,
-    SvgIconChevron
+    IconChevron
   },
   props: {
     collection: {

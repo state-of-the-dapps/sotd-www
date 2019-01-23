@@ -6,7 +6,7 @@
         class="button"
         @click="$emit('selectPage', currentPage - 1)">
         <span class="button-inner">
-          <SvgIconChevron
+          <IconChevron
             :width="13"
             :height="13"
             direction="left"/>
@@ -48,7 +48,7 @@
         :class="currentPage < totalPages ? '' : 'hidden'"
         class="button"
         @click="$emit('selectPage', currentPage + 1)">
-        <span class="button-inner"><SvgIconChevron
+        <span class="button-inner"><IconChevron
           :width="12"
           :height="12"
           direction="right"/></span>
@@ -58,11 +58,11 @@
 </template>
 
 <script>
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
-    SvgIconChevron
+    IconChevron
   },
   props: {
     limit: {

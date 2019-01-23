@@ -20,19 +20,19 @@
             :class="reaction == 'positive' ? 'is-active' : ''" 
             class="reaction-item" 
             @click="submitReaction('positive')">
-            <SvgReactionPositive/><span class="reaction-value">{{ positive || 0 }}</span>
+            <IconReactionPositive/><span class="reaction-value">{{ positive || 0 }}</span>
           </li>
           <li 
             :class="reaction == 'neutral' ? 'is-active' : ''" 
             class="reaction-item" 
             @click="submitReaction('neutral')">
-            <SvgReactionNeutral/><span class="reaction-value">{{ neutral || 0 }}</span>
+            <IconReactionNeutral/><span class="reaction-value">{{ neutral || 0 }}</span>
           </li>
           <li 
             :class="reaction == 'negative' ? 'is-active' : ''" 
             class="reaction-item" 
             @click="submitReaction('negative')">
-            <SvgReactionNegative/><span class="reaction-value">{{ negative || 0 }}</span>
+            <IconReactionNegative/><span class="reaction-value">{{ negative || 0 }}</span>
           </li>
         </ul>
         <div
@@ -51,15 +51,15 @@
           class="confirmation">
           <p><strong>{{ $t(namespace('thanks'), {name: name}) }}</strong></p>
           <p class="reaction-summary">
-            <SvgReactionPositive
+            <IconReactionPositive
               v-if="reaction === 'positive'"
               :width="30"
               :height="30"/>
-            <SvgReactionNeutral
+            <IconReactionNeutral
               v-if="reaction === 'neutral'"
               :width="30"
               :height="30"/>
-            <SvgReactionNegative
+            <IconReactionNegative
               v-if="reaction === 'negative'"
               :width="30"
               :height="30"/>
@@ -73,15 +73,15 @@
 
 <script>
 import { trackDappFeedback } from '~/helpers/mixpanel'
-import SvgReactionNegative from './SvgReactionNegative'
-import SvgReactionNeutral from './SvgReactionNeutral'
-import SvgReactionPositive from './SvgReactionPositive'
+import IconReactionNegative from './IconReactionNegative'
+import IconReactionNeutral from './IconReactionNeutral'
+import IconReactionPositive from './IconReactionPositive'
 
 export default {
   components: {
-    SvgReactionNegative,
-    SvgReactionNeutral,
-    SvgReactionPositive
+    IconReactionNegative,
+    IconReactionNeutral,
+    IconReactionPositive
   },
   props: {
     rating: {

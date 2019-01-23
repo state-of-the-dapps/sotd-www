@@ -2,7 +2,7 @@
   <svg
     :width="width"
     :height="height"
-    class="Badge0x"
+    class="IconBadge0x"
     x="0px"
     y="0px"
     viewBox="0 0 1280 1152.7">

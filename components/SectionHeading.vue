@@ -16,7 +16,7 @@
       :to="localePath(ctaRoute)"
       class="cta" 
       @click.native="$emit('clickCta')">{{ ctaText }}
-      <SvgIconChevron
+      <IconChevron
         :width="8"
         :height="8"
         direction="right"/>
@@ -30,11 +30,11 @@
 </template>
 
 <script>
-import SvgIconChevron from './SvgIconChevron'
+import IconChevron from './IconChevron'
 
 export default {
   components: {
-    SvgIconChevron
+    IconChevron
   },
   props: {
     ctaText: {

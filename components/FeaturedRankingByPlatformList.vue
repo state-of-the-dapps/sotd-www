@@ -29,15 +29,15 @@ import { platformList } from '@/helpers/constants'
 import { trackDappPlatformFilter } from '@/helpers/mixpanel'
 import FeaturedRankingByPlatformListItem from './FeaturedRankingByPlatformListItem'
 import SectionHeading from './SectionHeading'
-import SvgIconChevron from './SvgIconChevron'
-import SvgIconFeatured from './SvgIconFeatured'
+import IconChevron from './IconChevron'
+import IconFeatured from './IconFeatured'
 
 export default {
   components: {
     FeaturedRankingByPlatformListItem,
     SectionHeading,
-    SvgIconChevron,
-    SvgIconFeatured
+    IconChevron,
+    IconFeatured
   },
   data() {
     return {

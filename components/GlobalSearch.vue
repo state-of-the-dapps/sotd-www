@@ -7,7 +7,7 @@
     class="GlobalSearch">
     <span 
       :class="'-' + color" 
-      class="nav-link -search"><SvgIconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
+      class="nav-link -search"><IconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
       <input
         ref="searchInput"
@@ -90,14 +90,14 @@
 import { trackDappView, trackSearchSuggestion } from '~/helpers/mixpanel'
 import { directive as onClickaway } from 'vue-clickaway'
 import { getCaretPosition } from '~/helpers/mixins'
-import SvgIconMagnifier from './SvgIconMagnifier'
+import IconMagnifier from './IconMagnifier'
 
 var searchTimer
 var trackTimer
 
 export default {
   components: {
-    SvgIconMagnifier
+    IconMagnifier
   },
   directives: {
     onClickaway: onClickaway

@@ -7,7 +7,7 @@
         :to="localePath({ name: 'home' })" 
         class="logo-link -icon" 
         @click.native="trackMenu('logo')">
-        <SvgIconLogo 
+        <IconLogo 
           :fill="color" 
           :width="35" 
           :height="35" />
@@ -16,7 +16,7 @@
         :to="localePath({ name: 'home' })" 
         class="logo-link -wordmark" 
         @click.native="trackMenu('logo')">
-        <SvgLogotype 
+        <TheLogo 
           :fill="color" 
           :width="120" 
           :height="26" />
@@ -93,7 +93,7 @@
             :class="'-' + color" 
             :to="localePath({ name: 'dapps' })" 
             class="nav-link -search" 
-            @click.native="trackMenu('dapps')"><SvgIconMagnifier :theme="color"/></nuxt-link>
+            @click.native="trackMenu('dapps')"><IconMagnifier :theme="color"/></nuxt-link>
         </li>
       </media>
     </ul>
@@ -139,20 +139,20 @@ import { languages, localeStrings } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
 import BaseDropdown from './BaseDropdown'
 import GlobalSearch from './GlobalSearch'
-import SvgIconLogo from './SvgIconLogo'
-import SvgIconMail from './SvgIconMail'
-import SvgIconMagnifier from './SvgIconMagnifier'
-import SvgLogotype from './SvgLogotype'
+import IconLogo from './IconLogo'
+import IconMail from './IconMail'
+import IconMagnifier from './IconMagnifier'
+import TheLogo from './TheLogo'
 
 export default {
   components: {
     BaseDropdown,
     GlobalSearch,
     Media,
-    SvgIconLogo,
-    SvgIconMail,
-    SvgIconMagnifier,
-    SvgLogotype
+    IconLogo,
+    IconMail,
+    IconMagnifier,
+    TheLogo
   },
   directives: {
     onClickaway

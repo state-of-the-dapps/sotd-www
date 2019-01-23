@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="SvgStar" 
+    class="IconStar" 
     viewBox="0 0 51 48">
     <path 
       fill="none" 
