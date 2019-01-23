@@ -27,7 +27,7 @@ export default {
   props: {
     acceptedFiles: {
       type: String,
-      default: '.jpg,.jpeg,.svg,.gif,.png'
+      default: '.jpg,.jpeg,.gif,.png'
     },
     height: {
       type: Number,
@@ -81,6 +81,13 @@ export default {
       } else {
         this.$emit('removeInvalidDimenionsWarning')
       }
+      if (!file.accepted) {
+        this.remove()
+        alert(
+          'You tried to upload an invalid file type. Accepted file types are ' +
+            this.acceptedFiles.replace(/,/g, ' ')
+        )
+      }
     },
     enable() {
       this.$refs.el.dropzone.enable()
@@ -102,6 +109,7 @@ export default {
       }
     },
     s3UploadSuccess(s3ObjectLocation) {
+      console.log('success')
       this.$emit('uploadSuccess', s3ObjectLocation)
     }
   }

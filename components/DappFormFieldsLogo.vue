@@ -11,10 +11,10 @@
         :width="width"
         :height="height"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-logo.png></span><br>Drop a new logo here, or click to select one"
-        @addInvalidDimenionsWarning="addWarning"
+        @addInvalidDimensionsWarning="addWarning"
         @uploadSuccess="setLogo"
         @removeFile="removeLogo"
-        @removeInvalidDimenionsWarning="removeWarning"/>
+        @removeInvalidDimensionsWarning="removeWarning"/>
     </div>
     <ul 
       v-if="warnings && warnings.length > 0" 
