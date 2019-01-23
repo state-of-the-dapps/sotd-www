@@ -23,7 +23,7 @@ function install_rclone() {
   unzip_tools_list=('unzip' '7z' 'busybox')
 
   #create tmp directory and move to it with macOS compatibility fallback
-  tmp_dir=`mktemp -d 2>/dev/null || mktemp -d -t 'rclone-install'`; cd $tmp_dir
+  tmp_dir=`mktemp -d 2>/dev/null || mktemp -d -t 'rclone-install'`; pushd $tmp_dir
 
 
   #make sure unzip tool is available and choose one to work with
@@ -178,6 +178,7 @@ function install_rclone() {
       exit 2
   esac
 
+  popd
 
   #update version variable post install
   version=`rclone --version 2>>errors | head -n 1`
