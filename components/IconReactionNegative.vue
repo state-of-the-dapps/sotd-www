@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="SvgFeedbackNegative" 
+    class="IconReactionNegative" 
     x="0px" 
     y="0px" 
     viewBox="0 0 512 509.3" 

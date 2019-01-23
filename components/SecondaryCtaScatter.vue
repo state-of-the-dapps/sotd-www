@@ -1,5 +1,5 @@
 <template>
-  <div class="SecondaryCtaMetamask">
+  <div class="SecondaryCtaScatter">
     <div class="wrapper">
       <div class="icon-wrapper">
         <IconBadgeScatter 
@@ -53,7 +53,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.SecondaryCtaMetamask {
+.SecondaryCtaScatter {
   background: rgba($color--black, 0.5);
   border-top: 1px solid rgba($color--black, 0.3);
 }

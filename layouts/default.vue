@@ -154,16 +154,6 @@ code {
   height: 100%;
 }
 
-.--is-hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.--is-visible {
-  visibility: visible;
-  opacity: 1;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.2s;

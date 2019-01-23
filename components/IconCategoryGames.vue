@@ -2,7 +2,7 @@
   <svg 
     :width="width" 
     :height="height" 
-    class="Svg-category-games" 
+    class="IconCategoryGames" 
     viewBox="0 0 54 54">
     <path 
       :class="fill" 
