@@ -221,33 +221,6 @@ code {
   }
 }
 
-.note {
-  display: inline-block;
-  font-size: 0.75rem;
-  background: rgba($color--black, 0.1);
-  padding: 3px 4px;
-  vertical-align: top;
-  font-weight: 600;
-  margin-left: 5px;
-  &.-live {
-    background: $color--dapp-live;
-  }
-  &.-beta {
-    background: $color--dapp-beta;
-  }
-  &.-prototype {
-    background: $color--dapp-prototype;
-  }
-  &.-wip {
-    background: $color--dapp-wip;
-  }
-  &.-concept {
-    background: $color--dapp-concept;
-  }
-  &.-nsfw {
-  }
-}
-
 .text-container {
   max-width: 700px;
   margin: 25px auto;

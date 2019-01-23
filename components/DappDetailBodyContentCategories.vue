@@ -71,7 +71,7 @@ export default {
   margin: 4px;
   background: lighten($color--gray, 2%);
   border-radius: 4px;
-  @include dapp-category-colors;
+  @include category-bg-colors;
 }
 
 .wrapper {

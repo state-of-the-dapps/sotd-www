@@ -47,7 +47,7 @@ export default {
   &:hover {
     text-decoration: underline;
   }
-  @include dapp-category-colors;
+  @include category-bg-colors;
   &.is-selected {
     background: transparent;
     cursor: initial;

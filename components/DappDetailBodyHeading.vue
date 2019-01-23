@@ -109,7 +109,7 @@ export default {
     text-align: left;
     padding: 12px;
   }
-  @include dapp-category-colors;
+  @include category-bg-colors;
 }
 
 .heading-tagline {

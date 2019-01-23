@@ -182,7 +182,7 @@ export default {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   .dapp-item & {
-    @include dapp-category-colors;
+    @include category-bg-colors;
   }
 }
 

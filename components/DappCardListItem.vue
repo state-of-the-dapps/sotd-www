@@ -166,7 +166,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 8px;
-  @include dapp-category-colors;
+  @include category-bg-colors;
 }
 
 .new,

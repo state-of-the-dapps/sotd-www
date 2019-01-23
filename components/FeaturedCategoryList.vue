@@ -84,7 +84,7 @@ export default {
   padding: 1.5rem 20px;
   border-radius: 4px;
   color: $color--purple;
-  @include dapp-category-colors;
+  @include category-bg-colors;
 }
 
 .category-list {
