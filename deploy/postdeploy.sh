@@ -2,10 +2,14 @@
 
 set -e
 
+# required env variables:
+# CDN_PUBLIC_PATH
+# CDN_REMOTE_PATH
+# RCLONE_CONFIG_PASS
+
 APP_BIN="/app/bin"
 RCLONE_CONF="deploy/rclone.conf"
 NUXT_CLIENT_DIST=".nuxt/dist/client/"
-CDN_REMOTE_PATH="sotd-cdn:cdn.stateofthedapps.com/nuxt/"
 
 function install_rclone() {
   # error codes
@@ -182,32 +186,40 @@ function install_rclone() {
 }
 
 if [ -z "$CDN_PUBLIC_PATH" ]; then
-      echo "CDN_PUBLIC_PATH is not set, no CDN postdeploy needed."
-      exit 0
+  echo "CDN_PUBLIC_PATH not set, no CDN postdeploy needed."
+  exit 0
 else
-      echo "CDN_PUBLIC_PATH is set, deploying to CDN"
+  echo "CDN_PUBLIC_PATH set, deploying to CDN..."
+fi
+
+if [ -z "$CDN_REMOTE_PATH" ]; then
+  echo "CDN_REMOTE_PATH not set. Aborting postdeploy."
+  exit 1
 fi
 
 if [ ! -f "$RCLONE_CONF" ]; then
-      echo "$RCLONE_CONF is not found."
-      exit 1
+  echo "$RCLONE_CONF not found. borting postdeploy."
+  exit 1
 fi
 
 if [ -z "$RCLONE_CONFIG_PASS" ]; then
-      echo "RCLONE_CONFIG_PASS is not set, can't decrypt rclone config."
-      exit 1
+  echo "RCLONE_CONFIG_PASS not set, can't decrypt rclone config. Aborting postdeploy."
+  exit 1
 fi
 
 if [ ! -d "$NUXT_CLIENT_DIST" ]; then
-      echo "$NUXT_CLIENT_DIST not found."
-      exit 1
+  echo "$NUXT_CLIENT_DIST not found. Aborting postdeploy."
+  exit 1
 fi
 
-if hash rclone 2>/dev/null; then
-  echo "rclone installed"
-else
-  echo "rclone not installed"
+if ! hash rclone 2>/dev/null; then
+  echo "rclone not found, installing:"
   install_rclone
+fi
+
+if ! hash rclone 2>/dev/null; then
+  echo "rclone still not found. Aborting postdeploy."
+  exit 1
 fi
 
 # rclone --config deploy/rclone.conf config show
