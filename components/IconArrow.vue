@@ -1,7 +1,7 @@
 <template>
   <span
     :class="position"
-    class="BaseArrow"/>
+    class="IconArrow"/>
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.BaseArrow {
+.IconArrow {
   display: inline-block;
   width: 0;
   height: 0;

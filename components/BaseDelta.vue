@@ -3,7 +3,7 @@
     <span
       v-if="value !== 0 && value !== null"
       :class="[{positive: value > 0}, {negative: value < 0}]"
-      class="value"><BaseArrow :position="arrowPosition"/>{{ Math.abs(value) }}</span>
+      class="value"><IconArrow :position="arrowPosition"/>{{ Math.abs(value) }}</span>
     <span
       v-if="nullText && value === null"
       class="null">{{ nullText }}</span>
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import BaseArrow from './BaseArrow'
+import IconArrow from './IconArrow'
 
 export default {
   components: {
-    BaseArrow
+    IconArrow
   },
   props: {
     value: {
