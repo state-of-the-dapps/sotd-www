@@ -551,6 +551,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  @include container;
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -558,6 +559,7 @@ export default {
 .section {
   &.-form {
     .container {
+      @include container;
       display: flex;
       flex-direction: column;
       align-items: flex-start;

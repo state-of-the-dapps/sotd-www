@@ -76,6 +76,7 @@ export default {
 }
 
 .container {
+  @include container;
   padding-top: 0;
   padding-bottom: 0;
 }

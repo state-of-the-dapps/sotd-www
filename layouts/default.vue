@@ -49,7 +49,7 @@ html {
 body,
 input,
 textarea {
-  font-family: 'Overpass', sans-serif;
+  @include font-text;
   font-weight: 400;
   line-height: 1.2;
   font-size: 14px;
@@ -61,9 +61,6 @@ textarea {
 body {
   background-size: 100px 100px;
   height: 100%;
-  &.--has-popup {
-    overflow: hidden;
-  }
 }
 
 :focus {
@@ -73,15 +70,29 @@ body {
 input::placeholder,
 textarea::placeholder {
   color: darken($color--gray, 30%);
+  opacity: 1;
 }
 
 input::placeholder {
   line-height: 1.7;
 }
 
+input[type='submit'] {
+  border-radius: 0;
+}
+
+p {
+  margin: 1em 0;
+}
+
 h1 {
   font-size: 20px;
   line-height: 1;
+}
+
+h1,
+h2 {
+  margin: 0.83em 0;
 }
 
 ul,
@@ -104,10 +115,6 @@ a {
 
 strong {
   font-weight: 700;
-}
-
-input[type='submit'] {
-  border-radius: 0;
 }
 
 button {
@@ -133,6 +140,10 @@ button {
 button::-moz-focus-inner {
   border: 0;
   padding: 0;
+}
+
+button:focus {
+  outline: none;
 }
 
 pre {
@@ -167,15 +178,6 @@ code {
 .fade-in-enter,
 .fade-in-leave-to {
   opacity: 0;
-}
-
-.container {
-  max-width: 2000px;
-  margin: 0 auto;
-  padding: 15px 10px;
-  @include tweakpoint('min-width', 1000px) {
-    padding: 15px 22px;
-  }
 }
 
 .loader-wrapper {
@@ -266,32 +268,6 @@ code {
 .title-2 {
   font-size: 2.25rem;
   margin-bottom: 0.75rem;
-}
-
-input::placeholder,
-textarea::placeholder {
-  opacity: 1;
-}
-
-button:focus {
-  outline: none;
-}
-
-p {
-  margin: 1em 0;
-}
-
-h1,
-h2 {
-  margin: 0.83em 0;
-}
-</style>
-
-<style lang="scss">
-body {
-  &.has-modal {
-    overflow: hidden;
-  }
 }
 </style>
 

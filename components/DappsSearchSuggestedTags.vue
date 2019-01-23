@@ -3,7 +3,7 @@
     <div 
       v-on-clickaway="reset" 
       v-if="tags.length" 
-      class="DappsSearchSuggestedTags container -suggested-tags">
+      class="DappsSearchSuggestedTags -suggested-tags">
       <ul class="list">
         <li 
           v-for="(tag, key) in tags" 
@@ -71,21 +71,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  &.-suggested-tags {
-    position: absolute;
-    background: rgba($color--gray, 0.95);
-    padding: 10px;
-    box-shadow: 0 17px 70px rgba($color--black, 0.2);
-    width: 250px;
-    top: 100%;
-    left: 40px;
-    overflow: hidden;
-    z-index: 10;
-    @include tweakpoint('min-width', $tweakpoint--default) {
-      left: 55px;
-      width: 500px;
-    }
+.DappsSearchSuggestedTags {
+  position: absolute;
+  background: rgba($color--gray, 0.95);
+  padding: 10px;
+  box-shadow: 0 17px 70px rgba($color--black, 0.2);
+  width: 250px;
+  top: 100%;
+  left: 40px;
+  overflow: hidden;
+  z-index: 10;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    left: 55px;
+    width: 500px;
   }
 }
 

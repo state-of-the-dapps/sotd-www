@@ -42,7 +42,6 @@ $color--dapp-abandoned-light: #FAFAFA;
 $color--dapp-broken: #c1c1c1;
 $color--dapp-broken-light: #c1c1c1;
 
-//
 $color--category-gambling: #FFAAC0;
 $color--category-high-risk: #c1c1c1;
 $color--category-games:#FFC8AA;
@@ -60,7 +59,6 @@ $color--category-energy: #FFEEBF;
 $color--category-insurance: #D7FAD5;
 $color--category-health: #C8E2C6;
 $color--category-social: #C7DAFF;
-//
 
 $color--negative: #ff005a; 
 $color--neutral: #ffb400;
@@ -332,5 +330,14 @@ $margin--wrapper-medium: 0px 22px;
       margin: 0 auto;
       width: calc(100% - 44px);
       max-width: 2000px;
+  }
+}
+
+@mixin container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 15px 10px;
+  @include tweakpoint('min-width', 1000px) {
+    padding: 15px 22px;
   }
 }

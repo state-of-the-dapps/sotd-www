@@ -116,7 +116,7 @@ export default {
 }
 
 .subtitle {
-  font-family: 'Overpass';
+  @include font-text;
   font-size: 1.05rem;
   display: inline-block;
   position: relative;

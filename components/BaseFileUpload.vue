@@ -701,12 +701,12 @@ export default {
 
 <style lang="scss" scoped>
 #dropzone {
+  @include font-text;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: 0.2px;
-  font-family: 'Overpass';
   color: $color--black;
   transition: background-color 0.2s linear;
   padding: 5px;
