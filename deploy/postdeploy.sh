@@ -225,4 +225,4 @@ fi
 
 # rclone --config deploy/rclone.conf config show
 echo "Copying $NUXT_CLIENT_DIST to $CDN_REMOTE_PATH"
-rclone --config $RCLONE_CONF copy -v --no-update-modtime $NUXT_CLIENT_DIST $CDN_REMOTE_PATH
+rclone --config $RCLONE_CONF copy -v --s3-acl "public-read" --no-update-modtime $NUXT_CLIENT_DIST $CDN_REMOTE_PATH
