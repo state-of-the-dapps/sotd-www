@@ -182,7 +182,12 @@ export default {
   flex: 1;
 }
 
+.loader {
+  @include loader;
+}
+
 .loader-wrapper {
+  @include loader-wrapper;
   padding-top: 25px;
 }
 

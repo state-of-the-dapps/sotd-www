@@ -301,6 +301,7 @@ export default {
 }
 
 .title-1 {
+  @include title-1;
   font-size: 3rem;
   text-transform: initial;
   text-align: center;
@@ -308,6 +309,7 @@ export default {
 }
 
 .title-2 {
+  @include title-2;
   font-size: 2.65rem;
   text-transform: initial;
   text-align: center;

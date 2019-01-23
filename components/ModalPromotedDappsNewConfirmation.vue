@@ -54,6 +54,7 @@ export default {
 }
 
 .title-1 {
+  @include title-1;
   font-size: 3rem;
   text-transform: initial;
   margin: 0;

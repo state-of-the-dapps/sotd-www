@@ -299,6 +299,7 @@ export default {
 }
 
 .title-1 {
+  @include title-1;
   text-align: center;
   font-size: 3rem;
   text-transform: initial;

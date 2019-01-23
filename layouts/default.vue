@@ -1,18 +1,18 @@
 <template>
   <div class="layout">
     <div class="wrapper">
-      <div class="main">
+      <main class="main">
         <div class="menu">
           <div class="menu-wrapper">
             <BaseMenu/>
           </div>
         </div>
         <nuxt/>
-      </div>
-      <div class="footer">
+      </main>
+      <footer class="footer">
         <SecondaryCta/>
         <TheFooter/>
-      </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -33,17 +33,17 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 html {
   box-sizing: border-box;
   background: $color--gray;
   font-size: 13px;
   height: 100%;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
 }
 
 body,
@@ -179,96 +179,6 @@ code {
 .fade-in-leave-to {
   opacity: 0;
 }
-
-.loader-wrapper {
-  text-align: center;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.loader {
-  width: 20px;
-  height: 20px;
-  background-color: $color--black;
-
-  margin: 0 auto;
-  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-  animation: sk-rotateplane 1.2s infinite ease-in-out;
-}
-
-@-webkit-keyframes sk-rotateplane {
-  0% {
-    -webkit-transform: perspective(120px);
-  }
-  50% {
-    -webkit-transform: perspective(120px) rotateY(180deg);
-  }
-  100% {
-    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
-  }
-}
-
-@keyframes sk-rotateplane {
-  0% {
-    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-  }
-  50% {
-    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-  }
-  100% {
-    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
-  }
-}
-
-.text-container {
-  max-width: 700px;
-  margin: 25px auto;
-  padding: 0 15px;
-  @include tweakpoint('min-width', 700px) {
-    margin: 50px auto 75px;
-  }
-  h2 {
-    font-size: 1.35rem;
-    margin-bottom: -0.5rem;
-    margin-top: 1.65rem;
-  }
-  p {
-    font-size: 1.15rem;
-    line-height: 1.35;
-    max-width: 600px;
-    &.intro {
-      font-size: 1.4rem;
-      line-height: 1.275;
-      max-width: 700px;
-    }
-  }
-  ul {
-    margin: 1.25rem 2rem;
-    li {
-      margin: 0.25rem 0;
-      list-style-type: square;
-    }
-  }
-}
-
-.title-1,
-.title-2 {
-  @include font-display;
-  letter-spacing: 0px;
-  font-weight: normal;
-}
-
-.title-1 {
-  letter-spacing: 0.5px;
-}
-
-.title-2 {
-  font-size: 2.25rem;
-  margin-bottom: 0.75rem;
-}
 </style>
 
 <style lang="scss" scoped>
@@ -289,8 +199,5 @@ code {
 
 .wrapper {
   height: 100%;
-  &.has-modal {
-    filter: blur(8px);
-  }
 }
 </style>

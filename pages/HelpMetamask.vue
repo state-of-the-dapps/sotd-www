@@ -176,6 +176,7 @@ export default {
 }
 
 .text-container {
+  @include text-container;
   p {
     max-width: 100%;
     font-size: 1.2rem;

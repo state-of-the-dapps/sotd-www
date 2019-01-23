@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.text-container {
+  @include text-container;
+}
+</style>

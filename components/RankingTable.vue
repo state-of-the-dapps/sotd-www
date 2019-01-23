@@ -386,7 +386,12 @@ export default {
   }
 }
 
+.loader {
+  @include loader;
+}
+
 .loader-wrapper {
+  @include loader-wrapper;
   margin: 0 auto;
   padding: 15px 0;
 }

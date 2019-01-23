@@ -1,7 +1,7 @@
 <template>
   <div class="DappDetailBodyContent">
     <div class="wrapper">
-      <div class="main">
+      <div class="wrapper-inner">
         <DappAlert 
           v-if="dapp.alert" 
           :alert="dapp.alert"/>
@@ -124,7 +124,7 @@ export default {
   }
 }
 
-.main {
+.wrapper-inner {
   @include tweakpoint('min-width', 1000px) {
     flex: 1;
     padding-right: 10px;

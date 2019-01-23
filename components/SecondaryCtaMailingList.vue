@@ -176,6 +176,7 @@ export default {
 }
 
 .title-2 {
+  @include title-2;
   font-size: 3rem;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;

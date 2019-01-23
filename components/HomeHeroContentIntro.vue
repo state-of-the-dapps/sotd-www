@@ -137,6 +137,7 @@ export default {
 }
 
 .title-1 {
+  @include title-1;
   font-size: 4rem;
   line-height: 0.825;
   margin: 1rem 0 0.75rem 0;

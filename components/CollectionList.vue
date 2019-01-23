@@ -40,6 +40,7 @@ export default {
 }
 
 .title-2 {
+  @include title-2;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
