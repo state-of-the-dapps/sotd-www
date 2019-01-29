@@ -27,7 +27,7 @@ export default {
   },
   mode: env.mode,
   modules: [
-    ['nuxt-sass-resources-loader', '@/assets/css/_settings.scss'],
+    '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/sentry',
     '@nuxtjs/router',
@@ -77,6 +77,9 @@ export default {
   },
   serverMiddleware: ['redirect-ssl', '~/middleware/logger'],
   css: ['~/assets/css/normalize.scss', '~/assets/css/fonts.css'],
+  styleResources: {
+    scss: ['~/assets/css/_settings.scss']
+  },
   env: {
     apiUrl: env.apiUrl,
     fullstory: env.fullstory,
