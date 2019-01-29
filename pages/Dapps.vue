@@ -146,7 +146,7 @@ export default {
   head() {
     return {
       title:
-        'State of the ÐApps — ' +
+        'State of the DApps — ' +
         this.statDappCount.toLocaleString() +
         ' Projects Built on Ethereum, EOS & Steem'
     }

@@ -1,6 +1,6 @@
 export default {
   BaseMenu: {
-    allDapps: '全部 ÐApps',
+    allDapps: '全部 DApps',
     home: '首页',
     rankings: '排名',
     search: '搜索',
@@ -37,7 +37,7 @@ export default {
     // TODO 'Top-Development-Activity': 'Top Development Activity'
   },
   cta: {
-    submit: '提交 ÐApp',
+    submit: '提交 DApp',
     viewAll: '查看全部'
   },
   DappCardListItem: {
@@ -46,8 +46,8 @@ export default {
   DappDetailBodyContentCtas: {
     website: '访问网站',
     playGame: '玩游戏',
-    launchDapp: '启动 ÐApp',
-    launchDappWebsite: '启动 ÐApp / 网站'
+    launchDapp: '启动 DApp',
+    launchDappWebsite: '启动 DApp / 网站'
   },
   DappDetailBodyContentModulesContractsAddress: {
     copy: '复制',
@@ -79,7 +79,7 @@ export default {
   },
   DappDetailBodyContentModules: {
     activeUsers: '活跃用户',
-    activeUsersHelp: '(与ÐApp合约有交易的独特源地址)',
+    activeUsersHelp: '(与DApp合约有交易的独特源地址)',
     transactions: '交易',
     volume: '数量 ({token})'
   },
@@ -90,32 +90,32 @@ export default {
     monthly: '每月'
   },
   DappDetailBodyContentTools: {
-    edit: '编辑这个ÐApp',
+    edit: '编辑这个DApp',
     flag: '举报不当',
-    promote: '推广这个ÐApp',
+    promote: '推广这个DApp',
     share: '分享这个'
   },
   DappDetailBodyContentPlatform: {
-    advise: '我们推荐浏览器插件比如{software}，以便在网上使用{platform} ÐApps。'
+    advise: '我们推荐浏览器插件比如{software}，以便在网上使用{platform} DApps。'
   },
   DappDetailBodyContentRank: {
     currentRank: '目前排名'
   },
   DappDetailBodyContentRecommend: {
-    title: '你会不会把这个ÐApp推荐给朋友？',
+    title: '你会不会把这个DApp推荐给朋友？',
     submit: '提交反馈',
     thanks: '感谢您对{name}的反馈！',
     comments: '评论',
     commentsPlaceholder: '添加您的评论'
   },
   DappDetailRelatedDapps: {
-    title: '有关连ÐApp'
+    title: '有关连DApp'
   },
   DappProfile: {
     improve: '改善这个简介'
   },
   Dapps: {
-    noResults: '这里暂时没有 ÐApp. 请尝试另一个搜寻'
+    noResults: '这里暂时没有 DApp. 请尝试另一个搜寻'
   },
   dappSortOptions: {
     Hottest: '最热门的',
@@ -127,7 +127,7 @@ export default {
     xOf: '{x} 之 '
   },
   DappsSearch: {
-    placeholder: '以 ÐApp 名称或标签搜寻'
+    placeholder: '以 DApp 名称或标签搜寻'
   },
   DappsSort: {
     sortBy: '排序方式'
@@ -142,10 +142,10 @@ export default {
     allCategories: '所有类别'
   },
   FeaturedCollectionList: {
-    heading: 'ÐApp 收藏'
+    heading: 'DApp 收藏'
   },
   FeaturedDappList: {
-    heading: '特色 ÐApps',
+    heading: '特色 DApps',
     promote: '在这里推广你的DApp'
   },
   FeaturedRankingByCategoryList: {
@@ -164,23 +164,23 @@ export default {
     chooseStatus: '选择状态'
   },
   GlobalSearch: {
-    dapps: 'ÐApps',
+    dapps: 'DApps',
     noResults: '对不起，没有找到结果，请重新搜索',
-    placeholder: '发现好玩的 ÐApps…',
+    placeholder: '发现好玩的 DApps…',
     suggestedTags: '建议标签',
-    viewDappResults: '查看所有 ÐApp 结果'
+    viewDappResults: '查看所有 DApp 结果'
   },
   help: {
-    volumeUsd: 'ÐApp合约交易量。汇率源自CryptoCompare.com',
+    volumeUsd: 'DApp合约交易量。汇率源自CryptoCompare.com',
     volumePerNetwork:
-      'ÐApp合约交易量。与ÐApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com'
+      'DApp合约交易量。与DApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com'
   },
   HomeHeroContentIntro: {
     heading: '搜索去中心化应用',
-    learn: '了解更多关于 ÐApps 的信息',
+    learn: '了解更多关于 DApps 的信息',
     subheading:
-      '通过 ÐApp项目的权威入口，发现以太坊，EOS，POA，GoChain，Steem和区块链的可能性。',
-    view: '查看最佳 ÐApps'
+      '通过 DApp项目的权威入口，发现以太坊，EOS，POA，GoChain，Steem和区块链的可能性。',
+    view: '查看最佳 DApps'
   },
   new: '新',
   platform: '平台',
@@ -202,11 +202,11 @@ export default {
     user_activity_30d: '用户活动 (30天)'
   },
   RankingTable: {
-    noDapps: '目前该类别/平台尚无ÐApps'
+    noDapps: '目前该类别/平台尚无DApps'
   },
   RankingTableRankHead: {
     help:
-      '排名基于多重因素，包括活跃用户（与ÐApp合约交易的独特源地址）、交易量、开发活动、资料新鲜度和完整度、点击通过率和用户推荐。排名旁边的数字指24小时的变化。'
+      '排名基于多重因素，包括活跃用户（与DApp合约交易的独特源地址）、交易量、开发活动、资料新鲜度和完整度、点击通过率和用户推荐。排名旁边的数字指24小时的变化。'
   },
   SecondaryCtaMailingList: {
     title: '保持循环',
@@ -231,7 +231,7 @@ export default {
   },
   SecondaryCtaSteemKeychain: {
     title: 'Steem Keychain',
-    description: 'Steem Keychain可以让你在浏览器里使用SteemÐApps。',
+    description: 'Steem Keychain可以让你在浏览器里使用SteemDApps。',
     cta: '现在试试。',
     discover: '探索 Steem Keychain'
   },
@@ -259,27 +259,27 @@ export default {
     termsOfUse: '使用条款'
   },
   TheStats: {
-    title: 'ÐApp 数据',
-    description: '数据将会每日更新。请常来查看ÐApp生态系统的进度与发展。',
+    title: 'DApp 数据',
+    description: '数据将会每日更新。请常来查看DApp生态系统的进度与发展。',
     askUs: '向我们询问自定义数据',
     dailyActiveUsers: '每日活跃用户',
-    activeUsersHelp: '与ÐApp合约交易的独特源地址',
+    activeUsersHelp: '与DApp合约交易的独特源地址',
     monthlyActiveUsers: '每月活跃用户',
-    newDappsPerMonth: '每月新ÐApps',
-    newDapps: '新ÐApps',
+    newDappsPerMonth: '每月新DApps',
+    newDapps: '新DApps',
     nrOfContracts: '合同数量',
     smartContracts: '智能合约',
     '24htransactions': '24小时交易',
     '24hVolumeUsd': '24小时美元',
     transactions24h: '交易 (24小时)',
     transactions30d: '交易 (30天)',
-    transactionsHelp: '与ÐApp合约交易的次数',
-    totalDapps: '总 ÐApps',
+    transactionsHelp: '与DApp合约交易的次数',
+    totalDapps: '总 DApps',
     volume24h: '数量 (24小时)',
-    volumeHelp: '与ÐApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。'
+    volumeHelp: '与DApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。'
   },
   userActivity30d: '用户活动 (30天)',
-  userActivity30dHelp: '过去30天的用户（与ÐApp合约交易的独特源地址）',
+  userActivity30dHelp: '过去30天的用户（与DApp合约交易的独特源地址）',
   users24h: '用户 (24小时)',
-  users24hHelp: '每日活跃用户，或DAU（与ÐApp合约交易的独特源地址）'
+  users24hHelp: '每日活跃用户，或DAU（与DApp合约交易的独特源地址）'
 }

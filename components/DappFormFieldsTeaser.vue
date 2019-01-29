@@ -32,7 +32,7 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">A 5-7 word description of your ÐApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
+    <p class="help">A 5-7 word description of your DApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
   </div>
 </template>
 

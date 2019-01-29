@@ -24,7 +24,7 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">A URL to this ÐApp's website</p>
+    <p class="help">A URL to this DApp's website</p>
   </div>
 </template>
 

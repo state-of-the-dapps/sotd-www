@@ -128,7 +128,7 @@
           src="~/assets/images/logo-reverse.png">
       </li>
       <li class="attribution-item">
-        <span>{{ $t(namespace('copyright')) }} &copy; {{ Date.now() | formatDate('YYYY') }} State of the ÐApps</span>
+        <span>{{ $t(namespace('copyright')) }} &copy; {{ Date.now() | formatDate('YYYY') }} State of the DApps</span>
       </li>
       <li class="attribution-item">
         <i18n

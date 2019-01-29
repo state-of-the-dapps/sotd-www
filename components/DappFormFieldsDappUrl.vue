@@ -3,7 +3,7 @@
     id="dappUrl"
     :class="errors && errors.length > 0 ? '--has-errors' : ''" 
     class="DappFormFieldsDappUrl item">
-    <p class="heading"><span class="checkmark"><IconCheckmark :fill="url.length >= 3 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp URL</p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="url.length >= 3 && !errors.length ? 'purple' : 'gray'"/></span>DApp URL</p>
     <input
       id="dappUrlField"
       :class="url.length > 0 ? '--is-filled' : ''" 
@@ -24,7 +24,7 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">A URL that will launch this ÐApp directly</p>
+    <p class="help">A URL that will launch this DApp directly</p>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
       }
       this.validationTimer = setTimeout(() => {
         this.url.length > 0 && this.url.length < 3
-          ? errors.data.push(`ÐApp URL must be longer than 2 characters`)
+          ? errors.data.push(`DApp URL must be longer than 2 characters`)
           : ''
         this.$emit('updateErrors', errors)
       }, 750)

@@ -8,7 +8,7 @@
           class="profile-score-bar-pct"/>
       </div>
       <p class="profile-score-note">
-        Complete <template v-if="formType === 'edit'">this ÐApp's</template><template v-else>your</template> profile to boost <template v-if="formType === 'edit'">its</template><template v-else>your</template> rank
+        Complete <template v-if="formType === 'edit'">this DApp's</template><template v-else>your</template> profile to boost <template v-if="formType === 'edit'">its</template><template v-else>your</template> rank
       </p>
     </div>
     <div 
@@ -16,7 +16,7 @@
       class="submit-reason">
       <label 
         class="text-area-label" 
-        for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your ÐApp (this will not be made public).</label>
+        for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your DApp (this will not be made public).</label>
       <textarea 
         :value="submitReason" 
         class="text-area" 
@@ -84,7 +84,7 @@
         class="yumyum">
       <input 
         v-if="formType === 'edit' && !diffExists" 
-        :value="'You must edit this ÐApp before submitting'" 
+        :value="'You must edit this DApp before submitting'" 
         class="submit" 
         type="submit" 
         @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
@@ -232,7 +232,7 @@ export default {
         acceptedTerms: 'Accept the terms',
         authors: 'Authors',
         category: 'Category',
-        dappUrl: 'ÐApp URL',
+        dappUrl: 'DApp URL',
         description: 'Description',
         eosMainnet: 'EOS Mainnet',
         email: 'Email',

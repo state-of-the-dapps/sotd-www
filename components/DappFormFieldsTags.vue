@@ -40,7 +40,7 @@
     <ul 
       v-if="hasObviousTags"
       class="warning-list -tags">
-      <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your ÐApp</li>
+      <li>Tags with orange outlines are a little redundant, and might not be very helpful to people searching for your DApp</li>
     </ul>
     <ul class="list">
       <li 

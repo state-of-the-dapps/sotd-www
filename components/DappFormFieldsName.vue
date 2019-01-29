@@ -3,7 +3,7 @@
     id="name"
     :class="[errors && errors.length > 0 ? '--has-errors' : '', formType ==='edit' ? 'is-edit' : '']" 
     class="DappFormFieldsName item">
-    <p class="heading"><span class="checkmark"><IconCheckmark :fill="name.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>ÐApp name <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="name.length >= 2 && !errors.length ? 'purple' : 'gray'"/></span>DApp name <span class="required">(required)</span></p>
     <input
       id="nameField"
       :disabled="formType === 'edit'"
@@ -41,7 +41,7 @@
           class="error-link">review</nuxt-link> or 
         <nuxt-link
           :to="localePath({ name: 'dapp-detail-edit', params: { slug: existingDapp }})"
-          class="error-link">submit edits</nuxt-link> to that ÐApp
+          class="error-link">submit edits</nuxt-link> to that DApp
       </li>
     </ul>
   </div>
@@ -110,7 +110,7 @@ export default {
           return this.name.toLowerCase().includes(word)
         })
         hasWarningWords === true
-          ? warnings.data.push(`Your ÐApp name should not be a URL`)
+          ? warnings.data.push(`Your DApp name should not be a URL`)
           : null
         this.$axios
           .get('dapps/lookup', {

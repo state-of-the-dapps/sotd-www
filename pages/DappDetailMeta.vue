@@ -53,7 +53,7 @@ export default {
   },
   head() {
     return {
-      title: this.dapp.name + ' — State of the ÐApps',
+      title: this.dapp.name + ' — State of the DApps',
       meta: [
         { hid: 'description', name: 'description', content: this.dapp.teaser },
         { hid: 'image', property: 'og:image', content: this.dapp.productImage },

@@ -10,18 +10,18 @@
         </div>
         <h1 class="title-1">Welcome MetaMask Friends!</h1>
         <br>
-        <p><strong>Welcome to the land of ÐApps and Ethereum.</strong></p>
-        <p>Are you confused? We understand and are here to help you! The world of Decentralized Applications (ÐApps) on the Ethereum Blockchain can be quite overwhelming. There are many new confusing terms to understand. The learning curve can be pretty steep. Hang in there, the journey is exciting.</p>
+        <p><strong>Welcome to the land of DApps and Ethereum.</strong></p>
+        <p>Are you confused? We understand and are here to help you! The world of Decentralized Applications (DApps) on the Ethereum Blockchain can be quite overwhelming. There are many new confusing terms to understand. The learning curve can be pretty steep. Hang in there, the journey is exciting.</p>
         <p class="button-wrapper">
           <nuxt-link
             :to="localePath({name: 'rankings-platform', params: {platform: 'ethereum'}})"
             class="button"
-            @click.native="trackMetamaskHelp">I'm ready to Explore Ethereum ÐApps</nuxt-link></p>
+            @click.native="trackMetamaskHelp">I'm ready to Explore Ethereum DApps</nuxt-link></p>
         <h2 class="title-2">Digital wallets</h2>
         <h3>Installing a digital wallet like MetaMask</h3>
         <ul class="list">
           <li>
-            To use most ÐApps, you need a digital wallet. Commonly supported are digital wallets, like 
+            To use most DApps, you need a digital wallet. Commonly supported are digital wallets, like 
             <a
               href="https://metamask.io/?utm_source=StateOfTheDapps"
               target="_blank">Metamask</a>,  
@@ -44,14 +44,14 @@
         <h3>What are seed words? Why are they important?</h3>
         <p>Some wallets use seed words for backing up your account. They let you restore your account in the case it’s deleted. This also means that anyone with your seed words can access your account and steal your assets. Please be sure to save your seed words, and do not share them with others.</p>
         <h3>Can you change my digital wallet’s password?</h3>
-        <p>No, we can’t. Wallets are independent programs that State of the ÐApps does not in any way control. This means we can’t help with resetting passwords or recovering lost accounts.</p>
+        <p>No, we can’t. Wallets are independent programs that State of the DApps does not in any way control. This means we can’t help with resetting passwords or recovering lost accounts.</p>
         <h3>What is a “wallet address”?</h3>
         <p>Your public wallet address (e.g. 0xaba935f589805095a892ecefdb6eb83eff45d67) is a unique identifier for your wallet. It’s like a name. You can share it freely with others, and it’s used to direct assets to your wallet.</p>
         <h2 class="title-2">Ethereum, a digital currency</h2>
         <h3>What’s ether (ETH)? Why do I need it?</h3>
         <ul class="list">
-          <li>Ether is a digital currency that powers the Ethereum network, which is what most ÐApps are built on. Ether acts like any other currency — its value fluctuates with the market.</li>
-          <li>You need to convert your currency (e.g. USD, EUR, CNY) into ether to pay for things — and interact with ÐApps — on the Ethereum network.</li>
+          <li>Ether is a digital currency that powers the Ethereum network, which is what most DApps are built on. Ether acts like any other currency — its value fluctuates with the market.</li>
+          <li>You need to convert your currency (e.g. USD, EUR, CNY) into ether to pay for things — and interact with DApps — on the Ethereum network.</li>
         </ul>
         <h3>How do I get ether? What is Coinbase?</h3>
         <ul class="list">
@@ -68,7 +68,7 @@
               href="https://binance.com/?utm_source=StateOfTheDapps"
               target="_blank">Binance</a>.
           </li>
-          <li>You can’t use USD/EUR to directly send to a ÐApps — currencies need to be converted into ETH first.</li>
+          <li>You can’t use USD/EUR to directly send to a DApps — currencies need to be converted into ETH first.</li>
         </ul>
         <h3>How long does it take to receive ether?</h3>
         <p>If it’s your first time purchasing ether, your exchange will need to verify your identify; that can take a day or two, so it’ll leave you time for a cat nap. In addition, if you need to link a bank account to your exchange (rather than a credit card), your bank may need a few more days to verify the charges.</p>
@@ -82,7 +82,7 @@
           <nuxt-link
             :to="localePath({name: 'rankings-platform', params: {platform: 'ethereum'}})"
             class="button"
-            @click.native="trackMetamaskHelp">Explore Ethereum ÐApps</nuxt-link></p>
+            @click.native="trackMetamaskHelp">Explore Ethereum DApps</nuxt-link></p>
       </div>
     </section>
   </div>

@@ -2,7 +2,7 @@
   <div class="page">
     <section class="section -intro">
       <div class="container">
-        <PageHeading title="Submit a ÐApp"/>
+        <PageHeading title="Submit a DApp"/>
         <div class="help-wrapper">
           <div class="icon-wrapper">
             <img
@@ -15,8 +15,8 @@
               class="icon-image kitty">
           </div>
           <div class="text-wrapper">
-            <p>Whether you are looking for new users, testers, concept feedback, partners, or investors, submitting a ÐApp (Decentralized Application) to this definitive registry will help your project gain traction.</p>
-            <p>We welcome ÐApps at any stage in the product life-cycle (concepts are encouraged), or even ÐApps that you didn't make but noticed are missing.
+            <p>Whether you are looking for new users, testers, concept feedback, partners, or investors, submitting a DApp (Decentralized Application) to this definitive registry will help your project gain traction.</p>
+            <p>We welcome DApps at any stage in the product life-cycle (concepts are encouraged), or even DApps that you didn't make but noticed are missing.
               <a 
                 href="#"
                 @click="openIntercom">Ask us</a> if you have any questions!</p>
@@ -43,7 +43,7 @@ export default {
   mixins: [openIntercom],
   head() {
     return {
-      title: 'State of the ÐApps — Submit a ÐApp'
+      title: 'State of the DApps — Submit a DApp'
     }
   }
 }

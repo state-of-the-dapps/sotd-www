@@ -13,7 +13,7 @@
 export default {
   head() {
     return {
-      title: 'State of the ÐApps — Confirmation'
+      title: 'State of the DApps — Confirmation'
     }
   }
 }

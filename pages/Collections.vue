@@ -2,7 +2,7 @@
   <div class="page">
     <div class="hero-wrapper">
       <h1 class="title-1">Curated Collections</h1>
-      <p class="description">Explore our handpicked groupings of the best ÐApps on the market.</p>
+      <p class="description">Explore our handpicked groupings of the best DApps on the market.</p>
     </div>
     <CollectionList/>
   </div>

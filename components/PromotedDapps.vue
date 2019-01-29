@@ -1,7 +1,7 @@
 <template>
   <div class="PromotedDapps">
     <div class="wrapper">
-      <h1 class="title-1">Promote your ÐApp to attract more users</h1>
+      <h1 class="title-1">Promote your DApp to attract more users</h1>
       <p class="description">{{ description }}</p>
       <div class="get-started-wrapper"><button 
         class="get-started" 
@@ -17,7 +17,7 @@
       <h2 
         ref="getStartedEl" 
         class="title-2">Get started now!</h2>
-      <p class="get-started-note">Please note: We do not accept promotion requests for gambling ÐApps, or ÐApps that are ponzi or pyramid schemes.</p>
+      <p class="get-started-note">Please note: We do not accept promotion requests for gambling DApps, or DApps that are ponzi or pyramid schemes.</p>
       <div class="fields">
         <div><input 
           ref="name" 
@@ -40,14 +40,14 @@
           v-model="dapp" 
           class="input" 
           type="text" 
-          placeholder="Your ÐApp's name"></div>  
+          placeholder="Your DApp's name"></div>  
         <div><input 
           v-model="budget" 
           class="input" 
           type="text" 
           placeholder="Daily budget (USD)"></div>
         <div class="submitted-wrapper">
-          Is this ÐApp already listed on this website?
+          Is this DApp already listed on this website?
           <p>
             <button 
               :class="hasSubmittedDapp == 'yes' ? '--active' : ''" 
@@ -63,7 +63,7 @@
           v-model="website" 
           class="input" 
           type="text" 
-          placeholder="Your ÐApp's website"></div>
+          placeholder="Your DApp's website"></div>
       </div>
       <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
       <div class="send-wrapper"><button 

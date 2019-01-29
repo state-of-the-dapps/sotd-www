@@ -10,7 +10,7 @@ export default {
   },
   head() {
     return {
-      title: this.fields.name + ' — State of the ÐApps',
+      title: this.fields.name + ' — State of the DApps',
       meta: [
         {
           hid: 'description',

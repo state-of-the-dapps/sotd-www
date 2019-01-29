@@ -29,7 +29,7 @@
         :key="index" 
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">The full description of your ÐApp in English.</p>
+    <p class="help">The full description of your DApp in English.</p>
   </div>
 </template>
 

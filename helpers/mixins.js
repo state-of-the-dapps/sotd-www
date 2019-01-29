@@ -118,7 +118,7 @@ export const setPromotedDappsPage = {
   },
   head() {
     return {
-      title: 'State of the ÐApps — Promote your ÐApp',
+      title: 'State of the DApps — Promote your DApp',
       meta: [
         { hid: 'description', name: 'description', content: this.description }
       ]

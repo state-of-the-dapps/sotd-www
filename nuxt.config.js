@@ -88,7 +88,7 @@ export default {
   },
   head: {
     title:
-      'State of the ÐApps — Blockchain Apps for Ethereum, Steem, EOS, and More',
+      'State of the DApps — Blockchain Apps for Ethereum, Steem, EOS, and More',
     meta: [
       { charset: 'utf-8' },
       {

@@ -2,7 +2,7 @@
   <div
     id="status"
     class="DappFormFieldsStatus">
-    <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>ÐApp status <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="status.length ? 'purple' : 'gray'"/></span>DApp status <span class="required">(required)</span></p>
     <ul
       id="statusField"
       class="list">

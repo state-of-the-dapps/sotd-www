@@ -3,7 +3,7 @@
     <span class="label">Profile</span>
     <BaseHelp
       :bottom="true"
-      text="How complete the profile of the ÐApp is"/>
+      text="How complete the profile of the DApp is"/>
   </div>
 </template>
 

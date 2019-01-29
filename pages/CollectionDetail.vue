@@ -39,7 +39,7 @@ export default {
   },
   head() {
     return {
-      title: this.collection.name + ' — State of the ÐApps',
+      title: this.collection.name + ' — State of the DApps',
       meta: [
         {
           hid: 'description',

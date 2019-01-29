@@ -1,6 +1,6 @@
 export default {
   BaseMenu: {
-    allDapps: 'All ÐApps',
+    allDapps: 'All DApps',
     home: 'Home',
     rankings: 'Rankings',
     search: 'Search',
@@ -37,7 +37,7 @@ export default {
     'Top-Development-Activity': 'Top Development Activity'
   },
   cta: {
-    submit: 'Submit a ÐApp',
+    submit: 'Submit a DApp',
     viewAll: 'View all'
   },
   DappCardListItem: {
@@ -46,8 +46,8 @@ export default {
   DappDetailBodyContentCtas: {
     website: 'Visit website',
     playGame: 'Play game',
-    launchDapp: 'Launch ÐApp',
-    launchDappWebsite: 'Launch ÐApp/website'
+    launchDapp: 'Launch DApp',
+    launchDappWebsite: 'Launch DApp/website'
   },
   DappDetailBodyContentModulesContractsAddress: {
     copy: 'Copy',
@@ -80,7 +80,7 @@ export default {
   DappDetailBodyContentModules: {
     activeUsers: 'Active users',
     activeUsersHelp:
-      '(unique source addresses in transactions to ÐApp contracts)',
+      '(unique source addresses in transactions to DApp contracts)',
     transactions: 'Transactions',
     volume: 'Volume ({token})'
   },
@@ -91,33 +91,33 @@ export default {
     monthly: 'Monthly'
   },
   DappDetailBodyContentTools: {
-    edit: 'Edit this ÐApp',
+    edit: 'Edit this DApp',
     flag: 'Flag as inappropriate',
-    promote: 'Promote this ÐApp',
-    share: 'Share this ÐApp'
+    promote: 'Promote this DApp',
+    share: 'Share this DApp'
   },
   DappDetailBodyContentPlatform: {
     advise:
-      'To use {platform} ÐApps on the web, we recommend a browser add-on such as {software}.'
+      'To use {platform} DApps on the web, we recommend a browser add-on such as {software}.'
   },
   DappDetailBodyContentRank: {
     currentRank: 'Current rank'
   },
   DappDetailBodyContentRecommend: {
-    title: 'Would you recommend this ÐApp to a friend?',
+    title: 'Would you recommend this DApp to a friend?',
     submit: 'Submit feedback',
     thanks: 'Thanks for your feedback on {name}!',
     comments: 'Comments',
     commentsPlaceholder: 'Add your comments'
   },
   DappDetailRelatedDapps: {
-    title: 'Related ÐApps'
+    title: 'Related DApps'
   },
   DappProfile: {
     improve: 'Improve this profile'
   },
   Dapps: {
-    noResults: 'There are currently no ÐApps here. Please try another search.'
+    noResults: 'There are currently no DApps here. Please try another search.'
   },
   dappSortOptions: {
     Hottest: 'Hottest',
@@ -129,7 +129,7 @@ export default {
     xOf: '{x} of'
   },
   DappsSearch: {
-    placeholder: 'Search by ÐApp name or tag'
+    placeholder: 'Search by DApp name or tag'
   },
   DappsSort: {
     sortBy: 'Sort by'
@@ -144,11 +144,11 @@ export default {
     allCategories: 'All categories'
   },
   FeaturedCollectionList: {
-    heading: 'ÐApp Collections'
+    heading: 'DApp Collections'
   },
   FeaturedDappList: {
-    heading: 'Featured ÐApps',
-    promote: 'Promote your ÐApp here'
+    heading: 'Featured DApps',
+    promote: 'Promote your DApp here'
   },
   FeaturedRankingByCategoryList: {
     heading: 'Rankings by Category'
@@ -167,23 +167,23 @@ export default {
   },
   help: {
     volumeUsd:
-      'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
+      'Transaction volume to DApp contracts. Exchange rates sourced from CryptoCompare.com',
     volumePerNetwork:
-      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+      'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
   },
   GlobalSearch: {
-    dapps: 'ÐApps',
+    dapps: 'DApps',
     noResults: 'Sorry, no results. Please try a new search',
-    placeholder: 'Discover awesome ÐApps…',
+    placeholder: 'Discover awesome DApps…',
     suggestedTags: 'Suggested tags',
-    viewDappResults: 'View all ÐApp results'
+    viewDappResults: 'View all DApp results'
   },
   HomeHeroContentIntro: {
     heading: 'Explore Decentralized Applications',
-    learn: 'Learn more about ÐApps',
+    learn: 'Learn more about DApps',
     subheading:
-      'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of ÐApp projects.',
-    view: 'View the top ÐApps'
+      'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of DApp projects.',
+    view: 'View the top DApps'
   },
   new: 'New',
   platform: 'Platform',
@@ -198,11 +198,11 @@ export default {
     user_activity_30d: 'User activity (30d)'
   },
   RankingTable: {
-    noDapps: 'There are currently no ÐApps for this category and platform'
+    noDapps: 'There are currently no DApps for this category and platform'
   },
   RankingTableRankHead: {
     help:
-      'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
+      'Rank is based on multiple factors including active users (unique source addresses in transactions to DApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
   },
   platformOptions: {
     ethereum: 'Ethereum',
@@ -213,7 +213,7 @@ export default {
   },
   SecondaryCtaMailingList: {
     title: 'Stay in the loop',
-    description: 'Subscribe to receive updates on the ÐApp ecosystem.',
+    description: 'Subscribe to receive updates on the DApp ecosystem.',
     placeholder: 'Enter your email here',
     signUp: 'Sign up',
     submitting: 'Submitting...',
@@ -224,19 +224,19 @@ export default {
   SecondaryCtaMetamask: {
     title: 'Metamask for Ethereum, POA, and GoChain',
     description:
-      'Metamask lets you use Ethereum, GoChain, and POA ÐApps within your browser.',
+      'Metamask lets you use Ethereum, GoChain, and POA DApps within your browser.',
     cta: 'Try it now',
     discover: 'Discover Metamask'
   },
   SecondaryCtaScatter: {
     title: 'Scatter for EOS',
-    description: 'Scatter lets your use EOS ÐApps within your browser.',
+    description: 'Scatter lets your use EOS DApps within your browser.',
     cta: 'Try it now',
     discover: 'Discover Scatter'
   },
   SecondaryCtaSteemKeychain: {
     title: 'Steem Keychain',
-    description: 'Steem Keychain lets you use Steem ÐApps within your browser.',
+    description: 'Steem Keychain lets you use Steem DApps within your browser.',
     cta: 'Try it now',
     discover: 'Discover Steem Keychain'
   },
@@ -257,39 +257,39 @@ export default {
     designedBy: 'Designed by {designer}',
     contactUs: 'Contact us',
     about: 'About',
-    promote: 'Promote your ÐApp',
+    promote: 'Promote your DApp',
     downloadLogo: 'Download our logo',
     getAndroidApp: 'Get the Android app',
     helpMetamask: 'Help for Metamask',
     termsOfUse: 'Terms of use'
   },
   TheStats: {
-    title: 'ÐApp Statistics',
+    title: 'DApp Statistics',
     description:
-      'Stats are updated daily. Check back often to see the progress and development of the ÐApp ecosystem.',
+      'Stats are updated daily. Check back often to see the progress and development of the DApp ecosystem.',
     askUs: 'Ask us about custom data',
     activeUsersHelp:
-      'Unique source addresses in transactions to ÐApp contracts',
+      'Unique source addresses in transactions to DApp contracts',
     dailyActiveUsers: 'Daily active users',
     monthlyActiveUsers: 'Monthly active users',
-    newDappsPerMonth: 'New ÐApps per Month',
-    newDapps: 'New ÐApps',
+    newDappsPerMonth: 'New DApps per Month',
+    newDapps: 'New DApps',
     nrOfContracts: '# of contracts',
     smartContracts: 'Smart contracts',
     '24htransactions': '24h transactions',
     '24hVolumeUsd': '24h volume USD',
     transactions24h: 'Transactions (24hr)',
     transactions30d: 'Transactions (30d)',
-    transactionsHelp: 'Number of transactions to ÐApp contracts',
-    totalDapps: 'Total ÐApps',
+    transactionsHelp: 'Number of transactions to DApp contracts',
+    totalDapps: 'Total DApps',
     volume24h: 'Volume (24hr)',
     volumeHelp:
-      'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
+      'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly'
   },
   userActivity30d: 'User activity (30d)',
   userActivity30dHelp:
-    'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
+    'Users (unique source addresses in transactions to DApp contracts) over the past 30 days',
   users24h: 'Users (24hr)',
   users24hHelp:
-    'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
+    'Daily Active Users, or DAU (unique source addresses in transactions to DApp contracts)'
 }

@@ -123,7 +123,7 @@ export default {
   head() {
     return {
       title:
-        'State of the ÐApps — Ranking the Best ÐApps of Ethereum, EOS & Steem'
+        'State of the DApps — Ranking the Best DApps of Ethereum, EOS & Steem'
     }
   },
   scrollToTop: true
