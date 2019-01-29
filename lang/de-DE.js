@@ -147,8 +147,8 @@ export default {
     heading: 'ÐApp-Sammlungen'
   },
   FeaturedDappList: {
-    // TODO heading: 'Ausgewählte ÐApps',
-    // TODO promote: 'Bewirb deine ÐApp hier'
+    heading: 'Ausgewählte ÐApps',
+    promote: 'Bewirb deine ÐApp hier'
   },
   FeaturedRankingByCategoryList: {
     // TODO heading: 'Rankings by Category'
@@ -205,11 +205,11 @@ export default {
     // TODO   'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
   },
   platformOptions: {
-    // TODO ethereum: 'Ethereum',
-    // TODO eos: 'EOS',
-    // TODO poa: 'POA',
-    // TODO gochain: 'GoChain',
-    // TODO steem: 'Steem'
+    ethereum: 'Ethereum',
+    eos: 'EOS',
+    poa: 'POA',
+    gochain: 'GoChain',
+    steem: 'Steem'
   },
   SecondaryCtaMailingList: {
     // TODO title: 'Stay in the loop',
