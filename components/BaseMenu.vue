@@ -328,7 +328,7 @@ export default {
   }
   &.-lang {
     margin-left: 12px;
-    width: 108px;
+    width: 115px;
   }
   &.-newsletter,
   &.-submit,

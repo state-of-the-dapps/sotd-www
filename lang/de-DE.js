@@ -1,47 +1,47 @@
 export default {
   BaseMenu: {
-    // TODO allDapps: 'All ÐApps',
-    // TODO home: 'Home',
-    // TODO rankings: 'Rankings',
-    // TODO search: 'Search',
-    // TODO stats: 'Stats'
+    allDapps: 'Alle ÐApps',
+    home: 'Home',
+    rankings: 'Rangliste',
+    search: 'Suche',
+    stats: 'Statistiken'
   },
-  // TODO category: 'Category | Categories',
+  category: 'Kategorie | Kategorien',
   categoryOptions: {
-    // TODO Development: 'Development',
-    // TODO Energy: 'Energy',
-    // TODO Exchanges: 'Exchanges',
-    // TODO Finance: 'Finance',
-    // TODO Gambling: 'Gambling',
-    // TODO Games: 'Games',
-    // TODO Governance: 'Governance',
-    // TODO Health: 'Health',
-    // TODO 'High-risk': 'High risk',
-    // TODO Identity: 'Identity',
-    // TODO Insurance: 'Insurance',
-    // TODO Media: 'Media',
-    // TODO Property: 'Property',
-    // TODO Security: 'Security',
-    // TODO Social: 'Social',
-    // TODO Storage: 'Storage',
-    // TODO Wallet: 'Wallet'
+    Development: 'Entwicklung',
+    Energy: 'Energie',
+    Exchanges: 'Tauschbörsen',
+    Finance: 'Finanzen',
+    Gambling: 'Glücksspiele',
+    Games: 'Spiele',
+    Governance: 'Führung',
+    Health: 'Gesundheit',
+    'High-risk': 'Hohes Risiko',
+    Identity: 'Identität',
+    Insurance: 'Versicherungen',
+    Media: 'Medien',
+    Property: 'Eigenschaft',
+    Security: 'Sicherheit',
+    Social: 'Sozial',
+    Storage: 'Speicher',
+    Wallet: 'Geldbörse'
   },
   collections: {
     // TODO 'Best-of-MetaMask': 'Best of Metamask',
     // TODO BitGuild: 'BitGuild',
     // TODO CryptoGaming: 'CryptoGaming',
-    // TODO Featured: 'Featured',
-    // TODO Hottest: 'Hottest',
-    // TODO 'Most-Viewed': 'Most Viewed',
-    // TODO 'Recently-added': 'Recently added',
-    // TODO 'Top-Development-Activity': 'Top Development Activity'
+    Featured: 'Ausgewählte',
+    Hottest: 'Beliebteste',
+    'Most-Viewed': 'Meistgesehene',
+    'Recently-added': 'Kürzlich hinzugefügt',
+    'Top-Development-Activity': 'Höchste Entwicklungsaktivitäten'
   },
   cta: {
-    // TODO submit: 'Submit a ÐApp',
-    // TODO viewAll: 'View all'
+    submit: 'ÐApp einreichen',
+    viewAll: 'Alle anzeigen'
   },
   DappCardListItem: {
-    // TODO new: 'New'
+    new: 'Neu'
   },
   DappDetailBodyContentCtas: {
     // TODO website: 'Visit website',
@@ -120,8 +120,8 @@ export default {
     // TODO noResults: 'There are currently no ÐApps here. Please try another search.'
   },
   dappSortOptions: {
-    // TODO Hottest: 'Hottest',
-    // TODO Newest: 'Newest'
+    Hottest: 'Beliebteste',
+    Newest: 'Newest'
   },
   DappsResultCount: {
     // TODO result: 'result | results',
@@ -134,21 +134,21 @@ export default {
   DappsSort: {
     // TODO sortBy: 'Sort by'
   },
-  // TODO devActivity30d: 'Dev activity (30d)',
-  // TODO devActivity30dHelp:
-  // TODO 'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
+  devActivity30d: 'Aktivität der Entwickler (30 Tage)',
+  devActivity30dHelp:
+    'Die Anzahl an GitHub-Ereignissen die die Organisation/das Projekt/das Repository generiert. Das beinhaltet, unter anderem, Pushes, Issues oder Pull Requests.',
   FeaturedCategoryList: {
-    // TODO games: 'games',
-    // TODO finance: 'finance',
-    // TODO exchanges: 'exchanges',
-    // TODO allCategories: 'All categories'
+    games: 'Spiele',
+    finance: 'Finanzen',
+    exchanges: 'Tauschbörsen',
+    allCategories: 'Alle Kategorien'
   },
   FeaturedCollectionList: {
-    // TODO heading: 'ÐApp Collections'
+    heading: 'ÐApp-Sammlungen'
   },
   FeaturedDappList: {
-    // TODO heading: 'Featured ÐApps',
-    // TODO promote: 'Promote your ÐApp here'
+    heading: 'Ausgewählte ÐApps',
+    promote: 'Bewirb deine ÐApp hier'
   },
   FeaturedRankingByCategoryList: {
     // TODO heading: 'Rankings by Category'
@@ -166,28 +166,28 @@ export default {
     // TODO chooseStatus: 'Choose a status'
   },
   help: {
-    // TODO volumeUsd:
-    // TODO   'Transaction volume to ÐApp contracts. Exchange rates sourced from CryptoCompare.com',
-    // TODO volumePerNetwork:
-    // TODO   'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
+    volumeUsd:
+      'Transaktionsvolumen der ÐApp Verträge. Die Wechselkurse stammen von CryptoCompare.com',
+    volumePerNetwork:
+      'Transaktionsvolumen der ÐApp Verträge. Da Plattformen unterschiedliche Währungen verwenden, sollten Werte nicht direkt verglichen werden. Die Wechselkurse stammen von CryptoCompare.com'
   },
   GlobalSearch: {
-    // TODO dapps: 'ÐApps',
-    // TODO noResults: 'Sorry, no results. Please try a new search',
-    // TODO placeholder: 'Discover awesome ÐApps…',
-    // TODO suggestedTags: 'Suggested tags',
-    // TODO viewDappResults: 'View all ÐApp results'
+    dapps: 'ÐApps',
+    noResults: "Sorry, keine Ergebnisse. Versuch's mit einer anderen Suche.",
+    placeholder: 'Entdecke coole ÐApps…',
+    suggestedTags: 'Vorgeschlagene Suchwörter',
+    viewDappResults: 'Zeige alle ÐApp-Ergebnisse'
   },
   HomeHeroContentIntro: {
-    // TODO heading: 'Explore Decentralized Applications',
-    // TODO learn: 'Learn more about ÐApps',
-    // TODO subheading:
-    // TODO   'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of ÐApp projects.',
-    // TODO view: 'View the top ÐApps'
+    heading: 'Entdecke dezentrale Anwendungen',
+    learn: 'Lerne mehr über DApps',
+    subheading:
+      'Entdecke die Möglichkeiten, die dir durch Ethereum, EOS, POA, GoChain und durch die Steem-Blockchain Dank des endgültigen Registers gegeben sind.',
+    view: 'Zeige die Top-ÐApps an'
   },
-  // TODO new: 'New',
-  // TODO platform: 'Platform',
-  // TODO profileStrength: 'profile strength',
+  new: 'Neu',
+  platform: 'Plattform',
+  profileStrength: 'Stärke des Profils',
   rankingColumns: {
     // TODO rank: 'Rank',
     // TODO dau: 'Users (24h)',
@@ -205,11 +205,11 @@ export default {
     // TODO   'Rank is based on multiple factors including active users (unique source addresses in transactions to ÐApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
   },
   platformOptions: {
-    // TODO ethereum: 'Ethereum',
-    // TODO eos: 'EOS',
-    // TODO poa: 'POA',
-    // TODO gochain: 'GoChain',
-    // TODO steem: 'Steem'
+    ethereum: 'Ethereum',
+    eos: 'EOS',
+    poa: 'POA',
+    gochain: 'GoChain',
+    steem: 'Steem'
   },
   SecondaryCtaMailingList: {
     // TODO title: 'Stay in the loop',
@@ -240,18 +240,18 @@ export default {
     // TODO cta: 'Try it now',
     // TODO discover: 'Discover Steem Keychain'
   },
-  // TODO status: 'Status',
+  status: 'Status',
   statusOptions: {
-    // TODO live: 'live',
-    // TODO abandoned: 'abandoned',
-    // TODO wip: 'WIP',
-    // TODO beta: 'beta',
-    // TODO prototype: 'prototype',
-    // TODO concept: 'concept',
-    // TODO stealth: 'stealth',
-    // TODO broken: 'broken'
+    live: 'Live',
+    abandoned: 'aufgegeben',
+    wip: 'In Arbeit',
+    beta: 'Beta',
+    prototype: 'Prototyp',
+    concept: 'Konzept',
+    stealth: 'Versteckt',
+    broken: 'Kaputt'
   },
-  // TODO tags: 'tags',
+  tags: 'tags',
   TheFooter: {
     // TODO copyright: 'Copyright',
     // TODO designedBy: 'Designed by {designer}',
@@ -285,11 +285,11 @@ export default {
     // TODO volume24h: 'Volume (24hr)',
     // TODO volumeHelp:
     // TODO   'Transaction volume to ÐApp contracts. Platforms use different currencies, so numbers should not be compared directly'
-  }
-  // TODO userActivity30d: 'User activity (30d)',
-  // TODO userActivity30dHelp:
-  // TODO   'Users (unique source addresses in transactions to ÐApp contracts) over the past 30 days',
-  // TODO users24h: 'Users (24hr)',
-  // TODO users24hHelp:
-  // TODO   'Daily Active Users, or DAU (unique source addresses in transactions to ÐApp contracts)'
+  },
+  userActivity30d: 'Benutzer Aktivität (30 Tage)',
+  userActivity30dHelp:
+    'Nutzer der letzten 30 Tage (Eindeutige Quelladresse in den Transaktionen der ÐApp Verträgen)',
+  users24h: 'Benutzer (24h)',
+  users24hHelp:
+    'Aktive Nutzer pro Tag (Eindeutige Quelladresse in den Transaktionen der ÐApp Verträgen)'
 }
