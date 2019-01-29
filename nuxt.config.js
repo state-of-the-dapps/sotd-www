@@ -46,6 +46,12 @@ export default {
             file: 'en-US.js'
           },
           {
+            code: 'de',
+            name: 'Deutsch',
+            iso: 'de-DE',
+            file: 'de-DE.js'
+          },
+          {
             code: 'zh',
             name: '中文',
             iso: 'zh-CN',
