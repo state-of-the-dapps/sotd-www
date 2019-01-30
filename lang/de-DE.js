@@ -46,8 +46,8 @@ export default {
   DappDetailBodyContentCtas: {
     website: 'Webseite besuchen',
     playGame: 'Spiel starten',
-    launchDapp: 'Starte ÐApp',
-    launchDappWebsite: 'Starte ÐApp/Webseite'
+    launchDapp: 'Starte DApp',
+    launchDappWebsite: 'Starte DApp/Webseite'
   },
   DappDetailBodyContentModulesContractsAddress: {
     copy: 'Kopiere',
@@ -80,7 +80,7 @@ export default {
   DappDetailBodyContentModules: {
     activeUsers: 'Aktive Nutzer',
     activeUsersHelp:
-      '(eindeutige Eingangsadressen in Transaktionen von ÐApp-Verträgen)',
+      '(eindeutige Eingangsadressen in Transaktionen von DApp-Verträgen)',
     transactions: 'Transaktionen',
     volume: 'Volumen ({token})'
   },
@@ -91,48 +91,49 @@ export default {
     monthly: 'Monatlich'
   },
   DappDetailBodyContentTools: {
-    edit: 'Bearbeite diese ÐApp',
+    edit: 'Bearbeite diese DApp',
     flag: 'Als unangemessen melden',
-    promote: 'Bewerbe diese ÐApp',
-    share: 'Teile diese ÐApp'
+    promote: 'Bewerbe diese DApp',
+    share: 'Teile diese DApp'
   },
   DappDetailBodyContentPlatform: {
     advise:
-      'Um {platform} ÐApps im Internet zu nutzen empfehlen wir ein Browser-Add-On wie {software}.'
+      'Um {platform} DApps im Internet zu nutzen empfehlen wir ein Browser-Add-On wie {software}.'
   },
   DappDetailBodyContentRank: {
     currentRank: 'Aktueller Rang'
   },
   DappDetailBodyContentRecommend: {
-    title: 'Würdest du diese ÐApp deinen Freunden empfehlen?',
+    title: 'Würdest du diese DApp deinen Freunden empfehlen?',
     submit: 'Feedback abgeben',
     thanks: 'Danke für dein Feedback zu {name}!',
     comments: 'Kommentare',
     commentsPlaceholder: 'Füge deine Kommentare hinzu'
   },
   DappDetailRelatedDapps: {
-    title: 'Verwandte ÐApps'
+    title: 'Verwandte DApps'
   },
   DappProfile: {
     improve: 'Verbessere dieses Profil'
   },
   Dapps: {
-    // TODO noResults: 'There are currently no DApps here. Please try another search.'
+    noResults:
+      'Es gibt momentan keine DApps hier. Versuchen Sie einen anderen Suchbegriff.'
   },
   dappSortOptions: {
     Hottest: 'Beliebteste',
-    Newest: 'Newest'
+    Newest: 'Neueste'
   },
   DappsResultCount: {
-    // TODO result: 'result | results',
-    // TODO showing: 'Showing {showing} {total} {result}',
-    // TODO xOf: '{x} of'
+    result: 'Ergebnis | Ergebnisse',
+    showing: 'Zeigt {showing} {total} {result}',
+    xOf: '{x} von'
   },
   DappsSearch: {
-    // TODO placeholder: 'Search by DApp name or tag'
+    placeholder: 'Suche nach DApp Name oder Tag'
   },
   DappsSort: {
-    // TODO sortBy: 'Sort by'
+    sortBy: 'Sortiere nach'
   },
   devActivity30d: 'Aktivität der Entwickler (30 Tage)',
   devActivity30dHelp:
@@ -151,19 +152,19 @@ export default {
     promote: 'Bewirb deine DApp hier'
   },
   FeaturedRankingByCategoryList: {
-    // TODO heading: 'Rankings by Category'
+    heading: 'Rang nach Kategorie'
   },
   FeaturedRankingByPlatformList: {
-    // TODO heading: 'Rankings by Platform'
+    heading: 'Rang nach Plattform'
   },
   filters: {
-    // TODO allPlatforms: 'All platforms',
-    // TODO chooseColumn: 'Choose a column',
-    // TODO choosePlatform: 'Choose a platform',
-    // TODO allCategories: 'All categories',
-    // TODO chooseCategory: 'Choose a category',
-    // TODO allStatuses: 'All statuses',
-    // TODO chooseStatus: 'Choose a status'
+    allPlatforms: 'Alle Plattformen',
+    chooseColumn: 'Wähle eine Spalte',
+    choosePlatform: 'Wähle eine Plattform',
+    allCategories: 'Alle Kategorien',
+    chooseCategory: 'Wähle eine Kategorie',
+    allStatuses: 'Alle Status',
+    chooseStatus: 'Wähle einen Status'
   },
   help: {
     volumeUsd:
@@ -189,20 +190,20 @@ export default {
   platform: 'Plattform',
   profileStrength: 'Stärke des Profils',
   rankingColumns: {
-    // TODO rank: 'Rank',
-    // TODO dau: 'Users (24h)',
-    // TODO platform: 'Platform',
-    // TODO category: 'Category',
-    // TODO usd_value_7d: 'Volume (7d)',
-    // TODO dev_30d: 'Dev activity (30d)',
-    // TODO user_activity_30d: 'User activity (30d)'
+    rank: 'Rang',
+    dau: 'Nutzer (24h)',
+    platform: 'Plattform',
+    category: 'Kategorie',
+    usd_value_7d: 'Volumen (7T)',
+    dev_30d: 'Entwickleraktivität (30T)',
+    user_activity_30d: 'Nutzeraktivität (30T)'
   },
   RankingTable: {
-    // TODO noDapps: 'There are currently no DApps for this category and platform'
+    noDapps: 'Es gibt momentan keine DApps für diese Kategorie und Plattform'
   },
   RankingTableRankHead: {
-    // TODO help:
-    // TODO   'Rank is based on multiple factors including active users (unique source addresses in transactions to DApp contracts), transaction volume, developer activity, profile freshness and strength, CTRs, and user recommendations. The number next to the rank is the change over 24h.'
+    help:
+      'Der Rang basiert auf mehreren Faktoren, wie z. B. aktive Benutzer (Eindeutige Adressen in den Transaktionen der DApps), Transaktionsvolumen, Entwickleraktivität, Währungstransaktionsbericht und Empfehlungen der Nutzer. Die Zahl neben dem Rang ist die Änderung über 24 Stunden.'
   },
   platformOptions: {
     ethereum: 'Ethereum',
@@ -264,25 +265,25 @@ export default {
     // TODO termsOfUse: 'Terms of use'
   },
   TheStats: {
-    // TODO title: 'DApp Statistics',
-    // TODO description:
-    // TODO   'Stats are updated daily. Check back often to see the progress and development of the DApp ecosystem.',
-    // TODO askUs: 'Ask us about custom data',
-    // TODO activeUsersHelp:
-    // TODO   'Unique source addresses in transactions to DApp contracts',
-    // TODO dailyActiveUsers: 'Daily active users',
-    // TODO monthlyActiveUsers: 'Monthly active users',
-    // TODO newDappsPerMonth: 'New DApps per Month',
-    // TODO newDapps: 'New DApps',
-    // TODO nrOfContracts: '# of contracts',
-    // TODO smartContracts: 'Smart contracts',
-    // TODO '24htransactions': '24h transactions',
-    // TODO '24hVolumeUsd': '24h volume USD',
-    // TODO transactions24h: 'Transactions (24hr)',
-    // TODO transactions30d: 'Transactions (30d)',
-    // TODO transactionsHelp: 'Number of transactions to DApp contracts',
-    // TODO totalDapps: 'Total DApps',
-    // TODO volume24h: 'Volume (24hr)',
+    title: 'DApp Statistiken',
+    description:
+      'Statistiken werden täglich aktualisiert. Schau öfters vorbei um den Fortschritt und die Entwicklung des DApp-Ökosystems zu sehen.',
+    askUs: 'Frag uns nach benutzerdefinierten Daten',
+    activeUsersHelp:
+      'Eindeutige Quelladressen in Transaktionen für DApp-Verträge',
+    dailyActiveUsers: 'Täglich aktive Nutzer',
+    monthlyActiveUsers: 'Monatlich aktive Nutzer',
+    newDappsPerMonth: 'Neue DApps pro Monat',
+    newDapps: 'Neue DApps',
+    nrOfContracts: 'Anzahl der Verträge', // TODO review
+    smartContracts: 'Intelligente Verträge',
+    '24htransactions': 'Transaktionen der letzten 24 Stunden',
+    '24hVolumeUsd': 'Volumen der letzten 24 Stunden in USD',
+    transactions24h: 'Transaktionen (24h)',
+    transactions30d: 'Transaktionen (30T)',
+    transactionsHelp: 'Anzahl der Transaktionen mit DApp-Verträgen',
+    totalDapps: 'DApps ingesamt',
+    volume24h: 'Volumen (24h)'
     // TODO volumeHelp:
     // TODO   'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly'
   },
