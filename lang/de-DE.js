@@ -14,13 +14,13 @@ export default {
     Finance: 'Finanzen',
     Gambling: 'Glücksspiele',
     Games: 'Spiele',
-    Governance: 'Führung',
+    Governance: 'Führung', // TODO review
     Health: 'Gesundheit',
     'High-risk': 'Hohes Risiko',
     Identity: 'Identität',
     Insurance: 'Versicherungen',
     Media: 'Medien',
-    Property: 'Eigenschaft',
+    Property: 'Besitz',
     Security: 'Sicherheit',
     Social: 'Sozial',
     Storage: 'Speicher',
@@ -44,77 +44,77 @@ export default {
     new: 'Neu'
   },
   DappDetailBodyContentCtas: {
-    // TODO website: 'Visit website',
-    // TODO playGame: 'Play game',
-    // TODO launchDapp: 'Launch DApp',
-    // TODO launchDappWebsite: 'Launch DApp/website'
+    website: 'Webseite besuchen',
+    playGame: 'Spiel starten',
+    launchDapp: 'Starte ÐApp',
+    launchDappWebsite: 'Starte ÐApp/Webseite'
   },
   DappDetailBodyContentModulesContractsAddress: {
-    // TODO copy: 'Copy',
-    // TODO copied: 'Copied!'
+    copy: 'Kopiere',
+    copied: 'Kopiert!'
   },
   DappDetailBodyContentModulesContractsItem: {
-    // TODO address: 'address',
-    // TODO contract: 'contract'
+    address: 'Adresse',
+    contract: 'Vertrag'
   },
   DappDetailBodyContentModulesDev: {
-    // TODO title: 'Development activity',
-    // TODO help: 'Code pushes, issues, pull requests, etc.',
-    // TODO events: '1 event | {count} events',
-    // TODO day: '{count}d'
+    title: 'Entwicklungsaktivität',
+    help: 'Code Pushes, Issues, Pull Requests, etc.',
+    events: '1 Ereignis | {count} Ereignisse',
+    day: '{count} Tage'
   },
   DappDetailBodyContentModulesAuthors: {
-    // TODO author: 'Author | Authors',
-    // TODO unknownAuthor: 'Unknown author'
+    author: 'Autor | Autoren',
+    unknownAuthor: 'Unbekannter Autor'
   },
   DappDetailBodyContentModulesLicense: {
-    // TODO license: 'Software license',
-    // TODO unknownLicense: 'Unknown license'
+    license: 'Softwarelizenz',
+    unknownLicense: 'Unbekannte Lizenz'
   },
   DappDetailBodyContentModulesSubmitted: {
-    // TODO submitted: 'Submitted'
+    submitted: 'Abgeschickt'
   },
   DappDetailBodyContentModulesUpdated: {
-    // TODO lastUpdated: 'Last updated'
+    lastUpdated: 'Zuletzt aktualisiert'
   },
   DappDetailBodyContentModules: {
-    // TODO activeUsers: 'Active users',
-    // TODO activeUsersHelp:
-    // TODO   '(unique source addresses in transactions to DApp contracts)',
-    // TODO transactions: 'Transactions',
-    // TODO volume: 'Volume ({token})'
+    activeUsers: 'Aktive Nutzer',
+    activeUsersHelp:
+      '(eindeutige Eingangsadressen in Transaktionen von ÐApp-Verträgen)',
+    transactions: 'Transaktionen',
+    volume: 'Volumen ({token})'
   },
   DappDetailBodyContentModulesStats: {
-    // TODO day: '1 day | {count} days',
-    // TODO daily: 'Daily',
-    // TODO weekly: 'Weekly',
-    // TODO monthly: 'Monthly'
+    day: '1 Tag | {count} Tagen',
+    daily: 'Täglich',
+    weekly: 'Wöchentlich',
+    monthly: 'Monatlich'
   },
   DappDetailBodyContentTools: {
-    // TODO edit: 'Edit this DApp',
-    // TODO flag: 'Flag as inappropriate',
-    // TODO promote: 'Promote this DApp',
-    // TODO share: 'Share this DApp'
+    edit: 'Bearbeite diese ÐApp',
+    flag: 'Als unangemessen melden',
+    promote: 'Bewerbe diese ÐApp',
+    share: 'Teile diese ÐApp'
   },
   DappDetailBodyContentPlatform: {
-    // TODO advise:
-    // TODO   'To use {platform} DApps on the web, we recommend a browser add-on such as {software}.'
+    advise:
+      'Um {platform} ÐApps im Internet zu nutzen empfehlen wir ein Browser-Add-On wie {software}.'
   },
   DappDetailBodyContentRank: {
-    // TODO currentRank: 'Current rank'
+    currentRank: 'Aktueller Rang'
   },
   DappDetailBodyContentRecommend: {
-    // TODO title: 'Would you recommend this DApp to a friend?',
-    // TODO submit: 'Submit feedback',
-    // TODO thanks: 'Thanks for your feedback on {name}!',
-    // TODO comments: 'Comments',
-    // TODO commentsPlaceholder: 'Add your comments'
+    title: 'Würdest du diese ÐApp deinen Freunden empfehlen?',
+    submit: 'Feedback abgeben',
+    thanks: 'Danke für dein Feedback zu {name}!',
+    comments: 'Kommentare',
+    commentsPlaceholder: 'Füge deine Kommentare hinzu'
   },
   DappDetailRelatedDapps: {
-    // TODO title: 'Related DApps'
+    title: 'Verwandte ÐApps'
   },
   DappProfile: {
-    // TODO improve: 'Improve this profile'
+    improve: 'Verbessere dieses Profil'
   },
   Dapps: {
     // TODO noResults: 'There are currently no DApps here. Please try another search.'
@@ -175,7 +175,7 @@ export default {
     dapps: 'DApps',
     noResults: "Sorry, keine Ergebnisse. Versuch's mit einer anderen Suche.",
     placeholder: 'Entdecke coole DApps…',
-    suggestedTags: 'Vorgeschlagene Suchwörter',
+    suggestedTags: 'Vorgeschlagene Stichworte',
     viewDappResults: 'Zeige alle DApp-Ergebnisse'
   },
   HomeHeroContentIntro: {
@@ -251,7 +251,7 @@ export default {
     stealth: 'Versteckt',
     broken: 'Kaputt'
   },
-  tags: 'tags',
+  tags: 'Stichworte',
   TheFooter: {
     // TODO copyright: 'Copyright',
     // TODO designedBy: 'Designed by {designer}',
