@@ -14,14 +14,18 @@
           <media :query="{minWidth: 900}">
             <h3 class="section-name">DApp Spotlight</h3>
           </media>
-          <h2 class="title">Create an organization with Aragon</h2>
+          <h2 class="title">
+            <nuxt-link
+              :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
+              class="heading-link">Create an organization with Aragon</nuxt-link>
+          </h2>
           <div class="description">
             <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake.</p>
             <p>Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
             <p>Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
             <p class="link-wrapper">
-              <a
-                href="#"
+              <nuxt-link
+                :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
                 class="link">Read more 
                 <IconChevron
                   :width="9"
@@ -29,7 +33,7 @@
                   direction="right"
                   fill="black"
                 />
-              </a>
+              </nuxt-link>
             </p>
           </div>
         </div>
@@ -92,6 +96,10 @@ export default {
   @include tweakpoint('min-width', 900px) {
     width: 50%;
   }
+}
+
+.heading-link {
+  text-decoration: none;
 }
 
 .image {

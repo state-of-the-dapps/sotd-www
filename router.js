@@ -76,6 +76,10 @@ const Rankings = () =>
   interopDefault(
     import('~/pages/Rankings.vue' /* webpackChunkName: "pages/rankings" */)
   )
+const SpotlightDetail = () =>
+  interopDefault(
+    import('~/pages/SpotlightDetail.vue' /* webpackChunkName: "pages/spotlight-detail" */)
+  )
 const Stats = () =>
   interopDefault(
     import('~/pages/Stats.vue' /* webpackChunkName: "pages/stats" */)
@@ -670,6 +674,11 @@ export function createRouter() {
         path: '/zh/stats/platform/:platform/category/:category',
         component: Stats,
         name: 'stats-platform-category___zh'
+      },
+      {
+        path: '/spotlights/:slug',
+        component: SpotlightDetail,
+        name: 'spotlight-detail'
       },
       {
         path: '/terms',
