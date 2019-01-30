@@ -283,9 +283,9 @@ export default {
     transactions30d: 'Transaktionen (30T)',
     transactionsHelp: 'Anzahl der Transaktionen mit DApp-Verträgen',
     totalDapps: 'DApps ingesamt',
-    volume24h: 'Volumen (24h)'
-    // TODO volumeHelp:
-    // TODO   'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly'
+    volume24h: 'Volumen (24h)',
+    volumeHelp:
+      'Transaktions Volumen von DApp Verträgen. Plattformen benutzen verschiedene Währungen, deswegen sollten diese Werte nicht direkt verglichen werden.'
   },
   userActivity30d: 'Benutzer Aktivität (30 Tage)',
   userActivity30dHelp:
