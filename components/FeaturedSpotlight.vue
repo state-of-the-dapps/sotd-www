@@ -3,12 +3,17 @@
     <div class="wrapper">
       <div class="main-content-wrapper">
         <div class="image-wrapper">
+          <media :query="{maxWidth: 899}">
+            <h3 class="section-name">DApp Spotlight</h3>
+          </media>
           <img
             class="image"
             src="https://cdn.stateofthedapps.com/dapps/cryptoassault/product_image_small_cryptoassault_c62ecc34da4890267fa15703690aecc5d6e20aa010835294d88df0ed02335e97_opti.jpg">
         </div>
         <div class="text-wrapper">
-          <h3 class="section-name">SPOTLIGHT</h3>
+          <media :query="{minWidth: 900}">
+            <h3 class="section-name">DApp Spotlight</h3>
+          </media>
           <h2 class="title">Create an organization with Aragon</h2>
           <div class="description">
             <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake.</p>
@@ -36,12 +41,14 @@
 <script>
 import BaseButton from './BaseButton'
 import IconChevron from './IconChevron'
+import Media from 'vue-media'
 import SectionHeading from './SectionHeading'
 
 export default {
   components: {
     BaseButton,
     IconChevron,
+    Media,
     SectionHeading
   }
 }
@@ -121,11 +128,10 @@ export default {
 }
 
 .section-name {
+  text-transform: uppercase;
   font-size: 1rem;
   color: rgba($color--black, 0.6);
-  @include tweakpoint('min-width', 900px) {
-    margin-top: 0;
-  }
+  margin-top: 0;
 }
 
 p {
