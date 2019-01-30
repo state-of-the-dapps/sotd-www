@@ -1,41 +1,41 @@
 <template>
   <div class="FeaturedSpotlight">
     <div class="wrapper">
+      <SectionHeading
+        :has-line="false"
+        :heading="$t(namespace('heading'))"
+        :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}">
+        <template slot="icon">
+          <IconSpotlight/>
+        </template>
+      </SectionHeading>
       <div class="main-content-wrapper">
         <div class="image-wrapper">
-          <media :query="{maxWidth: 899}">
-            <h3 class="section-name">DApp Spotlight</h3>
-          </media>
           <img
             class="image"
             src="https://cdn.stateofthedapps.com/dapps/cryptoassault/product_image_small_cryptoassault_c62ecc34da4890267fa15703690aecc5d6e20aa010835294d88df0ed02335e97_opti.jpg">
         </div>
         <div class="text-wrapper">
-          <media :query="{minWidth: 900}">
-            <h3 class="section-name">DApp Spotlight</h3>
-          </media>
           <h2 class="title">
             <nuxt-link
               :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
               class="heading-link">Create an organization with Aragon</nuxt-link>
           </h2>
           <div class="description">
-            <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake.</p>
-            <p>Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
-            <p>Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
-            <p class="link-wrapper">
-              <nuxt-link
-                :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
-                class="link">Read more 
-                <IconChevron
-                  :width="9"
-                  :height="9"
-                  direction="right"
-                  fill="black"
-                />
-              </nuxt-link>
-            </p>
+            <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
           </div>
+          <p class="link-wrapper">
+            <nuxt-link
+              :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
+              class="link">Read more 
+              <IconChevron
+                :width="10"
+                :height="10"
+                direction="right"
+                fill="black"
+              />
+            </nuxt-link>
+          </p>
         </div>
       </div>
     </div>
@@ -45,6 +45,7 @@
 <script>
 import BaseButton from './BaseButton'
 import IconChevron from './IconChevron'
+import IconSpotlight from './IconSpotlight'
 import Media from 'vue-media'
 import SectionHeading from './SectionHeading'
 
@@ -52,6 +53,7 @@ export default {
   components: {
     BaseButton,
     IconChevron,
+    IconSpotlight,
     Media,
     SectionHeading
   }
@@ -59,18 +61,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.FeaturedSpotlight {
-  margin: 3rem 0;
-  padding: 2rem 0;
-  background: rgba($color--white, 0.9);
-  overflow: auto;
-}
-
 .description {
-  @include tweakpoint('min-width', 1150px) {
-    column-count: 2;
-    column-gap: 20px;
-  }
+  max-width: 700px;
   p:first-child {
     margin-top: 0;
   }
@@ -81,69 +73,62 @@ export default {
 }
 
 .main-content-wrapper {
-  margin-left: -10px;
-  margin-right: -10px;
-  @include tweakpoint('min-width', 900px) {
+  background: $color--white;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba($color--black, 0.1);
+  @include tweakpoint('min-width', 1100px) {
     display: flex;
-  }
-  > div {
-    margin-left: 10px;
-    margin-right: 10px;
+    align-items: center;
   }
 }
 
 .image-wrapper {
-  @include tweakpoint('min-width', 900px) {
-    width: 50%;
+  @include tweakpoint('min-width', 1100px) {
+    width: 40%;
   }
 }
 
 .heading-link {
   text-decoration: none;
+  color: $color--purple;
 }
 
 .image {
   width: 100%;
-  border-radius: 3px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom: 8px solid $color--gray;
   display: block;
+  @include tweakpoint('min-width', 1100px) {
+    border-radius: 0;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-right: 8px solid $color--gray;
+  }
 }
 
 .link-wrapper {
-  text-align: right;
   margin: 0;
 }
 
-.link {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: $color--black;
-  text-decoration: none;
-}
-
 .text-wrapper {
-  @include tweakpoint('min-width', 900px) {
-    width: 50%;
+  padding: 20px 30px;
+  @include tweakpoint('min-width', 1100px) {
+    width: 60%;
   }
 }
 
 .title {
   @include title-2;
-  font-size: 2.75rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
   line-height: 0.9;
 }
 
-.section-name {
-  text-transform: uppercase;
-  font-size: 1rem;
-  color: rgba($color--black, 0.6);
-  margin-top: 0;
-}
-
 p {
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: 1.15rem;
+  line-height: 1.3;
 }
 </style>
