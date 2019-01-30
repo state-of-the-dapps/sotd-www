@@ -143,20 +143,28 @@
         </i18n>
       </li>
       <li class="attribution-item">
-        Exchange rates powered by <a 
-          class="attribution-link"
-          href="https://www.cryptocompare.com/" 
-          target="_blank" 
-          rel="noopener"
-          @click="$mixpanel.track('SotD - CryptoCompare')">CryptoCompare.com</a>
+        <i18n
+          :path="namespace('exchangeRatesBy')"
+          tag="span"><a 
+            class="attribution-link"
+            href="https://www.cryptocompare.com/" 
+            place="source"
+            target="_blank" 
+            rel="noopener"
+            @click="$mixpanel.track('SotD - CryptoCompare')">CryptoCompare.com</a>
+        </i18n>
       </li>
       <li class="attribution-item">
-        Steem data powered by <a 
-          class="attribution-link"
-          href="https://steemapps.com/" 
-          target="_blank" 
-          rel="noopener"
-          @click="$mixpanel.track('SotD - Steemapps')">SteemApps.com</a>
+        <i18n
+          :path="namespace('steemDataBy')"
+          tag="span"><a 
+            class="attribution-link"
+            href="https://steemapps.com/" 
+            place="source"
+            target="_blank" 
+            rel="noopener"
+            @click="$mixpanel.track('SotD - Steemapps')">SteemApps.com</a>
+        </i18n>
       </li>
     </ul>
   </div>

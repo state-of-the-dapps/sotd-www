@@ -250,6 +250,8 @@ export default {
   TheFooter: {
     copyright: '版权',
     designedBy: '由 {designer} 设计',
+    // TODO exchangeRatesBy: 'Exchange rates powered by {source}',
+    // TODO steemDataBy: 'Steem data powered by {source}',
     contactUs: '联系我们',
     about: '关于',
     promote: '推广你的DApp',
