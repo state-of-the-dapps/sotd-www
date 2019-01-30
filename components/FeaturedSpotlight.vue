@@ -22,7 +22,7 @@
               class="heading-link">Create an organization with Aragon</nuxt-link>
           </h2>
           <div class="description">
-            <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans.</p>
+            <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps.</p>
           </div>
           <p class="link-wrapper">
             <nuxt-link
@@ -70,6 +70,7 @@ export default {
 
 .wrapper {
   @include margin-wrapper-main;
+  padding-bottom: 0.5rem;
 }
 
 .main-content-wrapper {
@@ -95,6 +96,7 @@ export default {
 
 .image {
   width: 100%;
+  height: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   border-bottom: 8px solid $color--gray;
