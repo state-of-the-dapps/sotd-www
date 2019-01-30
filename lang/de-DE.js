@@ -156,6 +156,9 @@ export default {
   FeaturedRankingByPlatformList: {
     // TODO heading: 'Rankings by Platform'
   },
+  FeaturedSpotlight: {
+    // TODO heading: 'Spotlight'
+  },
   filters: {
     // TODO allPlatforms: 'All platforms',
     // TODO chooseColumn: 'Choose a column',

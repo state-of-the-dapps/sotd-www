@@ -154,6 +154,9 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
   },
+  FeaturedSpotlight: {
+    // TODO heading: 'Spotlight'
+  },
   filters: {
     allPlatforms: '所有平台',
     chooseColumn: '选择一列',
