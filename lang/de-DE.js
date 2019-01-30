@@ -213,33 +213,36 @@ export default {
     steem: 'Steem'
   },
   SecondaryCtaMailingList: {
-    // TODO title: 'Stay in the loop',
-    // TODO description: 'Subscribe to receive updates on the DApp ecosystem.',
-    // TODO placeholder: 'Enter your email here',
-    // TODO signUp: 'Sign up',
-    // TODO submitting: 'Submitting...',
-    // TODO thanks: "Thanks! We'll be in touch!",
-    // TODO error:
-    // TODO   'There was an error subscribing. Make sure you have entered a valid email address and try again. If this error persists, please let us know: {email}'
+    title: 'Bleib informiert',
+    description:
+      'Abonniere dich um alle Neuheiten über das DApp-Ökosystem zu erhalten.',
+    placeholder: 'Gebe deine E-Mail hier ein.',
+    signUp: 'Registrieren',
+    submitting: 'Abschicken...',
+    thanks: 'Danke! Wir bleiben in Kontakt!',
+    error:
+      'Es ist ein Fehler bei der Registrierung aufgetreten. Stellen Sie sicher eine gültige E-Mail eingetragen zu haben und versuchen Sie es erneut. Wenn dieser Fehler weiterhin besteht, kontaktieren Sie uns bitte: {email}'
   },
   SecondaryCtaMetamask: {
-    // TODO title: 'Metamask for Ethereum, POA, and GoChain',
-    // TODO description:
-    // TODO   'Metamask lets you use Ethereum, GoChain, and POA DApps within your browser.',
-    // TODO cta: 'Try it now',
-    // TODO discover: 'Discover Metamask'
+    title: 'Metamask für Ethereum, POA, und GoChain',
+    description:
+      'Metamask bietet eine flüssigere Erfahrung bei der Nutzung von Ethereum, GoChain, und POA DApps.', // TODO review
+    cta: 'Probier es jetzt',
+    discover: 'Entdecke Metamask'
   },
   SecondaryCtaScatter: {
-    // TODO title: 'Scatter for EOS',
-    // TODO description: 'Scatter lets your use EOS DApps within your browser.',
-    // TODO cta: 'Try it now',
-    // TODO discover: 'Discover Scatter'
+    title: 'Scatter für EOS',
+    description:
+      'Scatter bietet eine flüssigere Erfahrung bei der Nutzung von EOS DApps.', // TODO review
+    cta: 'Probier es jetzt',
+    discover: 'Entdecke Scatter'
   },
   SecondaryCtaSteemKeychain: {
-    // TODO title: 'Steem Keychain',
-    // TODO description: 'Steem Keychain lets you use Steem DApps within your browser.',
-    // TODO cta: 'Try it now',
-    // TODO discover: 'Discover Steem Keychain'
+    title: 'Steem Keychain',
+    description:
+      'Steem Keychain bietet eine flüssigere Erfahrung bei der Nutzung von Steem DApps.', // TODO review
+    cta: 'Probier es jetzt',
+    discover: 'Entdecke Steem Keychain'
   },
   status: 'Status',
   statusOptions: {
@@ -254,15 +257,17 @@ export default {
   },
   tags: 'Stichworte',
   TheFooter: {
-    // TODO copyright: 'Copyright',
-    // TODO designedBy: 'Designed by {designer}',
-    // TODO contactUs: 'Contact us',
-    // TODO about: 'About',
-    // TODO promote: 'Promote your DApp',
-    // TODO downloadLogo: 'Download our logo',
-    // TODO getAndroidApp: 'Get the Android app',
-    // TODO helpMetamask: 'Help for Metamask',
-    // TODO termsOfUse: 'Terms of use'
+    copyright: 'Urheberrecht',
+    designedBy: 'Entworfen von {designer}',
+    exchangeRatesBy: 'Wechselkurs betrieben von {source}',
+    steemDataBy: 'Steem Daten betrieben von {source}',
+    contactUs: 'Kontaktiere uns',
+    about: 'Über uns',
+    promote: 'Bewerbe deine DApp',
+    downloadLogo: 'Lade unser Logo runter',
+    getAndroidApp: 'Holl dir die Android App',
+    helpMetamask: 'Hilfe für Metamask',
+    termsOfUse: 'Nutzungsbedingungen'
   },
   TheStats: {
     title: 'DApp Statistiken',
