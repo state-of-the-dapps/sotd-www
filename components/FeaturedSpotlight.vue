@@ -4,31 +4,33 @@
       <SectionHeading
         :has-line="false"
         :heading="$t(namespace('heading'))"
-        :heading-route="{ name: 'collection-detail', params: { slug: 'featured' }}">
+        :heading-route="{ name: 'spotlight-detail', params: { slug: spotlight.slug }}">
         <template slot="icon">
           <IconSpotlight/>
         </template>
       </SectionHeading>
       <div class="main-content-wrapper">
         <div class="image-wrapper">
-          <img
-            class="image"
-            src="https://cdn.stateofthedapps.com/dapps/cryptoassault/product_image_small_cryptoassault_c62ecc34da4890267fa15703690aecc5d6e20aa010835294d88df0ed02335e97_opti.jpg">
+          <nuxt-link :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}">
+            <img
+              :src="spotlight.imageUrl"
+              class="image"
+            >
+          </nuxt-link>
         </div>
         <div class="text-wrapper">
           <h2 class="title">
             <nuxt-link
-              :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
-              class="heading-link">Create an organization with Aragon</nuxt-link>
+              :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}"
+              class="heading-link">{{ spotlight.title }}</nuxt-link>
           </h2>
           <div class="description">
-            <p>Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps.</p>
+            <p>{{ spotlight.teaser }}</p>
           </div>
           <p class="link-wrapper">
             <nuxt-link
-              :to="{name: 'spotlight-detail', params: {slug: 'slug'}}"
-              class="link">Read more 
-              <IconChevron
+              :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}"
+              class="link">Read more<IconChevron
                 :width="10"
                 :height="10"
                 direction="right"
@@ -56,6 +58,18 @@ export default {
     IconSpotlight,
     Media,
     SectionHeading
+  },
+  data() {
+    return {
+      spotlight: {
+        imageUrl:
+          'https://cdn.stateofthedapps.com/dapps/cryptoassault/product_image_small_cryptoassault_c62ecc34da4890267fa15703690aecc5d6e20aa010835294d88df0ed02335e97_opti.jpg',
+        slug: 'aragon',
+        teaser:
+          'Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps.',
+        title: 'Create an organization with Aragon'
+      }
+    }
   }
 }
 </script>
