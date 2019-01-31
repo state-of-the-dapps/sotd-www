@@ -149,8 +149,9 @@ export default {
 }
 
 .text-wrapper {
-  padding: 20px 30px;
+  padding: 20px 10px;
   @include tweakpoint('min-width', 1100px) {
+    padding: 20px 30px;
     width: 60%;
   }
 }
