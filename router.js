@@ -678,7 +678,17 @@ export function createRouter() {
       {
         path: '/spotlights/:slug',
         component: SpotlightDetail,
-        name: 'spotlight-detail'
+        name: 'spotlight-detail___en'
+      },
+      {
+        path: '/de/spotlights/:slug',
+        component: SpotlightDetail,
+        name: 'spotlight-detail___de'
+      },
+      {
+        path: '/zh/spotlights/:slug',
+        component: SpotlightDetail,
+        name: 'spotlight-detail___zh'
       },
       {
         path: '/terms',

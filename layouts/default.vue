@@ -179,6 +179,15 @@ code {
 .fade-in-leave-to {
   opacity: 0;
 }
+
+.markdown-article {
+  max-width: 550px;
+  margin: 0 auto;
+  p {
+    font-size: 1.2rem;
+    line-height: 1.35;
+  }
+}
 </style>
 
 <style lang="scss" scoped>

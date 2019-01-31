@@ -1,5 +1,7 @@
 <template>
-  <div class="FeaturedSpotlight">
+  <div
+    v-if="spotlight.slug"
+    class="FeaturedSpotlight">
     <div class="wrapper">
       <SectionHeading
         :has-line="false"
@@ -11,7 +13,9 @@
       </SectionHeading>
       <div class="main-content-wrapper">
         <div class="image-wrapper">
-          <nuxt-link :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}">
+          <nuxt-link
+            :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
+            @click.native="$mixpanel.track('Featured Spotlight', { element: 'image' })">
             <img
               :src="spotlight.imageUrl"
               class="image"
@@ -21,16 +25,18 @@
         <div class="text-wrapper">
           <h2 class="title">
             <nuxt-link
-              :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}"
-              class="heading-link">{{ spotlight.title }}</nuxt-link>
+              :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
+              class="heading-link"
+              @click.native="$mixpanel.track('Featured Spotlight', { element: 'title' })">{{ spotlight.title }}</nuxt-link>
           </h2>
           <div class="description">
             <p>{{ spotlight.teaser }}</p>
           </div>
           <p class="link-wrapper">
             <nuxt-link
-              :to="{name: 'spotlight-detail', params: { slug: spotlight.slug }}"
-              class="link">Read more<IconChevron
+              :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
+              class="link"
+              @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta' })">{{ spotlight.ctaText }}<IconChevron
                 :width="10"
                 :height="10"
                 direction="right"
@@ -62,14 +68,27 @@ export default {
   data() {
     return {
       spotlight: {
-        imageUrl:
-          'https://cdn.stateofthedapps.com/dapps/cryptoassault/product_image_small_cryptoassault_c62ecc34da4890267fa15703690aecc5d6e20aa010835294d88df0ed02335e97_opti.jpg',
-        slug: 'aragon',
-        teaser:
-          'Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps.',
-        title: 'Create an organization with Aragon'
+        ctaText: '',
+        imageUrl: '',
+        slug: '',
+        teaser: '',
+        title: ''
       }
     }
+  },
+  mounted() {
+    this.$axios
+      .get('spotlights', {
+        params: {
+          limit: 1
+        }
+      })
+      .then(response => {
+        const spotlights = response.data
+        if (spotlights.length) {
+          this.spotlight = spotlights[0]
+        }
+      })
   }
 }
 </script>
@@ -125,6 +144,7 @@ export default {
 }
 
 .link-wrapper {
+  text-align: right;
   margin: 0;
 }
 

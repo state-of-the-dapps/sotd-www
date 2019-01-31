@@ -1,7 +1,17 @@
 <template>
-  <div class="page">
-    <PageHeading title="Spotlight Title"/>
-    <p>'Wafer lemon drops biscuit ice cream. Dragée biscuit carrot cake biscuit powder. Candy soufflé bonbon marzipan chocolate cake. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps. Toffee cotton candy jelly beans. Bear claw apple pie halvah powder. Bonbon cupcake lollipop fruitcake pastry icing jelly-o sugar plum wafer. Icing pastry sesame snaps.'</p>
+  <div 
+    v-if="spotlight.slug"
+    class="page">
+    <h2 class="title-2">DApp Spotlight</h2>
+    <PageHeading :title="spotlight.title"/>
+    <img
+      :src="spotlight.imageUrl"
+      class="image"
+    >
+    <div
+      class="markdown-article"
+      v-html="$md.render(spotlight.body)"
+    />
   </div>
 </template>
 
@@ -11,21 +21,54 @@ import PageHeading from '@/components/PageHeading'
 export default {
   components: {
     PageHeading
+  },
+  data() {
+    return {
+      spotlight: {
+        imageUrl: '',
+        slug: '',
+        teaser: '',
+        title: ''
+      }
+    }
+  },
+  asyncData({ app, params }) {
+    return app.$axios.get(`spotlights/${params.slug}`).then(response => {
+      const spotlight = response.data
+      if (spotlight) {
+        return { spotlight }
+      } else {
+        error({ statusCode: 404 })
+      }
+    })
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .page {
-  max-width: 700px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 10px 50px 10px;
 }
 
-p {
+.content {
   max-width: 550px;
   margin: 0 auto;
-  font-size: 1.15rem;
-  line-height: 1.3;
+}
+
+.image {
+  display: block;
+  max-width: 700px;
+  margin: 25px auto;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.title-2 {
+  font-size: 1.25rem;
+  text-align: center;
+  color: darken($color--gray, 40%);
+  margin-top: 2rem;
+  margin-bottom: -2.5rem;
 }
 </style>
