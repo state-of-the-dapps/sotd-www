@@ -62,7 +62,7 @@
       </div>
       <p v-if="formType === 'new'">Submissions are free and typically processed by the next business day.</p>
     </div>
-    <div class="input-wrapper">
+    <div class="submit-wrapper">
       <BasePopover
         v-on-clickaway="hideMissingFields"
         v-if="popoverIsActive && missingFields.length">
@@ -78,22 +78,25 @@
           </li>
         </ul>
       </BasePopover>
+      <div
+        v-if="(formType === 'edit' && !diffExists) || (errorFields.length > 0)"
+        class="error-message-wrapper">
+        <div v-if="formType === 'edit' && !diffExists">
+          You must edit this DApp before submitting
+        </div>
+        <div
+          v-else-if="errorFields.length > 0"
+          class="has-missing-fields"
+          @click="showMissingFields">
+          {{ `${errorFields.length} ${$options.filters.pluralize('field', errorFields.length)} ${errorFields.length > 1 ? 'require' : 'requires' } your attention` }}
+        </div>
+      </div>
       <input 
-        v-model="honeypot" 
-        type="text" 
-        class="yumyum">
-      <input 
-        v-if="formType === 'edit' && !diffExists" 
-        :value="'You must edit this DApp before submitting'" 
-        class="submit" 
-        type="submit" 
-        @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
-      <input 
-        v-else-if="errorFields.length > 0"
-        :value="`${errorFields.length} ${$options.filters.pluralize('field', errorFields.length)} ${errorFields.length > 1 ? 'require' : 'requires' } your attention`"
-        class="submit has-missing-fields"
+        v-if="(formType === 'edit' && !diffExists) || (errorFields.length > 0)"
+        :value="'Submit'"
+        class="submit"
         type="submit"
-        @click.prevent="showMissingFields">
+        @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
       <input 
         v-else-if="sending" 
         :value="'Please wait'" 
@@ -102,10 +105,14 @@
         @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })">
       <input 
         v-else-if="errorFields.length === 0" 
-        :value="'Submit'" 
-        class="submit --is-ready" 
+        :value="'Submit'"
+        class="submit is-ready" 
         type="submit" 
         @click.prevent="submit">
+      <input 
+        v-model="honeypot" 
+        type="text" 
+        class="yumyum">
     </div>
   </div>
 </template>
@@ -370,8 +377,9 @@ export default {
 .checkboxes {
   margin: 12px auto 0;
   width: 300px;
-  @include tweakpoint('min-width', 900px) {
+  @include tweakpoint('min-width', 1000px) {
     margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -430,8 +438,34 @@ export default {
   flex-grow: 1;
 }
 
-.input-wrapper {
+.error-message-wrapper {
   position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  padding: 10px;
+  color: $color--white;
+  background: rgba($color--black, 0.9);
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  & + .submit {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.submit-wrapper {
+  position: relative;
+  margin-top: 15px;
+}
+
+.has-missing-fields {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .info {
@@ -512,10 +546,9 @@ export default {
   border-radius: 4px;
   margin: 0 auto;
   width: 300px;
-  margin-top: 15px;
   border: none;
   background: rgba($color--black, 0.1);
-  color: $color--black;
+  color: rgba($color--black, 0.5);
   font-size: 1rem;
   font-weight: 600;
   padding: 15px;
@@ -525,11 +558,7 @@ export default {
     margin-left: 0;
     margin-right: 0;
   }
-  &.has-missing-fields {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-  &.--is-ready {
+  &.is-ready {
     background: rgba($color--black, 1);
     box-shadow: 0 17px 70px rgba($color--black, 0.3);
     color: $color--gray;

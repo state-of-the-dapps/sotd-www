@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
 import { dappDefaultPlatform } from '~/helpers/constants'
 import BaseModal from './BaseModal'
@@ -384,8 +385,7 @@ export default {
     if (this.formType === 'edit') {
       this.errorFields = ['email', 'acceptedTerms']
       this.fields = { ...this.fields, ...this.dapp }
-      this.profileScore = this.profileScore
-      this.originalFields = { ...this.fields }
+      this.originalFields = cloneDeep(this.fields)
     }
   },
   methods: {
