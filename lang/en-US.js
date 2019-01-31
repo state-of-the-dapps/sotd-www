@@ -258,6 +258,8 @@ export default {
   TheFooter: {
     copyright: 'Copyright',
     designedBy: 'Designed by {designer}',
+    exchangeRatesBy: 'Exchange rates powered by {source}',
+    steemDataBy: 'Steem data powered by {source}',
     contactUs: 'Contact us',
     about: 'About',
     promote: 'Promote your DApp',
