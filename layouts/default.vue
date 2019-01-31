@@ -184,7 +184,7 @@ code {
   max-width: 550px;
   margin: 0 auto;
   p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     line-height: 1.35;
   }
 }

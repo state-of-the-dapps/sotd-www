@@ -68,7 +68,7 @@ export default {
   font-size: 1.25rem;
   text-align: center;
   color: darken($color--gray, 40%);
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: -2.5rem;
 }
 </style>
