@@ -187,6 +187,24 @@ code {
     font-size: 1.3rem;
     line-height: 1.35;
   }
+  img {
+    width: 100%;
+    border-radius: 3px;
+  }
+  ul {
+    padding-left: 2rem;
+    li {
+      list-style-type: disc;
+      font-size: 1.15rem;
+      line-height: 1.4;
+    }
+  }
+  h2 {
+    @include font-display;
+    font-size: 2.25rem;
+    margin-top: 2rem;
+    margin-bottom: -0.5rem;
+  }
 }
 </style>
 
