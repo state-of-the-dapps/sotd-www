@@ -12,6 +12,11 @@
       class="markdown-article"
       v-html="$md.render(spotlight.body)"
     />
+    <p class="markdown-article">
+      <nuxt-link
+        :to="localePath({ name: 'dapp-detail', params: { slug: spotlight.relatedDapp.slug } })"
+        class="button">Check out {{ spotlight.relatedDapp.name }}</nuxt-link>
+    </p>
   </div>
 </template>
 
@@ -28,7 +33,11 @@ export default {
         imageUrl: '',
         slug: '',
         teaser: '',
-        title: ''
+        title: '',
+        relatedDapp: {
+          name: '',
+          slug: ''
+        }
       }
     }
   },
@@ -46,9 +55,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.button {
+  @include button;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  padding: 12px 20px;
+  font-size: 1.125rem;
+  margin-top: 30px;
+}
+
 .page {
   margin: 0 auto;
-  padding: 0 10px 50px 10px;
+  padding: 0 10px 75px 10px;
 }
 
 .content {
