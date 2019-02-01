@@ -70,6 +70,7 @@ export default {
   display: block;
   padding: 10px;
   background: $color--white;
+  margin-top: 30px;
   position: sticky;
   bottom: 10px;
   box-shadow: 0 5px 50px rgba($color--black, 0.1);
