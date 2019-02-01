@@ -180,9 +180,12 @@ code {
   opacity: 0;
 }
 
-.markdown-article {
+.markdown-article-wrapper {
   max-width: 550px;
   margin: 0 auto;
+}
+
+.markdown-article {
   p {
     font-size: 1.3rem;
     line-height: 1.35;

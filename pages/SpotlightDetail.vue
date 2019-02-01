@@ -8,15 +8,25 @@
       :src="spotlight.imageUrl"
       class="image"
     >
-    <div
-      class="markdown-article"
-      v-html="$md.render(spotlight.body)"
-    />
-    <p class="markdown-article">
+    <div class="markdown-article-wrapper">
+      <div
+        class="markdown-article"
+        v-html="$md.render(spotlight.body)"
+      />
       <nuxt-link
         :to="localePath({ name: 'dapp-detail', params: { slug: spotlight.relatedDapp.slug } })"
-        class="button">Check out {{ spotlight.relatedDapp.name }}</nuxt-link>
-    </p>
+        class="cta-wrapper">
+        <img
+          :src="spotlight.relatedDapp.iconUrl"
+          class="cta-image"
+          width="40">
+        <div class="cta-description">
+          <h3 class="cta-name">{{ spotlight.relatedDapp.name }}</h3>
+          <p class="cta-teaser">{{ spotlight.relatedDapp.teaser }}</p>
+        </div>
+        <button class="cta-view">View DApp</button>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
@@ -36,6 +46,7 @@ export default {
         title: '',
         relatedDapp: {
           name: '',
+          iconUrl: '',
           slug: ''
         }
       }
@@ -55,15 +66,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.button {
-  @include button;
-  text-align: center;
+.cta-wrapper {
   display: block;
-  margin: 0 auto;
-  width: 300px;
-  padding: 12px 20px;
-  font-size: 1.125rem;
-  margin-top: 30px;
+  padding: 10px;
+  background: $color--white;
+  position: sticky;
+  bottom: 10px;
+  box-shadow: 0 5px 50px rgba($color--black, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.cta-teaser {
+  margin: 0;
+}
+
+.cta-view {
+  margin-left: auto;
+  border: 1px solid $color--black;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.cta-name {
+  margin: 0;
+}
+
+.cta-image {
+  display: block;
+  margin-right: 10px;
 }
 
 .page {
