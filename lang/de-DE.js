@@ -235,8 +235,7 @@ export default {
   },
   SecondaryCtaScatter: {
     title: 'Scatter für EOS',
-    description:
-      'Mit Scatter lassen sich EOS DApps im Browser ausführen.', // TODO review
+    description: 'Mit Scatter lassen sich EOS DApps im Browser ausführen.', // TODO review
     cta: 'Probiere es jetzt',
     discover: 'Entdecke Scatter'
   },
