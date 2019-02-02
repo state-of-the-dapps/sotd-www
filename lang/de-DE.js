@@ -22,7 +22,7 @@ export default {
     Media: 'Medien',
     Property: 'Besitz',
     Security: 'Sicherheit',
-    Social: 'Sozial',
+    Social: 'Soziales',
     Storage: 'Speicher',
     Wallet: 'Geldbörse'
   },
@@ -80,12 +80,12 @@ export default {
   DappDetailBodyContentModules: {
     activeUsers: 'Aktive Nutzer',
     activeUsersHelp:
-      '(eindeutige Eingangsadressen in Transaktionen von DApp-Verträgen)',
+      '(Eindeutige Quelladressen in den Transaktionen von DApp-Verträgen)',
     transactions: 'Transaktionen',
     volume: 'Volumen ({token})'
   },
   DappDetailBodyContentModulesStats: {
-    day: '1 Tag | {count} Tagen',
+    day: '1 Tag | {count} Tage',
     daily: 'Täglich',
     weekly: 'Wöchentlich',
     monthly: 'Monatlich'
@@ -118,7 +118,7 @@ export default {
   },
   Dapps: {
     noResults:
-      'Es gibt momentan keine DApps hier. Versuchen Sie einen anderen Suchbegriff.'
+      'Es gibt hier momentan keine DApps. Versuche einen anderen Suchbegriff.'
   },
   dappSortOptions: {
     Hottest: 'Beliebteste',
@@ -218,33 +218,33 @@ export default {
   SecondaryCtaMailingList: {
     title: 'Bleib informiert',
     description:
-      'Abonniere dich um alle Neuheiten über das DApp-Ökosystem zu erhalten.',
+      'Abonniere den Newsletter um alle Neuheiten über das DApp-Ökosystem zu erhalten.',
     placeholder: 'Gebe deine E-Mail hier ein.',
     signUp: 'Registrieren',
     submitting: 'Abschicken...',
     thanks: 'Danke! Wir bleiben in Kontakt!',
     error:
-      'Es ist ein Fehler bei der Registrierung aufgetreten. Stellen Sie sicher eine gültige E-Mail eingetragen zu haben und versuchen Sie es erneut. Wenn dieser Fehler weiterhin besteht, kontaktieren Sie uns bitte: {email}'
+      'Es ist ein Fehler bei der Registrierung aufgetreten. Bitte prüfe die eingetragene E-Mail Adresse und versuche es erneut. Wenn dieser Fehler weiterhin besteht, kontaktiere uns bitte: {email}'
   },
   SecondaryCtaMetamask: {
-    title: 'Metamask für Ethereum, POA, und GoChain',
+    title: 'Metamask für Ethereum, POA und GoChain',
     description:
-      'Metamask bietet eine flüssigere Erfahrung bei der Nutzung von Ethereum, GoChain, und POA DApps.', // TODO review
-    cta: 'Probier es jetzt',
+      'Mit Metamask lassen sich Ethereum, GoChain und POA DApps im Browser ausführen. ', // TODO review
+    cta: 'Probiere es jetzt',
     discover: 'Entdecke Metamask'
   },
   SecondaryCtaScatter: {
     title: 'Scatter für EOS',
     description:
-      'Scatter bietet eine flüssigere Erfahrung bei der Nutzung von EOS DApps.', // TODO review
-    cta: 'Probier es jetzt',
+      'Mit Scatter lassen sich EOS DApps im Browser ausführen.', // TODO review
+    cta: 'Probiere es jetzt',
     discover: 'Entdecke Scatter'
   },
   SecondaryCtaSteemKeychain: {
     title: 'Steem Keychain',
     description:
-      'Steem Keychain bietet eine flüssigere Erfahrung bei der Nutzung von Steem DApps.', // TODO review
-    cta: 'Probier es jetzt',
+      'Mit Steem Keychain lassen sich Steem DApps im Browser ausführen.', // TODO review
+    cta: 'Probiere es jetzt',
     discover: 'Entdecke Steem Keychain'
   },
   status: 'Status',
@@ -268,17 +268,17 @@ export default {
     about: 'Über uns',
     promote: 'Bewerbe deine DApp',
     downloadLogo: 'Lade unser Logo runter',
-    getAndroidApp: 'Holl dir die Android App',
+    getAndroidApp: 'Hol dir die Android App',
     helpMetamask: 'Hilfe für Metamask',
     termsOfUse: 'Nutzungsbedingungen'
   },
   TheStats: {
     title: 'DApp Statistiken',
     description:
-      'Statistiken werden täglich aktualisiert. Schau öfters vorbei um den Fortschritt und die Entwicklung des DApp-Ökosystems zu sehen.',
+      'Die Statistiken werden täglich aktualisiert. Schau öfters vorbei um den Fortschritt und die Entwicklung des DApp-Ökosystems zu sehen.',
     askUs: 'Frag uns nach benutzerdefinierten Daten',
     activeUsersHelp:
-      'Eindeutige Quelladressen in Transaktionen für DApp-Verträge',
+      'Eindeutige Quelladressen in den Transaktionen für DApp-Verträge',
     dailyActiveUsers: 'Täglich aktive Nutzer',
     monthlyActiveUsers: 'Monatlich aktive Nutzer',
     newDappsPerMonth: 'Neue DApps pro Monat',
@@ -293,12 +293,12 @@ export default {
     totalDapps: 'DApps ingesamt',
     volume24h: 'Volumen (24h)',
     volumeHelp:
-      'Transaktions Volumen von DApp Verträgen. Plattformen benutzen verschiedene Währungen, deswegen sollten diese Werte nicht direkt verglichen werden.'
+      'Transaktionsvolumen von DApp Verträgen. Plattformen benutzen verschiedene Währungen, deswegen sollten diese Werte nicht direkt verglichen werden.'
   },
-  userActivity30d: 'Benutzer Aktivität (30 Tage)',
+  userActivity30d: 'Nutzeraktivität (30T)',
   userActivity30dHelp:
-    'Nutzer der letzten 30 Tage (Eindeutige Quelladresse in den Transaktionen der DApp Verträgen)',
+    'Nutzer der letzten 30 Tage (Eindeutige Quelladressen in den Transaktionen der DApp Verträge)',
   users24h: 'Benutzer (24h)',
   users24hHelp:
-    'Aktive Nutzer pro Tag (Eindeutige Quelladresse in den Transaktionen der DApp Verträgen)'
+    'Aktive Nutzer pro Tag (Eindeutige Quelladressen in den Transaktionen der DApp Verträge)'
 }
