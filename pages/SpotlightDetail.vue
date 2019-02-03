@@ -15,7 +15,8 @@
       />
       <nuxt-link
         :to="localePath({ name: 'dapp-detail', params: { slug: spotlight.relatedDapp.slug } })"
-        class="cta-wrapper">
+        class="cta-wrapper"
+        @click.native="$mixpanel.track('Spotlight - CTA', { slug: spotlight.slug, dapp: spotlight.relatedDapp.slug })">
         <img
           :src="spotlight.relatedDapp.iconUrl"
           class="cta-image"
@@ -85,9 +86,8 @@ export default {
 }
 
 .cta-view {
+  @include button;
   margin-left: auto;
-  border: 1px solid $color--black;
-  border-radius: 4px;
   padding: 5px 10px;
 }
 

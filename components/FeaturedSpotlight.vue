@@ -15,7 +15,7 @@
         <div class="image-wrapper">
           <nuxt-link
             :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
-            @click.native="$mixpanel.track('Featured Spotlight', { element: 'image' })">
+            @click.native="$mixpanel.track('Featured Spotlight', { element: 'image', slug: spotlight.slug })">
             <img
               :src="spotlight.imageUrl"
               class="image"
@@ -27,7 +27,7 @@
             <nuxt-link
               :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
               class="heading-link"
-              @click.native="$mixpanel.track('Featured Spotlight', { element: 'title' })">{{ spotlight.title }}</nuxt-link>
+              @click.native="$mixpanel.track('Featured Spotlight', { element: 'title', slug: spotlight.slug })">{{ spotlight.title }}</nuxt-link>
           </h2>
           <div class="description">
             <p>{{ spotlight.teaser }}</p>
@@ -36,7 +36,7 @@
             <nuxt-link
               :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
               class="link"
-              @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta' })">{{ spotlight.ctaText }}<IconChevron
+              @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta', slug: spotlight.slug })">{{ spotlight.ctaText }}<IconChevron
                 :width="10"
                 :height="10"
                 direction="right"
