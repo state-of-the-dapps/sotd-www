@@ -2,7 +2,7 @@
   <div 
     v-if="spotlight.slug"
     class="page">
-    <h2 class="title-2">DApp Spotlight</h2>
+    <h2 class="title-2">{{ $t('SpotlightDetail.heading') }}</h2>
     <PageHeading :title="spotlight.title"/>
     <img
       :src="spotlight.imageUrl"

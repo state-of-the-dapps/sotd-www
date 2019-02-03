@@ -39,6 +39,7 @@ export default {
   cta: {
     submit: 'DApp einreichen',
     viewAll: 'Alle anzeigen'
+    // TODO viewDapp: 'View DApp'
   },
   DappCardListItem: {
     new: 'Neu'
@@ -245,6 +246,9 @@ export default {
       'Mit Steem Keychain lassen sich Steem DApps im Browser ausführen.', // TODO review
     cta: 'Probiere es jetzt',
     discover: 'Entdecke Steem Keychain'
+  },
+  SpotlightDetail: {
+    // TODO heading: 'DApp Spotlight'
   },
   status: 'Status',
   statusOptions: {
