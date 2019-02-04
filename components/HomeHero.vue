@@ -57,5 +57,6 @@ export default {
 
 .wrapper {
   @include margin-wrapper-main;
+  max-width: initial !important;
 }
 </style>

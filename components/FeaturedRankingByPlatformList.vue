@@ -92,6 +92,5 @@ export default {
 .wrapper {
   @include margin-wrapper-main;
   position: relative;
-  padding-bottom: 1.05rem;
 }
 </style>

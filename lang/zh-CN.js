@@ -39,6 +39,7 @@ export default {
   cta: {
     submit: '提交 DApp',
     viewAll: '查看全部'
+    // TODO viewDapp: 'View DApp'
   },
   DappCardListItem: {
     new: '新'
@@ -154,6 +155,9 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: '平台排行榜'
   },
+  FeaturedSpotlight: {
+    // TODO heading: 'Spotlight'
+  },
   filters: {
     allPlatforms: '所有平台',
     chooseColumn: '选择一列',
@@ -234,6 +238,9 @@ export default {
     description: 'Steem Keychain可以让你在浏览器里使用SteemDApps。',
     cta: '现在试试。',
     discover: '探索 Steem Keychain'
+  },
+  SpotlightDetail: {
+    // TODO heading: 'DApp Spotlight'
   },
   status: '现状',
   statusOptions: {

@@ -179,6 +179,36 @@ code {
 .fade-in-leave-to {
   opacity: 0;
 }
+
+.markdown-article-wrapper {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.markdown-article {
+  p {
+    font-size: 1.3rem;
+    line-height: 1.35;
+  }
+  img {
+    width: 100%;
+    border-radius: 3px;
+  }
+  ul {
+    padding-left: 2rem;
+    li {
+      list-style-type: disc;
+      font-size: 1.15rem;
+      line-height: 1.4;
+    }
+  }
+  h2 {
+    @include font-display;
+    font-size: 2.25rem;
+    margin-top: 2rem;
+    margin-bottom: -0.5rem;
+  }
+}
 </style>
 
 <style lang="scss" scoped>

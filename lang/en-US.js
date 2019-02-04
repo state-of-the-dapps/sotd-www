@@ -38,7 +38,8 @@ export default {
   },
   cta: {
     submit: 'Submit a DApp',
-    viewAll: 'View all'
+    viewAll: 'View all',
+    viewDapp: 'View DApp'
   },
   DappCardListItem: {
     new: 'New'
@@ -156,6 +157,9 @@ export default {
   FeaturedRankingByPlatformList: {
     heading: 'Rankings by Platform'
   },
+  FeaturedSpotlight: {
+    heading: 'Spotlight'
+  },
   filters: {
     allPlatforms: 'All platforms',
     chooseColumn: 'Choose a column',
@@ -239,6 +243,9 @@ export default {
     description: 'Steem Keychain lets you use Steem DApps within your browser.',
     cta: 'Try it now',
     discover: 'Discover Steem Keychain'
+  },
+  SpotlightDetail: {
+    heading: 'DApp Spotlight'
   },
   status: 'Status',
   statusOptions: {

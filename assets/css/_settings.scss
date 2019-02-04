@@ -326,10 +326,10 @@ $margin--wrapper-medium: 0px 22px;
   @include tweakpoint('min-width', 640px) {
       margin: $margin--wrapper-medium
   }
-  @include tweakpoint('min-width', 2000px) {
+  @include tweakpoint('min-width', 1500px) {
       margin: 0 auto;
       width: calc(100% - 44px);
-      max-width: 2000px;
+      max-width: 1500px;
   }
 }
 
