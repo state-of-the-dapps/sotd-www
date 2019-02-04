@@ -561,6 +561,7 @@ export default {
   &.is-ready {
     background: rgba($color--black, 1);
     box-shadow: 0 17px 70px rgba($color--black, 0.3);
+    border-radius: 1000px;
     color: $color--gray;
     &:hover {
       cursor: pointer;

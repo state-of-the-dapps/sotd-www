@@ -112,6 +112,7 @@ export default {
   @include button;
   padding: 10px 15px;
   font-size: 1.15rem;
+  border-radius: 1000px;
 }
 
 .button-wrapper {
@@ -198,9 +199,9 @@ export default {
 
 .title-2 {
   @include title-2;
-  font-size: 3rem;
+  font-size: 2rem !important;
   margin-bottom: 0;
-  margin-top: 3rem;
+  margin-top: 3rem !important;
   line-height: 1;
 }
 </style>
