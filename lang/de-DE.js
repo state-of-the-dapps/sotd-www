@@ -14,7 +14,7 @@ export default {
     Finance: 'Finanzen',
     Gambling: 'Glücksspiele',
     Games: 'Spiele',
-    Governance: 'Führung', // TODO review
+    Governance: 'Führung',
     Health: 'Gesundheit',
     'High-risk': 'Hohes Risiko',
     Identity: 'Identität',
@@ -226,20 +226,20 @@ export default {
   SecondaryCtaMetamask: {
     title: 'Metamask für Ethereum, POA und GoChain',
     description:
-      'Mit Metamask lassen sich Ethereum, GoChain und POA DApps im Browser ausführen. ', // TODO review
+      'Mit Metamask lassen sich Ethereum, GoChain und POA DApps im Browser ausführen. ',
     cta: 'Probiere es jetzt',
     discover: 'Entdecke Metamask'
   },
   SecondaryCtaScatter: {
     title: 'Scatter für EOS',
-    description: 'Mit Scatter lassen sich EOS DApps im Browser ausführen.', // TODO review
+    description: 'Mit Scatter lassen sich EOS DApps im Browser ausführen.',
     cta: 'Probiere es jetzt',
     discover: 'Entdecke Scatter'
   },
   SecondaryCtaSteemKeychain: {
     title: 'Steem Keychain',
     description:
-      'Mit Steem Keychain lassen sich Steem DApps im Browser ausführen.', // TODO review
+      'Mit Steem Keychain lassen sich Steem DApps im Browser ausführen.',
     cta: 'Probiere es jetzt',
     discover: 'Entdecke Steem Keychain'
   },
@@ -279,7 +279,7 @@ export default {
     monthlyActiveUsers: 'Monatlich aktive Nutzer',
     newDappsPerMonth: 'Neue DApps pro Monat',
     newDapps: 'Neue DApps',
-    nrOfContracts: 'Anzahl der Verträge', // TODO review
+    nrOfContracts: 'Anzahl der Verträge',
     smartContracts: 'Intelligente Verträge',
     '24htransactions': 'Transaktionen der letzten 24 Stunden',
     '24hVolumeUsd': 'Volumen der letzten 24 Stunden in USD',
