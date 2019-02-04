@@ -114,7 +114,7 @@ export default {
 
 <style lang="scss" scoped>
 .FeaturedDappList {
-  padding-top: 10px;
+  margin-top: -1.5rem;
 }
 
 .featured-list-wrapper {

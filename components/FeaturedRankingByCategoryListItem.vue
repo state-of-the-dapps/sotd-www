@@ -3,7 +3,7 @@
     <h3 class="title-3">
       <a 
         class="link" 
-        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }} <IconChevron 
+        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }}&nbsp;<IconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></a>
@@ -167,9 +167,9 @@ export default {
 }
 
 .dapp-rank {
+  @include font-text-mono;
   padding: 5px;
   margin: -10px 15px -10px -10px;
-  font-weight: 700;
   height: 52px;
   width: 30px;
   min-width: 30px;
@@ -187,7 +187,7 @@ export default {
 }
 
 .label-dau {
-  font-weight: normal;
+  @include font-text;
   font-size: 0.95rem;
   position: absolute;
   right: 0;
@@ -195,13 +195,16 @@ export default {
 }
 
 .link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
 .title-3 {
-  @include title-3;
-  margin-top: 1rem;
-  margin-bottom: 1.15rem;
+  @include font-display;
+  font-size: 1.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0.9rem;
   position: relative;
 }
 

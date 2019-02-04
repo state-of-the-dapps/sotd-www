@@ -84,12 +84,13 @@ export default {
   display: flex;
   align-items: center;
   font-size: 1.725rem;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  margin: 0;
   margin-top: 2rem;
-  padding-bottom: 1rem;
-  margin-bottom: 0;
   font-weight: 300;
   &.has-line {
-    border-bottom: 1px solid rgba($color--black, 0.15);
+    border-top: 1px solid rgba($color--black, 0.15);
   }
   &.zh {
     font-weight: 400;
@@ -118,10 +119,14 @@ export default {
 }
 
 .icon-wrapper {
-  margin-right: 3px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .link {
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 </style>

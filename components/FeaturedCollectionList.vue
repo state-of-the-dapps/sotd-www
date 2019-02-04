@@ -9,8 +9,8 @@
       @clickHeading="trackCollectionView('home')">
       <template slot="icon">
         <IconCollection 
-          :width="16" 
-          :height="16"/>
+          :width="20" 
+          :height="20"/>
       </template>
     </SectionHeading>
     <DappCollectionList 

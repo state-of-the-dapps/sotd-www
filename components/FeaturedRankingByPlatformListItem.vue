@@ -3,8 +3,7 @@
     <h3 class="title-3">
       <a 
         class="link" 
-        @click="viewDappRankingPlatform(platform)">{{ platform }}
-        <IconChevron 
+        @click="viewDappRankingPlatform(platform)">{{ platform }}&nbsp;<IconChevron 
           :width="8" 
           :height="8" 
           direction="right"/></a>
@@ -166,10 +165,10 @@ export default {
 }
 
 .dapp-rank {
+  @include font-text-mono;
   padding: 5px;
-  background: $color--purple;
+  background: $color--medium-dark-purple;
   margin: -10px 15px -10px -10px;
-  font-weight: 700;
   height: 52px;
   width: 30px;
   min-width: 30px;
@@ -182,21 +181,21 @@ export default {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   .dapp-item:nth-child(2) & {
-    background: rgba($color--purple, 0.85);
+    background: rgba($color--black, 1);
   }
   .dapp-item:nth-child(3) & {
-    background: rgba($color--purple, 0.75);
+    background: rgba($color--black, 0.85);
   }
   .dapp-item:nth-child(4) & {
-    background: rgba($color--purple, 0.65);
+    background: rgba($color--black, 0.75);
   }
   .dapp-item:nth-child(5) & {
-    background: rgba($color--purple, 0.55);
+    background: rgba($color--black, 0.65);
   }
 }
 
 .label-dau {
-  font-weight: normal;
+  @include font-text;
   font-size: 0.95rem;
   position: absolute;
   right: 0;
@@ -204,13 +203,16 @@ export default {
 }
 
 .link {
+  display: flex;
+  align-items: center;
   text-decoration: none;
 }
 
 .title-3 {
-  @include title-3;
-  margin-top: 1rem;
-  margin-bottom: 1.15rem;
+  @include font-display;
+  font-size: 1.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0.9rem;
   position: relative;
 }
 

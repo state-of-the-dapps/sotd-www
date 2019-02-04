@@ -4,7 +4,7 @@
       <nuxt-link 
         :to="localePath({ name: 'collection-detail', params: { slug: collection.slug } })" 
         class="link" 
-        @click.native="trackCollectionView(collection.slug)">{{ $t(`collections.${collection.name.replace(/\s/g,'-')}`) }} <span class="cta">{{ $t('cta.viewAll') }} <IconChevron 
+        @click.native="trackCollectionView(collection.slug)"><span>{{ $t(`collections.${collection.name.replace(/\s/g,'-')}`) }}</span> <span class="cta">{{ $t('cta.viewAll') }} <IconChevron 
           :width="8" 
           :height="8" 
           direction="right" /></span></nuxt-link>
@@ -80,16 +80,20 @@ export default {
 <style lang="scss" scoped>
 .cta {
   @include font-text;
-  display: inline-block;
   font-size: 1rem;
   letter-spacing: -0.15px;
   margin-left: 10px;
   text-decoration: none;
   font-weight: normal;
+  margin-top: 2px;
 }
 
 .link {
+  @include font-display;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  font-size: 1.6rem;
 }
 
 .title-3 {

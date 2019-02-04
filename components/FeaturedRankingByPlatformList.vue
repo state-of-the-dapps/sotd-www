@@ -11,7 +11,7 @@
         <template slot="icon">
           <img 
             src="~/assets/images/icons/platforms.png" 
-            width="16">
+            width="20">
         </template>
       </SectionHeading>
       <div class="platforms">
@@ -84,7 +84,7 @@ export default {
 }
 
 .platforms {
-  margin: 0 -10px;
+  margin: -10px;
   display: flex;
   flex-wrap: wrap;
 }

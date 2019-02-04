@@ -10,7 +10,7 @@
             :to="localePath({name: 'rankings-category', params: {category: category.name}})"
             :class="'-' + category.name.toLowerCase()"
             class="category-link"
-            @click.native="trackFeaturedCategory(category.name)"><component :is="category.iconComponent"/><span class="category-text">{{ $t(namespace(category.name)) | capitalize }}</span></nuxt-link>
+            @click.native="trackFeaturedCategory(category.name)"><span class="icon-wrapper"><component :is="category.iconComponent"/></span><span class="category-text">{{ $t(namespace(category.name)) | capitalize }}</span></nuxt-link>
         </li>
         <li class="category-item all">
           <nuxt-link
@@ -63,6 +63,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.FeaturedCategoryList {
+  padding-top: 2rem;
+}
+
 .category-item {
   margin: 10px;
   font-size: 1.325rem;
@@ -102,6 +106,6 @@ export default {
   @include margin-wrapper-main;
   border-top: 1px solid rgba($color--black, 0.15);
   position: relative;
-  padding: 1.5rem 0 0 0;
+  padding: 2rem 0 0 0;
 }
 </style>

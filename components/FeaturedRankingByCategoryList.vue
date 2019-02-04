@@ -11,7 +11,7 @@
         <template slot="icon">
           <img 
             src="~/assets/images/icons/categories.png" 
-            width="16">
+            width="20">
         </template>
       </SectionHeading>
       <div class="categories">
@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss" scoped>
 .categories {
-  margin: 0 -10px;
+  margin: -10px;
   display: flex;
   flex-wrap: wrap;
 }
