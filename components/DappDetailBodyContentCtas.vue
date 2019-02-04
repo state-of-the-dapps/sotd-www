@@ -130,34 +130,6 @@ export default {
   line-height: 0;
 }
 
-.add-popover {
-  position: absolute;
-  top: -45px;
-  left: calc(50% - 60px);
-  width: 100%;
-  background: $color--black;
-  border-radius: 4px;
-  box-shadow: 0 4px 50px rgba($color--black, 0.2);
-  padding: 8px;
-  text-align: center;
-  width: 120px;
-  &:after {
-    content: '';
-    position: absolute;
-    right: calc(50% - 5px);
-    bottom: -5px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid $color--black;
-  }
-}
-
-.add-popover-button {
-  color: $color--white;
-}
-
 .button {
   text-align: center;
   text-decoration: none;
@@ -170,7 +142,7 @@ export default {
   margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 3px;
+  border-radius: 1000px;
   &.-add {
     display: flex;
     align-items: center;

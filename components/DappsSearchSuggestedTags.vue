@@ -88,7 +88,7 @@ export default {
 }
 
 .item {
-  border-radius: 4px;
+  border-radius: 1000px;
   display: block;
   padding: 7px 28px 7px 10px;
   background: lighten($color--gray, 2%);

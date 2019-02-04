@@ -383,7 +383,7 @@ export default {
     color: $color--black;
     background: transparent;
     padding: 7px 15px;
-    border-radius: 4px;
+    border-radius: 1000px;
     &.is-home {
       color: $color--white;
       border-color: rgba($color--white, 0.8);

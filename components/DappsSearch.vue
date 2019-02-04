@@ -284,7 +284,7 @@ export default {
 }
 
 .tag {
-  border-radius: 4px;
+  border-radius: 1000px;
   display: flex;
   align-items: center;
   padding: 7px 10px;

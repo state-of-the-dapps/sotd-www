@@ -31,7 +31,7 @@ export default {
   background: $color--black;
   text-shadow: 0 1px rgba($color--black, 0.1);
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 1000px;
   &:active {
     top: 1px;
     box-shadow: none;
