@@ -362,10 +362,10 @@ export default {
 
 .results-suggestions-link {
   display: block;
-  padding: 5px;
+  padding: 5px 8px;
   text-decoration: none;
   background: $color--gray;
-  border-radius: 3px;
+  border-radius: 1000px;
   margin: 3px 5px;
   margin-left: 0;
   &:hover {
