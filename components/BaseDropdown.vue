@@ -182,7 +182,7 @@ export default {
   font-size: 1.1rem;
   padding: 5px 10px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 1000px;
   border: 1px solid transparent;
   display: flex;
   align-items: center;

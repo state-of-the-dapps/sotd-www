@@ -82,7 +82,7 @@ export default {
   padding: 5px 8px;
   margin: 4px;
   background: lighten($color--gray, 2%);
-  border-radius: 4px;
+  border-radius: 1000px;
 }
 
 .software-wrapper {

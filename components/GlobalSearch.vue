@@ -236,7 +236,7 @@ export default {
   align-items: center;
   background: rgba($color--black, 0.1);
   padding: 7px 12px;
-  border-radius: 3px;
+  border-radius: 1000px;
   min-width: 250px;
   position: relative;
   color: $color--black;
@@ -245,6 +245,7 @@ export default {
     box-shadow: 0 0 10px rgba($color--black, 0.1);
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    border-radius: 4px;
     input {
       color: $color--black;
     }
@@ -361,10 +362,10 @@ export default {
 
 .results-suggestions-link {
   display: block;
-  padding: 5px;
+  padding: 5px 8px;
   text-decoration: none;
   background: $color--gray;
-  border-radius: 3px;
+  border-radius: 1000px;
   margin: 3px 5px;
   margin-left: 0;
   &:hover {

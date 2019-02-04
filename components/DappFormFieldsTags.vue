@@ -219,6 +219,7 @@ export default {
   text-decoration: none;
   position: relative;
   margin: 2px;
+  border-radius: 1000px;
   &:hover {
     cursor: pointer;
   }

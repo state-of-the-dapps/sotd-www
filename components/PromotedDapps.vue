@@ -229,6 +229,7 @@ export default {
   background: $color--black;
   color: $color--white;
   padding: 8px 30px;
+  border-radius: 1000px;
 }
 
 .get-started-note {
@@ -280,6 +281,7 @@ export default {
   text-transform: uppercase;
   font-size: 0.9rem;
   padding: 12px 0;
+  border-radius: 1000px;
   cursor: default;
   transition: all 0.2s ease;
   font-weight: 700;

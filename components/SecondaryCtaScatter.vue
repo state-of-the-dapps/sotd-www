@@ -72,7 +72,7 @@ export default {
   color: lighten($color--white, 100%);
   text-decoration: none;
   margin: 5px 0;
-  border-radius: 3px;
+  border-radius: 1000px;
 }
 
 .description {

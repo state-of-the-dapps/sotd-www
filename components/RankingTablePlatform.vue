@@ -37,8 +37,8 @@ export default {
 .value {
   background: $color--gray;
   font-size: 1rem;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 5px 8px;
+  border-radius: 1000px;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
