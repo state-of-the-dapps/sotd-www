@@ -99,7 +99,7 @@ export default {
 .title-3 {
   font-size: 1.35rem;
   font-weight: 600;
-  margin-top: 0;
+  margin-top: 2rem;
   margin-bottom: 0.2rem;
   letter-spacing: -0.5px;
 }

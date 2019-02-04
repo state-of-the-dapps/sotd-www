@@ -67,4 +67,8 @@ export default {
   @include margin-wrapper-main;
   padding-bottom: 35px;
 }
+
+.DappCollectionList:nth-child(2) {
+  margin-top: -2rem;
+}
 </style>
