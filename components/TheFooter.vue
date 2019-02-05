@@ -2,125 +2,142 @@
   <div class="TheFooter">
     <div class="wrapper">
       <ul class="nav-list">
-        <li class="nav-item">
-          <a 
-            href="mailto:support@stateofthedapps.com" 
-            class="nav-link" 
-            @click="trackContact()">{{ $t(namespace('contactUs')) }}</a>
+        <li class="item-group">
+          <ul>
+            <li class="nav-item">
+              <a 
+                href="mailto:support@stateofthedapps.com" 
+                class="nav-link" 
+                @click="trackContact()">{{ $t(namespace('contactUs')) }}</a>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                to="/about" 
+                class="nav-link" 
+                @click.native="trackPageAbout()">{{ $t(namespace('about')) }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                :to="localePath({ name: 'dapps-new' })" 
+                class="nav-link" 
+                @click.native="trackFooterSubmit()">{{ $t('cta.submit') }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                :to="localePath({ name: 'promoted-dapps' })" 
+                class="nav-link" 
+                @click.native="trackPromotedDappsView()">{{ $t(namespace('promote')) }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                :to="localePath({ name: 'logos' })" 
+                class="nav-link" 
+                @click.native="trackFooterLogoDownload()">{{ $t(namespace('downloadLogo')) }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.stateofthedapps.android&ref=StateOfTheDapps"
+                class="nav-link"
+                target="_blank"
+                @click="trackFooterAppAndroid()">{{ $t(namespace('getAndroidApp')) }}</a>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                :to="localePath({ name: 'help-metamask' })" 
+                class="nav-link"
+                @click.native="trackFooterLink('help-metamask')">{{ $t(namespace('helpMetamask')) }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
+                to="/terms" 
+                class="nav-link" 
+                @click.native="trackPageTerms()">{{ $t(namespace('termsOfUse')) }}</nuxt-link>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <nuxt-link 
-            to="/about" 
-            class="nav-link" 
-            @click.native="trackPageAbout()">{{ $t(namespace('about')) }}</nuxt-link>
+        <li class="item-group">
+          <ul class="social-list">
+            <li class="social-item">
+              <a 
+                href="https://twitter.com/StateOfTheDApps" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Twitter')"><img 
+                  src="~/assets/images/social/twitter-reverse.png" 
+                  alt="Twitter" 
+                  class="social-icon"> &nbsp; Twitter</a>
+            </li>
+            <!--
+            <li class="social-item">
+              <a 
+                href="https://github.com/state-of-the-dapps" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Github')"><img 
+                  src="~/assets/images/social/github-reverse.png" 
+                  alt="Github" 
+                  class="social-icon"></a>
+            </li>
+            -->
+            <li class="social-item">
+              <a 
+                href="https://reddit.com/r/StateOfTheDApps" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Reddit')"><img 
+                  src="~/assets/images/social/reddit-reverse.png" 
+                  alt="Reddit" 
+                  class="social-icon"> &nbsp; Reddit</a>
+            </li>
+            <li class="social-item">
+              <a 
+                href="https://blog.stateofthedapps.com/" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Medium')"><img 
+                  src="~/assets/images/social/medium-reverse.png" 
+                  alt="Medium" 
+                  class="social-icon"> &nbsp; Medium</a>
+            </li>
+            <li class="social-item">
+              <a 
+                href="https://t.me/stateofthedapps" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Telegram')"><img 
+                  src="~/assets/images/social/chat-reverse.png" 
+                  alt="Telegram" 
+                  class="social-icon"> &nbsp; Telegram</a>
+            </li>
+            <li class="social-item">
+              <a 
+                href="https://steemit.com/@stateofthedapps" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Steem')"><img 
+                  src="~/assets/images/social/steem-reverse.png" 
+                  alt="Steem" 
+                  class="social-icon"> &nbsp; Steem</a>
+            </li>
+            <!-- <li class="social-item">
+              <a 
+                href="https://get.status.im/chat/public/stateofthedapps-com" 
+                class="social-link" 
+                target="_blank" 
+                rel="noopener"
+                @click="trackSocial('Status')"><img 
+                  src="~/assets/images/social/status-reverse.png" 
+                  alt="Status" 
+                  class="social-icon"></a>
+            </li> -->
+          </ul>
         </li>
-        <li class="nav-item">
-          <nuxt-link 
-            :to="localePath({ name: 'dapps-new' })" 
-            class="nav-link" 
-            @click.native="trackFooterSubmit()">{{ $t('cta.submit') }}</nuxt-link>
-        </li>
-        <li class="nav-item">
-          <nuxt-link 
-            :to="localePath({ name: 'promoted-dapps' })" 
-            class="nav-link" 
-            @click.native="trackPromotedDappsView()">{{ $t(namespace('promote')) }}</nuxt-link>
-        </li>
-        <li class="nav-item">
-          <nuxt-link 
-            :to="localePath({ name: 'logos' })" 
-            class="nav-link" 
-            @click.native="trackFooterLogoDownload()">{{ $t(namespace('downloadLogo')) }}</nuxt-link>
-        </li>
-        <li class="nav-item">
-          <a
-            href="https://play.google.com/store/apps/details?id=com.stateofthedapps.android&ref=StateOfTheDapps"
-            class="nav-link"
-            target="_blank"
-            @click="trackFooterAppAndroid()">{{ $t(namespace('getAndroidApp')) }}</a>
-        </li>
-        <li class="nav-item">
-          <nuxt-link 
-            :to="localePath({ name: 'help-metamask' })" 
-            class="nav-link"
-            @click.native="trackFooterLink('help-metamask')">{{ $t(namespace('helpMetamask')) }}</nuxt-link>
-        </li>
-        <li class="nav-item">
-          <nuxt-link 
-            to="/terms" 
-            class="nav-link" 
-            @click.native="trackPageTerms()">{{ $t(namespace('termsOfUse')) }}</nuxt-link>
-        </li>
-        <ul class="social-list">
-          <li class="social-item">
-            <a 
-              href="https://twitter.com/StateOfTheDApps" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Twitter')"><img 
-                src="~/assets/images/social/twitter-reverse.png" 
-                alt="Twitter" 
-                class="social-icon"></a>
-          </li>
-          <!--
-          <li class="social-item">
-            <a 
-              href="https://github.com/state-of-the-dapps" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Github')"><img 
-                src="~/assets/images/social/github-reverse.png" 
-                alt="Github" 
-                class="social-icon"></a>
-          </li>
-          -->
-          <li class="social-item">
-            <a 
-              href="https://reddit.com/r/StateOfTheDApps" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Reddit')"><img 
-                src="~/assets/images/social/reddit-reverse.png" 
-                alt="Reddit" 
-                class="social-icon"></a>
-          </li>
-          <li class="social-item">
-            <a 
-              href="https://blog.stateofthedapps.com/" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Medium')"><img 
-                src="~/assets/images/social/medium-reverse.png" 
-                alt="Medium" 
-                class="social-icon"></a>
-          </li>
-          <li class="social-item">
-            <a 
-              href="https://t.me/stateofthedapps" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Telegram')"><img 
-                src="~/assets/images/social/chat-reverse.png" 
-                alt="Telegram" 
-                class="social-icon"></a>
-          </li>
-          <li class="social-item">
-            <a 
-              href="https://get.status.im/chat/public/stateofthedapps-com" 
-              class="social-link" 
-              target="_blank" 
-              rel="noopener"
-              @click="trackSocial('Status')"><img 
-                src="~/assets/images/social/status-reverse.png" 
-                alt="Status" 
-                class="social-icon"></a>
-          </li>
-        </ul>
       </ul>
       <ul class="attribution-list">
         <li class="attribution-item">
@@ -282,7 +299,7 @@ export default {
 }
 
 .attribution-logo {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   width: 120px;
 }
 
@@ -320,25 +337,40 @@ export default {
   @include tweakpoint('min-width', $tweakpoint--default) {
     text-align: left;
     width: 50%;
+    display: flex;
+    align-items: flex-start;
   }
 }
 
 .social-list {
+  text-align: center;
   margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   @include tweakpoint('min-width', $tweakpoint--default) {
-    justify-content: left;
+    margin-top: 0;
+    padding-left: 50px;
   }
 }
 
 .social-icon {
   display: block;
-  width: 20px;
+  width: 22px;
 }
 
 .social-item {
-  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  @include tweakpoint('min-width', $tweakpoint--default) {
+    justify-content: left;
+  }
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: darken($color--gray, 25%);
+  cursor: pointer;
 }
 </style>
