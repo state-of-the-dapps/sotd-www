@@ -15,6 +15,7 @@ export default {
     Gambling: 'Gambling',
     Games: 'Games',
     Governance: 'Governance',
+    Marketplace: 'Marketplace',
     Health: 'Health',
     'High-risk': 'High risk',
     Identity: 'Identity',
