@@ -56,7 +56,7 @@ $color--category-property: #C9D4EB;
 $color--category-storage: #C9D7FF;
 $color--category-identity: #A3ACD6;
 $color--category-governance: #DDEFCB;
-$color--category-marketplace: #a0eba0;
+$color--category-marketplaces: #a0eba0;
 $color--category-energy: #FFEEBF;
 $color--category-insurance: #D7FAD5;
 $color--category-health: #C8E2C6;
@@ -106,8 +106,8 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   &.-governance {
     background: $color--category-governance;    
   }
-  &.-marketplace {
-    background: $color--category-marketplace;    
+  &.-marketplaces {
+    background: $color--category-marketplaces;
   }
   &.-storage {
     background: $color--category-storage;    
@@ -163,8 +163,8 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   &.-governance {
     fill: $color--category-governance;    
   }
-  &.-marketplace {
-    fill: $color--category-marketplace;    
+  &.-marketplaces {
+    fill: $color--category-marketplaces;
   }
   &.-storage {
     fill: $color--category-storage;    
@@ -220,8 +220,8 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
   &.-governance {
     border-color: $color--category-governance;    
   }
-  &.-marketplace {
-    border-color: $color--category-marketplace;    
+  &.-marketplaces {
+    border-color: $color--category-marketplaces;
   }
   &.-storage {
     border-color: $color--category-storage;    

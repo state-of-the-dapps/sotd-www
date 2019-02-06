@@ -15,7 +15,7 @@ export default {
     Gambling: 'Glücksspiele',
     Games: 'Spiele',
     Governance: 'Führung',
-    // TODO Marketplace: 'Marketplace',
+    // TODO Marketplaces: 'Marketplaces',
     Health: 'Gesundheit',
     'High-risk': 'Hohes Risiko',
     Identity: 'Identität',
