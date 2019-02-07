@@ -27,6 +27,7 @@
           @updateExistingDapp="updateExistingDapp"/>
         <DappFormSave
           :accepted-terms="fields.acceptedTerms"
+          :additional-comments="fields.additionalComments"
           :contracts-mainnet="contractsMainnet"
           :contracts-kovan="contractsKovan"
           :contracts-ropsten="contractsRopsten"
@@ -43,7 +44,6 @@
           :name="fields.name"
           :profile-score="profileScore"
           :sending="sending"
-          :submit-reason="fields.submitReason"
           :subscribe-newsletter="fields.subscribeNewsletter"
           @addErrorField="addErrorField"
           @checkFormDiff="checkFormDiff"
@@ -139,6 +139,7 @@ export default {
       },
       existingDapp: '',
       fields: {
+        additionalComments: '',
         authors: [],
         category: '',
         description: '',
@@ -168,7 +169,6 @@ export default {
           blog: { path: '' }
         },
         status: '',
-        submitReason: '',
         subscribeNewsletter: false,
         tags: [],
         teaser: '',
@@ -195,6 +195,9 @@ export default {
   computed: {
     acceptedTerms() {
       return this.fields.acceptedTerms
+    },
+    additionalComments() {
+      return this.fields.additionalComments
     },
     authors() {
       return this.fields.authors
@@ -358,9 +361,6 @@ export default {
     },
     status() {
       return this.fields.status
-    },
-    submitReason() {
-      return this.fields.submitReason
     },
     subscribeNewsletter() {
       return this.fields.subscribeNewsletter

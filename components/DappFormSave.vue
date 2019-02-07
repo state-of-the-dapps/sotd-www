@@ -13,16 +13,16 @@
     </div>
     <div 
       v-if="formType === 'new'"
-      class="submit-reason">
+      class="additional-comments">
       <label 
         class="text-area-label" 
-        for="submitReason">{{ $t('submitQuestion') }}</label>
+        for="additionalComments">{{ $t('submitQuestion') }}</label>
       <textarea 
-        :value="submitReason" 
+        :value="additionalComments" 
         :placeholder="$t('submitQuestionPlaceholder')"
         class="text-area" 
-        name="submitReason" 
-        @input="updateSubmitReason($event.target.value)"/>
+        name="additionalComments" 
+        @input="updateAdditionalComments($event.target.value)"/>
     </div>
     <DappFormFieldsEmail
       :email="fields.email"
@@ -136,6 +136,11 @@ export default {
       required: true,
       default: false
     },
+    additionalComments: {
+      type: String,
+      required: true,
+      default: ''
+    },
     contractsMainnet: {
       type: Array,
       required: true,
@@ -210,11 +215,6 @@ export default {
       type: Boolean,
       required: true,
       default: false
-    },
-    submitReason: {
-      type: String,
-      required: true,
-      default: ''
     },
     subscribeNewsletter: {
       type: Boolean,
@@ -342,8 +342,8 @@ export default {
     updateNewsletter() {
       this.$emit('updateCheckbox', 'subscribeNewsletter')
     },
-    updateSubmitReason(value) {
-      this.$emit('updateField', 'submitReason', value)
+    updateAdditionalComments(value) {
+      this.$emit('updateField', 'additionalComments', value)
     }
   }
 }
@@ -578,7 +578,7 @@ export default {
   }
 }
 
-.submit-reason {
+.additional-comments {
   background: darken($color--gray, 4%);
   width: 300px;
   padding: 10px;
