@@ -365,9 +365,9 @@ export default {
 }
 
 .BasePopover {
-  bottom: 100%;
-  left: 50%;
-  margin-left: -100px;
+  bottom: 100% !important;
+  left: 50% !important;
+  margin-left: -100px !important;
 }
 
 .attribution {
