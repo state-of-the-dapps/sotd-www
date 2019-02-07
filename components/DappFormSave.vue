@@ -23,7 +23,6 @@
         class="text-area" 
         name="submitReason" 
         @input="updateSubmitReason($event.target.value)"/>
-      <p class="note">{{ $t('submitQuestionNote') }}</p>
     </div>
     <DappFormFieldsEmail
       :email="fields.email"

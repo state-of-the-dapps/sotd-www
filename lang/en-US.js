@@ -261,7 +261,7 @@ export default {
   },
   submitQuestion:
     'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',
-  submitQuestionPlaceholder: 'Enter an amount',
+  submitQuestionPlaceholder: 'Enter an amount (USD)',
   submitQuestionNote: `We'll follow up with you after submitting`,
   tags: 'tags',
   TheFooter: {

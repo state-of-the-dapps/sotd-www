@@ -251,8 +251,9 @@ export default {
   SpotlightDetail: {
     // TODO heading: 'DApp Spotlight'
   },
-  // TODO submitQuestion: 'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',
-  // TODO submitQuestionPlaceholder: 'Enter an amount',
+  // TODO submitQuestion:
+  // TODO   'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',
+  // TODO submitQuestionPlaceholder: 'Enter an amount (USD)',
   // TODO submitQuestionNote: `We'll follow up with you after submitting`,
   status: 'Status',
   statusOptions: {
