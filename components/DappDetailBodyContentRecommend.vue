@@ -100,7 +100,7 @@ export default {
     },
     votes: {
       type: Number,
-      default: null
+      default: 0
     },
     positive: {
       type: Number,
