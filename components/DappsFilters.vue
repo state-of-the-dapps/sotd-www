@@ -62,8 +62,12 @@ export default {
     }
   },
   async mounted() {
-    const categories = await this.getCategoryOptions()
-    this.categoryOptions = categories
+    try {
+      const categories = await this.getCategoryOptions()
+      this.categoryOptions = categories
+    } catch (e) {
+      this.$sentry.captureException(e)
+    }
   },
   methods: {
     getDappStatusOptions(options) {
@@ -87,15 +91,21 @@ export default {
       return optionsArr
     },
     async getCategoryOptions() {
-      const categories = await getCategories(this.$axios)
-      const optionsArr = categories.map(x => {
-        const optionObj = {
-          text: this.$t(`categoryOptions.${x.name}`),
-          selection: x.slug
-        }
-        return optionObj
-      })
-      return optionsArr
+      let optionsArr = []
+      try {
+        const categories = await getCategories(this.$axios)
+        optionsArr = categories.map(x => {
+          const optionObj = {
+            text: this.$t(`categoryOptions.${x.name}`),
+            selection: x.slug
+          }
+          return optionObj
+        })
+      } catch (e) {
+        this.$sentry.captureException(e)
+      } finally {
+        return optionsArr
+      }
     },
     selectCategory(category) {
       let routeName = 'dapps'

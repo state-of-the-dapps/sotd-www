@@ -86,10 +86,17 @@ export default {
     if (!query.tab) {
       urlParams.tab = 'hot'
     }
-    const data = await getDapps(app.$axios, urlParams, app.$sentry)
-    const dapps = data.items
-    const pager = data.pager
-    return { dapps, pager }
+    let dapps = []
+    let pager
+    try {
+      const data = await getDapps(app.$axios, urlParams, app.$sentry)
+      dapps = data.items
+      pager = data.pager
+    } catch (e) {
+      this.$sentry.captureException(e)
+    } finally {
+      return { dapps, pager }
+    }
   },
   watch: {
     $route() {
@@ -104,12 +111,19 @@ export default {
       if (!this.$route.query.tab) {
         urlParams.tab = 'hot'
       }
-      const data = await getDapps(this.$axios, urlParams)
-      this.isLoading = false
-      const dapps = data.items
-      const pager = data.pager
-      this.dapps = dapps
-      this.pager = pager
+      let dapps = []
+      let pager
+      try {
+        const data = await getDapps(this.$axios, urlParams)
+        dapps = data.items
+        pager = data.pager
+      } catch (e) {
+        this.$sentry.captureException(e)
+      } finally {
+        this.isLoading = false
+        this.dapps = dapps
+        this.pager = pager
+      }
     },
     resetData() {
       this.dapps = []

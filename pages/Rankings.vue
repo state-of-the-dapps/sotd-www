@@ -38,11 +38,18 @@ export default {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
     }
+    let dapps = []
+    let pager
     urlParams.view = 'rankings'
-    const data = await getDapps(app.$axios, urlParams, app.$sentry)
-    const dapps = data.items
-    const pager = data.pager
-    return { dapps, pager }
+    try {
+      const data = await getDapps(app.$axios, urlParams, app.$sentry)
+      dapps = data.items
+      pager = data.pager
+    } catch (e) {
+      this.$sentry.captureException(e)
+    } finally {
+      return { dapps, pager }
+    }
   },
   computed: {
     columnOptions() {
@@ -72,12 +79,19 @@ export default {
         urlParams.order = 'asc'
       }
       urlParams.view = 'rankings'
-      const data = await getDapps(this.$axios, urlParams)
-      this.isLoading = false
-      const dapps = data.items
-      const pager = data.pager
-      this.dapps = dapps
-      this.pager = pager
+      let dapps = []
+      let pager
+      try {
+        const data = await getDapps(this.$axios, urlParams)
+        dapps = data.items
+        pager = data.pager
+      } catch (e) {
+        this.$sentry.captureException(e)
+      } finally {
+        this.isLoading = false
+        this.dapps = dapps
+        this.pager = pager
+      }
     },
     resetData() {
       this.dapps = []

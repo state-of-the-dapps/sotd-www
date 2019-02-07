@@ -52,7 +52,11 @@ export default {
     }
   },
   async mounted() {
-    this.categories = await getCategories(this.$axios)
+    try {
+      this.categories = await getCategories(this.$axios)
+    } catch (e) {
+      this.$sentry.captureException(e)
+    }
   },
   methods: {
     selectCategory(value) {

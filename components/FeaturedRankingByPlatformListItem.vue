@@ -60,7 +60,7 @@ export default {
       sourcePath: this.$route.path
     }
   },
-  async mounted() {
+  mounted() {
     this.$axios
       .get('dapps', {
         params: {
