@@ -259,6 +259,10 @@ export default {
     stealth: 'stealth',
     broken: 'broken'
   },
+  submitQuestion:
+    'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',
+  submitQuestionPlaceholder: 'Enter an amount',
+  submitQuestionNote: `We'll follow up with you after submitting`,
   tags: 'tags',
   TheFooter: {
     copyright: 'Copyright',
