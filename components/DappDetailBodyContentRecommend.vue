@@ -6,13 +6,14 @@
     itemtype="http://schema.org/AggregateRating">
     <div class="wrapper">
       <p 
-        :content="votes" 
-        class="description" 
-        itemprop="ratingCount">{{ $t(namespace('title')) }}</p>
+        :itemprop="votes ? 'ratingCount' : undefined" 
+        :content="votes"
+        class="description"
+      >{{ $t(namespace('title')) }}</p>
       <div 
-        :content="rating" 
-        class="reaction-wrapper" 
-        itemprop="ratingValue">
+        :itemprop="rating ? 'ratingValue' : undefined"
+        :content="rating"
+        class="reaction-wrapper" >
         <ul 
           v-if="!reaction" 
           class="reaction-list">
@@ -86,7 +87,7 @@ export default {
   props: {
     rating: {
       type: Number,
-      default: null
+      default: 0
     },
     name: {
       type: String,
