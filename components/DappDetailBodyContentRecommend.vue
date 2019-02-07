@@ -1,9 +1,10 @@
 <template>
   <div 
-    class="DappDetailBodyContentRecommend" 
-    itemprop="aggregateRating" 
-    itemscope 
-    itemtype="http://schema.org/AggregateRating">
+    :itemprop="votes && rating ? 'aggregateRating' : undefined"
+    :itemtype="votes && rating ? 'http://schema.org/AggregateRating' : undefined"
+    itemscope
+    class="DappDetailBodyContentRecommend"
+  >
     <div class="wrapper">
       <p 
         :itemprop="votes ? 'ratingCount' : undefined" 
