@@ -16,13 +16,14 @@
       class="submit-reason">
       <label 
         class="text-area-label" 
-        for="submitReason">So we can better serve your needs, <strong>tell us what results you hope to achieve</strong> by submitting your DApp (this will not be made public).</label>
+        for="submitReason">{{ $t('submitQuestion') }}</label>
       <textarea 
         :value="submitReason" 
+        :placeholder="$t('submitQuestionPlaceholder')"
         class="text-area" 
         name="submitReason" 
-        placeholder="I hope that..."
         @input="updateSubmitReason($event.target.value)"/>
+      <p class="note">{{ $t('submitQuestionNote') }}</p>
     </div>
     <DappFormFieldsEmail
       :email="fields.email"
@@ -482,6 +483,12 @@ export default {
 .missing-fields-anchor {
   @include link;
   padding: 0.25rem 0;
+}
+
+.note {
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .profile-score-bar {
