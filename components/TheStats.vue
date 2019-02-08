@@ -163,10 +163,54 @@
                 class="table-link">{{ $t(`platformOptions.${platform.platform}`) }}</nuxt-link>
             </td>
             <td class="table-data">{{ platform.dappCount.toLocaleString() }}</td>
-            <td class="table-data">{{ platform.dappDau | abbreviateNumber(2) || 0 }}</td>
-            <td class="table-data">{{ platform.dappTx24Hr | abbreviateNumber(2) || 0 }}</td>
-            <td class="table-data">{{ platform.dappVol24Hr | abbreviateNumber(2) || 0 }}</td>
-            <td class="table-data">{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</td>
+            <td class="table-data">
+              <span 
+                v-if="platform.dappDau === null"
+                class="missing-data-wrapper"
+              >
+                <BaseHelp
+                  :text="$t('missingData')"
+                  size="lg"
+                />
+              </span>
+              <span v-else>{{ platform.dappDau | abbreviateNumber(2) || 0 }}</span>
+            </td>
+            <td class="table-data">
+              <span 
+                v-if="platform.dappTx24Hr === null"
+                class="missing-data-wrapper"
+              >
+                <BaseHelp
+                  :text="$t('missingData')"
+                  size="lg"
+                />
+              </span>
+              <span v-else>{{ platform.dappTx24Hr | abbreviateNumber(2) || 0 }}</span>
+            </td>
+            <td class="table-data">
+              <span 
+                v-if="platform.dappVol24Hr === null"
+                class="missing-data-wrapper"
+              >
+                <BaseHelp
+                  :text="$t('missingData')"
+                  size="lg"
+                />
+              </span>
+              <span v-else>{{ platform.dappVol24Hr | abbreviateNumber(2) || 0 }}</span>
+            </td>
+            <td class="table-data">
+              <span
+                v-if="platform.dappContractCount === null"
+                class="missing-data-wrapper"
+              >
+                <BaseHelp
+                  :text="$t('missingData')"
+                  size="lg"
+                />
+              </span>
+              <span v-else>{{ platform.dappContractCount | abbreviateNumber(2) || 0 }}</span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -400,6 +444,12 @@ export default {
   .heading {
     margin-top: 0;
   }
+}
+
+.missing-data-wrapper {
+  display: inline-block;
+  position: relative;
+  top: -5px;
 }
 
 .new-vs-total-wrapper {

@@ -1,9 +1,9 @@
 <template>
-  <span 
+  <span
     class="BaseHelp" 
     @mouseover="popoverIsActive = true" 
     @mouseout="popoverIsActive = false">
-    <span class="help-icon">?</span>
+    <span :class="`help-icon ${size}`">?</span>
     <BasePopover 
       v-if="popoverIsActive" 
       :bottom="bottom" 
@@ -28,6 +28,10 @@ export default {
       type: Boolean,
       default: false
     },
+    size: {
+      type: String,
+      default: ''
+    },
     text: {
       type: String,
       default: ''
@@ -44,6 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 .BaseHelp {
+  @include font-text;
   display: inline-block;
   margin-left: 5px;
   position: relative;
@@ -60,5 +65,11 @@ export default {
   font-weight: 700;
   border-radius: 50%;
   cursor: help;
+  &.lg {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+  }
 }
 </style>

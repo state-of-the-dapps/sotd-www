@@ -191,6 +191,7 @@ export default {
       'Entdecke die Möglichkeiten, die dir durch Ethereum, EOS, POA, GoChain und durch die Steem-Blockchain Dank des endgültigen Registers gegeben sind.',
     view: 'Zeige die Top-DApps an'
   },
+  // TODO missingData: 'Data is currently missing or incomplete',
   new: 'Neu',
   platform: 'Plattform',
   profileStrength: 'Stärke des Profils',
