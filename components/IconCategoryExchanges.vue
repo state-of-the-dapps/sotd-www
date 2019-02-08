@@ -46,4 +46,8 @@ export default {
 .purple {
   fill: $color--purple;
 }
+
+.blue {
+  fill: $color--category-exchanges;
+}
 </style>

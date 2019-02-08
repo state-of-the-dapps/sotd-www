@@ -10,7 +10,14 @@
             :to="localePath({name: 'rankings-category', params: {category: category.name}})"
             :class="'-' + category.name.toLowerCase()"
             class="category-link"
-            @click.native="trackFeaturedCategory(category.name)"><span class="icon-wrapper"><component :is="category.iconComponent"/></span><span class="category-text">{{ $t(namespace(category.name)) | capitalize }}</span></nuxt-link>
+            @click.native="trackFeaturedCategory(category.name)">
+            <span class="icon-wrapper">
+              <component
+                :is="category.iconComponent"
+                :fill="category.color"/>
+            </span>
+            <span class="category-text">{{ $t(namespace(category.name)) | capitalize }}</span>
+          </nuxt-link>
         </li>
         <li class="category-item all">
           <nuxt-link
@@ -18,7 +25,11 @@
             class="category-link all"
             @click.native="trackFeaturedCategory('all')">
             <span class="icon-wrapper">
-              <IconAllCategories fill="purple"/>
+              <IconAllCategories
+                :width="22"
+                :height="22"
+                fill="white"
+              />
             </span>
           <span class="category-text">{{ $t(namespace('allCategories')) }}</span></nuxt-link>
         </li>
@@ -46,15 +57,18 @@ export default {
       categories: [
         {
           name: 'games',
-          iconComponent: 'IconCategoryGames'
+          iconComponent: 'IconCategoryGames',
+          color: 'peach'
         },
         {
           name: 'finance',
-          iconComponent: 'IconCategoryFinance'
+          iconComponent: 'IconCategoryFinance',
+          color: 'teal'
         },
         {
           name: 'exchanges',
-          iconComponent: 'IconCategoryExchanges'
+          iconComponent: 'IconCategoryExchanges',
+          color: 'blue'
         }
       ]
     }
@@ -85,13 +99,13 @@ export default {
 .category-link {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   text-decoration: none;
   width: 100%;
   height: 100%;
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
   background: $color--white;
-  padding: 1.5rem 20px;
+  padding: 0.75rem 13px;
   border-radius: 4px;
   color: $color--purple;
   @include category-bg-colors;
@@ -109,9 +123,13 @@ export default {
 }
 
 .icon-wrapper {
-  height: 28px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: $color--purple;
+  border-radius: 50%;
 }
 
 .wrapper {

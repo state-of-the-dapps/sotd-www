@@ -43,4 +43,8 @@ export default {
 .purple {
   fill: $color--purple;
 }
+
+.peach {
+  fill: $color--category-games;
+}
 </style>

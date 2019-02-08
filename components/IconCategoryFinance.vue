@@ -43,4 +43,8 @@ export default {
 .purple {
   fill: $color--purple;
 }
+
+.teal {
+  fill: $color--category-finance;
+}
 </style>
