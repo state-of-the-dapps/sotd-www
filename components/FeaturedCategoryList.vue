@@ -16,7 +16,11 @@
           <nuxt-link
             :to="localePath({name: 'rankings'})"
             class="category-link all"
-            @click.native="trackFeaturedCategory('all')">{{ $t(namespace('allCategories')) }}</nuxt-link>
+            @click.native="trackFeaturedCategory('all')">
+            <span class="icon-wrapper">
+              <IconAllCategories fill="purple"/>
+            </span>
+          <span class="category-text">{{ $t(namespace('allCategories')) }}</span></nuxt-link>
         </li>
       </ul>
     </div>
@@ -25,12 +29,14 @@
 
 <script>
 import { trackFeaturedCategory } from '@/helpers/mixpanel'
+import IconAllCategories from './IconAllCategories'
 import IconCategoryExchanges from './IconCategoryExchanges'
 import IconCategoryFinance from './IconCategoryFinance'
 import IconCategoryGames from './IconCategoryGames'
 
 export default {
   components: {
+    IconAllCategories,
     IconCategoryExchanges,
     IconCategoryFinance,
     IconCategoryGames
@@ -100,6 +106,12 @@ export default {
 
 .category-text {
   padding-left: 10px;
+}
+
+.icon-wrapper {
+  height: 28px;
+  display: flex;
+  align-items: center;
 }
 
 .wrapper {

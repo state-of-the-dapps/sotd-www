@@ -9,9 +9,7 @@
         @clickCta="trackDappCategoryFilter('all')"
         @clickHeading="trackDappCategoryFilter('all')">
         <template slot="icon">
-          <img 
-            src="~/assets/images/icons/categories.png" 
-            width="20">
+          <IconRankingByCategories />
         </template>
       </SectionHeading>
       <div class="categories">
@@ -30,13 +28,15 @@ import FeaturedRankingByCategoryListItem from './FeaturedRankingByCategoryListIt
 import SectionHeading from './SectionHeading'
 import IconChevron from './IconChevron'
 import IconFeatured from './IconFeatured'
+import IconRankingByCategories from './IconRankingByCategories'
 
 export default {
   components: {
     FeaturedRankingByCategoryListItem,
     SectionHeading,
     IconChevron,
-    IconFeatured
+    IconFeatured,
+    IconRankingByCategories
   },
   data() {
     return {
