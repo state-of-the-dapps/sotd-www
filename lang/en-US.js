@@ -260,8 +260,8 @@ export default {
     broken: 'broken'
   },
   submitQuestion:
-    'You can support State of the DApps with a contribution. Together, we can promote the DApp ecosystem and attract more users.',
-  submitQuestionPlaceholder: 'Enter an optional contribution',
+    'You can support State of the DApps with a small contribution. Together, we can promote the DApp ecosystem and attract more users.',
+  submitQuestionPlaceholder: 'Enter an (optional) amount',
   submitQuestionNote: `We'll follow up with you after submitting`,
   tags: 'tags',
   TheFooter: {
