@@ -11,6 +11,7 @@
         Complete <template v-if="formType === 'edit'">this DApp's</template><template v-else>your</template> profile to boost <template v-if="formType === 'edit'">its</template><template v-else>your</template> rank
       </p>
     </div>
+    <!--
     <div 
       v-if="formType === 'new'"
       class="additional-comments">
@@ -24,6 +25,7 @@
         name="additionalComments" 
         @input="updateAdditionalComments($event.target.value)"/>
     </div>
+    -->
     <DappFormFieldsEmail
       :email="fields.email"
       :form-type="formType"
