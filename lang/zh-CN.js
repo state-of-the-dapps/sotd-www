@@ -187,6 +187,7 @@ export default {
       '通过 DApp项目的权威入口，发现以太坊，EOS，POA，GoChain，Steem和区块链的可能性。',
     view: '查看最佳 DApps'
   },
+  // TODO missingData: 'Data is currently missing or incomplete',
   new: '新',
   platform: '平台',
   platformOptions: {

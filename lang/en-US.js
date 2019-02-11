@@ -190,6 +190,7 @@ export default {
       'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of DApp projects.',
     view: 'View the top DApps'
   },
+  missingData: 'Data is currently missing or incomplete',
   new: 'New',
   platform: 'Platform',
   profileStrength: 'profile strength',
