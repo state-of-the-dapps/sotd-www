@@ -64,7 +64,6 @@
 <script>
 import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
-import { dappDefaultPlatform } from '~/helpers/constants'
 import BaseModal from './BaseModal'
 import DappFormFields from './DappFormFields'
 import DappFormSave from './DappFormSave'
@@ -108,6 +107,7 @@ export default {
         'websiteUrl',
         'authors',
         'category',
+        'platform',
         'status',
         'tags',
         'email',
@@ -124,6 +124,7 @@ export default {
         logo: [],
         mainnet: [],
         name: [],
+        platform: [],
         poaMainnet: [],
         goChainMainnet: [],
         eosMainnet: [],
@@ -158,7 +159,7 @@ export default {
         license: '',
         logo: '',
         name: '',
-        platform: dappDefaultPlatform,
+        platform: '',
         productImage: '',
         socials: {
           facebook: { path: '' },

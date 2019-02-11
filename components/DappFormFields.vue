@@ -53,6 +53,7 @@
       @updateField="updateField"/>
     <DappFormFieldsPlatform
       :platform="fields.platform"
+      @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsContracts 
       :platform="fields.platform"

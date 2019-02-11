@@ -1,7 +1,13 @@
 <template>
-  <div class="DappFormFieldsPlatform item">
-    <p class="heading"><span class="checkmark"><IconCheckmark :fill="platform.length ? 'purple' : 'gray'"/></span>Platform</p>
-    <div class="selection-wrapper">
+  <div
+    id="platform"
+    class="DappFormFieldsPlatform item"
+  >
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="platform.length ? 'purple' : 'gray'"/></span>Platform <span class="required">(required)</span></p>
+    <div
+      id="platformField"
+      class="selection-wrapper"
+    >
       <button
         :class="platform === 'Ethereum' ? 'is-active' : ''"
         class="selection"
@@ -43,6 +49,11 @@ export default {
   methods: {
     setPlatform(value) {
       this.$emit('updateField', 'platform', value)
+      const errors = {
+        field: 'platform',
+        data: []
+      }
+      this.$emit('updateErrors', errors)
     }
   }
 }
@@ -53,6 +64,7 @@ export default {
 .selection-wrapper {
   display: flex;
   align-items: center;
+  @include highlight;
 }
 
 .selection {
