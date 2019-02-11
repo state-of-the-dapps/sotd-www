@@ -109,7 +109,6 @@ export default {
   &.secondary {
     margin-left: auto;
     text-decoration: underline;
-    flex: 1;
     text-align: right;
     padding-left: 10px;
   }
