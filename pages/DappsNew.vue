@@ -96,7 +96,6 @@ export default {
 .section {
   &.-intro {
     position: relative;
-    z-index: 15;
   }
 }
 
