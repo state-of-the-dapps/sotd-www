@@ -40,7 +40,9 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        items: []
+        items: [],
+        name: '',
+        slug: ''
       })
     }
   },
