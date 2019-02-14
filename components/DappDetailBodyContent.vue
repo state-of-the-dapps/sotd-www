@@ -22,6 +22,9 @@
           </div>
         </media>
         <DappDetailBodyContentModules :dapp="dapp"/>
+        <DappDetailBodyContentReviews
+          v-if="dapp.reviews.length"
+          :reviews="dapp.reviews"/>
       </div>
       <div class="actions-related">
         <media :query="{minWidth: 1000}">
@@ -75,6 +78,7 @@ import DappDetailBodyContentImage from './DappDetailBodyContentImage'
 import DappDetailBodyContentModules from './DappDetailBodyContentModules'
 import DappDetailBodyContentPlatform from './DappDetailBodyContentPlatform'
 import DappDetailBodyContentRank from './DappDetailBodyContentRank'
+import DappDetailBodyContentReviews from './DappDetailBodyContentReviews'
 import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
 import DappDetailBodyContentTags from './DappDetailBodyContentTags'
 import DappDetailBodyContentTools from './DappDetailBodyContentTools'
@@ -91,6 +95,7 @@ export default {
     DappDetailBodyContentPlatform,
     DappDetailBodyContentRank,
     DappDetailBodyContentRecommend,
+    DappDetailBodyContentReviews,
     DappDetailBodyContentTags,
     DappDetailBodyContentTools,
     DappProfile,
@@ -102,6 +107,7 @@ export default {
       required: true,
       default: () => ({
         categories: [],
+        reviews: [],
         stats: {},
         tags: []
       })

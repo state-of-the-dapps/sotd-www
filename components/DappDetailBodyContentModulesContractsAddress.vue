@@ -130,6 +130,7 @@ export default {
   font-weight: 600;
   position: relative;
   top: -1px;
+  border-radius: 10000px;
   cursor: pointer;
   &:active {
     top: 0;
