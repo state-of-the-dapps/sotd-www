@@ -83,6 +83,7 @@ export default {
   margin-top: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid $color--gray;
+  font-size: 1.8rem;
 }
 
 .summary {
