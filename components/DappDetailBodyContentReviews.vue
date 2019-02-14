@@ -7,19 +7,16 @@
         :key="index"
         class="review-item"
       >
-        <p class="author">
-          {{ $t(namespace('reviewBy')) }} <strong>{{ review.author }}</strong>
-        </p>
         <h4 class="title">
           <a
             :href="review.review_url"
             target="_blank"
             class="link"
             @click="$mixpanel.track('Critic Review', { dapp: review.slug, link: 'title' })">{{ review.title }}</a>
+          <p class="author-date">
+            {{ $t(namespace('reviewBy')) }} <strong>{{ review.author }}</strong>, on {{ review.created | formatDate('MMM D, YYYY') }}
+          </p>
         </h4>
-        <p class="date">
-          {{ review.created | formatDate('MMM, YYYY') }}
-        </p>
         <p class="summary">
           {{ review.summary }}
         </p>
@@ -53,7 +50,7 @@ export default {
   margin: 20px 10px;
 }
 
-.author {
+.title {
   margin: 0;
   margin-bottom: 15px;
   padding-bottom: 25px;
@@ -84,7 +81,8 @@ export default {
   margin-bottom: 0;
 }
 
-.date {
+.author-date {
+  @include font-text;
   margin: 0;
   font-size: 1rem;
 }
