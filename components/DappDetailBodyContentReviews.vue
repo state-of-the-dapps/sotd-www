@@ -84,8 +84,7 @@ export default {
 .section-title {
   @include title-2;
   margin-top: 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid $color--gray;
+  margin-bottom: 0;
   font-size: 1.8rem;
 }
 
