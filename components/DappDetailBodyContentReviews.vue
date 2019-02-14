@@ -75,7 +75,10 @@ export default {
 .review-item {
   margin-top: 20px;
   background: lighten($color--gray, 3%);
-  padding: 20px;
+  padding: 10px 10px 15px 10px;
+  @include tweakpoint('min-width', 800px) {
+    padding: 20px;
+  }
 }
 
 .section-title {
