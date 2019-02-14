@@ -94,13 +94,13 @@ export default {
 
 .title {
   @include title-2;
-  font-size: 1.85rem;
   margin: 0;
   margin-bottom: 15px;
   padding-bottom: 25px;
   border-bottom: 1px solid darken($color--gray, 12%);
   position: relative;
-  font-size: 1.8rem;
+  font-size: 1.55rem;
+  letter-spacing: 0;
   &:before {
     content: '';
     position: absolute;
