@@ -86,6 +86,7 @@ export default {
 
 .date {
   margin: 0;
+  font-size: 1rem;
 }
 
 .link {
