@@ -14,7 +14,8 @@
           <a
             :href="review.review_url"
             target="_blank"
-            class="link">{{ review.title }}</a>
+            class="link"
+            @click="$mixpanel.track('Critic Review', { dapp: review.slug, link: 'title' })">{{ review.title }}</a>
         </h4>
         <p class="date">
           {{ review.created | formatDate('MMM, YYYY') }}
@@ -27,6 +28,7 @@
             :href="review.review_url"
             class="cta"
             target="_blank"
+            @click="$mixpanel.track('Critic Review', { dapp: review.slug, link: 'button' })"
           >{{ $t(namespace('readMore')) }}</a>
         </p>
       </li>
