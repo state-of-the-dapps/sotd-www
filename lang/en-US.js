@@ -92,6 +92,11 @@ export default {
     weekly: 'Weekly',
     monthly: 'Monthly'
   },
+  DappDetailBodyContentReviews: {
+    critic: 'Critic Reviews',
+    readMore: 'Read full review',
+    reviewBy: 'Review by'
+  },
   DappDetailBodyContentTools: {
     edit: 'Edit this DApp',
     flag: 'Flag as inappropriate',

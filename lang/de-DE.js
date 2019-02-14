@@ -86,6 +86,11 @@ export default {
     transactions: 'Transaktionen',
     volume: 'Volumen ({token})'
   },
+  DappDetailBodyContentReviews: {
+    // TODO critic: 'Critic Reviews',
+    // TODO readMore: 'Read full review',
+    // TODO reviewBy: 'Review by'
+  },
   DappDetailBodyContentModulesStats: {
     day: '1 Tag | {count} Tage',
     daily: 'Täglich',

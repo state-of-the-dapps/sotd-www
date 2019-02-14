@@ -91,6 +91,11 @@ export default {
     weekly: '每周',
     monthly: '每月'
   },
+  DappDetailBodyContentReviews: {
+    // TODO critic: 'Critic Reviews',
+    // TODO readMore: 'Read full review',
+    // TODO reviewBy: 'Review by'
+  },
   DappDetailBodyContentTools: {
     edit: '编辑这个DApp',
     flag: '举报不当',
