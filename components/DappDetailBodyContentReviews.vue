@@ -50,31 +50,12 @@ export default {
   margin: 20px 10px;
 }
 
-.title {
-  margin: 0;
-  margin-bottom: 15px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid $color--medium-dark-purple;
-  position: relative;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    background: lighten($color--gray, 3%);
-    left: 15px;
-    bottom: -11px;
-    border-top: 1px solid $color--medium-dark-purple;
-    border-left: 1px solid $color--medium-dark-purple;
-    transform: rotate(45deg);
-  }
-}
-
 .cta {
   @include button;
   padding: 3px 12px;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
 .cta-wrapper {
@@ -99,7 +80,6 @@ export default {
 
 .section-title {
   @include title-2;
-  font-size: 1.5rem;
   margin-top: 0.75rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid $color--gray;
@@ -111,7 +91,24 @@ export default {
 
 .title {
   @include title-2;
-  font-size: 1.9rem;
+  font-size: 1.85rem;
   margin: 0;
+  margin-bottom: 15px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid darken($color--gray, 12%);
+  position: relative;
+  font-size: 1.8rem;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: lighten($color--gray, 3%);
+    left: 15px;
+    bottom: -11px;
+    border-top: 1px solid darken($color--gray, 12%);
+    border-left: 1px solid darken($color--gray, 12%);
+    transform: rotate(45deg);
+  }
 }
 </style>
