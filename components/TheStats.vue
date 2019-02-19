@@ -78,6 +78,7 @@
         <canvas id="new-vs-total"/>
       </div>
     </div>
+    <StatsCategoriesPerMonth />
     <h2 class="heading-2">{{ $tc('category', 2) }}</h2>
     <div class="table-wrapper">
       <table class="table">
@@ -227,6 +228,7 @@ import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
 import CategoryPlatformFilters from './CategoryPlatformFilters'
 import BaseHelp from './BaseHelp'
+import StatsCategoriesPerMonth from './StatsCategoriesPerMonth'
 import StatsStatusBarChart from './StatsStatusBarChart'
 import TheLogo from './TheLogo'
 
@@ -234,6 +236,7 @@ export default {
   components: {
     CategoryPlatformFilters,
     BaseHelp,
+    StatsCategoriesPerMonth,
     StatsStatusBarChart,
     TheLogo
   },

@@ -269,6 +269,9 @@ export default {
     'You can support State of the DApps with a small contribution. Together, we can promote the DApp ecosystem and attract more users.',
   submitQuestionPlaceholder: 'Enter an (optional) amount',
   submitQuestionNote: `We'll follow up with you after submitting`,
+  StatsCategoriesPerMonth: {
+    title: 'Categories per Month'
+  },
   tags: 'tags',
   TheFooter: {
     copyright: 'Copyright',

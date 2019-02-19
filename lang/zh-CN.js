@@ -264,6 +264,9 @@ export default {
     stealth: '隐形模式',
     broken: '坏掉'
   },
+  StatsCategoriesPerMonth: {
+    // TODO title: 'Categories per Month'
+  },
   tags: '标签',
   TheFooter: {
     copyright: '版权',

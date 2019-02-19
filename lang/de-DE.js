@@ -272,6 +272,9 @@ export default {
     stealth: 'Versteckt',
     broken: 'Kaputt'
   },
+  StatsCategoriesPerMonth: {
+    // TODO title: 'Categories per Month'
+  },
   tags: 'Stichworte',
   TheFooter: {
     copyright: 'Urheberrecht',
