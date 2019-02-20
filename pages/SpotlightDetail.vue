@@ -25,7 +25,7 @@
           <h3 class="cta-name">{{ spotlight.relatedDapp.name }}</h3>
           <p class="cta-teaser">{{ spotlight.relatedDapp.teaser }}</p>
         </div>
-        <button class="cta-view">{{ spotlight.ctaText }}</button>
+        <button class="cta-view">{{ $t('cta.viewDapp') }}</button>
       </nuxt-link>
     </div>
   </div>

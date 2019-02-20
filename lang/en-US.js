@@ -164,6 +164,7 @@ export default {
     heading: 'Rankings by Platform'
   },
   FeaturedSpotlight: {
+    ctaText: 'Read more',
     heading: 'Spotlight'
   },
   filters: {

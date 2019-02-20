@@ -15,12 +15,9 @@
         <div class="image-wrapper">
           <nuxt-link
             :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
-            @click.native="$mixpanel.track('Featured Spotlight', { element: 'image', slug: spotlight.slug })">
-            <img
-              :src="spotlight.imageUrl"
-              class="image"
-            >
-          </nuxt-link>
+            style="background-image: url('https://fillmurray.com/g/1000/600')"
+            class="image-link"
+            @click.native="$mixpanel.track('Featured Spotlight', { element: 'image', slug: spotlight.slug })"/>
         </div>
         <div class="text-wrapper">
           <h2 class="title">
@@ -38,7 +35,7 @@
             <nuxt-link
               :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
               class="link"
-              @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta', slug: spotlight.slug })">{{ spotlight.ctaText }}<IconChevron
+              @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta', slug: spotlight.slug })">{{ $t(namespace('ctaText')) }}<IconChevron
                 :width="10"
                 :height="10"
                 direction="right"
@@ -144,8 +141,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 300px;
   @include tweakpoint('min-width', 1100px) {
     width: 40%;
+    height: auto;
     border: none;
     border-right: 8px solid $color--gray;
     align-self: stretch;
@@ -169,6 +168,14 @@ export default {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
+}
+
+.image-link {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .link-wrapper {
