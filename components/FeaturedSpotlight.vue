@@ -143,6 +143,7 @@ export default {
   border-bottom: 8px solid $color--gray;
   display: flex;
   align-items: center;
+  justify-content: center;
   @include tweakpoint('min-width', 1100px) {
     width: 40%;
     border: none;
@@ -176,9 +177,9 @@ export default {
 }
 
 .text-wrapper {
-  padding: 20px 10px;
+  padding: 25px 15px;
   @include tweakpoint('min-width', 1100px) {
-    padding: 20px 30px;
+    padding: 50px 30px;
     width: 60%;
   }
 }
