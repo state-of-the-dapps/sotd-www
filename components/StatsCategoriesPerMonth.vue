@@ -7,6 +7,12 @@
     </div>
     <div class="wrapper">
       <div class="wrapper-inner">
+        <div class="new-vs-total-logo">
+          <TheLogo 
+            :width="120" 
+            :height="26"
+            fill="black"/>
+        </div>
         <canvas id="categories-per-month-chart"/>
       </div>
     </div>
@@ -14,6 +20,8 @@
 </template>
 
 <script>
+import TheLogo from './TheLogo'
+
 const rawData = [
   {
     month: '2018-01',
@@ -1418,6 +1426,9 @@ const categoryColorMap = {
 }
 
 export default {
+  components: {
+    TheLogo
+  },
   data() {
     return {
       chartData: {
