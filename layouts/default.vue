@@ -186,6 +186,12 @@ code {
 }
 
 .markdown-article {
+  em {
+    display: block;
+    font-size: 0.95rem;
+    text-align: center;
+    font-weight: 300;
+  }
   p {
     font-size: 1.3rem;
     line-height: 1.35;
@@ -207,6 +213,22 @@ code {
     font-size: 2.25rem;
     margin-top: 2rem;
     margin-bottom: -0.5rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+    margin-top: 3rem;
+    margin-bottom: 0rem;
+  }
+
+  blockquote {
+    background: rgba($color--gray, 0.6);
+    padding: 0 20px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-left: 0;
+    p {
+      font-size: 1.2rem;
+    }
   }
 }
 </style>
