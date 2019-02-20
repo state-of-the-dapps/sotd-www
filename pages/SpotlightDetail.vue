@@ -28,6 +28,11 @@
         <button class="cta-view">{{ $t('cta.viewDapp') }}</button>
       </nuxt-link>
     </div>
+    <style>
+      .intercom-app {
+      display: none !important;
+      }
+    </style>
   </div>
 </template>
 
@@ -132,11 +137,5 @@ export default {
   color: darken($color--gray, 40%);
   margin-top: 3rem;
   margin-bottom: -2.5rem;
-}
-</style>
-
-<style>
-.intercom-app {
-  display: none !important;
 }
 </style>
