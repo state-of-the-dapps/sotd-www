@@ -137,6 +137,6 @@ export default {
 
 <style>
 .intercom-app {
-  display: none;
+  display: none !important;
 }
 </style>
