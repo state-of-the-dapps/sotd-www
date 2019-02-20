@@ -203,9 +203,18 @@ code {
   ul {
     padding-left: 2rem;
     li {
-      list-style-type: disc;
       font-size: 1.15rem;
       line-height: 1.4;
+      position: relative;
+      margin-bottom: 0.1rem;
+      &:before {
+        content: '•';
+        position: absolute;
+        top: 0.1rem;
+        font-size: 13px;
+        margin-left: -10px;
+        vertical-align: middle;
+      }
     }
   }
   h2 {
