@@ -30,7 +30,9 @@
               @click.native="$mixpanel.track('Featured Spotlight', { element: 'title', slug: spotlight.slug })">{{ spotlight.title }}</nuxt-link>
           </h2>
           <div class="description">
-            <p>{{ spotlight.teaser }}</p>
+            <div
+              class="teaser"
+              v-html="$md.render(spotlight.teaser)" />
           </div>
           <p class="link-wrapper">
             <nuxt-link
@@ -101,6 +103,27 @@ export default {
   }
 }
 
+.teaser /deep/ {
+  ul {
+    padding-top: 2px;
+  }
+  li {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    padding: 6px 0;
+    padding-left: 10px;
+    position: relative;
+    &:before {
+      content: '•';
+      position: absolute;
+      top: 0.65rem;
+      font-size: 13px;
+      margin-left: -10px;
+      vertical-align: middle;
+    }
+  }
+}
+
 .wrapper {
   @include margin-wrapper-main;
   padding-bottom: 0.5rem;
@@ -117,8 +140,14 @@ export default {
 }
 
 .image-wrapper {
+  border-bottom: 8px solid $color--gray;
+  display: flex;
+  align-items: center;
   @include tweakpoint('min-width', 1100px) {
     width: 40%;
+    border: none;
+    border-right: 8px solid $color--gray;
+    align-self: stretch;
   }
 }
 
@@ -128,18 +157,16 @@ export default {
 }
 
 .image {
+  background: $color--gray;
   width: 100%;
-  height: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  border-bottom: 8px solid $color--gray;
   display: block;
   @include tweakpoint('min-width', 1100px) {
     border-radius: 0;
     border: none;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
-    border-right: 8px solid $color--gray;
   }
 }
 
@@ -162,10 +189,5 @@ export default {
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 0.9;
-}
-
-p {
-  font-size: 1.15rem;
-  line-height: 1.3;
 }
 </style>
