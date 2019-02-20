@@ -79,6 +79,7 @@ export default {
   display: flex;
   align-items: center;
   text-decoration: none;
+  border: 1px solid darken($color--gray, 5%);
 }
 
 .cta-teaser {
@@ -100,11 +101,6 @@ export default {
   margin-right: 10px;
 }
 
-.page {
-  margin: 0 auto;
-  padding: 0 10px 75px 10px;
-}
-
 .content {
   max-width: 550px;
   margin: 0 auto;
@@ -116,6 +112,18 @@ export default {
   margin: 25px auto;
   width: 100%;
   border-radius: 4px;
+}
+
+.page {
+  margin: 0 auto;
+  padding: 15px 10px 75px 10px;
+  background: lighten($color--white, 100%);
+  max-width: 1200px;
+  margin: 20px auto 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba($color--black, 0.1);
+  border-top: 10px solid $color--black;
+  border-bottom: 5px solid $color--black;
 }
 
 .title-2 {
