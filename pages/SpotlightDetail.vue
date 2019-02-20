@@ -134,3 +134,9 @@ export default {
   margin-bottom: -2.5rem;
 }
 </style>
+
+<style>
+.intercom-app {
+  display: none;
+}
+</style>
