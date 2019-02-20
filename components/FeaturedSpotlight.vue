@@ -4,7 +4,7 @@
     class="FeaturedSpotlight">
     <div class="wrapper">
       <SectionHeading
-        :has-line="false"
+        :has-line="true"
         :heading="$t(namespace('heading'))"
         :heading-route="{ name: 'spotlight-detail', params: { slug: spotlight.slug }}">
         <template slot="icon">
@@ -15,7 +15,7 @@
         <div class="image-wrapper">
           <nuxt-link
             :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
-            style="background-image: url('https://fillmurray.com/g/1000/600')"
+            :style="`background-image: url('${spotlight.imageUrl}')`"
             class="image-link"
             @click.native="$mixpanel.track('Featured Spotlight', { element: 'image', slug: spotlight.slug })"/>
         </div>
