@@ -130,22 +130,28 @@ export default {
   background: $color--white;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba($color--black, 0.1);
-  @include tweakpoint('min-width', 1100px) {
+  @include tweakpoint('min-width', 700px) {
     display: flex;
     align-items: center;
   }
 }
 
 .image-wrapper {
+  overflow: hidden;
   border-bottom: 8px solid $color--gray;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 300px;
-  @include tweakpoint('min-width', 1100px) {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  @include tweakpoint('min-width', 700px) {
     width: 40%;
     height: auto;
+    border-radius: 0;
     border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
     border-right: 8px solid $color--gray;
     align-self: stretch;
   }
@@ -162,7 +168,7 @@ export default {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   display: block;
-  @include tweakpoint('min-width', 1100px) {
+  @include tweakpoint('min-width', 700px) {
     border-radius: 0;
     border: none;
     border-top-left-radius: 4px;
@@ -185,7 +191,7 @@ export default {
 
 .text-wrapper {
   padding: 25px 15px;
-  @include tweakpoint('min-width', 1100px) {
+  @include tweakpoint('min-width', 700px) {
     padding: 50px 30px;
     width: 60%;
   }
