@@ -7,12 +7,6 @@
     </div>
     <div class="wrapper">
       <div class="wrapper-inner">
-        <div class="new-vs-total-logo">
-          <TheLogo 
-            :width="120" 
-            :height="26"
-            fill="black"/>
-        </div>
         <canvas id="categories-per-month-chart"/>
       </div>
     </div>
@@ -1594,6 +1588,6 @@ export default {
   position: absolute;
   z-index: 10;
   top: 25px;
-  left: 50px;
+  right: 50px;
 }
 </style>
