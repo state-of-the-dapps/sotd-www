@@ -275,7 +275,7 @@ export default {
     broken: 'Kaputt'
   },
   StatsCategoriesPerMonth: {
-    // TODO title: 'Categories per Month'
+    // TODO title: 'DApp Activity by Category'
   },
   tags: 'Stichworte',
   TheFooter: {
