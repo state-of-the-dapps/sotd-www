@@ -222,6 +222,7 @@ export default {
     eos: 'EOS',
     poa: 'POA',
     gochain: 'GoChain',
+    xdai: 'xDai',
     steem: 'Steem'
   },
   SecondaryCtaMailingList: {

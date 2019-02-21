@@ -27,7 +27,7 @@
     "lodash": "^4.17.11",
     "mixpanel-browser": "^2.13.0",
     "number-abbreviate": "^2.0.0",
-    "nuxt": "2.4.2",
+    "nuxt": "2.4.3",
     "nuxt-dropzone": "^0.2.8",
     "nuxt-i18n": "^5.4.4",
     "pluralize": "^7.0.0",
