@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import formatDate from 'date-fns/format'
 import TheLogo from './TheLogo'
 
 const rawData = [
@@ -1453,6 +1454,16 @@ export default {
           responsive: true,
           hoverMode: 'index',
           stacked: true,
+          tooltips: {
+            callbacks: {
+              label: (tooltipItem, data) => {
+                let category = this.$options.filters.capitalize(
+                  data.datasets[tooltipItem.datasetIndex].label
+                )
+                return `${category}: ${tooltipItem.yLabel.toLocaleString()}`
+              }
+            }
+          },
           title: {
             display: false
           },
@@ -1465,7 +1476,10 @@ export default {
                 },
                 ticks: {
                   fontFamily: 'Overpass',
-                  fontStyle: 'bold'
+                  fontStyle: 'bold',
+                  callback: function(value, index, values) {
+                    return formatDate(value, `MMM 'YY`)
+                  }
                 }
               }
             ],
@@ -1478,7 +1492,10 @@ export default {
                 ticks: {
                   beginAtZero: true,
                   fontFamily: 'Overpass',
-                  fontStyle: 'bold'
+                  fontStyle: 'bold',
+                  callback: function(value, index, values) {
+                    return value.toLocaleString()
+                  }
                 }
               }
             ]
