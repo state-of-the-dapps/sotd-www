@@ -7,8 +7,8 @@
     </div>
     <div class="dropdown-wrapper">
       <BaseDropdown
-        :options="[{text: 'Test', selection: 'selection'}]"
-        :selected="'Transactions'"
+        :options="options"
+        :selected="selected"
         :important="true"
         title="Choose one"
         @select="setActivityType"/>
@@ -1439,12 +1439,34 @@ export default {
       chartData: {
         labels: [],
         datasets: []
-      }
+      },
+      options: [
+        {
+          text: 'Transactions',
+          selection: 'transactions'
+        },
+        {
+          text: 'Active users',
+          selection: 'activeUsers'
+        },
+        {
+          text: 'Volume (USD)',
+          selection: 'volume'
+        }
+      ],
+      selectionMap: {
+        activeUsers: 'Active users',
+        transactions: 'Transactions',
+        volume: 'Volume (USD)'
+      },
+      selected: 'Transactions'
     }
   },
   mounted() {
     this.formatLabels()
-    this.formatData('transactions')
+    const facet =
+      this.$route.query.categoryActivity || this.options[0].selection
+    this.formatData(facet)
     this.createChart('categories-per-month-chart', this.chartData)
   },
   methods: {
@@ -1540,8 +1562,12 @@ export default {
       labels = [...new Set(labels)]
       this.chartData.labels = labels
     },
-    setActivityType() {
-      return
+    setActivityType(selection) {
+      this.selected = this.selectionMap[selection]
+      this.formatLabels()
+      const facet = selection
+      this.formatData(facet)
+      this.createChart('categories-per-month-chart', this.chartData)
     }
   }
 }
