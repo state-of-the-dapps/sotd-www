@@ -165,6 +165,7 @@ export default {
     heading: 'Rang nach Plattform'
   },
   FeaturedSpotlight: {
+    // TODO ctaText: 'Read more',
     // TODO heading: 'Spotlight'
   },
   filters: {

@@ -162,6 +162,7 @@ export default {
     heading: '平台排行榜'
   },
   FeaturedSpotlight: {
+    // TODO ctaText: 'Read more',
     // TODO heading: 'Spotlight'
   },
   filters: {
