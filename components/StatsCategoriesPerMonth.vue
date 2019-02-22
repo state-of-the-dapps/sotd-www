@@ -1642,6 +1642,6 @@ export default {
   position: absolute;
   z-index: 10;
   top: 75px;
-  right: 20px;
+  right: 30px;
 }
 </style>
