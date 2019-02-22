@@ -267,13 +267,14 @@ const newDapps = [
   119
 ]
 
-const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem']
+const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem', 'xDai']
 
 const platformMap = {
   ethereum: 'Ethereum',
   eos: 'EOS',
   poa: 'POA',
   gochain: 'GoChain',
+  xdai: 'xDai',
   steem: 'Steem'
 }
 
