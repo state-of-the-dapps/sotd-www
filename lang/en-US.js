@@ -170,6 +170,7 @@ export default {
   filters: {
     allPlatforms: 'All platforms',
     chooseColumn: 'Choose a column',
+    chooseOne: 'Choose one',
     choosePlatform: 'Choose a platform',
     allCategories: 'All categories',
     chooseCategory: 'Choose a category',
@@ -271,6 +272,12 @@ export default {
     'You can support State of the DApps with a small contribution. Together, we can promote the DApp ecosystem and attract more users.',
   submitQuestionPlaceholder: 'Enter an (optional) amount',
   submitQuestionNote: `We'll follow up with you after submitting`,
+  StatsCategoriesPerMonth: {
+    activeUsers: 'Active users',
+    title: 'Ethereum DApp Activity by Category',
+    transactions: 'Transactions',
+    volume: 'Volume (ETH)'
+  },
   tags: 'tags',
   TheFooter: {
     copyright: 'Copyright',

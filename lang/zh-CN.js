@@ -168,6 +168,7 @@ export default {
   filters: {
     allPlatforms: '所有平台',
     chooseColumn: '选择一列',
+    // TODO chooseOne: 'Choose one',
     choosePlatform: '选择平台',
     allCategories: '所有类别',
     chooseCategory: '選擇類別',
@@ -265,6 +266,12 @@ export default {
     concept: '概念',
     stealth: '隐形模式',
     broken: '坏掉'
+  },
+  StatsCategoriesPerMonth: {
+    // TODO activeUsers: 'Active users',
+    // TODO title: 'Ethereum DApp Activity by Category',
+    // TODO transactions: 'Transactions',
+    // TODO volume: 'Volume (ETH)'
   },
   tags: '标签',
   TheFooter: {

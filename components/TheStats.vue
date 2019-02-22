@@ -78,7 +78,8 @@
         <canvas id="new-vs-total"/>
       </div>
     </div>
-    <h2 class="heading-2">{{ $tc('category', 2) }}</h2>
+    <StatsCategoriesPerMonth />
+    <!-- <h2 class="heading-2">{{ $tc('category', 2) }}</h2>
     <div class="table-wrapper">
       <table class="table">
         <thead class="table-headings">
@@ -120,7 +121,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
     <h2 class="heading-2">{{ $t('platform') | pluralize }}</h2>
     <div class="table-wrapper">
       <table class="table">
@@ -227,6 +228,7 @@ import Chart from 'chart.js'
 import formatDate from 'date-fns/format'
 import CategoryPlatformFilters from './CategoryPlatformFilters'
 import BaseHelp from './BaseHelp'
+import StatsCategoriesPerMonth from './StatsCategoriesPerMonth'
 import StatsStatusBarChart from './StatsStatusBarChart'
 import TheLogo from './TheLogo'
 
@@ -234,6 +236,7 @@ export default {
   components: {
     CategoryPlatformFilters,
     BaseHelp,
+    StatsCategoriesPerMonth,
     StatsStatusBarChart,
     TheLogo
   },
@@ -423,7 +426,6 @@ export default {
 }
 
 .list {
-  background: $color--white;
   display: block;
   text-align: center;
   margin-bottom: 1rem;
@@ -583,8 +585,8 @@ export default {
 
 .wrapper {
   @include tweakpoint('min-width', 1000px) {
-    margin-right: 40px;
-    padding-right: 40px;
+    margin-right: 25px;
+    padding-right: 25px;
   }
 }
 </style>

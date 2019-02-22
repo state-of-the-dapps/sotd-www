@@ -171,6 +171,7 @@ export default {
   filters: {
     allPlatforms: 'Alle Plattformen',
     chooseColumn: 'Wähle eine Spalte',
+    // TODO chooseOne: 'Choose one',
     choosePlatform: 'Wähle eine Plattform',
     allCategories: 'Alle Kategorien',
     chooseCategory: 'Wähle eine Kategorie',
@@ -273,6 +274,12 @@ export default {
     concept: 'Konzept',
     stealth: 'Versteckt',
     broken: 'Kaputt'
+  },
+  StatsCategoriesPerMonth: {
+    // TODO activeUsers: 'Active users',
+    // TODO title: 'Ethereum DApp Activity by Category',
+    // TODO transactions: 'Transactions',
+    // TODO volume: 'Volume (ETH)'
   },
   tags: 'Stichworte',
   TheFooter: {
