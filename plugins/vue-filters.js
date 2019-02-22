@@ -8,7 +8,7 @@ import * as constants from '~/helpers/constants'
 Vue.filter('abbreviateNumber', (value, decimals) => {
   if (value) {
     var numAbbr = new NumAbbr()
-    var abbreviatedNumber = numAbbr.abbreviate(value, decimals)
+    var abbreviatedNumber = numAbbr.abbreviate(Math.round(value), decimals)
     return abbreviatedNumber
   }
 })

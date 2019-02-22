@@ -1450,7 +1450,7 @@ export default {
           selection: 'activeUsers'
         },
         {
-          text: 'Volume (USD)',
+          text: 'Volume (ETH)',
           selection: 'volume'
         }
       ],
@@ -1535,6 +1535,7 @@ export default {
         categories.push(x.category)
       })
       categories = [...new Set(categories)]
+      categories.sort()
       let datasets = []
       categories.map(category => {
         let datasetData = []

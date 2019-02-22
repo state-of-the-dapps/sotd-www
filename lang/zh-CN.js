@@ -267,7 +267,7 @@ export default {
     broken: '坏掉'
   },
   StatsCategoriesPerMonth: {
-    // TODO title: 'DApp Activity by Category'
+    // TODO title: 'Ethereum DApp Activity by Category'
   },
   tags: '标签',
   TheFooter: {

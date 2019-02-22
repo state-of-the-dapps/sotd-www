@@ -275,7 +275,7 @@ export default {
     broken: 'Kaputt'
   },
   StatsCategoriesPerMonth: {
-    // TODO title: 'DApp Activity by Category'
+    // TODO title: 'Ethereum DApp Activity by Category'
   },
   tags: 'Stichworte',
   TheFooter: {

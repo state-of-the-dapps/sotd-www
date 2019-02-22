@@ -272,7 +272,7 @@ export default {
   submitQuestionPlaceholder: 'Enter an (optional) amount',
   submitQuestionNote: `We'll follow up with you after submitting`,
   StatsCategoriesPerMonth: {
-    title: 'DApp Activity by Category'
+    title: 'Ethereum DApp Activity by Category'
   },
   tags: 'tags',
   TheFooter: {
