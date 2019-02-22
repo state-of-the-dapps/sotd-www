@@ -10,7 +10,7 @@
         :options="options"
         :selected="selected"
         :important="true"
-        title="Choose one"
+        :title="$t('filters.chooseOne')"
         @select="setActivityType"/>
     </div>
     <div class="wrapper">
@@ -1442,15 +1442,15 @@ export default {
       },
       options: [
         {
-          text: 'Transactions',
+          text: this.$t(this.namespace('transactions')),
           selection: 'transactions'
         },
         {
-          text: 'Active users',
+          text: this.$t(this.namespace('activeUsers')),
           selection: 'activeUsers'
         },
         {
-          text: 'Volume (ETH)',
+          text: this.$t(this.namespace('volume')),
           selection: 'volume'
         }
       ],
@@ -1566,9 +1566,9 @@ export default {
     setActivityType(selection) {
       this.selected = this.selectionMap[selection]
       this.formatLabels()
-      const facet = selection
-      this.formatData(facet)
+      this.formatData(selection)
       this.createChart('categories-per-month-chart', this.chartData)
+      this.$mixpanel.track('Category Stats', { selection })
     }
   }
 }
