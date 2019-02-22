@@ -15,6 +15,12 @@
     </div>
     <div class="wrapper">
       <div class="wrapper-inner">
+        <div class="logo">
+          <TheLogo 
+            :width="120" 
+            :height="26"
+            fill="black"/>
+        </div>
         <canvas id="categories-per-month-chart"/>
       </div>
     </div>
@@ -1512,7 +1518,7 @@ export default {
               {
                 stacked: true,
                 gridLines: {
-                  display: false
+                  display: true
                 },
                 ticks: {
                   beginAtZero: true,
@@ -1635,7 +1641,7 @@ export default {
 .logo {
   position: absolute;
   z-index: 10;
-  top: 25px;
-  right: 50px;
+  top: 75px;
+  right: 20px;
 }
 </style>
