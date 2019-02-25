@@ -84,6 +84,11 @@ export default {
       } else if (this.platform === 'Steem') {
         addressLink =
           'https://steemd.com/@' + this.address + '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'xDai') {
+        addressLink =
+          'https://blockscout.com/poa/dai/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       }
       return addressLink
     }

@@ -49,6 +49,12 @@
         :slug="slug"
         platform="Steem"
         network="mainnet"/>
+      <DappDetailBodyContentModulesContractsItem
+        v-if="xDaiMainnet.length"
+        :addresses="xDaiMainnet"
+        :slug="slug"
+        platform="xDai"
+        network="mainnet"/>
     </ul>
   </div>
 </template>
@@ -97,6 +103,11 @@ export default {
       default: () => []
     },
     steemMainnet: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
+    xDaiMainnet: {
       type: Array,
       required: true,
       default: () => []

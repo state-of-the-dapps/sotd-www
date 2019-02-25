@@ -59,7 +59,7 @@
             type="numbers"/>
         </div>
         <div 
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d"
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d" 
@@ -107,6 +107,15 @@
             :weekly="dapp.stats.steem_value_7d"
             :title="$t(namespace('volume'), {token: 'STEEM'})"
             type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.xdai_value_30d"
+            :daily="dapp.stats.xdai_value_1d"
+            :monthly="dapp.stats.xdai_value_30d"
+            :sparkline="dapp.sparklines.xdai_value"
+            :quarterly="dapp.stats.xdai_value_90d"
+            :weekly="dapp.stats.xdai_value_7d"
+            :title="$t(namespace('volume'), {token: 'xDAI'})"
+            type="numbers"/>
         </div>
       </div>
       <div 
@@ -119,7 +128,8 @@
             (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
             (dapp.contractsGoChainMainnet && dapp.contractsGoChainMainnet.length) ||
             (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
-            (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length)
+            (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length) ||
+            (dapp.contractsXDaiMainnet && dapp.contractsXDaiMainnet.length)
         "
         class="module-wrapper -tier-5">
         <div
@@ -134,6 +144,7 @@
             :go-chain-mainnet="dapp.contractsGoChainMainnet"
             :eos-mainnet="dapp.contractsEosMainnet"
             :steem-mainnet="dapp.contractsSteemMainnet"
+            :x-dai-mainnet="dapp.contractsXDaiMainnet"
             :slug="dapp.slug"/>
         </div>
         <div 
@@ -186,6 +197,7 @@ export default {
         contractsGoChainMainnet: [],
         contractsEosMainnet: [],
         contractsSteemMainnet: [],
+        contractsXDaiMainnet: [],
         sparklines: {},
         stats: {}
       })

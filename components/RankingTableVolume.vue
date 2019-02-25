@@ -11,6 +11,7 @@
       <template v-if="platform === 'GoChain'">GO</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
       <template v-if="platform === 'Steem'">STEEM</template>
+      <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span 
       v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null" 
@@ -62,6 +63,8 @@ export default {
         volume = stats.gochain_value_7d
       } else if (platform === 'Steem') {
         volume = stats.steem_value_7d
+      } else if (platform === 'xDai') {
+        volume = stats.xdai_value_7d
       }
       return volume
     },
@@ -79,6 +82,8 @@ export default {
         volumePct = stats.gochain_value_7d_pct
       } else if (platform === 'Steem') {
         volumePct = stats.steem_value_7d_pct
+      } else if (platform === 'xDai') {
+        volumePct = stats.xdai_value_7d_pct
       }
       return volumePct
     }
