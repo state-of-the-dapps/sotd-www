@@ -1,47 +1,47 @@
 export default {
-  // BaseMenu: {
-  //   allDapps: 'All DApps',
-  //   home: 'Home',
-  //   rankings: 'Rankings',
-  //   search: 'Search',
-  //   stats: 'Stats'
-  // },
-  // category: 'Category | Categories',
-  // categoryOptions: {
-  //   Development: 'Development',
-  //   Energy: 'Energy',
-  //   Exchanges: 'Exchanges',
-  //   Finance: 'Finance',
-  //   Gambling: 'Gambling',
-  //   Games: 'Games',
-  //   Governance: 'Governance',
-  //   Marketplaces: 'Marketplaces',
-  //   Health: 'Health',
-  //   'High-risk': 'High risk',
-  //   Identity: 'Identity',
-  //   Insurance: 'Insurance',
-  //   Media: 'Media',
-  //   Property: 'Property',
-  //   Security: 'Security',
-  //   Social: 'Social',
-  //   Storage: 'Storage',
-  //   Wallet: 'Wallet'
-  // },
-  // collections: {
-  //   'Best-of-MetaMask': 'Best of Metamask',
-  //   BitGuild: 'BitGuild',
-  //   CryptoGaming: 'CryptoGaming',
-  //   Featured: 'Featured',
-  //   Hottest: 'Hottest',
-  //   'Most-Viewed': 'Most Viewed',
-  //   'Recently-added': 'Recently added',
-  //   'Top-Development-Activity': 'Top Development Activity'
-  // },
-  // cta: {
-  //   submit: 'Submit a DApp',
-  //   viewAll: 'View all',
-  //   viewDapp: 'View DApp'
-  // },
+  BaseMenu: {
+    allDapps: '모든 디앱',
+    home: '홈',
+    rankings: '순위',
+    search: '검색',
+    stats: '통계'
+  },
+  category: '항목',
+  categoryOptions: {
+    Development: '개발',
+    Energy: '에너지',
+    Exchanges: '거래소',
+    Finance: '금융',
+    Gambling: '도박',
+    Games: '게임',
+    Governance: '거버넌스',
+    Marketplaces: '시장',
+    Health: '의료',
+    'High-risk': '고위험',
+    Identity: '신원',
+    Insurance: '보험',
+    Media: '미디어',
+    Property: '부동산',
+    Security: '보안',
+    Social: '소셜',
+    Storage: '저장소',
+    Wallet: '지갑'
+  },
+  collections: {
+    'Best-of-MetaMask': '메타마스크용 베스트',
+    // BitGuild: 'BitGuild',
+    // CryptoGaming: 'CryptoGaming',
+    Featured: '주요 디앱',
+    Hottest: '최고 인기',
+    'Most-Viewed': '최고 조회수',
+    'Recently-added': '최근 추가됨',
+    'Top-Development-Activity': '상위 개발활동'
+  },
+  cta: {
+    submit: 'DApp 등록하기',
+    viewAll: '모두 보기',
+    viewDapp: 'DApp 보기'
+  },
   // DappCardListItem: {
   //   new: 'New'
   // },
@@ -141,9 +141,9 @@ export default {
   // DappsSort: {
   //   sortBy: 'Sort by'
   // },
-  // devActivity30d: 'Dev activity (30d)',
-  // devActivity30dHelp:
-  //   'The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.',
+  devActivity30d: '개발 활동(30일)',
+  devActivity30dHelp:
+    '프로젝트 조직/저장소에서 발생하는 깃허브 이벤트 숫자. 이는 코드 푸시, 이슈, 풀요청 등을 포함한다.',
   // FeaturedCategoryList: {
   //   games: 'games',
   //   finance: 'finance',
@@ -183,24 +183,24 @@ export default {
   //   volumePerNetwork:
   //     'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly. Exchange rates sourced from CryptoCompare.com'
   // },
-  // GlobalSearch: {
-  //   dapps: 'DApps',
-  //   noResults: 'Sorry, no results. Please try a new search',
-  //   placeholder: 'Discover awesome DApps…',
-  //   suggestedTags: 'Suggested tags',
-  //   viewDappResults: 'View all DApp results'
-  // },
-  // HomeHeroContentIntro: {
-  //   heading: 'Explore Decentralized Applications',
-  //   learn: 'Learn more about DApps',
-  //   subheading:
-  //     'Discover the possibilities of the Ethereum, EOS, POA, GoChain, and Steem blockchains with the definitive registry of DApp projects.',
-  //   view: 'View the top DApps'
-  // },
-  // missingData: 'Data is currently missing or incomplete',
-  // new: 'New',
-  // platform: 'Platform',
-  // profileStrength: 'profile strength',
+  GlobalSearch: {
+    dapps: '디앱',
+    noResults: '죄송하지만, 검색결과가 없습니다. 새로운 검색어로 시도해보세요.',
+    placeholder: '유익한 디앱 찾기',
+    suggestedTags: '추천 태그',
+    viewDappResults: '모든 디앱 결과 보기'
+  },
+  HomeHeroContentIntro: {
+    heading: '디앱 검색하기',
+    learn: '디앱 자세히 알아보기',
+    subheading:
+      '공식 등재된 디앱 프로젝트를 통해 이더리움, 이오스, POA, GoChain 및 스팀 블록체인 가능성 발견하기',
+    view: '인기 디앱 보기'
+  },
+  missingData: '현재 데이터가 없거나 부족함',
+  new: '신규',
+  platform: '플랫폼',
+  profileStrength: '프로필 완성도',
   // rankingColumns: {
   //   rank: 'Rank',
   //   dau: 'Users (24h)',
@@ -254,31 +254,31 @@ export default {
   //   cta: 'Try it now',
   //   discover: 'Discover Steem Keychain'
   // },
-  // SpotlightDetail: {
-  //   heading: 'DApp Spotlight'
-  // },
-  // status: 'Status',
-  // statusOptions: {
-  //   live: 'live',
-  //   abandoned: 'abandoned',
-  //   wip: 'WIP',
-  //   beta: 'beta',
-  //   prototype: 'prototype',
-  //   concept: 'concept',
-  //   stealth: 'stealth',
-  //   broken: 'broken'
-  // },
-  // submitQuestion:
-  //   'You can support State of the DApps with a small contribution. Together, we can promote the DApp ecosystem and attract more users.',
-  // submitQuestionPlaceholder: 'Enter an (optional) amount',
-  // submitQuestionNote: `We'll follow up with you after submitting`,
+  SpotlightDetail: {
+    heading: '디앱 스포트라이트'
+  },
+  status: '상태',
+  statusOptions: {
+    live: '라이브',
+    abandoned: '포기',
+    wip: '작업중',
+    beta: '베타',
+    prototype: '프로토타입',
+    concept: '개념',
+    stealth: '비공개',
+    broken: '중단'
+  },
+  submitQuestion:
+    '당신의 작은 기부로 State of the DApps에 기여할 수 있습니다. 우리가 함께라면 디앱 생태계를 홍보하고, 보다 많은 사용자를 유치할 수 있습니다.',
+  submitQuestionPlaceholder: '금액을 (생략가능) 입력하세요.',
+  submitQuestionNote: `제출하신 경우, 추후 연락드리겠습니다.`,
   // StatsCategoriesPerMonth: {
   //   activeUsers: 'Active users',
   //   title: 'Ethereum DApp Activity by Category',
   //   transactions: 'Transactions',
   //   volume: 'Volume (ETH)'
   // },
-  // tags: 'tags',
+  tags: '태그',
   // TheFooter: {
   //   copyright: 'Copyright',
   //   designedBy: 'Designed by {designer}',
@@ -315,10 +315,9 @@ export default {
   //   volumeHelp:
   //     'Transaction volume to DApp contracts. Platforms use different currencies, so numbers should not be compared directly'
   // },
-  // userActivity30d: 'User activity (30d)',
-  // userActivity30dHelp:
-  //   'Users (unique source addresses in transactions to DApp contracts) over the past 30 days',
-  // users24h: 'Users (24hr)',
-  // users24hHelp:
-  //   'Daily Active Users, or DAU (unique source addresses in transactions to DApp contracts)'
+  userActivity30d: '사용자 활동(30일)',
+  userActivity30dHelp:
+    '지난 30일간 사용자(디앱 컨트랙트에 기록된 개별 원천 주소들)',
+  users24h: '사용자(24시간)',
+  users24hHelp: '일일 활동 사용자, 또는 DAU(개별 원천 주소들)'
 }
