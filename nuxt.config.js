@@ -52,6 +52,12 @@ export default {
             file: 'de-DE.js'
           },
           {
+            code: 'ko',
+            name: '한국어',
+            iso: 'ko-KR',
+            file: 'ko-KR.js'
+          },
+          {
             code: 'zh',
             name: '中文',
             iso: 'zh-CN',
