@@ -274,6 +274,9 @@ export default {
     // TODO volume: 'Volume (ETH)'
   },
   tags: '标签',
+  Teardowns: {
+    // TODO title: 'DApp Teardowns'
+  },
   TheFooter: {
     copyright: '版权',
     designedBy: '由 {designer} 设计',

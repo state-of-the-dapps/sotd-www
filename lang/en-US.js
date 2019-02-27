@@ -279,6 +279,9 @@ export default {
     volume: 'Volume (ETH)'
   },
   tags: 'tags',
+  Teardowns: {
+    title: 'DApp Teardowns'
+  },
   TheFooter: {
     copyright: 'Copyright',
     designedBy: 'Designed by {designer}',

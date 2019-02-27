@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="wrapper">
-      <h1 class="title">DApp Teardowns</h1>
+      <h1 class="title">{{ $t('Teardowns.title') }}</h1>
       <ul class="teardown-list">
         <li
           v-for="(teardown, index) in teardowns"
@@ -12,6 +12,7 @@
             :href="teardown.downloadUrl"
             target="_blank"
             class="teardown-image-wrapper"
+            @click="trackDownload(teardown.dapp)"
           >
             <img
               :src="teardown.imageUrl"
@@ -24,6 +25,7 @@
             :href="teardown.downloadUrl"
             target="_blank"
             class="teardown-link"
+            @click="trackDownload(teardown.dapp)"
           >{{ teardown.description }}</a>
         </li>
       </ul>
@@ -37,18 +39,25 @@ export default {
     return {
       teardowns: [
         {
-          imageUrl: 'https://www.fillmurray.com/g/200/100',
-          imageAlt: '',
+          dapp: '',
           description: 'DApp Teardown',
-          downloadUrl: '#'
+          downloadUrl: '#',
+          imageAlt: '',
+          imageUrl: 'https://www.fillmurray.com/g/200/100'
         },
         {
-          imageUrl: 'https://www.fillmurray.com/g/200/100',
-          imageAlt: '',
+          dapp: '',
           description: 'DApp Teardown',
-          downloadUrl: '#'
+          downloadUrl: '#',
+          imageAlt: '',
+          imageUrl: 'https://www.fillmurray.com/g/200/100'
         }
       ]
+    }
+  },
+  methods: {
+    trackDownload(dapp) {
+      this.$mixpanel.track('Teardown Download', { dapp })
     }
   }
 }

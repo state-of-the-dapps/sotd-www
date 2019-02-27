@@ -292,6 +292,9 @@ export default {
   //   helpMetamask: 'Help for Metamask',
   //   termsOfUse: 'Terms of use'
   // },
+  // Teardowns: {
+  //   title: 'DApp Teardowns'
+  // },
   // TheStats: {
   //   title: 'DApp Statistics',
   //   description:

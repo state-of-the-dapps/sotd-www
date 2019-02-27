@@ -282,6 +282,9 @@ export default {
     // TODO volume: 'Volume (ETH)'
   },
   tags: 'Stichworte',
+  Teardowns: {
+    // TODO title: 'DApp Teardowns'
+  },
   TheFooter: {
     copyright: 'Urheberrecht',
     designedBy: 'Entworfen von {designer}',
