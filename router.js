@@ -84,6 +84,10 @@ const Stats = () =>
   interopDefault(
     import('~/pages/Stats.vue' /* webpackChunkName: "pages/stats" */)
   )
+const Teardowns = () =>
+  interopDefault(
+    import('~/pages/Teardowns.vue' /* webpackChunkName: "pages/teardowns" */)
+  )
 const Terms = () =>
   interopDefault(
     import('~/pages/Terms.vue' /* webpackChunkName: "pages/terms" */)
@@ -808,6 +812,26 @@ export function createRouter() {
         path: '/zh/spotlights/:slug',
         component: SpotlightDetail,
         name: 'spotlight-detail___zh'
+      },
+      {
+        path: '/teardowns',
+        component: Teardowns,
+        name: 'teardowns___en'
+      },
+      {
+        path: '/de/teardowns',
+        component: Teardowns,
+        name: 'teardowns___de'
+      },
+      {
+        path: '/ko/teardowns',
+        component: Teardowns,
+        name: 'teardowns___ko'
+      },
+      {
+        path: '/zh/teardowns',
+        component: Teardowns,
+        name: 'teardowns___zh'
       },
       {
         path: '/terms',
