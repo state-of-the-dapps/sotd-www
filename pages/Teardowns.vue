@@ -2,6 +2,7 @@
   <div class="page">
     <div class="wrapper">
       <h1 class="title">{{ $t('Teardowns.title') }}</h1>
+      <p class="intro">User Onboarding is the process of increasing the likelihood that new users become successful when adopting your product. Let's see how these DApps onboard new users:</p>
       <ul class="teardown-list">
         <li
           v-for="(teardown, index) in teardowns"
@@ -93,6 +94,12 @@ export default {
   text-transform: initial;
   text-align: center;
   margin-bottom: 0.75rem;
+}
+
+.intro {
+  font-size: 1.4rem;
+  line-height: 1.275;
+  text-align: center;
 }
 
 .teardown-link {
