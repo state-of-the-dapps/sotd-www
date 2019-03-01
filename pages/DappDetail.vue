@@ -51,7 +51,11 @@ export default {
     return {
       title: this.dapp.name + ' — ' + this.dapp.teaser || 'State of the DApps',
       meta: [
-        { hid: 'description', name: 'description', content: this.dapp.teaser },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$options.filters.truncate(this.dapp.description, 300)
+        },
         { hid: 'image', property: 'og:image', content: this.dapp.productImage }
       ]
     }
