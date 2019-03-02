@@ -216,6 +216,34 @@
           </div>
         </li>
       </ul>
+      <ul 
+        v-if="platform === 'xDai'" 
+        class="list">
+        <li
+          id="xDaiMainnet"
+          class="item">
+          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
+          <div 
+            :class="xDaiMainnetErrors && xDaiMainnetErrors.length > 0 ? '--has-errors' : ''" 
+            class="input-wrapper">
+            <textarea
+              id="xDaiMainnetField"
+              :value="xDaiMainnet" 
+              class="input" 
+              placeholder="Enter xDai addresses (one per line)" 
+              maxlength="11000" 
+              @input="updateAndValidate('xDaiMainnet', $event.target.value)"/>
+            <ul 
+              v-if="xDaiMainnetErrors && xDaiMainnetErrors.length > 0" 
+              class="error-list -contracts">
+              <li 
+                v-for="(error, index) in xDaiMainnetErrors" 
+                :key="index" 
+                class="error-item">{{ error }}</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -312,6 +340,16 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+    xDaiMainnet: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    xDaiMainnetErrors: {
+      type: Array,
+      required: true,
+      default: () => []
     }
   },
   data() {
@@ -345,12 +383,17 @@ export default {
         this.platform === 'Steem' &&
           (this.steemMainnet.length && !this.steemMainnetErrors.length)
       )
+      const xDaiIsComplete = Boolean(
+        this.platform === 'xDai' &&
+          (this.xDaiMainnet.length >= 42 && !this.xDaiMainnetErrors.length)
+      )
       return Boolean(
         ethereumIsComplete ||
           eosIsComplete ||
           poaIsComplete ||
           goChainIsComplete ||
-          steemIsComplete
+          steemIsComplete ||
+          xDaiIsComplete
       )
     }
   },

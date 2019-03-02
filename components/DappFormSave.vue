@@ -253,6 +253,7 @@ export default {
         poaMainnet: 'POA Mainnet',
         ropsten: 'Ethereum Ropsten',
         rinkeby: 'Ethereum Rinkeby',
+        xDaiMainnet: 'xDai Mainnet',
         socialChat: 'Chat invitation URL',
         status: 'Status',
         steemMainnet: 'Steem Mainnet',
@@ -298,6 +299,7 @@ export default {
         data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
+        data.fields.contractsXDaiMainnet = this.contractsXDaiMainnet
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$emit('setProfileScore', score)
@@ -330,6 +332,7 @@ export default {
         data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
         data.fields.contractsEosMainnet = this.contractsEosMainnet
         data.fields.contractsSteemMainnet = this.contractsSteemMainnet
+        data.fields.contractsXDaiMainnet = this.contractsXDaiMainnet
         this.$emit('submit', data)
       }
     },
@@ -483,7 +486,9 @@ export default {
 }
 
 .missing-fields-anchor {
-  @include link;
+  display: block;
+  cursor: pointer;
+  text-decoration: underline;
   padding: 0.25rem 0;
 }
 

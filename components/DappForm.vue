@@ -36,6 +36,7 @@
           :contracts-go-chain-mainnet="contractsGoChainMainnet"
           :contracts-eos-mainnet="contractsEosMainnet"
           :contracts-steem-mainnet="contractsSteemMainnet"
+          :contracts-x-dai-mainnet="contractsXDaiMainnet"
           :diff-exists="diffExists"
           :error-fields="errorFields"
           :errors="errors"
@@ -129,6 +130,7 @@ export default {
         goChainMainnet: [],
         eosMainnet: [],
         steemMainnet: [],
+        xDaiMainnet: [],
         productImage: [],
         rinkeby: [],
         ropsten: [],
@@ -152,7 +154,8 @@ export default {
           steemMainnet: { address: '' },
           ropsten: { address: '' },
           kovan: { address: '' },
-          rinkeby: { address: '' }
+          rinkeby: { address: '' },
+          xDaiMainnet: { address: '' }
         },
         email: '',
         icon: '',
@@ -250,6 +253,11 @@ export default {
     contractsSteemMainnet() {
       return this.$options.filters.linesToArr(
         this.fields.contracts.steemMainnet.address
+      )
+    },
+    contractsXDaiMainnet() {
+      return this.$options.filters.linesToArr(
+        this.fields.contracts.xDaiMainnet.address
       )
     },
     dappUrl() {
@@ -363,6 +371,9 @@ export default {
     status() {
       return this.fields.status
     },
+    steemMainnetErrors() {
+      return this.errors.steemMainnet
+    },
     subscribeNewsletter() {
       return this.fields.subscribeNewsletter
     },
@@ -380,6 +391,9 @@ export default {
     },
     websiteUrlErrors() {
       return this.errors.websiteUrl
+    },
+    xDaiMainnetErrors() {
+      return this.errors.xDaiMainnet
     }
   },
   mounted() {

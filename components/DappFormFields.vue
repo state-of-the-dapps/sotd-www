@@ -73,6 +73,8 @@
       :eos-mainnet-errors="errors.eosMainnet"
       :steem-mainnet="fields.contracts.steemMainnet.address"
       :steem-mainnet-errors="errors.steemMainnet"
+      :x-dai-mainnet="fields.contracts.xDaiMainnet.address"
+      :x-dai-mainnet-errors="errors.xDaiMainnet"
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
     <DappFormFieldsStatus
@@ -168,7 +170,8 @@ export default {
           poaMainnet: {},
           goChainMainnet: {},
           eosMainnet: {},
-          steemMainnet: {}
+          steemMainnet: {},
+          xDaiMainnet: {}
         },
         siteUrls: {},
         socials: {
