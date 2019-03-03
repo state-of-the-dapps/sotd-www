@@ -259,14 +259,14 @@ export default {
   },
   status: 'Status',
   statusOptions: {
-    live: 'live',
-    abandoned: 'abandoned',
+    live: 'Live',
+    abandoned: 'Abandoned',
     wip: 'WIP',
-    beta: 'beta',
-    prototype: 'prototype',
-    concept: 'concept',
-    stealth: 'stealth',
-    broken: 'broken'
+    beta: 'Beta',
+    prototype: 'Prototype',
+    concept: 'Concept',
+    stealth: 'Stealth',
+    broken: 'Broken'
   },
   submitQuestion:
     'You can support State of the DApps with a small contribution. Together, we can promote the DApp ecosystem and attract more users.',

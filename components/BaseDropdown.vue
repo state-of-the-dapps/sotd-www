@@ -24,7 +24,7 @@
           height="18">
         <span
           :class="selected ? 'is-active' : ''"
-          class="selected-option">{{ $options.filters.capitalize(selected) || allText }}</span>
+          class="selected-option">{{ selected || allText }}</span>
         <span class="arrow-wrapper"><IconChevron
           :width="11"
           :height="11"
