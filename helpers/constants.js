@@ -276,6 +276,33 @@ const newDapps = [
 
 const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem', 'xDai']
 
+const platformSelectOptions = [
+  {
+    selection: 'Ethereum',
+    text: 'Ethereum'
+  },
+  {
+    selection: 'EOS',
+    text: 'EOS'
+  },
+  {
+    selection: 'GoChain',
+    text: 'GoChain'
+  },
+  {
+    selection: 'POA',
+    text: 'POA'
+  },
+  {
+    selection: 'Steem',
+    text: 'Steem'
+  },
+  {
+    selection: 'xDai',
+    text: 'xDai'
+  }
+]
+
 const platformMap = {
   ethereum: 'Ethereum',
   eos: 'EOS',
@@ -378,6 +405,7 @@ export {
   newDapps,
   platformList,
   platformMap,
+  platformSelectOptions,
   platformSoftware,
   rankingColumns
 }

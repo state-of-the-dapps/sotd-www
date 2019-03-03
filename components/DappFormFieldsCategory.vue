@@ -6,23 +6,13 @@
     <div
       id="categoryField"
       class="input-wrapper">
-      <div
-        class="input" 
-        @click="toggleDropdown"><span class="selected-category">{{ $options.filters.capitalize(selectedCategory) || 'Select a category' }}</span></div>
-      <transition name="fade">
-        <div 
-          v-on-clickaway="toggleDropdown" 
-          v-if="dropdown" 
-          class="dropdown">
-          <ul class="categories">
-            <li
-              v-for="(category, index) in categories"
-              :key="index"
-              class="category"
-              @click="selectCategory(category.slug)">{{ category.name }}</li>
-          </ul>
-        </div>
-      </transition>
+      <BaseDropdown
+        :important="true"
+        :options="categoryOptions"
+        :selected="selectedCategory ? $t(`categoryOptions.${this.$options.filters.capitalize(selectedCategory)}`) : $t('filters.chooseCategory')"
+        :title="$t('filters.chooseCategory')"
+        @select="selectCategory"
+      />
     </div>
   </div>
 </template>
@@ -30,10 +20,12 @@
 <script>
 import { getCategories } from '~/helpers/api'
 import { directive as onClickaway } from 'vue-clickaway'
+import BaseDropdown from './BaseDropdown'
 import IconCheckmark from './IconCheckmark'
 
 export default {
   components: {
+    BaseDropdown,
     IconCheckmark
   },
   directives: {
@@ -48,12 +40,20 @@ export default {
   },
   data() {
     return {
-      dropdown: false
+      categoryOptions: []
     }
   },
   async mounted() {
     try {
-      this.categories = await getCategories(this.$axios)
+      const categories = await getCategories(this.$axios)
+      const categoryOptions = []
+      categories.map(category => {
+        categoryOptions.push({
+          selection: category.slug,
+          text: this.$t(`categoryOptions.${category.name}`)
+        })
+      })
+      this.categoryOptions = categoryOptions
     } catch (e) {
       this.$sentry.captureException(e)
     }
@@ -66,10 +66,6 @@ export default {
         data: []
       }
       this.$emit('updateErrors', errors)
-      this.toggleDropdown()
-    },
-    toggleDropdown() {
-      this.dropdown = !this.dropdown
     }
   }
 }
@@ -85,22 +81,6 @@ export default {
   margin: 0 -10px;
   &:hover {
     background: $color--gray;
-  }
-}
-
-.dropdown {
-  position: absolute;
-  background: $color--white;
-  padding: 10px;
-  box-shadow: 0 17px 70px rgba($color--black, 0.2);
-  border-top: 1px solid $color--gray;
-  width: 320px;
-  top: 36px;
-  left: 0;
-  overflow: hidden;
-  z-index: 10;
-  @include tweakpoint('min-width', $tweakpoint--default) {
-    width: 350px;
   }
 }
 
@@ -122,11 +102,6 @@ export default {
 }
 
 .input-wrapper {
-  background: rgba(lighten($color--gray, 100%), 0.9);
-  display: flex;
-  width: 100%;
-  padding: 10px;
-  box-shadow: 0 0 20px rgba($color--black, 0.05);
   margin-bottom: 10px;
   position: relative;
   @include highlight;

@@ -8,35 +8,25 @@
       id="platformField"
       class="selection-wrapper"
     >
-      <button
-        :class="platform === 'Ethereum' ? 'is-active' : ''"
-        class="selection"
-        @click="setPlatform('Ethereum')">Ethereum</button>
-      <button
-        :class="platform === 'EOS' ? 'is-active' : ''"
-        class="selection"
-        @click="setPlatform('EOS')">EOS</button>
-      <button
-        :class="platform === 'POA' ? 'is-active' : ''"
-        class="selection"
-        @click="setPlatform('POA')">POA</button>
-      <button
-        :class="platform === 'GoChain' ? 'is-active' : ''"
-        class="selection"
-        @click="setPlatform('GoChain')">GoChain</button>
-      <button
-        :class="platform === 'Steem' ? 'is-active' : ''"
-        class="selection"
-        @click="setPlatform('Steem')">Steem</button>
+      <BaseDropdown
+        :important="true"
+        :options="platforms"
+        :selected="platform ? $t(`platformOptions.${platform.toLowerCase()}`) : $t('filters.choosePlatform')"
+        :title="$t('filters.choosePlatform')"
+        @select="setPlatform"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { platformSelectOptions } from '@/helpers/constants'
+import BaseDropdown from './BaseDropdown'
 import IconCheckmark from './IconCheckmark'
 
 export default {
   components: {
+    BaseDropdown,
     IconCheckmark
   },
   props: {
@@ -44,6 +34,23 @@ export default {
       type: String,
       required: true,
       default: ''
+    }
+  },
+  data() {
+    return {
+      platformSelectOptions
+    }
+  },
+  computed: {
+    platforms() {
+      const platforms = []
+      platformSelectOptions.map(platform => {
+        platforms.push({
+          selection: platform.selection,
+          text: this.$t(`platformOptions.${platform.text.toLowerCase()}`)
+        })
+      })
+      return platforms
     }
   },
   methods: {
