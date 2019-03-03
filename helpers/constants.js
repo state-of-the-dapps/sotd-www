@@ -270,7 +270,8 @@ const newDapps = [
   150,
   141,
   179,
-  119
+  119,
+  116
 ]
 
 const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem', 'xDai']
