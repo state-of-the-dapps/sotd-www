@@ -43,7 +43,7 @@ export default {
           dapp: 'cent',
           description: 'Cent',
           downloadUrl:
-            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+Cent.pdf',
+            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+Cent+-+2019-03-05.pdf',
           imageAlt: 'How Cent Onboards New Users',
           imageUrl:
             'https://cdn.stateofthedapps.com/dapps/cent/product_image_small_cent_8f8704657ed397d3d163440cd83f7a32b35e2880cd451d99c803348853955f7f_opti.jpg'
@@ -52,7 +52,7 @@ export default {
           dapp: 'my-crypto-heroes',
           description: 'My Crypto Heroes',
           downloadUrl:
-            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+My+Crypto+Heroes.pdf',
+            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+My+Crypto+Heroes+-+2019-03-05.pdf',
           imageAlt: 'How My Crypto Heroes Onboards New Users',
           imageUrl:
             'https://cdn.stateofthedapps.com/dapps/my-crypto-heroes/product_image_small_my-crypto-heroes_43bd2158020e0a0956f9a585918589c6d90d9d96c44bd8a9c23e9d9b47ff4baa_opti.jpg'
@@ -61,7 +61,7 @@ export default {
           dapp: 'uniswap',
           description: 'UniSwap',
           downloadUrl:
-            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+UniSwap.pdf',
+            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+UniSwap+-+2019-03-05.pdf',
           imageAlt: 'How UniSwap Onboards New Users',
           imageUrl:
             'https://cdn.stateofthedapps.com/dapps/uniswap/product_image_small_uniswap_df282b3dd09b08988cb62267974923f369df0a31a0bf4fdf37e95e26a8064b19_opti.jpg'
@@ -70,7 +70,7 @@ export default {
           dapp: 'world-of-ether',
           description: 'World of Ether',
           downloadUrl:
-            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+World+of+Ether.pdf',
+            'https://cdn.stateofthedapps.com/teardowns/SotD+User+Onboarding+%26+Teardown+-+World+of+Ether+-+2019-03-05.pdf',
           imageAlt: 'How World of Ether Onboards New Users',
           imageUrl:
             'https://cdn.stateofthedapps.com/dapps/world-of-ether/product_image_small_world-of-ether_e54a108e6f24b2b7692e2f8d8cc4c397b32c063159673eac4426bf473bab2d4d_opti.jpg'
