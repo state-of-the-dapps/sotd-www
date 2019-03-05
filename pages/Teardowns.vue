@@ -100,6 +100,8 @@ export default {
   font-size: 1.4rem;
   line-height: 1.275;
   text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .teardown-link {
