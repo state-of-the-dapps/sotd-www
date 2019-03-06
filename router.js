@@ -112,6 +112,19 @@ if (process.client) {
     window.addEventListener('load', () => {
       window.history.scrollRestoration = 'manual'
     })
+
+    if (window.location.hash) {
+      const initialHash = window.location.hash.replace('#', '')
+      const initialHashEl = document.getElementById(initialHash)
+      if (initialHashEl) {
+        setTimeout(() => {
+          initialHashEl.scrollIntoView({
+            block: 'start',
+            behavior: 'smooth'
+          })
+        }, 1000)
+      }
+    }
   }
 }
 const scrollBehavior = function(to, from, savedPosition) {

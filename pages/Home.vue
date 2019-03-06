@@ -41,7 +41,6 @@ export default {
         this.statDappCount.toLocaleString() +
         ' blockchain apps for Ethereum, Steem, EOS, and more'
     }
-  },
-  scrollToTop: true
+  }
 }
 </script>
