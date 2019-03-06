@@ -288,6 +288,7 @@ export default {
     downloadLogo: '下载我们的徽标',
     getAndroidApp: '获取Android应用',
     helpMetamask: '帮助 Metamask',
+    // TODO teardowns: 'Teardowns',
     termsOfUse: '使用条款'
   },
   TheStats: {

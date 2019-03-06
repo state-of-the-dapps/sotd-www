@@ -293,6 +293,7 @@ export default {
     downloadLogo: 'Download our logo',
     getAndroidApp: 'Get the Android app',
     helpMetamask: 'Help for Metamask',
+    teardowns: 'Teardowns',
     termsOfUse: 'Terms of use'
   },
   TheStats: {

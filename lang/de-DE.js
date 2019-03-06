@@ -296,6 +296,7 @@ export default {
     downloadLogo: 'Lade unser Logo runter',
     getAndroidApp: 'Hol dir die Android App',
     helpMetamask: 'Hilfe für Metamask',
+    // TODO teardowns: 'Teardowns',
     termsOfUse: 'Nutzungsbedingungen'
   },
   TheStats: {

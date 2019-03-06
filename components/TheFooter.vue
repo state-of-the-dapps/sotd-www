@@ -30,6 +30,12 @@
             </li>
             <li class="nav-item">
               <nuxt-link 
+                :to="localePath({ name: 'teardowns' })" 
+                class="nav-link" 
+                @click.native="$mixpanel.track('Teardowns - Footer')">{{ $t(namespace('teardowns')) }}</nuxt-link>
+            </li>
+            <li class="nav-item">
+              <nuxt-link 
                 :to="localePath({ name: 'logos' })" 
                 class="nav-link" 
                 @click.native="trackFooterLogoDownload()">{{ $t(namespace('downloadLogo')) }}</nuxt-link>
