@@ -117,12 +117,9 @@ if (process.client) {
       const initialHash = window.location.hash.replace('#', '')
       const initialHashEl = document.getElementById(initialHash)
       if (initialHashEl) {
-        setTimeout(() => {
-          initialHashEl.scrollIntoView({
-            block: 'start',
-            behavior: 'smooth'
-          })
-        }, 1000)
+        initialHashEl.scrollIntoView({
+          block: 'start'
+        })
       }
     }
   }
