@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       spotlight: {
+        body: '',
         imageUrl: '',
         slug: '',
         teaser: '',
@@ -67,6 +68,21 @@ export default {
         error({ statusCode: 404 })
       }
     })
+  },
+  head() {
+    return {
+      title:
+        this.spotlight.title + ' — ' + this.spotlight.teaser ||
+        'State of the DApps',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.$options.filters.truncate(this.spotlight.body, 300)
+        },
+        { hid: 'image', property: 'og:image', content: this.spotlight.imageUrl }
+      ]
+    }
   }
 }
 </script>
