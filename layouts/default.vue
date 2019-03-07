@@ -200,6 +200,9 @@ code {
     width: 100%;
     border-radius: 3px;
   }
+  iframe {
+    max-width: 100%;
+  }
   ul {
     padding-left: 2rem;
     li {
