@@ -38,6 +38,28 @@
           target="_blank" 
           @click="trackDappSite(['website'], dapp.sites.websiteUrl)">{{ $t(namespace('website')) }}<span v-if="dapp.isNsfw"> (NSFW)</span></a>
       </div>
+      <div v-if="dapp.sites.iosUrl">
+        <a 
+          :href="dapp.sites.iosUrl"
+          target="_blank" 
+          @click="trackDappSite(['ios','dapp'], dapp.sites.iosUrl)">
+          <img
+            class="badge-image ios"
+            src="~/assets/images/appstore-ios.png"
+          >
+        </a>
+      </div>
+      <div v-if="dapp.sites.androidUrl">
+        <a 
+          :href="dapp.sites.androidUrl"
+          target="_blank" 
+          @click="trackDappSite(['android','dapp'], dapp.sites.androidUrl)">
+          <img
+            class="badge-image"
+            src="~/assets/images/appstore-android.png"
+          >
+        </a>
+      </div>
       <ul 
         v-if="dapp.socials.length" 
         class="social-list">
@@ -153,6 +175,16 @@ export default {
   }
 }
 
+.badge-image {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  &.ios {
+    padding: 10px;
+  }
+}
+
 .cta-wrapper {
   position: relative;
 }
@@ -187,9 +219,6 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  @include tweakpoint('min-width', 1000px) {
-    justify-content: flex-start;
-  }
 }
 
 .add-icon {
