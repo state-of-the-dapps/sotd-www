@@ -11,7 +11,7 @@
     <div class="markdown-article-wrapper">
       <div
         class="markdown-article"
-        v-html="$md.render(spotlight.body)"
+        v-html="renderedMd"
       />
       <nuxt-link
         :to="localePath({ name: 'dapp-detail', params: { slug: spotlight.relatedDapp.slug } })"
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { renderMd } from '@/helpers/utils'
 import PageHeading from '@/components/PageHeading'
 
 export default {
@@ -57,6 +58,11 @@ export default {
           slug: ''
         }
       }
+    }
+  },
+  computed: {
+    renderedMd() {
+      return renderMd(this.$md, this.spotlight.body)
     }
   },
   asyncData({ app, params }) {

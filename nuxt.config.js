@@ -142,7 +142,7 @@ export default {
     injected: true,
     linkify: false,
     breaks: true,
-    use: ['markdown-it-attrs', 'markdown-it-video']
+    use: ['markdown-it-video']
   },
   plugins: [
     { src: '~/plugins/mixin' },
