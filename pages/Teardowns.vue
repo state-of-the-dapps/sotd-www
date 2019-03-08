@@ -30,12 +30,20 @@
           >{{ teardown.description }}</a>
         </li>
       </ul>
+      <p>Are you interested in an onboarding teardown for your own DApp?
+        <span
+          class="link"
+          @click="openIntercom">Ask us to review your product!</span>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import { openIntercom } from '~/helpers/mixins'
+
 export default {
+  mixins: [openIntercom],
   data() {
     return {
       teardowns: [
@@ -102,6 +110,11 @@ export default {
   text-align: center;
   max-width: 700px;
   margin: 0 auto;
+}
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .teardown-link {
