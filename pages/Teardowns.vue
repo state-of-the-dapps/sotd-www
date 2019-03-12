@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import formatDate from 'date-fns/format'
 import { openIntercom } from '~/helpers/mixins'
 
 export default {
@@ -48,6 +49,15 @@ export default {
     return {
       teardowns: [
         {
+          created: '2019-03-07',
+          dapp: 'uniswap',
+          description: 'UniSwap (video)',
+          downloadUrl: 'https://youtu.be/24rMfUFu7AA',
+          imageAlt: 'How UniSwap Onboards New Users (video)',
+          imageUrl: 'https://i.ytimg.com/vi/24rMfUFu7AA/mqdefault.jpg'
+        },
+        {
+          created: '2019-03-05',
           dapp: 'cent',
           description: 'Cent',
           downloadUrl:
@@ -57,6 +67,7 @@ export default {
             'https://cdn.stateofthedapps.com/dapps/cent/product_image_small_cent_8f8704657ed397d3d163440cd83f7a32b35e2880cd451d99c803348853955f7f_opti.jpg'
         },
         {
+          created: '2019-03-05',
           dapp: 'my-crypto-heroes',
           description: 'My Crypto Heroes',
           downloadUrl:
@@ -66,6 +77,7 @@ export default {
             'https://cdn.stateofthedapps.com/dapps/my-crypto-heroes/product_image_small_my-crypto-heroes_43bd2158020e0a0956f9a585918589c6d90d9d96c44bd8a9c23e9d9b47ff4baa_opti.jpg'
         },
         {
+          created: '2019-03-05',
           dapp: 'uniswap',
           description: 'UniSwap',
           downloadUrl:
@@ -75,6 +87,7 @@ export default {
             'https://cdn.stateofthedapps.com/dapps/uniswap/product_image_small_uniswap_df282b3dd09b08988cb62267974923f369df0a31a0bf4fdf37e95e26a8064b19_opti.jpg'
         },
         {
+          created: '2019-03-05',
           dapp: 'world-of-ether',
           description: 'World of Ether',
           downloadUrl:
