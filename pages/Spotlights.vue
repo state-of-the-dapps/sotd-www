@@ -31,7 +31,6 @@ export default {
   asyncData({ app }) {
     return app.$axios.get('spotlights').then(response => {
       const spotlights = response.data
-      console.log(spotlights)
       if (spotlights.length) {
         return { spotlights }
       }
