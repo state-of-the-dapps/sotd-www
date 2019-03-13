@@ -4,6 +4,7 @@
     class="page">
     <h2 class="title-2">{{ $t('SpotlightDetail.heading') }}</h2>
     <PageHeading :title="spotlight.title"/>
+    <p class="created">{{ spotlight.created | formatDate('MMMM D, YYYY') }}</p>
     <img
       :src="spotlight.imageUrl"
       class="image"
@@ -48,6 +49,7 @@ export default {
     return {
       spotlight: {
         body: '',
+        created: '',
         imageUrl: '',
         slug: '',
         teaser: '',
@@ -159,5 +161,9 @@ export default {
   color: darken($color--gray, 40%);
   margin-top: 3rem;
   margin-bottom: -2.5rem;
+}
+
+.created {
+  text-align: center;
 }
 </style>

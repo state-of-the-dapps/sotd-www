@@ -16,6 +16,7 @@
           class="heading-link"
           @click.native="$mixpanel.track('Featured Spotlight', { element: 'title', slug: spotlight.slug })">{{ spotlight.title }}</nuxt-link>
       </h2>
+      <p class="created">{{ spotlight.created | formatDate('MMMM D, YYYY') }}</p>
       <div class="description">
         <div
           class="teaser"
@@ -50,6 +51,7 @@ export default {
     spotlight: {
       type: Object,
       default: () => ({
+        created: '',
         imageUrl: '',
         slug: '',
         teaser: '',
@@ -61,6 +63,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.created {
+  margin-top: 0;
+}
+
 .description {
   max-width: 700px;
   p:first-child {
