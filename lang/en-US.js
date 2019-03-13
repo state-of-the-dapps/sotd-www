@@ -40,7 +40,8 @@ export default {
   cta: {
     submit: 'Submit a DApp',
     viewAll: 'View all',
-    viewDapp: 'View DApp'
+    viewDapp: 'View DApp',
+    viewPastSpotlights: 'View past spotlights'
   },
   DappCardListItem: {
     new: 'New'
@@ -164,7 +165,6 @@ export default {
     heading: 'Rankings by Platform'
   },
   FeaturedSpotlight: {
-    ctaText: 'Read more',
     heading: 'Spotlight'
   },
   filters: {
@@ -256,6 +256,12 @@ export default {
   },
   SpotlightDetail: {
     heading: 'DApp Spotlight'
+  },
+  SpotlightPreview: {
+    ctaText: 'Read more'
+  },
+  Spotlights: {
+    heading: 'Spotlights'
   },
   status: 'Status',
   statusOptions: {

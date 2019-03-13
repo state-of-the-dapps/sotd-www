@@ -41,6 +41,7 @@ export default {
     submit: 'DApp 등록하기',
     viewAll: '모두 보기',
     viewDapp: 'DApp 보기'
+    // TODO viewPastSpotlights: 'View past spotlights'
   },
   // DappCardListItem: {
   //   new: 'New'
@@ -164,7 +165,6 @@ export default {
   //   heading: 'Rankings by Platform'
   // },
   // FeaturedSpotlight: {
-  //   ctaText: 'Read more',
   //   heading: 'Spotlight'
   // },
   // filters: {
@@ -254,8 +254,14 @@ export default {
   //   cta: 'Try it now',
   //   discover: 'Discover Steem Keychain'
   // },
+  SpotlightPreview: {
+    // TODO ctaText: 'Read more'
+  },
   SpotlightDetail: {
     heading: '디앱 스포트라이트'
+  },
+  Spotlights: {
+    // TODO heading: 'Spotlights'
   },
   status: '상태',
   statusOptions: {

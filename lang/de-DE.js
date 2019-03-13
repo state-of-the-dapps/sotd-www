@@ -40,7 +40,8 @@ export default {
   cta: {
     submit: 'DApp einreichen',
     viewAll: 'Alle anzeigen'
-    // TODO viewDapp: 'View DApp'
+    // TODO viewDapp: 'View DApp',
+    // TODO viewPastSpotlights: 'View past spotlights'
   },
   DappCardListItem: {
     new: 'Neu'
@@ -165,7 +166,6 @@ export default {
     heading: 'Rang nach Plattform'
   },
   FeaturedSpotlight: {
-    // TODO ctaText: 'Read more',
     // TODO heading: 'Spotlight'
   },
   filters: {
@@ -259,6 +259,12 @@ export default {
   },
   SpotlightDetail: {
     // TODO heading: 'DApp Spotlight'
+  },
+  SpotlightPreview: {
+    // TODO ctaText: 'Read more',
+  },
+  Spotlights: {
+    // TODO heading: 'Spotlights'
   },
   // TODO submitQuestion:
   // TODO   'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',

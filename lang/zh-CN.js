@@ -40,7 +40,8 @@ export default {
   cta: {
     submit: '提交 DApp',
     viewAll: '查看全部'
-    // TODO viewDapp: 'View DApp'
+    // TODO viewDapp: 'View DApp',
+    // TODO viewPastSpotlights: 'View past spotlights'
   },
   DappCardListItem: {
     new: '新'
@@ -162,7 +163,6 @@ export default {
     heading: '平台排行榜'
   },
   FeaturedSpotlight: {
-    // TODO ctaText: 'Read more',
     // TODO heading: 'Spotlight'
   },
   filters: {
@@ -249,8 +249,14 @@ export default {
     cta: '现在试试。',
     discover: '探索 Steem Keychain'
   },
+  SpotlightPreview: {
+    // TODO ctaText: 'Read more',
+  },
   SpotlightDetail: {
     // TODO heading: 'DApp Spotlight'
+  },
+  Spotlights: {
+    // TODO heading: 'Spotlights'
   },
   // TODO submitQuestion:
   // TODO   'You can support State of the DApps by giving us a small donation. How much would like to give to help the DApp ecosystem grow?',
