@@ -79,9 +79,7 @@ export default {
   },
   head() {
     return {
-      title:
-        this.spotlight.title + ' — ' + this.spotlight.teaser ||
-        'State of the DApps',
+      title: this.spotlight.title,
       meta: [
         {
           hid: 'description',
