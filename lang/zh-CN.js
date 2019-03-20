@@ -95,7 +95,8 @@ export default {
   DappDetailBodyContentReviews: {
     // TODO critic: 'Critic Reviews',
     // TODO readMore: 'Read full review',
-    // TODO reviewBy: 'Review by'
+    // TODO reviewBy: 'Review by',
+    // TODO watchMore: 'Watch full review'
   },
   DappDetailBodyContentTools: {
     edit: '编辑这个DApp',

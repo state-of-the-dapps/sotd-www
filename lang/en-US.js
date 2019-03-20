@@ -96,7 +96,8 @@ export default {
   DappDetailBodyContentReviews: {
     critic: 'Critic Reviews',
     readMore: 'Read full review',
-    reviewBy: 'Review by'
+    reviewBy: 'Review by',
+    watchMore: 'Watch full review'
   },
   DappDetailBodyContentTools: {
     edit: 'Edit this DApp',

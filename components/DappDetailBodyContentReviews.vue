@@ -26,7 +26,7 @@
             class="cta"
             target="_blank"
             @click="$mixpanel.track('Critic Review', { dapp: review.slug, link: 'button' })"
-          >{{ $t(namespace('readMore')) }}</a>
+          ><template v-if="review.review_url.includes('youtube.com') || review.review_url.includes('vimeo.com')">{{ $t(namespace('watchMore')) }}</template><template v-else>{{ $t(namespace('readMore')) }}</template></a>
         </p>
       </li>
     </ul>

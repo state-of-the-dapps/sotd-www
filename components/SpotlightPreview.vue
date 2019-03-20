@@ -7,14 +7,14 @@
         :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
         :style="`background-image: url('${spotlight.imageUrl}')`"
         class="image-link"
-        @click.native="$mixpanel.track('Featured Spotlight', { element: 'image', slug: spotlight.slug })"/>
+        @click.native="$mixpanel.track('Spotlight Preview', { element: 'image', slug: spotlight.slug })"/>
     </div>
     <div class="text-wrapper">
       <h2 class="title">
         <nuxt-link
           :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
           class="heading-link"
-          @click.native="$mixpanel.track('Featured Spotlight', { element: 'title', slug: spotlight.slug })">{{ spotlight.title }}</nuxt-link>
+          @click.native="$mixpanel.track('Spotlight Preview', { element: 'title', slug: spotlight.slug })">{{ spotlight.title }}</nuxt-link>
       </h2>
       <p class="created">{{ spotlight.created | formatDate('MMMM D, YYYY') }}</p>
       <div class="description">
@@ -26,7 +26,7 @@
         <nuxt-link
           :to="localePath({name: 'spotlight-detail', params: { slug: spotlight.slug }})"
           class="link"
-          @click.native="$mixpanel.track('Featured Spotlight', { element: 'cta', slug: spotlight.slug })">{{ $t(namespace('ctaText')) }}<IconChevron
+          @click.native="$mixpanel.track('Spotlight Preview', { element: 'cta', slug: spotlight.slug })">{{ $t(namespace('ctaText')) }}<IconChevron
             :width="10"
             :height="10"
             direction="right"

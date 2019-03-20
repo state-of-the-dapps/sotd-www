@@ -90,7 +90,8 @@ export default {
   DappDetailBodyContentReviews: {
     // TODO critic: 'Critic Reviews',
     // TODO readMore: 'Read full review',
-    // TODO reviewBy: 'Review by'
+    // TODO reviewBy: 'Review by',
+    // TODO watchMore: 'Watch full review'
   },
   DappDetailBodyContentModulesStats: {
     day: '1 Tag | {count} Tage',
