@@ -187,8 +187,7 @@ code {
 
 .markdown-article {
   em {
-    display: block;
-    font-size: 0.95rem;
+    font-style: italic;
     text-align: center;
     font-weight: 300;
   }
