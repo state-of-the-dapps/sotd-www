@@ -873,6 +873,11 @@ export function createRouter() {
         name: 'spotlight-detail___ko'
       },
       {
+        path: '/zh/spotlights/:slug',
+        component: SpotlightDetail,
+        name: 'spotlight-detail___zh'
+      },
+      {
         path: '/spotlights',
         component: Spotlights,
         name: 'spotlights___en'
