@@ -36,6 +36,25 @@
               :slug="dapp.slug"/>
           </div>
         </media>
+        <style>
+          #cf {
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-bottom: 24px;
+          border-bottom: 1px solid #dfdfdf;
+          }
+          .cf-wrapper {
+          background: #f8f8f8;
+          font-family: 'Overpass', sans-serif !important;
+          margin-bottom: 24px !important;
+          }
+          .cf-powered-by {
+          display: block !important;
+          float: none !important;
+          text-align: right;
+          }
+        </style>
+        <div id="codefund" />
         <DappDetailBodyContentRecommend
           :name="dapp.name"
           :slug="dapp.slug"
