@@ -183,6 +183,11 @@ export default {
       required: true,
       default: () => []
     },
+    contractsXDaiMainnet: {
+      type: Array,
+      required: true,
+      default: () => []
+    },
     diffExists: {
       type: Boolean,
       required: true,
