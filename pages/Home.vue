@@ -4,6 +4,33 @@
     <FeaturedDappList/>
     <FeaturedSpotlight/>
     <FeaturedRankingByPlatformList/>
+    <style>
+      #cf {
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 24px !important;
+      border-top: 1px solid #dfdfdf;
+      }
+      @media screen and (min-width: 640px) {
+      #cf {
+      margin: 0px 22px;
+      }
+      }
+      @media screen and (min-width: 1500px) {
+      #cf {
+      margin: 0 auto;
+      width: calc(100% - 44px);
+      max-width: 1500px;
+      }
+      }
+      .cf-wrapper {
+      margin-top: 24px !important;
+      background: #f8f8f8;
+      font-family: 'Overpass', sans-serif !important;
+      margin-bottom: 24px !important;
+      }
+    </style>
+    <div id="codefund" />
     <FeaturedRankingByCategoryList/>
     <FeaturedCategoryList/>
     <FeaturedCollectionList/>
@@ -39,7 +66,14 @@ export default {
       title:
         'State of the DApps — A list of ' +
         this.statDappCount.toLocaleString() +
-        ' blockchain apps for Ethereum, Steem, EOS, and more'
+        ' blockchain apps for Ethereum, Steem, EOS, and more',
+      script: [
+        {
+          src:
+            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=horizontal',
+          async: true
+        }
+      ]
     }
   }
 }
