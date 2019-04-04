@@ -4,6 +4,25 @@
     <div class="dapps-filters">
       <div class="filters">
         <DappsFilters/>
+        <style>
+          #cf {
+          position: sticky;
+          bottom: 0;
+          margin-top: 24px;
+          border-top: 1px solid #dfdfdf;
+          }
+          .cf-wrapper {
+          background: #f8f8f8;
+          font-family: 'Overpass', sans-serif !important;
+          margin-top: 24px !important;
+          }
+          .cf-powered-by {
+          display: block !important;
+          float: none !important;
+          text-align: right;
+          }
+        </style>
+        <div id="codefund" />
       </div>
       <div
         ref="list"
@@ -162,7 +181,14 @@ export default {
       title:
         'State of the DApps — ' +
         this.statDappCount.toLocaleString() +
-        ' Projects Built on Ethereum, EOS & Steem'
+        ' Projects Built on Ethereum, EOS & Steem',
+      script: [
+        {
+          src:
+            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=square',
+          async: true
+        }
+      ]
     }
   },
   scrollToTop: true

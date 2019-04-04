@@ -9,7 +9,7 @@
       margin-left: 10px;
       margin-right: 10px;
       margin-top: 24px !important;
-      border-top: 1px solid #dfdfdf;
+      border-top: 1px solid rgba(51, 51, 51, 0.15);
       }
       @media screen and (min-width: 640px) {
       #cf {

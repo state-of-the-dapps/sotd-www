@@ -10,6 +10,33 @@
         :selected-column="selectedColumn"
         @selectColumn="selectColumn"/>
     </div>
+    <style>
+      #cf {
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 24px !important;
+      border-top: 1px solid rgba(51, 51, 51, 0.15);
+      }
+      @media screen and (min-width: 640px) {
+      #cf {
+      margin: 0px 22px;
+      }
+      }
+      @media screen and (min-width: 1200px) {
+      #cf {
+      margin: 0 auto;
+      width: calc(100% - 44px);
+      max-width: 1200px;
+      }
+      }
+      .cf-wrapper {
+      margin-top: 24px !important;
+      background: #f8f8f8;
+      font-family: 'Overpass', sans-serif !important;
+      margin-bottom: 24px !important;
+      }
+    </style>
+    <div id="codefund" />
   </div>
 </template>
 
@@ -137,7 +164,14 @@ export default {
   head() {
     return {
       title:
-        'State of the DApps — Ranking the Best DApps of Ethereum, EOS & Steem'
+        'State of the DApps — Ranking the Best DApps of Ethereum, EOS & Steem',
+      script: [
+        {
+          src:
+            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=horizontal',
+          async: true
+        }
+      ]
     }
   },
   scrollToTop: true
