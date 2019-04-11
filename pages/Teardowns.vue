@@ -52,10 +52,10 @@ export default {
           created: '2019-04-07',
           dapp: 'my-crypto-heroes, cent, uniswap',
           description: 'My Crypto Heroes, Cent & UniSwap (video)',
-          downloadUrl: 'https://youtu.be/-FKNVbLlScg',
+          downloadUrl: 'https://youtu.be/sB2lYrLGfk0',
           imageAlt:
             'How My Crypto Heroes, Cent & UniSwap Onboards New Users (video)',
-          imageUrl: 'https://i.ytimg.com/vi/-FKNVbLlScg/mqdefault.jpg'
+          imageUrl: 'https://i.ytimg.com/vi/sB2lYrLGfk0/mqdefault.jpg'
         },
         {
           created: '2019-03-07',
