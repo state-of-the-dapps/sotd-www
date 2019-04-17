@@ -17,7 +17,7 @@
           >
             <img
               :src="teardown.imageUrl"
-              :alt="`Preview image of ${teardown.description}`"
+              :alt="teardown.imageAlt"
               width="150"
               class="teardown-image"
             >
@@ -48,6 +48,15 @@ export default {
   data() {
     return {
       teardowns: [
+        {
+          created: '2019-04-07',
+          dapp: 'my-crypto-heroes, cent, uniswap',
+          description: 'My Crypto Heroes, Cent & UniSwap (video)',
+          downloadUrl: 'https://youtu.be/sB2lYrLGfk0',
+          imageAlt:
+            'How My Crypto Heroes, Cent & UniSwap Onboards New Users (video)',
+          imageUrl: 'https://i.ytimg.com/vi/sB2lYrLGfk0/mqdefault.jpg'
+        },
         {
           created: '2019-03-07',
           dapp: 'uniswap',
