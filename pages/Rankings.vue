@@ -1,21 +1,10 @@
 <template>
   <div class="page">
-    <CategoryPlatformFilters base-route="rankings"/>
-    <div ref="table">
-      <RankingTable
-        :dapps="dapps"
-        :is-loading="isLoading"
-        :pager="pager"
-        :column-options="columnOptions"
-        :selected-column="selectedColumn"
-        @selectColumn="selectColumn"/>
-    </div>
     <style>
       #cf {
       margin-left: 10px;
       margin-right: 10px;
-      margin-top: 24px !important;
-      border-top: 1px solid rgba(51, 51, 51, 0.15);
+      margin-bottom: 30px !important;
       }
       @media screen and (min-width: 640px) {
       #cf {
@@ -30,13 +19,23 @@
       }
       }
       .cf-wrapper {
-      margin-top: 24px !important;
+      margin-top: 0 !important;
       background: #f8f8f8;
       font-family: 'Overpass', sans-serif !important;
       margin-bottom: 24px !important;
       }
     </style>
     <div id="codefund" />
+    <CategoryPlatformFilters base-route="rankings"/>
+    <div ref="table">
+      <RankingTable
+        :dapps="dapps"
+        :is-loading="isLoading"
+        :pager="pager"
+        :column-options="columnOptions"
+        :selected-column="selectedColumn"
+        @selectColumn="selectColumn"/>
+    </div>
   </div>
 </template>
 
