@@ -5,7 +5,7 @@
         <nuxt/>
       </main>
       <footer class="footer">
-        <SecondaryCta/>
+        <!-- <SecondaryCta/> -->
         <TheFooter/>
       </footer>
     </div>

@@ -10,7 +10,7 @@
         <nuxt/>
       </main>
       <footer class="footer">
-        <SecondaryCta/>
+        <!-- <SecondaryCta/> -->
         <TheFooter/>
       </footer>
     </div>
@@ -21,13 +21,13 @@
 import { mapGetters } from 'vuex'
 import TheFooter from '~/components/TheFooter'
 import BaseMenu from '~/components/BaseMenu'
-import SecondaryCta from '~/components/SecondaryCta'
+// import SecondaryCta from '~/components/SecondaryCta'
 
 export default {
   components: {
     TheFooter,
-    BaseMenu,
-    SecondaryCta
+    BaseMenu
+    // SecondaryCta
   }
 }
 </script>
