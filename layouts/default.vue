@@ -225,12 +225,12 @@ code {
     margin-top: 2rem;
     margin-bottom: -0.5rem;
   }
-  h3 {
+  h3,
+  h4 {
     font-size: 1.4rem;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     margin-bottom: 0rem;
   }
-
   blockquote {
     background: rgba($color--gray, 0.6);
     padding: 0 20px;
