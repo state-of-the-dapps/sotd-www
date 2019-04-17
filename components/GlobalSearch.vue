@@ -243,9 +243,9 @@ export default {
   &.is-searching {
     background: $color--white;
     box-shadow: 0 0 10px rgba($color--black, 0.1);
+    border-radius: 4px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-radius: 4px;
     input {
       color: $color--black;
     }

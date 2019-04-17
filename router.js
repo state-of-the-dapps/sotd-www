@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { interopDefault } from './utils'
+import { interopDefault } from './helpers/utils'
 
 Vue.use(Router)
 
