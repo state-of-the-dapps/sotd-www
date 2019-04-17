@@ -229,7 +229,7 @@ code {
   h4 {
     font-size: 1.4rem;
     margin-top: 2.5rem;
-    margin-bottom: 0rem;
+    margin-bottom: -0.5rem;
   }
   blockquote {
     background: rgba($color--gray, 0.6);
