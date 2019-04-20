@@ -2,8 +2,6 @@
   <div class="page">
     <HomeHero/>
     <FeaturedDappList/>
-    <FeaturedSpotlight/>
-    <FeaturedRankingByPlatformList/>
     <style>
       #cf {
       margin-left: 10px;
@@ -31,6 +29,8 @@
       }
     </style>
     <div id="codefund" />
+    <FeaturedSpotlight/>
+    <FeaturedRankingByPlatformList/>
     <FeaturedRankingByCategoryList/>
     <FeaturedCategoryList/>
     <FeaturedCollectionList/>
