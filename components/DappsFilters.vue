@@ -58,7 +58,8 @@ export default {
       return this.$route.query.status || ''
     },
     formattedPlatformQuery() {
-      return platformMap[this.platformQuery.toLowerCase()]
+      const platforms = platformMap()
+      return platforms[this.platformQuery.toLowerCase()]
     }
   },
   async mounted() {

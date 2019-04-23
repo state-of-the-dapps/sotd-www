@@ -275,23 +275,42 @@ const newDapps = [
 const platforms = [
   {
     id: 'ethereum',
-    name: 'Ethereum'
+    name: 'Ethereum',
+    software: {
+      name: 'Metamask',
+      url: 'https://metamask.io/?utm_source=StateOfTheDApps'
+    }
   },
   {
     id: 'eos',
-    name: 'EOS'
+    name: 'EOS',
+    software: {
+      name: 'Scatter',
+      url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
+    }
   },
   {
     id: 'gochain',
-    name: 'GoChain'
+    name: 'GoChain',
+    software: {}
   },
   {
     id: 'poa',
     name: 'POA'
+    //software: {
+    //  name: 'Nifty',
+    //  url:
+    //    'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
+    //}
   },
   {
     id: 'steem',
-    name: 'Steem'
+    name: 'Steem',
+    software: {
+      name: 'Steem Keychain',
+      url:
+        'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
+    }
   },
   {
     id: 'xdai',
@@ -310,46 +329,44 @@ const platformList = () => {
 }
 
 const platformSelectOptions = () => {
-  const options = []
+  const list = []
   platforms.map(platform => {
     if (platform.name) {
-      options.push({
+      list.push({
         selection: platform.name,
         text: platform.name
       })
     }
   })
-  return options
+  return list
 }
 
-const platformMap = {
-  ethereum: 'Ethereum',
-  eos: 'EOS',
-  poa: 'POA',
-  gochain: 'GoChain',
-  xdai: 'xDai',
-  steem: 'Steem'
+const platformMap = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (platform.id && platform.name) {
+      obj[platform.id] = platform.name
+    }
+  })
+  return obj
 }
 
-const platformSoftware = {
-  Ethereum: {
-    name: 'Metamask',
-    url: 'https://metamask.io/?utm_source=StateOfTheDApps'
-  },
-  EOS: {
-    name: 'Scatter',
-    url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
-  },
-  POA: {
-    name: 'Nifty',
-    url:
-      'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
-  },
-  Steem: {
-    name: 'Steem Keychain',
-    url:
-      'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
-  }
+const platformSoftware = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.name &&
+      platform.software &&
+      platform.software.name &&
+      platform.software.url
+    ) {
+      obj[platform.name] = {
+        name: platform.software.name,
+        url: platform.software.url
+      }
+    }
+  })
+  return obj
 }
 
 const rankingColumns = Object.freeze([

@@ -80,7 +80,8 @@ export default {
   },
   async mounted() {
     const urlCategory = this.$route.params.category
-    const urlPlatform = platformMap[this.$route.params.platform]
+    const platforms = platformMap()
+    const urlPlatform = platforms[this.$route.params.platform]
     this.category = urlCategory
     this.platform = urlPlatform
     try {
@@ -112,7 +113,8 @@ export default {
       )
     },
     filterPlatform(platform) {
-      this.platform = platformMap[platform]
+      const platforms = platformMap()
+      this.platform = platforms[platform]
       this.trackDappPlatformFilter(platform)
       let routeName = this.baseRoute
       if (platform) {

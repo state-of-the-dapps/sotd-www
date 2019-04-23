@@ -51,7 +51,7 @@ export default {
   },
   data() {
     return {
-      platformSoftware
+      platformSoftware: platformSoftware()
     }
   },
   methods: {
