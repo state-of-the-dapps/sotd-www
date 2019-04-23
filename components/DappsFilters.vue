@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       categoryOptions: [],
-      platformOptions: this.getPlatformOptions(platformList),
+      platformOptions: this.getPlatformOptions(platformList()),
       statusOptions: this.getDappStatusOptions(dappStatuses)
     }
   },

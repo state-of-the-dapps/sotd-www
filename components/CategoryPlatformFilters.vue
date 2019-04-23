@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       category: '',
-      dappPlatforms: platformList,
+      dappPlatforms: platformList(),
       dappCategories: [],
       platform: '',
       sourcePath: this.$route.path

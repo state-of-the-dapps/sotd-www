@@ -274,7 +274,40 @@ const newDapps = [
   116
 ]
 
-const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem', 'xDai']
+const platforms = [
+  {
+    id: 'ethereum',
+    name: 'Ethereum'
+  },
+  {
+    id: 'eos',
+    name: 'EOS'
+  },
+  {
+    id: 'gochain',
+    name: 'GoChain'
+  },
+  {
+    id: 'poa',
+    name: 'POA'
+  },
+  {
+    id: 'steem',
+    name: 'Steem'
+  },
+  {
+    id: 'xdai',
+    name: 'xDai'
+  }
+]
+
+const platformList = () => {
+  const list = []
+  platforms.map(platform => {
+    list.push(platform.name)
+  })
+  return list
+}
 
 const platformSelectOptions = [
   {
