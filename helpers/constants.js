@@ -186,8 +186,6 @@ const daysOfTheWeek = Object.freeze([
   'Sat'
 ])
 
-const dappDefaultPlatform = 'Ethereum'
-
 const feedbackComponentMap = Object.freeze({
   negative: 'SvgFeedbackNegative',
   neutral: 'SvgFeedbackNeutral',
@@ -304,37 +302,25 @@ const platforms = [
 const platformList = () => {
   const list = []
   platforms.map(platform => {
-    list.push(platform.name)
+    if (platform.name) {
+      list.push(platform.name)
+    }
   })
   return list
 }
 
-const platformSelectOptions = [
-  {
-    selection: 'Ethereum',
-    text: 'Ethereum'
-  },
-  {
-    selection: 'EOS',
-    text: 'EOS'
-  },
-  {
-    selection: 'GoChain',
-    text: 'GoChain'
-  },
-  {
-    selection: 'POA',
-    text: 'POA'
-  },
-  {
-    selection: 'Steem',
-    text: 'Steem'
-  },
-  {
-    selection: 'xDai',
-    text: 'xDai'
-  }
-]
+const platformSelectOptions = () => {
+  const options = []
+  platforms.map(platform => {
+    if (platform.name) {
+      options.push({
+        selection: platform.name,
+        text: platform.name
+      })
+    }
+  })
+  return options
+}
 
 const platformMap = {
   ethereum: 'Ethereum',
@@ -429,7 +415,6 @@ export {
   dappSortOptionsMap,
   dappStatuses,
   daysOfTheWeek,
-  dappDefaultPlatform,
   feedbackComponentMap,
   homeCollectionSlots,
   homeFeaturedCollections,

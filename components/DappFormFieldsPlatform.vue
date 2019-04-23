@@ -38,13 +38,13 @@ export default {
   },
   data() {
     return {
-      platformSelectOptions
+      platformSelectOptions: platformSelectOptions()
     }
   },
   computed: {
     platforms() {
       const platforms = []
-      platformSelectOptions.map(platform => {
+      this.platformSelectOptions.map(platform => {
         platforms.push({
           selection: platform.selection,
           text: this.$t(`platformOptions.${platform.text.toLowerCase()}`)
