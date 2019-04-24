@@ -244,9 +244,6 @@ export default {
     iconWarnings() {
       return this.warnings.icon
     },
-    kovanErrors() {
-      return this.errors.kovan
-    },
     license() {
       return this.fields.license
     },
@@ -262,9 +259,6 @@ export default {
     logoWarnings() {
       return this.warnings.logo
     },
-    mainnetErrors() {
-      return this.errors.mainnet
-    },
     name() {
       return this.fields.name
     },
@@ -277,15 +271,6 @@ export default {
     platform() {
       return this.fields.platform
     },
-    poaMainnetErrors() {
-      return this.errors.poaMainnet
-    },
-    goChainMainnetErrors() {
-      return this.errors.goChainMainnet
-    },
-    eosMainnetErrors() {
-      return this.errors.eosMainnet
-    },
     productImage() {
       return this.fields.productImage
     },
@@ -294,12 +279,6 @@ export default {
     },
     productImageWarnings() {
       return this.warnings.productImage
-    },
-    rinkebyErrors() {
-      return this.errors.rinkeby
-    },
-    ropstenErrors() {
-      return this.errors.ropsten
     },
     selectedTags() {
       return this.fields.tags
@@ -328,9 +307,6 @@ export default {
     status() {
       return this.fields.status
     },
-    steemMainnetErrors() {
-      return this.errors.steemMainnet
-    },
     subscribeNewsletter() {
       return this.fields.subscribeNewsletter
     },
@@ -348,9 +324,6 @@ export default {
     },
     websiteUrlErrors() {
       return this.errors.websiteUrl
-    },
-    xDaiMainnetErrors() {
-      return this.errors.xDaiMainnet
     }
   },
   mounted() {

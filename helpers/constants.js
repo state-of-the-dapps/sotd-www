@@ -281,7 +281,8 @@ const platforms = [
       url: 'https://metamask.io/?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['mainnet', 'kovan', 'ropsten', 'rinkeby']
+      networks: ['mainnet', 'kovan', 'ropsten', 'rinkeby'],
+      validations: ['']
     }
   },
   {
@@ -292,14 +293,16 @@ const platforms = [
       url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['eosMainnet']
+      networks: ['eosMainnet'],
+      validations: ['']
     }
   },
   {
     id: 'gochain',
     name: 'GoChain',
     contracts: {
-      networks: ['goChainMainnet']
+      networks: ['goChainMainnet'],
+      validations: ['']
     }
   },
   {
@@ -311,7 +314,8 @@ const platforms = [
     //    'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
     //},
     contracts: {
-      networks: ['poaMainnet']
+      networks: ['poaMainnet'],
+      validations: ['']
     }
   },
   {
@@ -323,14 +327,16 @@ const platforms = [
         'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['steemMainnet']
+      networks: ['steemMainnet'],
+      validations: ['']
     }
   },
   {
     id: 'xdai',
     name: 'xDai',
     contracts: {
-      networks: ['xDaiMainnet']
+      networks: ['xDaiMainnet'],
+      validations: ['']
     }
   }
 ]
@@ -350,6 +356,14 @@ const platformComputedAddressFields = () => {
           return this.$options.filters.linesToArr(
             this.fields.contracts[network].address
           )
+        }
+        if (
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
+          obj[network + 'Errors'] = function() {
+            return this.errors[network]
+          }
         }
       })
     }
