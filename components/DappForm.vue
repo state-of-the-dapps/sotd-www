@@ -63,9 +63,13 @@
 </template>
 
 <script>
+import * as deepmerge from 'deepmerge'
 import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
-import { platformComputedAddressFields } from '@/helpers/constants'
+import {
+  platformContractComputedFields,
+  platformContractDataFields
+} from '@/helpers/constants'
 import BaseModal from './BaseModal'
 import DappFormFields from './DappFormFields'
 import DappFormSave from './DappFormSave'
@@ -99,7 +103,7 @@ export default {
     }
   },
   data() {
-    return {
+    const obj = {
       confirmationModal: false,
       diffExists: false,
       errorFields: [
@@ -147,17 +151,6 @@ export default {
         authors: [],
         category: '',
         description: '',
-        contracts: {
-          mainnet: { address: '' },
-          poaMainnet: { address: '' },
-          goChainMainnet: { address: '' },
-          eosMainnet: { address: '' },
-          steemMainnet: { address: '' },
-          ropsten: { address: '' },
-          kovan: { address: '' },
-          rinkeby: { address: '' },
-          xDaiMainnet: { address: '' }
-        },
         email: '',
         icon: '',
         license: '',
@@ -196,9 +189,11 @@ export default {
         teaser: []
       }
     }
+    const mergedObj = deepmerge(obj, platformContractDataFields())
+    return mergedObj
   },
   computed: {
-    ...platformComputedAddressFields(),
+    ...platformContractComputedFields(),
     acceptedTerms() {
       return this.fields.acceptedTerms
     },

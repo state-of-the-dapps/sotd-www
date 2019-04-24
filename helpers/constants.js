@@ -281,8 +281,25 @@ const platforms = [
       url: 'https://metamask.io/?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['mainnet', 'kovan', 'ropsten', 'rinkeby'],
-      validations: ['']
+      networks: [
+        {
+          id: 'mainnet',
+          name: 'Mainnet'
+        },
+        {
+          id: 'kovan',
+          name: 'Kovan'
+        },
+        {
+          id: 'ropsten',
+          name: 'Ropsten'
+        },
+        {
+          id: 'rinkeby',
+          name: 'Rinkeby'
+        }
+      ],
+      validations: [{ minLength: 42 }, { maxLength: 42 }]
     }
   },
   {
@@ -293,7 +310,12 @@ const platforms = [
       url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['eosMainnet'],
+      networks: [
+        {
+          id: 'eosMainnet',
+          name: 'Mainnet'
+        }
+      ],
       validations: ['']
     }
   },
@@ -301,7 +323,12 @@ const platforms = [
     id: 'gochain',
     name: 'GoChain',
     contracts: {
-      networks: ['goChainMainnet'],
+      networks: [
+        {
+          id: 'goChainMainnet',
+          name: 'Mainnet'
+        }
+      ],
       validations: ['']
     }
   },
@@ -314,7 +341,12 @@ const platforms = [
     //    'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
     //},
     contracts: {
-      networks: ['poaMainnet'],
+      networks: [
+        {
+          id: 'poaMainnet',
+          name: 'Mainnet'
+        }
+      ],
       validations: ['']
     }
   },
@@ -327,7 +359,12 @@ const platforms = [
         'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
     },
     contracts: {
-      networks: ['steemMainnet'],
+      networks: [
+        {
+          id: 'steemMainnet',
+          name: 'Mainnet'
+        }
+      ],
       validations: ['']
     }
   },
@@ -335,13 +372,18 @@ const platforms = [
     id: 'xdai',
     name: 'xDai',
     contracts: {
-      networks: ['xDaiMainnet'],
+      networks: [
+        {
+          id: 'xDaiMainnet',
+          name: 'Mainnet'
+        }
+      ],
       validations: ['']
     }
   }
 ]
 
-const platformComputedAddressFields = () => {
+const platformContractComputedFields = () => {
   const obj = {}
   platforms.map(platform => {
     if (
@@ -350,25 +392,47 @@ const platformComputedAddressFields = () => {
       platform.contracts.networks.length
     ) {
       platform.contracts.networks.map(network => {
-        const computedField =
-          'contract' + network.charAt(0).toUpperCase() + network.slice(1)
-        obj[computedField] = function() {
-          return this.$options.filters.linesToArr(
-            this.fields.contracts[network].address
-          )
-        }
-        if (
-          platform.contracts.validations &&
-          platform.contracts.validations.length
-        ) {
-          obj[network + 'Errors'] = function() {
-            return this.errors[network]
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          obj[computedFieldName] = function() {
+            return this.$options.filters.linesToArr(
+              this.fields.contracts[network.id].address
+            )
+          }
+          if (
+            platform.contracts.validations &&
+            platform.contracts.validations.length
+          ) {
+            obj[network + 'Errors'] = function() {
+              return this.errors[network.id]
+            }
           }
         }
       })
     }
   })
   return obj
+}
+
+const platformContractDataFields = () => {
+  return {
+    fields: {
+      contracts: {
+        mainnet: { address: '' },
+        poaMainnet: { address: '' },
+        goChainMainnet: { address: '' },
+        eosMainnet: { address: '' },
+        steemMainnet: { address: '' },
+        ropsten: { address: '' },
+        kovan: { address: '' },
+        rinkeby: { address: '' },
+        xDaiMainnet: { address: '' }
+      }
+    }
+  }
 }
 
 const platformList = () => {
@@ -491,7 +555,8 @@ export {
   languages,
   localeStrings,
   newDapps,
-  platformComputedAddressFields,
+  platformContractComputedFields,
+  platformContractDataFields,
   platformList,
   platformMap,
   platformSelectOptions,
