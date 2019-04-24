@@ -26,17 +26,9 @@
           @updateWarnings="updateWarnings"
           @updateExistingDapp="updateExistingDapp"/>
         <DappFormSave
+          v-bind="contractProps"
           :accepted-terms="fields.acceptedTerms"
           :additional-comments="fields.additionalComments"
-          :contracts-mainnet="contractsMainnet"
-          :contracts-kovan="contractsKovan"
-          :contracts-ropsten="contractsRopsten"
-          :contracts-rinkeby="contractsRinkeby"
-          :contracts-poa-mainnet="contractsPoaMainnet"
-          :contracts-go-chain-mainnet="contractsGoChainMainnet"
-          :contracts-eos-mainnet="contractsEosMainnet"
-          :contracts-steem-mainnet="contractsSteemMainnet"
-          :contracts-x-dai-mainnet="contractsXDaiMainnet"
           :diff-exists="diffExists"
           :error-fields="errorFields"
           :errors="errors"
@@ -124,21 +116,11 @@ export default {
         dappUrl: [],
         description: [],
         email: [],
-        kovan: [],
         license: [],
         icon: [],
         logo: [],
-        mainnet: [],
         name: [],
         platform: [],
-        poaMainnet: [],
-        goChainMainnet: [],
-        eosMainnet: [],
-        steemMainnet: [],
-        xDaiMainnet: [],
-        productImage: [],
-        rinkeby: [],
-        ropsten: [],
         socialChat: [],
         tags: [],
         teaser: [],
@@ -208,6 +190,19 @@ export default {
     },
     category() {
       return this.fields.category
+    },
+    contractProps() {
+      return {
+        contractsMainnet: this['contractsMainnet'],
+        contractsKovan: this['contractsKovan'],
+        contractsRopsten: this['contractsRopsten'],
+        contractsRinkeby: this['contractsRinkeby'],
+        contractsPoaMainnet: this['contractsPoaMainnet'],
+        contractsGoChainMainnet: this['contractsGoChainMainnet'],
+        contractsEosMainnet: this['contractsEosMainnet'],
+        contractsSteemMainnet: this['contractsSteemMainnet'],
+        contractsXDaiMainnet: this['contractsXDaiMainnet']
+      }
     },
     contracts() {
       return this.fields.contracts

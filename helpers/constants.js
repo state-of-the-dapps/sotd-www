@@ -418,7 +418,7 @@ const platformContractComputedFields = () => {
 }
 
 const platformContractDataFields = () => {
-  return {
+  const obj = {
     fields: {
       contracts: {
         mainnet: { address: '' },
@@ -431,8 +431,21 @@ const platformContractDataFields = () => {
         rinkeby: { address: '' },
         xDaiMainnet: { address: '' }
       }
+    },
+    errors: {
+      mainnet: [],
+      kovan: [],
+      poaMainnet: [],
+      goChainMainnet: [],
+      eosMainnet: [],
+      steemMainnet: [],
+      xDaiMainnet: [],
+      productImage: [],
+      rinkeby: [],
+      ropsten: []
     }
   }
+  return obj
 }
 
 const platformList = () => {
