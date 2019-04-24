@@ -65,6 +65,7 @@
 <script>
 import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
+import { platformComputedAddressFields } from '@/helpers/constants'
 import BaseModal from './BaseModal'
 import DappFormFields from './DappFormFields'
 import DappFormSave from './DappFormSave'
@@ -197,6 +198,7 @@ export default {
     }
   },
   computed: {
+    ...platformComputedAddressFields(),
     acceptedTerms() {
       return this.fields.acceptedTerms
     },
@@ -214,51 +216,6 @@ export default {
     },
     contracts() {
       return this.fields.contracts
-    },
-    contractsMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.mainnet.address
-      )
-    },
-    contractsKovan() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.kovan.address
-      )
-    },
-    contractsRopsten() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.ropsten.address
-      )
-    },
-    contractsRinkeby() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.rinkeby.address
-      )
-    },
-    contractsPoaMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.poaMainnet.address
-      )
-    },
-    contractsGoChainMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.goChainMainnet.address
-      )
-    },
-    contractsEosMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.eosMainnet.address
-      )
-    },
-    contractsSteemMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.steemMainnet.address
-      )
-    },
-    contractsXDaiMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.xDaiMainnet.address
-      )
     },
     dappUrl() {
       return this.fields.siteUrls.dapp

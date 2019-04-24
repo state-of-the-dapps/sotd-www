@@ -279,6 +279,9 @@ const platforms = [
     software: {
       name: 'Metamask',
       url: 'https://metamask.io/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: ['mainnet', 'kovan', 'ropsten', 'rinkeby']
     }
   },
   {
@@ -287,21 +290,29 @@ const platforms = [
     software: {
       name: 'Scatter',
       url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: ['eosMainnet']
     }
   },
   {
     id: 'gochain',
     name: 'GoChain',
-    software: {}
+    contracts: {
+      networks: ['goChainMainnet']
+    }
   },
   {
     id: 'poa',
-    name: 'POA'
+    name: 'POA',
     //software: {
     //  name: 'Nifty',
     //  url:
     //    'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
-    //}
+    //},
+    contracts: {
+      networks: ['poaMainnet']
+    }
   },
   {
     id: 'steem',
@@ -310,13 +321,41 @@ const platforms = [
       name: 'Steem Keychain',
       url:
         'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: ['steemMainnet']
     }
   },
   {
     id: 'xdai',
-    name: 'xDai'
+    name: 'xDai',
+    contracts: {
+      networks: ['xDaiMainnet']
+    }
   }
 ]
+
+const platformComputedAddressFields = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        const computedField =
+          'contract' + network.charAt(0).toUpperCase() + network.slice(1)
+        obj[computedField] = function() {
+          return this.$options.filters.linesToArr(
+            this.fields.contracts[network].address
+          )
+        }
+      })
+    }
+  })
+  return obj
+}
 
 const platformList = () => {
   const list = []
@@ -438,6 +477,7 @@ export {
   languages,
   localeStrings,
   newDapps,
+  platformComputedAddressFields,
   platformList,
   platformMap,
   platformSelectOptions,
