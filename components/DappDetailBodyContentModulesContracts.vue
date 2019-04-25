@@ -60,58 +60,28 @@
 </template>
 
 <script>
+import { platformNetworkList } from '@/helpers/constants'
 import DappDetailBodyContentModulesContractsItem from './DappDetailBodyContentModulesContractsItem'
+
+const contractProps = () => {
+  const obj = {}
+  const networks = platformNetworkList()
+  networks.map(network => {
+    obj[network] = {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  })
+  return obj
+}
 
 export default {
   components: {
     DappDetailBodyContentModulesContractsItem
   },
   props: {
-    mainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    kovan: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    rinkeby: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    ropsten: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    poaMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    goChainMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    eosMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    steemMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    xDaiMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
+    ...contractProps(),
     slug: {
       type: String,
       required: true

@@ -125,15 +125,7 @@
           :class="dapp.audits.length ? 'has-audits' : ''"
           class="module">
           <DappDetailBodyContentModulesContracts
-            :mainnet="dapp.contractsMainnet"
-            :kovan="dapp.contractsKovan"
-            :rinkeby="dapp.contractsRinkeby"
-            :ropsten="dapp.contractsRopsten"
-            :poa-mainnet="dapp.contractsPoaMainnet"
-            :go-chain-mainnet="dapp.contractsGoChainMainnet"
-            :eos-mainnet="dapp.contractsEosMainnet"
-            :steem-mainnet="dapp.contractsSteemMainnet"
-            :x-dai-mainnet="dapp.contractsXDaiMainnet"
+            v-bind="contractProps"
             :slug="dapp.slug"/>
         </div>
         <div 
@@ -149,7 +141,10 @@
 </template>
 
 <script>
-import { platformContractPropNames } from '@/helpers/constants'
+import {
+  platformContractPropNames,
+  platformNetworkList
+} from '@/helpers/constants'
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -176,24 +171,33 @@ export default {
     dapp: {
       type: Object,
       required: true,
-      default: () => ({
-        audits: [],
-        authors: [],
-        contractsMainnet: [],
-        contractsKovan: [],
-        contractsRinkeby: [],
-        contractsRopsten: [],
-        contractsPoaMainnet: [],
-        contractsGoChainMainnet: [],
-        contractsEosMainnet: [],
-        contractsSteemMainnet: [],
-        contractsXDaiMainnet: [],
-        sparklines: {},
-        stats: {}
-      })
+      default: () => {
+        const obj = {}
+        const networks = platformContractPropNames()
+        networks.map(network => {
+          obj[network] = []
+        })
+        return {
+          ...obj,
+          audits: [],
+          authors: [],
+          sparklines: {},
+          stats: {}
+        }
+      }
     }
   },
   computed: {
+    contractProps() {
+      const networks = platformNetworkList()
+      const obj = {}
+      networks.map(network => {
+        const contractName =
+          'contracts' + this.$options.filters.capitalize(network)
+        obj[network] = this.dapp[contractName]
+      })
+      return obj
+    },
     showAuditsContractsModule() {
       const networks = platformContractPropNames()
       const instances = []
