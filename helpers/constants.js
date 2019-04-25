@@ -532,6 +532,24 @@ const platformNetworkFullNameMap = () => {
   return obj
 }
 
+const platformNetworkList = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          list.push(network.id)
+        }
+      })
+    }
+  })
+  return list
+}
+
 const platformSelectOptions = () => {
   const list = []
   platforms.map(platform => {
@@ -639,6 +657,7 @@ export {
   platformList,
   platformMap,
   platformNetworkFullNameMap,
+  platformNetworkList,
   platformSelectOptions,
   platformSoftware,
   rankingColumns

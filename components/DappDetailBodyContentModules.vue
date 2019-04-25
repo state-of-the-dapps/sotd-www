@@ -119,18 +119,7 @@
         </div>
       </div>
       <div 
-        v-if="
-          (dapp.audits && dapp.audits.length)||
-            (dapp.contractsMainnet && dapp.contractsMainnet.length) ||
-            (dapp.contractsKovan && dapp.contractsKovan.length) ||
-            (dapp.contractsRinkeby && dapp.contractsRinkeby.length) ||
-            (dapp.contractsRopsten && dapp.contractsRopsten.length) ||
-            (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
-            (dapp.contractsGoChainMainnet && dapp.contractsGoChainMainnet.length) ||
-            (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
-            (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length) ||
-            (dapp.contractsXDaiMainnet && dapp.contractsXDaiMainnet.length)
-        "
+        v-if="showAuditsContractsModule"
         class="module-wrapper -tier-5">
         <div
           :class="dapp.audits.length ? 'has-audits' : ''"
@@ -160,6 +149,7 @@
 </template>
 
 <script>
+import { platformContractPropNames } from '@/helpers/constants'
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -204,6 +194,20 @@ export default {
     }
   },
   computed: {
+    showAuditsContractsModule() {
+      const networks = platformContractPropNames()
+      const instances = []
+      if (this.dapp.audits && this.dapp.audits.length) {
+        instances.push('audits')
+      }
+      networks.forEach(network => {
+        if (this.dapp[network] && this.dapp[network].length) {
+          instances.push(network)
+        }
+      })
+      const hasInstances = Boolean(instances.length)
+      return hasInstances
+    },
     stats() {
       let dauExists = this.dapp.stats.dau !== undefined
       return dauExists
