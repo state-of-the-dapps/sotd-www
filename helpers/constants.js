@@ -468,24 +468,37 @@ const platformContractPropNames = () => {
   return list
 }
 
+const platformContractProps = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          obj[computedFieldName] = {
+            type: Array,
+            required: true,
+            default: () => []
+          }
+        }
+      })
+    }
+  })
+  return obj
+}
+
 const platformList = () => {
   const list = []
   platforms.map(platform => {
     if (platform.name) {
       list.push(platform.name)
-    }
-  })
-  return list
-}
-
-const platformSelectOptions = () => {
-  const list = []
-  platforms.map(platform => {
-    if (platform.name) {
-      list.push({
-        selection: platform.name,
-        text: platform.name
-      })
     }
   })
   return list
@@ -499,6 +512,37 @@ const platformMap = () => {
     }
   })
   return obj
+}
+
+const platformNetworkFullNameMap = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          obj[network.id] = platform.name + ' ' + network.name
+        }
+      })
+    }
+  })
+  return obj
+}
+
+const platformSelectOptions = () => {
+  const list = []
+  platforms.map(platform => {
+    if (platform.name) {
+      list.push({
+        selection: platform.name,
+        text: platform.name
+      })
+    }
+  })
+  return list
 }
 
 const platformSoftware = () => {
@@ -591,8 +635,10 @@ export {
   platformContractComputedFields,
   platformContractDataFields,
   platformContractPropNames,
+  platformContractProps,
   platformList,
   platformMap,
+  platformNetworkFullNameMap,
   platformSelectOptions,
   platformSoftware,
   rankingColumns
