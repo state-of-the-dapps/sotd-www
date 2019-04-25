@@ -272,7 +272,7 @@ const newDapps = [
   116
 ]
 
-const platforms = [
+const platforms = Object.freeze([
   {
     id: 'ethereum',
     name: 'Ethereum',
@@ -381,7 +381,7 @@ const platforms = [
       validations: ['']
     }
   }
-]
+])
 
 const platformContractComputedFields = () => {
   const obj = {}
@@ -650,6 +650,7 @@ export {
   languages,
   localeStrings,
   newDapps,
+  platforms,
   platformContractComputedFields,
   platformContractDataFields,
   platformContractPropNames,
