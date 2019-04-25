@@ -60,7 +60,8 @@ import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
 import {
   platformContractComputedFields,
-  platformContractDataFields
+  platformContractDataFields,
+  platformContractPropNames
 } from '@/helpers/constants'
 import BaseModal from './BaseModal'
 import DappFormFields from './DappFormFields'
@@ -192,17 +193,12 @@ export default {
       return this.fields.category
     },
     contractProps() {
-      return {
-        contractsMainnet: this['contractsMainnet'],
-        contractsKovan: this['contractsKovan'],
-        contractsRopsten: this['contractsRopsten'],
-        contractsRinkeby: this['contractsRinkeby'],
-        contractsPoaMainnet: this['contractsPoaMainnet'],
-        contractsGoChainMainnet: this['contractsGoChainMainnet'],
-        contractsEosMainnet: this['contractsEosMainnet'],
-        contractsSteemMainnet: this['contractsSteemMainnet'],
-        contractsXDaiMainnet: this['contractsXDaiMainnet']
-      }
+      const list = platformContractPropNames()
+      const obj = {}
+      list.map(propName => {
+        obj[propName] = this[propName]
+      })
+      return obj
     },
     contracts() {
       return this.fields.contracts

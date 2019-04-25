@@ -420,32 +420,52 @@ const platformContractComputedFields = () => {
 const platformContractDataFields = () => {
   const obj = {
     fields: {
-      contracts: {
-        mainnet: { address: '' },
-        poaMainnet: { address: '' },
-        goChainMainnet: { address: '' },
-        eosMainnet: { address: '' },
-        steemMainnet: { address: '' },
-        ropsten: { address: '' },
-        kovan: { address: '' },
-        rinkeby: { address: '' },
-        xDaiMainnet: { address: '' }
-      }
+      contracts: {}
     },
-    errors: {
-      mainnet: [],
-      kovan: [],
-      poaMainnet: [],
-      goChainMainnet: [],
-      eosMainnet: [],
-      steemMainnet: [],
-      xDaiMainnet: [],
-      productImage: [],
-      rinkeby: [],
-      ropsten: []
-    }
+    errors: {}
   }
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          obj.fields.contracts[network.id] = { address: '' }
+        }
+        if (
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
+          obj.errors[network.id] = []
+        }
+      })
+    }
+  })
   return obj
+}
+
+const platformContractPropNames = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          list.push(computedFieldName)
+        }
+      })
+    }
+  })
+  return list
 }
 
 const platformList = () => {
@@ -570,6 +590,7 @@ export {
   newDapps,
   platformContractComputedFields,
   platformContractDataFields,
+  platformContractPropNames,
   platformList,
   platformMap,
   platformSelectOptions,
