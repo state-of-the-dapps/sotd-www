@@ -500,6 +500,30 @@ const platformNetworkList = () => {
   return list
 }
 
+const platformNetworksWithErrorInfo = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          list.push({
+            name: network.id,
+            canError: Boolean(
+              platform.contracts.validations &&
+                platform.contracts.validations.length
+            )
+          })
+        }
+      })
+    }
+  })
+  return list
+}
+
 const platformSelectOptions = () => {
   const list = []
   platforms.map(platform => {
@@ -660,6 +684,7 @@ export {
   platformMap,
   platformNetworkFullNameMap,
   platformNetworkList,
+  platformNetworksWithErrorInfo,
   platformSelectOptions,
   platformSoftware,
   rankingColumns
