@@ -151,6 +151,34 @@ export default {
           let contractErrors = []
           contractArray.forEach(function(element) {
             if (element.length > 0) {
+              platforms.map(platform => {
+                if (
+                  platform.contracts &&
+                  platform.contracts.networks &&
+                  platform.contracts.networks.length &&
+                  platform.contracts.validations &&
+                  platform.contracts.validations.length
+                ) {
+                  platform.contracts.networks.map(platformNetwork => {
+                    if (platformNetwork.id && network === platformNetwork.id) {
+                      platform.contracts.validations.map(validation => {
+                        if (
+                          (validation.type === 'minLength' &&
+                            element.length < validation.value) ||
+                          (validation.type === 'maxLength' &&
+                            element.length > validation.value) ||
+                          (validation.type === 'startsWith' &&
+                            !element.startsWith(validation.value)) ||
+                          (validation.type === 'regEx' &&
+                            !element.match(validation.value))
+                        ) {
+                          contractErrors.push(validation.message)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
               if (network.startsWith(`eos`)) {
                 !element.match(
                   /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
