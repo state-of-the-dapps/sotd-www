@@ -225,7 +225,8 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'mainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         },
         {
           id: 'kovan',
@@ -240,7 +241,11 @@ const platforms = Object.freeze([
           name: 'Rinkeby'
         }
       ],
-      validations: [{ minLength: 42 }, { maxLength: 42 }]
+      validations: {
+        minLength: 42,
+        maxLength: 42,
+        startsWith: '0x'
+      }
     }
   },
   {
@@ -254,10 +259,13 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'eosMainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         }
       ],
-      validations: ['']
+      validations: {
+        regEx: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
+      }
     }
   },
   {
@@ -267,10 +275,15 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'goChainMainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         }
       ],
-      validations: ['']
+      validations: {
+        minLength: 42,
+        maxLength: 42,
+        startsWith: '0x'
+      }
     }
   },
   {
@@ -285,10 +298,15 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'poaMainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         }
       ],
-      validations: ['']
+      validations: {
+        minLength: 42,
+        maxLength: 42,
+        startsWith: '0x'
+      }
     }
   },
   {
@@ -303,10 +321,13 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'steemMainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         }
       ],
-      validations: ['']
+      validations: {
+        regEx: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/
+      }
     }
   },
   {
@@ -316,10 +337,15 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'xDaiMainnet',
-          name: 'Mainnet'
+          name: 'Mainnet',
+          primary: true
         }
       ],
-      validations: ['']
+      validations: {
+        minLength: 42,
+        maxLength: 42,
+        startsWith: '0x'
+      }
     }
   }
 ])
@@ -343,10 +369,7 @@ const platformContractComputedFields = () => {
               this.fields.contracts[network.id].address
             )
           }
-          if (
-            platform.contracts.validations &&
-            platform.contracts.validations.length
-          ) {
+          if (platform.contracts.validations) {
             obj[network + 'Errors'] = function() {
               return this.errors[network.id]
             }
@@ -375,10 +398,7 @@ const platformContractDataFields = () => {
         if (network.id) {
           obj.fields.contracts[network.id] = { address: '' }
         }
-        if (
-          platform.contracts.validations &&
-          platform.contracts.validations.length
-        ) {
+        if (platform.contracts.validations) {
           obj.errors[network.id] = []
         }
       })
@@ -442,6 +462,20 @@ const platformContractProps = () => {
     }
   })
   return obj
+}
+
+const platformContractValidations = () => {
+  const list = []
+  platforms.map(platform => {
+    if (platform.contracts && platform.contracts.validations) {
+      list.push({
+        platform: platform.id,
+        platformName: platform.name,
+        validations: platform.contracts.validations
+      })
+    }
+  })
+  return list
 }
 
 const platformList = () => {
@@ -512,10 +546,7 @@ const platformNetworksWithErrorInfo = () => {
         if (network.id) {
           list.push({
             name: network.id,
-            canError: Boolean(
-              platform.contracts.validations &&
-                platform.contracts.validations.length
-            )
+            canError: Boolean(platform.contracts.validations)
           })
         }
       })
@@ -680,6 +711,7 @@ export {
   platformContractDataFields,
   platformContractPropNames,
   platformContractProps,
+  platformContractValidations,
   platformList,
   platformMap,
   platformNetworkFullNameMap,

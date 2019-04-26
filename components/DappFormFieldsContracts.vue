@@ -42,7 +42,11 @@
 </template>
 
 <script>
-import { platforms, platformNetworksWithErrorInfo } from '@/helpers/constants'
+import {
+  platforms,
+  platformContractValidations,
+  platformNetworksWithErrorInfo
+} from '@/helpers/constants'
 import IconCheckmark from './IconCheckmark'
 
 const platformProps = () => {
@@ -102,16 +106,15 @@ export default {
               errors: this[network.id + 'Errors']
             })
           })
-          obj['canError'] = Boolean(
-            platform.contracts.validations &&
-              platform.contracts.validations.length
-          )
+          obj['canError'] = Boolean(platform.contracts.validations)
         }
         fieldList.push(obj)
       })
       return fieldList
     },
     isComplete() {
+      const validations = platformContractValidations()
+      console.log(validations)
       const ethereumIsComplete = Boolean(
         this.platform === 'Ethereum' &&
           ((this.mainnet.length >= 42 && !this.mainnetErrors.length) ||
