@@ -179,27 +179,6 @@ export default {
                   })
                 }
               })
-              if (network.startsWith(`eos`)) {
-                !element.match(
-                  /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
-                )
-                  ? contractErrors.push(`Account name invalid`)
-                  : ''
-              } else if (network.startsWith(`steem`)) {
-                // https://steemit.com/programming/@cryptosharon/the-5-rules-of-a-valid-username-on-the-steem-blockchain-and-a-3-sbd-contest-to-make-an-account-name-validation-regex
-                !element.match(
-                  /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/
-                )
-                  ? contractErrors.push(`Account name invalid`)
-                  : ''
-              } else {
-                element.length !== 42
-                  ? contractErrors.push(`Address must be exactly 42 characters`)
-                  : ''
-                !element.startsWith('0x')
-                  ? contractErrors.push(`Address must start with 0x`)
-                  : ''
-              }
             }
           })
           if (contractErrors.length > 0) {
