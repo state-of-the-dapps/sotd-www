@@ -225,8 +225,7 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'mainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         },
         {
           id: 'kovan',
@@ -241,11 +240,23 @@ const platforms = Object.freeze([
           name: 'Rinkeby'
         }
       ],
-      validations: {
-        minLength: 42,
-        maxLength: 42,
-        startsWith: '0x'
-      }
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
     }
   },
   {
@@ -259,13 +270,16 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'eosMainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         }
       ],
-      validations: {
-        regEx: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
-      }
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/,
+          message: 'One of your addresses is not formatted correctly'
+        }
+      ]
     }
   },
   {
@@ -275,15 +289,26 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'goChainMainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         }
       ],
-      validations: {
-        minLength: 42,
-        maxLength: 42,
-        startsWith: '0x'
-      }
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
     }
   },
   {
@@ -298,15 +323,26 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'poaMainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         }
       ],
-      validations: {
-        minLength: 42,
-        maxLength: 42,
-        startsWith: '0x'
-      }
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
     }
   },
   {
@@ -321,13 +357,16 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'steemMainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         }
       ],
-      validations: {
-        regEx: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/
-      }
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/,
+          message: 'One of your addresses is not formatted correctly'
+        }
+      ]
     }
   },
   {
@@ -337,15 +376,26 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'xDaiMainnet',
-          name: 'Mainnet',
-          primary: true
+          name: 'Mainnet'
         }
       ],
-      validations: {
-        minLength: 42,
-        maxLength: 42,
-        startsWith: '0x'
-      }
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
     }
   }
 ])
@@ -369,7 +419,10 @@ const platformContractComputedFields = () => {
               this.fields.contracts[network.id].address
             )
           }
-          if (platform.contracts.validations) {
+          if (
+            platform.contracts.validations &&
+            platform.contracts.validations.length
+          ) {
             obj[network + 'Errors'] = function() {
               return this.errors[network.id]
             }
@@ -398,7 +451,10 @@ const platformContractDataFields = () => {
         if (network.id) {
           obj.fields.contracts[network.id] = { address: '' }
         }
-        if (platform.contracts.validations) {
+        if (
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
           obj.errors[network.id] = []
         }
       })
@@ -462,20 +518,6 @@ const platformContractProps = () => {
     }
   })
   return obj
-}
-
-const platformContractValidations = () => {
-  const list = []
-  platforms.map(platform => {
-    if (platform.contracts && platform.contracts.validations) {
-      list.push({
-        platform: platform.id,
-        platformName: platform.name,
-        validations: platform.contracts.validations
-      })
-    }
-  })
-  return list
 }
 
 const platformList = () => {
@@ -546,7 +588,10 @@ const platformNetworksWithErrorInfo = () => {
         if (network.id) {
           list.push({
             name: network.id,
-            canError: Boolean(platform.contracts.validations)
+            canError: Boolean(
+              platform.contracts.validations &&
+                platform.contracts.validations.length
+            )
           })
         }
       })
@@ -711,7 +756,6 @@ export {
   platformContractDataFields,
   platformContractPropNames,
   platformContractProps,
-  platformContractValidations,
   platformList,
   platformMap,
   platformNetworkFullNameMap,

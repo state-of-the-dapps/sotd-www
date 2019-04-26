@@ -42,11 +42,7 @@
 </template>
 
 <script>
-import {
-  platforms,
-  platformContractValidations,
-  platformNetworksWithErrorInfo
-} from '@/helpers/constants'
+import { platforms, platformNetworksWithErrorInfo } from '@/helpers/constants'
 import IconCheckmark from './IconCheckmark'
 
 const platformProps = () => {
@@ -106,51 +102,38 @@ export default {
               errors: this[network.id + 'Errors']
             })
           })
-          obj['canError'] = Boolean(platform.contracts.validations)
+          obj['canError'] = Boolean(
+            platform.contracts.validations &&
+              platform.contracts.validations.length
+          )
         }
         fieldList.push(obj)
       })
       return fieldList
     },
     isComplete() {
-      const validations = platformContractValidations()
-      console.log(validations)
-      const ethereumIsComplete = Boolean(
-        this.platform === 'Ethereum' &&
-          ((this.mainnet.length >= 42 && !this.mainnetErrors.length) ||
-            (this.ropsten.length >= 42 && !this.ropstenErrors.length) ||
-            (this.kovan.length >= 42 && !this.kovanErrors.length) ||
-            (this.rinkeby.length >= 42 && !this.rinkebyErrors.length))
-      )
-      const eosIsComplete = Boolean(
-        this.platform === 'EOS' &&
-          (this.eosMainnet.length && !this.eosMainnetErrors.length)
-      )
-      const poaIsComplete = Boolean(
-        this.platform === 'POA' &&
-          (this.poaMainnet.length >= 42 && !this.poaMainnetErrors.length)
-      )
-      const goChainIsComplete = Boolean(
-        this.platform === 'GoChain' &&
-          (this.goChainMainnet.length >= 42 &&
-            !this.goChainMainnetErrors.length)
-      )
-      const steemIsComplete = Boolean(
-        this.platform === 'Steem' &&
-          (this.steemMainnet.length && !this.steemMainnetErrors.length)
-      )
-      const xDaiIsComplete = Boolean(
-        this.platform === 'xDai' &&
-          (this.xDaiMainnet.length >= 42 && !this.xDaiMainnetErrors.length)
-      )
-      return Boolean(
-        ethereumIsComplete ||
-          eosIsComplete ||
-          poaIsComplete ||
-          goChainIsComplete ||
-          steemIsComplete ||
-          xDaiIsComplete
-      )
+      const completed = []
+      platforms.map(platform => {
+        if (
+          platform.contracts &&
+          platform.contracts.networks &&
+          platform.contracts.networks.length &&
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
+          platform.contracts.networks.map(network => {
+            if (this.platform === platform.name) {
+              if (
+                this[network.id].length &&
+                !this[network.id + 'Errors'].length
+              ) {
+                completed.push(network.id)
+              }
+            }
+          })
+        }
+      })
+      return Boolean(completed.length)
     }
   },
   methods: {
