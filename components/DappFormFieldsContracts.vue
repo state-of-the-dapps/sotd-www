@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { platformNetworksWithErrorInfo } from '@/helpers/constants'
+import { platforms, platformNetworksWithErrorInfo } from '@/helpers/constants'
 import IconCheckmark from './IconCheckmark'
 
 const platformProps = () => {
@@ -84,99 +84,32 @@ export default {
   },
   computed: {
     contractFields() {
-      const fields = [
-        {
-          platform: 'Ethereum',
-          networks: [
-            {
-              addresses: this['mainnet'],
-              id: 'mainnet',
-              name: 'Mainnet',
-              errors: this['mainnetErrors']
-            },
-            {
-              addresses: this['ropsten'],
-              id: 'ropsten',
-              name: 'Ropsten',
-              errors: this['ropstenErrors']
-            },
-            {
-              addresses: this['kovan'],
-              id: 'kovan',
-              name: 'Kovan',
-              errors: this['kovanErrors']
-            },
-            {
-              addresses: this['rinkeby'],
-              id: 'rinkeby',
-              name: 'Rinkeby',
-              errors: this['rinkebyErrors']
-            }
-          ],
-          canError: true
-        },
-        {
-          platform: 'POA',
-          networks: [
-            {
-              addresses: this['poaMainnet'],
-              id: 'poaMainnet',
-              name: 'Mainnet',
-              errors: this['poaMainnetErrors']
-            }
-          ],
-          canError: true
-        },
-        {
-          platform: 'GoChain',
-          networks: [
-            {
-              addresses: this['goChainMainnet'],
-              id: 'goChainMainnet',
-              name: 'Mainnet',
-              errors: this['goChainMainnetErrors']
-            }
-          ],
-          canError: true
-        },
-        {
-          platform: 'EOS',
-          networks: [
-            {
-              addresses: this['eosMainnet'],
-              id: 'eosMainnet',
-              name: 'Mainnet',
-              errors: this['eosMainnetErrors']
-            }
-          ],
-          canError: true
-        },
-        {
-          platform: 'Steem',
-          networks: [
-            {
-              addresses: this['steemMainnet'],
-              id: 'steemMainnet',
-              name: 'Mainnet',
-              errors: this['steemMainnetErrors']
-            }
-          ],
-          canError: true
-        },
-        {
-          platform: 'xDai',
-          networks: [
-            {
-              addresses: this['xDaiMainnet'],
-              id: 'xDaiMainnet',
-              name: 'Mainnet',
-              errors: this['xDaiMainnetErrors']
-            }
-          ],
-          canError: true
+      const fieldList = []
+      platforms.map(platform => {
+        const obj = {}
+        obj['platform'] = platform.name
+        if (
+          platform.contracts &&
+          platform.contracts.networks &&
+          platform.contracts.networks.length
+        ) {
+          obj['networks'] = []
+          platform.contracts.networks.map(network => {
+            obj['networks'].push({
+              addresses: this[network.id],
+              id: network.id,
+              name: network.name,
+              errors: this[network.id + 'Errors']
+            })
+          })
+          obj['canError'] = Boolean(
+            platform.contracts.validations &&
+              platform.contracts.validations.length
+          )
         }
-      ]
-      return fields
+        fieldList.push(obj)
+      })
+      return fieldList
     },
     isComplete() {
       const ethereumIsComplete = Boolean(
