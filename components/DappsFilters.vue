@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       categoryOptions: [],
-      platformOptions: this.getPlatformOptions(platformList),
+      platformOptions: this.getPlatformOptions(platformList()),
       statusOptions: this.getDappStatusOptions(dappStatuses)
     }
   },
@@ -58,7 +58,8 @@ export default {
       return this.$route.query.status || ''
     },
     formattedPlatformQuery() {
-      return platformMap[this.platformQuery.toLowerCase()]
+      const platforms = platformMap()
+      return platforms[this.platformQuery.toLowerCase()]
     }
   },
   async mounted() {

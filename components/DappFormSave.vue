@@ -121,6 +121,11 @@
 
 <script>
 import { directive as onClickaway } from 'vue-clickaway'
+import {
+  platformContractProps,
+  platformContractPropNames,
+  platformNetworkFullNameMap
+} from '@/helpers/constants'
 import DappFormFieldsEmail from './DappFormFieldsEmail.vue'
 import BasePopover from './BasePopover'
 
@@ -133,6 +138,7 @@ export default {
     DappFormFieldsEmail
   },
   props: {
+    ...platformContractProps(),
     acceptedTerms: {
       type: Boolean,
       required: true,
@@ -142,51 +148,6 @@ export default {
       type: String,
       required: true,
       default: ''
-    },
-    contractsMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsKovan: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsRopsten: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsRinkeby: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsPoaMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsGoChainMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsEosMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsSteemMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    contractsXDaiMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
     },
     diffExists: {
       type: Boolean,
@@ -243,25 +204,17 @@ export default {
     missingFields() {
       const missingFields = []
       const errorFieldsToLabelsMap = {
+        ...platformNetworkFullNameMap(),
         acceptedTerms: 'Accept the terms',
         authors: 'Authors',
         category: 'Category',
         dappUrl: 'DApp URL',
         description: 'Description',
-        eosMainnet: 'EOS Mainnet',
         email: 'Email',
-        goChainMainnet: 'GoChain Mainnet',
-        kovan: 'Ethereum Kovan',
-        mainnet: 'Ethereum Mainnet',
         name: 'DApp Name',
         platform: 'Platform',
-        poaMainnet: 'POA Mainnet',
-        ropsten: 'Ethereum Ropsten',
-        rinkeby: 'Ethereum Rinkeby',
-        xDaiMainnet: 'xDai Mainnet',
         socialChat: 'Chat invitation URL',
         status: 'Status',
-        steemMainnet: 'Steem Mainnet',
         tags: 'Tags',
         teaser: 'Tagline',
         websiteUrl: 'Website URL'
@@ -299,12 +252,10 @@ export default {
       this.profileScoreTimer = setTimeout(() => {
         // TODO clean this up
         const data = { fields }
-        data.fields.contractsMainnet = this.contractsMainnet
-        data.fields.contractsPoaMainnet = this.contractsPoaMainnet
-        data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
-        data.fields.contractsEosMainnet = this.contractsEosMainnet
-        data.fields.contractsSteemMainnet = this.contractsSteemMainnet
-        data.fields.contractsXDaiMainnet = this.contractsXDaiMainnet
+        const propNames = platformContractPropNames()
+        propNames.map(prop => {
+          data.fields[prop] = this[prop]
+        })
         this.$axios.$post('profile/score', data).then(response => {
           const score = response.score || 0
           this.$emit('setProfileScore', score)
@@ -328,16 +279,10 @@ export default {
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
-        // clean this up
-        data.fields.contractsMainnet = this.contractsMainnet
-        data.fields.contractsKovan = this.contractsKovan
-        data.fields.contractsRopsten = this.contractsRopsten
-        data.fields.contractsRinkeby = this.contractsRinkeby
-        data.fields.contractsPoaMainnet = this.contractsPoaMainnet
-        data.fields.contractsGoChainMainnet = this.contractsGoChainMainnet
-        data.fields.contractsEosMainnet = this.contractsEosMainnet
-        data.fields.contractsSteemMainnet = this.contractsSteemMainnet
-        data.fields.contractsXDaiMainnet = this.contractsXDaiMainnet
+        const propNames = platformContractPropNames()
+        propNames.map(prop => {
+          data.fields[prop] = this[prop]
+        })
         this.$emit('submit', data)
       }
     },

@@ -26,17 +26,9 @@
           @updateWarnings="updateWarnings"
           @updateExistingDapp="updateExistingDapp"/>
         <DappFormSave
+          v-bind="contractProps"
           :accepted-terms="fields.acceptedTerms"
           :additional-comments="fields.additionalComments"
-          :contracts-mainnet="contractsMainnet"
-          :contracts-kovan="contractsKovan"
-          :contracts-ropsten="contractsRopsten"
-          :contracts-rinkeby="contractsRinkeby"
-          :contracts-poa-mainnet="contractsPoaMainnet"
-          :contracts-go-chain-mainnet="contractsGoChainMainnet"
-          :contracts-eos-mainnet="contractsEosMainnet"
-          :contracts-steem-mainnet="contractsSteemMainnet"
-          :contracts-x-dai-mainnet="contractsXDaiMainnet"
           :diff-exists="diffExists"
           :error-fields="errorFields"
           :errors="errors"
@@ -63,8 +55,14 @@
 </template>
 
 <script>
+import * as deepmerge from 'deepmerge'
 import cloneDeep from 'lodash.clonedeep'
 import equal from 'deep-equal'
+import {
+  platformContractComputedFields,
+  platformContractDataFields,
+  platformContractPropNames
+} from '@/helpers/constants'
 import BaseModal from './BaseModal'
 import DappFormFields from './DappFormFields'
 import DappFormSave from './DappFormSave'
@@ -98,7 +96,7 @@ export default {
     }
   },
   data() {
-    return {
+    const obj = {
       confirmationModal: false,
       diffExists: false,
       errorFields: [
@@ -119,21 +117,11 @@ export default {
         dappUrl: [],
         description: [],
         email: [],
-        kovan: [],
         license: [],
         icon: [],
         logo: [],
-        mainnet: [],
         name: [],
         platform: [],
-        poaMainnet: [],
-        goChainMainnet: [],
-        eosMainnet: [],
-        steemMainnet: [],
-        xDaiMainnet: [],
-        productImage: [],
-        rinkeby: [],
-        ropsten: [],
         socialChat: [],
         tags: [],
         teaser: [],
@@ -146,17 +134,6 @@ export default {
         authors: [],
         category: '',
         description: '',
-        contracts: {
-          mainnet: { address: '' },
-          poaMainnet: { address: '' },
-          goChainMainnet: { address: '' },
-          eosMainnet: { address: '' },
-          steemMainnet: { address: '' },
-          ropsten: { address: '' },
-          kovan: { address: '' },
-          rinkeby: { address: '' },
-          xDaiMainnet: { address: '' }
-        },
         email: '',
         icon: '',
         license: '',
@@ -195,8 +172,11 @@ export default {
         teaser: []
       }
     }
+    const mergedObj = deepmerge(obj, platformContractDataFields())
+    return mergedObj
   },
   computed: {
+    ...platformContractComputedFields(),
     acceptedTerms() {
       return this.fields.acceptedTerms
     },
@@ -212,53 +192,16 @@ export default {
     category() {
       return this.fields.category
     },
+    contractProps() {
+      const list = platformContractPropNames()
+      const obj = {}
+      list.map(propName => {
+        obj[propName] = this[propName]
+      })
+      return obj
+    },
     contracts() {
       return this.fields.contracts
-    },
-    contractsMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.mainnet.address
-      )
-    },
-    contractsKovan() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.kovan.address
-      )
-    },
-    contractsRopsten() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.ropsten.address
-      )
-    },
-    contractsRinkeby() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.rinkeby.address
-      )
-    },
-    contractsPoaMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.poaMainnet.address
-      )
-    },
-    contractsGoChainMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.goChainMainnet.address
-      )
-    },
-    contractsEosMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.eosMainnet.address
-      )
-    },
-    contractsSteemMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.steemMainnet.address
-      )
-    },
-    contractsXDaiMainnet() {
-      return this.$options.filters.linesToArr(
-        this.fields.contracts.xDaiMainnet.address
-      )
     },
     dappUrl() {
       return this.fields.siteUrls.dapp
@@ -287,9 +230,6 @@ export default {
     iconWarnings() {
       return this.warnings.icon
     },
-    kovanErrors() {
-      return this.errors.kovan
-    },
     license() {
       return this.fields.license
     },
@@ -305,9 +245,6 @@ export default {
     logoWarnings() {
       return this.warnings.logo
     },
-    mainnetErrors() {
-      return this.errors.mainnet
-    },
     name() {
       return this.fields.name
     },
@@ -320,15 +257,6 @@ export default {
     platform() {
       return this.fields.platform
     },
-    poaMainnetErrors() {
-      return this.errors.poaMainnet
-    },
-    goChainMainnetErrors() {
-      return this.errors.goChainMainnet
-    },
-    eosMainnetErrors() {
-      return this.errors.eosMainnet
-    },
     productImage() {
       return this.fields.productImage
     },
@@ -337,12 +265,6 @@ export default {
     },
     productImageWarnings() {
       return this.warnings.productImage
-    },
-    rinkebyErrors() {
-      return this.errors.rinkeby
-    },
-    ropstenErrors() {
-      return this.errors.ropsten
     },
     selectedTags() {
       return this.fields.tags
@@ -371,9 +293,6 @@ export default {
     status() {
       return this.fields.status
     },
-    steemMainnetErrors() {
-      return this.errors.steemMainnet
-    },
     subscribeNewsletter() {
       return this.fields.subscribeNewsletter
     },
@@ -391,9 +310,6 @@ export default {
     },
     websiteUrlErrors() {
       return this.errors.websiteUrl
-    },
-    xDaiMainnetErrors() {
-      return this.errors.xDaiMainnet
     }
   },
   mounted() {

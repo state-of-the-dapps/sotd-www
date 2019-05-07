@@ -1,120 +1,70 @@
 <template>
   <div class="DappDetailBodyContentModulesContracts">
     <ul class="contract-list">
-      <DappDetailBodyContentModulesContractsItem
-        v-if="mainnet.length"
-        :addresses="mainnet"
-        :slug="slug"
-        platform="Ethereum"
-        network="mainnet"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="kovan.length"
-        :addresses="kovan"
-        :slug="slug"
-        platform="Ethereum"
-        network="kovan"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="rinkeby.length"
-        :addresses="rinkeby"
-        :slug="slug"
-        platform="Ethereum"
-        network="rinkeby"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="ropsten.length"
-        :addresses="ropsten"
-        :slug="slug"
-        platform="Ethereum"
-        network="ropsten"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="poaMainnet.length"
-        :addresses="poaMainnet"
-        :slug="slug"
-        platform="POA"
-        network="mainnet"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="goChainMainnet.length"
-        :addresses="goChainMainnet"
-        :slug="slug"
-        platform="GoChain"
-        network="mainnet"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="eosMainnet.length"
-        :addresses="eosMainnet"
-        :slug="slug"
-        platform="EOS"
-        network="mainnet"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="steemMainnet.length"
-        :addresses="steemMainnet"
-        :slug="slug"
-        platform="Steem"
-        network="mainnet"/>
-      <DappDetailBodyContentModulesContractsItem
-        v-if="xDaiMainnet.length"
-        :addresses="xDaiMainnet"
-        :slug="slug"
-        platform="xDai"
-        network="mainnet"/>
+      <template v-for="(network, index) in networks">
+        <DappDetailBodyContentModulesContractsItem
+          v-if="network.addresses.length"
+          :key="index"
+          :addresses="network.addresses"
+          :slug="slug"
+          :platform="network.platform"
+          :network="network.name"/>
+      </template>
     </ul>
   </div>
 </template>
 
 <script>
+import { platforms, platformNetworkList } from '@/helpers/constants'
 import DappDetailBodyContentModulesContractsItem from './DappDetailBodyContentModulesContractsItem'
+
+const contractProps = () => {
+  const obj = {}
+  const networks = platformNetworkList()
+  networks.map(network => {
+    obj[network] = {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  })
+  return obj
+}
 
 export default {
   components: {
     DappDetailBodyContentModulesContractsItem
   },
   props: {
-    mainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    kovan: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    rinkeby: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    ropsten: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    poaMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    goChainMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    eosMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    steemMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    xDaiMainnet: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
+    ...contractProps(),
     slug: {
       type: String,
       required: true
+    }
+  },
+  computed: {
+    networks() {
+      const list = []
+      const platformList = platforms
+      platformList.map(platform => {
+        if (
+          platform.name &&
+          platform.contracts &&
+          platform.contracts.networks &&
+          platform.contracts.networks.length
+        ) {
+          platform.contracts.networks.map(network => {
+            if (network.id && network.name) {
+              list.push({
+                name: network.name,
+                addresses: this[network.id],
+                platform: platform.name
+              })
+            }
+          })
+        }
+      })
+      return list
     }
   }
 }

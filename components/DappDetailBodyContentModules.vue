@@ -119,32 +119,13 @@
         </div>
       </div>
       <div 
-        v-if="
-          (dapp.audits && dapp.audits.length)||
-            (dapp.contractsMainnet && dapp.contractsMainnet.length) ||
-            (dapp.contractsKovan && dapp.contractsKovan.length) ||
-            (dapp.contractsRinkeby && dapp.contractsRinkeby.length) ||
-            (dapp.contractsRopsten && dapp.contractsRopsten.length) ||
-            (dapp.contractsPoaMainnet && dapp.contractsPoaMainnet.length) ||
-            (dapp.contractsGoChainMainnet && dapp.contractsGoChainMainnet.length) ||
-            (dapp.contractsEosMainnet && dapp.contractsEosMainnet.length) ||
-            (dapp.contractsSteemMainnet && dapp.contractsSteemMainnet.length) ||
-            (dapp.contractsXDaiMainnet && dapp.contractsXDaiMainnet.length)
-        "
+        v-if="showAuditsContractsModule"
         class="module-wrapper -tier-5">
         <div
           :class="dapp.audits.length ? 'has-audits' : ''"
           class="module">
           <DappDetailBodyContentModulesContracts
-            :mainnet="dapp.contractsMainnet"
-            :kovan="dapp.contractsKovan"
-            :rinkeby="dapp.contractsRinkeby"
-            :ropsten="dapp.contractsRopsten"
-            :poa-mainnet="dapp.contractsPoaMainnet"
-            :go-chain-mainnet="dapp.contractsGoChainMainnet"
-            :eos-mainnet="dapp.contractsEosMainnet"
-            :steem-mainnet="dapp.contractsSteemMainnet"
-            :x-dai-mainnet="dapp.contractsXDaiMainnet"
+            v-bind="contractProps"
             :slug="dapp.slug"/>
         </div>
         <div 
@@ -160,6 +141,10 @@
 </template>
 
 <script>
+import {
+  platformContractPropNames,
+  platformNetworkList
+} from '@/helpers/constants'
 import DappDetailBodyContentModulesAudits from './DappDetailBodyContentModulesAudits'
 import DappDetailBodyContentModulesAuthors from './DappDetailBodyContentModulesAuthors'
 import DappDetailBodyContentModulesContracts from './DappDetailBodyContentModulesContracts'
@@ -186,24 +171,47 @@ export default {
     dapp: {
       type: Object,
       required: true,
-      default: () => ({
-        audits: [],
-        authors: [],
-        contractsMainnet: [],
-        contractsKovan: [],
-        contractsRinkeby: [],
-        contractsRopsten: [],
-        contractsPoaMainnet: [],
-        contractsGoChainMainnet: [],
-        contractsEosMainnet: [],
-        contractsSteemMainnet: [],
-        contractsXDaiMainnet: [],
-        sparklines: {},
-        stats: {}
-      })
+      default: () => {
+        const obj = {}
+        const networks = platformContractPropNames()
+        networks.map(network => {
+          obj[network] = []
+        })
+        return {
+          ...obj,
+          audits: [],
+          authors: [],
+          sparklines: {},
+          stats: {}
+        }
+      }
     }
   },
   computed: {
+    contractProps() {
+      const networks = platformNetworkList()
+      const obj = {}
+      networks.map(network => {
+        const contractName =
+          'contracts' + this.$options.filters.capitalize(network)
+        obj[network] = this.dapp[contractName]
+      })
+      return obj
+    },
+    showAuditsContractsModule() {
+      const networks = platformContractPropNames()
+      const instances = []
+      if (this.dapp.audits && this.dapp.audits.length) {
+        instances.push('audits')
+      }
+      networks.forEach(network => {
+        if (this.dapp[network] && this.dapp[network].length) {
+          instances.push(network)
+        }
+      })
+      const hasInstances = Boolean(instances.length)
+      return hasInstances
+    },
     stats() {
       let dauExists = this.dapp.stats.dau !== undefined
       return dauExists

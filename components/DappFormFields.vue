@@ -55,26 +55,9 @@
       :platform="fields.platform"
       @updateErrors="updateErrors"
       @updateField="updateField"/>
-    <DappFormFieldsContracts 
+    <DappFormFieldsContracts
+      v-bind="contractProps"
       :platform="fields.platform"
-      :mainnet="fields.contracts.mainnet.address"
-      :mainnet-errors="errors.mainnet"
-      :kovan="fields.contracts.kovan.address"
-      :kovan-errors="errors.kovan"
-      :ropsten="fields.contracts.ropsten.address"
-      :ropsten-errors="errors.ropsten"
-      :rinkeby="fields.contracts.rinkeby.address"
-      :rinkeby-errors="errors.rinkeby"
-      :poa-mainnet="fields.contracts.poaMainnet.address"
-      :poa-mainnet-errors="errors.poaMainnet"
-      :go-chain-mainnet="fields.contracts.goChainMainnet.address"
-      :go-chain-mainnet-errors="errors.goChainMainnet"
-      :eos-mainnet="fields.contracts.eosMainnet.address"
-      :eos-mainnet-errors="errors.eosMainnet"
-      :steem-mainnet="fields.contracts.steemMainnet.address"
-      :steem-mainnet-errors="errors.steemMainnet"
-      :x-dai-mainnet="fields.contracts.xDaiMainnet.address"
-      :x-dai-mainnet-errors="errors.xDaiMainnet"
       @updateContract="updateContract"
       @updateErrors="updateErrors"/>
     <DappFormFieldsStatus
@@ -109,6 +92,10 @@
 </template>
 
 <script>
+import {
+  platformNetworkList,
+  platformNetworksWithErrorInfo
+} from '@/helpers/constants'
 import DappFormFieldsAuthors from '~/components/DappFormFieldsAuthors.vue'
 import DappFormFieldsCategory from '~/components/DappFormFieldsCategory.vue'
 import DappFormFieldsContracts from '~/components/DappFormFieldsContracts.vue'
@@ -161,28 +148,25 @@ export default {
     fields: {
       type: Object,
       required: true,
-      default: () => ({
-        contracts: {
-          mainnet: {},
-          kovan: {},
-          ropsten: {},
-          rinkeby: {},
-          poaMainnet: {},
-          goChainMainnet: {},
-          eosMainnet: {},
-          steemMainnet: {},
-          xDaiMainnet: {}
-        },
-        siteUrls: {},
-        socials: {
-          blog: {},
-          chat: {},
-          facebook: {},
-          github: {},
-          reddit: {},
-          twitter: {}
+      default: () => {
+        const networkObj = {}
+        const networks = platformNetworkList()
+        networks.map(network => {
+          obj[network] = {}
+        })
+        return {
+          contracts: networkObj,
+          siteUrls: {},
+          socials: {
+            blog: {},
+            chat: {},
+            facebook: {},
+            github: {},
+            reddit: {},
+            twitter: {}
+          }
         }
-      })
+      }
     },
     formType: {
       type: String,
@@ -208,6 +192,19 @@ export default {
       type: Object,
       required: true,
       default: () => ({})
+    }
+  },
+  computed: {
+    contractProps() {
+      const obj = {}
+      const networks = platformNetworksWithErrorInfo()
+      networks.map(network => {
+        obj[network.name] = this.fields.contracts[network.name].address
+        if (network.canError) {
+          obj[network.name + 'Errors'] = this.errors[network.name]
+        }
+      })
+      return obj
     }
   },
   methods: {

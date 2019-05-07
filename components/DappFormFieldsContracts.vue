@@ -1,355 +1,80 @@
 <template>
-  <div 
+  <div
     v-if="platform"
     class="DappFormFieldsContracts">
     <div>
       <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span><span>{{ platform }} contract <template v-if="platform === 'EOS' || platform === 'Steem'">accounts</template><template v-else>addresses</template></span></p>
-      <ul 
-        v-if="platform === 'Ethereum'" 
-        class="list">
-        <li
-          id="mainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div 
-            :class="mainnetErrors && mainnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="mainnetField"
-              :value="mainnet" 
-              class="input"
-              placeholder="Enter addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('mainnet', $event.target.value)"/>
-            <ul 
-              v-if="mainnetErrors && mainnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in mainnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-        <li
-          id="ropsten"
-          class="item">
-          <div class="name">Ropsten</div>
-          <div 
-            :class="ropstenErrors && ropstenErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="ropstenField"
-              :value="ropsten" 
-              class="input" 
-              placeholder="Enter addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('ropsten', $event.target.value)"/>
-            <ul 
-              v-if="ropstenErrors && ropstenErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in ropstenErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-        <li
-          id="kovan"
-          class="item">
-          <div class="name">Kovan</div>
-          <div 
-            :class="kovanErrors && kovanErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="kovanField"
-              :value="kovan" 
-              class="input" 
-              placeholder="Enter addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('kovan', $event.target.value)"/>
-            <ul 
-              v-if="kovanErrors && kovanErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in kovanErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-        <li
-          id="rinkeby"
-          class="item">
-          <div class="name">Rinkeby</div>
-          <div 
-            :class="rinkebyErrors && rinkebyErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="rinkebyField"
-              :value="rinkeby" 
-              class="input" 
-              placeholder="Enter addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('rinkeby', $event.target.value)"/>
-            <ul 
-              v-if="rinkebyErrors && rinkebyErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in rinkebyErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul 
-        v-if="platform === 'POA'" 
-        class="list">
-        <li
-          id="poaMainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div 
-            :class="poaMainnetErrors && poaMainnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="poaMainnetField"
-              :value="poaMainnet" 
-              class="input" 
-              placeholder="Enter POA addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('poaMainnet', $event.target.value)"/>
-            <ul 
-              v-if="poaMainnetErrors && poaMainnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in poaMainnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul 
-        v-if="platform === 'GoChain'" 
-        class="list">
-        <li
-          id="goChainMainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div 
-            :class="goChainMainnetErrors && goChainMainnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="goChainMainnetField"
-              :value="goChainMainnet" 
-              class="input" 
-              placeholder="Enter GoChain addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('goChainMainnet', $event.target.value)"/>
-            <ul 
-              v-if="goChainMainnetErrors && goChainMainnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in goChainMainnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul 
-        v-if="platform === 'EOS'" 
-        class="list">
-        <li
-          id="eosMainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div 
-            :class="eosMainnetErrors && eosMainnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="eosMainnetField"
-              :value="eosMainnet" 
-              class="input" 
-              placeholder="Enter EOS accounts (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('eosMainnet', $event.target.value)"/>
-            <ul 
-              v-if="eosMainnetErrors && eosMainnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in eosMainnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul
-        v-if="platform === 'Steem'"
-        class="list">
-        <li
-          id="steemMainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div
-            :class="steemMainnetErrors && steemMainnetErrors.length > 0 ? '--has-errors' : ''"
-            class="input-wrapper">
-            <textarea
-              id="steemMainnetField"
-              :value="steemMainnet"
-              class="input"
-              placeholder="Enter Steem accounts (one per line)"
-              maxlength="11000"
-              @input="updateAndValidate('steemMainnet', $event.target.value)"/>
-            <ul
-              v-if="steemMainnetErrors && steemMainnetErrors.length > 0"
-              class="error-list -contracts">
-              <li
-                v-for="(error, index) in steemMainnetErrors"
-                :key="index"
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-      <ul 
-        v-if="platform === 'xDai'" 
-        class="list">
-        <li
-          id="xDaiMainnet"
-          class="item">
-          <div class="name">Mainnet <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-          <div 
-            :class="xDaiMainnetErrors && xDaiMainnetErrors.length > 0 ? '--has-errors' : ''" 
-            class="input-wrapper">
-            <textarea
-              id="xDaiMainnetField"
-              :value="xDaiMainnet" 
-              class="input" 
-              placeholder="Enter xDai addresses (one per line)" 
-              maxlength="11000" 
-              @input="updateAndValidate('xDaiMainnet', $event.target.value)"/>
-            <ul 
-              v-if="xDaiMainnetErrors && xDaiMainnetErrors.length > 0" 
-              class="error-list -contracts">
-              <li 
-                v-for="(error, index) in xDaiMainnetErrors" 
-                :key="index" 
-                class="error-item">{{ error }}</li>
-            </ul>
-          </div>
-        </li>
-      </ul>
+      <template v-for="(field, index) in contractFields">
+        <ul 
+          v-if="platform === field.platform" 
+          :key="index"
+          class="list">
+          <li 
+            v-for="(network, index) in field.networks" 
+            :id="network.id" 
+            :key="index"
+            class="item">
+            <div class="name">{{ network.name }} <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
+            <div 
+              :class="network.errors && network.errors.length > 0 ? '--has-errors' : ''" 
+              class="input-wrapper">
+              <textarea
+                :id="network.id + 'Field'"
+                :value="network.addresses" 
+                class="input"
+                placeholder="Enter addresses (one per line)" 
+                maxlength="11000" 
+                @input="updateAndValidate(network.id, $event.target.value)"/>
+              <ul
+                v-if="network.errors && network.errors.length > 0" 
+                class="error-list -contracts">
+                <li 
+                  v-for="(error, index) in network.errors" 
+                  :key="index" 
+                  class="error-item">{{ error }}</li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import { platforms, platformNetworksWithErrorInfo } from '@/helpers/constants'
 import IconCheckmark from './IconCheckmark'
+
+const platformProps = () => {
+  const obj = {}
+  const networks = platformNetworksWithErrorInfo()
+  networks.map(network => {
+    obj[network.name] = {
+      type: String,
+      required: true,
+      default: ''
+    }
+    if (network.canError) {
+      obj[network.name + 'Errors'] = {
+        type: Array,
+        required: true,
+        default: () => []
+      }
+    }
+  })
+  return obj
+}
 
 export default {
   components: {
     IconCheckmark
   },
   props: {
+    ...platformProps(),
     platform: {
       type: String,
       required: true,
       default: ''
-    },
-    mainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    mainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    ropsten: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    ropstenErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    kovan: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    kovanErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    rinkeby: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    rinkebyErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    poaMainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    poaMainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    goChainMainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    goChainMainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    eosMainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    eosMainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    steemMainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    steemMainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
-    },
-    xDaiMainnet: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    xDaiMainnetErrors: {
-      type: Array,
-      required: true,
-      default: () => []
     }
   },
   data() {
@@ -358,43 +83,57 @@ export default {
     }
   },
   computed: {
+    contractFields() {
+      const fieldList = []
+      platforms.map(platform => {
+        const obj = {}
+        obj['platform'] = platform.name
+        if (
+          platform.contracts &&
+          platform.contracts.networks &&
+          platform.contracts.networks.length
+        ) {
+          obj['networks'] = []
+          platform.contracts.networks.map(network => {
+            obj['networks'].push({
+              addresses: this[network.id],
+              id: network.id,
+              name: network.name,
+              errors: this[network.id + 'Errors']
+            })
+          })
+          obj['canError'] = Boolean(
+            platform.contracts.validations &&
+              platform.contracts.validations.length
+          )
+        }
+        fieldList.push(obj)
+      })
+      return fieldList
+    },
     isComplete() {
-      const ethereumIsComplete = Boolean(
-        this.platform === 'Ethereum' &&
-          ((this.mainnet.length >= 42 && !this.mainnetErrors.length) ||
-            (this.ropsten.length >= 42 && !this.ropstenErrors.length) ||
-            (this.kovan.length >= 42 && !this.kovanErrors.length) ||
-            (this.rinkeby.length >= 42 && !this.rinkebyErrors.length))
-      )
-      const eosIsComplete = Boolean(
-        this.platform === 'EOS' &&
-          (this.eosMainnet.length && !this.eosMainnetErrors.length)
-      )
-      const poaIsComplete = Boolean(
-        this.platform === 'POA' &&
-          (this.poaMainnet.length >= 42 && !this.poaMainnetErrors.length)
-      )
-      const goChainIsComplete = Boolean(
-        this.platform === 'GoChain' &&
-          (this.goChainMainnet.length >= 42 &&
-            !this.goChainMainnetErrors.length)
-      )
-      const steemIsComplete = Boolean(
-        this.platform === 'Steem' &&
-          (this.steemMainnet.length && !this.steemMainnetErrors.length)
-      )
-      const xDaiIsComplete = Boolean(
-        this.platform === 'xDai' &&
-          (this.xDaiMainnet.length >= 42 && !this.xDaiMainnetErrors.length)
-      )
-      return Boolean(
-        ethereumIsComplete ||
-          eosIsComplete ||
-          poaIsComplete ||
-          goChainIsComplete ||
-          steemIsComplete ||
-          xDaiIsComplete
-      )
+      const completed = []
+      platforms.map(platform => {
+        if (
+          platform.contracts &&
+          platform.contracts.networks &&
+          platform.contracts.networks.length &&
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
+          platform.contracts.networks.map(network => {
+            if (this.platform === platform.name) {
+              if (
+                this[network.id].length &&
+                !this[network.id + 'Errors'].length
+              ) {
+                completed.push(network.id)
+              }
+            }
+          })
+        }
+      })
+      return Boolean(completed.length)
     }
   },
   methods: {
@@ -412,27 +151,34 @@ export default {
           let contractErrors = []
           contractArray.forEach(function(element) {
             if (element.length > 0) {
-              if (network.startsWith(`eos`)) {
-                !element.match(
-                  /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/
-                )
-                  ? contractErrors.push(`Account name invalid`)
-                  : ''
-              } else if (network.startsWith(`steem`)) {
-                // https://steemit.com/programming/@cryptosharon/the-5-rules-of-a-valid-username-on-the-steem-blockchain-and-a-3-sbd-contest-to-make-an-account-name-validation-regex
-                !element.match(
-                  /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/
-                )
-                  ? contractErrors.push(`Account name invalid`)
-                  : ''
-              } else {
-                element.length !== 42
-                  ? contractErrors.push(`Address must be exactly 42 characters`)
-                  : ''
-                !element.startsWith('0x')
-                  ? contractErrors.push(`Address must start with 0x`)
-                  : ''
-              }
+              platforms.map(platform => {
+                if (
+                  platform.contracts &&
+                  platform.contracts.networks &&
+                  platform.contracts.networks.length &&
+                  platform.contracts.validations &&
+                  platform.contracts.validations.length
+                ) {
+                  platform.contracts.networks.map(platformNetwork => {
+                    if (platformNetwork.id && network === platformNetwork.id) {
+                      platform.contracts.validations.map(validation => {
+                        if (
+                          (validation.type === 'minLength' &&
+                            element.length < validation.value) ||
+                          (validation.type === 'maxLength' &&
+                            element.length > validation.value) ||
+                          (validation.type === 'startsWith' &&
+                            !element.startsWith(validation.value)) ||
+                          (validation.type === 'regEx' &&
+                            !element.match(validation.value))
+                        ) {
+                          contractErrors.push(validation.message)
+                        }
+                      })
+                    }
+                  })
+                }
+              })
             }
           })
           if (contractErrors.length > 0) {

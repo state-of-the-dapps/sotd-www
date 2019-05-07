@@ -27,65 +27,6 @@ const dappMetaBadges = [
 
 const dappFallbackRedirectPath = '/dapps'
 
-const dappSchema = Object.freeze({
-  authors: [],
-  badges: [],
-  contractsMainnet: [],
-  contractsKovan: [],
-  contractsRinkeby: [],
-  contractsRopsten: [],
-  contractsPoaMainnet: [],
-  contractsGoChainMainnet: [],
-  contractsEosMainnet: [],
-  contractsSteemMainnet: [],
-  contractsXDaiMainnet: [],
-  created: '',
-  description: '',
-  isNew: false,
-  isNsfw: false,
-  lastUpdated: '',
-  license: '',
-  logoUrl: '',
-  name: '',
-  nofollow: false,
-  platform: '',
-  productImage: '',
-  relatedDapps: [],
-  sites: {
-    websiteUrl: '',
-    dappUrl: ''
-  },
-  slug: '',
-  socials: [],
-  sparklines: {
-    transactions: [],
-    users: []
-  },
-  stats: {
-    ctr: 0,
-    positive: 0,
-    negative: 0,
-    neutral: 0,
-    impressions: 0,
-    clicks: 0,
-    dau: 0,
-    mau: 0,
-    tx_1d: 0,
-    tx_30d: 0,
-    tx_7d: 0,
-    wau: 0,
-    qau: 0,
-    tx_90d: 0,
-    flagged: 0,
-    shared: 0,
-    suggested: 0,
-    contract_created: ''
-  },
-  status: '',
-  tags: [],
-  teaser: ''
-})
-
 const dappBadgeMap = Object.freeze({
   '0x': {
     component: 'IconBadge0x',
@@ -186,8 +127,6 @@ const daysOfTheWeek = Object.freeze([
   'Sat'
 ])
 
-const dappDefaultPlatform = 'Ethereum'
-
 const feedbackComponentMap = Object.freeze({
   negative: 'SvgFeedbackNegative',
   neutral: 'SvgFeedbackNeutral',
@@ -274,64 +213,474 @@ const newDapps = [
   116
 ]
 
-const platformList = ['Ethereum', 'EOS', 'GoChain', 'POA', 'Steem', 'xDai']
-
-const platformSelectOptions = [
+const platforms = Object.freeze([
   {
-    selection: 'Ethereum',
-    text: 'Ethereum'
+    id: 'ethereum',
+    name: 'Ethereum',
+    software: {
+      name: 'Metamask',
+      url: 'https://metamask.io/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'mainnet',
+          name: 'Mainnet'
+        },
+        {
+          id: 'kovan',
+          name: 'Kovan'
+        },
+        {
+          id: 'ropsten',
+          name: 'Ropsten'
+        },
+        {
+          id: 'rinkeby',
+          name: 'Rinkeby'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
   },
   {
-    selection: 'EOS',
-    text: 'EOS'
+    id: 'eos',
+    name: 'EOS',
+    software: {
+      name: 'Scatter',
+      url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'eosMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/,
+          message: 'One of your addresses is not formatted correctly'
+        }
+      ]
+    }
   },
   {
-    selection: 'GoChain',
-    text: 'GoChain'
+    id: 'gochain',
+    name: 'GoChain',
+    contracts: {
+      networks: [
+        {
+          id: 'goChainMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
   },
   {
-    selection: 'POA',
-    text: 'POA'
+    id: 'poa',
+    name: 'POA',
+    //software: {
+    //  name: 'Nifty',
+    //  url:
+    //    'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
+    //},
+    contracts: {
+      networks: [
+        {
+          id: 'poaMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
   },
   {
-    selection: 'Steem',
-    text: 'Steem'
+    id: 'steem',
+    name: 'Steem',
+    software: {
+      name: 'Steem Keychain',
+      url:
+        'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'steemMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/,
+          message: 'One of your addresses is not formatted correctly'
+        }
+      ]
+    }
   },
   {
-    selection: 'xDai',
-    text: 'xDai'
+    id: 'xdai',
+    name: 'xDai',
+    contracts: {
+      networks: [
+        {
+          id: 'xDaiMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
   }
-]
+])
 
-const platformMap = {
-  ethereum: 'Ethereum',
-  eos: 'EOS',
-  poa: 'POA',
-  gochain: 'GoChain',
-  xdai: 'xDai',
-  steem: 'Steem'
+const platformContractComputedFields = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          obj[computedFieldName] = function() {
+            return this.$options.filters.linesToArr(
+              this.fields.contracts[network.id].address
+            )
+          }
+          if (
+            platform.contracts.validations &&
+            platform.contracts.validations.length
+          ) {
+            obj[network + 'Errors'] = function() {
+              return this.errors[network.id]
+            }
+          }
+        }
+      })
+    }
+  })
+  return obj
 }
 
-const platformSoftware = {
-  Ethereum: {
-    name: 'Metamask',
-    url: 'https://metamask.io/?utm_source=StateOfTheDApps'
-  },
-  EOS: {
-    name: 'Scatter',
-    url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
-  },
-  POA: {
-    name: 'Nifty',
-    url:
-      'https://chrome.google.com/webstore/detail/nifty-wallet/jbdaocneiiinmjbjlgalhcelgbejmnid?utm_source=StateOfTheDApps'
-  },
-  Steem: {
-    name: 'Steem Keychain',
-    url:
-      'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
+const platformContractDataFields = () => {
+  const obj = {
+    fields: {
+      contracts: {}
+    },
+    errors: {}
   }
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          obj.fields.contracts[network.id] = { address: '' }
+        }
+        if (
+          platform.contracts.validations &&
+          platform.contracts.validations.length
+        ) {
+          obj.errors[network.id] = []
+        }
+      })
+    }
+  })
+  return obj
 }
+
+const platformContractPropNames = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          list.push(computedFieldName)
+        }
+      })
+    }
+  })
+  return list
+}
+
+const platformContractDefaultValues = () => {
+  const obj = {}
+  const propNames = platformContractPropNames()
+  propNames.map(propName => {
+    obj[propName] = []
+  })
+  return obj
+}
+
+const platformContractProps = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          const computedFieldName =
+            'contracts' +
+            network.id.charAt(0).toUpperCase() +
+            network.id.slice(1)
+          obj[computedFieldName] = {
+            type: Array,
+            required: true,
+            default: () => []
+          }
+        }
+      })
+    }
+  })
+  return obj
+}
+
+const platformList = () => {
+  const list = []
+  platforms.map(platform => {
+    if (platform.name) {
+      list.push(platform.name)
+    }
+  })
+  return list
+}
+
+const platformMap = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (platform.id && platform.name) {
+      obj[platform.id] = platform.name
+    }
+  })
+  return obj
+}
+
+const platformNetworkFullNameMap = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          obj[network.id] = platform.name + ' ' + network.name
+        }
+      })
+    }
+  })
+  return obj
+}
+
+const platformNetworkList = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          list.push(network.id)
+        }
+      })
+    }
+  })
+  return list
+}
+
+const platformNetworksWithErrorInfo = () => {
+  const list = []
+  platforms.map(platform => {
+    if (
+      platform.contracts &&
+      platform.contracts.networks &&
+      platform.contracts.networks.length
+    ) {
+      platform.contracts.networks.map(network => {
+        if (network.id) {
+          list.push({
+            name: network.id,
+            canError: Boolean(
+              platform.contracts.validations &&
+                platform.contracts.validations.length
+            )
+          })
+        }
+      })
+    }
+  })
+  return list
+}
+
+const platformSelectOptions = () => {
+  const list = []
+  platforms.map(platform => {
+    if (platform.name) {
+      list.push({
+        selection: platform.name,
+        text: platform.name
+      })
+    }
+  })
+  return list
+}
+
+const platformSoftware = () => {
+  const obj = {}
+  platforms.map(platform => {
+    if (
+      platform.name &&
+      platform.software &&
+      platform.software.name &&
+      platform.software.url
+    ) {
+      obj[platform.name] = {
+        name: platform.software.name,
+        url: platform.software.url
+      }
+    }
+  })
+  return obj
+}
+
+const dappSchema = Object.freeze({
+  ...platformContractDefaultValues(),
+  authors: [],
+  badges: [],
+  created: '',
+  description: '',
+  isNew: false,
+  isNsfw: false,
+  lastUpdated: '',
+  license: '',
+  logoUrl: '',
+  name: '',
+  nofollow: false,
+  platform: '',
+  productImage: '',
+  relatedDapps: [],
+  sites: {
+    websiteUrl: '',
+    dappUrl: ''
+  },
+  slug: '',
+  socials: [],
+  sparklines: {
+    transactions: [],
+    users: []
+  },
+  stats: {
+    ctr: 0,
+    positive: 0,
+    negative: 0,
+    neutral: 0,
+    impressions: 0,
+    clicks: 0,
+    dau: 0,
+    mau: 0,
+    tx_1d: 0,
+    tx_30d: 0,
+    tx_7d: 0,
+    wau: 0,
+    qau: 0,
+    tx_90d: 0,
+    flagged: 0,
+    shared: 0,
+    suggested: 0,
+    contract_created: ''
+  },
+  status: '',
+  tags: [],
+  teaser: ''
+})
 
 const rankingColumns = Object.freeze([
   {
@@ -396,15 +745,22 @@ export {
   dappSortOptionsMap,
   dappStatuses,
   daysOfTheWeek,
-  dappDefaultPlatform,
   feedbackComponentMap,
   homeCollectionSlots,
   homeFeaturedCollections,
   languages,
   localeStrings,
   newDapps,
+  platforms,
+  platformContractComputedFields,
+  platformContractDataFields,
+  platformContractPropNames,
+  platformContractProps,
   platformList,
   platformMap,
+  platformNetworkFullNameMap,
+  platformNetworkList,
+  platformNetworksWithErrorInfo,
   platformSelectOptions,
   platformSoftware,
   rankingColumns
