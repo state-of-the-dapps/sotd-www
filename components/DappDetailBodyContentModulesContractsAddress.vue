@@ -62,7 +62,7 @@ export default {
       if (this.platform === 'Ethereum') {
         addressLink =
           'https://' +
-          (this.network === 'mainnet' ? '' : this.network + '.') +
+          (this.network === 'Mainnet' ? '' : this.network + '.') +
           'etherscan.io/address/' +
           this.address +
           '?utm_source=StateOfTheDApps'
