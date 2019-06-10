@@ -45,6 +45,7 @@ export default {
   }
   &.is-selected {
     background: transparent;
+    padding: 0;
     cursor: initial;
     &:hover {
       text-decoration: none;

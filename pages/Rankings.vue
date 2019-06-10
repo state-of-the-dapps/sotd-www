@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { rankingColumns } from '~/helpers/constants'
+import { platformMap, rankingColumns } from '~/helpers/constants'
 import { getDapps } from '~/helpers/api'
 import CategoryPlatformFilters from '~/components/CategoryPlatformFilters'
 import RankingTable from '~/components/RankingTable'
@@ -161,9 +161,16 @@ export default {
     }
   },
   head() {
+    const platforms = platformMap()
+    let title = 'State of the DApps — Ranking the Best '
+    title += this.$route.params.platform
+      ? platforms[this.$route.params.platform] + ' '
+      : 'Ethereum, EOS & Steem '
+    title += this.$route.params.category
+      ? this.$options.filters.capitalize(this.$route.params.category) + ' '
+      : 'DApps'
     return {
-      title:
-        'State of the DApps — Ranking the Best DApps of Ethereum, EOS & Steem',
+      title,
       script: [
         {
           src:
