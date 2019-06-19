@@ -3,12 +3,12 @@
     <div class="hero-wrapper">
       <PageHeading :title="$t('TheStats.title')"/>
       <p class="description">{{ $t('TheStats.description') }}</p>
-      <p class="button-wrapper">
+      <!-- <p class="button-wrapper">
         <BaseButton
           :text="$t('TheStats.askUs')"
           classes="special"
           @clickButton="openIntercom"/>
-      </p>
+      </p> -->
       <TheStats
         :growth-data="growth"
         :stat-categories="stats.categories"
