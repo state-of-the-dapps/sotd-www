@@ -283,30 +283,25 @@ const platforms = Object.freeze([
     }
   },
   {
-    id: 'gochain',
-    name: 'GoChain',
+    id: 'steem',
+    name: 'Steem',
+    software: {
+      name: 'Steem Keychain',
+      url:
+        'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
+    },
     contracts: {
       networks: [
         {
-          id: 'goChainMainnet',
+          id: 'steemMainnet',
           name: 'Mainnet'
         }
       ],
       validations: [
         {
-          type: 'minLength',
-          value: 42,
-          message: 'One of your addresses is not long enough'
-        },
-        {
-          type: 'maxLength',
-          value: 42,
-          message: 'One of your addresses too long'
-        },
-        {
-          type: 'startsWith',
-          value: '0x',
-          message: 'Addresses must start with 0x'
+          type: 'regEx',
+          value: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/,
+          message: 'One of your addresses is not formatted correctly'
         }
       ]
     }
@@ -341,30 +336,6 @@ const platforms = Object.freeze([
           type: 'startsWith',
           value: '0x',
           message: 'Addresses must start with 0x'
-        }
-      ]
-    }
-  },
-  {
-    id: 'steem',
-    name: 'Steem',
-    software: {
-      name: 'Steem Keychain',
-      url:
-        'https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?utm_source=StateOfTheDApps'
-    },
-    contracts: {
-      networks: [
-        {
-          id: 'steemMainnet',
-          name: 'Mainnet'
-        }
-      ],
-      validations: [
-        {
-          type: 'regEx',
-          value: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/,
-          message: 'One of your addresses is not formatted correctly'
         }
       ]
     }
@@ -410,6 +381,35 @@ const platforms = Object.freeze([
         {
           id: 'loomDAppChain',
           name: 'DAppChain'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
+  },
+  {
+    id: 'gochain',
+    name: 'GoChain',
+    contracts: {
+      networks: [
+        {
+          id: 'goChainMainnet',
+          name: 'Mainnet'
         }
       ],
       validations: [
