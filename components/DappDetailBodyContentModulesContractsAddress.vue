@@ -76,6 +76,11 @@ export default {
           'https://explorer.gochain.io/addr/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'Klaytn') {
+        addressLink =
+          'https://scope.klaytn.com/account/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink =
           'https://eospark.com/account/' +

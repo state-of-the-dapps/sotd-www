@@ -225,7 +225,8 @@ export default {
     gochain: 'GoChain',
     xdai: 'xDai',
     steem: 'Steem',
-    loom: 'Loom'
+    loom: 'Loom',
+    klaytn: 'Klaytn'
   },
   SecondaryCtaMailingList: {
     title: 'Stay in the loop',
