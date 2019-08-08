@@ -10,6 +10,7 @@
         :category="dapp.categories && dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>
       <DappDetailBodyContent :dapp="dapp" />
+      <p class="ctr-info">This page had <strong>{{ dapp.stats.impressions }} views</strong> and <strong>{{ dapp.stats.clicks }} clicks</strong> (<strong>{{ (dapp.stats.ctr * 100).toFixed(0) }}% CTR</strong>) in the last 90 days</p>
     </div>
   </div>
 </template>
@@ -42,6 +43,12 @@ export default {
 <style lang="scss" scoped>
 .DappDetailBody {
   @include margin-wrapper-main;
+}
+
+.ctr-info {
+  text-align: center;
+  font-size: 1.05rem;
+  padding: 0 1rem;
 }
 
 .wrapper {
