@@ -72,12 +72,6 @@
         </ul>
         <h3>How long does it take to receive ether?</h3>
         <p>If it’s your first time purchasing ether, your exchange will need to verify your identify; that can take a day or two, so it’ll leave you time for a cat nap. In addition, if you need to link a bank account to your exchange (rather than a credit card), your bank may need a few more days to verify the charges.</p>
-        <h2 class="title-2">Other questions?</h2>
-        <p>Do you have any questions not yet covered here? 
-          <span
-            class="link"
-            @click="openIntercom">Ask us, maybe we can help!</span>
-        </p>
         <p class="button-wrapper">
           <nuxt-link
             :to="localePath({name: 'rankings-platform', params: {platform: 'ethereum'}})"
