@@ -31,9 +31,9 @@
         </li>
       </ul>
       <p>Are you interested in an onboarding teardown for your own DApp?
-        <span
-          class="link"
-          @click="openIntercom">Ask us to review your product!</span>
+      Email <span
+        class="link"
+        @click="openIntercom">support@stateofthedapps.com</span> and ask us to review your product!
       </p>
     </div>
   </div>

@@ -17,9 +17,9 @@
           <div class="text-wrapper">
             <p>Whether you are looking for new users, testers, concept feedback, partners, or investors, submitting a DApp (Decentralized Application) to this definitive registry will help your project gain traction.</p>
             <p>We welcome DApps at any stage in the product life-cycle (concepts are encouraged), or even DApps that you didn't make but noticed are missing.
-              <a 
-                href="#"
-                @click="openIntercom">Ask us</a> if you have any questions!</p>
+            Email <a 
+              href="#"
+              @click="openIntercom">support@stateofthedapps.com</a> if you have any questions!</p>
           </div>
         </div>
       </div>
