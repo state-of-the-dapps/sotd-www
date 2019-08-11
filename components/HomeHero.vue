@@ -25,11 +25,11 @@ export default {
 
 <style lang="scss" scoped>
 .HomeHero {
-  background-image: $gradient--main-1;
+  background-image: linear-gradient(to bottom, #3a2a6a, #7254d0);
   color: lighten($color--white, 100%);
   padding: 7px 0 20px 0;
   @include tweakpoint('min-width', 575px) {
-    background-image: $gradient--main-2;
+    background-image: linear-gradient(to bottom, #3a2a6a, #7254d0);
     padding-top: 7px;
     padding-bottom: 22px;
   }
