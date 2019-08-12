@@ -226,7 +226,8 @@ export default {
     xdai: 'xDai',
     steem: 'Steem',
     loom: 'Loom',
-    klaytn: 'Klaytn'
+    klaytn: 'Klaytn',
+    neo: 'NEO'
   },
   SecondaryCtaMailingList: {
     title: 'Stay in the loop',

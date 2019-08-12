@@ -79,6 +79,11 @@ export default {
       } else if (this.platform === 'Klaytn') {
         addressLink = 'https://scope.klaytn.com/account/' + this.address
         // Klaytnscope can't handle utm_source query arguments.
+      } else if (this.platform === 'NEO') {
+        addressLink =
+          'https://neoscan.io/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink =
           'https://eospark.com/account/' +

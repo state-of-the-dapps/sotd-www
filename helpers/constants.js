@@ -399,6 +399,35 @@ const platforms = Object.freeze([
     }
   },
   {
+    id: 'neo',
+    name: 'NEO',
+    contracts: {
+      networks: [
+        {
+          id: 'neoMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 34,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 34,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: 'A',
+          message: 'Addresses must start with A'
+        }
+      ]
+    }
+  },
+  {
     id: 'loom',
     name: 'Loom',
     contracts: {
