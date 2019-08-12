@@ -30,7 +30,6 @@
     </style>
     <div id="codefund" />
     <FeaturedSpotlight/>
-    <FeaturedRankingByPlatformList/>
     <FeaturedRankingByCategoryList/>
     <FeaturedCategoryList/>
     <FeaturedCollectionList/>
@@ -41,7 +40,6 @@
 import { mapGetters } from 'vuex'
 import FeaturedDappList from '@/components/FeaturedDappList'
 import FeaturedCategoryList from '@/components/FeaturedCategoryList'
-import FeaturedRankingByPlatformList from '@/components/FeaturedRankingByPlatformList'
 import FeaturedRankingByCategoryList from '@/components/FeaturedRankingByCategoryList'
 import FeaturedCollectionList from '@/components/FeaturedCollectionList'
 import FeaturedSpotlight from '@/components/FeaturedSpotlight'
@@ -52,7 +50,6 @@ export default {
     FeaturedCollectionList,
     FeaturedDappList,
     FeaturedCategoryList,
-    FeaturedRankingByPlatformList,
     FeaturedRankingByCategoryList,
     FeaturedSpotlight,
     HomeHero

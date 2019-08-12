@@ -3,7 +3,8 @@
     v-on-clickaway="resetSearch"
     :class="[
       isSearching ? 'is-searching' : '',
-      search.length ? 'has-input' : '']"
+      search.length ? 'has-input' : '',
+      color]"
     class="GlobalSearch">
     <span 
       :class="'-' + color" 
@@ -234,7 +235,7 @@ export default {
 .GlobalSearch {
   display: flex;
   align-items: center;
-  background: rgba($color--black, 0.1);
+  border: 1px solid $color--black;
   padding: 7px 12px;
   border-radius: 1000px;
   min-width: 250px;
@@ -243,6 +244,7 @@ export default {
   &.is-searching {
     background: $color--white;
     box-shadow: 0 0 10px rgba($color--black, 0.1);
+    border-color: transparent;
     border-radius: 4px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -253,6 +255,12 @@ export default {
   &.has-input {
     @include tweakpoint('min-width', 975px) {
       min-width: 400px;
+    }
+  }
+  &.white {
+    border-color: rgba(white, 0.9);
+    &.is-searching {
+      border-color: transparent;
     }
   }
 }
@@ -269,8 +277,8 @@ export default {
 .results {
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
+  left: -1px;
+  width: calc(100% + 2px);
   background: $color--white;
   z-index: 50;
   border-bottom-left-radius: 3px;
