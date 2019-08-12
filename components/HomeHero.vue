@@ -17,7 +17,7 @@
             <nuxt-link
               :to="'/rankings/platform/' + platform.toLowerCase()"
               class="platform-link"
-              @click.native="$mixpanel.track('Homepage Hero Platform', platform)"
+              @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
             >{{ platform }}</nuxt-link>
           </li>
         </ul>
