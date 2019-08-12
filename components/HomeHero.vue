@@ -77,12 +77,12 @@ export default {
 }
 
 .platform-item {
-  width: 50%;
+  width: 33.33%;
   @include tweakpoint('min-width', 575px) {
-    width: 25%;
+    width: 33.33%;
   }
   @include tweakpoint('min-width', 1000px) {
-    width: 12.5%;
+    width: 11.11%;
   }
 }
 
