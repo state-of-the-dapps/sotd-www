@@ -7,11 +7,26 @@
       <div class="hero-wrapper">
         <HomeHeroContent/>
       </div>
+      <div class="platform-wrapper">
+        <ul class="platform-list">
+          <li
+            v-for="platform in platforms"
+            :key="platform"
+            class="platform-item"
+          >
+            <nuxt-link
+              :to="'/rankings/platform/' + platform.toLowerCase()"
+              class="platform-link"
+            >{{ platform }}</nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { platformList } from '@/helpers/constants'
 import HomeHeroContent from './HomeHeroContent'
 import BaseMenu from './BaseMenu'
 
@@ -19,6 +34,11 @@ export default {
   components: {
     BaseMenu,
     HomeHeroContent
+  },
+  data() {
+    return {
+      platforms: platformList()
+    }
   }
 }
 </script>
@@ -52,6 +72,43 @@ export default {
     margin-left: -22px;
     padding-left: 22px;
     padding-right: 22px;
+  }
+}
+
+.platform-item {
+  width: 50%;
+  @include tweakpoint('min-width', 575px) {
+    width: 25%;
+  }
+  @include tweakpoint('min-width', 1000px) {
+    width: 12.5%;
+  }
+}
+
+.platform-link {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin: 5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.platform-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+}
+
+.platform-wrapper {
+  margin: 0 auto;
+  width: calc(100%);
+  max-width: 1500px;
+  padding: 50px 0 10px 0;
+  @include tweakpoint('min-width', 575px) {
+    padding-top: 20px;
   }
 }
 
