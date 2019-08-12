@@ -217,9 +217,6 @@ export default {
     margin-left: -22px;
     margin-right: -22px;
   }
-  &.-white {
-    background: rgba($color--black, 0.2);
-  }
 }
 
 .bullet {
@@ -386,7 +383,8 @@ export default {
     border-radius: 1000px;
     &.is-home {
       color: $color--white;
-      border-color: rgba($color--white, 0.8);
+      border-color: #5f46ae;
+      background: #5f46ae;
     }
   }
 }

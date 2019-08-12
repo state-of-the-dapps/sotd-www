@@ -69,13 +69,17 @@ export default {
   display: block;
   padding: 10px 0;
   text-decoration: none;
-  background: $color--black;
-  border: 1px solid $color--black;
+  background: white;
+  border: 1px solid white;
+  color: #7255d1 !important;
   font-size: 1.15rem;
   border-radius: 1000px;
+  box-shadow: 0 5px 10px rgba(51, 51, 51, 0.1);
+  font-weight: 600;
   &.-submit {
-    background: transparent;
-    border-color: lighten($color--white, 100%);
+    background: #7452e4;
+    border: 1px solid #7452e4;
+    color: white !important;
   }
 }
 

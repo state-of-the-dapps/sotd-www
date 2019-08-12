@@ -200,6 +200,7 @@ export default {
     color: $color--black;
   }
   .menu.home & {
+    background: #54428b;
     color: $color--white;
   }
 }

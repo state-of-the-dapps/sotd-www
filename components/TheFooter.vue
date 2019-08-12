@@ -285,7 +285,7 @@ export default {
 
 <style lang="scss" scoped>
 .attribution-link {
-  color: darken($color--gray, 25%);
+  color: rgba(white, 0.9);
   text-decoration: none;
   font-weight: 700;
 }
@@ -311,7 +311,7 @@ export default {
 
 .wrapper {
   @include margin-wrapper-main;
-  color: darken($color--gray, 25%);
+  color: rgba(white, 0.9);
   display: flex;
   flex-direction: column;
   font-size: 1rem;
@@ -326,7 +326,7 @@ export default {
 }
 
 .TheFooter {
-  background: $color--black;
+  background-image: linear-gradient(to top, #3a2a6a, #7254d0);
 }
 
 .nav-item {
@@ -334,7 +334,7 @@ export default {
 }
 
 .nav-link {
-  color: darken($color--gray, 25%);
+  color: rgba(white, 0.9);
   text-decoration: none;
 }
 
@@ -376,7 +376,12 @@ export default {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: darken($color--gray, 25%);
+  color: rgba(white, 0.9);
   cursor: pointer;
+}
+
+img {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 </style>
