@@ -188,6 +188,9 @@ export default {
     volumePerNetwork:
       'DApp合约交易量。与DApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com'
   },
+  HomeHero: {
+    // cta: `Don't see your platform here? Let us know!`
+  },
   HomeHeroContentIntro: {
     heading: '搜索去中心化应用',
     learn: '了解更多关于 DApps 的信息',

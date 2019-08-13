@@ -192,6 +192,9 @@ export default {
     suggestedTags: 'Vorgeschlagene Stichworte',
     viewDappResults: 'Zeige alle DApp-Ergebnisse'
   },
+  HomeHero: {
+    // cta: `Don't see your platform here? Let us know!`
+  },
   HomeHeroContentIntro: {
     heading: 'Entdecke dezentrale Anwendungen',
     learn: 'Lerne mehr über DApps',

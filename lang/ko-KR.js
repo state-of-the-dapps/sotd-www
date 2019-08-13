@@ -191,6 +191,9 @@ export default {
     suggestedTags: '추천 태그',
     viewDappResults: '모든 디앱 결과 보기'
   },
+  HomeHero: {
+    // cta: `Don't see your platform here? Let us know!`
+  },
   HomeHeroContentIntro: {
     heading: '디앱 검색하기',
     learn: '디앱 자세히 알아보기',

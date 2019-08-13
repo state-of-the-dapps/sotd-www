@@ -191,6 +191,9 @@ export default {
     suggestedTags: 'Suggested tags',
     viewDappResults: 'View all DApp results'
   },
+  HomeHero: {
+    cta: `Don't see your platform here? Let us know!`
+  },
   HomeHeroContentIntro: {
     heading: 'Explore Decentralized Applications',
     learn: 'Learn more about DApps',
