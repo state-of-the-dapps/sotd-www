@@ -195,7 +195,7 @@ export default {
     heading: '디앱 검색하기',
     learn: '디앱 자세히 알아보기',
     subheading:
-      '공식 등재된 디앱 프로젝트를 통해 이더리움, 이오스, POA, GoChain 및 스팀 블록체인 가능성 발견하기',
+      '공식 등재된 디앱 프로젝트를 통해 이더리움, 이오스, POA, Klaytn 및 스팀 블록체인 가능성 발견하기',
     view: '인기 디앱 보기'
   },
   missingData: '현재 데이터가 없거나 부족함',

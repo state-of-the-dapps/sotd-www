@@ -401,6 +401,7 @@ const platforms = Object.freeze([
   {
     id: 'neo',
     name: 'NEO',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
@@ -463,6 +464,7 @@ const platforms = Object.freeze([
   {
     id: 'gochain',
     name: 'GoChain',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
@@ -611,10 +613,10 @@ const platformContractProps = () => {
   return obj
 }
 
-const platformList = () => {
+const platformList = ({ showHidden = true } = {}) => {
   const list = []
   platforms.map(platform => {
-    if (platform.name) {
+    if (platform.name && (showHidden || !platform.hideOnHomepage)) {
       list.push(platform.name)
     }
   })

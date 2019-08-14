@@ -196,7 +196,7 @@ export default {
     heading: 'Entdecke dezentrale Anwendungen',
     learn: 'Lerne mehr über DApps',
     subheading:
-      'Entdecke die Möglichkeiten, die dir durch Ethereum, EOS, POA, GoChain und durch die Steem-Blockchain Dank des endgültigen Registers gegeben sind.',
+      'Entdecke die Möglichkeiten, die dir durch Ethereum, EOS, POA, Klaytn und durch die Steem-Blockchain Dank des endgültigen Registers gegeben sind.',
     view: 'Zeige die Top-DApps an'
   },
   // TODO missingData: 'Data is currently missing or incomplete',

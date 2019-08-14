@@ -192,7 +192,7 @@ export default {
     heading: '搜索去中心化应用',
     learn: '了解更多关于 DApps 的信息',
     subheading:
-      '通过 DApp项目的权威入口，发现以太坊，EOS，POA，GoChain，Steem和区块链的可能性。',
+      '通过 DApp项目的权威入口，发现以太坊，EOS，POA，Klaytn，Steem和区块链的可能性。',
     view: '查看最佳 DApps'
   },
   // TODO missingData: 'Data is currently missing or incomplete',
