@@ -81,7 +81,7 @@ export default {
         // Klaytnscope can't handle utm_source query arguments.
       } else if (this.platform === 'NEO') {
         addressLink =
-          'https://neoscan.io/address/' +
+          'https://neotracker.io/contract/' +
           this.address +
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
