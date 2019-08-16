@@ -101,6 +101,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -5px;
+  justify-content: center;
 }
 
 .platform-wrapper {
