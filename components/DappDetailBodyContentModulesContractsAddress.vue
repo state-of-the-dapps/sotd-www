@@ -13,10 +13,10 @@
         <span>{{ address }}</span>
       </media>
     </a>
-    <span 
-      v-clipboard:copy="address" 
-      v-clipboard:success="copy" 
-      class="contract-address-copy" 
+    <span
+      v-clipboard:copy="address"
+      v-clipboard:success="copy"
+      class="contract-address-copy"
       @click="trackContractCopy(address, network)">{{ $t(namespace(copyText)) }}</span>
   </li>
 </template>
@@ -81,7 +81,7 @@ export default {
         // Klaytnscope can't handle utm_source query arguments.
       } else if (this.platform === 'NEO') {
         addressLink =
-          'https://neotracker.io/contract/' +
+          'https://scan.nel.group/contract/' +
           this.address +
           '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
