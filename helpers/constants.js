@@ -412,13 +412,18 @@ const platforms = Object.freeze([
       validations: [
         {
           type: 'minLength',
-          value: 40,
+          value: 42,
           message: 'One of your addresses is not long enough'
         },
         {
           type: 'maxLength',
-          value: 40,
+          value: 42,
           message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
         }
       ]
     }
