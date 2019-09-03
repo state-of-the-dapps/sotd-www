@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[state-of-the-dappscom-website.en-us-json]
+file_filter = lang/<lang>.json
+minimum_perc = 0
+source_file = lang/en-US.json
+source_lang = en
+type = KEYVALUEJSON
+
