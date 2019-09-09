@@ -13,7 +13,7 @@
         :growth-data="growth"
         :stat-categories="stats.categories"
         :stat-dapp-contract-count="stats.dappContractCount"
-        :stat-dapp-count="statDappCount"
+        :stat-dapp-count="stats.dappCount"
         :stat-dapp-dau="stats.dappDau"
         :stat-dapp-usd-vol24-hr="stats.dappUSDVol24Hr"
         :stat-dapp-tx24-hr="stats.dappTx24Hr"
