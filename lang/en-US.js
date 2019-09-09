@@ -339,3 +339,4 @@ export default {
   users24hHelp:
     'Daily Active Users, or DAU (unique source addresses in transactions to DApp contracts)'
 }
+export default require('./en-US.json')

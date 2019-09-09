@@ -339,3 +339,4 @@ export default {
   users24hHelp:
     'Aktive Nutzer pro Tag (Eindeutige Quelladressen in den Transaktionen der DApp Verträge)'
 }
+export default require('./de-DE.json')

@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      platforms: platformList()
+      platforms: platformList({ showHidden: false })
     }
   }
 }

@@ -335,3 +335,4 @@ export default {
   users24h: '사용자(24시간)',
   users24hHelp: '일일 활동 사용자, 또는 DAU(개별 원천 주소들)'
 }
+export default require('./ko-KR.json')

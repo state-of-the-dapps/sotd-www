@@ -326,3 +326,4 @@ export default {
   users24h: '用户 (24小时)',
   users24hHelp: '每日活跃用户，或DAU（与DApp合约交易的独特源地址）'
 }
+export default require('./zh-CN.json')

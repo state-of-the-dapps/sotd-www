@@ -401,6 +401,7 @@ const platforms = Object.freeze([
   {
     id: 'neo',
     name: 'NEO',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
@@ -411,18 +412,18 @@ const platforms = Object.freeze([
       validations: [
         {
           type: 'minLength',
-          value: 34,
+          value: 42,
           message: 'One of your addresses is not long enough'
         },
         {
           type: 'maxLength',
-          value: 34,
+          value: 42,
           message: 'One of your addresses too long'
         },
         {
           type: 'startsWith',
-          value: 'A',
-          message: 'Addresses must start with A'
+          value: '0x',
+          message: 'Addresses must start with 0x'
         }
       ]
     }
@@ -463,6 +464,7 @@ const platforms = Object.freeze([
   {
     id: 'gochain',
     name: 'GoChain',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
@@ -611,10 +613,10 @@ const platformContractProps = () => {
   return obj
 }
 
-const platformList = () => {
+const platformList = ({ showHidden = true } = {}) => {
   const list = []
   platforms.map(platform => {
-    if (platform.name) {
+    if (platform.name && (showHidden || !platform.hideOnHomepage)) {
       list.push(platform.name)
     }
   })

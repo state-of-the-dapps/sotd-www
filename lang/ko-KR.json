@@ -1,0 +1,86 @@
+{
+    "BaseMenu": {
+        "allDapps": "모든 디앱",
+        "home": "홈",
+        "rankings": "순위",
+        "search": "검색",
+        "stats": "통계"
+    },
+    "category": "항목",
+    "categoryOptions": {
+        "Development": "개발",
+        "Energy": "에너지",
+        "Exchanges": "거래소",
+        "Finance": "금융",
+        "Gambling": "도박",
+        "Games": "게임",
+        "Governance": "거버넌스",
+        "Marketplaces": "시장",
+        "Health": "의료",
+        "High-risk": "고위험",
+        "Identity": "신원",
+        "Insurance": "보험",
+        "Media": "미디어",
+        "Property": "부동산",
+        "Security": "보안",
+        "Social": "소셜",
+        "Storage": "저장소",
+        "Wallet": "지갑"
+    },
+    "collections": {
+        "Best-of-MetaMask": "메타마스크용 베스트",
+        "Featured": "주요 디앱",
+        "Hottest": "최고 인기",
+        "Most-Viewed": "최고 조회수",
+        "Recently-added": "최근 추가됨",
+        "Top-Development-Activity": "상위 개발활동"
+    },
+    "cta": {
+        "submit": "DApp 등록하기",
+        "viewAll": "모두 보기",
+        "viewDapp": "DApp 보기"
+    },
+    "devActivity30d": "개발 활동(30일)",
+    "devActivity30dHelp": "프로젝트 조직/저장소에서 발생하는 깃허브 이벤트 숫자. 이는 코드 푸시, 이슈, 풀요청 등을 포함한다.",
+    "GlobalSearch": {
+        "dapps": "디앱",
+        "noResults": "죄송하지만, 검색결과가 없습니다. 새로운 검색어로 시도해보세요.",
+        "placeholder": "유익한 디앱 찾기",
+        "suggestedTags": "추천 태그",
+        "viewDappResults": "모든 디앱 결과 보기"
+    },
+    "HomeHeroContentIntro": {
+        "heading": "디앱 검색하기",
+        "learn": "디앱 자세히 알아보기",
+        "subheading": "공식 등재된 디앱 프로젝트를 통해 이더리움, 이오스, POA, Klaytn 및 스팀 블록체인 가능성 발견하기",
+        "view": "인기 디앱 보기"
+    },
+    "missingData": "현재 데이터가 없거나 부족함",
+    "new": "신규",
+    "platform": "플랫폼",
+    "profileStrength": "프로필 완성도",
+    "SpotlightPreview": {},
+    "SpotlightDetail": {
+        "heading": "디앱 스포트라이트"
+    },
+    "Spotlights": {},
+    "status": "상태",
+    "statusOptions": {
+        "live": "라이브",
+        "abandoned": "포기",
+        "wip": "작업중",
+        "beta": "베타",
+        "prototype": "프로토타입",
+        "concept": "개념",
+        "stealth": "비공개",
+        "broken": "중단"
+    },
+    "submitQuestion": "당신의 작은 기부로 State of the DApps에 기여할 수 있습니다. 우리가 함께라면 디앱 생태계를 홍보하고, 보다 많은 사용자를 유치할 수 있습니다.",
+    "submitQuestionPlaceholder": "금액을 (생략가능) 입력하세요.",
+    "submitQuestionNote": "제출하신 경우, 추후 연락드리겠습니다.",
+    "tags": "태그",
+    "userActivity30d": "사용자 활동(30일)",
+    "userActivity30dHelp": "지난 30일간 사용자(디앱 컨트랙트에 기록된 개별 원천 주소들)",
+    "users24h": "사용자(24시간)",
+    "users24hHelp": "일일 활동 사용자, 또는 DAU(개별 원천 주소들)"
+}
