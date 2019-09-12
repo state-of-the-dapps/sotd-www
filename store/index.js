@@ -1,5 +1,4 @@
-import { newDapps } from '~/helpers/constants'
-import { sum } from '~/helpers/utils'
+import { dappCount } from '~/helpers/constants'
 
 export const state = () => ({
   site: {
@@ -16,7 +15,6 @@ export const state = () => ({
 export const actions = {
   nuxtServerInit({ commit }, { route }) {
     commit('SET_USER_ENTRY_ROUTE', route.path)
-    const dappCount = sum(newDapps)
     commit('SET_DAPP_COUNT', dappCount)
   },
   setHeroLoaded({ commit }) {

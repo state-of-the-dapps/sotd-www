@@ -15,6 +15,7 @@
         "Gambling": "赌博",
         "Games": "游戏",
         "Governance": "治理",
+        "Marketplaces": "交易市場",
         "Health": "健康",
         "High-risk": "高危",
         "Identity": "身份",
@@ -27,14 +28,20 @@
         "Wallet": "钱包"
     },
     "collections": {
+        "Best-of-MetaMask": "最好的Metamask",
+        "BitGuild": "BitGuild",
+        "CryptoGaming": "CryptoGaming",
         "Featured": "特色",
         "Hottest": "最热门的",
         "Most-Viewed": "最受关注",
-        "Recently-added": "最近上架"
+        "Recently-added": "最近上架",
+        "Top-Development-Activity": "熱門開發活動"
     },
     "cta": {
         "submit": "提交 DApp",
-        "viewAll": "查看全部"
+        "viewAll": "查看全部",
+        "viewDapp": "查看DApp",
+        "viewPastSpotlights": "查看過去的聚光燈"
     },
     "DappCardListItem": {
         "new": "新"
@@ -85,7 +92,12 @@
         "weekly": "每周",
         "monthly": "每月"
     },
-    "DappDetailBodyContentReviews": {},
+    "DappDetailBodyContentReviews": {
+        "critic": "評論家評論",
+        "readMore": "閱讀完整評論",
+        "reviewBy": "回顧",
+        "watchMore": "觀看完整評論"
+    },
     "DappDetailBodyContentTools": {
         "edit": "编辑这个DApp",
         "flag": "举报不当",
@@ -150,15 +162,22 @@
     "FeaturedRankingByPlatformList": {
         "heading": "平台排行榜"
     },
-    "FeaturedSpotlight": {},
+    "FeaturedSpotlight": {
+        "heading": "聚光燈"
+    },
     "filters": {
         "allPlatforms": "所有平台",
         "chooseColumn": "选择一列",
+        "chooseOne": "選一個",
         "choosePlatform": "选择平台",
         "allCategories": "所有类别",
         "chooseCategory": "選擇類別",
         "allStatuses": "所有状态",
         "chooseStatus": "选择状态"
+    },
+    "help": {
+        "volumeUsd": "DApp合约交易量。汇率源自CryptoCompare.com",
+        "volumePerNetwork": "DApp合约交易量。与DApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com"
     },
     "GlobalSearch": {
         "dapps": "DApps",
@@ -167,26 +186,15 @@
         "suggestedTags": "建议标签",
         "viewDappResults": "查看所有 DApp 结果"
     },
-    "help": {
-        "volumeUsd": "DApp合约交易量。汇率源自CryptoCompare.com",
-        "volumePerNetwork": "DApp合约交易量。与DApp合约的交易量。平台使用不同货币，因此不建议单纯比较数字。汇率源自 CryptoCompare.com"
-    },
     "HomeHeroContentIntro": {
         "heading": "搜索去中心化应用",
         "learn": "了解更多关于 DApps 的信息",
         "subheading": "通过 DApp项目的权威入口，发现以太坊，EOS，POA，Klaytn，Steem和区块链的可能性。",
         "view": "查看最佳 DApps"
     },
+    "missingData": "數據目前缺失或不完整",
     "new": "新",
     "platform": "平台",
-    "platformOptions": {
-        "ethereum": "以太坊",
-        "eos": "EOS",
-        "poa": "POA",
-        "gochain": "GoChain",
-        "xdai": "xDai",
-        "steem": "Steem"
-    },
     "profileStrength": "简介强度",
     "rankingColumns": {
         "rank": "排名",
@@ -202,6 +210,17 @@
     },
     "RankingTableRankHead": {
         "help": "排名基于多重因素，包括活跃用户（与DApp合约交易的独特源地址）、交易量、开发活动、资料新鲜度和完整度、点击通过率和用户推荐。排名旁边的数字指24小时的变化。"
+    },
+    "platformOptions": {
+        "ethereum": "以太坊",
+        "eos": "EOS",
+        "poa": "POA",
+        "gochain": "GoChain",
+        "xdai": "xDai",
+        "steem": "Steem",
+        "loom": "Loom",
+        "klaytn": "Klaytn",
+        "neo": "NEO"
     },
     "SecondaryCtaMailingList": {
         "title": "保持循环",
@@ -230,9 +249,15 @@
         "cta": "现在试试。",
         "discover": "探索 Steem Keychain"
     },
-    "SpotlightPreview": {},
-    "SpotlightDetail": {},
-    "Spotlights": {},
+    "SpotlightDetail": {
+        "heading": "DApp 聚光燈"
+    },
+    "SpotlightPreview": {
+        "ctaText": "閱讀更多"
+    },
+    "Spotlights": {
+        "heading": "聚光燈"
+    },
     "status": "现状",
     "statusOptions": {
         "live": "使用中",
@@ -244,26 +269,39 @@
         "stealth": "隐形模式",
         "broken": "坏掉"
     },
-    "StatsCategoriesPerMonth": {},
+    "submitQuestion": "你可以用很少的貢獻來支持DApps的狀態。 我們可以共同推動DApp生態系統並吸引更多用戶。",
+    "submitQuestionPlaceholder": "輸入（可選）金額",
+    "submitQuestionNote": "提交後我們會跟進",
+    "StatsCategoriesPerMonth": {
+        "activeUsers": "活躍用戶",
+        "title": "按類別劃分的以太坊 Ethereum DApp活動",
+        "transactions": "交易",
+        "volume": "體積（ETH）"
+    },
     "tags": "标签",
-    "Teardowns": {},
+    "Teardowns": {
+        "title": "DApp  拆解"
+    },
     "TheFooter": {
         "copyright": "版权",
         "designedBy": "由 {designer} 设计",
+        "exchangeRatesBy": "由 {source} 提供支持的匯率",
+        "steemDataBy": "Steem數據由 {source}",
         "contactUs": "联系我们",
         "about": "关于",
         "promote": "推广你的DApp",
         "downloadLogo": "下载我们的徽标",
         "getAndroidApp": "获取Android应用",
         "helpMetamask": "帮助 Metamask",
+        "teardowns": "拆解",
         "termsOfUse": "使用条款"
     },
     "TheStats": {
         "title": "DApp 数据",
         "description": "数据将会每日更新。请常来查看DApp生态系统的进度与发展。",
         "askUs": "向我们询问自定义数据",
-        "dailyActiveUsers": "每日活跃用户",
         "activeUsersHelp": "与DApp合约交易的独特源地址",
+        "dailyActiveUsers": "每日活跃用户",
         "monthlyActiveUsers": "每月活跃用户",
         "newDappsPerMonth": "每月新DApps",
         "newDapps": "新DApps",

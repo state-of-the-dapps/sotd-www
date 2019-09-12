@@ -1,1 +1,1 @@
-export default require('./zh-CN.json')
+export default require('./zh_CN.json')

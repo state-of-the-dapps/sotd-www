@@ -1,3 +1,5 @@
+const dappCount = 3037
+
 const dappGameTag = 'game'
 
 const dappListDefaultLimit = 50
@@ -162,56 +164,6 @@ const localeStrings = Object.freeze({
   ko: '한국어',
   zh: `中文`
 })
-
-const newDapps = [
-  25,
-  1,
-  7,
-  6,
-  22,
-  9,
-  6,
-  17,
-  7,
-  5,
-  11,
-  27,
-  12,
-  23,
-  16,
-  8,
-  14,
-  15,
-  11,
-  6,
-  5,
-  10,
-  22,
-  17,
-  18,
-  65,
-  75,
-  47,
-  67,
-  55,
-  83,
-  67,
-  53,
-  76,
-  137,
-  135,
-  121,
-  142,
-  131,
-  111,
-  120,
-  157,
-  150,
-  141,
-  179,
-  119,
-  116
-]
 
 const platforms = Object.freeze([
   {
@@ -822,6 +774,7 @@ const rankingColumns = Object.freeze([
 
 export {
   dappBadgeMap,
+  dappCount,
   dappFallbackRedirectPath,
   dappGameTag,
   dappListDefaultLimit,
@@ -843,7 +796,6 @@ export {
   homeFeaturedCollections,
   languages,
   localeStrings,
-  newDapps,
   platforms,
   platformContractComputedFields,
   platformContractDataFields,

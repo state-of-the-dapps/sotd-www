@@ -1,1 +1,1 @@
-export default require('./ko-KR.json')
+export default require('./ko_KR.json')

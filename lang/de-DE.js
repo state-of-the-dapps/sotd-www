@@ -1,1 +1,1 @@
-export default require('./de-DE.json')
+export default require('./de_DE.json')
