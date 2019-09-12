@@ -1,0 +1,323 @@
+{
+    "BaseMenu": {
+        "allDapps": "Tất cả DAap",
+        "home": "Trang chủ",
+        "rankings": "Hạng ",
+        "search": "Tìm kiếm",
+        "stats": "Thống kê"
+    },
+    "category": "Danh mục|Phân loại",
+    "categoryOptions": {
+        "Development": "Bộ phận phát triển",
+        "Energy": "Năng lượng",
+        "Exchanges": "Sàn",
+        "Finance": "Tài chính",
+        "Gambling": "Bài bạc",
+        "Games": "Trò chơi",
+        "Governance": "Quản trị",
+        "Marketplaces": "Chợ",
+        "Health": "Sức khỏe",
+        "High-risk": "Rủi ro cao",
+        "Identity": "Danh tính",
+        "Insurance": "Bảo hiểm",
+        "Media": "Nghe nhìn",
+        "Property": "Bất động sản",
+        "Security": "Chứng khoán",
+        "Social": "Mạng xã hội",
+        "Storage": "Lưu trữ",
+        "Wallet": "Ví"
+    },
+    "collections": {
+        "Best-of-MetaMask": "Tốt nhất của Metamask",
+        "BitGuild": "BitGuild",
+        "CryptoGaming": "CryptoGaming",
+        "Featured": "Tính năng",
+        "Hottest": "Nóng nhất",
+        "Most-Viewed": "Xem nhiều nhất",
+        "Recently-added": "Thêm gần đây",
+        "Top-Development-Activity": "Hoạt động phát triển hàng đầu"
+    },
+    "cta": {
+        "submit": "Thêm một DApp ( ứng dụng phi tập trung)",
+        "viewAll": "Xem tất cả",
+        "viewDapp": "Xem DApp",
+        "viewPastSpotlights": "Xem các tiêu điểm trước đây"
+    },
+    "DappCardListItem": {
+        "new": "Mới"
+    },
+    "DappDetailBodyContentCtas": {
+        "website": "Thăm trang web",
+        "playGame": "Chơi trò chơi",
+        "launchDapp": "Ra mắt một DApp",
+        "launchDappWebsite": "Ra măt một DApp/ trang web"
+    },
+    "DappDetailBodyContentModulesContractsAddress": {
+        "copy": "Sao chép",
+        "copied": "Đã sao chép!"
+    },
+    "DappDetailBodyContentModulesContractsItem": {
+        "address": "địa chỉ",
+        "contract": "liên lạc"
+    },
+    "DappDetailBodyContentModulesDev": {
+        "title": "Hoạt động phát triển",
+        "help": "Đẩy mã, các sự cố, yêu cầu kéo nhánh, vân vân ( trong Github)",
+        "events": "1  trong số | {count} sự kiện",
+        "day": "{count}d"
+    },
+    "DappDetailBodyContentModulesAuthors": {
+        "author": "Tác giả | Các tác giả",
+        "unknownAuthor": "Tác giả không biết"
+    },
+    "DappDetailBodyContentModulesLicense": {
+        "license": "Bản quyền phần mềm",
+        "unknownLicense": "Không biết bản quyền"
+    },
+    "DappDetailBodyContentModulesSubmitted": {
+        "submitted": "Đã gửi"
+    },
+    "DappDetailBodyContentModulesUpdated": {
+        "lastUpdated": "Cập nhật mới nhất"
+    },
+    "DappDetailBodyContentModules": {
+        "activeUsers": "Người dùng tích cực",
+        "activeUsersHelp": "(địa chỉ nguồn có một không hai trong các giao dịch với hợp đồng của DApp)",
+        "transactions": "Các giao dịch",
+        "volume": "Khối lượng ({token})"
+    },
+    "DappDetailBodyContentModulesStats": {
+        "day": "1 trong | {count} ngày",
+        "daily": "Hàng ngày",
+        "weekly": "Hàng tuần",
+        "monthly": "Hàng tháng"
+    },
+    "DappDetailBodyContentReviews": {
+        "critic": "Nhận xét phê bình chỉnh đốn",
+        "readMore": "Xem toàn bộ đánh giá",
+        "reviewBy": "Đánh giá bởi",
+        "watchMore": "Xem toàn bộ đánh giá"
+    },
+    "DappDetailBodyContentTools": {
+        "edit": "Chỉnh sửa ĐApp này",
+        "flag": "Gắn cờ báo không phù hợp",
+        "promote": "Quảng cáo cho ĐApp này",
+        "share": "Chia sẻ ĐApp này"
+    },
+    "DappDetailBodyContentPlatform": {
+        "advise": "Để dùng {platform} DApps trên trang web, chúng tôi khuyến nghị dùng một ếch ôn add-on  của trình duyệt  chẳng hạn như là  {software}."
+    },
+    "DappDetailBodyContentRank": {
+        "currentRank": "Hạng hiện tại"
+    },
+    "DappDetailBodyContentRecommend": {
+        "title": "Bạn có sẵn sàng chia sẻ ĐApp này với bạn bè bạn không?",
+        "submit": "Gửi phản hồi",
+        "thanks": "Cảm ơn cho phản hồi của bạn {name}!",
+        "comments": "Ghi chú",
+        "commentsPlaceholder": "Thêm chú thích của bạn"
+    },
+    "DappDetailRelatedDapps": {
+        "title": "ĐApps có liên quan"
+    },
+    "DappProfile": {
+        "improve": "Cải tiến hồ sơ này"
+    },
+    "Dapps": {
+        "noResults": "Hiện không có cái ĐApp nào ở đây. Làm ơn tìm kiếm khác."
+    },
+    "dappSortOptions": {
+        "Hottest": "Nóng nhất",
+        "Newest": "Mới nhất"
+    },
+    "DappsResultCount": {
+        "result": "Kết quả | Các kết quả",
+        "showing": "Đang xem {showing} {total} {result}",
+        "xOf": "{x} của"
+    },
+    "DappsSearch": {
+        "placeholder": "Tìm ĐApp theo tên hoặc thẻ tát tag"
+    },
+    "DappsSort": {
+        "sortBy": "Lọc theo"
+    },
+    "devActivity30d": "Hoạt động phát triển (30d)",
+    "devActivity30dHelp": "Số sự kiện trên GitHub mà tổ chức dự án / kho tạo ra. Nó bao gồm đẩy mã lệnh, lỗi,sự cố, yêu cầu kéo mã lệnh, vân vân",
+    "FeaturedCategoryList": {
+        "games": "trò chơi",
+        "finance": "tài chính",
+        "exchanges": "sàn trao đổi",
+        "allCategories": "Tất cả các danh mục"
+    },
+    "FeaturedCollectionList": {
+        "heading": "Bộ sưu tập ĐApp"
+    },
+    "FeaturedDappList": {
+        "heading": "Tính năng đặc sắc của ĐApp",
+        "promote": "Quảng bá ĐApp của bạn ở đây"
+    },
+    "FeaturedRankingByCategoryList": {
+        "heading": "Xếp hạng theo danh mục"
+    },
+    "FeaturedRankingByPlatformList": {
+        "heading": "Xếp hạng theo nền tảng platform"
+    },
+    "FeaturedSpotlight": {
+        "heading": "Tiêu điểm"
+    },
+    "filters": {
+        "allPlatforms": "Tất cả các nền tảng",
+        "chooseColumn": "Chọn một cột",
+        "chooseOne": "Chọn một cái",
+        "choosePlatform": "Chọn nền tảng platform",
+        "allCategories": "Tất cả danh mục",
+        "chooseCategory": "Chọn một danh mục",
+        "allStatuses": "Tất cả các trạng thái",
+        "chooseStatus": "Chọn trạng thái"
+    },
+    "help": {
+        "volumeUsd": "Khối lượng Giao dịch tới hợp đồng thông minh của ĐApp. Tỉ giá trao đổi lấy nguồn từ CryptoCompare.com",
+        "volumePerNetwork": "Khối lượng Giao dịch tới hợp đồng thông minh của ĐApp. Nền tảng platform dùng nhiều tiền mã hóa, vì thế số lượng không nên so sánh một cách trực tiếp.  Tỉ giá trao đổi lấy nguồn từ CryptoCompare.com"
+    },
+    "GlobalSearch": {
+        "dapps": "Các DApp",
+        "noResults": "Xin lỗi bạn, không có kết quả nào. Làm ơn tìm cái khác",
+        "placeholder": "Khám phá các ĐApp tuyệt vời khác...",
+        "suggestedTags": "Đã gợi ý thẻ tag",
+        "viewDappResults": "Xem tất các kết quả ĐApp"
+    },
+    "HomeHeroContentIntro": {
+        "heading": "Khám phá các ứng dụng không tập trung",
+        "learn": "Tìm hiểu sâu hơn về ĐApp",
+        "subheading": "Khám phá các khả năng của các chuỗi khối Ethereum, EOS, POA, Klaytn và Steem với đăng ký chắn chắn của các dự án DApp.",
+        "view": "Xem các ĐApp hàng đầu"
+    },
+    "missingData": "Dữ liệu hiện tại thiếu hoặc không hoàn thiện",
+    "new": "Mới",
+    "platform": "Nền tảng",
+    "profileStrength": "sức mạnh hồ sơ ",
+    "rankingColumns": {
+        "rank": "Thứ hạng",
+        "dau": "Số người dùng (24h)",
+        "platform": "Nền tảng",
+        "category": "Danh mục",
+        "usd_value_7d": "Khối lượng (7d)",
+        "dev_30d": "Hoạt động phát triển (30ngay)",
+        "user_activity_30d": "Hoạt động người dùng (30 ngày)"
+    },
+    "RankingTable": {
+        "noDapps": "Hiện không có ĐApp cho danh mục và nền tảng này"
+    },
+    "RankingTableRankHead": {
+        "help": "Hạng dựa trên nhiều nhân tố bao gồm các hoạt động của người dùng( dựa trên địa chỉ nguồn độc nhất trong các giao dịch tới hợp đồng thông minh của ĐApp), khối lượng giao dịch, hoạt động phát triển của lập trình viên dự án, độ tươi mới và mạnh mẽ của hồ sơ dự án, CRTs và sự lưu tâm nhắc đến của người dùng. Hạng được đánh giá lại trong vòng 24h tới."
+    },
+    "platformOptions": {
+        "ethereum": "Ethereum",
+        "eos": "EOS",
+        "poa": "POA",
+        "gochain": "GoChain",
+        "xdai": "xDai",
+        "steem": "Steem",
+        "loom": "Loom",
+        "klaytn": "Klaytn",
+        "neo": "NEO"
+    },
+    "SecondaryCtaMailingList": {
+        "title": "Ở trong vòng quanh quẩn",
+        "description": "Đăng  ký để nhận những cập nhật của hệ sinh thái ĐApp",
+        "placeholder": "Nhập địa chỉ thư điện tử ở đây",
+        "signUp": "Đăng nhập",
+        "submitting": "Đang gửi...",
+        "thanks": "Cảm ơn!Chúng tôi sẽ giữ liên lạc.",
+        "error": "Có lỗi khi đăng ký. Hãy chắc chắn rằng bạn đã nhập một địa chỉ email hợp lệ và thử lại. Nếu lỗi này vẫn còn, vui lòng cho chúng tôi biết: {email}"
+    },
+    "SecondaryCtaMetamask": {
+        "title": "Metamask cho Ethereum, POA, và GoChain",
+        "description": "Metamask cho phép bạn dùng các DApps trên nền tảng Ethereum, GoChain, và POA  với trình duyệt quép của bạn.",
+        "cta": "Hãy thử lại",
+        "discover": "Khám phá Metamask"
+    },
+    "SecondaryCtaScatter": {
+        "title": "Scatter cho EOS",
+        "description": "Scatter cho phép bạn dùng các DApps trên nền tảng  EOS  bằng trình duyệt quép của bạn.",
+        "cta": "Hãy thử lại",
+        "discover": "Khám phá Scatter"
+    },
+    "SecondaryCtaSteemKeychain": {
+        "title": "Steem Keychain",
+        "description": "Steem Keychain cho phép bạn dùng các DApps trên nền tảng  Steem bằng trình duyệt quép của bạn.",
+        "cta": "Hãy thử lại",
+        "discover": "Khám phá Steem Keychain"
+    },
+    "SpotlightDetail": {
+        "heading": "Tiêu điểm ĐApp"
+    },
+    "SpotlightPreview": {
+        "ctaText": "Đọc nhiều hơn"
+    },
+    "Spotlights": {
+        "heading": "Tiêu điểm"
+    },
+    "status": "Trạng thái",
+    "statusOptions": {
+        "live": "Trực tiếp",
+        "abandoned": "Vắng tanh như chùa bà Đanh",
+        "wip": "WIP",
+        "beta": "Beta",
+        "prototype": "Nguyên mẫu",
+        "concept": "Khái niệm",
+        "stealth": "Tàng hình",
+        "broken": "Đã vỡ"
+    },
+    "submitQuestion": "Bạn có thể trợ giúp State of the DApps với  sự đóng góp nho nhỏ.  Cùng nhau, chúng ta có thể quảng bá  hệ sinh thái  DApp  và thu hút nhiều người dùng.",
+    "submitQuestionPlaceholder": "Nhập số lượng( tùy hỷ)",
+    "submitQuestionNote": "Chúng tôi sẽ theo đuổi bạn sau khi bạn gửi",
+    "StatsCategoriesPerMonth": {
+        "activeUsers": "Hoạt động người dùng",
+        "title": "Hoạt động của ĐApp Ethereum bởi danh mục",
+        "transactions": "Giao dịch",
+        "volume": "Khối lượng (ETH)"
+    },
+    "tags": "thẻ tag",
+    "Teardowns": {
+        "title": "ĐApp đại tu"
+    },
+    "TheFooter": {
+        "copyright": "Bản quyền",
+        "designedBy": "Thiết kể bởi {designer}",
+        "exchangeRatesBy": "Tỷ giá được lấy ở  {source}",
+        "steemDataBy": "Dữ liệu Steem cung cấp bởi {source}",
+        "contactUs": "Liên hệ với chúng ta",
+        "about": "Về chúng tôi",
+        "promote": "Quảng bá ĐApp của bạn",
+        "downloadLogo": "Tải xuống logo chúng tôi",
+        "getAndroidApp": "Lấy phần mềm trên Android",
+        "helpMetamask": "Giúp đỡ hổ trợ Metamask",
+        "teardowns": "Đại tu",
+        "termsOfUse": "Điều khoản sử dụng"
+    },
+    "TheStats": {
+        "title": "Thống kê ĐApp",
+        "description": "Thông kê được cập nhật hằng ngày. Kiểm tra lại để thấy quá trình và sự phát triển của hệ sinh thái ĐApp.",
+        "askUs": "Hỏi chúng tối về dữ liệu tùy chỉnh",
+        "activeUsersHelp": "Địa chỉ nguồn duy nhất trong các giao dịch với hợp đồng thông minh của ĐApp",
+        "dailyActiveUsers": "Hoạt động của người dùng hằng ngày",
+        "monthlyActiveUsers": "Hoạt động của người dùng hằng tháng",
+        "newDappsPerMonth": "ĐApp mới mỗi tháng",
+        "newDapps": "ĐApp mới",
+        "nrOfContracts": "# của hợp đồng thông minh",
+        "smartContracts": "Hợp đồng thông minh - phần mềm chạy trên một nền tảng chuỗi khối",
+        "24htransactions": "Giao dịch trong vòng 24h",
+        "24hVolumeUsd": "Khối lượng tính theo USD trong vòng 24h",
+        "transactions24h": "Giao dịch(24h)",
+        "transactions30d": "Giao dịch(30ngay)",
+        "transactionsHelp": "Số giao dịch tới hợp đồng thông minh của ĐApp",
+        "totalDapps": "Tổng số ĐApp",
+        "volume24h": "Khối lượng(24h)",
+        "volumeHelp": "Khối lượng Giao dịch tới hợp đồng thông minh của ĐApp. Nền tảng platform dùng nhiều tiền mã hóa, vì thế số lượng không nên so sánh một cách trực tiếp"
+    },
+    "userActivity30d": "Hoạt động người dùng (30 ngày)",
+    "userActivity30dHelp": "Người dùng  30 ngày qua( thông qua Địa chỉ nguồn duy nhất trong các giao dịch với hợp đồng thông minh của ĐApp)",
+    "users24h": "Số người dùng (24h)",
+    "users24hHelp": "Số lượng người dùng kích hoạt mới hằng ngày , hoặc DAU( dựa trên thông tin địa chỉ nguồn có một không hai trong các giao dịch với hợp đồng của DApp)"
+}

@@ -1,0 +1,323 @@
+{
+    "BaseMenu": {
+        "allDapps": "Toutes DApps",
+        "home": "Page d'accueil",
+        "rankings": "Les classements",
+        "search": "Recherche",
+        "stats": "Stats"
+    },
+    "category": "Catégorie | Les catégories",
+    "categoryOptions": {
+        "Development": "Développement",
+        "Energy": "Énergie",
+        "Exchanges": "des échanges",
+        "Finance": "La finance",
+        "Gambling": "Jeux d'argent",
+        "Games": "Jeux",
+        "Governance": "La gouvernance",
+        "Marketplaces": "Marchés",
+        "Health": "Santé",
+        "High-risk": "Risque élevé",
+        "Identity": "Identité",
+        "Insurance": "Assurance",
+        "Media": "Médias",
+        "Property": "Propriété",
+        "Security": "Sécurité",
+        "Social": "Sociale",
+        "Storage": "le stockage",
+        "Wallet": "Portefeuille"
+    },
+    "collections": {
+        "Best-of-MetaMask": "Le meilleur de la Metamask",
+        "BitGuild": "BitGuild",
+        "CryptoGaming": "CryptoGaming",
+        "Featured": "En vedette",
+        "Hottest": "Le plus chaud",
+        "Most-Viewed": "Le plus regardé",
+        "Recently-added": "Récemment ajouté",
+        "Top-Development-Activity": "Meilleure activité de développement"
+    },
+    "cta": {
+        "submit": "Soumettre un DApp",
+        "viewAll": "Voir tout",
+        "viewDapp": "Voir DApp",
+        "viewPastSpotlights": "Voir les derniers projecteurs"
+    },
+    "DappCardListItem": {
+        "new": "Nouvelle"
+    },
+    "DappDetailBodyContentCtas": {
+        "website": "Visitez le site web",
+        "playGame": "Jouer au jeu",
+        "launchDapp": "la vedette DApp",
+        "launchDappWebsite": "la vedette DApp/le site Web"
+    },
+    "DappDetailBodyContentModulesContractsAddress": {
+        "copy": "Copier",
+        "copied": "Copié"
+    },
+    "DappDetailBodyContentModulesContractsItem": {
+        "address": "l'adresse",
+        "contract": "le contrat"
+    },
+    "DappDetailBodyContentModulesDev": {
+        "title": "Activité de développement",
+        "help": "Code pousse, émet, demande d'extraction, etc.",
+        "events": "1 l'événemen | {count} las événements",
+        "day": "{count}d"
+    },
+    "DappDetailBodyContentModulesAuthors": {
+        "author": "l'auteur | le créateur",
+        "unknownAuthor": "Auteur inconnu"
+    },
+    "DappDetailBodyContentModulesLicense": {
+        "license": "Licence de logiciel",
+        "unknownLicense": "Licence inconnue"
+    },
+    "DappDetailBodyContentModulesSubmitted": {
+        "submitted": "Soumettre"
+    },
+    "DappDetailBodyContentModulesUpdated": {
+        "lastUpdated": "Dernière mise à jour"
+    },
+    "DappDetailBodyContentModules": {
+        "activeUsers": "Utilisateurs actifs",
+        "activeUsersHelp": "(adresses source uniques dans les transactions avec les contrats DApp)",
+        "transactions": "Transactions",
+        "volume": "Le volume ({token})"
+    },
+    "DappDetailBodyContentModulesStats": {
+        "day": "1 journée | {count} lesjournées",
+        "daily": "le quotidien",
+        "weekly": "l'hebdomadaire",
+        "monthly": "Mensuelle"
+    },
+    "DappDetailBodyContentReviews": {
+        "critic": "Critiques critiques",
+        "readMore": "Lire la critique complète",
+        "reviewBy": "Revue par",
+        "watchMore": "Regarder la critique complète"
+    },
+    "DappDetailBodyContentTools": {
+        "edit": "Editer ce DApp",
+        "flag": "Signaler comme inapproprié",
+        "promote": "Promouvoir ce DApp",
+        "share": "Partager ce DApp"
+    },
+    "DappDetailBodyContentPlatform": {
+        "advise": "Pour utiliser {platform} DApps sur le Web, nous vous recommandons un add-on de navigateur tel que {software}."
+    },
+    "DappDetailBodyContentRank": {
+        "currentRank": "Rang actuel"
+    },
+    "DappDetailBodyContentRecommend": {
+        "title": "Recommanderiez-vous ce DApp à un ami?",
+        "submit": "Soumettre des commentaires",
+        "thanks": "Merci pour vos commentaires sur {name}!",
+        "comments": "Commentaires",
+        "commentsPlaceholder": "Ajouter vos commentaires"
+    },
+    "DappDetailRelatedDapps": {
+        "title": "DApps connexes"
+    },
+    "DappProfile": {
+        "improve": "Améliorer ce profil"
+    },
+    "Dapps": {
+        "noResults": "Il n'y a actuellement aucun DApps ici. Veuillez essayer une autre recherche."
+    },
+    "dappSortOptions": {
+        "Hottest": "Le plus chaud",
+        "Newest": "Nouveau"
+    },
+    "DappsResultCount": {
+        "result": "résultat | résultats",
+        "showing": "lasprojection  {showing} {total} {result}",
+        "xOf": "{x} de"
+    },
+    "DappsSearch": {
+        "placeholder": "Recherche par nom ou étiquette DApp"
+    },
+    "DappsSort": {
+        "sortBy": "Trier par"
+    },
+    "devActivity30d": "Activité de développement (30d)",
+    "devActivity30dHelp": "Nombre d'événements GitHub générés par l'organisation / le référentiel du projet. Cela inclut les envois de code, les problèmes, les demandes d'extraction, etc.",
+    "FeaturedCategoryList": {
+        "games": "le gibier",
+        "finance": "la finance",
+        "exchanges": "des échanges",
+        "allCategories": "Toutes catégories"
+    },
+    "FeaturedCollectionList": {
+        "heading": "Des collections DApp "
+    },
+    "FeaturedDappList": {
+        "heading": "aux traits distinctifs  DApps",
+        "promote": "Promouvez votre DApp ici"
+    },
+    "FeaturedRankingByCategoryList": {
+        "heading": "Classement par catégorie"
+    },
+    "FeaturedRankingByPlatformList": {
+        "heading": "Classement par plateforme"
+    },
+    "FeaturedSpotlight": {
+        "heading": "mettre en vedette"
+    },
+    "filters": {
+        "allPlatforms": "Toutes les plateformes",
+        "chooseColumn": "Choisissez une colonne",
+        "chooseOne": "Choisissez-en un",
+        "choosePlatform": "Choisissez une plateforme",
+        "allCategories": "Toutes catégories",
+        "chooseCategory": "Choisissez une catégorie",
+        "allStatuses": "Tous les statuts",
+        "chooseStatus": "Choisissez un statut"
+    },
+    "help": {
+        "volumeUsd": "Volume de transaction aux contrats DApp. Taux de change provenant de CryptoCompare.com",
+        "volumePerNetwork": "Volume de transaction aux contrats DApp. Les plates-formes utilisent des devises différentes, les chiffres ne doivent donc pas être comparés directement. Taux de change provenant de CryptoCompare.com"
+    },
+    "GlobalSearch": {
+        "dapps": "DApps",
+        "noResults": "Désolé, aucun résultat. Essayez une nouvelle recherche, s'il vous plaît",
+        "placeholder": "Découvrez des DApps impressionnants…",
+        "suggestedTags": "Tags suggérés",
+        "viewDappResults": "Voir tous les résultats DApp"
+    },
+    "HomeHeroContentIntro": {
+        "heading": "Explorer les applications décentralisées",
+        "learn": "En savoir plus sur les DApps",
+        "subheading": "Découvrez les possibilités des blockchains Ethereum, EOS, POA, Klaytn et Steem avec le registre définitif des projets DApp.",
+        "view": "Voir les meilleurs DApps"
+    },
+    "missingData": "Données manquantes ou incomplètes",
+    "new": "Nouvelle",
+    "platform": "les plateformes",
+    "profileStrength": "résistance du profil",
+    "rankingColumns": {
+        "rank": "le grade",
+        "dau": "Utilisateurs (24h)",
+        "platform": "les plateformes",
+        "category": "la catégorie",
+        "usd_value_7d": "Le volume (7d)",
+        "dev_30d": "Activité de développement (30d)",
+        "user_activity_30d": "Activité de l'utilisateur (30d)"
+    },
+    "RankingTable": {
+        "noDapps": "Il n'y a actuellement aucun DApps pour cette catégorie et cette plateforme"
+    },
+    "RankingTableRankHead": {
+        "help": "Le classement est basé sur plusieurs facteurs, notamment les utilisateurs actifs (adresses source uniques dans les transactions de contrats DApp), le volume de transaction, l'activité de développeur, la fraîcheur et la solidité du profil, les CTR et les recommandations des utilisateurs. Le nombre à côté du rang correspond au changement sur 24 heures."
+    },
+    "platformOptions": {
+        "ethereum": "Ethereum",
+        "eos": "EOS",
+        "poa": "POA",
+        "gochain": "GoChain",
+        "xdai": "xDai",
+        "steem": "Steem",
+        "loom": "Loom",
+        "klaytn": "Klaytn",
+        "neo": "NEO"
+    },
+    "SecondaryCtaMailingList": {
+        "title": "Rester dans la boucle",
+        "description": "Abonnez-vous pour recevoir des mises à jour sur l'écosystème DApp.",
+        "placeholder": "Entrez votre email ici",
+        "signUp": "S'inscrire",
+        "submitting": "Soumission...",
+        "thanks": "Merci! Nous serons en contact!",
+        "error": "Une erreur s'est produite lors de l'inscription. Assurez-vous d'avoir entré une adresse électronique valide et réessayez. Si cette erreur persiste, merci de nous le signaler: {email}"
+    },
+    "SecondaryCtaMetamask": {
+        "title": "Metamask pour Ethereum, POA et GoChain",
+        "description": "Metamask vous permet d'utiliser des DApps EtherA, GoChain et POA dans votre navigateur.",
+        "cta": "Essayez-le maintenant",
+        "discover": "Découvrez Metamask"
+    },
+    "SecondaryCtaScatter": {
+        "title": "Scatter pour EOS",
+        "description": "Scatter vous permet d'utiliser EOS DApps dans votre navigateur.",
+        "cta": "Essayez-le maintenant",
+        "discover": "Découvrez Scatter"
+    },
+    "SecondaryCtaSteemKeychain": {
+        "title": "Steem Keychain",
+        "description": "Steem Keychain vous permet d'utiliser Steem DApps dans votre navigateur.",
+        "cta": "Essayez-le maintenant",
+        "discover": "Découvrir Steem Keychain"
+    },
+    "SpotlightDetail": {
+        "heading": "mettre en vedette DApp "
+    },
+    "SpotlightPreview": {
+        "ctaText": "Lire la suite"
+    },
+    "Spotlights": {
+        "heading": "mettre en vedette"
+    },
+    "status": "Le statut",
+    "statusOptions": {
+        "live": "Vivant",
+        "abandoned": "Abandonnée",
+        "wip": "WIP",
+        "beta": "les bêta ",
+        "prototype": "le prototype",
+        "concept": "le concept",
+        "stealth": "Furtive",
+        "broken": "Cassé"
+    },
+    "submitQuestion": "Vous pouvez soutenir State of the DApps avec une petite contribution. Ensemble, nous pouvons promouvoir l'écosystème DApp et attirer plus d'utilisateurs.",
+    "submitQuestionPlaceholder": "Entrez un montant (optionnel)",
+    "submitQuestionNote": "Nous ferons un suivi avec vous après la soumission",
+    "StatsCategoriesPerMonth": {
+        "activeUsers": "Utilisateurs actifs",
+        "title": "Activité Ethereum DApp par catégorie",
+        "transactions": "Transactions",
+        "volume": "Le volume (ETH)"
+    },
+    "tags": "la étiquette",
+    "Teardowns": {
+        "title": "Des démontages"
+    },
+    "TheFooter": {
+        "copyright": "Le droit d'auteur\n ",
+        "designedBy": "Conçu par {designer}",
+        "exchangeRatesBy": "Taux de change générés par {source}",
+        "steemDataBy": "Données Steem alimentées par {source}",
+        "contactUs": "Contactez nous",
+        "about": "Environ",
+        "promote": "Promouvoir votre DApp",
+        "downloadLogo": "Téléchargez notre logo",
+        "getAndroidApp": "Téléchargez l'application Android",
+        "helpMetamask": "Aide pour Metamask",
+        "teardowns": "Des démontages",
+        "termsOfUse": "Conditions d'utilisation"
+    },
+    "TheStats": {
+        "title": "Les statistiques DApp ",
+        "description": "Les statistiques sont mises à jour quotidiennement. Revenez souvent pour voir les progrès et le développement de l'écosystème DApp.",
+        "askUs": "Demandez-nous des données personnalisées",
+        "activeUsersHelp": "Adresses source uniques dans les transactions des contrats DApp",
+        "dailyActiveUsers": "Utilisateurs actifs quotidiens",
+        "monthlyActiveUsers": "Utilisateurs actifs mensuels",
+        "newDappsPerMonth": "Nouveaux DApps par mois",
+        "newDapps": "Nouveaux DApps",
+        "nrOfContracts": "# Nombre de contrats",
+        "smartContracts": "Contrats intelligents",
+        "24htransactions": "Transactions 24h",
+        "24hVolumeUsd": "Volume en 24h USD",
+        "transactions24h": "Transactions (24hr)",
+        "transactions30d": "Transactions (30d)",
+        "transactionsHelp": "Nombre de transactions aux contrats DApp",
+        "totalDapps": "Toutes  DApps",
+        "volume24h": "Le volume (24hr)",
+        "volumeHelp": "Volume de transaction aux contrats DApp. Les plateformes utilisent des devises différentes, les chiffres ne doivent donc pas être comparés directement"
+    },
+    "userActivity30d": "Activité de l'utilisateur (30d)",
+    "userActivity30dHelp": "Utilisatrices (adresses source uniques dans les transactions avec les contrats DApp) au cours des 30 derniers jours",
+    "users24h": "Utilisateurs (24hr)",
+    "users24hHelp": "Utilisateurs actifs quotidiens ou DAU (adresses source uniques dans les transactions avec les contrats DApp)"
+}

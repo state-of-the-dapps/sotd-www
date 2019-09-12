@@ -15,6 +15,7 @@
         "Gambling": "Glücksspiele",
         "Games": "Spiele",
         "Governance": "Führung",
+        "Marketplaces": "Marktplätze",
         "Health": "Gesundheit",
         "High-risk": "Hohes Risiko",
         "Identity": "Identität",
@@ -27,6 +28,9 @@
         "Wallet": "Geldbörse"
     },
     "collections": {
+        "Best-of-MetaMask": "Das Beste von Metamask",
+        "BitGuild": "BitGuild",
+        "CryptoGaming": "CryptoGaming",
         "Featured": "Ausgewählte",
         "Hottest": "Beliebteste",
         "Most-Viewed": "Meistgesehene",
@@ -35,7 +39,9 @@
     },
     "cta": {
         "submit": "DApp einreichen",
-        "viewAll": "Alle anzeigen"
+        "viewAll": "Alle anzeigen",
+        "viewDapp": "Sehen Sie sich DApp",
+        "viewPastSpotlights": "Sehen Sie sich vergangene Scheinwerfer an"
     },
     "DappCardListItem": {
         "new": "Neu"
@@ -80,12 +86,17 @@
         "transactions": "Transaktionen",
         "volume": "Volumen ({token})"
     },
-    "DappDetailBodyContentReviews": {},
     "DappDetailBodyContentModulesStats": {
         "day": "1 Tag | {count} Tage",
         "daily": "Täglich",
         "weekly": "Wöchentlich",
         "monthly": "Monatlich"
+    },
+    "DappDetailBodyContentReviews": {
+        "critic": "Kritiker Bewertungen",
+        "readMore": "Lesen Sie die vollständige Rezension",
+        "reviewBy": "Überprüfung durch",
+        "watchMore": "Vollständige Rezension ansehen"
     },
     "DappDetailBodyContentTools": {
         "edit": "Bearbeite diese DApp",
@@ -151,10 +162,13 @@
     "FeaturedRankingByPlatformList": {
         "heading": "Rang nach Plattform"
     },
-    "FeaturedSpotlight": {},
+    "FeaturedSpotlight": {
+        "heading": "Scheinwerfer"
+    },
     "filters": {
         "allPlatforms": "Alle Plattformen",
         "chooseColumn": "Wähle eine Spalte",
+        "chooseOne": "Wähle ein",
         "choosePlatform": "Wähle eine Plattform",
         "allCategories": "Alle Kategorien",
         "chooseCategory": "Wähle eine Kategorie",
@@ -178,6 +192,7 @@
         "subheading": "Entdecke die Möglichkeiten, die dir durch Ethereum, EOS, POA, Klaytn und durch die Steem-Blockchain Dank des endgültigen Registers gegeben sind.",
         "view": "Zeige die Top-DApps an"
     },
+    "missingData": "Daten fehlen derzeit oder sind unvollständig",
     "new": "Neu",
     "platform": "Plattform",
     "profileStrength": "Stärke des Profils",
@@ -202,7 +217,10 @@
         "poa": "POA",
         "gochain": "GoChain",
         "xdai": "xDai",
-        "steem": "Steem"
+        "steem": "Steem",
+        "loom": "Loom",
+        "klaytn": "Klaytn",
+        "neo": "NEO"
     },
     "SecondaryCtaMailingList": {
         "title": "Bleib informiert",
@@ -231,9 +249,15 @@
         "cta": "Probiere es jetzt",
         "discover": "Entdecke Steem Keychain"
     },
-    "SpotlightDetail": {},
-    "SpotlightPreview": {},
-    "Spotlights": {},
+    "SpotlightDetail": {
+        "heading": "DApp  Scheinwerfer"
+    },
+    "SpotlightPreview": {
+        "ctaText": "Weiterlesen"
+    },
+    "Spotlights": {
+        "heading": "Strahler"
+    },
     "status": "Status",
     "statusOptions": {
         "live": "Live",
@@ -245,9 +269,19 @@
         "stealth": "Versteckt",
         "broken": "Kaputt"
     },
-    "StatsCategoriesPerMonth": {},
+    "submitQuestion": "Sie können State of the DApps mit einem kleinen Beitrag unterstützen. Gemeinsam können wir das DApp-Ökosystem fördern und mehr Nutzer anziehen.",
+    "submitQuestionPlaceholder": "Geben Sie einen (optionalen) Betrag ein",
+    "submitQuestionNote": "Nach dem Absenden werden wir uns mit Ihnen in Verbindung setzen",
+    "StatsCategoriesPerMonth": {
+        "activeUsers": "Aktive Benutzer",
+        "title": "Ethereum DApp-Aktivität nach Kategorie",
+        "transactions": "Transaktionen",
+        "volume": "Volumen (ETH)"
+    },
     "tags": "Stichworte",
-    "Teardowns": {},
+    "Teardowns": {
+        "title": "DApp Abrisse"
+    },
     "TheFooter": {
         "copyright": "Urheberrecht",
         "designedBy": "Entworfen von {designer}",
@@ -259,6 +293,7 @@
         "downloadLogo": "Lade unser Logo runter",
         "getAndroidApp": "Hol dir die Android App",
         "helpMetamask": "Hilfe für Metamask",
+        "teardowns": "Abrisse",
         "termsOfUse": "Nutzungsbedingungen"
     },
     "TheStats": {
