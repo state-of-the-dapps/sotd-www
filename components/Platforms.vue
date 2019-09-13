@@ -10,7 +10,18 @@
         width="1200">
     </div> -->
     <div class="wrapper">
-      <p class="get-started-note">Please note: We use a high level of discretion when considering requests for new platforms.</p>
+      <p class="get-started-note">
+        Please note: We use a high level of discretion when considering requests for new platforms.<br><br>
+        <strong>Acceptance criteria for new platform includes:</strong>
+        <ul>
+          <li>Public blockchain with smart contracts capability</li>
+          <li>Mainnet launched</li>
+          <li>Decentralized nodes operated by separate parties</li>
+          <li>Open source codebase</li>
+          <li>At least 10 DApps live</li>
+          <li>Block explorer that can link to individual contracts</li>
+        </ul>
+      </p>
       <div class="fields">
         <div><input 
           ref="name" 
@@ -186,6 +197,14 @@ export default {
 .get-started-note {
   max-width: 300px;
   margin: 0 auto;
+  ul {
+    margin-top: 10px;
+    margin-left: 17px;
+  }
+  li {
+    list-style-type: disc;
+    margin: 5px 0;
+  }
 }
 
 .preview-wrapper {
