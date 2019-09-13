@@ -10,7 +10,7 @@
         width="1200">
     </div> -->
     <div class="wrapper">
-      <p class="get-started-note">
+      <div class="get-started-note">
         Please note: We use a high level of discretion when considering requests for new platforms.<br><br>
         <strong>Acceptance criteria for new platform includes:</strong>
         <ul>
@@ -21,7 +21,7 @@
           <li>At least 10 DApps live</li>
           <li>Block explorer that can link to individual contracts</li>
         </ul>
-      </p>
+      </div>
       <div class="fields">
         <div><input 
           ref="name" 
