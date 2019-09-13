@@ -1,7 +1,7 @@
 <template>
   <div class="PromotedDapps">
     <div class="wrapper">
-      <h1 class="title-1">Which platform should we add?</h1>
+      <h1 class="title-1">How do I add my DApp platform?</h1>
     </div>
     <!-- <div class="preview-wrapper">
       <img 
@@ -14,7 +14,7 @@
         Please note: We use a high level of discretion when considering requests for new platforms.<br><br>
         <strong>Acceptance criteria for new platform includes:</strong>
         <ul>
-          <li>Public platform with smart contract capability</li>
+          <li>Public DApp platform with smart contract capability</li>
           <li>Mainnet launched</li>
           <li>Decentralized nodes operated by separate parties</li>
           <li>Open source codebase</li>
