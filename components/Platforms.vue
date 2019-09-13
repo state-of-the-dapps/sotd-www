@@ -39,6 +39,11 @@
           class="input" 
           type="text" 
           placeholder="Platform website"></div>
+        <div><input 
+          v-model="association" 
+          class="input" 
+          type="text" 
+          placeholder="How are you associated with the platform?"></div> 
       </div>
       <div class="send-wrapper"><button 
         :class="formIsValid ? '--is-ready' : ''" 
@@ -77,6 +82,7 @@ export default {
   },
   data() {
     return {
+      association: '',
       confirmationModal: false,
       country: '',
       email: '',
@@ -92,6 +98,7 @@ export default {
     formIsValid() {
       let isValid = false
       if (
+        this.association &&
         this.website &&
         this.country &&
         this.email &&
@@ -109,6 +116,7 @@ export default {
     send() {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
+        const association = this.association
         const website = this.website
         const country = this.country
         const email = this.email
@@ -118,6 +126,7 @@ export default {
 
         const data = {
           fields: {
+            association,
             website,
             country,
             platform,
