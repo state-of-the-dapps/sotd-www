@@ -186,6 +186,9 @@
         "suggestedTags": "Suggested tags",
         "viewDappResults": "View all DApp results"
     },
+    "HomeHero": {
+        "cta": "Request a new platform"
+    },
     "HomeHeroContentIntro": {
         "heading": "Explore Decentralized Applications",
         "learn": "Learn more about DApps",

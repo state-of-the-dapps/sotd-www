@@ -61,6 +61,8 @@
     "node-sass": "^4.12.0",
     "nodemon": "^1.11.0",
     "prettier": "1.14.3",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0"
   }
 }

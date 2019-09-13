@@ -21,6 +21,9 @@
             >{{ platform }}</nuxt-link>
           </li>
         </ul>
+        <p class="platform-cta-wrapper">
+          <nuxt-link :to="localePath({ name: 'platforms' })">{{ $t(namespace('cta')) }}</nuxt-link>
+        </p>
       </div>
     </div>
   </div>
@@ -76,13 +79,20 @@ export default {
   }
 }
 
+.platform-cta-wrapper {
+  margin-top: 1rem;
+  margin-bottom: 0.15rem;
+  text-align: right;
+  font-size: 1rem;
+}
+
 .platform-item {
   width: 33.33%;
   @include tweakpoint('min-width', 575px) {
     width: 33.33%;
   }
   @include tweakpoint('min-width', 1000px) {
-    width: 11.11%;
+    width: 14.2857142857%;
   }
 }
 
@@ -108,7 +118,7 @@ export default {
   margin: 0 auto;
   width: calc(100%);
   max-width: 1500px;
-  padding: 50px 0 10px 0;
+  padding-top: 50px;
   @include tweakpoint('min-width', 575px) {
     padding-top: 20px;
   }
