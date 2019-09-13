@@ -199,7 +199,7 @@ export default {
   margin: 0 auto;
   ul {
     margin-top: 10px;
-    margin-left: 17px;
+    margin-left: 25px;
   }
   li {
     list-style-type: disc;
