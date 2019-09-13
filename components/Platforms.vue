@@ -79,7 +79,6 @@ export default {
     return {
       confirmationModal: false,
       country: '',
-      dapp: '',
       email: '',
       emailIsValid: false,
       formIsSubmitting: false,

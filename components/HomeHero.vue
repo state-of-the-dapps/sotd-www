@@ -83,6 +83,7 @@ export default {
   margin-top: 1rem;
   margin-bottom: 0.15rem;
   text-align: right;
+  font-size: 1rem;
 }
 
 .platform-item {
@@ -91,7 +92,7 @@ export default {
     width: 33.33%;
   }
   @include tweakpoint('min-width', 1000px) {
-    width: 11.11%;
+    width: 14.2857142857%;
   }
 }
 
