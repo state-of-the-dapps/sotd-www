@@ -14,7 +14,7 @@
         Please note: We use a high level of discretion when considering requests for new platforms.<br><br>
         <strong>Acceptance criteria for new platform includes:</strong>
         <ul>
-          <li>Public blockchain with smart contracts capability</li>
+          <li>Public platform with smart contract capability</li>
           <li>Mainnet launched</li>
           <li>Decentralized nodes operated by separate parties</li>
           <li>Open source codebase</li>
