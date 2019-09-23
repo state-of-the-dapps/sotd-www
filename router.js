@@ -64,6 +64,10 @@ const Logos = () =>
   interopDefault(
     import('~/pages/Logos.vue' /* webpackChunkName: "pages/logos" */)
   )
+const Platform = () =>
+  interopDefault(
+    import('~/pages/Platform.vue' /* webpackChunkName: "pages/platform" */)
+  )
 const Platforms = () =>
   interopDefault(
     import('~/pages/Platforms.vue' /* webpackChunkName: "pages/platforms" */)
@@ -543,7 +547,26 @@ export function createRouter() {
         component: Rankings,
         name: 'rankings-platform-category___zh'
       },
-
+      {
+        path: '/platforms/:platform',
+        component: Platform,
+        name: 'platforms-platform___en'
+      },
+      {
+        path: '/de/platforms/:platform',
+        component: Platform,
+        name: 'platforms-platform___de'
+      },
+      {
+        path: '/ko/platforms/:platform',
+        component: Platform,
+        name: 'platforms-platform___ko'
+      },
+      {
+        path: '/zh/platforms/:platform',
+        component: Platform,
+        name: 'platforms-platform___zh'
+      },
       {
         path: '/platforms',
         component: Platforms,
@@ -564,7 +587,6 @@ export function createRouter() {
         component: Platforms,
         name: 'platforms___zh'
       },
-
       {
         path: '/promoted-dapps',
         component: PromotedDappsDirect,
