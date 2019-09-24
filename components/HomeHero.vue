@@ -15,7 +15,7 @@
             class="platform-item"
           >
             <nuxt-link
-              :to="'/rankings/platform/' + platform.toLowerCase()"
+              :to="'/platforms/' + platform.toLowerCase()"
               class="platform-link"
               @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
             >{{ platform }}</nuxt-link>
