@@ -5,7 +5,7 @@
         <div class="table-header">
           <div class="table-row">
             <div class="table-head col-rank">
-              <RankingTableRankHead :sort="true"/>
+              <RankingTableRankHead :sort="isSortable"/>
             </div>
             <div class="table-head col-name">
               <RankingTableNameHead/>
@@ -22,17 +22,17 @@
             </media>
             <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-dau">
-                <RankingTableDauHead :sort="true"/>
+                <RankingTableDauHead :sort="isSortable"/>
               </div>
             </media>
             <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-vol">
-                <RankingTableVolumeHead :sort="true"/>
+                <RankingTableVolumeHead :sort="isSortable"/>
               </div>
             </media>
             <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-dev">
-                <RankingTableDevHead :sort="true"/>
+                <RankingTableDevHead :sort="isSortable"/>
               </div>
             </media>
             <media :query="{minWidth: tweakpoint}">
@@ -40,7 +40,10 @@
                 <RankingTableUsageHead/>
               </div>  
             </media>
-            <media :query="{maxWidth: tweakpoint - 1}">
+            <media
+              v-if="isSortable"
+              :query="{maxWidth: tweakpoint - 1}"
+            >
               <div class="table-head col-variable">
                 <BaseDropdown
                   :options="columnOptions"
@@ -167,7 +170,7 @@
         </div>
       </div>
       <BasePager
-        v-if="!isLoading"
+        v-if="!isLoading && pager"
         :limit="pager.limit"
         :offset="pager.offset"
         :total-count="pager.totalCount"
@@ -234,22 +237,22 @@ export default {
     },
     isLoading: {
       type: Boolean,
-      required: true,
       default: false
+    },
+    isSortable: {
+      type: Boolean,
+      default: true
     },
     pager: {
       type: Object,
-      required: true,
-      default: () => ({})
+      default: null
     },
     columnOptions: {
       type: Array,
-      required: true,
       default: () => []
     },
     selectedColumn: {
       type: Object,
-      required: true,
       default: () => ({})
     }
   },
