@@ -31,19 +31,19 @@
           ul.stat-list
             li.stat-item
               span.stat-label Total DApps
-              span.stat-data #[strong {{ stats.dappCount.toLocaleString() }}]
+              span.stat-data #[strong {{ stats.dappCount.toLocaleString() || '-' }}]
             li.stat-item
               span.stat-label Daily active users
-              span.stat-data #[strong {{ stats.dappDau | abbreviateNumber(2) }}]
+              span.stat-data #[strong {{ stats.dappDau | abbreviateNumber(2) || '-' }}]
             li.stat-item
               span.stat-label Transactions (24h)
-              span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) }}]
+              span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) || '-' }}]
             li.stat-item
               span.stat-label USD Volume (24h)
-              span.stat-data #[strong ${{ stats.dappVol24Hr | abbreviateNumber(2) }}]
+              span.stat-data #[strong ${{ stats.dappVol24Hr | abbreviateNumber(2) || '-' }}]
             li.stat-item
               span.stat-label Number of contracts
-              span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) }}]
+              span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) || '-' }}]
           .stat-button-wrapper
             nuxt-link.stat-button(
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
@@ -54,8 +54,10 @@
               span.stat-label {{ category.category | capitalize }}
               span.stat-data 
                 nuxt-link(
+                  v-if="category.dappCount"
                   :to="localePath({name: 'rankings-platform-category', params: {platform: $route.params.platform, category: category.category}})"
                 ) #[strong {{ category.dappCount | abbreviateNumber(2) }}]
+                span(v-else) -
           .stat-button-wrapper
             nuxt-link.stat-button(
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
