@@ -8,13 +8,12 @@
           color="white"
         )
       .hero-content
-        h1.hero-title Ethereum
-        p.hero-description Ethereum is a global, open-source platform for decentralized applications. On Ethereum, you can write code that controls digital value, runs exactly as programmed, and is accessible anywhere in the world.
+        h1.hero-title {{ platformName($route.params.platform) }} 
   .content-wrapper
     .main-wrapper
       .ranking-wrapper
         h2.ranking-title.section-title
-          span Rankings
+          span {{ platformName($route.params.platform) }} Rankings
         .ranking-table
           RankingTable(
             :dapps="dapps"
@@ -27,12 +26,12 @@
     .sidebar-wrapper
       .stats-wrapper
         h2.stat-title.section-title
-          span Stats
+          span {{ platformName($route.params.platform) }} Stats
         .stat-wrapper(v-if="stats")
           ul.stat-list
             li.stat-item
               span.stat-label Total DApps
-              span.stat-data #[strong {{ stats.dappCount | abbreviateNumber(2) }}]
+              span.stat-data #[strong {{ stats.dappCount.toLocaleString() }}]
             li.stat-item
               span.stat-label Daily active users
               span.stat-data #[strong {{ stats.dappDau | abbreviateNumber(2) }}]
@@ -40,8 +39,8 @@
               span.stat-label Transactions (24h)
               span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) }}]
             li.stat-item
-              span.stat-label Volume (24h)
-              span.stat-data #[strong {{ stats.dappVol24Hr | abbreviateNumber(2) }}]
+              span.stat-label USD Volume (24h)
+              span.stat-data #[strong ${{ stats.dappVol24Hr | abbreviateNumber(2) }}]
             li.stat-item
               span.stat-label Number of contracts
               span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) }}]
@@ -49,7 +48,7 @@
             nuxt-link.stat-button(
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
             ) View more stats
-          h3.stat-title.section-title-2 Categories
+          h3.stat-title.section-title-2 DApps per Category
           ul.stat-list
             li.stat-item(v-for="category in stats.categories")
               span.stat-label {{ category.category | capitalize }}
@@ -64,8 +63,8 @@
 </template>
 
 <script>
-import { rankingColumns } from '~/helpers/constants'
-import { getDapps } from '~/helpers/api'
+import { platformMap, rankingColumns } from '@/helpers/constants'
+import { getDapps } from '@/helpers/api'
 import BaseMenu from '@/components/BaseMenu'
 import RankingTable from '@/components/RankingTable'
 
@@ -107,6 +106,13 @@ export default {
     )
     this.stats = platformStats
   },
+  methods: {
+    platformName(platform) {
+      const platforms = platformMap()
+      const name = platforms[platform]
+      return name ? name : ''
+    }
+  },
   layout: 'home'
 }
 </script>
@@ -137,7 +143,7 @@ export default {
   }
   &-inner {
     padding-top: 7px;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
     @include margin-wrapper-main;
     max-width: initial !important;
   }
@@ -152,7 +158,7 @@ export default {
     @include title-1;
     font-size: 3.5rem;
     line-height: 0.825;
-    margin: 1.5rem 0 0.75rem 0;
+    margin: 1.5rem 0 0 0;
     letter-spacing: 0;
     text-transform: none;
     @include tweakpoint('min-width', 1000px) {
@@ -189,7 +195,8 @@ export default {
       max-width: 100%;
       width: 100%;
     }
-    /deep/ .col-platform {
+    /deep/ .col-platform,
+    /deep/ .col-dev {
       display: none !important;
     }
   }
