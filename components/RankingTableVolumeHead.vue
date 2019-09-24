@@ -8,7 +8,7 @@
       @click.native="trackRankingSort('usd_value_7d')">{{ $t('rankingColumns.usd_value_7d') }}</nuxt-link>
     <span 
       v-else 
-      class="label">Volume (7d)</span>
+      class="label">{{ $t('rankingColumns.usd_value_7d') }}</span>
     <BaseHelp
       :bottom="true"
       :text="$t('help.volumeUsd')"/>

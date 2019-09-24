@@ -1,7 +1,7 @@
 <template lang="pug">
 .page
-  .hero
-    .hero-wrapper
+  .hero-outer
+    .hero-inner
       .hero-menu
         BaseMenu(
           :is-home="true"
@@ -18,12 +18,12 @@
         .ranking-table
           RankingTable(
             :dapps="dapps"
-            :is-loading="isLoading"
-            :pager="pager"
-            :column-options="columnOptions"
-            :selected-column="selectedColumn"
-            @selectColumn="selectColumn"
+            :is-sortable="false"
           )
+        .ranking-button-wrapper
+          nuxt-link.ranking-button(
+            :to="localePath({name: 'rankings-platform', params: {platform: $route.params.platform}})"
+          ) View the full rankings
     .sidebar-wrapper
       .stats-wrapper
         h2.rankings-title.section-title
@@ -46,6 +46,7 @@ export default {
     if (!query.sort) {
       urlParams.sort = 'rank'
       urlParams.order = 'asc'
+      urlParams.limit = 10
     }
     let dapps = []
     let pager
@@ -77,8 +78,6 @@ export default {
   }
 }
 .hero {
-  color: white;
-  background-image: linear-gradient(to bottom, #3a2a6a, #7254d0);
   &-description {
     font-size: 1.2rem;
     width: 100%;
@@ -88,6 +87,19 @@ export default {
     @include tweakpoint('min-width', 1000px) {
       text-align: center;
       margin: 0 auto;
+    }
+  }
+  &-inner {
+    padding-top: 7px;
+    padding-bottom: 3rem;
+    @include margin-wrapper-main;
+    max-width: initial !important;
+  }
+  &-outer {
+    color: white;
+    background-image: linear-gradient(to bottom, #3a2a6a, #7254d0);
+    /deep/ a {
+      color: white;
     }
   }
   &-title {
@@ -104,14 +116,6 @@ export default {
       text-align: center;
     }
   }
-  &-wrapper {
-    padding-bottom: 3rem;
-    @include margin-wrapper-main;
-    max-width: initial !important;
-  }
-  /deep/ a {
-    color: white;
-  }
 }
 .main {
   &-wrapper {
@@ -120,10 +124,23 @@ export default {
     }
   }
 }
+.page {
+  padding-bottom: 25px;
+}
 .ranking {
+  &-button {
+    @include button;
+    &-wrapper {
+      text-align: center;
+      padding: 20px;
+    }
+  }
   &-table {
-    /deep/ .wrapper {
+    /deep/ .wrapper,
+    /deep/ .table {
       margin: 0 !important;
+      max-width: 100%;
+      width: 100%;
     }
     /deep/ .col-platform {
       display: none !important;
@@ -135,8 +152,8 @@ export default {
     @include font-display;
     display: flex;
     align-items: center;
-    font-size: 1.725rem;
-    padding-bottom: 0.75rem;
+    font-size: 2rem;
+    padding-bottom: 0.25rem;
     margin: 0;
     font-weight: 300;
     &.zh {
@@ -147,8 +164,8 @@ export default {
 .sidebar {
   &-wrapper {
     @include tweakpoint('min-width', 900px) {
-      width: 300px;
-      padding-left: 20px;
+      width: 350px;
+      padding-left: 30px;
     }
   }
 }
