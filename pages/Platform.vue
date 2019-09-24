@@ -40,7 +40,7 @@
               span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) || '-' }}]
             li.stat-item
               span.stat-label USD Volume (24h)
-              span.stat-data #[strong ${{ stats.dappVol24Hr | abbreviateNumber(2) || '-' }}]
+              span.stat-data #[strong ${{ Math.round(stats.dappVol24Hr).toLocaleString() || '-' }}]
             li.stat-item
               span.stat-label Number of contracts
               span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) || '-' }}]
