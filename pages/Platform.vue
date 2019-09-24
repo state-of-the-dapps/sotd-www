@@ -26,8 +26,41 @@
           ) View the full rankings
     .sidebar-wrapper
       .stats-wrapper
-        h2.rankings-title.section-title
+        h2.stat-title.section-title
           span Stats
+        .stat-wrapper(v-if="stats")
+          ul.stat-list
+            li.stat-item
+              span.stat-label Total DApps
+              span.stat-data #[strong {{ stats.dappCount | abbreviateNumber(2) }}]
+            li.stat-item
+              span.stat-label Daily active users
+              span.stat-data #[strong {{ stats.dappDau | abbreviateNumber(2) }}]
+            li.stat-item
+              span.stat-label Transactions (24h)
+              span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) }}]
+            li.stat-item
+              span.stat-label Volume (24h)
+              span.stat-data #[strong {{ stats.dappVol24Hr | abbreviateNumber(2) }}]
+            li.stat-item
+              span.stat-label Number of contracts
+              span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) }}]
+          .stat-button-wrapper
+            nuxt-link.stat-button(
+              :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
+            ) View more stats
+          h3.stat-title.section-title-2 Categories
+          ul.stat-list
+            li.stat-item(v-for="category in stats.categories")
+              span.stat-label {{ category.category | capitalize }}
+              span.stat-data 
+                nuxt-link(
+                  :to="localePath({name: 'rankings-platform-category', params: {platform: $route.params.platform, category: category.category}})"
+                ) #[strong {{ category.dappCount | abbreviateNumber(2) }}]
+          .stat-button-wrapper
+            nuxt-link.stat-button(
+              :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
+            ) View more stats
 </template>
 
 <script>
@@ -40,6 +73,11 @@ export default {
   components: {
     BaseMenu,
     RankingTable
+  },
+  data() {
+    return {
+      stats: null
+    }
   },
   async asyncData({ params, query, app }) {
     const urlParams = { ...params, ...query }
@@ -60,6 +98,14 @@ export default {
     } finally {
       return { dapps, pager }
     }
+  },
+  async mounted() {
+    const stats = await this.$axios.$get('stats')
+    const platforms = stats.platforms
+    const platformStats = platforms.find(
+      platform => platform.platform === this.$route.params.platform
+    )
+    this.stats = platformStats
   },
   layout: 'home'
 }
@@ -119,6 +165,7 @@ export default {
 }
 .main {
   &-wrapper {
+    margin-bottom: 1rem;
     @include tweakpoint('min-width', 900px) {
       flex: 1;
     }
@@ -163,10 +210,33 @@ export default {
 }
 .sidebar {
   &-wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
     @include tweakpoint('min-width', 900px) {
-      width: 350px;
       padding-left: 30px;
     }
+  }
+}
+.stat {
+  &-button {
+    &-wrapper {
+      text-align: right;
+    }
+  }
+  &-item {
+    border-top: 1px solid rgba($color--black, 0.2);
+    padding: 0.5rem 0;
+    display: flex;
+    &:last-child {
+      border-bottom: 1px solid rgba($color--black, 0.2);
+    }
+  }
+  &-label {
+    flex: 1;
+  }
+  &-list {
+    margin: 1rem 0;
   }
 }
 </style>
