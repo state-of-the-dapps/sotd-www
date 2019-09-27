@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './helpers/utils'
+import { languages } from './helpers/constants'
 
 Vue.use(Router)
 
@@ -183,845 +184,285 @@ const scrollBehavior = function(to, from, savedPosition) {
   })
 }
 
+const i18nRoutes = Object.freeze([
+  (prefix, lang) => ({
+    path: prefix + '/',
+    component: Home,
+    name: 'home___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/about',
+    component: About,
+    name: 'about___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/collections',
+    component: Collections,
+    name: 'collections___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/collections/:slug',
+    component: CollectionDetail,
+    name: 'collection-detail___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/submit/new',
+    component: DappsNew,
+    name: 'dapps-new___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/new/form',
+    redirect: { name: 'help-metamask___' + lang }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/submit/new/confirmation',
+    component: DappsNewConfirmation,
+    name: 'dapps-new-confirmation___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/:slug',
+    component: DappDetailDirect,
+    name: 'dapp-detail-direct___' + lang
+  }),
+  (prefix, lang) => ({
+    // XXX duplicate?
+    path: prefix + '/dapps/:slug',
+    component: DappDetail,
+    name: 'dapp-detail___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/:slug/edit',
+    component: DappDetailEdit,
+    name: 'dapp-detail-edit___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/:slug/flag',
+    component: DappDetailFlag,
+    name: 'dapp-detail-flag___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/:slug/improve',
+    component: DappDetailImprove,
+    name: 'dapp-detail-improve___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/:slug/meta',
+    component: DappDetailMeta,
+    name: 'dapp-detail-meta___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/logos',
+    component: Logos,
+    name: 'logos___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/rankings',
+    component: Rankings,
+    name: 'rankings___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/rankings/category/:category',
+    component: Rankings,
+    name: 'rankings-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/rankings/platform/:platform',
+    component: Rankings,
+    name: 'rankings-platform___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/rankings/platform/:platform/category/:category',
+    component: Rankings,
+    name: 'rankings-platform-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/platforms/:platform',
+    component: Platform,
+    name: 'platforms-platform___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/platforms',
+    component: Platforms,
+    name: 'platforms___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/promoted-dapps',
+    component: PromotedDappsDirect,
+    name: 'promoted-dapps-direct___' + lang
+  }),
+  (prefix, lang) => ({
+    // XXX duplicate?
+    path: prefix + '/promoted-dapps',
+    component: PromotedDapps,
+    name: 'promoted-dapps___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/submit',
+    redirect: { name: 'dapps-new___' + lang }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/tagged/metamask',
+    redirect: { name: 'help-metamask___' + lang }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/tagged/:tags',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: { tags: params.tags }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/tagged/:tags/tab/:tab',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: {
+          tags: params.tags,
+          tab: params.tab
+        }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/tagged/:tags',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: { tags: params.tags }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/tagged/:tags/tab/:tab',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: {
+          tags: params.tags,
+          tab: params.tab
+        }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps',
+    component: Dapps,
+    name: 'dapps___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/category/:category',
+    component: Dapps,
+    name: 'dapps-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/platform/:platform',
+    component: Dapps,
+    name: 'dapps-platform___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/platform/:platform/category/:category',
+    component: Dapps,
+    name: 'dapps-platform-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/dapps/tab/:tab',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: { tab: params.tab }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/tab/:tab',
+    redirect: to => {
+      const { params } = to
+      return {
+        name: 'dapps___' + lang,
+        query: { tab: params.tab }
+      }
+    }
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/help/metamask',
+    component: HelpMetamask,
+    name: 'help-metamask___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/stats',
+    component: Stats,
+    name: 'stats___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/stats/category/:category',
+    component: Stats,
+    name: 'stats-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/stats/platform/:platform',
+    component: Stats,
+    name: 'stats-platform___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/stats/platform/:platform/category/:category',
+    component: Stats,
+    name: 'stats-platform-category___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/spotlights/:slug',
+    component: SpotlightDetail,
+    name: 'spotlight-detail___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/spotlights',
+    component: Spotlights,
+    name: 'spotlights___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/teardowns',
+    component: Teardowns,
+    name: 'teardowns___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/terms',
+    component: Terms,
+    name: 'terms___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/whats-a-dapp',
+    component: What,
+    name: 'what___' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '*',
+    redirect: { name: 'home___' + lang }
+  })
+])
+
 export function createRouter() {
+  const routes = []
+  i18nRoutes.forEach(i18nRoute => {
+    languages.forEach(language => {
+      const lang = language.selection
+      const prefix = lang === 'en' ? '' : '/' + lang
+      routes.push(i18nRoute(prefix, lang))
+    })
+  })
+
   return new Router({
     mode: 'history',
     base: '/',
     linkActiveClass: 'nuxt-link-active',
     linkExactActiveClass: 'nuxt-link-exact-active',
     scrollBehavior,
-    routes: [
-      {
-        path: '/',
-        component: Home,
-        name: 'home___en'
-      },
-      {
-        path: '/de',
-        component: Home,
-        name: 'home___de'
-      },
-      {
-        path: '/ko',
-        component: Home,
-        name: 'home___ko'
-      },
-      {
-        path: '/zh',
-        component: Home,
-        name: 'home___zh'
-      },
-      {
-        path: '/about',
-        component: About,
-        name: 'about___en'
-      },
-      {
-        path: '/de/about',
-        component: About,
-        name: 'about___de'
-      },
-      {
-        path: '/ko/about',
-        component: About,
-        name: 'about___ko'
-      },
-      {
-        path: '/zh/about',
-        component: About,
-        name: 'about___zh'
-      },
-      {
-        path: '/collections',
-        component: Collections,
-        name: 'collections___en'
-      },
-      {
-        path: '/de/collections',
-        component: Collections,
-        name: 'collections___de'
-      },
-      {
-        path: '/ko/collections',
-        component: Collections,
-        name: 'collections___ko'
-      },
-      {
-        path: '/zh/collections',
-        component: Collections,
-        name: 'collections___zh'
-      },
-      {
-        path: '/collections/:slug',
-        component: CollectionDetail,
-        name: 'collection-detail___en'
-      },
-      {
-        path: '/de/collections/:slug',
-        component: CollectionDetail,
-        name: 'collection-detail___de'
-      },
-      {
-        path: '/ko/collections/:slug',
-        component: CollectionDetail,
-        name: 'collection-detail___ko'
-      },
-      {
-        path: '/zh/collections/:slug',
-        component: CollectionDetail,
-        name: 'collection-detail___zh'
-      },
-      {
-        path: '/dapps/submit/new',
-        component: DappsNew,
-        name: 'dapps-new___en'
-      },
-      {
-        path: '/de/dapps/submit/new',
-        component: DappsNew,
-        name: 'dapps-new___de'
-      },
-      {
-        path: '/ko/dapps/submit/new',
-        component: DappsNew,
-        name: 'dapps-new___ko'
-      },
-      {
-        path: '/zh/dapps/submit/new',
-        component: DappsNew,
-        name: 'dapps-new___zh'
-      },
-      {
-        path: '/dapps/new/form',
-        redirect: { name: 'help-metamask___en' }
-      },
-      {
-        path: '/de/dapps/new/form',
-        redirect: { name: 'help-metamask___de' }
-      },
-      {
-        path: '/ko/dapps/new/form',
-        redirect: { name: 'help-metamask___ko' }
-      },
-      {
-        path: '/zh/dapps/new/form',
-        redirect: { name: 'help-metamask___zh' }
-      },
-      {
-        path: '/dapps/submit/new/confirmation',
-        component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation___en'
-      },
-      {
-        path: '/de/dapps/submit/new/confirmation',
-        component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation___de'
-      },
-      {
-        path: '/ko/dapps/submit/new/confirmation',
-        component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation___ko'
-      },
-      {
-        path: '/zh/dapps/submit/new/confirmation',
-        component: DappsNewConfirmation,
-        name: 'dapps-new-confirmation___zh'
-      },
-      {
-        path: '/dapps/:slug',
-        component: DappDetailDirect,
-        name: 'dapp-detail-direct___en'
-      },
-      {
-        path: '/de/dapps/:slug',
-        component: DappDetailDirect,
-        name: 'dapp-detail-direct___de'
-      },
-      {
-        path: '/ko/dapps/:slug',
-        component: DappDetailDirect,
-        name: 'dapp-detail-direct___ko'
-      },
-      {
-        path: '/zh/dapps/:slug',
-        component: DappDetailDirect,
-        name: 'dapp-detail-direct___zh'
-      },
-      {
-        path: '/dapps/:slug',
-        component: DappDetail,
-        name: 'dapp-detail___en'
-      },
-      {
-        path: '/de/dapps/:slug',
-        component: DappDetail,
-        name: 'dapp-detail___de'
-      },
-      {
-        path: '/ko/dapps/:slug',
-        component: DappDetail,
-        name: 'dapp-detail___ko'
-      },
-      {
-        path: '/zh/dapps/:slug',
-        component: DappDetail,
-        name: 'dapp-detail___zh'
-      },
-      {
-        path: '/dapps/:slug/edit',
-        component: DappDetailEdit,
-        name: 'dapp-detail-edit___en'
-      },
-      {
-        path: '/de/dapps/:slug/edit',
-        component: DappDetailEdit,
-        name: 'dapp-detail-edit___de'
-      },
-      {
-        path: '/ko/dapps/:slug/edit',
-        component: DappDetailEdit,
-        name: 'dapp-detail-edit___ko'
-      },
-      {
-        path: '/zh/dapps/:slug/edit',
-        component: DappDetailEdit,
-        name: 'dapp-detail-edit___zh'
-      },
-      {
-        path: '/dapps/:slug/flag',
-        component: DappDetailFlag,
-        name: 'dapp-detail-flag___en'
-      },
-      {
-        path: '/de/dapps/:slug/flag',
-        component: DappDetailFlag,
-        name: 'dapp-detail-flag___de'
-      },
-      {
-        path: '/ko/dapps/:slug/flag',
-        component: DappDetailFlag,
-        name: 'dapp-detail-flag___ko'
-      },
-      {
-        path: '/zh/dapps/:slug/flag',
-        component: DappDetailFlag,
-        name: 'dapp-detail-flag___zh'
-      },
-      {
-        path: '/dapps/:slug/improve',
-        component: DappDetailImprove,
-        name: 'dapp-detail-improve___en'
-      },
-      {
-        path: '/de/dapps/:slug/improve',
-        component: DappDetailImprove,
-        name: 'dapp-detail-improve___de'
-      },
-      {
-        path: '/ko/dapps/:slug/improve',
-        component: DappDetailImprove,
-        name: 'dapp-detail-improve___ko'
-      },
-      {
-        path: '/zh/dapps/:slug/improve',
-        component: DappDetailImprove,
-        name: 'dapp-detail-improve___zh'
-      },
-      {
-        path: '/dapps/:slug/meta',
-        component: DappDetailMeta,
-        name: 'dapp-detail-meta___en'
-      },
-      {
-        path: '/de/dapps/:slug/meta',
-        component: DappDetailMeta,
-        name: 'dapp-detail-meta___de'
-      },
-      {
-        path: '/ko/dapps/:slug/meta',
-        component: DappDetailMeta,
-        name: 'dapp-detail-meta___ko'
-      },
-      {
-        path: '/zh/dapps/:slug/meta',
-        component: DappDetailMeta,
-        name: 'dapp-detail-meta___zh'
-      },
-      {
-        path: '/logos',
-        component: Logos,
-        name: 'logos___en'
-      },
-      {
-        path: '/de/logos',
-        component: Logos,
-        name: 'logos___de'
-      },
-      {
-        path: '/ko/logos',
-        component: Logos,
-        name: 'logos___ko'
-      },
-      {
-        path: '/zh/logos',
-        component: Logos,
-        name: 'logos___zh'
-      },
-      {
-        path: '/rankings',
-        component: Rankings,
-        name: 'rankings___en'
-      },
-      {
-        path: '/de/rankings',
-        component: Rankings,
-        name: 'rankings___de'
-      },
-      {
-        path: '/ko/rankings',
-        component: Rankings,
-        name: 'rankings___ko'
-      },
-      {
-        path: '/zh/rankings',
-        component: Rankings,
-        name: 'rankings___zh'
-      },
-      {
-        path: '/rankings/category/:category',
-        component: Rankings,
-        name: 'rankings-category___en'
-      },
-      {
-        path: '/de/rankings/category/:category',
-        component: Rankings,
-        name: 'rankings-category___de'
-      },
-      {
-        path: '/ko/rankings/category/:category',
-        component: Rankings,
-        name: 'rankings-category___ko'
-      },
-      {
-        path: '/zh/rankings/category/:category',
-        component: Rankings,
-        name: 'rankings-category___zh'
-      },
-      {
-        path: '/rankings/platform/:platform',
-        component: Rankings,
-        name: 'rankings-platform___en'
-      },
-      {
-        path: '/de/rankings/platform/:platform',
-        component: Rankings,
-        name: 'rankings-platform___de'
-      },
-      {
-        path: '/ko/rankings/platform/:platform',
-        component: Rankings,
-        name: 'rankings-platform___ko'
-      },
-      {
-        path: '/zh/rankings/platform/:platform',
-        component: Rankings,
-        name: 'rankings-platform___zh'
-      },
-      {
-        path: '/rankings/platform/:platform/category/:category',
-        component: Rankings,
-        name: 'rankings-platform-category___en'
-      },
-      {
-        path: '/de/rankings/platform/:platform/category/:category',
-        component: Rankings,
-        name: 'rankings-platform-category___de'
-      },
-      {
-        path: '/ko/rankings/platform/:platform/category/:category',
-        component: Rankings,
-        name: 'rankings-platform-category___ko'
-      },
-      {
-        path: '/zh/rankings/platform/:platform/category/:category',
-        component: Rankings,
-        name: 'rankings-platform-category___zh'
-      },
-      {
-        path: '/platforms/:platform',
-        component: Platform,
-        name: 'platforms-platform___en'
-      },
-      {
-        path: '/de/platforms/:platform',
-        component: Platform,
-        name: 'platforms-platform___de'
-      },
-      {
-        path: '/ko/platforms/:platform',
-        component: Platform,
-        name: 'platforms-platform___ko'
-      },
-      {
-        path: '/zh/platforms/:platform',
-        component: Platform,
-        name: 'platforms-platform___zh'
-      },
-      {
-        path: '/platforms',
-        component: Platforms,
-        name: 'platforms___en'
-      },
-      {
-        path: '/de/platforms',
-        component: Platforms,
-        name: 'platforms___de'
-      },
-      {
-        path: '/ko/platforms',
-        component: Platforms,
-        name: 'platforms___ko'
-      },
-      {
-        path: '/zh/platforms',
-        component: Platforms,
-        name: 'platforms___zh'
-      },
-      {
-        path: '/promoted-dapps',
-        component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct___en'
-      },
-      {
-        path: '/de/promoted-dapps',
-        component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct___de'
-      },
-      {
-        path: '/ko/promoted-dapps',
-        component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct___ko'
-      },
-      {
-        path: '/zh/promoted-dapps',
-        component: PromotedDappsDirect,
-        name: 'promoted-dapps-direct___zh'
-      },
-      {
-        path: '/promoted-dapps',
-        component: PromotedDapps,
-        name: 'promoted-dapps___en'
-      },
-      {
-        path: '/de/promoted-dapps',
-        component: PromotedDapps,
-        name: 'promoted-dapps___de'
-      },
-      {
-        path: '/ko/promoted-dapps',
-        component: PromotedDapps,
-        name: 'promoted-dapps___ko'
-      },
-      {
-        path: '/zh/promoted-dapps',
-        component: PromotedDapps,
-        name: 'promoted-dapps___zh'
-      },
-      {
-        path: '/submit',
-        redirect: { name: 'dapps-new___en' }
-      },
-      {
-        path: '/de/submit',
-        redirect: { name: 'dapps-new___de' }
-      },
-      {
-        path: '/ko/submit',
-        redirect: { name: 'dapps-new___ko' }
-      },
-      {
-        path: '/zh/submit',
-        redirect: { name: 'dapps-new___zh' }
-      },
-      {
-        path: '/tagged/metamask',
-        redirect: { name: 'help-metamask___en' }
-      },
-      {
-        path: '/de/tagged/metamask',
-        redirect: { name: 'help-metamask___de' }
-      },
-      {
-        path: '/ko/tagged/metamask',
-        redirect: { name: 'help-metamask___ko' }
-      },
-      {
-        path: '/zh/tagged/metamask',
-        redirect: { name: 'help-metamask___zh' }
-      },
-      {
-        path: '/tagged/:tags',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: { tags: params.tags }
-          }
-        }
-      },
-      {
-        path: '/tagged/:tags/tab/:tab',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: {
-              tags: params.tags,
-              tab: params.tab
-            }
-          }
-        }
-      },
-      {
-        path: '/dapps/tagged/:tags',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: { tags: params.tags }
-          }
-        }
-      },
-      {
-        path: '/dapps/tagged/:tags/tab/:tab',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: {
-              tags: params.tags,
-              tab: params.tab
-            }
-          }
-        }
-      },
-      {
-        path: '/dapps',
-        component: Dapps,
-        name: 'dapps___en'
-      },
-      {
-        path: '/de/dapps',
-        component: Dapps,
-        name: 'dapps___de'
-      },
-      {
-        path: '/ko/dapps',
-        component: Dapps,
-        name: 'dapps___ko'
-      },
-      {
-        path: '/zh/dapps',
-        component: Dapps,
-        name: 'dapps___zh'
-      },
-      {
-        path: '/dapps/category/:category',
-        component: Dapps,
-        name: 'dapps-category___en'
-      },
-      {
-        path: '/de/dapps/category/:category',
-        component: Dapps,
-        name: 'dapps-category___de'
-      },
-      {
-        path: '/ko/dapps/category/:category',
-        component: Dapps,
-        name: 'dapps-category___ko'
-      },
-      {
-        path: '/zh/dapps/category/:category',
-        component: Dapps,
-        name: 'dapps-category___zh'
-      },
-      {
-        path: '/dapps/platform/:platform',
-        component: Dapps,
-        name: 'dapps-platform___en'
-      },
-      {
-        path: '/de/dapps/platform/:platform',
-        component: Dapps,
-        name: 'dapps-platform___de'
-      },
-      {
-        path: '/ko/dapps/platform/:platform',
-        component: Dapps,
-        name: 'dapps-platform___ko'
-      },
-      {
-        path: '/zh/dapps/platform/:platform',
-        component: Dapps,
-        name: 'dapps-platform___zh'
-      },
-      {
-        path: '/dapps/platform/:platform/category/:category',
-        component: Dapps,
-        name: 'dapps-platform-category___en'
-      },
-      {
-        path: '/de/dapps/platform/:platform/category/:category',
-        component: Dapps,
-        name: 'dapps-platform-category___de'
-      },
-      {
-        path: '/ko/dapps/platform/:platform/category/:category',
-        component: Dapps,
-        name: 'dapps-platform-category___ko'
-      },
-      {
-        path: '/zh/dapps/platform/:platform/category/:category',
-        component: Dapps,
-        name: 'dapps-platform-category___zh'
-      },
-      {
-        path: '/dapps/tab/:tab',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: { tab: params.tab }
-          }
-        }
-      },
-      {
-        path: '/tab/:tab',
-        redirect: to => {
-          const { params } = to
-          return {
-            name: 'dapps___en',
-            query: { tab: params.tab }
-          }
-        }
-      },
-      {
-        path: '/help/metamask',
-        component: HelpMetamask,
-        name: 'help-metamask___en'
-      },
-      {
-        path: '/de/help/metamask',
-        component: HelpMetamask,
-        name: 'help-metamask___de'
-      },
-      {
-        path: '/ko/help/metamask',
-        component: HelpMetamask,
-        name: 'help-metamask___ko'
-      },
-      {
-        path: '/zh/help/metamask',
-        component: HelpMetamask,
-        name: 'help-metamask___zh'
-      },
-      {
-        path: '/stats',
-        component: Stats,
-        name: 'stats___en'
-      },
-      {
-        path: '/de/stats',
-        component: Stats,
-        name: 'stats___de'
-      },
-      {
-        path: '/ko/stats',
-        component: Stats,
-        name: 'stats___ko'
-      },
-      {
-        path: '/zh/stats',
-        component: Stats,
-        name: 'stats___zh'
-      },
-      {
-        path: '/stats/category/:category',
-        component: Stats,
-        name: 'stats-category___en'
-      },
-      {
-        path: '/de/stats/category/:category',
-        component: Stats,
-        name: 'stats-category___de'
-      },
-      {
-        path: '/ko/stats/category/:category',
-        component: Stats,
-        name: 'stats-category___ko'
-      },
-      {
-        path: '/zh/stats/category/:category',
-        component: Stats,
-        name: 'stats-category___zh'
-      },
-      {
-        path: '/stats/platform/:platform',
-        component: Stats,
-        name: 'stats-platform___en'
-      },
-      {
-        path: '/de/stats/platform/:platform',
-        component: Stats,
-        name: 'stats-platform___de'
-      },
-      {
-        path: '/ko/stats/platform/:platform',
-        component: Stats,
-        name: 'stats-platform___ko'
-      },
-      {
-        path: '/zh/stats/platform/:platform',
-        component: Stats,
-        name: 'stats-platform___zh'
-      },
-      {
-        path: '/stats/platform/:platform/category/:category',
-        component: Stats,
-        name: 'stats-platform-category___en'
-      },
-      {
-        path: '/de/stats/platform/:platform/category/:category',
-        component: Stats,
-        name: 'stats-platform-category___de'
-      },
-      {
-        path: '/ko/stats/platform/:platform/category/:category',
-        component: Stats,
-        name: 'stats-platform-category___ko'
-      },
-      {
-        path: '/zh/stats/platform/:platform/category/:category',
-        component: Stats,
-        name: 'stats-platform-category___zh'
-      },
-      {
-        path: '/spotlights/:slug',
-        component: SpotlightDetail,
-        name: 'spotlight-detail___en'
-      },
-      {
-        path: '/de/spotlights/:slug',
-        component: SpotlightDetail,
-        name: 'spotlight-detail___de'
-      },
-      {
-        path: '/ko/spotlights/:slug',
-        component: SpotlightDetail,
-        name: 'spotlight-detail___ko'
-      },
-      {
-        path: '/zh/spotlights/:slug',
-        component: SpotlightDetail,
-        name: 'spotlight-detail___zh'
-      },
-      {
-        path: '/spotlights',
-        component: Spotlights,
-        name: 'spotlights___en'
-      },
-      {
-        path: '/de/spotlights',
-        component: Spotlights,
-        name: 'spotlights___de'
-      },
-      {
-        path: '/ko/spotlights',
-        component: Spotlights,
-        name: 'spotlights___ko'
-      },
-      {
-        path: '/zh/spotlights',
-        component: Spotlights,
-        name: 'spotlights___zh'
-      },
-      {
-        path: '/teardowns',
-        component: Teardowns,
-        name: 'teardowns___en'
-      },
-      {
-        path: '/de/teardowns',
-        component: Teardowns,
-        name: 'teardowns___de'
-      },
-      {
-        path: '/ko/teardowns',
-        component: Teardowns,
-        name: 'teardowns___ko'
-      },
-      {
-        path: '/zh/teardowns',
-        component: Teardowns,
-        name: 'teardowns___zh'
-      },
-      {
-        path: '/terms',
-        component: Terms,
-        name: 'terms___en'
-      },
-      {
-        path: '/de/terms',
-        component: Terms,
-        name: 'terms___de'
-      },
-      {
-        path: '/ko/terms',
-        component: Terms,
-        name: 'terms___ko'
-      },
-      {
-        path: '/zh/terms',
-        component: Terms,
-        name: 'terms___zh'
-      },
-      {
-        path: '/whats-a-dapp',
-        component: What,
-        name: 'what___en'
-      },
-      {
-        path: '/de/whats-a-dapp',
-        component: What,
-        name: 'what___de'
-      },
-      {
-        path: '/ko/whats-a-dapp',
-        component: What,
-        name: 'what___ko'
-      },
-      {
-        path: '/zh/whats-a-dapp',
-        component: What,
-        name: 'what___zh'
-      },
-      {
-        path: '*',
-        redirect: { name: 'home___en' }
-      },
-      {
-        path: '/de/*',
-        redirect: { name: 'home___de' }
-      },
-      {
-        path: '/ko/*',
-        redirect: { name: 'home___ko' }
-      },
-      {
-        path: '/zh/*',
-        redirect: { name: 'home___zh' }
-      }
-    ],
+    routes,
     fallback: false
   })
 }
