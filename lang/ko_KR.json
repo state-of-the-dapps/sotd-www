@@ -276,7 +276,7 @@
         "activeUsers": "활성 사용자",
         "title": "Ethereum DApp 카테고리 별 활동",
         "transactions": "업무",
-        "volume": "음량 (ETH)"
+        "volume": "Volume (USD)"
     },
     "tags": "태그",
     "Teardowns": {

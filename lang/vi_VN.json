@@ -276,7 +276,7 @@
         "activeUsers": "Hoạt động người dùng",
         "title": "Hoạt động của ĐApp Ethereum bởi danh mục",
         "transactions": "Giao dịch",
-        "volume": "Khối lượng (ETH)"
+        "volume": "Khối lượng (USD)"
     },
     "tags": "thẻ tag",
     "Teardowns": {

@@ -276,7 +276,7 @@
         "activeUsers": "Aktive Benutzer",
         "title": "Ethereum DApp-Aktivität nach Kategorie",
         "transactions": "Transaktionen",
-        "volume": "Volumen (ETH)"
+        "volume": "Volume (USD)"
     },
     "tags": "Stichworte",
     "Teardowns": {

@@ -276,7 +276,7 @@
         "activeUsers": "活躍用戶",
         "title": "按類別劃分的以太坊 Ethereum DApp活動",
         "transactions": "交易",
-        "volume": "體積（ETH）"
+        "volume": "Volume (USD)"
     },
     "tags": "标签",
     "Teardowns": {
