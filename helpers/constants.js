@@ -149,8 +149,16 @@ const languages = Object.freeze([
     selection: 'de'
   },
   {
+    text: 'Français',
+    selection: 'fr'
+  },
+  {
     text: '한국어',
     selection: 'ko'
+  },
+  {
+    text: 'Tiếng Việt',
+    selection: 'vi'
   },
   {
     text: '中文',
@@ -161,7 +169,9 @@ const languages = Object.freeze([
 const localeStrings = Object.freeze({
   en: `English`,
   de: 'Deutsch',
+  fr: 'Français',
   ko: '한국어',
+  vi: 'Tiếng Việt',
   zh: `中文`
 })
 
