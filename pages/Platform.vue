@@ -110,6 +110,11 @@ export default {
     const platformStats = platforms.find(
       platform => platform.platform === this.$route.params.platform
     )
+    if (platformStats) {
+      platformStats.categories = [...platformStats.categories].sort(
+        (a, b) => (a.dappCount < b.dappCount ? 1 : -1)
+      )
+    }
     this.stats = platformStats
   },
   methods: {
@@ -236,6 +241,9 @@ export default {
     &-wrapper {
       text-align: right;
     }
+  }
+  &-data {
+    @include font-text-mono;
   }
   &-item {
     border-top: 1px solid rgba($color--black, 0.2);
