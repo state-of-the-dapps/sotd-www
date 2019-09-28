@@ -21,6 +21,7 @@
           )
         .ranking-button-wrapper
           nuxt-link.ranking-button(
+            @click.native="$mixpanel.track('Platform Page - View Rankings', {platform: $route.params.platform})"
             :to="localePath({name: 'rankings-platform', params: {platform: $route.params.platform}})"
           ) {{ $t('platformPage.viewRankings') }}
     .sidebar-wrapper
@@ -46,20 +47,23 @@
               span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) || '-' }}]
           .stat-button-wrapper
             nuxt-link.stat-button(
+              @click.native="$mixpanel.track('Platform Page - View Stats', {platform: $route.params.platform, block: 'general'})"
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
-            ) View more stats
+            ) {{ $t('platformPage.viewMoreStats') }}
           h3.stat-title.section-title-2 {{ $t('platformPage.dappsPerCategory') }}
           ul.stat-list
-            li.stat-item(v-for="category in stats.categories")
+            li.stat-item(v-for="(category, index) in stats.categories")
               span.stat-label {{ category.category | capitalize }}
               span.stat-data 
                 nuxt-link(
+                  @click.native="$mixpanel.track('Platform Page - View Stats', {category: category.category, categoryPosition: index + 1, dappCount: category.dappCount, platform: $route.params.platform})"
                   v-if="category.dappCount"
                   :to="localePath({name: 'rankings-platform-category', params: {platform: $route.params.platform, category: category.category}})"
-                ) #[strong {{ category.dappCount | abbreviateNumber(2) }}]
+                ) #[strong {{ category.dappCount }}]
                 span(v-else) -
           .stat-button-wrapper
             nuxt-link.stat-button(
+              @click.native="$mixpanel.track('Platform Page - View Stats', {platform: $route.params.platform, block: 'categories'})"
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
             ) {{ $t('platformPage.viewMoreStats') }}
 </template>
