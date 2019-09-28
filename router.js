@@ -188,128 +188,126 @@ const i18nRoutes = Object.freeze([
   (prefix, lang) => ({
     path: prefix + '/',
     component: Home,
-    name: 'home___' + lang
+    name: 'home' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/about',
     component: About,
-    name: 'about___' + lang
+    name: 'about' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/collections',
     component: Collections,
-    name: 'collections___' + lang
+    name: 'collections' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/collections/:slug',
     component: CollectionDetail,
-    name: 'collection-detail___' + lang
+    name: 'collection-detail' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/submit/new',
     component: DappsNew,
-    name: 'dapps-new___' + lang
+    name: 'dapps-new' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/new/form',
-    redirect: { name: 'help-metamask___' + lang }
+    redirect: { name: 'help-metamask' + lang }
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/submit/new/confirmation',
     component: DappsNewConfirmation,
-    name: 'dapps-new-confirmation___' + lang
+    name: 'dapps-new-confirmation' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/:slug',
     component: DappDetailDirect,
-    name: 'dapp-detail-direct___' + lang
+    name: 'dapp-detail-direct' + lang
   }),
   (prefix, lang) => ({
-    // XXX duplicate?
     path: prefix + '/dapps/:slug',
     component: DappDetail,
-    name: 'dapp-detail___' + lang
+    name: 'dapp-detail' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/:slug/edit',
     component: DappDetailEdit,
-    name: 'dapp-detail-edit___' + lang
+    name: 'dapp-detail-edit' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/:slug/flag',
     component: DappDetailFlag,
-    name: 'dapp-detail-flag___' + lang
+    name: 'dapp-detail-flag' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/:slug/improve',
     component: DappDetailImprove,
-    name: 'dapp-detail-improve___' + lang
+    name: 'dapp-detail-improve' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/:slug/meta',
     component: DappDetailMeta,
-    name: 'dapp-detail-meta___' + lang
+    name: 'dapp-detail-meta' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/logos',
     component: Logos,
-    name: 'logos___' + lang
+    name: 'logos' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/rankings',
     component: Rankings,
-    name: 'rankings___' + lang
+    name: 'rankings' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/rankings/category/:category',
     component: Rankings,
-    name: 'rankings-category___' + lang
+    name: 'rankings-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/rankings/platform/:platform',
     component: Rankings,
-    name: 'rankings-platform___' + lang
+    name: 'rankings-platform' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/rankings/platform/:platform/category/:category',
     component: Rankings,
-    name: 'rankings-platform-category___' + lang
+    name: 'rankings-platform-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/platforms/:platform',
     component: Platform,
-    name: 'platforms-platform___' + lang
+    name: 'platforms-platform' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/platforms',
     component: Platforms,
-    name: 'platforms___' + lang
+    name: 'platforms' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/promoted-dapps',
     component: PromotedDappsDirect,
-    name: 'promoted-dapps-direct___' + lang
+    name: 'promoted-dapps-direct' + lang
   }),
   (prefix, lang) => ({
-    // XXX duplicate?
     path: prefix + '/promoted-dapps',
     component: PromotedDapps,
-    name: 'promoted-dapps___' + lang
+    name: 'promoted-dapps' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/submit',
-    redirect: { name: 'dapps-new___' + lang }
+    redirect: { name: 'dapps-new' + lang }
   }),
   (prefix, lang) => ({
     path: prefix + '/tagged/metamask',
-    redirect: { name: 'help-metamask___' + lang }
+    redirect: { name: 'help-metamask' + lang }
   }),
   (prefix, lang) => ({
     path: prefix + '/tagged/:tags',
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: { tags: params.tags }
       }
     }
@@ -319,7 +317,7 @@ const i18nRoutes = Object.freeze([
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: {
           tags: params.tags,
           tab: params.tab
@@ -332,7 +330,7 @@ const i18nRoutes = Object.freeze([
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: { tags: params.tags }
       }
     }
@@ -342,7 +340,7 @@ const i18nRoutes = Object.freeze([
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: {
           tags: params.tags,
           tab: params.tab
@@ -353,29 +351,29 @@ const i18nRoutes = Object.freeze([
   (prefix, lang) => ({
     path: prefix + '/dapps',
     component: Dapps,
-    name: 'dapps___' + lang
+    name: 'dapps' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/category/:category',
     component: Dapps,
-    name: 'dapps-category___' + lang
+    name: 'dapps-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/platform/:platform',
     component: Dapps,
-    name: 'dapps-platform___' + lang
+    name: 'dapps-platform' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/platform/:platform/category/:category',
     component: Dapps,
-    name: 'dapps-platform-category___' + lang
+    name: 'dapps-platform-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/dapps/tab/:tab',
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: { tab: params.tab }
       }
     }
@@ -385,7 +383,7 @@ const i18nRoutes = Object.freeze([
     redirect: to => {
       const { params } = to
       return {
-        name: 'dapps___' + lang,
+        name: 'dapps' + lang,
         query: { tab: params.tab }
       }
     }
@@ -393,56 +391,56 @@ const i18nRoutes = Object.freeze([
   (prefix, lang) => ({
     path: prefix + '/help/metamask',
     component: HelpMetamask,
-    name: 'help-metamask___' + lang
+    name: 'help-metamask' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/stats',
     component: Stats,
-    name: 'stats___' + lang
+    name: 'stats' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/stats/category/:category',
     component: Stats,
-    name: 'stats-category___' + lang
+    name: 'stats-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/stats/platform/:platform',
     component: Stats,
-    name: 'stats-platform___' + lang
+    name: 'stats-platform' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/stats/platform/:platform/category/:category',
     component: Stats,
-    name: 'stats-platform-category___' + lang
+    name: 'stats-platform-category' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/spotlights/:slug',
     component: SpotlightDetail,
-    name: 'spotlight-detail___' + lang
+    name: 'spotlight-detail' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/spotlights',
     component: Spotlights,
-    name: 'spotlights___' + lang
+    name: 'spotlights' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/teardowns',
     component: Teardowns,
-    name: 'teardowns___' + lang
+    name: 'teardowns' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/terms',
     component: Terms,
-    name: 'terms___' + lang
+    name: 'terms' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/whats-a-dapp',
     component: What,
-    name: 'what___' + lang
+    name: 'what' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '*',
-    redirect: { name: 'home___' + lang }
+    redirect: { name: 'home' + lang }
   })
 ])
 
@@ -452,7 +450,8 @@ export function createRouter() {
     languages.forEach(language => {
       const lang = language.selection
       const prefix = lang === 'en' ? '' : '/' + lang
-      routes.push(i18nRoute(prefix, lang))
+      const langSuffix = '___' + lang
+      routes.push(i18nRoute(prefix, langSuffix))
     })
   })
 
