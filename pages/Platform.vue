@@ -13,7 +13,7 @@
     .main-wrapper
       .ranking-wrapper
         h2.ranking-title.section-title
-          span {{ platformName($route.params.platform) }} Rankings
+          span {{ platformName($route.params.platform) }} {{ $t('platformPage.rankings') }}
         .ranking-table
           RankingTable(
             :dapps="dapps"
@@ -22,33 +22,33 @@
         .ranking-button-wrapper
           nuxt-link.ranking-button(
             :to="localePath({name: 'rankings-platform', params: {platform: $route.params.platform}})"
-          ) View the full rankings
+          ) {{ $t('platformPage.viewRankings') }}
     .sidebar-wrapper
       .stats-wrapper
         h2.stat-title.section-title
-          span {{ platformName($route.params.platform) }} Stats
+          span {{ platformName($route.params.platform) }} {{ $t('platformPage.stats') }}
         .stat-wrapper(v-if="stats")
           ul.stat-list
             li.stat-item
-              span.stat-label Total DApps
+              span.stat-label {{ $t('TheStats.totalDapps') }}
               span.stat-data #[strong {{ stats.dappCount.toLocaleString() || '-' }}]
             li.stat-item
-              span.stat-label Daily active users
+              span.stat-label {{ $t('rankingColumns.dau') }}
               span.stat-data #[strong {{ stats.dappDau | abbreviateNumber(2) || '-' }}]
             li.stat-item
-              span.stat-label Transactions (24h)
+              span.stat-label {{ $t('TheStats.transactions24h') }}
               span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) || '-' }}]
             li.stat-item
-              span.stat-label USD Volume (24h)
-              span.stat-data #[strong ${{ Math.round(stats.dappUSDVol24Hr).toLocaleString() || '-' }}]
+              span.stat-label {{ $t('rankingColumns.usd_value_7d') }}
+              span.stat-data #[strong USD ${{ Math.round(stats.dappUSDVol24Hr).toLocaleString() || '-' }}]
             li.stat-item
-              span.stat-label Number of contracts
+              span.stat-label {{ $t('TheStats.nrOfContracts') }}
               span.stat-data #[strong {{ stats.dappContractCount | abbreviateNumber(2) || '-' }}]
           .stat-button-wrapper
             nuxt-link.stat-button(
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
             ) View more stats
-          h3.stat-title.section-title-2 DApps per Category
+          h3.stat-title.section-title-2 {{ $t('platformPage.dappsPerCategory') }}
           ul.stat-list
             li.stat-item(v-for="category in stats.categories")
               span.stat-label {{ category.category | capitalize }}
@@ -61,7 +61,7 @@
           .stat-button-wrapper
             nuxt-link.stat-button(
               :to="localePath({name: 'stats-platform', params: {platform: $route.params.platform}})"
-            ) View more stats
+            ) {{ $t('platformPage.viewMoreStats') }}
 </template>
 
 <script>

@@ -198,6 +198,13 @@
     "missingData": "Data is currently missing or incomplete",
     "new": "New",
     "platform": "Platform",
+    "platformPage": {
+        "dappsPerCategory": "DApps per Category",
+        "rankings": "Rankings",
+        "stats": "Stats",
+        "viewMoreStats": "View more stats",
+        "viewRankings": "View more rankings"
+    },
     "profileStrength": "profile strength",
     "rankingColumns": {
         "rank": "Rank",
