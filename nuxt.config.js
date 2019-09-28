@@ -52,10 +52,22 @@ export default {
             file: 'de-DE.js'
           },
           {
+            code: 'fr',
+            name: 'Français',
+            iso: 'fr-FR',
+            file: 'fr-FR.js'
+          },
+          {
             code: 'ko',
             name: '한국어',
             iso: 'ko-KR',
             file: 'ko-KR.js'
+          },
+          {
+            code: 'vi',
+            name: 'Tiếng Việt',
+            iso: 'vi-VN',
+            file: 'vi-VN.js'
           },
           {
             code: 'zh',
