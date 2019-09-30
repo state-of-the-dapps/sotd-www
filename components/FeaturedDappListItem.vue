@@ -46,6 +46,13 @@ export default {
       sourcePath: this.$route.path
     }
   },
+  mounted() {
+    if (this.dapp.isPromoted) {
+      this.$mixpanel.track('Promoted View', {
+        dapp: this.dapp.slug
+      })
+    }
+  },
   methods: {
     trackDappView(targetDapp) {
       const sourceCollection = 'featured'
