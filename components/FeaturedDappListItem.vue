@@ -46,6 +46,13 @@ export default {
       sourcePath: this.$route.path
     }
   },
+  mounted() {
+    if (this.dapp.isPromoted) {
+      this.$mixpanel.track('Promoted View', {
+        dapp: this.dapp.slug
+      })
+    }
+  },
   methods: {
     trackDappView(targetDapp) {
       const sourceCollection = 'featured'
@@ -57,6 +64,11 @@ export default {
         targetDapp
       )
       this.$mixpanel.track(action.name, action.data)
+      if (this.dapp.isPromoted) {
+        this.$mixpanel.track('Promoted Click', {
+          dapp: this.dapp.slug
+        })
+      }
     }
   }
 }
