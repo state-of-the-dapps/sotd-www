@@ -72,7 +72,7 @@
         @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
     </div>
     <BaseModal v-if="confirmationModal">
-      <ModalPromotedDappsNewConfirmation :has-submitted-dapp="hasSubmittedDapp"/>
+      <FormConfirmation :has-submitted-dapp="hasSubmittedDapp"/>
     </BaseModal>
   </div>
 </template>
@@ -85,13 +85,13 @@ import {
 } from '~/helpers/mixpanel'
 import { validateEmail } from '~/helpers/mixins'
 import BaseModal from '~/components/BaseModal'
-import ModalPromotedDappsNewConfirmation from '~/components/ModalPromotedDappsNewConfirmation'
+import FormConfirmation from '~/components/FormConfirmation'
 import PromotedDapps from '~/components/PromotedDapps'
 
 export default {
   components: {
     BaseModal,
-    ModalPromotedDappsNewConfirmation,
+    FormConfirmation,
     PromotedDapps
   },
   mixins: [validateEmail],

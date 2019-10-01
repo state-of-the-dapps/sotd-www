@@ -97,6 +97,10 @@ const Stats = () =>
   interopDefault(
     import('~/pages/Stats.vue' /* webpackChunkName: "pages/stats" */)
   )
+const StatsRequest = () =>
+  interopDefault(
+    import('~/pages/StatsRequest.vue' /* webpackChunkName: "pages/stats-request" */)
+  )
 const Teardowns = () =>
   interopDefault(
     import('~/pages/Teardowns.vue' /* webpackChunkName: "pages/teardowns" */)
@@ -412,6 +416,11 @@ const i18nRoutes = Object.freeze([
     path: prefix + '/stats/platform/:platform/category/:category',
     component: Stats,
     name: 'stats-platform-category' + lang
+  }),
+  (prefix, lang) => ({
+    path: prefix + '/stats/request',
+    component: StatsRequest,
+    name: 'stats-request' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/spotlights/:slug',
