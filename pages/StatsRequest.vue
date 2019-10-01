@@ -1,27 +1,9 @@
 <template>
-  <div class="PromotedDapps">
+  <div class="page">
     <div class="wrapper">
-      <h1 class="title-1">How do I add my DApp platform?</h1>
+      <h1 class="title-1">Have a custom data request?</h1>
     </div>
-    <!-- <div class="preview-wrapper">
-      <img 
-        class="preview" 
-        src="~/assets/images/platforms.png" 
-        width="1200">
-    </div> -->
     <div class="wrapper">
-      <div class="get-started-note">
-        Please note: We use a high level of discretion when considering requests for new platforms.<br><br>
-        <strong>Acceptance criteria for new platform includes:</strong>
-        <ul>
-          <li>Public DApp platform with smart contract capability</li>
-          <li>Mainnet launched</li>
-          <li>Decentralized nodes operated by separate parties</li>
-          <li>Open source codebase</li>
-          <li>At least 10 DApps live</li>
-          <li>Block explorer that can link to individual contracts</li>
-        </ul>
-      </div>
       <div class="fields">
         <div><input 
           ref="name" 
@@ -36,25 +18,24 @@
           placeholder="Your email" 
           @input="validateEmail"></div>
         <div><input 
+          v-model="company" 
+          class="input" 
+          type="text" 
+          placeholder="Company name"></div>  
+        <div><input 
           v-model="country" 
           class="input" 
           type="text" 
           placeholder="Your country"></div>   
+        <div><textarea 
+          v-model="request" 
+          class="input textarea"  
+          placeholder="What kind of stats data do you need?"/></div>
         <div><input 
-          v-model="platform" 
+          v-model="budget" 
           class="input" 
-          type="text" 
-          placeholder="Platform name"></div>  
-        <div><input 
-          v-model="website" 
-          class="input" 
-          type="text" 
-          placeholder="Platform website"></div>
-        <div><input 
-          v-model="association" 
-          class="input" 
-          type="text" 
-          placeholder="How are you associated with the platform?"></div> 
+          type="text"
+          placeholder="What is your budget (USD)?"></div> 
       </div>
       <div class="send-wrapper"><button 
         :class="formIsValid ? '--is-ready' : ''" 
@@ -72,13 +53,11 @@ import { mapGetters } from 'vuex'
 import { validateEmail } from '~/helpers/mixins'
 import BaseModal from '~/components/BaseModal'
 import FormConfirmation from '~/components/FormConfirmation'
-import PromotedDapps from '~/components/PromotedDapps'
 
 export default {
   components: {
     BaseModal,
-    FormConfirmation,
-    PromotedDapps
+    FormConfirmation
   },
   mixins: [validateEmail],
   props: {
@@ -93,15 +72,15 @@ export default {
   },
   data() {
     return {
-      association: '',
+      budget: '',
       confirmationModal: false,
+      company: '',
       country: '',
       email: '',
       emailIsValid: false,
       formIsSubmitting: false,
       name: '',
-      platform: '',
-      website: ''
+      request: ''
     }
   },
   computed: {
@@ -109,12 +88,12 @@ export default {
     formIsValid() {
       let isValid = false
       if (
-        this.association &&
-        this.website &&
+        this.budget &&
+        this.company &&
         this.country &&
         this.email &&
-        this.platform &&
         this.name &&
+        this.request &&
         this.emailIsValid &&
         !this.formIsSubmitting
       ) {
@@ -127,29 +106,29 @@ export default {
     send() {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
-        const association = this.association
-        const website = this.website
+        const budget = this.budget
+        const company = this.company
         const country = this.country
         const email = this.email
-        const platform = this.platform
         const name = this.name
-        this.$mixpanel.track('Platform request', { platform, email, country })
+        const request = this.request
+        this.$mixpanel.track('Data request', { email, country })
 
         const data = {
           fields: {
-            association,
-            website,
+            budget,
+            company,
             country,
-            platform,
             email,
-            name
+            name,
+            request
           }
         }
         if (typeof Intercom !== 'undefined') {
           data.visitorId = Intercom('getVisitorId')
         }
         this.$axios
-          .post('platforms', data)
+          .post('stats/request', data)
           .then(response => {
             this.confirmationModal = true
           })
@@ -225,6 +204,11 @@ export default {
   padding: 10px 5px;
   margin-bottom: 8px;
   text-align: center;
+}
+
+.textarea {
+  resize: none;
+  height: 150px;
 }
 
 .selection {
