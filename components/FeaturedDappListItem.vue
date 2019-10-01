@@ -64,6 +64,11 @@ export default {
         targetDapp
       )
       this.$mixpanel.track(action.name, action.data)
+      if (this.dapp.isPromoted) {
+        this.$mixpanel.track('Promoted Click', {
+          dapp: this.dapp.slug
+        })
+      }
     }
   }
 }
