@@ -92,7 +92,7 @@ export default {
     width: 33.33%;
   }
   @include tweakpoint('min-width', 1000px) {
-    width: 14.2857142857%;
+    width: 12.5%;
   }
 }
 
