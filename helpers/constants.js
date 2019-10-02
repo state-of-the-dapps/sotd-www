@@ -363,7 +363,7 @@ const platforms = Object.freeze([
   {
     id: 'neo',
     name: 'NEO',
-    hideOnHomepage: true,
+    hideOnHomepage: false,
     contracts: {
       networks: [
         {
