@@ -10,7 +10,7 @@
         :category="dapp.categories && dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>
       <DappDetailBodyContent :dapp="dapp" />
-      <p class="ctr-info">This page had <strong>{{ dapp.stats.impressions }} views</strong> and <strong>{{ dapp.stats.clicks }} clicks</strong> (<strong>{{ (dapp.stats.ctr * 100).toFixed(0) }}% CTR</strong>) in the last 90 days</p>
+      <p class="ctr-info">This page had <strong>{{ dapp.stats.impressions }} views</strong> and <strong>{{ dapp.stats.clicks }} clicks</strong> (<strong>{{ ctr }}% CTR</strong>) in the last 90 days</p>
     </div>
   </div>
 </template>
@@ -35,6 +35,12 @@ export default {
     direct: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    ctr() {
+      const ctr = this.dapp.stats.ctr
+      return !isNaN(ctr) ? (ctr * 100).toFixed(0) : '-'
     }
   }
 }
