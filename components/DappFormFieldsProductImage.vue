@@ -24,7 +24,7 @@
         :key="index" 
         class="warning-item">{{ warning }}</li>
     </ul>
-    <p class="help">Dimensions must be {{ width }}px width by {{ height }}px height <br>(JPEG format) <br><a 
+    <p class="help">Dimensions must be {{ width }}px width by {{ height }}px height <br>(JPEG format). <strong>Note: Screenshots with large text will not be featured on the homepage.</strong> <br><a 
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines/examples</a></p>
   </div>
