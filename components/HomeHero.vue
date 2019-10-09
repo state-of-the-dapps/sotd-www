@@ -12,10 +12,12 @@
           <li
             v-for="platform in platforms"
             :key="platform"
+            :class="'has-' + platforms.length"
             class="platform-item"
           >
             <nuxt-link
               :to="'/platforms/' + platform.toLowerCase()"
+              :class="platforms.length > 10 ? 'smaller' : ''"
               class="platform-link"
               @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
             >{{ platform }}</nuxt-link>
@@ -92,7 +94,12 @@ export default {
     width: 33.33%;
   }
   @include tweakpoint('min-width', 1000px) {
-    width: 12.5%;
+    width: 10%;
+    @for $i from 1 through 10 {
+      &.has-#{$i} {
+        width: 100 / $i * 1%;
+      }
+    }
   }
 }
 
@@ -105,6 +112,9 @@ export default {
   margin: 5px;
   font-weight: 600;
   text-align: center;
+  &.smaller {
+    padding: 6px 10px;
+  }
 }
 
 .platform-list {
