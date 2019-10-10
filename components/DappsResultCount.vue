@@ -8,19 +8,19 @@
           class="count-item">
           <span
             v-if="total > 0 && start <= total"
-            place="showing">
+            slot="showing">
             <i18n
               :path="namespace('xOf')"
               tag="span">
               <strong
-                place="x"
+                slot="x"
                 @click="$mixpanel.track('DApps - Results count')">{{ start }} - {{ Math.min(end, total) }}</strong>
             </i18n>
           </span>
           <strong
-            place="total"
+            slot="total"
             @click="$mixpanel.track('DApps - Results count')">{{ total }}</strong>
-          <span place="result">{{ $tc(namespace('result'), total) }}</span>
+          <span slot="result">{{ $tc(namespace('result'), total) }}</span>
         </i18n>
       </ul>
     </div>

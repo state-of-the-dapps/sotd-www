@@ -16,11 +16,11 @@
         class="software-wrapper">
         <i18n
           :path="namespace('advise')"
-          :places="{ platform: platform }"
           tag="span">
+          <span slot="platform">{{ platform }}</span>
           <a
+            slot="software"
             :href="platformSoftware[platform].url"
-            place="software"
             target="_blank"
             @click="trackDappPlatformSoftware(platformSoftware[platform].name, slug)">{{ platformSoftware[platform].name }}</a>
         </i18n>

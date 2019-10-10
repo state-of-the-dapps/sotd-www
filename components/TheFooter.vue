@@ -157,10 +157,10 @@
         <li class="attribution-item">
           <i18n
             :path="namespace('designedBy')"
-            tag="span"><a 
+            tag="span"><a
+              slot="designer"
               class="attribution-link" 
-              href="https://www.theduo.io" 
-              place="designer"
+              href="http://www.theduo.io" 
               target="_blank" 
               rel="noopener"
               @click="$mixpanel.track('SotD - Designer website')">Duo</a>
@@ -170,9 +170,9 @@
           <i18n
             :path="namespace('exchangeRatesBy')"
             tag="span"><a 
+              slot="source"
               class="attribution-link"
               href="https://www.cryptocompare.com/" 
-              place="source"
               target="_blank" 
               rel="noopener"
               @click="$mixpanel.track('SotD - CryptoCompare')">CryptoCompare.com</a>
@@ -182,9 +182,9 @@
           <i18n
             :path="namespace('steemDataBy')"
             tag="span"><a 
+              slot="source"
               class="attribution-link"
               href="https://steemapps.com/" 
-              place="source"
               target="_blank" 
               rel="noopener"
               @click="$mixpanel.track('SotD - Steemapps')">SteemApps.com</a>

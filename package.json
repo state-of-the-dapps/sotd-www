@@ -31,7 +31,7 @@
     "number-abbreviate": "^2.0.0",
     "nuxt": "2.6.2",
     "nuxt-dropzone": "^0.2.8",
-    "nuxt-i18n": "^5.4.4",
+    "nuxt-i18n": "^6.3.0",
     "pluralize": "^7.0.0",
     "redirect-ssl": "^1.2.1",
     "smoothscroll-polyfill": "^0.4.3",
