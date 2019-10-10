@@ -78,6 +78,7 @@ export default {
         ],
         lazy: true,
         langDir: 'lang/',
+        seo: true,
         vueI18n: {
           fallbackLocale: 'en',
           messages: {
