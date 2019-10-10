@@ -16,7 +16,7 @@
             class="platform-item"
           >
             <nuxt-link
-              :to="'/platforms/' + platform.toLowerCase()"
+              :to="localePath({ name: 'platforms-platform', params: { platform: platform.toLowerCase() }})"
               :class="platforms.length > 10 ? 'smaller' : ''"
               class="platform-link"
               @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
