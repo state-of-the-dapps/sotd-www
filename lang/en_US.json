@@ -230,7 +230,8 @@
         "steem": "Steem",
         "loom": "Loom",
         "klaytn": "Klaytn",
-        "neo": "NEO"
+        "neo": "NEO",
+        "ost": "OST"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",

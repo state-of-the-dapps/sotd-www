@@ -84,6 +84,11 @@ export default {
           'https://scan.nel.group/contract/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'OST') {
+        addressLink =
+          'https://view.ost.com/mainnet/address/ad-1414-' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'EOS') {
         addressLink =
           'https://eospark.com/account/' +
