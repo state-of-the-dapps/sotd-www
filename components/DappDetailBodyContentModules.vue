@@ -20,8 +20,8 @@
           <DappDetailBodyContentModulesSubmitted :submitted="dapp.created"/>
         </div>
       </div>
-      <div 
-        v-if="dapp.stats.dev_30d" 
+      <div
+        v-if="dapp.stats.dev_30d"
         class="module-wrapper -tier-3">
         <div class="module">
           <DappDetailBodyContentModulesDev
@@ -31,13 +31,13 @@
             :sparkline="dapp.sparklines.gh_events"/>
         </div>
       </div>
-      <div 
-        v-if="stats" 
+      <div
+        v-if="stats"
         class="module-wrapper -tier-4">
-        <div 
-          v-if="dapp.stats.mau" 
+        <div
+          v-if="dapp.stats.mau"
           class="module -dev">
-          <DappDetailBodyContentModulesStats 
+          <DappDetailBodyContentModulesStats
             :daily="dapp.stats.dau"
             :monthly="dapp.stats.mau"
             :sparkline="dapp.sparklines.users"
@@ -46,10 +46,10 @@
             :title="$t(namespace('activeUsers'))"
             :help="$t(namespace('activeUsersHelp'))"/>
         </div>
-        <div 
-          v-if="dapp.stats.tx_30d" 
+        <div
+          v-if="dapp.stats.tx_30d"
           class="module">
-          <DappDetailBodyContentModulesStats 
+          <DappDetailBodyContentModulesStats
             :daily="dapp.stats.tx_1d"
             :monthly="dapp.stats.tx_30d"
             :sparkline="dapp.sparklines.transactions"
@@ -58,11 +58,11 @@
             :title="$t(namespace('transactions'))"
             type="numbers"/>
         </div>
-        <div 
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d"
+        <div
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d || dapp.stats.neo_value_30d || dapp.stats.ost_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
-            v-if="dapp.stats.value_30d" 
+            v-if="dapp.stats.value_30d"
             :daily="dapp.stats.value_1d"
             :monthly="dapp.stats.value_30d"
             :sparkline="dapp.sparklines.value"
@@ -72,7 +72,7 @@
             type="numbers"/>
           <br v-if="dapp.stats.value_30d && dapp.stats.poa_value_30d">
           <DappDetailBodyContentModulesStats
-            v-if="dapp.stats.poa_value_30d" 
+            v-if="dapp.stats.poa_value_30d"
             :daily="dapp.stats.poa_value_1d"
             :monthly="dapp.stats.poa_value_30d"
             :sparkline="dapp.sparklines.poa_value"
@@ -81,7 +81,7 @@
             :title="$t(namespace('volume'), {token: 'POA'})"
             type="numbers"/>
           <DappDetailBodyContentModulesStats
-            v-if="dapp.stats.gochain_value_30d" 
+            v-if="dapp.stats.gochain_value_30d"
             :daily="dapp.stats.gochain_value_1d"
             :monthly="dapp.stats.gochain_value_30d"
             :sparkline="dapp.sparklines.gochain_value"
@@ -116,9 +116,27 @@
             :weekly="dapp.stats.xdai_value_7d"
             :title="$t(namespace('volume'), {token: 'xDAI'})"
             type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.neo_value_30d"
+            :daily="dapp.stats.neo_value_1d"
+            :monthly="dapp.stats.neo_value_30d"
+            :sparkline="dapp.sparklines.neo_value"
+            :quarterly="dapp.stats.neo_value_90d"
+            :weekly="dapp.stats.neo_value_7d"
+            :title="$t(namespace('volume'), {token: 'NEO'})"
+            type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.ost_value_30d"
+            :daily="dapp.stats.ost_value_1d"
+            :monthly="dapp.stats.ost_value_30d"
+            :sparkline="dapp.sparklines.ost_value"
+            :quarterly="dapp.stats.ost_value_90d"
+            :weekly="dapp.stats.ost_value_7d"
+            :title="$t(namespace('volume'), {token: 'OST'})"
+            type="numbers"/>
         </div>
       </div>
-      <div 
+      <div
         v-if="showAuditsContractsModule"
         class="module-wrapper -tier-5">
         <div
@@ -128,7 +146,7 @@
             v-bind="contractProps"
             :slug="dapp.slug"/>
         </div>
-        <div 
+        <div
           v-if="dapp.audits && dapp.audits.length"
           class="module">
           <DappDetailBodyContentModulesAudits
