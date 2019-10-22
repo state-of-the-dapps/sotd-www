@@ -8,7 +8,7 @@
           color="white"
         )
       .hero-content
-        h1.hero-title {{ platformName($route.params.platform) }} 
+        h1.hero-title {{ platformName($route.params.platform) }}
   .content-wrapper
     .main-wrapper
       .ranking-wrapper
@@ -40,7 +40,7 @@
               span.stat-label {{ $t('TheStats.transactions24h') }}
               span.stat-data #[strong {{ stats.dappTx24Hr | abbreviateNumber(2) || '-' }}]
             li.stat-item
-              span.stat-label {{ $t('rankingColumns.usd_value_7d') }}
+              span.stat-label {{ $t('TheStats.volume24h') }}
               span.stat-data #[strong USD ${{ Math.round(stats.dappUSDVol24Hr).toLocaleString() || '-' }}]
             li.stat-item
               span.stat-label {{ $t('TheStats.nrOfContracts') }}
@@ -54,7 +54,7 @@
           ul.stat-list
             li.stat-item(v-for="(category, index) in stats.categories")
               span.stat-label {{ category.category | capitalize }}
-              span.stat-data 
+              span.stat-data
                 nuxt-link(
                   @click.native="$mixpanel.track('Platform Page - View Stats', {category: category.category, categoryPosition: index + 1, dappCount: category.dappCount, platform: $route.params.platform})"
                   v-if="category.dappCount"
