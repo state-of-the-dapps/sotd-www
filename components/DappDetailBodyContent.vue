@@ -2,15 +2,15 @@
   <div class="DappDetailBodyContent">
     <div class="wrapper">
       <div class="wrapper-inner">
-        <DappAlert 
-          v-if="dapp.alert" 
+        <DappAlert
+          v-if="dapp.alert"
           :alert="dapp.alert"/>
-        <DappDetailBodyContentImage 
-          v-if="dapp.productImage" 
+        <DappDetailBodyContentImage
+          v-if="dapp.productImage"
           :product-image="dapp.productImage"
           :title="dapp.name + ' - ' + dapp.teaser"/>
-        <DappDetailBodyContentDescription 
-          v-if="dapp.description" 
+        <DappDetailBodyContentDescription
+          v-if="dapp.description"
           :description="dapp.description"/>
         <media :query="{maxWidth: 1000}">
           <div>
@@ -18,6 +18,7 @@
             <DappDetailBodyContentPlatform
               v-if="dapp.platform"
               :platform="dapp.platform"
+              :tags="dapp.tags"
               :slug="dapp.slug"/>
           </div>
         </media>
@@ -33,6 +34,7 @@
             <DappDetailBodyContentPlatform
               v-if="dapp.platform"
               :platform="dapp.platform"
+              :tags="dapp.tags"
               :slug="dapp.slug"/>
           </div>
         </media>
@@ -63,24 +65,24 @@
           :positive="dapp.stats.positive"
           :neutral="dapp.stats.netural"
           :negative="dapp.stats.negative"/>
-        <DappDetailBodyContentRank 
-          v-if="dapp.rank" 
+        <DappDetailBodyContentRank
+          v-if="dapp.rank"
           :rank="dapp.rank"
           :rank-delta="dapp.rankDelta"/>
         <DappProfile
           v-if="dapp.profileScore"
           :dapp="dapp.slug"
           :profile-score="dapp.profileScore"/>
-        <DappDetailBodyContentCategories 
-          v-if="dapp.categories && dapp.categories.length" 
-          :slug="dapp.slug" 
+        <DappDetailBodyContentCategories
+          v-if="dapp.categories && dapp.categories.length"
+          :slug="dapp.slug"
           :categories="dapp.categories"/>
-        <DappDetailBodyContentTags 
-          v-if="dapp.tags && dapp.tags.length" 
-          :slug="dapp.slug" 
+        <DappDetailBodyContentTags
+          v-if="dapp.tags && dapp.tags.length"
+          :slug="dapp.slug"
           :tags="dapp.tags"/>
-        <DappDetailBodyContentTools 
-          :name="dapp.name" 
+        <DappDetailBodyContentTools
+          :name="dapp.name"
           :slug="dapp.slug"/>
       </div>
     </div>
