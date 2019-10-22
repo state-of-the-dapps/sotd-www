@@ -1,11 +1,11 @@
 <template>
   <div class="RankingTableVolume">
-    <span 
-      v-if="volume === undefined || volume === null" 
+    <span
+      v-if="volume === undefined || volume === null"
       class="value">-</span>
-    <span 
-      v-else 
-      class="value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} 
+    <span
+      v-else
+      class="value">{{ Number(volume || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }}
       <template v-if="platform === 'EOS'">EOS</template>
       <template v-if="platform === 'POA'">POA</template>
       <template v-if="platform === 'GoChain'">GO</template>
@@ -13,18 +13,18 @@
       <template v-if="platform === 'Steem'">STEEM</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
-    <span 
-      v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null" 
+    <span
+      v-if="stats.usd_value_7d === undefined || stats.usd_value_7d === null"
       class="value">-</span>
-    <span 
-      v-else 
+    <span
+      v-else
       class="value">{{ Number(stats.usd_value_7d || 0).toLocaleString(undefined, {maximumFractionDigits: 0}) }} USD</span>
-    <span 
-      v-if="volumePct === undefined || volumePct === null" 
+    <span
+      v-if="volumePct === undefined || volumePct === null"
       class="pct">-</span>
-    <span 
-      v-else 
-      :class="getValuePosNegClass(volumePct)" 
+    <span
+      v-else
+      :class="getValuePosNegClass(volumePct)"
       class="pct">
       <span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%
     </span>
@@ -65,6 +65,10 @@ export default {
         volume = stats.steem_value_7d
       } else if (platform === 'xDai') {
         volume = stats.xdai_value_7d
+      } else if (platform === 'NEO') {
+        volume = stats.neo_value_7d
+      } else if (platform === 'OST') {
+        volume = stats.ost_value_7d
       }
       return volume
     },
@@ -84,6 +88,10 @@ export default {
         volumePct = stats.steem_value_7d_pct
       } else if (platform === 'xDai') {
         volumePct = stats.xdai_value_7d_pct
+      } else if (platform === 'NEO') {
+        volumePct = stats.neo_value_7d_pct
+      } else if (platform === 'OST') {
+        volumePct = stats.ost_value_7d_pct
       }
       return volumePct
     }
