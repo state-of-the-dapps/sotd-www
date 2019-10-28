@@ -1,4 +1,4 @@
-const dappCount = 3037
+const dappCount = 3118
 
 const dappGameTag = 'game'
 
@@ -393,7 +393,7 @@ const platforms = Object.freeze([
   {
     id: 'ost',
     name: 'OST',
-    hideOnHomepage: true,
+    hideOnHomepage: false,
     contracts: {
       networks: [
         {
