@@ -105,6 +105,8 @@
         "share": "Share this DApp"
     },
     "DappDetailBodyContentPlatform": {
+        "mewCompatible": "This {platform} DApp is compatible with {mew}.",
+        "mew": "MyEtherWallet (MEW)",
         "advise": "To use {platform} DApps on the web, we recommend a browser add-on such as {software}."
     },
     "DappDetailBodyContentRank": {
