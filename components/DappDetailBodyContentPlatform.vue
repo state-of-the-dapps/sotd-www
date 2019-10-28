@@ -22,12 +22,12 @@
           </template>
           <template v-slot:mew>
             <a
-              :href="'https://www.myetherwallet.com/interface/dapps/' + slug"
+              href="https://www.myetherwallet.com/interface/dapps/"
               target="_blank">{{ $t(namespace('mew')) }}</a>
           </template>
         </i18n>
         <a
-          :href="'https://www.myetherwallet.com/interface/dapps/' + slug"
+          href="https://www.myetherwallet.com/interface/dapps/"
           target="_blank">
           <img
             class="mew-icon"
