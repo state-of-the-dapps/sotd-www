@@ -1,15 +1,12 @@
 <template>
-  <div 
-    :class="'-dapp-' + index + ' ' + loaded" 
-    class="HomeHeroContentIconsItem" 
+  <div
+    :class="'-dapp-' + index + ' ' + loaded"
+    class="HomeHeroContentIconsItem"
     @click="trackHomeHeroDappIcon(index)">
-    <img 
-      :src="imageSrc" 
+    <img
+      :src="imageSrc"
       class="card-icon" >
-    <div :class="'card-info -' + status">
-      <span class="status">{{ status }}</span>
-    </div>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -68,33 +65,7 @@ export default {
   position: relative;
   display: block;
   width: 200px;
-  margin-top: -20px;
-  margin-bottom: -20px;
   z-index: 1;
-}
-
-.card-info {
-  position: relative;
-  z-index: 2;
-  background: $color--dapp-live;
-  height: 40px;
-  text-transform: uppercase;
-  font-weight: 700;
-  padding: 0px 10px;
-  display: flex;
-  align-items: center;
-  &.-beta {
-    background: $color--dapp-beta;
-  }
-  &.-concept {
-    background: $color--dapp-concept;
-  }
-  &.-live {
-    background: $color--dapp-live;
-  }
-  &.-wip {
-    background: $color--dapp-wip;
-  }
 }
 
 .status {
