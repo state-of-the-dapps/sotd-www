@@ -8,3 +8,31 @@ patch:
         patched: '2019-10-10T03:39:00.830Z'
     - nuxt-i18n > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
         patched: '2019-10-10T03:39:00.830Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > inquirer > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > snyk-nuget-plugin > dotnet-deps-parser > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > inquirer > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > @snyk/dep-graph > graphlib > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > snyk-nodejs-lockfile-parser > graphlib > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > snyk-go-plugin > graphlib > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > @snyk/snyk-cocoapods-plugin > @snyk/dep-graph > graphlib > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
+    - '@nuxtjs/sentry > @sentry/webpack-plugin > snyk > @snyk/snyk-cocoapods-plugin > @snyk/cocoapods-lockfile-parser > @snyk/dep-graph > graphlib > lodash':
+        patched: '2019-10-29T12:34:44.209Z'
