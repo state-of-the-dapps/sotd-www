@@ -10334,7 +10334,7 @@ snyk@^1.231.0:
     uuid "^3.3.2"
     wrap-ansi "^5.1.0"
 
-snyk@^1.239.4:
+snyk@^1.234.0:
   version "1.239.4"
   resolved "https://registry.yarnpkg.com/snyk/-/snyk-1.239.4.tgz#20ce47ec4cb906b6bc5d5016e908c05df1e27387"
   integrity sha512-x9TetPWJUeScxMJSN1AvY719aZvGFSbyViSxoGdRHUXRaNWBrmEmi4WEJVpKReKV9/97lPd560egJeD/ZsDzDA==
