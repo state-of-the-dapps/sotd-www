@@ -1,10 +1,10 @@
 <template>
-  <div 
-    class="page" 
-    itemscope 
+  <div
+    class="page"
+    itemscope
     itemtype="http://schema.org/Product">
-    <DappDetail 
-      :dapp="dapp" 
+    <DappDetail
+      :dapp="dapp"
       :direct="direct"/>
   </div>
 </template>
