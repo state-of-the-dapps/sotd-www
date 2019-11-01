@@ -101,16 +101,18 @@ export default {
       if (category) {
         routeName += '-category'
       }
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: {
-            ...this.$route.params,
-            category: category.toLowerCase()
-          },
-          hash: this.routeHash
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: {
+              ...this.$route.params,
+              category: category.toLowerCase()
+            },
+            hash: this.routeHash
+          })
+        )
+        .catch(err => {})
     },
     filterPlatform(platform) {
       const platforms = platformMap()
@@ -123,16 +125,18 @@ export default {
       if (this.$route.params.category) {
         routeName += '-category'
       }
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: {
-            ...this.$route.params,
-            platform: platform.toLowerCase()
-          },
-          hash: this.routeHash
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: {
+              ...this.$route.params,
+              platform: platform.toLowerCase()
+            },
+            hash: this.routeHash
+          })
+        )
+        .catch(err => {})
     },
     trackDappCategoryFilter(category) {
       const sourceComponent = 'CategoryPlatformFilter'

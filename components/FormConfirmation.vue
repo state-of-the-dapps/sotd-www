@@ -2,8 +2,8 @@
   <div class="FormConfirmation">
     <h1 class="title-1">Thanks for submitting!</h1>
     <p class="message">Your post will typically be processed by the next business day. Stay tuned for updates via the email you provided.</p>
-    <p class="cta-wrapper"><button 
-      class="cta" 
+    <p class="cta-wrapper"><button
+      class="cta"
       @click="close">Ok</button></p>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
       if (this.hasSubmittedDapp === 'no') {
         routeName = 'dapps-new'
       }
-      this.$router.push(this.localePath({ name: routeName }))
+      this.$router.push(this.localePath({ name: routeName })).catch(err => {})
     }
   }
 }

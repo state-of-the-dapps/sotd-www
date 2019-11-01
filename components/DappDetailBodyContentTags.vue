@@ -3,12 +3,12 @@
     <div class="wrapper">
       <h4 class="subtitle">{{ $t('tags') | capitalize }}</h4>
       <ul class="tag-list">
-        <li 
-          v-for="(tag, index) in formattedTags" 
-          :key="index" 
+        <li
+          v-for="(tag, index) in formattedTags"
+          :key="index"
           class="tag-item">
-          <a 
-            class="tag-link" 
+          <a
+            class="tag-link"
             @click="findDappsByTag(tag)">{{ tag }}</a>
         </li>
       </ul>
@@ -42,12 +42,14 @@ export default {
   methods: {
     findDappsByTag(tag) {
       this.trackDappTag(tag)
-      this.$router.push(
-        this.localePath({
-          name: 'dapps',
-          query: { tags: tag }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: 'dapps',
+            query: { tags: tag }
+          })
+        )
+        .catch(err => {})
     },
     trackDappTag(name) {
       const action = trackDappTag(name, this.slug)

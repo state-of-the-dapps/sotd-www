@@ -1,14 +1,14 @@
 <template>
   <transition name="fade">
-    <div 
-      v-on-clickaway="reset" 
-      v-if="tags.length" 
+    <div
+      v-on-clickaway="reset"
+      v-if="tags.length"
       class="DappsSearchSuggestedTags -suggested-tags">
       <ul class="list">
-        <li 
-          v-for="(tag, key) in tags" 
-          :key="key" 
-          class="item" 
+        <li
+          v-for="(tag, key) in tags"
+          :key="key"
+          class="item"
           @click="select(tag, key)">{{ tag }}</li>
       </ul>
     </div>
@@ -50,18 +50,20 @@ export default {
       tags = tags.split(',').filter(Boolean)
       tags.push(item)
       tags = tags.join(',')
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: {
-            ...this.$route.query,
-            tags: tags || undefined,
-            text: undefined,
-            page: 1
-          }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: {
+              ...this.$route.query,
+              tags: tags || undefined,
+              text: undefined,
+              page: 1
+            }
+          })
+        )
+        .catch(err => {})
       this.$emit('resetTextQuery')
       this.reset()
       this.$mixpanel.track('DApps - Select tag', { tag: item })

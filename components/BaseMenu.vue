@@ -1,50 +1,50 @@
 <template>
-  <div 
-    :class="'-' + color" 
+  <div
+    :class="'-' + color"
     class="BaseMenu">
     <div class="nameplate">
-      <nuxt-link 
-        :to="localePath({ name: 'home' })" 
-        class="logo-link -icon" 
+      <nuxt-link
+        :to="localePath({ name: 'home' })"
+        class="logo-link -icon"
         @click.native="trackMenu('logo')">
-        <IconLogo 
-          :fill="color" 
-          :width="35" 
+        <IconLogo
+          :fill="color"
+          :width="35"
           :height="35" />
       </nuxt-link>
-      <nuxt-link 
-        :to="localePath({ name: 'home' })" 
-        class="logo-link -wordmark" 
+      <nuxt-link
+        :to="localePath({ name: 'home' })"
+        class="logo-link -wordmark"
         @click.native="trackMenu('logo')">
-        <TheLogo 
-          :fill="color" 
-          :width="120" 
+        <TheLogo
+          :fill="color"
+          :width="120"
           :height="26" />
       </nuxt-link>
     </div>
-    <ul 
-      class="nav-list" 
+    <ul
+      class="nav-list"
       role="navigation">
       <li class="nav-item -home">
-        <nuxt-link 
-          :class="'-' + color" 
-          :to="localePath({ name: 'home' })" 
-          class="nav-link" 
-          exact 
+        <nuxt-link
+          :class="'-' + color"
+          :to="localePath({ name: 'home' })"
+          class="nav-link"
+          exact
           @click.native="trackMenu('home')">{{ $t(namespace('home')) }}</nuxt-link>
       </li>
       <li class="nav-item -all">
-        <nuxt-link 
-          :class="'-' + color" 
-          :to="localePath({ name: 'dapps' })" 
-          class="nav-link" 
+        <nuxt-link
+          :class="'-' + color"
+          :to="localePath({ name: 'dapps' })"
+          class="nav-link"
           @click.native="trackMenu('dapp-list')">{{ $t(namespace('allDapps')) }}</nuxt-link>
       </li>
       <li class="nav-item -rankings">
-        <nuxt-link 
-          :class="'-' + color" 
-          :to="localePath({ name: 'rankings' })" 
-          class="nav-link" 
+        <nuxt-link
+          :class="'-' + color"
+          :to="localePath({ name: 'rankings' })"
+          class="nav-link"
           @click.native="trackMenu('rankings')">{{ $t(namespace('rankings')) }}</nuxt-link>
       </li>
       <media :query="{maxWidth: 699}">
@@ -80,26 +80,26 @@
         </li>
       </media>
       <li class="nav-item -stats">
-        <nuxt-link 
-          :class="'-' + color" 
-          :to="localePath({ name: 'stats' })" 
-          class="nav-link" 
-          exact 
+        <nuxt-link
+          :class="'-' + color"
+          :to="localePath({ name: 'stats' })"
+          class="nav-link"
+          exact
           @click.native="trackMenu('stats')">{{ $t(namespace('stats')) }}</nuxt-link>
       </li>
       <media :query="{maxWidth: 975}">
         <li class="nav-item -search">
-          <nuxt-link 
-            :class="'-' + color" 
-            :to="localePath({ name: 'dapps' })" 
-            class="nav-link -search" 
+          <nuxt-link
+            :class="'-' + color"
+            :to="localePath({ name: 'dapps' })"
+            class="nav-link -search"
             @click.native="trackMenu('dapps')"><IconMagnifier :theme="color"/></nuxt-link>
         </li>
       </media>
     </ul>
     <media :query="{minWidth: 976}">
-      <ul 
-        :class="search.length ? 'is-searching' : ''" 
+      <ul
+        :class="search.length ? 'is-searching' : ''"
         class="nav-list-search">
         <li class="nav-item -search">
           <GlobalSearch
@@ -112,10 +112,10 @@
     </media>
     <ul class="nav-list-submit-lang">
       <li class="nav-item -submit">
-        <nuxt-link 
-          :to="localePath({ name: 'dapps-new' })" 
+        <nuxt-link
+          :to="localePath({ name: 'dapps-new' })"
           :class="isHome ? 'is-home' : ''"
-          class="nav-link -submit" 
+          class="nav-link -submit"
           @click.native="trackMenu('dapps-new')">{{ $t('cta.submit') }}</nuxt-link>
       </li>
       <li class="nav-item -lang">
@@ -189,7 +189,7 @@ export default {
   },
   methods: {
     setLang(lang) {
-      this.$router.push(this.switchLocalePath(lang))
+      this.$router.push(this.switchLocalePath(lang)).catch(err => {})
     },
     setSearch(value) {
       this.search = value

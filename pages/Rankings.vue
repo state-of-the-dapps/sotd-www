@@ -147,16 +147,18 @@ export default {
         if (this.$route.params.category) {
           routeName += '-category'
         }
-        this.$router.push(
-          this.localePath({
-            name: routeName,
-            params: { ...this.$route.params },
-            query: {
-              sort: selectedColumn.selection,
-              order: selectedColumn.order
-            }
-          })
-        )
+        this.$router
+          .push(
+            this.localePath({
+              name: routeName,
+              params: { ...this.$route.params },
+              query: {
+                sort: selectedColumn.selection,
+                order: selectedColumn.order
+              }
+            })
+          )
+          .catch(err => {})
       }
     }
   },

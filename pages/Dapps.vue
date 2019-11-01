@@ -43,8 +43,8 @@
             :dapps="dapps"
             :optional-attribute="optionalCardAttribute"/>
         </div>
-        <p 
-          v-if="isLoading" 
+        <p
+          v-if="isLoading"
           class="loader-wrapper"><button class="loader"/></p>
         <div
           v-if="!isLoading && pager.totalCount > 0"
@@ -163,13 +163,15 @@ export default {
       const oldPage = this.$route.query.page || 1
       this.trackPager(oldPage, page)
       this.$refs.list.scrollIntoView()
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: { ...this.$route.query, page: page }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: { ...this.$route.query, page: page }
+          })
+        )
+        .catch(err => {})
     },
     trackPager(oldPage, targetPage) {
       const action = trackDappPager(oldPage, targetPage)

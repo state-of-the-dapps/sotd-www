@@ -2,32 +2,32 @@
   <section class="DappsSearch">
     <div class="wrapper-outer">
       <div class="wrapper">
-        <a 
-          class="search-icon" 
-          href="#" 
-          @click.prevent="$mixpanel.track('DApps - Search icon')"><img 
-            class="search-image" 
-            src="~/assets/images/icons/search.png" 
+        <a
+          class="search-icon"
+          href="#"
+          @click.prevent="$mixpanel.track('DApps - Search icon')"><img
+            class="search-image"
+            src="~/assets/images/icons/search.png"
             width="20"></a>
         <ul class="input-wrapper">
-          <li 
-            v-for="(tag, key) in tags" 
-            :key="key" 
-            class="tag">{{ tag }} <span 
-              class="remove" 
-              @click="removeTag(tag, key)"><img 
+          <li
+            v-for="(tag, key) in tags"
+            :key="key"
+            class="tag">{{ tag }} <span
+              class="remove"
+              @click="removeTag(tag, key)"><img
                 src="~/assets/images/close/small.png"
-                alt="Close" 
+                alt="Close"
                 class="close"></span></li>
-          <li class="input-text"><input 
-            ref="search" 
-            v-model="textQuery" 
-            :placeholder="$t(namespace('placeholder'))" 
-            class="input" 
-            autocomplete="off" 
-            @input="search" 
-            @keyup.enter="blurTextInput" 
-            @click="fetchSuggestedTagsWithNoQuery" 
+          <li class="input-text"><input
+            ref="search"
+            v-model="textQuery"
+            :placeholder="$t(namespace('placeholder'))"
+            class="input"
+            autocomplete="off"
+            @input="search"
+            @keyup.enter="blurTextInput"
+            @click="fetchSuggestedTagsWithNoQuery"
             @keydown.delete="removeLastTag"></li>
         </ul>
         <DappsSearchSuggestedTags
@@ -104,18 +104,20 @@ export default {
       tags = tags.split(',').filter(Boolean)
       tags.pop()
       tags = tags.join(',')
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: {
-            ...this.$route.query,
-            tags: tags || undefined,
-            text: undefined,
-            page: 1
-          }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: {
+              ...this.$route.query,
+              tags: tags || undefined,
+              text: undefined,
+              page: 1
+            }
+          })
+        )
+        .catch(err => {})
     },
     removeLastTag() {
       if (!this.textQuery && this.tags.length > 0) {
@@ -157,17 +159,19 @@ export default {
         if (this.$route.params.category) {
           routeName += '-category'
         }
-        this.$router.push(
-          this.localePath({
-            name: routeName,
-            params: { ...this.$route.params },
-            query: {
-              ...this.$route.query,
-              page: 1,
-              text: this.textQuery || undefined
-            }
-          })
-        )
+        this.$router
+          .push(
+            this.localePath({
+              name: routeName,
+              params: { ...this.$route.params },
+              query: {
+                ...this.$route.query,
+                page: 1,
+                text: this.textQuery || undefined
+              }
+            })
+          )
+          .catch(err => {})
       }, 200)
       trackTimer = setTimeout(() => {
         this.$mixpanel.track('DApps - Search', { query: this.textQuery })

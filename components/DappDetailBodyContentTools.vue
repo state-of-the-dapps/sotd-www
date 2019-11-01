@@ -3,42 +3,42 @@
     <div class="wrapper">
       <ul class="tool-list">
         <li class="tool-item">
-          <span 
-            class="tool-link" 
-            role="button" 
+          <span
+            class="tool-link"
+            role="button"
             @click="viewDappEdit()">
-            <IconEdit 
-              :width="14" 
+            <IconEdit
+              :width="14"
               :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
           </span>
         </li>
         <li class="tool-item">
-          <span 
-            class="tool-link" 
-            role="button" 
+          <span
+            class="tool-link"
+            role="button"
             @click="viewDappShare()">
-            <IconShare 
-              :width="14" 
+            <IconShare
+              :width="14"
               :height="14"/> <span class="description">{{ $t(namespace('share')) }}</span>
           </span>
         </li>
         <li class="tool-item">
-          <span 
-            class="tool-link" 
-            role="button" 
+          <span
+            class="tool-link"
+            role="button"
             @click="viewDappFlag('flag')">
-            <IconFlag 
-              :width="14" 
+            <IconFlag
+              :width="14"
               :height="14"/> <span class="description">{{ $t(namespace('flag')) }}</span>
           </span>
         </li>
         <li class="tool-item">
-          <nuxt-link 
-            :to="localePath({ name: 'promoted-dapps' })" 
-            class="tool-link" 
+          <nuxt-link
+            :to="localePath({ name: 'promoted-dapps' })"
+            class="tool-link"
             @click.native="trackPromotedDappsView">
-            <IconFeatured 
-              :width="14" 
+            <IconFeatured
+              :width="14"
               :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
           </nuxt-link>
         </li>
@@ -126,7 +126,7 @@ export default {
           flag: true
         }
       }
-      this.$router.push(this.localePath(route))
+      this.$router.push(this.localePath(route)).catch(err => {})
     },
     viewDappFlag(flag = false) {
       let action = trackDappFlag(this.slug)
@@ -142,7 +142,7 @@ export default {
           flag: true
         }
       }
-      this.$router.push(this.localePath(route))
+      this.$router.push(this.localePath(route)).catch(err => {})
     },
     viewDappShare() {
       this.shareModal = true

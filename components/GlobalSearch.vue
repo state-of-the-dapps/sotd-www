@@ -1,13 +1,13 @@
 <template>
-  <div 
+  <div
     v-on-clickaway="resetSearch"
     :class="[
       isSearching ? 'is-searching' : '',
       search.length ? 'has-input' : '',
       color]"
     class="GlobalSearch">
-    <span 
-      :class="'-' + color" 
+    <span
+      :class="'-' + color"
       class="nav-link -search"><IconMagnifier :theme="isSearching || results ? 'black' : color"/></span>
     <div class="search-input-wrapper">
       <input
@@ -20,14 +20,14 @@
         @click="startSearch($event.target.value)"
         @keyup.enter="goToSearchPage">
     </div>
-    <div 
-      v-if="results || isSearching" 
+    <div
+      v-if="results || isSearching"
       class="results">
-      <div 
-        v-if="!results && searchCompleted" 
+      <div
+        v-if="!results && searchCompleted"
         class="results-none">{{ $t(namespace('noResults')) }}</div>
-      <div 
-        v-if="suggestions.length" 
+      <div
+        v-if="suggestions.length"
         class="suggestions-wrapper">
         <h3 class="results-title">{{ $t(namespace('suggestedTags')) }}</h3>
         <ul class="results-suggestions-list">
@@ -45,28 +45,28 @@
         </ul>
       </div>
       <br v-if="suggestions.length && dapps.length">
-      <div 
-        v-if="dapps.length" 
+      <div
+        v-if="dapps.length"
         class="dapps-wrapper">
         <h3 class="results-title">{{ $t(namespace('dapps')) }}</h3>
         <ul class="results-dapp-list">
-          <li 
-            v-for="(dapp, index) in dapps.slice(0, 5)" 
-            :key="index" 
+          <li
+            v-for="(dapp, index) in dapps.slice(0, 5)"
+            :key="index"
             class="results-dapp-item">
             <nuxt-link
               :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })"
               class="results-dapp-link"
               @click.native="dappView(dapp.slug)">
               <span class="results-dapp-icon-wrapper">
-                <img 
-                  v-if="dapp.iconSmallUrl" 
-                  :src="dapp.iconSmallUrl" 
-                  class="results-dapp-image" 
-                  width="42" 
+                <img
+                  v-if="dapp.iconSmallUrl"
+                  :src="dapp.iconSmallUrl"
+                  class="results-dapp-image"
+                  width="42"
                   height="42">
-                <span 
-                  v-else 
+                <span
+                  v-else
                   class="results-dapp-icon-placeholder">{{ dapp.name | firstLetter }}</span>
               </span>
               <div class="results-dapp-info">
@@ -77,9 +77,9 @@
           </li>
         </ul>
         <div class="results-link-wrapper">
-          <nuxt-link 
-            :to="localePath({name: 'dapps', query: {text: search} })" 
-            class="results-link" 
+          <nuxt-link
+            :to="localePath({name: 'dapps', query: {text: search} })"
+            class="results-link"
             @click.native="resetSearch()">{{ $t(namespace('viewDappResults')) }}</nuxt-link>
         </div>
       </div>
@@ -147,14 +147,16 @@ export default {
       this.$mixpanel.track(action.name, action.data)
     },
     goToSearchPage() {
-      this.$router.push(
-        this.localePath({
-          name: 'dapps',
-          query: {
-            text: this.search
-          }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: 'dapps',
+            query: {
+              text: this.search
+            }
+          })
+        )
+        .catch(err => {})
     },
     suggestionView(suggestion) {
       this.resetSearch()

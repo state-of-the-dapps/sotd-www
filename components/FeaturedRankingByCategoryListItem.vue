@@ -1,37 +1,37 @@
 <template>
   <div class="FeaturedRankingByCategoryListItem">
     <h3 class="title-3">
-      <a 
-        class="link" 
-        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }}&nbsp;<IconChevron 
-          :width="8" 
-          :height="8" 
+      <a
+        class="link"
+        @click="viewDappRankingCategory(category)">{{ $t(`categoryOptions.${category.name}`) }}&nbsp;<IconChevron
+          :width="8"
+          :height="8"
           direction="right" /></a>
       <span class="label-dau">{{ $t('users24h') }}</span>
     </h3>
     <ul class="dapp-list">
-      <li 
-        v-for="(dapp, index) in dapps" 
-        :key="index" 
+      <li
+        v-for="(dapp, index) in dapps"
+        :key="index"
         class="dapp-item">
         <span
           :class="dapp.categories ? '-' + dapp.categories[0] : ''"
           class="dapp-rank"><span>{{ index + 1 }}</span></span>
-        <nuxt-link 
-          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
-          :class="!dapp.iconSmallUrl ? 'has-no-icon' : ''" 
-          class="dapp-icon-wrapper" 
+        <nuxt-link
+          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })"
+          :class="!dapp.iconSmallUrl ? 'has-no-icon' : ''"
+          class="dapp-icon-wrapper"
           @click.native="trackDappView(dapp.slug)">
-          <img 
-            v-if="dapp.iconSmallUrl" 
-            :src="dapp.iconSmallUrl" 
-            class="dapp-icon" 
-            width="32" 
+          <img
+            v-if="dapp.iconSmallUrl"
+            :src="dapp.iconSmallUrl"
+            class="dapp-icon"
+            width="32"
             height="32">
           <span v-else>{{ dapp.name | firstLetter }}</span>
         </nuxt-link>
-        <span class="dapp-name"><nuxt-link 
-          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })" 
+        <span class="dapp-name"><nuxt-link
+          :to="localePath({ name: 'dapp-detail', params: { slug: dapp.slug } })"
           @click.native="trackDappView(dapp.slug)">{{ dapp.name }}</nuxt-link></span>
         <span class="dapp-dau"><span v-if="dapp.stats.dau !== undefined">{{ dapp.stats.dau.toLocaleString() }}</span><span v-else>-</span></span>
       </li>
@@ -98,12 +98,14 @@ export default {
         category.slug
       )
       this.$mixpanel.track(action.name, action.data)
-      this.$router.push(
-        this.localePath({
-          name: 'rankings-category',
-          params: { category: category.slug }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: 'rankings-category',
+            params: { category: category.slug }
+          })
+        )
+        .catch(err => {})
     }
   }
 }

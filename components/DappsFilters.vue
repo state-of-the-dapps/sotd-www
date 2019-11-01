@@ -116,13 +116,15 @@ export default {
       if (category) {
         routeName += '-category'
       }
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params, category: category || undefined },
-          query: { ...this.$route.query, page: 1 }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params, category: category || undefined },
+            query: { ...this.$route.query, page: 1 }
+          })
+        )
+        .catch(err => {})
       this.trackFilter('category', category)
     },
     selectPlatform(platform) {
@@ -133,13 +135,15 @@ export default {
       if (this.$route.params.category) {
         routeName += '-category'
       }
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params, platform: platform || undefined },
-          query: { ...this.$route.query, page: 1 }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params, platform: platform || undefined },
+            query: { ...this.$route.query, page: 1 }
+          })
+        )
+        .catch(err => {})
       this.trackFilter('platform', platform)
     },
     selectStatus(status) {
@@ -150,17 +154,19 @@ export default {
       if (this.$route.params.category) {
         routeName += '-category'
       }
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: {
-            ...this.$route.query,
-            status: status || undefined,
-            page: 1
-          }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: {
+              ...this.$route.query,
+              status: status || undefined,
+              page: 1
+            }
+          })
+        )
+        .catch(err => {})
       this.trackFilter('status', status)
     },
     trackFilter(type, option) {

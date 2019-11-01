@@ -38,7 +38,7 @@
             <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-usage">
                 <RankingTableUsageHead/>
-              </div>  
+              </div>
             </media>
             <media
               v-if="isSortable"
@@ -120,7 +120,7 @@
                 <div class="table-data col-dev">
                   <RankingTableValuePct
                     :value="dapp.stats.dev_30d"
-                    :value_pct="dapp.stats.dev_30d_pct"/> 
+                    :value_pct="dapp.stats.dev_30d_pct"/>
                 </div>
               </media>
               <media :query="{minWidth: tweakpoint}">
@@ -134,7 +134,7 @@
                     v-if="selectedColumn.selection === 'rank'"
                     class="rank">{{ dapp.rank }}<template v-if="dapp.rankDelta !== 0">
                       <br>
-                      <BaseDelta 
+                      <BaseDelta
                         :value="dapp.rankDelta"
                         :null-text="$t('new')"/>
                     </template>
@@ -156,8 +156,8 @@
                   <RankingTableValuePct
                     v-if="selectedColumn.selection === 'dev_30d'"
                     :value="dapp.stats.dev_30d"
-                    :value_pct="dapp.stats.dev_30d_pct"/> 
-                  <RankingTableTrend 
+                    :value_pct="dapp.stats.dev_30d_pct"/>
+                  <RankingTableTrend
                     v-if="selectedColumn.selection === 'user_activity_30d'"
                     :users="dapp.sparklines.users"/>
                   <div v-if="selectedColumn.selection === 'description'">
@@ -280,13 +280,15 @@ export default {
       }
       const oldPage = this.$route.query.page || 1
       this.trackRankingPage(oldPage, page)
-      this.$router.push(
-        this.localePath({
-          name: routeName,
-          params: { ...this.$route.params },
-          query: { ...this.$route.query, page: page }
-        })
-      )
+      this.$router
+        .push(
+          this.localePath({
+            name: routeName,
+            params: { ...this.$route.params },
+            query: { ...this.$route.query, page: page }
+          })
+        )
+        .catch(err => {})
     },
     trackRankingPage(oldPage, targetPage) {
       const action = trackDappRankingPager(oldPage, targetPage)
