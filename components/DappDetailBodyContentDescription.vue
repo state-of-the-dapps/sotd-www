@@ -1,7 +1,7 @@
 <template>
   <div class="DappDetailBodyContentDescription">
-    <div 
-      class="description" 
+    <div
+      class="description"
       v-html="$md.render(description)"/>
   </div>
 </template>
