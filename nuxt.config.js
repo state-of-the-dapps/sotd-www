@@ -94,7 +94,7 @@ export default {
     retry: true,
     progress: false
   },
-  serverMiddleware: ['redirect-ssl', '~/middleware/logger'],
+  serverMiddleware: ['~/middleware/logger'],
   css: ['~/assets/css/normalize.scss', '~/assets/css/fonts.css'],
   styleResources: {
     scss: ['~/assets/css/_settings.scss']
