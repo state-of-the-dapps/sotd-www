@@ -34,4 +34,3 @@ For detailed explanation on how Nuxt works, checkout the [Nuxt.js docs](https://
 ## Caching
 
 - If using a container based deployment system like Heroku, cache all static files in a CDN after deployment. This avoids chunk errors and missing assets with outdated clients.
-
