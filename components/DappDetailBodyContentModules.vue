@@ -32,7 +32,7 @@
         </div>
       </div>
       <div
-        v-if="stats"
+        v-if="dapp.stats && dapp.stats.dau"
         class="module-wrapper -tier-4">
         <div
           v-if="dapp.stats.mau"
@@ -229,10 +229,6 @@ export default {
       })
       const hasInstances = Boolean(instances.length)
       return hasInstances
-    },
-    stats() {
-      let dauExists = this.dapp.stats.dau !== undefined
-      return dauExists
     }
   }
 }
