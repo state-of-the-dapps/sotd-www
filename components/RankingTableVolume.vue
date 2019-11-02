@@ -26,7 +26,7 @@
       v-else
       :class="getValuePosNegClass(volumePct)"
       class="pct">
-      <span v-if="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%
+      <span v-show="volumePct > 0">+</span>{{ Number(volumePct).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) }}%
     </span>
   </div>
 </template>

@@ -24,7 +24,7 @@
         </media>
         <DappDetailBodyContentModules :dapp="dapp"/>
         <DappDetailBodyContentReviews
-          v-if="dapp.reviews.length"
+          v-if="dapp.reviews && dapp.reviews.length"
           :reviews="dapp.reviews"/>
       </div>
       <div class="actions-related">
