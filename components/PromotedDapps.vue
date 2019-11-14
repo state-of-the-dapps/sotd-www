@@ -243,9 +243,9 @@ export default {
 }
 
 .package-option {
-  // text-align: center;
+  text-align: justify;
   font-size: 1.2rem;
-  max-width: 700px;
+  max-width: 500px;
   padding-top: 10px;
   margin: 0 auto;
 }
