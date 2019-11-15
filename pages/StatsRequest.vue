@@ -5,41 +5,36 @@
     </div>
     <div class="wrapper">
       <div class="fields">
-        <div><input 
-          ref="name" 
-          v-model="name" 
-          class="input" 
-          type="text" 
-          placeholder="Your name"></div>
-        <div><input 
-          v-model="email" 
-          class="input" 
-          type="text" 
-          placeholder="Your email" 
-          @input="validateEmail"></div>
-        <div><input 
-          v-model="company" 
-          class="input" 
-          type="text" 
-          placeholder="Company name"></div>  
-        <div><input 
-          v-model="country" 
-          class="input" 
-          type="text" 
-          placeholder="Your country"></div>   
-        <div><textarea 
-          v-model="request" 
-          class="input textarea"  
-          placeholder="What kind of stats data do you need?"/></div>
-        <div><input 
-          v-model="budget" 
-          class="input" 
+        <div><input
+          ref="name"
+          v-model="name"
+          class="input"
           type="text"
-          placeholder="What is your budget (USD)?"></div> 
+          placeholder="Your name"></div>
+        <div><input
+          v-model="email"
+          class="input"
+          type="text"
+          placeholder="Your email"
+          @input="validateEmail"></div>
+        <div><input
+          v-model="company"
+          class="input"
+          type="text"
+          placeholder="Company name"></div>
+        <div><textarea
+          v-model="request"
+          class="input textarea"
+          placeholder="What kind of stats data do you need?"/></div>
+        <div><input
+          v-model="budget"
+          class="input"
+          type="text"
+          placeholder="What is your budget (USD)?"></div>
       </div>
-      <div class="send-wrapper"><button 
-        :class="formIsValid ? '--is-ready' : ''" 
-        class="send" 
+      <div class="send-wrapper"><button
+        :class="formIsValid ? '--is-ready' : ''"
+        class="send"
         @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
     </div>
     <BaseModal v-if="confirmationModal">
@@ -75,7 +70,6 @@ export default {
       budget: '',
       confirmationModal: false,
       company: '',
-      country: '',
       email: '',
       emailIsValid: false,
       formIsSubmitting: false,
@@ -90,7 +84,6 @@ export default {
       if (
         this.budget &&
         this.company &&
-        this.country &&
         this.email &&
         this.name &&
         this.request &&
@@ -108,17 +101,15 @@ export default {
         this.formIsSubmitting = true
         const budget = this.budget
         const company = this.company
-        const country = this.country
         const email = this.email
         const name = this.name
         const request = this.request
-        this.$mixpanel.track('Data request', { email, country })
+        this.$mixpanel.track('Data request', { email })
 
         const data = {
           fields: {
             budget,
             company,
-            country,
             email,
             name,
             request

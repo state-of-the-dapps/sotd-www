@@ -58,11 +58,6 @@
           placeholder="Your email"
           @input="validateEmail"></div>
         <div><input
-          v-model="country"
-          class="input"
-          type="text"
-          placeholder="Your country"></div>
-        <div><input
           v-model="dapp"
           class="input"
           type="text"
@@ -142,7 +137,6 @@ export default {
     return {
       option: '',
       confirmationModal: false,
-      country: '',
       dapp: '',
       email: '',
       emailIsValid: false,
@@ -158,7 +152,6 @@ export default {
       let isValid = false
       if (
         this.option &&
-        this.country &&
         this.email &&
         this.dapp &&
         this.name &&
@@ -195,7 +188,6 @@ export default {
       if (this.formIsValid && !this.formIsSubmitting) {
         this.formIsSubmitting = true
         const option = this.option
-        const country = this.country
         const email = this.email
         const dapp = this.dapp
         const name = this.name
@@ -208,7 +200,6 @@ export default {
         const data = {
           fields: {
             option,
-            country,
             dapp,
             email,
             name,

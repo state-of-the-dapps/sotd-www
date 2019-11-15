@@ -4,9 +4,9 @@
       <h1 class="title-1">How do I add my DApp platform?</h1>
     </div>
     <!-- <div class="preview-wrapper">
-      <img 
-        class="preview" 
-        src="~/assets/images/platforms.png" 
+      <img
+        class="preview"
+        src="~/assets/images/platforms.png"
         width="1200">
     </div> -->
     <div class="wrapper">
@@ -23,42 +23,37 @@
         </ul>
       </div>
       <div class="fields">
-        <div><input 
-          ref="name" 
-          v-model="name" 
-          class="input" 
-          type="text" 
+        <div><input
+          ref="name"
+          v-model="name"
+          class="input"
+          type="text"
           placeholder="Your name"></div>
-        <div><input 
-          v-model="email" 
-          class="input" 
-          type="text" 
-          placeholder="Your email" 
+        <div><input
+          v-model="email"
+          class="input"
+          type="text"
+          placeholder="Your email"
           @input="validateEmail"></div>
-        <div><input 
-          v-model="country" 
-          class="input" 
-          type="text" 
-          placeholder="Your country"></div>   
-        <div><input 
-          v-model="platform" 
-          class="input" 
-          type="text" 
-          placeholder="Platform name"></div>  
-        <div><input 
-          v-model="website" 
-          class="input" 
-          type="text" 
+        <div><input
+          v-model="platform"
+          class="input"
+          type="text"
+          placeholder="Platform name"></div>
+        <div><input
+          v-model="website"
+          class="input"
+          type="text"
           placeholder="Platform website"></div>
-        <div><input 
-          v-model="association" 
-          class="input" 
-          type="text" 
-          placeholder="How are you associated with the platform?"></div> 
+        <div><input
+          v-model="association"
+          class="input"
+          type="text"
+          placeholder="How are you associated with the platform?"></div>
       </div>
-      <div class="send-wrapper"><button 
-        :class="formIsValid ? '--is-ready' : ''" 
-        class="send" 
+      <div class="send-wrapper"><button
+        :class="formIsValid ? '--is-ready' : ''"
+        class="send"
         @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
     </div>
     <BaseModal v-if="confirmationModal">
@@ -95,7 +90,6 @@ export default {
     return {
       association: '',
       confirmationModal: false,
-      country: '',
       email: '',
       emailIsValid: false,
       formIsSubmitting: false,
@@ -111,7 +105,6 @@ export default {
       if (
         this.association &&
         this.website &&
-        this.country &&
         this.email &&
         this.platform &&
         this.name &&
@@ -129,17 +122,15 @@ export default {
         this.formIsSubmitting = true
         const association = this.association
         const website = this.website
-        const country = this.country
         const email = this.email
         const platform = this.platform
         const name = this.name
-        this.$mixpanel.track('Platform request', { platform, email, country })
+        this.$mixpanel.track('Platform request', { platform, email })
 
         const data = {
           fields: {
             association,
             website,
-            country,
             platform,
             email,
             name
