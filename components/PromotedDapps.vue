@@ -19,18 +19,16 @@
       </p>
       <p class="package-option">
         <b>Option 1:</b>
-        Featured DApp on our homepage with a shared spot (rotating between 10 dapps max).
-        <i>30 days</i>
+        Featured DApp on our homepage, <i>30 days</i> shared spot (rotating between 10 dapps max).
       </p>
       <p class="package-option">
         <b>Option 2:</b>
-        Featured DApp on our homepage, exclusive spot.
-        <i>7 days</i>
+        Featured DApp on our homepage, <i>7 days</i> exclusive spot.
+
       </p>
       <p class="package-option">
         <b>Option 3:</b>
-        Featured DApp on our homepage, exclusive spot.
-        <i>14 days</i>
+        Featured DApp on our homepage, <i>14 days</i> exclusive spot.
       </p>
       <p class="package-option">
         By promoting your DApp you will benefit from an estimated traffic of 110K visits per month (source: SimilarWeb, May 2019).
