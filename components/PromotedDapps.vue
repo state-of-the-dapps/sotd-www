@@ -19,18 +19,18 @@
       </p>
       <p class="package-option">
         <b>Option 1:</b>
-        Featured DApp on our homepage with a shared spot (rotating between 10 dapps max).<br>
-        <i>30 days for EUR 500 (~ USD 550)</i>
+        Featured DApp on our homepage with a shared spot (rotating between 10 dapps max).
+        <i>30 days</i>
       </p>
       <p class="package-option">
         <b>Option 2:</b>
-        Featured DApp on our homepage, exclusive spot.<br>
-        <i>7 days for EUR 1000 (~ USD 1100)</i>
+        Featured DApp on our homepage, exclusive spot.
+        <i>7 days</i>
       </p>
       <p class="package-option">
         <b>Option 3:</b>
-        Featured DApp on our homepage, exclusive spot.<br>
-        <i>14 days for EUR 1667 (~ USD 1834)</i>
+        Featured DApp on our homepage, exclusive spot.
+        <i>14 days</i>
       </p>
       <p class="package-option">
         By promoting your DApp you will benefit from an estimated traffic of 110K visits per month (source: SimilarWeb, May 2019).
@@ -69,9 +69,9 @@
             <option
               disabled
               value="">Please select promotion package</option>
-            <option>30 days shared for EUR 500 (~ USD 550)</option>
-            <option>7 days exclusive for EUR 1000 (~ USD 1100)</option>
-            <option>14 days exclusive for EUR 1667 (~ USD 1834)</option>
+            <option>30 days shared homepage spot</option>
+            <option>7 days exclusive homepage spot</option>
+            <option>14 days exclusive homepage spot</option>
           </select>
         </div>
         <div class="submitted-wrapper">
