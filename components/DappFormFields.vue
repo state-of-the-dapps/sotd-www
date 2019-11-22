@@ -32,6 +32,16 @@
       :url="fields.siteUrls.dapp"
       @updateErrors="updateErrors"
       @updateSiteUrl="updateSiteUrl"/>
+    <DappFormFieldsAndroidUrl
+      :errors="errors.androidUrl"
+      :url="fields.siteUrls.android"
+      @updateErrors="updateErrors"
+      @updateSiteUrl="updateSiteUrl"/>
+    <DappFormFieldsIosUrl
+      :errors="errors.iosUrl"
+      :url="fields.siteUrls.ios"
+      @updateErrors="updateErrors"
+      @updateSiteUrl="updateSiteUrl"/>
     <DappFormFieldsAuthors
       :authors="fields.authors"
       :errors="errors.authors"
@@ -63,7 +73,7 @@
     <DappFormFieldsStatus
       :status="fields.status"
       @updateStatus="updateStatus"/>
-    <DappFormFieldsSocial 
+    <DappFormFieldsSocial
       :github="fields.socials.github.path"
       :twitter="fields.socials.twitter.path"
       :reddit="fields.socials.reddit.path"
@@ -100,6 +110,8 @@ import DappFormFieldsAuthors from '~/components/DappFormFieldsAuthors.vue'
 import DappFormFieldsCategory from '~/components/DappFormFieldsCategory.vue'
 import DappFormFieldsContracts from '~/components/DappFormFieldsContracts.vue'
 import DappFormFieldsDappUrl from '~/components/DappFormFieldsDappUrl.vue'
+import DappFormFieldsAndroidUrl from '~/components/DappFormFieldsAndroidUrl.vue'
+import DappFormFieldsIosUrl from '~/components/DappFormFieldsIosUrl.vue'
 import DappFormFieldsDescription from '~/components/DappFormFieldsDescription.vue'
 import DappFormFieldsEmail from '~/components/DappFormFieldsEmail.vue'
 import DappFormFieldsIcon from '~/components/DappFormFieldsIcon.vue'
@@ -120,6 +132,8 @@ export default {
     DappFormFieldsCategory,
     DappFormFieldsContracts,
     DappFormFieldsDappUrl,
+    DappFormFieldsAndroidUrl,
+    DappFormFieldsIosUrl,
     DappFormFieldsDescription,
     DappFormFieldsEmail,
     DappFormFieldsIcon,
