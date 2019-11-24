@@ -13,89 +13,91 @@
         src="~/assets/images/promoted-preview.jpg"
         width="1200">
     </div>
-    <div class="wrapper">
-      <p class="package-option">
-        To promote your DApp you can choose between these three packages:
-      </p>
-      <p class="package-option">
-        <b>Option 1:</b>
-        Featured DApp on our homepage, <i>30 days</i> shared spot (rotating between 10 dapps max).
-      </p>
-      <p class="package-option">
-        <b>Option 2:</b>
-        Featured DApp on our homepage, <i>7 days</i> exclusive spot.
+    <div class="form-options">
+      <div class="options">
+        <p class="package-option">
+          To promote your DApp you can choose between these three packages:
+        </p>
+        <p class="package-option">
+          <b>Option 1:</b>
+          Featured DApp on our homepage, <i>30 days</i> shared spot (rotating between 10 dapps max).
+        </p>
+        <p class="package-option">
+          <b>Option 2:</b>
+          Featured DApp on our homepage, <i>7 days</i> exclusive spot.
 
-      </p>
-      <p class="package-option">
-        <b>Option 3:</b>
-        Featured DApp on our homepage, <i>14 days</i> exclusive spot.
-      </p>
-      <p class="package-option">
-        By promoting your DApp you will benefit from an estimated traffic of 110K visits per month (source: SimilarWeb, May 2019).
-        Featured DApps on State of the DApps typically see a CTR (Click Through Rate) between 4 and 11% to your DApp details page.
-        The details page of featured DApps has a CTR of over 55% to your DApp website (and/or social media accounts).
-        Our CTR is very high, compared to the industry average CTR of 1.91% for a search ad, and 0.35% for a display ad.
-      </p>
-    </div>
-    <div class="wrapper">
-      <h2
-        ref="getStartedEl"
-        class="title-2">Get started now!</h2>
-      <p class="get-started-note">Please note: We do not accept promotion requests for gambling DApps, or DApps that are ponzi or pyramid schemes.</p>
-      <div class="fields">
-        <div><input
-          ref="name"
-          v-model="name"
-          class="input"
-          type="text"
-          placeholder="Your name"></div>
-        <div><input
-          v-model="email"
-          class="input"
-          type="text"
-          placeholder="Your email"
-          @input="validateEmail"></div>
-        <div><input
-          v-model="dapp"
-          class="input"
-          type="text"
-          placeholder="Your DApp's name"></div>
-        <div>
-          <select
-            v-model="option"
-            class="input">
-            <option
-              disabled
-              value="">Please select promotion package</option>
-            <option>30 days shared homepage spot</option>
-            <option>7 days exclusive homepage spot</option>
-            <option>14 days exclusive homepage spot</option>
-          </select>
-        </div>
-        <div class="submitted-wrapper">
-          Is this DApp already listed on this website?
-          <p>
-            <button
-              :class="hasSubmittedDapp == 'yes' ? '--active' : ''"
-              class="selection"
-              @click="selectSubmittedDapp('yes')">Yes</button>
-            <button
-              :class="hasSubmittedDapp == 'no' ? '--active' : ''"
-              class="selection"
-              @click="selectSubmittedDapp('no')">No</button>
-          </p>
-        </div>
-        <div v-if="hasSubmittedDapp === 'no'"><input
-          v-model="website"
-          class="input"
-          type="text"
-          placeholder="Your DApp's website"></div>
+        </p>
+        <p class="package-option">
+          <b>Option 3:</b>
+          Featured DApp on our homepage, <i>14 days</i> exclusive spot.
+        </p>
+        <p class="package-option">
+          By promoting your DApp you will benefit from an estimated traffic of 110K visits per month (source: SimilarWeb, May 2019).
+          Featured DApps on State of the DApps typically see a CTR (Click Through Rate) between 4 and 11% to your DApp details page.
+          The details page of featured DApps has a CTR of over 55% to your DApp website (and/or social media accounts).
+          Our CTR is very high, compared to the industry average CTR of 1.91% for a search ad, and 0.35% for a display ad.
+        </p>
       </div>
-      <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
-      <div class="send-wrapper"><button
-        :class="formIsValid ? '--is-ready' : ''"
-        class="send"
-        @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
+      <div class="form">
+        <h2
+          ref="getStartedEl"
+          class="title-2">Request a promotion</h2>
+        <p class="get-started-note">Please note: We do not accept promotion requests for gambling DApps, or DApps that are ponzi or pyramid schemes.</p>
+        <div class="fields">
+          <div><input
+            ref="name"
+            v-model="name"
+            class="input"
+            type="text"
+            placeholder="Your name"></div>
+          <div><input
+            v-model="email"
+            class="input"
+            type="text"
+            placeholder="Your email"
+            @input="validateEmail"></div>
+          <div><input
+            v-model="dapp"
+            class="input"
+            type="text"
+            placeholder="Your DApp's name"></div>
+          <div>
+            <select
+              v-model="option"
+              class="input">
+              <option
+                disabled
+                value="">Please select promotion package</option>
+              <option>30 days shared homepage spot</option>
+              <option>7 days exclusive homepage spot</option>
+              <option>14 days exclusive homepage spot</option>
+            </select>
+          </div>
+          <div class="submitted-wrapper">
+            Is this DApp already listed on this website?
+            <p>
+              <button
+                :class="hasSubmittedDapp == 'yes' ? '--active' : ''"
+                class="selection"
+                @click="selectSubmittedDapp('yes')">Yes</button>
+              <button
+                :class="hasSubmittedDapp == 'no' ? '--active' : ''"
+                class="selection"
+                @click="selectSubmittedDapp('no')">No</button>
+            </p>
+          </div>
+          <div v-if="hasSubmittedDapp === 'no'"><input
+            v-model="website"
+            class="input"
+            type="text"
+            placeholder="Your DApp's website"></div>
+        </div>
+        <p class="disclaimer">Don't worry, by pressing "send" you're not committing yet. Your request will be reviewed and then we'll be in touch about payment options and next steps.</p>
+        <div class="send-wrapper"><button
+          :class="formIsValid ? '--is-ready' : ''"
+          class="send"
+          @click="send"><span v-if="formIsValid || formIsSubmitting">Send</span><span v-else>Please fill out all fields</span></button></div>
+      </div>
     </div>
     <BaseModal v-if="confirmationModal">
       <FormConfirmation :has-submitted-dapp="hasSubmittedDapp"/>
@@ -231,23 +233,27 @@ export default {
   margin: 0 auto;
 }
 
-.package-option {
-  text-align: justify;
-  font-size: 1.2rem;
-  max-width: 500px;
-  padding-top: 10px;
-  margin: 0 auto;
+.options {
+  padding: 10px 20px;
+  background: darken($color--gray, 5%);
 }
 
-.disclaimer {
-  max-width: 300px;
-  margin: 0 auto 10px;
+.form,
+.options {
+  width: 90%;
+  max-width: 350px;
+  margin: 20px auto;
+  @include tweakpoint('min-width', 800px) {
+    margin: 40px 15px;
+  }
 }
 
-.fields {
-  text-align: center;
-  max-width: 300px;
-  margin: 20px auto 25px;
+.form-options {
+  line-height: 1.3;
+  @include tweakpoint('min-width', 800px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .get-started-wrapper {
@@ -260,11 +266,6 @@ export default {
   color: $color--white;
   padding: 8px 30px;
   border-radius: 1000px;
-}
-
-.get-started-note {
-  max-width: 300px;
-  margin: 0 auto;
 }
 
 .preview-wrapper {
@@ -331,6 +332,7 @@ export default {
 
 .submitted-wrapper {
   padding-top: 15px;
+  text-align: center;
 }
 
 .title-1 {
@@ -347,6 +349,7 @@ export default {
   text-transform: initial;
   text-align: center;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .wrapper {
