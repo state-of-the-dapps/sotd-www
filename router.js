@@ -37,10 +37,6 @@ const DappDetailImprove = () =>
   interopDefault(
     import('~/pages/DappDetailImprove.vue' /* webpackChunkName: "pages/dapp-detail-improve" */)
   )
-const DappDetailMeta = () =>
-  interopDefault(
-    import('~/pages/DappDetailMeta.vue' /* webpackChunkName: "pages/dapp-detail-meta" */)
-  )
 const Dapps = () =>
   interopDefault(
     import('~/pages/Dapps.vue' /* webpackChunkName: "pages/dapps" */)
@@ -247,11 +243,6 @@ const i18nRoutes = Object.freeze([
     path: prefix + '/dapps/:slug/improve',
     component: DappDetailImprove,
     name: 'dapp-detail-improve' + lang
-  }),
-  (prefix, lang) => ({
-    path: prefix + '/dapps/:slug/meta',
-    component: DappDetailMeta,
-    name: 'dapp-detail-meta' + lang
   }),
   (prefix, lang) => ({
     path: prefix + '/logos',
