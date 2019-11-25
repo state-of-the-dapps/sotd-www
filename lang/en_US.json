@@ -36,7 +36,8 @@
         "Hottest": "Hottest",
         "Most-Viewed": "Most Viewed",
         "Recently-added": "Recently added",
-        "Top-Development-Activity": "Top Development Activity"
+        "Top-Development-Activity": "Top Development Activity",
+        "DApp-Graveyard": "DApp Graveyard"
     },
     "cta": {
         "submit": "Submit a DApp",
