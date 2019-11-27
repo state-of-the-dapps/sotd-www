@@ -171,7 +171,6 @@ export default {
       var caret = this.getCaretPosition(this.search)
       var result = /\S+$/.exec(this.search.slice(0, caret.end))
       var lastWord = result ? result[0] : null
-      console.log(lastWord)
       searchTimer = setTimeout(() => {
         this.$axios
           .get('tags', {
