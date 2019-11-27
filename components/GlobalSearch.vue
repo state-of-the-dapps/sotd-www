@@ -163,14 +163,15 @@ export default {
       const action = trackSearchSuggestion(this.sourcePath, suggestion)
       this.$mixpanel.track(action.name, action.data)
     },
-    fetchResults(value) {
-      this.$emit('setSearch', value)
+    async fetchResults(value) {
+      await this.$emit('setSearch', value)
       clearTimeout(searchTimer)
       clearTimeout(trackTimer)
       this.searchCompleted = false
       var caret = this.getCaretPosition(this.search)
       var result = /\S+$/.exec(this.search.slice(0, caret.end))
       var lastWord = result ? result[0] : null
+      console.log(lastWord)
       searchTimer = setTimeout(() => {
         this.$axios
           .get('tags', {
