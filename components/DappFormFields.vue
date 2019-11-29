@@ -10,6 +10,10 @@
       @updateErrors="updateErrors"
       @updateField="updateField"
       @updateWarnings="updateWarnings"/>
+    <DappFormFieldsPlatform
+      :platform="fields.platform"
+      @updateErrors="updateErrors"
+      @updateField="updateField"/>
     <DappFormFieldsTeaser
       :errors="errors.teaser"
       :teaser="fields.teaser"
@@ -60,10 +64,6 @@
       @updateField="updateField"/>
     <DappFormFieldsProductImage
       :product-image="fields.productImage"
-      @updateField="updateField"/>
-    <DappFormFieldsPlatform
-      :platform="fields.platform"
-      @updateErrors="updateErrors"
       @updateField="updateField"/>
     <DappFormFieldsContracts
       v-bind="contractProps"

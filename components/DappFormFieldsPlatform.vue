@@ -16,6 +16,9 @@
         @select="setPlatform"
       />
     </div>
+    <p
+      class="help"
+      style="margin-top: 10px;">If your platform isn't listed, <nuxt-link :to="localePath({ name: 'platforms' })">request a new platform</nuxt-link> instead.</p>
   </div>
 </template>
 
