@@ -1,15 +1,17 @@
 <template>
   <div class="BaseFileUpload">
-    <dropzone
-      id="dropzone"
-      ref="el"
-      :awss3="awss3"
-      :options="options"
-      :destroy-dropzone="true"
-      :duplicate-check="true"
-      @vdropzone-complete="complete"
-      @vdropzone-s3-upload-error="s3UploadError"
-      @vdropzone-s3-upload-success="s3UploadSuccess"/>
+    <div v-show="showDropzone">
+      <dropzone
+        id="dropzone"
+        ref="el"
+        :awss3="awss3"
+        :options="options"
+        :destroy-dropzone="true"
+        :duplicate-check="true"
+        @vdropzone-complete="complete"
+        @vdropzone-s3-upload-error="s3UploadError"
+        @vdropzone-s3-upload-success="s3UploadSuccess"/>
+    </div>
     <div
       v-if="disabled"
       class="disable"
@@ -36,6 +38,10 @@ export default {
     message: {
       type: String,
       default: 'Drop file here'
+    },
+    showDropzone: {
+      type: Boolean,
+      default: true
     },
     width: {
       type: Number,
@@ -109,7 +115,6 @@ export default {
       }
     },
     s3UploadSuccess(s3ObjectLocation) {
-      console.log('success')
       this.$emit('uploadSuccess', s3ObjectLocation)
     }
   }
