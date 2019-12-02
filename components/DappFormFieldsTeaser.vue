@@ -1,38 +1,38 @@
 <template>
   <div
     id="teaser"
-    :class="errors && errors.length > 0 ? '--has-errors' : ''" 
+    :class="errors && errors.length > 0 ? '--has-errors' : ''"
     class="DappFormFieldsTeaser item">
     <p class="heading"><span class="checkmark"><IconCheckmark :fill="teaser.length >= 4 && !errors.length ? 'purple' : 'gray'"/></span>Tagline <span class="required">(required)</span></p>
     <input
       id="teaserField"
-      :class="teaser.length > 0 ? '--is-filled' : ''" 
-      :value="teaser" 
-      class="text-input" 
-      placeholder="e.g. Trade digital cats"
-      maxlength="50" 
-      type="text" 
+      :class="teaser.length > 0 ? '--is-filled' : ''"
+      :value="teaser"
+      class="text-input"
+      placeholder="e.g. Collect and breed digital cats"
+      maxlength="50"
+      type="text"
       @input="updateAndValidate($event.target.value)">
     <span
       v-if="teaser.length"
       class="remaining-characters">{{ 50 - teaser.length }}</span>
-    <ul 
-      v-if="warnings && warnings.length > 0" 
+    <ul
+      v-if="warnings && warnings.length > 0"
       class="warning-list">
-      <li 
-        v-for="(warning, index) in warnings" 
-        :key="index" 
+      <li
+        v-for="(warning, index) in warnings"
+        :key="index"
         class="warning-item">{{ warning }}</li>
     </ul>
-    <ul 
-      v-if="errors && errors.length > 0" 
+    <ul
+      v-if="errors && errors.length > 0"
       class="error-list">
-      <li 
-        v-for="(error, index) in errors" 
-        :key="index" 
+      <li
+        v-for="(error, index) in errors"
+        :key="index"
         class="error-item">{{ error }}</li>
     </ul>
-    <p class="help">A 5-7 word description of your DApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
+    <p class="help">A short sentence describing your DApp. Please don't include self-promotion or obvious words such as "blockchain", "decentralized", or "Ethereum"</p>
   </div>
 </template>
 
