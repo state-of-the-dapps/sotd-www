@@ -15,7 +15,7 @@
       <BaseFileUpload
         :width="width"
         :height="height"
-        :show-dropzone="!productImage"
+        :show-dropzone="!productImage || preFill"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a new product screenshot here, or click to select one"
         @addInvalidDimensionsWarning="addWarning"
         @uploadSuccess="setProductImage"
@@ -109,6 +109,9 @@ export default {
       display: block;
       height: 100%;
     }
+  }
+  + .file-upload /deep/ .zone {
+    margin-top: 20px;
   }
 }
 </style>

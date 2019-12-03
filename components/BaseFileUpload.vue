@@ -1,6 +1,8 @@
 <template>
   <div class="BaseFileUpload">
-    <div v-show="showDropzone">
+    <div
+      v-show="showDropzone"
+      class="zone">
       <dropzone
         id="dropzone"
         ref="el"
