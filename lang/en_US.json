@@ -235,7 +235,8 @@
         "loom": "Loom",
         "klaytn": "Klaytn",
         "neo": "NEO",
-        "ost": "OST"
+        "ost": "OST",
+        "blockstack": "Blockstack"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",
