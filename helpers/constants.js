@@ -485,7 +485,7 @@ const platforms = Object.freeze([
   },
   {
     id: 'blockstack',
-    name: 'BlockStack',
+    name: 'Blockstack',
     hideOnHomepage: false,
     contracts: {
       networks: [],
