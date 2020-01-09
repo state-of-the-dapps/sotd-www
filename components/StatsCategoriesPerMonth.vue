@@ -1891,6 +1891,874 @@ const rawData = [
     transactions: 58824,
     activeUsers: 7374,
     volume: 90
+  },
+
+  {
+    month: '2019-06',
+    category: 'Energy',
+    transactions: 207,
+    activeUsers: 106,
+    volume: 0
+  },
+  {
+    month: '2019-06',
+    category: 'Identity',
+    transactions: 5849,
+    activeUsers: 1579,
+    volume: 0
+  },
+  {
+    month: '2019-06',
+    category: 'Storage',
+    transactions: 25070,
+    activeUsers: 3714,
+    volume: 0
+  },
+  {
+    month: '2019-06',
+    category: 'High-risk',
+    transactions: 58658,
+    activeUsers: 34968,
+    volume: 143545
+  },
+  {
+    month: '2019-06',
+    category: 'Media',
+    transactions: 38278,
+    activeUsers: 9417,
+    volume: 2
+  },
+  {
+    month: '2019-06',
+    category: 'Gambling',
+    transactions: 405014,
+    activeUsers: 12430,
+    volume: 244813
+  },
+  {
+    month: '2019-06',
+    category: 'Exchanges',
+    transactions: 856133,
+    activeUsers: 64281,
+    volume: 333193
+  },
+  {
+    month: '2019-06',
+    category: 'Security',
+    transactions: 64180,
+    activeUsers: 14100,
+    volume: 1
+  },
+  {
+    month: '2019-06',
+    category: 'Social',
+    transactions: 48292,
+    activeUsers: 6986,
+    volume: 60
+  },
+  {
+    month: '2019-06',
+    category: 'Property',
+    transactions: 35604,
+    activeUsers: 3555,
+    volume: 1
+  },
+  {
+    month: '2019-06',
+    category: 'Finance',
+    transactions: 207368,
+    activeUsers: 66069,
+    volume: 116438
+  },
+  {
+    month: '2019-06',
+    category: 'Wallet',
+    transactions: 125675,
+    activeUsers: 45514,
+    volume: 2
+  },
+  {
+    month: '2019-06',
+    category: 'Health',
+    transactions: 5,
+    activeUsers: 1,
+    volume: 0
+  },
+  {
+    month: '2019-06',
+    category: 'Development',
+    transactions: 37545,
+    activeUsers: 12400,
+    volume: 98
+  },
+  {
+    month: '2019-06',
+    category: 'Marketplaces',
+    transactions: 155825,
+    activeUsers: 8824,
+    volume: 3652
+  },
+  {
+    month: '2019-06',
+    category: 'Insurance',
+    transactions: 508,
+    activeUsers: 183,
+    volume: 0
+  },
+  {
+    month: '2019-06',
+    category: 'Games',
+    transactions: 465188,
+    activeUsers: 25224,
+    volume: 2334
+  },
+  {
+    month: '2019-06',
+    category: 'Governance',
+    transactions: 10675,
+    activeUsers: 3227,
+    volume: 275
+  },
+
+  {
+    month: '2019-07',
+    category: 'Health',
+    transactions: 17,
+    activeUsers: 3,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'Storage',
+    transactions: 16227,
+    activeUsers: 1340,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'Identity',
+    transactions: 3612,
+    activeUsers: 1050,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'High-risk',
+    transactions: 16959,
+    activeUsers: 4491,
+    volume: 2153
+  },
+  {
+    month: '2019-07',
+    category: 'Media',
+    transactions: 22560,
+    activeUsers: 5609,
+    volume: 5
+  },
+  {
+    month: '2019-07',
+    category: 'Games',
+    transactions: 485536,
+    activeUsers: 26885,
+    volume: 7390
+  },
+  {
+    month: '2019-07',
+    category: 'Wallet',
+    transactions: 90778,
+    activeUsers: 36205,
+    volume: 182
+  },
+  {
+    month: '2019-07',
+    category: 'Security',
+    transactions: 73360,
+    activeUsers: 26546,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'Exchanges',
+    transactions: 852025,
+    activeUsers: 58878,
+    volume: 317325
+  },
+  {
+    month: '2019-07',
+    category: 'Social',
+    transactions: 26733,
+    activeUsers: 4035,
+    volume: 34
+  },
+  {
+    month: '2019-07',
+    category: 'Finance',
+    transactions: 208310,
+    activeUsers: 72343,
+    volume: 247618
+  },
+  {
+    month: '2019-07',
+    category: 'Property',
+    transactions: 39153,
+    activeUsers: 6858,
+    volume: 4
+  },
+  {
+    month: '2019-07',
+    category: 'Energy',
+    transactions: 57,
+    activeUsers: 47,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'Gambling',
+    transactions: 259182,
+    activeUsers: 10485,
+    volume: 84309
+  },
+  {
+    month: '2019-07',
+    category: 'Development',
+    transactions: 26757,
+    activeUsers: 8736,
+    volume: 3
+  },
+  {
+    month: '2019-07',
+    category: 'Marketplaces',
+    transactions: 141499,
+    activeUsers: 5896,
+    volume: 3129
+  },
+  {
+    month: '2019-07',
+    category: 'Insurance',
+    transactions: 309,
+    activeUsers: 145,
+    volume: 0
+  },
+  {
+    month: '2019-07',
+    category: 'Governance',
+    transactions: 15317,
+    activeUsers: 5430,
+    volume: 133
+  },
+
+  {
+    month: '2019-08',
+    category: 'Health',
+    transactions: 1,
+    activeUsers: 1,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'Identity',
+    transactions: 3901,
+    activeUsers: 872,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'Property',
+    transactions: 35478,
+    activeUsers: 3280,
+    volume: 11
+  },
+  {
+    month: '2019-08',
+    category: 'Insurance',
+    transactions: 344,
+    activeUsers: 76,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'High-risk',
+    transactions: 18167,
+    activeUsers: 5280,
+    volume: 787
+  },
+  {
+    month: '2019-08',
+    category: 'Media',
+    transactions: 18153,
+    activeUsers: 5285,
+    volume: 51
+  },
+  {
+    month: '2019-08',
+    category: 'Development',
+    transactions: 24938,
+    activeUsers: 6155,
+    volume: 3
+  },
+  {
+    month: '2019-08',
+    category: 'Wallet',
+    transactions: 78538,
+    activeUsers: 31597,
+    volume: 5
+  },
+  {
+    month: '2019-08',
+    category: 'Energy',
+    transactions: 54,
+    activeUsers: 49,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'Governance',
+    transactions: 7077,
+    activeUsers: 2558,
+    volume: 103
+  },
+  {
+    month: '2019-08',
+    category: 'Exchanges',
+    transactions: 540451,
+    activeUsers: 51141,
+    volume: 209203
+  },
+  {
+    month: '2019-08',
+    category: 'Finance',
+    transactions: 297999,
+    activeUsers: 93548,
+    volume: 928434
+  },
+  {
+    month: '2019-08',
+    category: 'Games',
+    transactions: 484842,
+    activeUsers: 31259,
+    volume: 5531
+  },
+  {
+    month: '2019-08',
+    category: 'Gambling',
+    transactions: 290200,
+    activeUsers: 7566,
+    volume: 68773
+  },
+  {
+    month: '2019-08',
+    category: 'Security',
+    transactions: 52980,
+    activeUsers: 17860,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'Marketplaces',
+    transactions: 128779,
+    activeUsers: 6036,
+    volume: 3537
+  },
+  {
+    month: '2019-08',
+    category: 'Storage',
+    transactions: 15142,
+    activeUsers: 1474,
+    volume: 0
+  },
+  {
+    month: '2019-08',
+    category: 'Social',
+    transactions: 23379,
+    activeUsers: 4960,
+    volume: 23
+  },
+
+  {
+    month: '2019-09',
+    category: 'Health',
+    transactions: 15,
+    activeUsers: 1,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'Energy',
+    transactions: 49,
+    activeUsers: 41,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'Social',
+    transactions: 31452,
+    activeUsers: 5871,
+    volume: 27
+  },
+  {
+    month: '2019-09',
+    category: 'Storage',
+    transactions: 11488,
+    activeUsers: 971,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'Identity',
+    transactions: 5118,
+    activeUsers: 865,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'High-risk',
+    transactions: 24038,
+    activeUsers: 3543,
+    volume: 4145
+  },
+  {
+    month: '2019-09',
+    category: 'Security',
+    transactions: 52525,
+    activeUsers: 18472,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'Gambling',
+    transactions: 224403,
+    activeUsers: 14177,
+    volume: 193303
+  },
+  {
+    month: '2019-09',
+    category: 'Exchanges',
+    transactions: 432591,
+    activeUsers: 43501,
+    volume: 240823
+  },
+  {
+    month: '2019-09',
+    category: 'Games',
+    transactions: 229434,
+    activeUsers: 19965,
+    volume: 3754
+  },
+  {
+    month: '2019-09',
+    category: 'Media',
+    transactions: 16062,
+    activeUsers: 6499,
+    volume: 39
+  },
+  {
+    month: '2019-09',
+    category: 'Wallet',
+    transactions: 55858,
+    activeUsers: 21798,
+    volume: 47
+  },
+  {
+    month: '2019-09',
+    category: 'Development',
+    transactions: 23668,
+    activeUsers: 5460,
+    volume: 18
+  },
+  {
+    month: '2019-09',
+    category: 'Governance',
+    transactions: 6394,
+    activeUsers: 1691,
+    volume: 67
+  },
+  {
+    month: '2019-09',
+    category: 'Finance',
+    transactions: 264950,
+    activeUsers: 73588,
+    volume: 794553
+  },
+  {
+    month: '2019-09',
+    category: 'Marketplaces',
+    transactions: 91268,
+    activeUsers: 9709,
+    volume: 4479
+  },
+  {
+    month: '2019-09',
+    category: 'Insurance',
+    transactions: 242,
+    activeUsers: 30,
+    volume: 0
+  },
+  {
+    month: '2019-09',
+    category: 'Property',
+    transactions: 12447,
+    activeUsers: 2210,
+    volume: 318
+  },
+
+  {
+    month: '2019-10',
+    category: 'Energy',
+    transactions: 66,
+    activeUsers: 43,
+    volume: 0
+  },
+  {
+    month: '2019-10',
+    category: 'Health',
+    transactions: 35,
+    activeUsers: 2,
+    volume: 0
+  },
+  {
+    month: '2019-10',
+    category: 'Identity',
+    transactions: 3929,
+    activeUsers: 859,
+    volume: 0
+  },
+  {
+    month: '2019-10',
+    category: 'Gambling',
+    transactions: 307661,
+    activeUsers: 37201,
+    volume: 180113
+  },
+  {
+    month: '2019-10',
+    category: 'Development',
+    transactions: 32881,
+    activeUsers: 9098,
+    volume: 3
+  },
+  {
+    month: '2019-10',
+    category: 'Games',
+    transactions: 514826,
+    activeUsers: 22591,
+    volume: 7728
+  },
+  {
+    month: '2019-10',
+    category: 'Governance',
+    transactions: 6332,
+    activeUsers: 1568,
+    volume: 42
+  },
+  {
+    month: '2019-10',
+    category: 'Exchanges',
+    transactions: 491780,
+    activeUsers: 44420,
+    volume: 296591
+  },
+  {
+    month: '2019-10',
+    category: 'Finance',
+    transactions: 221829,
+    activeUsers: 81568,
+    volume: 256888
+  },
+  {
+    month: '2019-10',
+    category: 'Wallet',
+    transactions: 63378,
+    activeUsers: 23152,
+    volume: 20
+  },
+  {
+    month: '2019-10',
+    category: 'Security',
+    transactions: 75052,
+    activeUsers: 24215,
+    volume: 0
+  },
+  {
+    month: '2019-10',
+    category: 'Storage',
+    transactions: 14558,
+    activeUsers: 1152,
+    volume: 0
+  },
+  {
+    month: '2019-10',
+    category: 'Media',
+    transactions: 13387,
+    activeUsers: 4074,
+    volume: 1
+  },
+  {
+    month: '2019-10',
+    category: 'High-risk',
+    transactions: 57074,
+    activeUsers: 5855,
+    volume: 12665
+  },
+  {
+    month: '2019-10',
+    category: 'Marketplaces',
+    transactions: 121031,
+    activeUsers: 6135,
+    volume: 4576
+  },
+  {
+    month: '2019-10',
+    category: 'Property',
+    transactions: 38434,
+    activeUsers: 2451,
+    volume: 91
+  },
+  {
+    month: '2019-10',
+    category: 'Social',
+    transactions: 21239,
+    activeUsers: 5029,
+    volume: 48
+  },
+
+  {
+    month: '2019-11',
+    category: 'Health',
+    transactions: 40,
+    activeUsers: 2,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Property',
+    transactions: 22329,
+    activeUsers: 4986,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Identity',
+    transactions: 3814,
+    activeUsers: 1510,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Governance',
+    transactions: 8032,
+    activeUsers: 2562,
+    volume: 29
+  },
+  {
+    month: '2019-11',
+    category: 'Development',
+    transactions: 35325,
+    activeUsers: 14127,
+    volume: 3738
+  },
+  {
+    month: '2019-11',
+    category: 'Exchanges',
+    transactions: 491193,
+    activeUsers: 45859,
+    volume: 389170
+  },
+  {
+    month: '2019-11',
+    category: 'Security',
+    transactions: 56816,
+    activeUsers: 19155,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Social',
+    transactions: 17866,
+    activeUsers: 4776,
+    volume: 38
+  },
+  {
+    month: '2019-11',
+    category: 'Finance',
+    transactions: 205673,
+    activeUsers: 66508,
+    volume: 139424
+  },
+  {
+    month: '2019-11',
+    category: 'Storage',
+    transactions: 16614,
+    activeUsers: 1382,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'High-risk',
+    transactions: 139323,
+    activeUsers: 46282,
+    volume: 1265441
+  },
+  {
+    month: '2019-11',
+    category: 'Wallet',
+    transactions: 74355,
+    activeUsers: 26471,
+    volume: 51
+  },
+  {
+    month: '2019-11',
+    category: 'Energy',
+    transactions: 57,
+    activeUsers: 36,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Marketplaces',
+    transactions: 127484,
+    activeUsers: 9820,
+    volume: 5465
+  },
+  {
+    month: '2019-11',
+    category: 'Games',
+    transactions: 479481,
+    activeUsers: 25213,
+    volume: 1984
+  },
+  {
+    month: '2019-11',
+    category: 'Media',
+    transactions: 11386,
+    activeUsers: 4418,
+    volume: 0
+  },
+  {
+    month: '2019-11',
+    category: 'Gambling',
+    transactions: 305777,
+    activeUsers: 49334,
+    volume: 732291
+  },
+
+  {
+    month: '2019-12',
+    category: 'Health',
+    transactions: 14,
+    activeUsers: 1,
+    volume: 0
+  },
+  {
+    month: '2019-12',
+    category: 'Governance',
+    transactions: 5359,
+    activeUsers: 1311,
+    volume: 77
+  },
+  {
+    month: '2019-12',
+    category: 'Storage',
+    transactions: 16058,
+    activeUsers: 1581,
+    volume: 0
+  },
+  {
+    month: '2019-12',
+    category: 'Property',
+    transactions: 11693,
+    activeUsers: 2244,
+    volume: 1
+  },
+  {
+    month: '2019-12',
+    category: 'Development',
+    transactions: 140498,
+    activeUsers: 5701,
+    volume: 7413
+  },
+  {
+    month: '2019-12',
+    category: 'Security',
+    transactions: 46517,
+    activeUsers: 15741,
+    volume: 0
+  },
+  {
+    month: '2019-12',
+    category: 'Gambling',
+    transactions: 229173,
+    activeUsers: 20513,
+    volume: 142042
+  },
+  {
+    month: '2019-12',
+    category: 'High-risk',
+    transactions: 180440,
+    activeUsers: 58554,
+    volume: 2670595
+  },
+  {
+    month: '2019-12',
+    category: 'Wallet',
+    transactions: 62235,
+    activeUsers: 20803,
+    volume: 326
+  },
+  {
+    month: '2019-12',
+    category: 'Finance',
+    transactions: 261925,
+    activeUsers: 51339,
+    volume: 166298
+  },
+  {
+    month: '2019-12',
+    category: 'Exchanges',
+    transactions: 440274,
+    activeUsers: 40400,
+    volume: 482967
+  },
+  {
+    month: '2019-12',
+    category: 'Games',
+    transactions: 544753,
+    activeUsers: 26214,
+    volume: 2411
+  },
+  {
+    month: '2019-12',
+    category: 'Energy',
+    transactions: 377,
+    activeUsers: 141,
+    volume: 0
+  },
+  {
+    month: '2019-12',
+    category: 'Identity',
+    transactions: 2918,
+    activeUsers: 749,
+    volume: 1
+  },
+  {
+    month: '2019-12',
+    category: 'Marketplaces',
+    transactions: 137794,
+    activeUsers: 7191,
+    volume: 10336
+  },
+  {
+    month: '2019-12',
+    category: 'Media',
+    transactions: 11240,
+    activeUsers: 2085,
+    volume: 1
+  },
+  {
+    month: '2019-12',
+    category: 'Social',
+    transactions: 12354,
+    activeUsers: 3046,
+    volume: 604
   }
 ]
 
