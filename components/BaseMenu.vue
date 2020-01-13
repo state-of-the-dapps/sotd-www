@@ -134,7 +134,6 @@
 <script>
 import Media from 'vue-media'
 import { directive as onClickaway } from 'vue-clickaway'
-import { mapGetters } from 'vuex'
 import { languages, localeStrings } from '@/helpers/constants'
 import { trackMenu } from '@/helpers/mixpanel'
 import BaseDropdown from './BaseDropdown'
