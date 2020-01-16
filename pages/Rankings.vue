@@ -191,4 +191,9 @@ export default {
   padding-top: 25px;
   padding-bottom: 50px;
 }
+.RankingTable {
+  /deep/ .col-tx {
+    display: none !important;
+  }
+}
 </style>
