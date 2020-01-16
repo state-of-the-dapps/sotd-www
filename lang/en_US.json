@@ -215,6 +215,7 @@
         "dau": "Users (24h)",
         "platform": "Platform",
         "category": "Category",
+        "tx_1d": "Transactions (24h)",
         "usd_value_7d": "Volume (7d)",
         "dev_30d": "Dev activity (30d)",
         "user_activity_30d": "User activity (30d)"

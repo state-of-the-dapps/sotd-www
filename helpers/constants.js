@@ -808,6 +808,12 @@ const rankingColumns = Object.freeze([
     order: 'desc'
   },
   {
+    selection: 'tx_1d',
+    text: 'Transactions (24h)',
+    sort: true,
+    order: 'desc'
+  },
+  {
     selection: 'dev_30d',
     text: 'Dev activity (30d)',
     sort: true,

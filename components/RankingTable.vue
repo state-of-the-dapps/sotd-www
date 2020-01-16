@@ -26,6 +26,11 @@
               </div>
             </media>
             <media :query="{minWidth: tweakpoint}">
+              <div class="table-head col-tx">
+                <RankingTableTxHead :sort="isSortable"/>
+              </div>
+            </media>
+            <media :query="{minWidth: tweakpoint}">
               <div class="table-head col-vol">
                 <RankingTableVolumeHead :sort="isSortable"/>
               </div>
@@ -110,6 +115,13 @@
                 </div>
               </media>
               <media :query="{minWidth: tweakpoint}">
+                <div class="table-data col-tx">
+                  <RankingTableValuePct
+                    :value="dapp.stats.tx_1d"
+                    :value_pct="dapp.stats.tx_1d_pct"/>
+                </div>
+              </media>
+              <media :query="{minWidth: tweakpoint}">
                 <div class="table-data col-vol">
                   <RankingTableVolume
                     :stats="dapp.stats"
@@ -149,6 +161,10 @@
                     v-if="selectedColumn.selection === 'dau'"
                     :value="dapp.stats.dau"
                     :value_pct="dapp.stats.dau_pct"/>
+                  <RankingTableValuePct
+                    v-if="selectedColumn.selection === 'tx_1d'"
+                    :value="dapp.stats.tx_1d"
+                    :value_pct="dapp.stats.tx_1d_pct"/>
                   <RankingTableVolume
                     v-if="selectedColumn.selection === 'usd_value_7d'"
                     :stats="dapp.stats"
@@ -199,6 +215,7 @@ import RankingTableProfileHead from './RankingTableProfileHead'
 import RankingTableRank from './RankingTableRank'
 import RankingTableRankHead from './RankingTableRankHead'
 import RankingTableTrend from './RankingTableTrend'
+import RankingTableTxHead from './RankingTableTxHead'
 import RankingTableUsageHead from './RankingTableUsageHead'
 import RankingTableValuePct from './RankingTableValuePct'
 import RankingTableVolume from './RankingTableVolume'
@@ -224,6 +241,7 @@ export default {
     RankingTableRank,
     RankingTableRankHead,
     RankingTableTrend,
+    RankingTableTxHead,
     RankingTableUsageHead,
     RankingTableValuePct,
     RankingTableVolume,
@@ -363,6 +381,12 @@ export default {
   width: 50px;
   margin-right: 15px;
   align-self: stretch;
+}
+
+.col-tx {
+  width: 160px;
+  text-align: right;
+  padding: 0 10px;
 }
 
 .col-usage {
