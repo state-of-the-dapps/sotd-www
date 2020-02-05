@@ -200,6 +200,10 @@ const platforms = Object.freeze([
         {
           id: 'rinkeby',
           name: 'Rinkeby'
+        },
+        {
+          id: 'goerli',
+          name: 'Goerli'
         }
       ],
       validations: [
@@ -490,6 +494,36 @@ const platforms = Object.freeze([
     contracts: {
       networks: [],
       validations: []
+    }
+  },
+  {
+    id: 'tron',
+    name: 'TRON',
+    hideOnHomepage: true,
+    contracts: {
+      networks: [
+        {
+          id: 'tronMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 34,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 34,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: 'T',
+          message: 'Addresses must start with T'
+        }
+      ]
     }
   }
 ])

@@ -69,6 +69,8 @@ export default {
         volume = stats.neo_value_7d
       } else if (platform === 'OST') {
         volume = stats.ost_value_7d
+      } else if (platform === 'TRON') {
+        volume = stats.tron_value_7d
       }
       return volume
     },
@@ -92,6 +94,8 @@ export default {
         volumePct = stats.neo_value_7d_pct
       } else if (platform === 'OST') {
         volumePct = stats.ost_value_7d_pct
+      } else if (platform === 'TRON') {
+        volumePct = stats.tron_value_7d_pct
       }
       return volumePct
     }

@@ -237,7 +237,8 @@
         "klaytn": "Klaytn",
         "neo": "NEO",
         "ost": "OST",
-        "blockstack": "Blockstack"
+        "blockstack": "Blockstack",
+        "tron": "TRON"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",
