@@ -32,7 +32,7 @@
         </div>
       </div>
       <div
-        v-if="dapp.stats && dapp.stats.dau"
+        v-if="dapp.stats && dapp.stats.mau"
         class="module-wrapper -tier-4">
         <div
           v-if="dapp.stats.mau"
