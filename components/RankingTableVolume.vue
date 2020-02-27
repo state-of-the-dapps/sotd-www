@@ -65,7 +65,7 @@ export default {
         volume = stats.steem_value_7d
       } else if (platform === 'xDai') {
         volume = stats.xdai_value_7d
-      } else if (platform === 'NEO') {
+      } else if (platform === 'Neo') {
         volume = stats.neo_value_7d
       } else if (platform === 'OST') {
         volume = stats.ost_value_7d
@@ -90,7 +90,7 @@ export default {
         volumePct = stats.steem_value_7d_pct
       } else if (platform === 'xDai') {
         volumePct = stats.xdai_value_7d_pct
-      } else if (platform === 'NEO') {
+      } else if (platform === 'Neo') {
         volumePct = stats.neo_value_7d_pct
       } else if (platform === 'OST') {
         volumePct = stats.ost_value_7d_pct
