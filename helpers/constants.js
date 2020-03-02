@@ -251,6 +251,7 @@ const platforms = Object.freeze([
   {
     id: 'steem',
     name: 'Steem',
+    hideOnHomepage: true,
     software: {
       name: 'Steem Keychain',
       url:
@@ -275,6 +276,7 @@ const platforms = Object.freeze([
   {
     id: 'poa',
     name: 'POA',
+    hideOnHomepage: true,
     //software: {
     //  name: 'Nifty',
     //  url:
@@ -309,6 +311,7 @@ const platforms = Object.freeze([
   {
     id: 'xdai',
     name: 'xDai',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
