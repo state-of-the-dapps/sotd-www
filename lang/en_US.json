@@ -238,7 +238,8 @@
         "neo": "Neo",
         "ost": "OST",
         "blockstack": "Blockstack",
-        "tron": "TRON"
+        "tron": "TRON",
+        "icon": "ICON"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",

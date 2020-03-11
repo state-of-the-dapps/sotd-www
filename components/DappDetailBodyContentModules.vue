@@ -59,7 +59,7 @@
             type="numbers"/>
         </div>
         <div
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d || dapp.stats.neo_value_30d || dapp.stats.ost_value_30d || dapp.stats.tron_value_30d"
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d || dapp.stats.neo_value_30d || dapp.stats.ost_value_30d || dapp.stats.tron_value_30d || dapp.stats.icon_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d"
@@ -142,6 +142,15 @@
             :quarterly="dapp.stats.tron_value_90d"
             :weekly="dapp.stats.tron_value_7d"
             :title="$t(namespace('volume'), {token: 'TRX'})"
+            type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.icon_value_30d"
+            :daily="dapp.stats.icon_value_1d"
+            :monthly="dapp.stats.icon_value_30d"
+            :sparkline="dapp.sparklines.icon_value"
+            :quarterly="dapp.stats.icon_value_90d"
+            :weekly="dapp.stats.icon_value_7d"
+            :title="$t(namespace('volume'), {token: 'ICX'})"
             type="numbers"/>
         </div>
       </div>

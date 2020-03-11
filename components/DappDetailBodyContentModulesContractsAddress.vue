@@ -99,6 +99,11 @@ export default {
           'https://steemd.com/@' + this.address + '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'TRON') {
         addressLink = 'https://tronscan.org/#/contract/' + this.address
+      } else if (this.platform === 'ICON') {
+        addressLink =
+          'https://tracker.icon.foundation/contract/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'xDai') {
         addressLink =
           'https://blockscout.com/poa/dai/address/' +

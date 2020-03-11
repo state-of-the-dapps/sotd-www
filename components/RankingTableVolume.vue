@@ -71,6 +71,8 @@ export default {
         volume = stats.ost_value_7d
       } else if (platform === 'TRON') {
         volume = stats.tron_value_7d
+      } else if (platform === 'ICON') {
+        volume = stats.icon_value_7d
       }
       return volume
     },
@@ -96,6 +98,8 @@ export default {
         volumePct = stats.ost_value_7d_pct
       } else if (platform === 'TRON') {
         volumePct = stats.tron_value_7d_pct
+      } else if (platform === 'ICON') {
+        volumePct = stats.icon_value_7d_pct
       }
       return volumePct
     }

@@ -528,6 +528,36 @@ const platforms = Object.freeze([
         }
       ]
     }
+  },
+  {
+    id: 'icon',
+    name: 'ICON',
+    hideOnHomepage: true,
+    contracts: {
+      networks: [
+        {
+          id: 'iconMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: 'cx',
+          message: 'Addresses must start with cx'
+        }
+      ]
+    }
   }
 ])
 
