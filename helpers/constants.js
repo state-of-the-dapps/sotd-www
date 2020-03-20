@@ -251,7 +251,7 @@ const platforms = Object.freeze([
   {
     id: 'steem',
     name: 'Steem',
-    hideOnHomepage: true,
+    hideOnHomepage: false,
     software: {
       name: 'Steem Keychain',
       url:
@@ -261,6 +261,26 @@ const platforms = Object.freeze([
       networks: [
         {
           id: 'steemMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*(?:\.[a-z](-[a-z0-9](-[a-z0-9])*)?(-[a-z0-9]|[a-z0-9])*)*$)/,
+          message: 'One of your addresses is not formatted correctly'
+        }
+      ]
+    }
+  },
+  {
+    id: 'hive',
+    name: 'Hive',
+    hideOnHomepage: false,
+    contracts: {
+      networks: [
+        {
+          id: 'hiveMainnet',
           name: 'Mainnet'
         }
       ],

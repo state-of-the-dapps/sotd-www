@@ -3,34 +3,34 @@
     v-if="platform"
     class="DappFormFieldsContracts">
     <div>
-      <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span><span>{{ platform }} contract <template v-if="platform === 'EOS' || platform === 'Steem'">accounts</template><template v-else>addresses</template></span></p>
+      <p class="heading"><span class="checkmark"><IconCheckmark :fill="isComplete ? 'purple' : 'gray'"/></span><span>{{ platform }} contract <template v-if="platform === 'EOS' || platform === 'Steem' || platform === 'Hive'">accounts</template><template v-else>addresses</template></span></p>
       <template v-for="(field, index) in contractFields">
-        <ul 
-          v-if="platform === field.platform" 
+        <ul
+          v-if="platform === field.platform"
           :key="index"
           class="list">
-          <li 
-            v-for="(network, index) in field.networks" 
-            :id="network.id" 
+          <li
+            v-for="(network, index) in field.networks"
+            :id="network.id"
             :key="index"
             class="item">
             <div class="name">{{ network.name }} <span class="boost">+10% {{ $t('profileStrength') }}</span></div>
-            <div 
-              :class="network.errors && network.errors.length > 0 ? '--has-errors' : ''" 
+            <div
+              :class="network.errors && network.errors.length > 0 ? '--has-errors' : ''"
               class="input-wrapper">
               <textarea
                 :id="network.id + 'Field'"
-                :value="network.addresses" 
+                :value="network.addresses"
                 class="input"
-                placeholder="Enter addresses (one per line)" 
-                maxlength="11000" 
+                placeholder="Enter addresses (one per line)"
+                maxlength="11000"
                 @input="updateAndValidate(network.id, $event.target.value)"/>
               <ul
-                v-if="network.errors && network.errors.length > 0" 
+                v-if="network.errors && network.errors.length > 0"
                 class="error-list -contracts">
-                <li 
-                  v-for="(error, index) in network.errors" 
-                  :key="index" 
+                <li
+                  v-for="(error, index) in network.errors"
+                  :key="index"
                   class="error-item">{{ error }}</li>
               </ul>
             </div>

@@ -167,7 +167,7 @@ export default {
     let title = 'State of the DApps — Ranking the Best '
     title += this.$route.params.platform
       ? platforms[this.$route.params.platform] + ' '
-      : 'Ethereum, EOS & Steem '
+      : 'Ethereum, EOS, Steem & Hive '
     title += this.$route.params.category
       ? this.$options.filters.capitalize(this.$route.params.category) + ' '
       : 'DApps'

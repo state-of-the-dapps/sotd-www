@@ -196,7 +196,7 @@
     "HomeHeroContentIntro": {
         "heading": "Explore Decentralized Applications",
         "learn": "Learn more about DApps",
-        "subheading": "Discover the possibilities of the Ethereum, EOS, Klaytn and NEO blockchains with the definitive registry of DApp projects.",
+        "subheading": "Discover the possibilities of the Ethereum, EOS, Steem, Hive, Klaytn and NEO blockchains with the definitive registry of DApp projects.",
         "view": "View the top DApps"
     },
     "missingData": "Data is currently missing or incomplete",
@@ -233,6 +233,7 @@
         "gochain": "GoChain",
         "xdai": "xDai",
         "steem": "Steem",
+        "hive": "Hive",
         "loom": "Loom",
         "klaytn": "Klaytn",
         "neo": "Neo",

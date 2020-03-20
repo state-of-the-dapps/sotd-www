@@ -19,7 +19,7 @@
       <div class="featured-wrapper">
         <div class="featured-list-wrapper">
           <ul class="featured-list">
-            <FeaturedDappListItem 
+            <FeaturedDappListItem
               v-for="(dapp, index) in dapps"
               :key="index"
               :dapp="dapp"
@@ -64,6 +64,8 @@ export default {
   mounted() {
     Promise.all([this.getFeaturedDapps(), this.getPromotedDapps()]).then(
       ([featured, promoted]) => {
+        console.log('FEATURED', featured)
+        console.log('PROMOTED', promoted)
         const featuredDapps = featured.data.items
         // slots must be 4 or fewer
         const slots = dappPromotedSlots

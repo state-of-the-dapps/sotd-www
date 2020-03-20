@@ -16,9 +16,9 @@
         :platform="platform"
         :network="network"
         :address="address"/>
-      <li v-if="addresses.length > 10"><span 
-        class="show-hide" 
-        @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + addresses.slice(visibleLimit).length + ' contracts' : 'Show ' + addresses.slice(visibleLimit).length + ' more contracts' }}</span></li>     
+      <li v-if="addresses.length > 10"><span
+        class="show-hide"
+        @click="toggleHidden">{{ hiddenIsVisible ? 'Hide ' + addresses.slice(visibleLimit).length + ' contracts' : 'Show ' + addresses.slice(visibleLimit).length + ' more contracts' }}</span></li>
     </ul>
   </li>
 </template>
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     label() {
-      if (this.platform === 'Steem') {
+      if (this.platform === 'Steem' || this.platform === 'Hive') {
         return 'address'
       } else {
         return 'contract'
