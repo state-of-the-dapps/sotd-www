@@ -97,6 +97,11 @@ export default {
       } else if (this.platform === 'Steem') {
         addressLink =
           'https://steemd.com/@' + this.address + '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'Hive') {
+        addressLink =
+          'https://hiveblocks.com/@' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'TRON') {
         addressLink = 'https://tronscan.org/#/contract/' + this.address
       } else if (this.platform === 'ICON') {
