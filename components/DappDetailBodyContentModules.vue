@@ -59,7 +59,7 @@
             type="numbers"/>
         </div>
         <div
-          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.xdai_value_30d || dapp.stats.neo_value_30d || dapp.stats.ost_value_30d || dapp.stats.tron_value_30d || dapp.stats.icon_value_30d"
+          v-if="dapp.stats.value_30d || dapp.stats.poa_value_30d || dapp.stats.gochain_value_30d || dapp.stats.eos_value_30d || dapp.stats.steem_value_30d || dapp.stats.hive_value_30d ||dapp.stats.xdai_value_30d || dapp.stats.neo_value_30d || dapp.stats.ost_value_30d || dapp.stats.tron_value_30d || dapp.stats.icon_value_30d"
           class="module">
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.value_30d"
@@ -106,6 +106,15 @@
             :quarterly="dapp.stats.steem_value_90d"
             :weekly="dapp.stats.steem_value_7d"
             :title="$t(namespace('volume'), {token: 'STEEM'})"
+            type="numbers"/>
+          <DappDetailBodyContentModulesStats
+            v-if="dapp.stats.hive_value_30d"
+            :daily="dapp.stats.hive_value_1d"
+            :monthly="dapp.stats.hive_value_30d"
+            :sparkline="dapp.sparklines.hive_value"
+            :quarterly="dapp.stats.hive_value_90d"
+            :weekly="dapp.stats.hive_value_7d"
+            :title="$t(namespace('volume'), {token: 'HIVE'})"
             type="numbers"/>
           <DappDetailBodyContentModulesStats
             v-if="dapp.stats.xdai_value_30d"

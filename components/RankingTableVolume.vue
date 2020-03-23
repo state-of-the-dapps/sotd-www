@@ -11,6 +11,7 @@
       <template v-if="platform === 'GoChain'">GO</template>
       <template v-if="platform === 'Ethereum'">ETH</template>
       <template v-if="platform === 'Steem'">STEEM</template>
+      <template v-if="platform === 'Hive'">HIVE</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span
@@ -63,6 +64,8 @@ export default {
         volume = stats.gochain_value_7d
       } else if (platform === 'Steem') {
         volume = stats.steem_value_7d
+      } else if (platform === 'Hive') {
+        volume = stats.hive_value_7d
       } else if (platform === 'xDai') {
         volume = stats.xdai_value_7d
       } else if (platform === 'Neo') {
@@ -90,6 +93,8 @@ export default {
         volumePct = stats.gochain_value_7d_pct
       } else if (platform === 'Steem') {
         volumePct = stats.steem_value_7d_pct
+      } else if (platform === 'Hive') {
+        volumePct = stats.hive_value_7d_pct
       } else if (platform === 'xDai') {
         volumePct = stats.xdai_value_7d_pct
       } else if (platform === 'Neo') {
