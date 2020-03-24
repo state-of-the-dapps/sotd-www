@@ -450,6 +450,7 @@ const platforms = Object.freeze([
   {
     id: 'loom',
     name: 'Loom',
+    hideOnHomepage: true,
     contracts: {
       networks: [
         {
@@ -552,7 +553,6 @@ const platforms = Object.freeze([
   {
     id: 'icon',
     name: 'ICON',
-    hideOnHomepage: true,
     contracts: {
       networks: [
         {
