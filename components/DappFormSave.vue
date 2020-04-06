@@ -12,17 +12,17 @@
       </p>
     </div>
     <!--
-    <div 
+    <div
       v-if="formType === 'new'"
       class="additional-comments">
-      <label 
-        class="text-area-label" 
+      <label
+        class="text-area-label"
         for="additionalComments">{{ $t('submitQuestion') }}</label>
-      <textarea 
-        :value="additionalComments" 
+      <textarea
+        :value="additionalComments"
         :placeholder="$t('submitQuestionPlaceholder')"
-        class="text-area" 
-        name="additionalComments" 
+        class="text-area"
+        name="additionalComments"
         @input="updateAdditionalComments($event.target.value)"/>
     </div>
     -->
@@ -36,30 +36,30 @@
       <div
         v-if="formType === 'new'"
         class="checkbox-field">
-        <input 
+        <input
           id="subscribe-newsletter-checkbox"
           :checked="subscribeNewsletter"
-          class="checkbox-input" 
+          class="checkbox-input"
           type="checkbox"
           @click="updateNewsletter">
-        <label 
-          class="checkbox-label" 
+        <label
+          class="checkbox-label"
           for="subscribe-newsletter-checkbox">Email me (very occasional) updates</label>
       </div>
       <div
         id="acceptedTermsField"
         class="checkbox-field">
-        <input 
-          id="accepted-terms-checkbox" 
-          :checked="acceptedTerms" 
-          class="checkbox-input" 
+        <input
+          id="accepted-terms-checkbox"
+          :checked="acceptedTerms"
+          class="checkbox-input"
           type="checkbox"
           @click="updateAcceptedTerms">
         <label
-          id="acceptedTerms" 
-          class="checkbox-label" 
-          for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link 
-            to="/terms" 
+          id="acceptedTerms"
+          class="checkbox-label"
+          for="accepted-terms-checkbox">I accept the&nbsp;<nuxt-link
+            to="/terms"
             @click.native="$mixpanel.track('New DApp - Terms of Service')">Terms of Service</nuxt-link>&nbsp;<span class="required">(required)</span></label>
       </div>
       <p v-if="formType === 'new'">Submissions are free and typically processed by the next business day.</p>
@@ -93,27 +93,27 @@
           {{ `${errorFields.length} ${$options.filters.pluralize('field', errorFields.length)} ${errorFields.length > 1 ? 'require' : 'requires' } your attention` }}
         </div>
       </div>
-      <input 
+      <input
         v-if="(formType === 'edit' && !diffExists) || (errorFields.length > 0)"
         :value="'Submit'"
         class="submit"
         type="submit"
         @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true, errorFields })">
-      <input 
-        v-else-if="sending" 
-        :value="'Please wait'" 
-        class="submit" 
-        type="submit" 
+      <input
+        v-else-if="sending"
+        :value="'Please wait'"
+        class="submit"
+        type="submit"
         @click.prevent="$mixpanel.track('New DApp - Submit', { disabled: true })">
-      <input 
-        v-else-if="errorFields.length === 0" 
+      <input
+        v-else-if="errorFields.length === 0"
         :value="'Submit'"
-        class="submit is-ready" 
-        type="submit" 
+        class="submit is-ready"
+        type="submit"
         @click.prevent="submit">
-      <input 
-        v-model="honeypot" 
-        type="text" 
+      <input
+        v-model="honeypot"
+        type="text"
         class="yumyum">
     </div>
   </div>
@@ -216,7 +216,7 @@ export default {
         socialChat: 'Chat invitation URL',
         status: 'Status',
         tags: 'Tags',
-        teaser: 'Tagline',
+        teaser: 'Headline',
         websiteUrl: 'Website URL'
       }
       this.errorFields.map(x => {

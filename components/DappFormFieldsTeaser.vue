@@ -3,7 +3,7 @@
     id="teaser"
     :class="errors && errors.length > 0 ? '--has-errors' : ''"
     class="DappFormFieldsTeaser item">
-    <p class="heading"><span class="checkmark"><IconCheckmark :fill="teaser.length >= 4 && !errors.length ? 'purple' : 'gray'"/></span>Tagline <span class="required">(required)</span></p>
+    <p class="heading"><span class="checkmark"><IconCheckmark :fill="teaser.length >= 4 && !errors.length ? 'purple' : 'gray'"/></span>Headline <span class="required">(required)</span></p>
     <input
       id="teaserField"
       :class="teaser.length > 0 ? '--is-filled' : ''"
@@ -85,10 +85,10 @@ export default {
       ]
       this.validationTimer = setTimeout(() => {
         this.teaser.length > 50
-          ? errors.data.push(`Tagline can't be longer than 50 characters`)
+          ? errors.data.push(`Headline can't be longer than 50 characters`)
           : ''
         this.teaser.length < 4
-          ? errors.data.push(`Tagline must be longer than 3 characters`)
+          ? errors.data.push(`Headline must be longer than 3 characters`)
           : ''
         var hasWarningWords = warningWords.some(word => {
           return this.teaser.toLowerCase().indexOf(word.value) !== -1
