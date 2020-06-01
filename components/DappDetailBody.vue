@@ -1,7 +1,7 @@
 <template>
   <div class="DappDetailBody">
-    <div 
-      :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''" 
+    <div
+      :class="dapp.categories && dapp.categories.length ? '-' + dapp.categories[0] : ''"
       class="wrapper">
       <DappDetailBodyHeading
         :direct="direct"
@@ -10,7 +10,7 @@
         :category="dapp.categories && dapp.categories.length ? dapp.categories[0] : ''"
         :teaser="dapp.teaser"/>
       <DappDetailBodyContent :dapp="dapp" />
-      <p class="ctr-info">This page had <strong>{{ dapp.stats.impressions }} views</strong> and <strong>{{ dapp.stats.clicks }} clicks</strong> (<strong>{{ ctr }}% CTR</strong>) in the last 90 days</p>
+      <p class="ctr-info">This page had <strong>{{ dapp.stats.impressions }} views</strong> and <strong>{{ dapp.stats.clicks }} clicks</strong> (<strong>{{ ctr }}% CTR</strong>) in the last 180 days</p>
     </div>
   </div>
 </template>
