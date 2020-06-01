@@ -63,7 +63,7 @@ export default {
       title:
         'State of the DApps — A list of ' +
         this.statDappCount.toLocaleString() +
-        ' blockchain apps for Ethereum, Steem, Hive, EOS, and more',
+        ' blockchain apps for Ethereum, Hive, EOS, and more',
       script: [
         {
           src:

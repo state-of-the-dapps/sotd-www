@@ -180,18 +180,6 @@
         </li>
         <li class="attribution-item">
           <i18n
-            :path="namespace('steemDataBy')"
-            tag="span"><a
-              slot="source"
-              class="attribution-link"
-              href="https://steemapps.com/"
-              target="_blank"
-              rel="noopener"
-              @click="$mixpanel.track('SotD - Steemapps')">SteemApps.com</a>
-          </i18n>
-        </li>
-        <li class="attribution-item">
-          <i18n
             :path="namespace('hiveDataBy')"
             tag="span"><a
               slot="source"

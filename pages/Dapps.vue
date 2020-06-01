@@ -183,7 +183,7 @@ export default {
       title:
         'State of the DApps — ' +
         this.statDappCount.toLocaleString() +
-        ' Projects Built on Ethereum, EOS, Steem & Hive',
+        ' Projects Built on Ethereum, EOS & Hive',
       script: [
         {
           src:
