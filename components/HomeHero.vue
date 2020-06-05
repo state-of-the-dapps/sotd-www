@@ -12,16 +12,41 @@
           <li
             v-for="platform in platforms"
             :key="platform"
-            :class="'has-' + platforms.length"
+            :class="'has-' + platformsLength"
             class="platform-item"
           >
             <nuxt-link
               :to="localePath({ name: 'platforms-platform', params: { platform: platform.toLowerCase() }})"
-              :class="platforms.length > 10 ? 'smaller' : ''"
+              :class="platformsLength > 10 ? 'smaller' : ''"
               class="platform-link"
               @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
             >{{ platform }}</nuxt-link>
           </li>
+          <template v-if="!showHiddenPlatforms">
+            <li
+              :class="'has-' + platformsLength"
+              class="platform-item">
+              <a
+                :class="platformsLength > 10 ? 'smaller' : ''"
+                class="platform-link"
+                @click="showHiddenPlatforms = true">More...</a>
+            </li>
+          </template>
+          <template v-if="showHiddenPlatforms">
+            <li
+              v-for="platform in hiddenPlatforms"
+              :key="platform"
+              :class="'has-' + platformsLength"
+              class="platform-item"
+            >
+              <nuxt-link
+                :to="localePath({ name: 'platforms-platform', params: { platform: platform.toLowerCase() }})"
+                :class="platformsLength > 10 ? 'smaller' : ''"
+                class="platform-link"
+                @click.native="$mixpanel.track('Homepage Hero Platform', { platform })"
+              >{{ platform }}</nuxt-link>
+            </li>
+          </template>
         </ul>
         <p class="platform-cta-wrapper">
           <nuxt-link :to="localePath({ name: 'platforms' })">{{ $t(namespace('cta')) }}</nuxt-link>
@@ -32,7 +57,7 @@
 </template>
 
 <script>
-import { platformList } from '@/helpers/constants'
+import { platforms } from '@/helpers/constants'
 import HomeHeroContent from './HomeHeroContent'
 import BaseMenu from './BaseMenu'
 
@@ -43,7 +68,35 @@ export default {
   },
   data() {
     return {
-      platforms: platformList({ showHidden: false })
+      showHiddenPlatforms: false
+    }
+  },
+  computed: {
+    platforms() {
+      const list = []
+      platforms.map(platform => {
+        if (platform.name && !platform.hideOnHomepage) {
+          list.push(platform.name)
+        }
+      })
+      return list
+    },
+    platformsLength() {
+      let length = 0
+      length += this.platforms.length + 1
+      if (this.showHiddenPlatforms) {
+        length += this.hiddenPlatforms.length - 1
+      }
+      return length
+    },
+    hiddenPlatforms() {
+      const list = []
+      platforms.map(platform => {
+        if (platform.name && platform.hideOnHomepage) {
+          list.push(platform.name)
+        }
+      })
+      return list
     }
   }
 }
@@ -91,15 +144,10 @@ export default {
 .platform-item {
   width: 33.33%;
   @include tweakpoint('min-width', 575px) {
-    width: 33.33%;
+    width: 20%;
   }
-  @include tweakpoint('min-width', 1000px) {
-    width: 10%;
-    @for $i from 1 through 10 {
-      &.has-#{$i} {
-        width: 100 / $i * 1%;
-      }
-    }
+  @include tweakpoint('min-width', 900px) {
+    width: 14.28571429%;
   }
 }
 
@@ -112,9 +160,6 @@ export default {
   margin: 5px;
   font-weight: 600;
   text-align: center;
-  &.smaller {
-    padding: 6px 10px;
-  }
 }
 
 .platform-list {
