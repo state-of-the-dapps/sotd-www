@@ -144,15 +144,10 @@ export default {
 .platform-item {
   width: 33.33%;
   @include tweakpoint('min-width', 575px) {
-    width: 33.33%;
+    width: 20%;
   }
-  @include tweakpoint('min-width', 1000px) {
-    width: 10%;
-    @for $i from 1 through 10 {
-      &.has-#{$i} {
-        width: 100 / $i * 1%;
-      }
-    }
+  @include tweakpoint('min-width', 900px) {
+    width: 14.28571429%;
   }
 }
 
@@ -165,9 +160,6 @@ export default {
   margin: 5px;
   font-weight: 600;
   text-align: center;
-  &.smaller {
-    padding: 6px 10px;
-  }
 }
 
 .platform-list {
