@@ -251,6 +251,10 @@ const platforms = Object.freeze([
   {
     id: 'klaytn',
     name: 'Klaytn',
+    software: {
+      name: 'Kaikas',
+      url: 'https://kaikas.io/?utm_source=StateOfTheDApps'
+    },
     contracts: {
       networks: [
         {
@@ -306,6 +310,11 @@ const platforms = Object.freeze([
     id: 'hive',
     name: 'Hive',
     hideOnHomepage: false,
+    software: {
+      name: 'Hive Keychain',
+      url:
+        'https://chrome.google.com/webstore/detail/hive-keychain/jcacnejopjdphbnjgfaaobbfafkihpep?utm_source=StateOfTheDApps'
+    },
     contracts: {
       networks: [
         {
