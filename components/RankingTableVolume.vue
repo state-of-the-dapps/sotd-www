@@ -12,6 +12,10 @@
       <template v-if="platform === 'Ethereum'">ETH</template>
       <template v-if="platform === 'Steem'">STEEM</template>
       <template v-if="platform === 'Hive'">HIVE</template>
+      <template v-if="platform === 'Klaytn'">KLAY</template>
+      <template v-if="platform === 'Neo'">NEO</template>
+      <template v-if="platform === 'TRON'">TRX</template>
+      <template v-if="platform === 'ICON'">ICX</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span
@@ -68,6 +72,8 @@ export default {
         volume = stats.hive_value_7d
       } else if (platform === 'xDai') {
         volume = stats.xdai_value_7d
+      } else if (platform === 'Klaytn') {
+        volume = stats.klaytn_value_7d
       } else if (platform === 'Neo') {
         volume = stats.neo_value_7d
       } else if (platform === 'OST') {
@@ -97,6 +103,8 @@ export default {
         volumePct = stats.hive_value_7d_pct
       } else if (platform === 'xDai') {
         volumePct = stats.xdai_value_7d_pct
+      } else if (platform === 'Klaytn') {
+        volumePct = stats.klaytn_value_7d_pct
       } else if (platform === 'Neo') {
         volumePct = stats.neo_value_7d_pct
       } else if (platform === 'OST') {
