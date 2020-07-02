@@ -25,7 +25,6 @@
       margin-bottom: 24px !important;
       }
     </style>
-    <div id="codefund" />
     <CategoryPlatformFilters base-route="rankings"/>
     <div ref="table">
       <RankingTable
@@ -172,14 +171,7 @@ export default {
       ? this.$options.filters.capitalize(this.$route.params.category) + ' '
       : 'DApps'
     return {
-      title,
-      script: [
-        {
-          src:
-            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=horizontal',
-          async: true
-        }
-      ]
+      title
     }
   },
   scrollToTop: true

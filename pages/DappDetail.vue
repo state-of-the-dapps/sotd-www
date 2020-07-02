@@ -57,13 +57,6 @@ export default {
           content: this.$options.filters.truncate(this.dapp.description, 300)
         },
         { hid: 'image', property: 'og:image', content: this.dapp.productImage }
-      ],
-      script: [
-        {
-          src:
-            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=square',
-          async: true
-        }
       ]
     }
   }

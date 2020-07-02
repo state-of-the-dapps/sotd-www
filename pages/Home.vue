@@ -28,7 +28,6 @@
       margin-bottom: 24px !important;
       }
     </style>
-    <div id="codefund" />
     <FeaturedSpotlight/>
     <FeaturedRankingByCategoryList/>
     <FeaturedCategoryList/>
@@ -63,14 +62,7 @@ export default {
       title:
         'State of the DApps — A list of ' +
         this.statDappCount.toLocaleString() +
-        ' blockchain apps for Ethereum, Hive, EOS, and more',
-      script: [
-        {
-          src:
-            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=horizontal',
-          async: true
-        }
-      ]
+        ' blockchain apps for Ethereum, Hive, EOS, and more'
     }
   }
 }

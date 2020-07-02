@@ -22,7 +22,6 @@
           text-align: right;
           }
         </style>
-        <div id="codefund" />
       </div>
       <div
         ref="list"
@@ -183,14 +182,7 @@ export default {
       title:
         'State of the DApps — ' +
         this.statDappCount.toLocaleString() +
-        ' Projects Built on Ethereum, EOS & Hive',
-      script: [
-        {
-          src:
-            'https://codefund.app/properties/232/funder.js?template=horizontal&theme=square',
-          async: true
-        }
-      ]
+        ' Projects Built on Ethereum, EOS & Hive'
     }
   },
   scrollToTop: true

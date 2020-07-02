@@ -56,7 +56,6 @@
           text-align: right;
           }
         </style>
-        <div id="codefund" />
         <DappDetailBodyContentRecommend
           :name="dapp.name"
           :slug="dapp.slug"
