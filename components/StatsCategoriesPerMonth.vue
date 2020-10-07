@@ -3882,7 +3882,7 @@ export default {
       selectionMap: {
         activeUsers: 'Active users',
         transactions: 'Transactions',
-        volume: 'Volume (USD)'
+        volume: 'Volume (ETH)'
       },
       selected: 'Transactions'
     }
