@@ -1,4 +1,4 @@
-const dappCount = 3118
+const dappCount = 3734
 
 const dappGameTag = 'game'
 
