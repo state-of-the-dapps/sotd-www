@@ -2811,7 +2811,7 @@ const rawData = [
   },
   {
     month: '2020-01',
-    category: 'health',
+    category: 'Health',
     transactions: 10,
     activeUsers: 2,
     volume: 0
@@ -2993,7 +2993,7 @@ const rawData = [
   },
   {
     month: '2020-02',
-    category: 'health',
+    category: 'Health',
     transactions: 17,
     activeUsers: 8,
     volume: 0
@@ -3070,7 +3070,7 @@ const rawData = [
   },
   {
     month: '2020-03',
-    category: 'health',
+    category: 'Health',
     transactions: 14,
     activeUsers: 7,
     volume: 0
@@ -3210,7 +3210,7 @@ const rawData = [
   },
   {
     month: '2020-04',
-    category: 'health',
+    category: 'Health',
     transactions: 17,
     activeUsers: 7,
     volume: 0
@@ -3329,7 +3329,7 @@ const rawData = [
   },
   {
     month: '2020-05',
-    category: 'health',
+    category: 'Health',
     transactions: 10,
     activeUsers: 7,
     volume: 0
@@ -3427,7 +3427,7 @@ const rawData = [
   },
   {
     month: '2020-06',
-    category: 'health',
+    category: 'Health',
     transactions: 9,
     activeUsers: 6,
     volume: 0
@@ -3553,7 +3553,7 @@ const rawData = [
   },
   {
     month: '2020-07',
-    category: 'health',
+    category: 'Health',
     transactions: 8,
     activeUsers: 6,
     volume: 0
@@ -3623,7 +3623,7 @@ const rawData = [
   },
   {
     month: '2020-08',
-    category: 'health',
+    category: 'Health',
     transactions: 34,
     activeUsers: 30,
     volume: 0
@@ -3721,7 +3721,7 @@ const rawData = [
   },
   {
     month: '2020-09',
-    category: 'health',
+    category: 'Health',
     transactions: 8,
     activeUsers: 6,
     volume: 0
