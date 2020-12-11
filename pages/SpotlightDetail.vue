@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     v-if="spotlight.slug"
     class="page">
     <h2 class="title-2">{{ $t('SpotlightDetail.heading') }}</h2>
@@ -15,6 +15,7 @@
         v-html="renderedMd"
       />
       <nuxt-link
+        v-if="spotlight.relatedDapp"
         :to="localePath({ name: 'dapp-detail', params: { slug: spotlight.relatedDapp.slug } })"
         class="cta-wrapper"
         @click.native="$mixpanel.track('Spotlight - CTA', { slug: spotlight.slug, dapp: spotlight.relatedDapp.slug })">
@@ -53,12 +54,7 @@ export default {
         imageUrl: '',
         slug: '',
         teaser: '',
-        title: '',
-        relatedDapp: {
-          name: '',
-          iconUrl: '',
-          slug: ''
-        }
+        title: ''
       }
     }
   },
