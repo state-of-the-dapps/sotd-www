@@ -226,29 +226,6 @@ const platforms = Object.freeze([
     }
   },
   {
-    id: 'eos',
-    name: 'EOS',
-    software: {
-      name: 'Scatter',
-      url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
-    },
-    contracts: {
-      networks: [
-        {
-          id: 'eosMainnet',
-          name: 'Mainnet'
-        }
-      ],
-      validations: [
-        {
-          type: 'regEx',
-          value: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/,
-          message: 'One of your addresses is not formatted correctly'
-        }
-      ]
-    }
-  },
-  {
     id: 'klaytn',
     name: 'Klaytn',
     software: {
@@ -277,6 +254,29 @@ const platforms = Object.freeze([
           type: 'startsWith',
           value: '0x',
           message: 'Addresses must start with 0x'
+        }
+      ]
+    }
+  },
+  {
+    id: 'eos',
+    name: 'EOS',
+    software: {
+      name: 'Scatter',
+      url: 'https://get-scatter.com/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'eosMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'regEx',
+          value: /(^[a-z1-5.]{1,11}[a-z1-5]$)|(^[a-z1-5.]{12}[a-j1-5]$)/,
+          message: 'One of your addresses is not formatted correctly'
         }
       ]
     }
