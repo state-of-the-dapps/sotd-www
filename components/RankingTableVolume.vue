@@ -14,6 +14,8 @@
       <template v-if="platform === 'Hive'">HIVE</template>
       <template v-if="platform === 'Klaytn'">KLAY</template>
       <template v-if="platform === 'Neo'">NEO</template>
+      <template v-if="platform === 'Obyte'">GBYTE</template>
+      <template v-if="platform === 'OST'">OST</template>
       <template v-if="platform === 'TRON'">TRX</template>
       <template v-if="platform === 'ICON'">ICX</template>
       <template v-if="platform === 'xDai'">xDAI</template>
@@ -76,6 +78,8 @@ export default {
         volume = stats.klaytn_value_7d
       } else if (platform === 'Neo') {
         volume = stats.neo_value_7d
+      } else if (platform === 'Obyte') {
+        volume = stats.obyte_value_7d
       } else if (platform === 'OST') {
         volume = stats.ost_value_7d
       } else if (platform === 'TRON') {
@@ -107,6 +111,8 @@ export default {
         volumePct = stats.klaytn_value_7d_pct
       } else if (platform === 'Neo') {
         volumePct = stats.neo_value_7d_pct
+      } else if (platform === 'Obyte') {
+        volumePct = stats.obyte_value_7d_pct
       } else if (platform === 'OST') {
         volumePct = stats.ost_value_7d_pct
       } else if (platform === 'TRON') {

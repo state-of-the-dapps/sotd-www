@@ -84,6 +84,10 @@ export default {
           'https://scan.nel.group/contract/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'Obyte') {
+        addressLink =
+          'https://explorer.obyte.org/?utm_source=StateOfTheDApps#' +
+          this.address
       } else if (this.platform === 'OST') {
         addressLink =
           'https://view.ost.com/mainnet/address/ad-1414-' +

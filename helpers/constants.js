@@ -427,6 +427,35 @@ const platforms = Object.freeze([
     }
   },
   {
+    id: 'obyte',
+    name: 'Obyte',
+    hideOnHomepage: true,
+    software: {
+      name: 'Obyte wallet',
+      url: 'https://obyte.org/?utm_source=StateOfTheDApps#download'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'obyteMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 32,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 32,
+          message: 'One of your addresses too long'
+        }
+      ]
+    }
+  },
+  {
     id: 'ost',
     name: 'OST',
     hideOnHomepage: true,
