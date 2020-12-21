@@ -429,7 +429,7 @@ const platforms = Object.freeze([
   {
     id: 'obyte',
     name: 'Obyte',
-    hideOnHomepage: true,
+    hideOnHomepage: false,
     software: {
       name: 'Obyte wallet',
       url: 'https://obyte.org/?utm_source=StateOfTheDApps#download'
@@ -552,7 +552,7 @@ const platforms = Object.freeze([
   {
     id: 'blockstack',
     name: 'Blockstack',
-    hideOnHomepage: false,
+    hideOnHomepage: true,
     contracts: {
       networks: [],
       validations: []
