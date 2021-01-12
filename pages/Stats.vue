@@ -3,11 +3,11 @@
     <div class="hero-wrapper">
       <PageHeading :title="$t('TheStats.title')"/>
       <p class="description">{{ $t('TheStats.description') }}</p>
-      <p class="button-wrapper">
+      <!-- <p class="button-wrapper">
         <nuxt-link to="/stats/request">
           <BaseButton :text="$t('TheStats.askUs')"/>
         </nuxt-link>
-      </p>
+      </p> -->
       <TheStats
         :growth-data="growth"
         :stat-categories="stats.categories"
