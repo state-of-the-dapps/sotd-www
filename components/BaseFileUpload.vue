@@ -85,9 +85,11 @@ export default {
         this.height &&
         this.height !== file.height
       ) {
-        this.$emit('addInvalidDimenionsWarning')
+        this.$emit('addInvalidDimensionsWarning')
+        this.remove()
+        return
       } else {
-        this.$emit('removeInvalidDimenionsWarning')
+        this.$emit('removeInvalidDimensionsWarning')
       }
       if (!file.accepted) {
         this.remove()
@@ -108,7 +110,7 @@ export default {
     remove() {
       this.$refs.el.dropzone.removeAllFiles()
       this.enable()
-      this.$emit('removeInvalidDimenionsWarning')
+      setTimeout(() => this.$emit('removeInvalidDimensionsWarning'), 5000)
       this.$emit('removeFile')
     },
     s3UploadError(errorMessage) {
