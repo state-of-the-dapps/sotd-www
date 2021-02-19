@@ -1,40 +1,43 @@
 <template>
-  <div 
+  <div
     :itemprop="votes && rating ? 'aggregateRating' : undefined"
     :itemtype="votes && rating ? 'http://schema.org/AggregateRating' : undefined"
     itemscope
     class="DappDetailBodyContentRecommend"
   >
     <div class="wrapper">
-      <p 
-        :itemprop="votes ? 'ratingCount' : undefined" 
+      <p
+        :itemprop="votes ? 'ratingCount' : undefined"
         :content="votes"
         class="description"
       >{{ $t(namespace('title')) }}</p>
-      <div 
+      <div
         :itemprop="rating ? 'ratingValue' : undefined"
         :content="rating"
         class="reaction-wrapper" >
-        <ul 
-          v-if="!reaction" 
+        <ul
+          v-if="!reaction"
           class="reaction-list">
-          <li 
-            :class="reaction == 'positive' ? 'is-active' : ''" 
-            class="reaction-item" 
+          <li
+            :class="reaction == 'positive' ? 'is-active' : ''"
+            class="reaction-item"
             @click="submitReaction('positive')">
-            <IconReactionPositive/><span class="reaction-value">{{ positive || 0 }}</span>
+            <div class="icon-positive"><IconReactionPositive/></div>
+            <span class="reaction-value">{{ positive || 0 }}</span>
           </li>
-          <li 
-            :class="reaction == 'neutral' ? 'is-active' : ''" 
-            class="reaction-item" 
+          <li
+            :class="reaction == 'neutral' ? 'is-active' : ''"
+            class="reaction-item"
             @click="submitReaction('neutral')">
-            <IconReactionNeutral/><span class="reaction-value">{{ neutral || 0 }}</span>
+            <div class="icon-neutral"><IconReactionNeutral/></div>
+            <span class="reaction-value">{{ neutral || 0 }}</span>
           </li>
-          <li 
-            :class="reaction == 'negative' ? 'is-active' : ''" 
-            class="reaction-item" 
+          <li
+            :class="reaction == 'negative' ? 'is-active' : ''"
+            class="reaction-item"
             @click="submitReaction('negative')">
-            <IconReactionNegative/><span class="reaction-value">{{ negative || 0 }}</span>
+            <div class="icon-negative"><IconReactionNegative/></div>
+            <span class="reaction-value">{{ negative || 0 }}</span>
           </li>
         </ul>
         <div
@@ -49,7 +52,7 @@
             @click="submitDappFeedback">{{ $t(namespace('submit')) }}</button>
         </div>
         <div
-          v-else 
+          v-else
           class="confirmation">
           <p><strong>{{ $t(namespace('thanks'), {name: name}) }}</strong></p>
           <p class="reaction-summary">
@@ -180,11 +183,26 @@ export default {
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  border: 1px solid rgba($color--black, 0.2);
-  border-radius: 4px;
   margin-right: 4px;
-  &:hover {
-    border-color: $color--black;
+  position: relative;
+
+  > div {
+    border-radius: 50%;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .icon-positive {
+    background-color: #bdebca;
+  }
+
+  .icon-neutral {
+    background-color: #fff6b9;
+  }
+
+  .icon-negative {
+    background-color: #ffaabf;
   }
 }
 
@@ -204,9 +222,11 @@ export default {
 
 .reaction-value {
   display: inline-block;
-  margin-left: 4px;
   font-size: 0.9rem;
   font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: -3px;
 }
 
 .reaction-wrapper {
