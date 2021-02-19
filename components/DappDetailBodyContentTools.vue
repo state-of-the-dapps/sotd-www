@@ -6,16 +6,6 @@
           <span
             class="tool-link"
             role="button"
-            @click="viewDappEdit()">
-            <IconEdit
-              :width="14"
-              :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
-          </span>
-        </li>
-        <li class="tool-item">
-          <span
-            class="tool-link"
-            role="button"
             @click="viewDappShare()">
             <IconShare
               :width="14"
