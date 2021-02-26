@@ -55,20 +55,35 @@
           v-else
           class="confirmation">
           <p><strong>{{ $t(namespace('thanks'), {name: name}) }}</strong></p>
-          <p class="reaction-summary">
-            <IconReactionPositive
+          <div class="reaction-summary">
+            <div
               v-if="reaction === 'positive'"
-              :width="30"
-              :height="30"/>
-            <IconReactionNeutral
+              class="reaction-item">
+              <div class="icon-positive">
+                <IconReactionPositive
+                  :width="30"
+                  :height="30"/>
+              </div>
+            </div>
+            <div
               v-if="reaction === 'neutral'"
-              :width="30"
-              :height="30"/>
-            <IconReactionNegative
+              class="reaction-item">
+              <div class="icon-neutral">
+                <IconReactionNeutral
+                  :width="30"
+                  :height="30"/>
+              </div>
+            </div>
+            <div
               v-if="reaction === 'negative'"
-              :width="30"
-              :height="30"/>
-          </p>
+              class="reaction-item">
+              <div class="icon-negative">
+                <IconReactionNegative
+                  :width="30"
+                  :height="30"/>
+              </div>
+            </div>
+          </div>
           <p v-if="comments"><strong>{{ $t(namespace('comments')) }}:</strong> {{ comments }}</p>
         </div>
       </div>
@@ -218,6 +233,15 @@ export default {
 
 .reaction-summary {
   text-align: center;
+
+  .reaction-item {
+    justify-content: center;
+
+    > div {
+      width: 42px;
+      height: 42px;
+    }
+  }
 }
 
 .reaction-value {
