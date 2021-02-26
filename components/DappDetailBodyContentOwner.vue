@@ -13,6 +13,16 @@
               :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
           </span>
         </li>
+        <li class="tool-item">
+          <nuxt-link
+            :to="localePath({ name: 'promoted-dapps' })"
+            class="tool-link"
+            @click.native="trackPromotedDappsView">
+            <IconFeatured
+              :width="14"
+              :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
+          </nuxt-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -21,10 +31,12 @@
 <script>
 import { trackDappEdit } from '~/helpers/mixpanel'
 import IconEdit from './IconEdit'
+import IconFeatured from './IconFeatured'
 
 export default {
   components: {
-    IconEdit
+    IconEdit,
+    IconFeatured
   },
   props: {
     name: {
@@ -71,12 +83,13 @@ export default {
 
 
 <style lang="scss" scoped>
-span.description {
+.description {
   margin-left: 6px;
 }
 
 .tool-list {
   margin-top: 15px;
+  padding-left: 8px;
 }
 
 .tool-item {

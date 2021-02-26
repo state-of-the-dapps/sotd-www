@@ -22,16 +22,7 @@
               :height="14"/> <span class="description">{{ $t(namespace('flag')) }}</span>
           </span>
         </li>
-        <li class="tool-item">
-          <nuxt-link
-            :to="localePath({ name: 'promoted-dapps' })"
-            class="tool-link"
-            @click.native="trackPromotedDappsView">
-            <IconFeatured
-              :width="14"
-              :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
-          </nuxt-link>
-        </li>
+
       </ul>
     </div>
     <BaseModal v-if="shareModal">
@@ -53,7 +44,6 @@ import {
 import BaseModal from './BaseModal'
 import ModalDappsDetailShare from './ModalDappsDetailShare'
 import IconEdit from './IconEdit'
-import IconFeatured from './IconFeatured'
 import IconFlag from './IconFlag'
 import IconShare from './IconShare'
 
@@ -62,7 +52,6 @@ export default {
     BaseModal,
     ModalDappsDetailShare,
     IconEdit,
-    IconFeatured,
     IconFlag,
     IconShare
   },
@@ -151,9 +140,6 @@ export default {
 
 .tool-item {
   margin-bottom: 5px;
-  &:last-child {
-    margin-top: 25px;
-  }
 }
 
 .tool-link {
