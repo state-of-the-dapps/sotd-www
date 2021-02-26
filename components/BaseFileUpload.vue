@@ -48,10 +48,6 @@ export default {
     width: {
       type: Number,
       default: 0
-    },
-    validationType: {
-      type: 'landscape' | 'portrait' | 'strict',
-      default: 'strict'
     }
   },
   data() {
@@ -83,32 +79,15 @@ export default {
   methods: {
     complete(file) {
       this.disable()
-      let passed = true
-
-      console.log(this.validationType)
-
-      switch (this.validationType) {
-        case 'strict':
-          passed =
-            this.width &&
-            this.width === file.width &&
-            this.height &&
-            this.height === file.height
-          break
-        case 'landscape':
-          passed = file.width > file.height
-          break
-        case 'portrait':
-          passed = file.height > file.width
-          break
-      }
-
-      if (!passed) {
-        this.$emit('addInvalidDimensionsWarning')
-        this.remove()
-        return
+      if (
+        this.width &&
+        this.width !== file.width &&
+        this.height &&
+        this.height !== file.height
+      ) {
+        this.$emit('addInvalidDimenionsWarning')
       } else {
-        this.$emit('removeInvalidDimensionsWarning')
+        this.$emit('removeInvalidDimenionsWarning')
       }
       if (!file.accepted) {
         this.remove()
@@ -129,7 +108,7 @@ export default {
     remove() {
       this.$refs.el.dropzone.removeAllFiles()
       this.enable()
-      setTimeout(() => this.$emit('removeInvalidDimensionsWarning'), 5000)
+      this.$emit('removeInvalidDimenionsWarning')
       this.$emit('removeFile')
     },
     s3UploadError(errorMessage) {
