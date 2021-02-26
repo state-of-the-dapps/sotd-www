@@ -13,8 +13,9 @@
     </div>
     <div class="file-upload">
       <BaseFileUpload
+        :width="width"
+        :height="height"
         :show-dropzone="!productImage || preFill"
-        :validation-type="validationType"
         message="<span class=dropzone-plus><img width=150 src=/images/sample-product-image.png></span><br>Drop a new product screenshot here, or click to select one"
         @addInvalidDimensionsWarning="addWarning"
         @uploadSuccess="setProductImage"
@@ -29,7 +30,7 @@
         :key="index"
         class="warning-item">{{ warning }}</li>
     </ul>
-    <p class="help">Require landscape images (JPEG format). <strong>Note: Screenshots with large text will not be featured on the homepage.</strong> <br><a
+    <p class="help">Dimensions must be {{ width }}px width by {{ height }}px height <br>(JPEG format). <strong>Note: Screenshots with large text will not be featured on the homepage.</strong> <br><a
       href="https://cdn.stateofthedapps.com/image_guidelines_08152018.png"
       target="_blank">View the guidelines/examples</a></p>
   </div>
@@ -52,9 +53,10 @@ export default {
   },
   data() {
     return {
+      height: 630,
       preFill: true,
       warnings: [],
-      validationType: 'landscape'
+      width: 1200
     }
   },
   methods: {
