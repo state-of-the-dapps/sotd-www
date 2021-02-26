@@ -84,9 +84,6 @@ export default {
     complete(file) {
       this.disable()
       let passed = true
-
-      console.log(this.validationType)
-
       switch (this.validationType) {
         case 'strict':
           passed =
