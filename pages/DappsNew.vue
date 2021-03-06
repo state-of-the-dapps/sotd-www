@@ -10,7 +10,7 @@
               width="120"
               class="icon-image horse">
             <img
-              src="~assets/images/dapp-icons/0.jpg"
+              src="~assets/images/dapp-icons/1.jpg"
               width="120"
               class="icon-image kitty">
           </div>
