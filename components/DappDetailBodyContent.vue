@@ -68,9 +68,6 @@
           v-if="dapp.rank"
           :rank="dapp.rank"
           :rank-delta="dapp.rankDelta"/>
-        <DappDetailBodyContentOwner
-          :name="dapp.name"
-          :slug="dapp.slug"/>
         <DappProfile
           v-if="dapp.profileScore"
           :dapp="dapp.slug"
@@ -106,11 +103,9 @@ import DappDetailBodyContentRecommend from './DappDetailBodyContentRecommend'
 import DappDetailBodyContentTags from './DappDetailBodyContentTags'
 import DappDetailBodyContentTools from './DappDetailBodyContentTools'
 import DappProfile from './DappProfile'
-import DappDetailBodyContentOwner from './DappDetailBodyContentOwner'
 
 export default {
   components: {
-    DappDetailBodyContentOwner,
     DappAlert,
     DappDetailBodyContentCategories,
     DappDetailBodyContentCtas,
