@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { trackDappEdit } from '~/helpers/mixpanel'
+import { trackDappEdit, trackPromotedDappsView } from '~/helpers/mixpanel'
 import IconEdit from './IconEdit'
 import IconFeatured from './IconFeatured'
 
@@ -61,6 +61,15 @@ export default {
     }
   },
   methods: {
+    trackPromotedDappsView() {
+      const sourceComponent = 'DappDetailBodyContentTools'
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
+      this.$mixpanel.track(action.name, action.data)
+    },
     viewDappEdit(flag = false) {
       let action = trackDappEdit(this.slug)
       this.$mixpanel.track(action.name, action.data)

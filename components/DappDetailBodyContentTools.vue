@@ -38,8 +38,7 @@
 import {
   trackDappEdit,
   trackDappShare,
-  trackDappFlag,
-  trackPromotedDappsView
+  trackDappFlag
 } from '~/helpers/mixpanel'
 import BaseModal from './BaseModal'
 import ModalDappsDetailShare from './ModalDappsDetailShare'
@@ -81,15 +80,6 @@ export default {
   methods: {
     closeShareModal() {
       this.shareModal = false
-    },
-    trackPromotedDappsView() {
-      const sourceComponent = 'DappDetailBodyContentTools'
-      const action = trackPromotedDappsView(
-        sourceComponent,
-        this.sourcePath,
-        this.userEntryRoute
-      )
-      this.$mixpanel.track(action.name, action.data)
     },
     viewDappEdit(flag = false) {
       let action = trackDappEdit(this.slug)
