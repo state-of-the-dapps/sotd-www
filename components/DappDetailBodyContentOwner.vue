@@ -1,7 +1,7 @@
 <template>
   <div class="DappDetailBodyContentOwner">
     <div class="wrapper">
-      <div class="description"><strong>{{ $t(namespace('isOwner')) }}</strong></div>
+      <div><strong>{{ $t(namespace('isOwner')) }}</strong></div>
       <ul class="tool-list">
         <li class="tool-item">
           <span
