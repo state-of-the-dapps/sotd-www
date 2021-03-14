@@ -100,10 +100,13 @@
         "reviewBy": "Review by",
         "watchMore": "Watch full review"
     },
-    "DappDetailBodyContentTools": {
+    "DappDetailBodyContentOwner": {
+        "isOwner": "DApp Owner?",
         "edit": "Edit this DApp",
+        "promote": "Promote this DApp"
+    },
+    "DappDetailBodyContentTools": {
         "flag": "Flag as inappropriate",
-        "promote": "Promote this DApp",
         "share": "Share this DApp"
     },
     "DappDetailBodyContentPlatform": {

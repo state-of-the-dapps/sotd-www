@@ -1,58 +1,42 @@
 <template>
-  <div class="DappDetailBodyContentTools">
+  <div class="DappDetailBodyContentOwner">
     <div class="wrapper">
+      <div><strong>{{ $t(namespace('isOwner')) }}</strong></div>
       <ul class="tool-list">
         <li class="tool-item">
           <span
             class="tool-link"
             role="button"
-            @click="viewDappShare()">
-            <IconShare
+            @click="viewDappEdit()">
+            <IconEdit
               :width="14"
-              :height="14"/> <span class="description">{{ $t(namespace('share')) }}</span>
+              :height="14"/> <span class="description">{{ $t(namespace('edit')) }}</span>
           </span>
         </li>
         <li class="tool-item">
-          <span
+          <nuxt-link
+            :to="localePath({ name: 'promoted-dapps' })"
             class="tool-link"
-            role="button"
-            @click="viewDappFlag('flag')">
-            <IconFlag
+            @click.native="trackPromotedDappsView">
+            <IconFeatured
               :width="14"
-              :height="14"/> <span class="description">{{ $t(namespace('flag')) }}</span>
-          </span>
+              :height="14"/> <span class="description">{{ $t(namespace('promote')) }}</span>
+          </nuxt-link>
         </li>
-
       </ul>
     </div>
-    <BaseModal v-if="shareModal">
-      <ModalDappsDetailShare
-        :dapp-name="name"
-        :dapp-slug="slug"
-        @close="closeShareModal"/>
-    </BaseModal>
   </div>
 </template>
 
 <script>
-import {
-  trackDappEdit,
-  trackDappShare,
-  trackDappFlag
-} from '~/helpers/mixpanel'
-import BaseModal from './BaseModal'
-import ModalDappsDetailShare from './ModalDappsDetailShare'
+import { trackDappEdit, trackPromotedDappsView } from '~/helpers/mixpanel'
 import IconEdit from './IconEdit'
-import IconFlag from './IconFlag'
-import IconShare from './IconShare'
+import IconFeatured from './IconFeatured'
 
 export default {
   components: {
-    BaseModal,
-    ModalDappsDetailShare,
     IconEdit,
-    IconFlag,
-    IconShare
+    IconFeatured
   },
   props: {
     name: {
@@ -68,7 +52,6 @@ export default {
   },
   data() {
     return {
-      shareModal: false,
       sourcePath: this.$route.path
     }
   },
@@ -78,8 +61,14 @@ export default {
     }
   },
   methods: {
-    closeShareModal() {
-      this.shareModal = false
+    trackPromotedDappsView() {
+      const sourceComponent = 'DappDetailBodyContentTools'
+      const action = trackPromotedDappsView(
+        sourceComponent,
+        this.sourcePath,
+        this.userEntryRoute
+      )
+      this.$mixpanel.track(action.name, action.data)
     },
     viewDappEdit(flag = false) {
       let action = trackDappEdit(this.slug)
@@ -96,27 +85,6 @@ export default {
         }
       }
       this.$router.push(this.localePath(route)).catch(err => {})
-    },
-    viewDappFlag(flag = false) {
-      let action = trackDappFlag(this.slug)
-      this.$mixpanel.track(action.name, action.data)
-      let route = {
-        name: 'dapp-detail-flag',
-        params: {
-          slug: this.slug
-        }
-      }
-      if (flag) {
-        route.query = {
-          flag: true
-        }
-      }
-      this.$router.push(this.localePath(route)).catch(err => {})
-    },
-    viewDappShare() {
-      this.shareModal = true
-      const action = trackDappShare(this.slug)
-      this.$mixpanel.track(action.name, action.data)
     }
   }
 }
@@ -126,6 +94,10 @@ export default {
 <style lang="scss" scoped>
 .description {
   margin-left: 6px;
+}
+
+.tool-list {
+  margin-top: 15px;
 }
 
 .tool-item {
