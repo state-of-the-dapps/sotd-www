@@ -113,6 +113,11 @@ export default {
           'https://tracker.icon.foundation/contract/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'NEAR') {
+        addressLink =
+          'https://explorer.near.org/accounts/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'xDai') {
         addressLink =
           'https://blockscout.com/poa/dai/address/' +

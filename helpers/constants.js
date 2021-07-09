@@ -616,6 +616,19 @@ const platforms = Object.freeze([
         }
       ]
     }
+  },
+  {
+    id: 'near',
+    name: 'NEAR',
+    contracts: {
+      networks: [
+        {
+          id: 'nearMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: []
+    }
   }
 ])
 

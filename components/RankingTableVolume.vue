@@ -18,6 +18,7 @@
       <template v-if="platform === 'OST'">OST</template>
       <template v-if="platform === 'TRON'">TRX</template>
       <template v-if="platform === 'ICON'">ICX</template>
+      <template v-if="platform === 'NEAR'">NEAR</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span
@@ -86,6 +87,8 @@ export default {
         volume = stats.tron_value_7d
       } else if (platform === 'ICON') {
         volume = stats.icon_value_7d
+      } else if (platform === 'NEAR') {
+        volume = stats.near_value_7d
       }
       return volume
     },
@@ -119,6 +122,8 @@ export default {
         volumePct = stats.tron_value_7d_pct
       } else if (platform === 'ICON') {
         volumePct = stats.icon_value_7d_pct
+      } else if (platform === 'NEAR') {
+        volumePct = stats.near_value_7d_pct
       }
       return volumePct
     }
