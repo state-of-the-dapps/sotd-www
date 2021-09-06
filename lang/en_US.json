@@ -245,7 +245,8 @@
         "blockstack": "Blockstack",
         "tron": "TRON",
         "icon": "ICON",
-        "near": "NEAR"
+        "near": "NEAR",
+        "bsc": "BSC"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",

@@ -118,6 +118,11 @@ export default {
           'https://explorer.near.org/accounts/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'BSC') {
+        addressLink =
+          'https://bscscan.com/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'xDai') {
         addressLink =
           'https://blockscout.com/poa/dai/address/' +
