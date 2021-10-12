@@ -660,6 +660,36 @@ const platforms = Object.freeze([
       ]
     }
   },
+  {
+    id: 'moonriver',
+    name: 'Moonriver',
+    hideOnHomepage: true,
+    contracts: {
+      networks: [
+        {
+          id: 'moonriverMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
+  }
 ])
 
 const platformContractComputedFields = () => {
