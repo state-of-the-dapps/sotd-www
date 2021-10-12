@@ -19,6 +19,7 @@
       <template v-if="platform === 'TRON'">TRX</template>
       <template v-if="platform === 'ICON'">ICX</template>
       <template v-if="platform === 'NEAR'">NEAR</template>
+      <template v-if="platform === 'Moonriver'">MOVR</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span
@@ -89,6 +90,8 @@ export default {
         volume = stats.icon_value_7d
       } else if (platform === 'NEAR') {
         volume = stats.near_value_7d
+      } else if (platform === 'Moonriver') {
+        volume = stats.moonriver_value_7d
       }
       return volume
     },
@@ -124,6 +127,8 @@ export default {
         volumePct = stats.icon_value_7d_pct
       } else if (platform === 'NEAR') {
         volumePct = stats.near_value_7d_pct
+      } else if (platform === 'Moonriver') {
+        volumePct = stats.moonriver_value_7d_pct
       }
       return volumePct
     }
