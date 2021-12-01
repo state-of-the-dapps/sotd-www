@@ -8,6 +8,7 @@
     },
     "category": "Category | Categories",
     "categoryOptions": {
+        "Defi": "DeFi",
         "Development": "Development",
         "Energy": "Energy",
         "Exchanges": "Exchanges",
@@ -21,11 +22,14 @@
         "Identity": "Identity",
         "Insurance": "Insurance",
         "Media": "Media",
+        "Nft": "NFT",
         "Property": "Property",
         "Security": "Security",
         "Social": "Social",
         "Storage": "Storage",
-        "Wallet": "Wallet"
+        "Tools": "Tools",
+        "Wallet": "Wallet",
+        "Yield-farming": "Yield-farming"
     },
     "collections": {
         "Best-of-MetaMask": "Best of Metamask",
