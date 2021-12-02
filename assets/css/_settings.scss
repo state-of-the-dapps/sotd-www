@@ -61,8 +61,13 @@ $color--category-energy: #FFEEBF;
 $color--category-insurance: #D7FAD5;
 $color--category-health: #C8E2C6;
 $color--category-social: #C7DAFF;
+$color--category-defi: #afeeee;
+$color--category-nft: #f984ef;
+$color--category-tools: #C89D7C;
+$color--category-yield-farming: #c1c1c1;
 
-$color--negative: #ff005a; 
+
+$color--negative: #ff005a;
 $color--neutral: #ffb400;
 $color--positive: #1db200;
 
@@ -71,172 +76,208 @@ $gradient--main-2: linear-gradient(107deg, #b391ff 0%, #8ac3ff 49%, #4ed671 100%
 
 @mixin category-bg-colors {
   &.-gambling {
-    background: $color--category-gambling;    
+    background: $color--category-gambling;
   }
   &.-high-risk {
     background: $color--category-high-risk;
   }
   &.-games {
-    background: $color--category-games;    
+    background: $color--category-games;
   }
   &.-social {
-    background: $color--category-social;    
+    background: $color--category-social;
   }
   &.-finance {
-    background: $color--category-finance;    
+    background: $color--category-finance;
   }
   &.-exchanges {
-    background: $color--category-exchanges;    
+    background: $color--category-exchanges;
   }
   &.-development {
-    background: $color--category-development;    
+    background: $color--category-development;
   }
   &.-media {
-    background: $color--category-media;    
+    background: $color--category-media;
   }
   &.-wallet {
-    background: $color--category-wallet;    
+    background: $color--category-wallet;
   }
   &.-security {
-    background: $color--category-security;    
+    background: $color--category-security;
   }
   &.-property {
-    background: $color--category-property;    
+    background: $color--category-property;
   }
   &.-governance {
-    background: $color--category-governance;    
+    background: $color--category-governance;
   }
   &.-marketplaces {
     background: $color--category-marketplaces;
   }
   &.-storage {
-    background: $color--category-storage;    
+    background: $color--category-storage;
   }
   &.-energy {
-    background: $color--category-energy;    
+    background: $color--category-energy;
   }
   &.-identity {
-    background: $color--category-identity;    
+    background: $color--category-identity;
   }
   &.-insurance {
-    background: $color--category-insurance;    
+    background: $color--category-insurance;
   }
   &.-health {
-    background: $color--category-health;    
+    background: $color--category-health;
+  }
+  &.-defi {
+    background: $color--category-defi;
+  }
+  &.-nft {
+    background: $color--category-nft;
+  }
+  &.-tools {
+    background: $color--category-tools;
+  }
+  &.-yield-farming {
+    background: $color--category-yield-farming;
   }
 }
 
 @mixin category-fill-colors {
   &.-gambling {
-    fill: $color--category-gambling;    
+    fill: $color--category-gambling;
   }
   &.-high-risk {
     fill: $color--category-high-risk;
   }
   &.-games {
-    fill: $color--category-games;    
+    fill: $color--category-games;
   }
   &.-social {
-    fill: $color--category-social;    
+    fill: $color--category-social;
   }
   &.-finance {
-    fill: $color--category-finance;    
+    fill: $color--category-finance;
   }
   &.-exchanges {
-    fill: $color--category-exchanges;    
+    fill: $color--category-exchanges;
   }
   &.-development {
-    fill: $color--category-development;    
+    fill: $color--category-development;
   }
   &.-media {
-    fill: $color--category-media;    
+    fill: $color--category-media;
   }
   &.-wallet {
-    fill: $color--category-wallet;    
+    fill: $color--category-wallet;
   }
   &.-security {
-    fill: $color--category-security;    
+    fill: $color--category-security;
   }
   &.-property {
-    fill: $color--category-property;    
+    fill: $color--category-property;
   }
   &.-governance {
-    fill: $color--category-governance;    
+    fill: $color--category-governance;
   }
   &.-marketplaces {
     fill: $color--category-marketplaces;
   }
   &.-storage {
-    fill: $color--category-storage;    
+    fill: $color--category-storage;
   }
   &.-energy {
-    fill: $color--category-energy;    
+    fill: $color--category-energy;
   }
   &.-identity {
-    fill: $color--category-identity;    
+    fill: $color--category-identity;
   }
   &.-insurance {
-    fill: $color--category-insurance;    
+    fill: $color--category-insurance;
   }
   &.-health {
-    fill: $color--category-health;    
+    fill: $color--category-health;
+  }
+  &.-defi {
+    fill: $color--category-defi;
+  }
+  &.-nft {
+    fill: $color--category-nft;
+  }
+  &.-tools {
+    fill: $color--category-tools;
+  }
+  &.-yield-farming {
+    fill: $color--category-yield-farming;
   }
 }
 
 @mixin category-border-colors {
   &.-gambling {
-    border-color: $color--category-gambling;    
+    border-color: $color--category-gambling;
   }
   &.-high-risk {
     border-color: $color--category-high-risk;
   }
   &.-games {
-    border-color: $color--category-games;    
+    border-color: $color--category-games;
   }
   &.-social {
-    border-color: $color--category-social;    
+    border-color: $color--category-social;
   }
   &.-finance {
-    border-color: $color--category-finance;    
+    border-color: $color--category-finance;
   }
   &.-exchanges {
-    border-color: $color--category-exchanges;    
+    border-color: $color--category-exchanges;
   }
   &.-development {
-    border-color: $color--category-development;    
+    border-color: $color--category-development;
   }
   &.-media {
-    border-color: $color--category-media;    
+    border-color: $color--category-media;
   }
   &.-wallet {
-    border-color: $color--category-wallet;    
+    border-color: $color--category-wallet;
   }
   &.-security {
-    border-color: $color--category-security;    
+    border-color: $color--category-security;
   }
   &.-property {
-    border-color: $color--category-property;    
+    border-color: $color--category-property;
   }
   &.-governance {
-    border-color: $color--category-governance;    
+    border-color: $color--category-governance;
   }
   &.-marketplaces {
     border-color: $color--category-marketplaces;
   }
   &.-storage {
-    border-color: $color--category-storage;    
+    border-color: $color--category-storage;
   }
   &.-energy {
-    border-color: $color--category-energy;    
+    border-color: $color--category-energy;
   }
   &.-identity {
-    border-color: $color--category-identity;    
+    border-color: $color--category-identity;
   }
   &.-insurance {
-    border-color: $color--category-insurance;    
+    border-color: $color--category-insurance;
   }
   &.-health {
-    border-color: $color--category-health;    
+    border-color: $color--category-health;
+  }
+  &.-defi {
+    border-color: $color--category-defi;
+  }
+  &.-nft {
+    border-color: $color--category-nft;
+  }
+  &.-tools {
+    border-color: $color--category-tools;
+  }
+  &.-yield-farming {
+    border-color: $color--category-yield-farming;
   }
 }
 
@@ -267,7 +308,7 @@ $tweakpoint--default: 1000px;
 
 @mixin title {
   @include font-display;
-  font-weight: 400;  
+  font-weight: 400;
 }
 
 @mixin title-1 {
@@ -290,7 +331,7 @@ $tweakpoint--default: 1000px;
 
 @mixin font-display {
   font-family: 'Amsi Pro Cond SemiBold', 'Noto Sans SC', sans-serif;
-  font-weight: 400;  
+  font-weight: 400;
 }
 
 @mixin font-text {
@@ -379,7 +420,7 @@ $margin--wrapper-medium: 0px 22px;
       -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg);
     }
   }
-  
+
   @keyframes sk-rotateplane {
     0% {
       transform: perspective(120px) rotateX(0deg) rotateY(0deg);
