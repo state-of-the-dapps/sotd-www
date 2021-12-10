@@ -6,7 +6,7 @@
           v-for="(category, index) in categories"
           :key="index"
           class="category-item">
-          <nuxt-link 
+          <nuxt-link
             :to="localePath({name: 'rankings-category', params: {category: category.name}})"
             :class="'-' + category.name.toLowerCase()"
             class="category-link"
@@ -61,14 +61,14 @@ export default {
           color: 'peach'
         },
         {
-          name: 'finance',
+          name: 'defi',
           iconComponent: 'IconCategoryFinance',
-          color: 'teal'
+          color: 'blue'
         },
         {
-          name: 'exchanges',
+          name: 'nft',
           iconComponent: 'IconCategoryExchanges',
-          color: 'blue'
+          color: 'purple'
         }
       ]
     }

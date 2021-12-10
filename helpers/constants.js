@@ -135,7 +135,7 @@ const feedbackComponentMap = Object.freeze({
   positive: 'SvgFeedbackPositive'
 })
 
-const homeFeaturedCollections = 3
+const homeFeaturedCollections = 6
 
 const homeCollectionSlots = 8
 

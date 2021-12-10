@@ -32,6 +32,9 @@
         "Yield-farming": "Yield-farming"
     },
     "collections": {
+        "Best-of-DeFi": "Best of DeFi",
+        "Best-of-DAO": "Best of DAO",
+        "Best-of-NFT": "Best of NFT",
         "Best-of-MetaMask": "Best of Metamask",
         "BitGuild": "BitGuild",
         "BlockchainGamer": "BlockchainGamer",
@@ -155,8 +158,10 @@
     "devActivity30d": "Dev activity (30d)",
     "devActivity30dHelp": "The number of GitHub events that the project organization / repository generates. This includes code pushes, issues, pull requests, etc.",
     "FeaturedCategoryList": {
-        "games": "games",
+        "defi": "DeFi",
         "finance": "finance",
+        "games": "games",
+        "nft": "NFT",
         "exchanges": "exchanges",
         "allCategories": "All categories"
     },

@@ -1,11 +1,11 @@
 <template>
-  <svg 
-    :width="width" 
-    :height="height" 
-    class="IconCategoryFinance" 
+  <svg
+    :width="width"
+    :height="height"
+    class="IconCategoryFinance"
     viewBox="0 0 54 54">
-    <path 
-      :class="fill" 
+    <path
+      :class="fill"
       d="M1.47,54C0.66,54,0,53.34,0,52.53V32.34c0-0.81,0.66-1.47,1.47-1.47s1.47,0.66,1.47,1.47v20.19
 		C2.95,53.34,2.29,54,1.47,54z M13.16,52.53V22.07c0-0.81-0.66-1.47-1.47-1.47c-0.81,0-1.47,0.66-1.47,1.47v30.45
 		c0,0.81,0.66,1.47,1.47,1.47C12.5,54,13.16,53.34,13.16,52.53z M23.37,52.53V10.59c0-0.81-0.66-1.47-1.47-1.47
@@ -45,6 +45,6 @@ export default {
 }
 
 .teal {
-  fill: $color--category-finance;
+  fill: $color--category-defi;
 }
 </style>

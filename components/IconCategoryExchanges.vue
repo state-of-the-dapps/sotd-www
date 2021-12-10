@@ -1,11 +1,11 @@
 <template>
-  <svg 
-    :width="width" 
-    :height="height" 
-    class="IconCategoryExchanges" 
+  <svg
+    :width="width"
+    :height="height"
+    class="IconCategoryExchanges"
     viewBox="0 0 54 54">
-    <path 
-      :class="fill" 
+    <path
+      :class="fill"
       d="M36.69,34.61c9.54,0,17.31-7.76,17.31-17.31S46.24,0,36.69,0S19.39,7.77,19.39,17.31
 	c0,0.75,0.07,1.49,0.16,2.22c-0.74-0.1-1.49-0.15-2.24-0.15C7.76,19.39,0,27.15,0,36.69S7.76,54,17.31,54s17.31-7.76,17.31-17.31
 	c0-0.75-0.05-1.5-0.14-2.24C35.2,34.55,35.94,34.61,36.69,34.61z M36.69,2.95c7.92,0,14.36,6.44,14.36,14.36
@@ -23,7 +23,7 @@
 export default {
   props: {
     fill: {
-      default: 'purple',
+      default: 'white',
       type: String
     },
     height: {
@@ -44,7 +44,7 @@ export default {
 }
 
 .purple {
-  fill: $color--purple;
+  fill: $color--white;
 }
 
 .blue {
