@@ -5,7 +5,7 @@
   "author": "support@stateofthedapps.com",
   "private": true,
   "engines": {
-    "node": "10.13.0"
+    "node": "10.24.1"
   },
   "ava": {
     "require": [
