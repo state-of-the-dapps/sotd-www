@@ -39,7 +39,7 @@
     "vue-media": "^1.1.1",
     "vuetrend": "^0.3.2",
     "webfontloader": "^1.6.28",
-    "snyk": "^1.234.0"
+    "snyk": "^1.518.0"
   },
   "scripts": {
     "dev": "nuxt",
