@@ -256,7 +256,8 @@
         "icon": "ICON",
         "near": "NEAR",
         "bsc": "BSC",
-        "moonriver": "Moonriver"
+        "moonriver": "Moonriver",
+        "meter": "Meter"
     },
     "SecondaryCtaMailingList": {
         "title": "Stay in the loop",

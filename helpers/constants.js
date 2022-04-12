@@ -689,6 +689,40 @@ const platforms = Object.freeze([
         }
       ]
     }
+  },
+  {
+    id: 'meter',
+    name: 'Meter',
+    hideOnHomepage: true,
+    software: {
+      name: 'Metamask',
+      url: 'https://metamask.io/?utm_source=StateOfTheDApps'
+    },
+    contracts: {
+      networks: [
+        {
+          id: 'meterMainnet',
+          name: 'Mainnet'
+        }
+      ],
+      validations: [
+        {
+          type: 'minLength',
+          value: 42,
+          message: 'One of your addresses is not long enough'
+        },
+        {
+          type: 'maxLength',
+          value: 42,
+          message: 'One of your addresses too long'
+        },
+        {
+          type: 'startsWith',
+          value: '0x',
+          message: 'Addresses must start with 0x'
+        }
+      ]
+    }
   }
 ])
 

@@ -128,6 +128,11 @@ export default {
           'https://blockscout.moonriver.moonbeam.network/address/' +
           this.address +
           '?utm_source=StateOfTheDApps'
+      } else if (this.platform === 'Meter') {
+        addressLink =
+          'https://scan.meter.io/address/' +
+          this.address +
+          '?utm_source=StateOfTheDApps'
       } else if (this.platform === 'xDai') {
         addressLink =
           'https://blockscout.com/poa/dai/address/' +

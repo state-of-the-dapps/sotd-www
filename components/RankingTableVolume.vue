@@ -20,6 +20,7 @@
       <template v-if="platform === 'ICON'">ICX</template>
       <template v-if="platform === 'NEAR'">NEAR</template>
       <template v-if="platform === 'Moonriver'">MOVR</template>
+      <template v-if="platform === 'Meter'">MTR</template>
       <template v-if="platform === 'xDai'">xDAI</template>
     </span>
     <span
