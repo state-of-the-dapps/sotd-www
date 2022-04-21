@@ -93,6 +93,8 @@ export default {
         volume = stats.near_value_7d
       } else if (platform === 'Moonriver') {
         volume = stats.moonriver_value_7d
+      } else if (platform === 'Meter') {
+        volume = stats.meter_value_7d
       }
       return volume
     },
@@ -130,6 +132,8 @@ export default {
         volumePct = stats.near_value_7d_pct
       } else if (platform === 'Moonriver') {
         volumePct = stats.moonriver_value_7d_pct
+      } else if (platform === 'Meter') {
+        volumePct = stats.meter_value_7d_pct
       }
       return volumePct
     }
